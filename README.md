@@ -15,7 +15,8 @@ Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（
 - [x] `sts_lightspeed` 克隆至 `third_party/`（commit `7476a81`，gitignore + 锁版本）；反编译落位规范见 [reference/README.md](reference/README.md)
 - [x] 游戏本体已定位：`E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`
 - [ ] runlogger mod 未安装 → 创意工坊订阅 + 打几局 Ironclad（第 3 周前，非阻塞）
-- [ ] **第 2 周：最小切片模拟器**（`sts/env/`，出口 = 随机策略能打完一场）+ 半天试 build `sts_lightspeed`
+- [x] **第 2 周进行中**·`sts/env/rng.py`：java.util.Random 逐位复刻 + 11 项测试全过（D14）
+- [ ] 第 2 周剩余：state / cards / effects / enemies / combat / actions + 随机 agent（出口 = 随机策略能打完一场、同 seed 轨迹一致）+ 半天试 build `sts_lightspeed`
 
 ## 评估种子
 

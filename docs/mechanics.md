@@ -18,16 +18,16 @@
 - 手牌槽位 0-9，**按抽牌顺序分配**（v4 §4.3 关键约定：槽位分配必须确定，否则 replay 与 oracle 对拍失败）。
 - 所有 `[未核实]` 项的共同出处：社区共识数值 / 记忆，未经 runlogger 日志或游戏内实测确认。
 
-## 1. RNG 流（v4 §3 / Gate 1 第 3 条）
+## 1. RNG 流（v4 §3 / Gate 1 第 3 条 / D14）
 
-主 seed 派生 4 条**独立** RNG 流（numpy `PCG64`，经 `SeedSequence` spawn），流之间不得交叉取数：
+4 条**独立** RNG 流，全部为 `java.util.Random` 的逐位复刻（`sts/env/rng.py`，D14），**全部用同一个 combat seed 初始化**，流之间不得交叉取数：
 
-| 流            | spawn key | 用途                      |
-| ------------ | --------- | ----------------------- |
-| `shuffle`    | 0         | 洗牌、抽牌顺序                 |
-| `enemy_ai`   | 1         | 敌人行动选择、初始意图             |
-| `enemy_roll` | 2         | 敌人 HP roll、Louse 每场咬伤定值 |
-| `misc`       | 3         | 未来扩展保留                  |
+| 流 | 对应游戏流 | 用途 |
+|---|---|---|
+| `shuffle` | `shuffleRng` | 洗牌、抽牌顺序 |
+| `enemy_ai` | `aiRng` | 敌人行动选择、初始意图 |
+| `enemy_roll` | `monsterHpRng` | 敌人 HP roll、Louse 每场咬伤定值 |
+| `misc` | `miscRng` | 预留（`cardRandomRng` 类随机效果最小切片无来源，不单列） |
 
 - seed 只进环境，**不进观测**（v4 §3：防学到伪相关）。
 - 每个随机操作的**消耗次数与顺序**是可复现性的一部分：同一 seed + 同一动作序列，流的消耗计数必须逐步相同（Gate 1 第 3 条按此断言）。
@@ -44,9 +44,9 @@
 
 对本项目的三层含义：
 
-1. **多流设计是对游戏结构的映射，不是自创**。对应关系：`shuffleRng` ↔ `shuffle`、`aiRng` ↔ `enemy_ai`、`monsterHpRng` ↔ `enemy_roll`、`cardRandomRng`/`miscRng` ↔ `misc`（最小切片无随机卡牌来源，未单列）。实现上我们用不同种子 spawn 派生替代"同种子不同实例"，独立性保证等价。
-2. **战斗内随机性 = f(run seed, 层数)**，与路径历史无关（那 5 条流每层重置）。第 3 周对拍只需日志提供 run seed 与层数，即可重建该场战斗的全部随机序列——无需重放整局。
-3. 若要逐字节复刻游戏随机序列（Gate 1 第 1 条的完整形态），需精确复刻 `java.util.Random`（48-bit LCG，约 30 行；`sts_lightspeed` 与 SlayTheSpireFightPredictor 已验证此路线可行）。替代路线：日志注入（把日志中的 HP roll / 洗牌顺序作为固定输入喂给模拟器，只测转移逻辑不测 RNG）。第 3 周二选一，届时登记。
+1. **多流设计是对游戏结构的映射，不是自创**。对应关系：`shuffleRng` ↔ `shuffle`、`aiRng` ↔ `enemy_ai`、`monsterHpRng` ↔ `enemy_roll`、`cardRandomRng`/`miscRng` ↔ `misc`（最小切片无随机卡牌来源，未单列）。实现（D14 定稿）：同样**同种子初始化 + 独立实例**，与游戏结构完全一致——此前"numpy spawn 派生不同种子"的方案已废弃（不同算法的序列无法与游戏对拍）。
+2. **战斗内随机序列 = f(run seed, 该场战斗的动作序列)**——那 5 条流每层重置到同一种子，**层数不进入流状态**（层数只决定遭遇内容与敌人组成）。第 3 周对拍只需日志提供 run seed 与战斗内动作序列，即可重建该场战斗的全部随机序列——无需重放整局。
+3. **已裁定（D14，2026-09-03）**：`java.util.Random` 复刻落地为 `sts/env/rng.py`（48-bit LCG、nextInt 拒绝采样、nextDouble 53 位），已知向量测试锚定逐位正确性。"日志注入"备选路线（把日志观测值当固定输入）作废，仅在复刻路线被证伪时重启。
 
 `[未核实]`（沿用）：固定首行动是否消耗 RNG；Louse 咬伤定值与 Curl Up 的 block roll 走 `monsterHpRng` 还是 `miscRng`——第 3 周对拍时反推。
 
@@ -54,7 +54,7 @@
 
 按序执行：
 
-1. 主 seed → 派生 4 条 RNG 流（§1）。
+1. combat seed → 4 条流全部以 `JavaRandom(seed)` 初始化（同 seed，§1 / §1.1 / D14）。
 2. 构建牌库（固定构建顺序）：Strike ×5 → Defend ×4 → Bash ×1。
 3. `shuffle` 流洗牌一次（Fisher-Yates 全排列）。
 4. 生成敌人：按遭遇配置的顺序实例化；每个敌人 HP 在其区间内用 `enemy_roll` 流依序 roll；Louse 的每场咬伤定值同时 roll 并存于实例。
@@ -239,3 +239,4 @@
 | 2026-09-03 | v0.1 初稿 | 开工（第 1 周），待第 3 周回放对拍校准 |
 | 2026-09-03 | 新增 §1.1：游戏本体 RNG 结构核实（12 条命名流、5 条战斗流每层重置、同 seed 初始化） | 用户提问触发查证，来源 ForgottenArbiter 博客反编译代码 |
 | 2026-09-03 | §4 补社区来源：力量最先加、易伤向下取整已确认；⚠️ Vuln/Weak 先后出现反向证据，待第二档前仲裁 | wiki 查证，详见 §4 对拍注 |
+| 2026-09-03 | §1/§1.1/§2 RNG 设计改版：numpy PCG64 → 逐位复刻 java.util.Random（同 seed 独立实例）；推论 2 修正（层数不进入流状态） | 用户提问暴露对拍根本约束，D14 裁定 |

@@ -73,6 +73,14 @@
 - 首例仲裁已立案：Vuln/Weak 乘法先后（mechanics.md §4 出现矛盾证据），第二档入库前终审。
 - 落地进度：游戏本体已定位 `E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`；jadx 未下载，首次仲裁前生成即可。
 
+### D14 RNG 实现：复刻 java.util.Random，弃用 numpy PCG64（2026-09-03，第 2 周 rng.py 落地前裁定）
+
+- 起因：用户提问「Python 写的随机数和游戏 Java 的一样吗」——不一样（48-bit LCG vs PCG64，同 seed 序列毫无关系），且直接威胁日志对拍与 lightspeed 差分的可行性，故提前裁定。
+- 裁定：环境内一切随机性由 `sts/env/rng.py` 的 `JavaRandom` 逐位复刻（javadoc 公开算法：LCG 核心、nextInt 拒绝采样消除模偏差、nextDouble 53 位尾数）；4 条流**全部用同一 combat seed 初始化**——忠实游戏"每层同种子重建全部战斗流"的结构，流间相关性是真实物理，不"改良"。
+- 已知向量锚定逐位正确性：`Random(42).nextInt() = -1170105035`、`Random(0).nextDouble() = 0.730967787376657`（两者均为广泛引用的公认首值，实现命中）。
+- 理由：① 第 3 周日志回放要求「同 run seed + 同动作 → 同状态」，随机序列必须与游戏逐位一致；② U6 lightspeed 差分同样要求 seed 对齐（其 100% RNG accurate 即 Java LCG）；③ 复刻成本一次约 40 行，有公开测试向量可锚定。
+- 推翻条件：仅当反编译仲裁（D13）发现游戏实际使用的随机原语超出 javadoc 语义（如自研 PRNG）时重审。numpy 退出环境内使用；训练/统计侧随机性第 7 周起归 torch 生成器。
+
 ## 未决事项（v4 §12，不阻塞开工）
 
 | # | 事项 | 何时定 | 默认 |
