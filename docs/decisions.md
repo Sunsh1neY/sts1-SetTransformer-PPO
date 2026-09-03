@@ -65,6 +65,14 @@
 - 理由：所有降级路径都服务于此——Gate 3 降级后架构对照依然成立（§10.1）。
 - 推翻条件：无。这是锚点，其余一切可为它让路。
 
+### D13 反编译查阅政策（2026-09-03，用户确认）
+
+- 裁定：**非目标维持**——反编译不作为获取游戏逻辑的主路线；允许在规格争议仲裁时**定点查阅**反编译源码；红线：**不得照抄反编译代码进模拟器**（保住 lightspeed 差分与对拍体系的独立性）。
+- 使用阶梯：wiki / 社区文档 → lightspeed 源码 → 反编译 Java → runlogger 日志兜底。
+- 存放（用户指定）：反编译产物放 `reference/sts1-decompiled/`（gitignore，不入库——版权风险只在公开分发，本地查阅无风险）。生成命令见 `reference/README.md`。
+- 首例仲裁已立案：Vuln/Weak 乘法先后（mechanics.md §4 出现矛盾证据），第二档入库前终审。
+- 落地进度：游戏本体已定位 `E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`；jadx 未下载，首次仲裁前生成即可。
+
 ## 未决事项（v4 §12，不阻塞开工）
 
 | # | 事项 | 何时定 | 默认 |
@@ -72,16 +80,16 @@
 | U1 | 动作头：扁平索引 vs pointer head | 第 11 周 | 先扁平 |
 | U2 | W&B vs TensorBoard | 第 7 周首次训练前 | 任选，接口封一层 |
 | U3 | 中等档卡表来源核实 | 第 5 周 | HF `t22000t/slay-the-spire-1-cards` 抽查 5-10 张后决定 |
-| U4 | `sts_lightspeed` 是否纳入 | 第 2 周 | 半天试 build，卡住即弃 |
+| U4 | `sts_lightspeed` 是否纳入 | 第 2 周 | **已克隆**至 `third_party/sts_lightspeed`（commit `7476a81`，2026-09-03）；剩余：半天试 build，卡住即弃 |
 | U5 | λ 终值 | 第 6 周 | 0.5 起，校准后锁死 |
 | U6 | oracle 主通道：runlogger 日志 vs lightspeed 差分 vs 双轨 | 第 2 周（U4 试 build 后） | 双轨：lightspeed 日常高吞吐差分，runlogger 留作真值校准抽查 |
-| U7 | 反编译源码查阅政策 | 第 2 周 | 非目标维持（不作为获取逻辑的主路线）；允许争议仲裁时**定点查阅**反编译 Java（jadx 即可得全量源码）；红线：不得照抄进模拟器，保住差分测试独立性 |
+| U7 | ~~反编译源码查阅政策~~ | **已裁定 → D13（2026-09-03）** | — |
 
 ## 附 B 未核实事实销账表（v4 附 B → 实测后填）
 
 | # | 事实 | 状态 | 核实记录 |
 |---|---|---|---|
-| 1 | runlogger 的局数、卡牌覆盖、schema | 待实测 | 仓库已定位（见下）；日志目录名为 `runlogs/` 而非 v4 所写 `runs/`，余项待拉取 |
+| 1 | runlogger 的局数、卡牌覆盖、schema | 部分（2026-09-03） | 游戏本体已定位 `E:\SteamLibrary\steamapps\common\SlayTheSpire\`（含 `desktop-1.0.jar`）；**runlogger mod 未安装**（无 `runlogs/`），需创意工坊订阅 + 打几局 Ironclad（第 3 周前）；游戏自带 `runs/` 有历史对局记录（含 IRONCLAD 目录，后续抽查是否可用于对拍） |
 | 2 | sts_lightspeed 的 API / 构建 / 覆盖 | 待实测（第 2 周） | 仓库已定位：`gamerpuppy/sts_lightspeed`（C++17 + pybind11，自称 100% RNG accurate，覆盖 Ironclad 全卡 + 全部敌人；作者用 mingw64/CLion2021 构建，Windows 编译有已知摩擦，Reddit 有失败案例）→ 第 2 周半天试 build |
 | 3 | HF 卡表数值准确性 | 待实测（第 5 周） | — |
 | 4 | 纯 Python 模拟器吞吐 | 待实测（第 4 周 Gate 1） | — |

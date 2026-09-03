@@ -9,3 +9,5 @@ wand/
 *.ckpt
 .DS_Store
 .obsidian/
+third_party/
+reference/sts1-decompiled/

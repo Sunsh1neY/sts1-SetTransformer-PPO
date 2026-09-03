@@ -6,14 +6,16 @@ Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（
 
 > 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 STS1。
 
-## 当前状态（第 1 周，排期见 spec-v4 §9）
+## 当前状态（第 1 周完成，排期见 spec-v4 §9）
 
 - [x] spec-v4 定稿入仓库（覆盖旧的未清理版）
-- [x] [docs/decisions.md](docs/decisions.md) —— 12 项裁定 + 推翻条件 + runlogger 侦察记录
-- [x] [docs/mechanics.md](docs/mechanics.md) —— 结算顺序书面规格 v0.1（单测的唯一依据）
+- [x] [docs/decisions.md](docs/decisions.md) —— 13 项裁定 + 推翻条件（D13 反编译查阅政策）+ 未决事项 U1-U6
+- [x] [docs/mechanics.md](docs/mechanics.md) —— 结算顺序书面规格 v0.1 + 24 条单测清单 + 游戏本体 RNG 结构核实（§1.1）
 - [x] `eval_seeds.json` 生成并提交，sha256 见下方
-- [ ] runlogger 日志拉取与覆盖统计（待本机游戏环境确认 mod 安装）
-- [ ] 第 2 周：最小切片模拟器（`sts/env/`），半天试 build `sts_lightspeed`
+- [x] `sts_lightspeed` 克隆至 `third_party/`（commit `7476a81`，gitignore + 锁版本）；反编译落位规范见 [reference/README.md](reference/README.md)
+- [x] 游戏本体已定位：`E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`
+- [ ] runlogger mod 未安装 → 创意工坊订阅 + 打几局 Ironclad（第 3 周前，非阻塞）
+- [ ] **第 2 周：最小切片模拟器**（`sts/env/`，出口 = 随机策略能打完一场）+ 半天试 build `sts_lightspeed`
 
 ## 评估种子
 
