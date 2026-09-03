@@ -124,6 +124,7 @@
 
 > **裁定**：每步乘法后立即 floor；Vulnerable 先于 Weak 计算。
 > **对拍注**：Vuln+Weak 同时生效才可区分两种乘法顺序，而最小切片中**不存在**两者同时作用于同一伤害的情形（玩家无力量来源、敌人无 Weak 来源）——故本裁定在第一档内不可被日志证伪；第二档（Inflame 等）入库前必须完成对拍校准。手算单测按本裁定执行（T06）。
+> **2026-09-03 社区来源核实**：力量最先加入计算（Fandom wiki Strength 页：strength "added to the calculation first" before Vulnerable/Weak 等修饰）✓；易伤伤害向下取整（Fandom wiki Vulnerable 页："Vulnerable damage is rounded down"）✓。⚠️ 乘法先后出现**矛盾证据**：社区流传公式写作 (base+str) ×0.75(weak) ×1.5(vuln)，即 Weak 在前，与本裁定相反。处置：第二档入库前用反编译源码定点仲裁（decisions.md U7），不盲猜、不靠对拍试错。
 
 ## 5. 卡牌结算（最小切片卡表）
 
@@ -237,3 +238,4 @@
 |---|---|---|
 | 2026-09-03 | v0.1 初稿 | 开工（第 1 周），待第 3 周回放对拍校准 |
 | 2026-09-03 | 新增 §1.1：游戏本体 RNG 结构核实（12 条命名流、5 条战斗流每层重置、同 seed 初始化） | 用户提问触发查证，来源 ForgottenArbiter 博客反编译代码 |
+| 2026-09-03 | §4 补社区来源：力量最先加、易伤向下取整已确认；⚠️ Vuln/Weak 先后出现反向证据，待第二档前仲裁 | wiki 查证，详见 §4 对拍注 |
