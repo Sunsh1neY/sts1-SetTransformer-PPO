@@ -8,3 +8,4 @@ wand/
 *.pt
 *.ckpt
 .DS_Store
+.obsidian/
