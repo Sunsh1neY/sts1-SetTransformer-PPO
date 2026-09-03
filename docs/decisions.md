@@ -74,13 +74,14 @@
 | U3 | 中等档卡表来源核实 | 第 5 周 | HF `t22000t/slay-the-spire-1-cards` 抽查 5-10 张后决定 |
 | U4 | `sts_lightspeed` 是否纳入 | 第 2 周 | 半天试 build，卡住即弃 |
 | U5 | λ 终值 | 第 6 周 | 0.5 起，校准后锁死 |
+| U6 | oracle 主通道：runlogger 日志 vs lightspeed 差分 vs 双轨 | 第 2 周（U4 试 build 后） | 双轨：lightspeed 日常高吞吐差分，runlogger 留作真值校准抽查 |
 
 ## 附 B 未核实事实销账表（v4 附 B → 实测后填）
 
 | # | 事实 | 状态 | 核实记录 |
 |---|---|---|---|
 | 1 | runlogger 的局数、卡牌覆盖、schema | 待实测 | 仓库已定位（见下）；日志目录名为 `runlogs/` 而非 v4 所写 `runs/`，余项待拉取 |
-| 2 | sts_lightspeed 的 API / 构建 / 覆盖 | 待实测（第 2 周） | — |
+| 2 | sts_lightspeed 的 API / 构建 / 覆盖 | 待实测（第 2 周） | 仓库已定位：`gamerpuppy/sts_lightspeed`（C++17 + pybind11，自称 100% RNG accurate，覆盖 Ironclad 全卡 + 全部敌人；作者用 mingw64/CLion2021 构建，Windows 编译有已知摩擦，Reddit 有失败案例）→ 第 2 周半天试 build |
 | 3 | HF 卡表数值准确性 | 待实测（第 5 周） | — |
 | 4 | 纯 Python 模拟器吞吐 | 待实测（第 4 周 Gate 1） | — |
 | 5 | determinismfix 是否必需 | 待实测 | runlogger README 明言游戏有可复现性 bug、需装 Determinism Fix，基本确认必需 |

@@ -22,16 +22,33 @@
 
 主 seed 派生 4 条**独立** RNG 流（numpy `PCG64`，经 `SeedSequence` spawn），流之间不得交叉取数：
 
-| 流 | spawn key | 用途 |
-|---|---|---|
-| `shuffle` | 0 | 洗牌、抽牌顺序 |
-| `enemy_ai` | 1 | 敌人行动选择、初始意图 |
-| `enemy_roll` | 2 | 敌人 HP roll、Louse 每场咬伤定值 |
-| `misc` | 3 | 未来扩展保留 |
+| 流            | spawn key | 用途                      |
+| ------------ | --------- | ----------------------- |
+| `shuffle`    | 0         | 洗牌、抽牌顺序                 |
+| `enemy_ai`   | 1         | 敌人行动选择、初始意图             |
+| `enemy_roll` | 2         | 敌人 HP roll、Louse 每场咬伤定值 |
+| `misc`       | 3         | 未来扩展保留                  |
 
 - seed 只进环境，**不进观测**（v4 §3：防学到伪相关）。
 - 每个随机操作的**消耗次数与顺序**是可复现性的一部分：同一 seed + 同一动作序列，流的消耗计数必须逐步相同（Gate 1 第 3 条按此断言）。
 - `[未核实]`：STS1 对固定首行动（Jaw Worm 必 Chomp）是否消耗 RNG。实现按"消耗一次"约定，回放对拍时校准。
+
+### 1.1 游戏本体的真实 RNG 结构（2026-09-03 已核实）
+
+游戏并非单流，而是**比本规格更彻底的多流设计**。反编译代码 `generateSeeds()`（ForgottenArbiter《Correlated Randomness in Slay the Spire》，2026-09-03 核验）显示 STS1 维护 12 条命名 RNG，**全部用同一个 run seed 初始化**：
+
+- 全程持续：`monsterRng` / `eventRng` / `merchantRng` / `cardRng` / `treasureRng` / `relicRng` / `potionRng`
+- **每层战斗重置**到同一初始状态：`monsterHpRng` / `aiRng` / `shuffleRng` / `cardRandomRng` / `miscRng`
+
+独立性的来源不是不同种子，而是**独立的 `java.util.Random` 实例、互不干扰的消耗序列**。
+
+对本项目的三层含义：
+
+1. **多流设计是对游戏结构的映射，不是自创**。对应关系：`shuffleRng` ↔ `shuffle`、`aiRng` ↔ `enemy_ai`、`monsterHpRng` ↔ `enemy_roll`、`cardRandomRng`/`miscRng` ↔ `misc`（最小切片无随机卡牌来源，未单列）。实现上我们用不同种子 spawn 派生替代"同种子不同实例"，独立性保证等价。
+2. **战斗内随机性 = f(run seed, 层数)**，与路径历史无关（那 5 条流每层重置）。第 3 周对拍只需日志提供 run seed 与层数，即可重建该场战斗的全部随机序列——无需重放整局。
+3. 若要逐字节复刻游戏随机序列（Gate 1 第 1 条的完整形态），需精确复刻 `java.util.Random`（48-bit LCG，约 30 行；`sts_lightspeed` 与 SlayTheSpireFightPredictor 已验证此路线可行）。替代路线：日志注入（把日志中的 HP roll / 洗牌顺序作为固定输入喂给模拟器，只测转移逻辑不测 RNG）。第 3 周二选一，届时登记。
+
+`[未核实]`（沿用）：固定首行动是否消耗 RNG；Louse 咬伤定值与 Curl Up 的 block roll 走 `monsterHpRng` 还是 `miscRng`——第 3 周对拍时反推。
 
 ## 2. 战斗初始化 `reset(seed)`
 
@@ -219,3 +236,4 @@
 | 日期 | 变更 | 触发 |
 |---|---|---|
 | 2026-09-03 | v0.1 初稿 | 开工（第 1 周），待第 3 周回放对拍校准 |
+| 2026-09-03 | 新增 §1.1：游戏本体 RNG 结构核实（12 条命名流、5 条战斗流每层重置、同 seed 初始化） | 用户提问触发查证，来源 ForgottenArbiter 博客反编译代码 |
