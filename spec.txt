@@ -1,0 +1,41 @@
+# 《杀戮尖塔 2》A20 自动化决策模型技术方案
+
+## 1. 训练范式 (Learning Paradigm)
+- **两阶段路线**：高水平玩家对局日志的行为克隆（BC）预训练 + 接入游戏环境的强化学习（RL）微调。
+
+## 2. 动作输出与合法性约束 (Action Head & Action Masking)
+- **动作结构**：状态编码器 + 动作决策头（Action Head / Pointer Network）。
+- **动态动作掩码 (Dynamic Action Masking)**：环境实时提取当前所有绝对合法的动作列表，将模型输出中非法动作的 Logits 强制置为 $-\infty$，确保动作 100% 合法。
+
+## 3. 时序与注意力结构 (Temporal Structure & Attention)
+- **纯马尔可夫单步 Set-Transformer**：模型仅接收当前单步时刻的所有实体 Token 集合，无跨时间步的时序因果掩码和 1D 位置编码。
+- **完备特征输入**：将本回合出牌数、遗物计数器、抽牌堆/弃牌堆信息等完全显式编码进当前状态。
+
+## 4. 多场景决策架构 (Multi-Scene Architecture)
+- **共享主干多头架构 (Multi-Head Shared Backbone)**：
+  - 底层：通用的实体 Transformer 编码器（共享卡牌、遗物、属性的底层表征）。
+  - 顶层：按场景路由到专用决策头（战斗决策头、选牌决策头、地图路径决策头、商店/营火决策头）。
+
+## 5. 实体 Token 编码 (Entity Tokenization)
+- **类型化专用 MLP 投影 + 类型/位置嵌入**：
+  - 卡牌、敌人、玩家、遗物、地图节点等异构实体分别经独立的小 MLP 投影为统一维度 $d_{model}$ 的 Token。
+  - 注入 `Entity_Type_Embedding`（区分实体类别）与 `Location_Embedding`（区分手牌、抽牌堆、弃牌堆、消耗堆、总卡组等位置）。
+  - 单步输入约 40~60 个 Entity Tokens 进入 Transformer 计算 Self-Attention。
+
+## 6. 强化学习奖励函数 (Reward Function)
+- **战斗内**：
+  - 获胜奖励：与战后剩余血量百分比挂钩。
+  - 防拖延惩罚：每过去一个回合施加固定的微小负奖励（如 $-0.02$/回合），防止死锁与刷分。
+- **宏观层**：
+  - 阶梯里程碑：击败精英怪、通关 Act 1/2/3 给予递增正向奖励；阵亡扣除负分。
+- **非战斗构筑（选牌/路线/商店）**：
+  - 不设局部人工规则奖励，完全依赖下游战斗与通关结果通过时序差分（TD-Error）反向传播更新。
+
+## 7. 环境交互与数据吞吐 (Environment Interface)
+- **原生 STS2 Mod 接入**：基于 STS2 的 Godot/C# 架构编写 Mod，关闭图形渲染（Headless 模式）并解锁游戏帧率限制加速运行。
+- **高并发采样**：通过多进程与共享内存/本地 IPC 协同 Python RL 端进行并行数据采样。
+
+## 8. BC 到 RL 的过渡稳定性 (BC-to-RL Stability)
+- **PPO + KL 散度约束**：
+  - 保留冻结参数的预训练模型 $\pi_{BC}$。
+  - 训练损失增加 KL 散度惩罚项：$\mathcal{L} = \mathcal{L}_{PPO} - \beta \cdot D_{KL}(\pi_\theta || \pi_{BC})$，防止强化学习微调初期策略崩塌。

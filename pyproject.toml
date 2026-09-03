@@ -1,0 +1,19 @@
+[project]
+name = "sts-rl"
+version = "0.1.0"
+description = "Headless STS1 Ironclad combat simulator; A: Set Transformer + PPO vs B: Decision Transformer"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pyyaml>=6.0",
+    # torch 刻意不在开工时装：第 7 周 PPO 阶段前再加入
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

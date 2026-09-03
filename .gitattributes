@@ -1,0 +1,3 @@
+* text=auto
+# eval_seeds.json 的 sha256 是跨 run 的可比性锚点（spec-v4 §6.1），必须字节级稳定，禁止任何 EOL 转换
+eval_seeds.json -text
