@@ -6,17 +6,19 @@ Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（
 
 > 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 STS1。
 
-## 当前状态（第 1 周完成，排期见 spec-v4 §9）
+## 当前状态（第 2 周完成主线，排期见 spec-v4 §9）
 
 - [x] spec-v4 定稿入仓库（覆盖旧的未清理版）
-- [x] [docs/decisions.md](docs/decisions.md) —— 13 项裁定 + 推翻条件（D13 反编译查阅政策）+ 未决事项 U1-U6
+- [x] [docs/decisions.md](docs/decisions.md) —— 15 项裁定 + 推翻条件 + 未决事项（U4/U6/U7 已销账）
 - [x] [docs/mechanics.md](docs/mechanics.md) —— 结算顺序书面规格 v0.1 + 24 条单测清单 + 游戏本体 RNG 结构核实（§1.1）
 - [x] `eval_seeds.json` 生成并提交，sha256 见下方
 - [x] `sts_lightspeed` 克隆至 `third_party/`（commit `7476a81`，gitignore + 锁版本）；反编译落位规范见 [reference/README.md](reference/README.md)
 - [x] 游戏本体已定位：`E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`
 - [ ] runlogger mod 未安装 → 创意工坊订阅 + 打几局 Ironclad（第 3 周前，非阻塞）
-- [x] **第 2 周进行中**·`sts/env/rng.py`：java.util.Random 逐位复刻 + 11 项测试全过（D14）
-- [ ] 第 2 周剩余：state / cards / effects / enemies / combat / actions + 随机 agent（出口 = 随机策略能打完一场、同 seed 轨迹一致）+ 半天试 build `sts_lightspeed`
+- [x] `sts/env/rng.py`：java.util.Random 逐位复刻 + 11 项测试（D14）
+- [x] **最小切片模拟器**：state / cards / effects / enemies / combat / actions 全部落库；`tests/test_ordering.py` T01-T24 跑绿（T23 规格性 skip）
+- [x] **周 2 出口达成**：随机策略三种遭遇 60 局全部自然终局、同 seed 轨迹逐步一致（`tests/test_random_agent.py`）；随机胜率参考：Jaw Worm 18/20、Cultist 14/20、Louses 20/20（非门槛，供第 5-6 周规则基线对照）
+- [x] **U4 build 成功**：MSYS2 mingw64 gcc 16.2 + CMake 4.4 + Ninja 编过 `test` 目标，3 局 playout 冒烟通过（2.5ms）；Python 绑定因 vendored pybind11 2.7.1 不支持 CPython 3.13 暂不可用（D15，第 3 周定路线）
 
 ## 评估种子
 
@@ -27,9 +29,18 @@ Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（
 ## 快速开始
 
 ```bash
-# 第 2 周 sts/ 包落库后启用
-# pip install -e ".[dev]"
-# pytest
+pip install -e ".[dev]"
+pytest   # 37 passed, 1 skipped（T23 规格性 skip）
+```
+
+`sts_lightspeed` 构建复现（Windows + MSYS2，见 docs/decisions.md D15）：
+
+```bash
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja
+cd third_party/sts_lightspeed && git submodule update --init --recursive
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_COMPILER_LAUNCHER="cmd;/c;<repo>/third_party/sts_lightspeed/build/gxx-wrap.bat"
+cmake --build build --target test   # pybind11 模块暂不构建（D15）
+./build/test.exe simple_agent_mt 1 1 3   # 冒烟：3 局 playout
 ```
 
 ## 约定

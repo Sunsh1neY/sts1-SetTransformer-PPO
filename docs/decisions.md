@@ -81,6 +81,20 @@
 - 理由：① 第 3 周日志回放要求「同 run seed + 同动作 → 同状态」，随机序列必须与游戏逐位一致；② U6 lightspeed 差分同样要求 seed 对齐（其 100% RNG accurate 即 Java LCG）；③ 复刻成本一次约 40 行，有公开测试向量可锚定。
 - 推翻条件：仅当反编译仲裁（D13）发现游戏实际使用的随机原语超出 javadoc 语义（如自研 PRNG）时重审。numpy 退出环境内使用；训练/统计侧随机性第 7 周起归 torch 生成器。
 
+### D15 lightspeed 纳入：build 成功（C++ 侧），Python 绑定路线第 3 周定（2026-09-04，U4 试 build 收口）
+
+- 结果（半天时限内约 40 分钟）：MSYS2 mingw64 **gcc 16.2.0** + CMake 4.4.2 + Ninja 编过 `test` 目标；冒烟 `test.exe simple_agent_mt 1 1 3` 跑通（3 局完整 playout 2.5ms，w/l 正常输出）。
+- 构建摩擦与解法（均为**构建侧**，不触碰锁定源码 commit `7476a81`）：
+  1. vendored 子模块 `json` / `pybind11` 未随克隆拉取 → `git submodule update --init --recursive`（checkout 到父提交锁定的 SHA，锁版纪律不破）；
+  2. CMake 4.x 拒绝老 `cmake_minimum_required` → 官方开关 `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`；
+  3. gcc 16 不再传递包含 `<algorithm>`（`std::sort/find_if` 等大量报错）→ `CMAKE_CXX_COMPILER_LAUNCHER` 强制 `-include algorithm/numeric/cstdint`（`build/gxx-wrap.bat`，不入库，命令在 README），零源码改动。
+- **Python 绑定暂不可用**：vendored pybind11 v2.7.1 对 CPython 3.13 编译失败（`PyFrameObject` 不透明化，`type_caster_base.h:448`）。第 3 周差分测试前二选一：
+  - (a) 升级 vendored pybind11 子模块到 ≥2.13（仅构建基础设施变更，模拟逻辑 `src/` 不动，升级前在此登记新 SHA）；
+  - (b) 走 `test.exe replay <seed> <ascension> <actionFile>` 二进制通道对拍（无需绑定）。
+  - 默认倾向 (a)：逐逐步对拍需要进程内高频往返，二进制通道的 action file 格式未经核实、表达力存疑。
+- 理由：U4 门槛是"试 build，成功即纳入"——C++ 模拟器本体已可用，纳入裁定成立；绑定路线是工程通道选择，不构成翻案点。
+- 推翻条件：仅当 gcc 16 + 包装器构建产物的**模拟行为**与上游工具链出现差异（如浮点语义影响 RNG）时重审；纯构建摩擦不算。
+
 ## 未决事项（v4 §12，不阻塞开工）
 
 | # | 事项 | 何时定 | 默认 |
@@ -88,9 +102,9 @@
 | U1 | 动作头：扁平索引 vs pointer head | 第 11 周 | 先扁平 |
 | U2 | W&B vs TensorBoard | 第 7 周首次训练前 | 任选，接口封一层 |
 | U3 | 中等档卡表来源核实 | 第 5 周 | HF `t22000t/slay-the-spire-1-cards` 抽查 5-10 张后决定 |
-| U4 | `sts_lightspeed` 是否纳入 | 第 2 周 | **已克隆**至 `third_party/sts_lightspeed`（commit `7476a81`，2026-09-03）；剩余：半天试 build，卡住即弃 |
+| U4 | ~~`sts_lightspeed` 是否纳入~~ | **已裁定 → D15（2026-09-04）**：build 成功，纳入 | — |
 | U5 | λ 终值 | 第 6 周 | 0.5 起，校准后锁死 |
-| U6 | oracle 主通道：runlogger 日志 vs lightspeed 差分 vs 双轨 | 第 2 周（U4 试 build 后） | 双轨：lightspeed 日常高吞吐差分，runlogger 留作真值校准抽查 |
+| U6 | ~~oracle 主通道~~ | **已裁定（2026-09-04，U4 收口后确认默认）**：双轨——lightspeed 日常高吞吐差分，runlogger 留真值校准抽查 | — |
 | U7 | ~~反编译源码查阅政策~~ | **已裁定 → D13（2026-09-03）** | — |
 
 ## 附 B 未核实事实销账表（v4 附 B → 实测后填）
@@ -98,7 +112,7 @@
 | # | 事实 | 状态 | 核实记录 |
 |---|---|---|---|
 | 1 | runlogger 的局数、卡牌覆盖、schema | 部分（2026-09-03） | 游戏本体已定位 `E:\SteamLibrary\steamapps\common\SlayTheSpire\`（含 `desktop-1.0.jar`）；**runlogger mod 未安装**（无 `runlogs/`），需创意工坊订阅 + 打几局 Ironclad（第 3 周前）；游戏自带 `runs/` 有历史对局记录（含 IRONCLAD 目录，后续抽查是否可用于对拍） |
-| 2 | sts_lightspeed 的 API / 构建 / 覆盖 | 待实测（第 2 周） | 仓库已定位：`gamerpuppy/sts_lightspeed`（C++17 + pybind11，自称 100% RNG accurate，覆盖 Ironclad 全卡 + 全部敌人；作者用 mingw64/CLion2021 构建，Windows 编译有已知摩擦，Reddit 有失败案例）→ 第 2 周半天试 build |
+| 2 | sts_lightspeed 的 API / 构建 / 覆盖 | **已销账（2026-09-04，D15）** | gcc 16.2 + CMake 4.4 + Ninja 编过（3 项构建摩擦及解法见 D15）；`test.exe` 提供 `replay <seed> <asc> <actionFile>` / `simple_agent_mt` / `mcts_save` 等命令；冒烟 3 局 playout 2.5ms（1 线程）；Python 绑定 pybind11 2.7.1 × CPython 3.13 编译失败，路线第 3 周定 |
 | 3 | HF 卡表数值准确性 | 待实测（第 5 周） | — |
 | 4 | 纯 Python 模拟器吞吐 | 待实测（第 4 周 Gate 1） | — |
 | 5 | determinismfix 是否必需 | 待实测 | runlogger README 明言游戏有可复现性 bug、需装 Determinism Fix，基本确认必需 |
