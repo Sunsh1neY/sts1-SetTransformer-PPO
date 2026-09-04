@@ -88,10 +88,7 @@
   1. vendored 子模块 `json` / `pybind11` 未随克隆拉取 → `git submodule update --init --recursive`（checkout 到父提交锁定的 SHA，锁版纪律不破）；
   2. CMake 4.x 拒绝老 `cmake_minimum_required` → 官方开关 `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`；
   3. gcc 16 不再传递包含 `<algorithm>`（`std::sort/find_if` 等大量报错）→ `CMAKE_CXX_COMPILER_LAUNCHER` 强制 `-include algorithm/numeric/cstdint`（`build/gxx-wrap.bat`，不入库，命令在 README），零源码改动。
-- **Python 绑定暂不可用**：vendored pybind11 v2.7.1 对 CPython 3.13 编译失败（`PyFrameObject` 不透明化，`type_caster_base.h:448`）。第 3 周差分测试前二选一：
-  - (a) 升级 vendored pybind11 子模块到 ≥2.13（仅构建基础设施变更，模拟逻辑 `src/` 不动，升级前在此登记新 SHA）；
-  - (b) 走 `test.exe replay <seed> <ascension> <actionFile>` 二进制通道对拍（无需绑定）。
-  - 默认倾向 (a)：逐逐步对拍需要进程内高频往返，二进制通道的 action file 格式未经核实、表达力存疑。
+- **Python 绑定已修复（2026-09-04 同日，路线 (a) 执行完毕）**：vendored pybind11 v2.7.1 对 CPython 3.13 编译失败（`PyFrameObject` 不透明化），子模块升级至 **v2.13.6（SHA `a2e59f0e`）**——选 2.13 而非 3.x：官方支持 CPython 3.13 的最低稳定系列且保持 v2 API，对 2021 年的绑定源码零改动。`slaythespire.cp313-win_amd64.pyd` 构建成功，`import slaythespire` 验证通过（20 个绑定：Card / GameContext / GameOutcome / MonsterEncounter / NNInterface 等；`get_seed_long` 种子换算冒烟通过）。运行时注意：mingw 三件套运行时 DLL（libstdc++-6 / libgcc_s_seh-1 / libwinpthread-1）须与 .pyd 同目录或在 PATH。子模块指针变更在 gitignore 的 `third_party/` 内不入库；回滚：`git submodule update --checkout pybind11` 回到锁定 SHA `787d2c8`（v2.7.1）。
 - 理由：U4 门槛是"试 build，成功即纳入"——C++ 模拟器本体已可用，纳入裁定成立；绑定路线是工程通道选择，不构成翻案点。
 - 推翻条件：仅当 gcc 16 + 包装器构建产物的**模拟行为**与上游工具链出现差异（如浮点语义影响 RNG）时重审；纯构建摩擦不算。
 
