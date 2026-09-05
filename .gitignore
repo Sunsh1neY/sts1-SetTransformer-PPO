@@ -9,5 +9,12 @@ wand/
 *.ckpt
 .DS_Store
 .obsidian/
+.zcode/
+graphify-out/
 third_party/
-reference/sts1-decompiled/
+# reference/ 只保留已跟踪的说明文件；反编译及仲裁产物一律不入库。
+reference/*
+!reference/README.md
+/build/
+/build_probe_err.txt
+*.egg-info/

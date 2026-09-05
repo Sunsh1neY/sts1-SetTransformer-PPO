@@ -1,0 +1,407 @@
+diff --git a/bindings/bindings-util.cpp b/bindings/bindings-util.cpp
+index 471ce96..fc049aa 100644
+--- a/bindings/bindings-util.cpp
++++ b/bindings/bindings-util.cpp
+@@ -3,9 +3,13 @@
+ //
+ #include <sstream>
+ #include <algorithm>
++#include <stdexcept>
++#include <cstdint>
++#include <cmath>
+ 
+ #include "sim/ConsoleSimulator.h"
+ #include "sim/search/ScumSearchAgent2.h"
++#include "sim/search/Action.h"
+ #include "sim/SimHelpers.h"
+ #include "sim/PrintHelpers.h"
+ #include "game/Game.h"
+@@ -13,6 +17,60 @@
+ 
+ #include "slaythespire.h"
+ 
++namespace {
++    constexpr int kHandFeatureWidth = sts::HAND_FEATURES.size();
++    constexpr int kEnemyFeatureWidth = sts::ENEMY_FEATURES.size();
++    constexpr int kGlobalFeatureWidth = sts::GLOBAL_FEATURES.size();
++
++    sts::BattleIntent visibleIntent(const sts::Monster &monster) {
++        if (!monster.isTargetable()) {
++            return sts::BattleIntent::NONE;
++        }
++        // 类别与现有真实日志对照表一致；虱子和仪式可见性经本地规格仲裁核验。
++        switch (monster.moveHistory[0]) {
++            case sts::MMID::JAW_WORM_CHOMP:
++            case sts::MMID::CULTIST_DARK_STRIKE:
++            case sts::MMID::RED_LOUSE_BITE:
++            case sts::MMID::GREEN_LOUSE_BITE:
++                return sts::BattleIntent::ATTACK;
++            case sts::MMID::JAW_WORM_THRASH:
++                return sts::BattleIntent::ATTACK_DEFEND;
++            case sts::MMID::JAW_WORM_BELLOW:
++                return sts::BattleIntent::DEFEND_BUFF;
++            case sts::MMID::CULTIST_INCANTATION:
++            case sts::MMID::RED_LOUSE_GROW:
++                return sts::BattleIntent::BUFF;
++            case sts::MMID::GREEN_LOUSE_SPIT_WEB:
++                return sts::BattleIntent::DEBUFF;
++            default:
++                throw std::runtime_error("unsupported intent in the minimal battle slice");
++        }
++    }
++
++    int enemyFeature(const sts::Monster &monster, const sts::BattleContext &battle, int offset) {
++        switch (offset) {
++            case 0: return static_cast<int>(monster.id);
++            case 1: return monster.curHp;
++            case 2: return monster.maxHp;
++            case 3: return monster.block;
++            case 4: return monster.strength;
++            case 5: return monster.vulnerable;
++            case 6: return monster.weak;
++            case 7: return static_cast<int>(visibleIntent(monster));
++            case 8: return monster.isTargetable() && monster.isAttacking()
++                ? monster.calculateDamageToPlayer(battle, monster.getMoveBaseDamage(battle).damage) : 0;
++            case 9: return monster.isTargetable() && monster.isAttacking()
++                ? monster.getMoveBaseDamage(battle).attackCount : 0;
++            // 两种状态共用底层存储槽，必须先检查状态是否仍存在。
++            case 10: return monster.hasStatus<sts::MS::CURL_UP>()
++                ? monster.getStatus<sts::MS::CURL_UP>() : 0;
++            case 11: return monster.hasStatus<sts::MS::RITUAL>()
++                ? monster.getStatus<sts::MS::RITUAL>() : 0;
++            default: return 0;
++        }
++    }
++}
++
+ namespace sts {
+ 
+     NNInterface::NNInterface() :
+@@ -138,6 +196,167 @@ namespace sts {
+         return theInstance;
+     }
+ 
++    IroncladBattleEnv::IroncladBattleEnv(int maxTurns, float gamma)
++        : maxTurns_(maxTurns), gamma_(gamma) {
++        if (maxTurns_ <= 0) {
++            throw std::invalid_argument("max_turns must be positive");
++        }
++        if (!std::isfinite(gamma_) || gamma_ != DEFAULT_GAMMA) {
++            throw std::invalid_argument("gamma must be 1 for the undiscounted battle score");
++        }
++    }
++
++    BattleObservation IroncladBattleEnv::reset(std::uint64_t seed, MonsterEncounter encounter, int ascension) {
++        if (ascension != 0) {
++            throw std::invalid_argument("the minimal battle slice supports ascension 0 only");
++        }
++        if (encounter != ME::JAW_WORM && encounter != ME::CULTIST && encounter != ME::TWO_LOUSE) {
++            throw std::invalid_argument("encounter is outside the minimal battle slice");
++        }
++        gc_ = std::make_unique<GameContext>(CharacterClass::IRONCLAD, seed, ascension);
++        gc_->floorNum = 1;
++        gc_->curRoom = Room::MONSTER;
++        gc_->info.encounter = encounter;
++        bc_ = BattleContext();
++        bc_.init(*gc_, encounter);
++        timedOut_ = false;
++        hasReset_ = true;
++        return makeObservation();
++    }
++
++    std::vector<bool> IroncladBattleEnv::makeActionMask() const {
++        std::vector<bool> mask(ACTION_COUNT, false);
++        if (!hasReset_ || terminated() || truncated()) {
++            return mask;
++        }
++        for (int action = 0; action < ACTION_COUNT - 1; ++action) {
++            const int handIdx = action / 3;
++            const int targetIdx = action % 3;
++            if (handIdx >= bc_.cards.cardsInHand ||
++                (!bc_.cards.hand[handIdx].requiresTarget() && targetIdx != 0)) {
++                continue;
++            }
++            const search::Action candidate(search::ActionType::CARD, handIdx, targetIdx);
++            mask[action] = candidate.isValidAction(bc_);
++        }
++        mask[ACTION_COUNT - 1] = search::Action(search::ActionType::END_TURN).isValidAction(bc_);
++        return mask;
++    }
++
++    std::vector<bool> IroncladBattleEnv::actionMask() const {
++        return makeActionMask();
++    }
++
++    BattleObservation IroncladBattleEnv::makeObservation() const {
++        BattleObservation result;
++        result.hand.assign(MAX_HAND * kHandFeatureWidth, 0);
++        result.enemies.assign(MAX_ENEMIES * kEnemyFeatureWidth, 0);
++        result.global.assign(kGlobalFeatureWidth, 0);
++        result.hand_mask.assign(MAX_HAND, false);
++        result.enemy_mask.assign(MAX_ENEMIES, false);
++        result.action_mask = makeActionMask();
++
++        if (!hasReset_) {
++            return result;
++        }
++        for (int i = 0; i < bc_.cards.cardsInHand && i < MAX_HAND; ++i) {
++            const auto &card = bc_.cards.hand[i];
++            result.hand[i * kHandFeatureWidth] = static_cast<int>(card.id);
++            result.hand[i * kHandFeatureWidth + 1] = card.isUpgraded() ? 1 : 0;
++            result.hand[i * kHandFeatureWidth + 2] = card.costForTurn;
++            result.hand_mask[i] = true;
++        }
++        int totalEnemyHp = 0;
++        for (int i = 0; i < bc_.monsters.monsterCount && i < MAX_ENEMIES; ++i) {
++            const auto &monster = bc_.monsters.arr[i];
++            result.enemy_mask[i] = monster.isTargetable();
++            for (int j = 0; j < kEnemyFeatureWidth; ++j) {
++                result.enemies[i * kEnemyFeatureWidth + j] = enemyFeature(monster, bc_, j);
++            }
++            totalEnemyHp += std::max(0, monster.curHp);
++        }
++        result.global[0] = bc_.player.curHp;
++        result.global[1] = bc_.player.maxHp;
++        result.global[2] = bc_.player.block;
++        result.global[3] = bc_.player.energy;
++        result.global[4] = bc_.turn;
++        result.global[5] = static_cast<int>(bc_.cards.drawPile.size());
++        result.global[6] = static_cast<int>(bc_.cards.discardPile.size());
++        result.global[7] = totalEnemyHp;
++        result.global[8] = bc_.player.strength;
++        result.global[9] = bc_.player.getStatus<PS::VULNERABLE>();
++        result.global[10] = bc_.player.getStatus<PS::WEAK>();
++        return result;
++    }
++
++    BattleObservation IroncladBattleEnv::observation() const {
++        return makeObservation();
++    }
++
++    float IroncladBattleEnv::rewardForStep(bool won) const {
++        // D18：先使用终局成绩；过程、失败和硬超时均为 0，暂不启用势能辅助反馈。
++        return won ? 1.0f + WIN_HP_LAMBDA * static_cast<float>(bc_.player.curHp) /
++                               static_cast<float>(std::max(1, bc_.player.maxHp)) : 0.0f;
++    }
++
++    bool IroncladBattleEnv::terminated() const {
++        return hasReset_ && bc_.outcome != Outcome::UNDECIDED;
++    }
++
++    bool IroncladBattleEnv::truncated() const {
++        // 硬超时属于任务判负；当前接口没有允许继续自举的外部截断。
++        return false;
++    }
++
++    std::unordered_map<std::string, std::int64_t> IroncladBattleEnv::makeInfo() const {
++        std::unordered_map<std::string, std::int64_t> info;
++        if (!hasReset_) {
++            return info;
++        }
++        info["encounter"] = static_cast<std::int64_t>(bc_.encounter);
++        info["turn"] = bc_.turn;
++        info["player_hp"] = bc_.player.curHp;
++        info["player_max_hp"] = bc_.player.maxHp;
++        info["outcome"] = static_cast<std::int64_t>(bc_.outcome);
++        info["timeout"] = timedOut_ ? 1 : 0;
++        info["ai_rng"] = bc_.aiRng.counter;
++        info["card_random_rng"] = bc_.cardRandomRng.counter;
++        info["misc_rng"] = bc_.miscRng.counter;
++        info["monster_hp_rng"] = bc_.monsterHpRng.counter;
++        info["shuffle_rng"] = bc_.shuffleRng.counter;
++        return info;
++    }
++
++    BattleStepResult IroncladBattleEnv::step(int action) {
++        if (!hasReset_) {
++            throw std::runtime_error("reset must be called before step");
++        }
++        if (action < 0 || action >= ACTION_COUNT) {
++            throw std::out_of_range("action must be in [0, 30]");
++        }
++        if (terminated() || truncated()) {
++            throw std::runtime_error("cannot step a finished battle");
++        }
++        search::Action selected = action == ACTION_COUNT - 1
++            ? search::Action(search::ActionType::END_TURN)
++            : search::Action(search::ActionType::CARD, action / 3, action % 3);
++        if (!makeActionMask()[action]) {
++            throw std::invalid_argument("action is not legal in the current battle state");
++        }
++        selected.execute(bc_);
++        if (bc_.outcome == Outcome::UNDECIDED && bc_.turn >= maxTurns_) {
++            timedOut_ = true;
++            bc_.outcome = Outcome::PLAYER_LOSS;
++        }
++        BattleStepResult result;
++        result.terminated = terminated();
++        result.truncated = truncated();
++        result.reward = rewardForStep(result.terminated && bc_.outcome == Outcome::PLAYER_VICTORY);
++        result.observation = makeObservation();
++        result.info = makeInfo();
++        return result;
++    }
++
+ }
+ 
+ namespace sts::py {
+@@ -224,7 +443,8 @@ namespace sts::py {
+             }
+         }
+ 
+-        // for each node in a row, push valid edges to next row, 3 bits per node, 21 bits per row
++        // for each node in a row, push valid edges to next row, 3 bits per node
++        // 21 bits per row
+         // skip 14th row because it is invariant
+         // 21 * 13 == 273 bits
+         for (int y = 0; y < 14; ++y) {
+@@ -292,4 +512,4 @@ namespace sts::py {
+         return false;
+     }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/bindings/slaythespire.cpp b/bindings/slaythespire.cpp
+index a9afe35..5761f16 100644
+--- a/bindings/slaythespire.cpp
++++ b/bindings/slaythespire.cpp
+@@ -33,6 +33,40 @@ PYBIND11_MODULE(slaythespire, m) {
+         .def("getObservationMaximums", &NNInterface::getObservationMaximums, "get the defined maximum values of the observation space")
+         .def_property_readonly("observation_space_size", []() { return NNInterface::observation_space_size; });
+ 
++    pybind11::class_<BattleObservation> battleObservation(m, "BattleObservation");
++    m.attr("HAND_FEATURES") = pybind11::cast(HAND_FEATURES);
++    m.attr("ENEMY_FEATURES") = pybind11::cast(ENEMY_FEATURES);
++    m.attr("GLOBAL_FEATURES") = pybind11::cast(GLOBAL_FEATURES);
++    pybind11::enum_<BattleIntent>(m, "BattleIntent")
++        .value("NONE", BattleIntent::NONE)
++        .value("ATTACK", BattleIntent::ATTACK)
++        .value("ATTACK_DEFEND", BattleIntent::ATTACK_DEFEND)
++        .value("DEFEND_BUFF", BattleIntent::DEFEND_BUFF)
++        .value("BUFF", BattleIntent::BUFF)
++        .value("DEBUFF", BattleIntent::DEBUFF);
++    battleObservation.def_readonly("hand", &BattleObservation::hand)
++        .def_readonly("enemies", &BattleObservation::enemies)
++        .def_readonly("global", &BattleObservation::global)
++        .def_readonly("hand_mask", &BattleObservation::hand_mask)
++        .def_readonly("enemy_mask", &BattleObservation::enemy_mask)
++        .def_readonly("action_mask", &BattleObservation::action_mask);
++
++    pybind11::class_<BattleStepResult> battleStepResult(m, "BattleStepResult");
++    battleStepResult.def_readonly("observation", &BattleStepResult::observation)
++        .def_readonly("reward", &BattleStepResult::reward)
++        .def_readonly("terminated", &BattleStepResult::terminated)
++        .def_readonly("truncated", &BattleStepResult::truncated)
++        .def_readonly("info", &BattleStepResult::info);
++
++    pybind11::class_<IroncladBattleEnv> battleEnv(m, "IroncladBattleEnv");
++    battleEnv.def(pybind11::init<int, float>(), pybind11::arg("max_turns") = 50, pybind11::arg("gamma") = IroncladBattleEnv::DEFAULT_GAMMA)
++        .def("reset", &IroncladBattleEnv::reset, pybind11::arg("seed"), pybind11::arg("encounter"), pybind11::arg("ascension") = 0)
++        .def("step", &IroncladBattleEnv::step, pybind11::arg("action"))
++        .def("action_mask", &IroncladBattleEnv::actionMask)
++        .def("observation", &IroncladBattleEnv::observation)
++        .def_property_readonly("max_turns", &IroncladBattleEnv::maxTurns)
++        .def_property_readonly("gamma", &IroncladBattleEnv::gamma);
++
+     pybind11::class_<search::ScumSearchAgent2> agent(m, "Agent");
+     agent.def(pybind11::init<>());
+     agent.def_readwrite("simulation_count_base", &search::ScumSearchAgent2::simulationCountBase, "number of simulations the agent uses for monte carlo tree search each turn")
+diff --git a/bindings/slaythespire.h b/bindings/slaythespire.h
+index 6ec4658..e7b320d 100644
+--- a/bindings/slaythespire.h
++++ b/bindings/slaythespire.h
+@@ -8,11 +8,35 @@
+ #include <vector>
+ #include <unordered_map>
+ #include <array>
++#include <memory>
++#include <cstdint>
++#include <string>
+ 
+ #include "constants/Rooms.h"
++#include "game/GameContext.h"
++#include "combat/BattleContext.h"
++#include "sim/search/Action.h"
+ 
+ namespace sts {
+ 
++    // 当前最小切片的可见观测字段；顺序同时暴露给 Python，避免消费者硬编码宽度。
++    inline constexpr std::array<const char *, 3> HAND_FEATURES = {
++        "card_id", "upgraded", "cost"
++    };
++    inline constexpr std::array<const char *, 12> ENEMY_FEATURES = {
++        "monster_id", "hp", "max_hp", "block", "strength", "vulnerable", "weak",
++        "intent", "intent_damage", "intent_hits", "curl_up", "ritual"
++    };
++    inline constexpr std::array<const char *, 11> GLOBAL_FEATURES = {
++        "hp", "max_hp", "block", "energy", "turn", "draw_count", "discard_count",
++        "total_enemy_hp", "strength", "vulnerable", "weak"
++    };
++
++    // 只表达当前显示的意图类别，不包含内部招式编号或下次随机结果。
++    enum class BattleIntent {
++        NONE = 0, ATTACK = 1, ATTACK_DEFEND = 2, DEFEND_BUFF = 3, BUFF = 4, DEBUFF = 5
++    };
++
+     struct NNInterface {
+         static constexpr int observation_space_size = 412;
+         static constexpr int playerHpMax = 200;
+@@ -42,6 +66,57 @@ namespace sts {
+     }
+ 
+ 
++    struct BattleObservation {
++        std::vector<int> hand;
++        std::vector<int> enemies;
++        std::vector<int> global;
++        std::vector<bool> hand_mask;
++        std::vector<bool> enemy_mask;
++        std::vector<bool> action_mask;
++    };
++
++    struct BattleStepResult {
++        BattleObservation observation;
++        float reward = 0.0f;
++        bool terminated = false;
++        bool truncated = false;
++        std::unordered_map<std::string, std::int64_t> info;
++    };
++
++    class IroncladBattleEnv {
++    public:
++        static constexpr int ACTION_COUNT = 31;
++        static constexpr int MAX_HAND = 10;
++        static constexpr int MAX_ENEMIES = 5;
++        static constexpr float DEFAULT_GAMMA = 1.0f;
++        static constexpr float WIN_HP_LAMBDA = 0.5f;
++
++        explicit IroncladBattleEnv(int maxTurns=50, float gamma=DEFAULT_GAMMA);
++
++        BattleObservation reset(std::uint64_t seed, MonsterEncounter encounter, int ascension=0);
++        BattleStepResult step(int action);
++        std::vector<bool> actionMask() const;
++        BattleObservation observation() const;
++
++        int maxTurns() const { return maxTurns_; }
++        float gamma() const { return gamma_; }
++
++    private:
++        std::unique_ptr<GameContext> gc_;
++        BattleContext bc_;
++        int maxTurns_;
++        float gamma_; // 基础奖励阶段锁定为 1，A/B 都使用不折扣的累计成绩。
++        bool hasReset_ = false;
++        bool timedOut_ = false;
++
++        BattleObservation makeObservation() const;
++        std::vector<bool> makeActionMask() const;
++        float rewardForStep(bool won) const;
++        bool terminated() const;
++        bool truncated() const;
++        std::unordered_map<std::string, std::int64_t> makeInfo() const;
++    };
++
+     class GameContext;
+     class Map;
+ 

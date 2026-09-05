@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/gamerpuppy/sts_lightspeed",
+  "commit": "7476a81954020087da31d41d16fddf475746ec2d",
+  "pybind11_commit": "a2e59f0e7065404b44dfe92a28aca47ba1378dc4",
+  "pybind11_tag": "v2.13.6",
+  "json_commit": "0b345b20c888f7dc8888485768e4bf9a6be29de0",
+  "patch": "patches/lightspeed-battle-env.patch"
+}

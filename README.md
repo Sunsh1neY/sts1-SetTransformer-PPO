@@ -1,24 +1,24 @@
 # STS RL Agent
 
-Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（Set Transformer + PPO vs Decision Transformer）。真实目标：通过工程实践理解 Transformer 原理，游戏是载体。
+Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set Transformer + PPO vs Decision Transformer）。正式训练后端为 lightspeed C++，Python 模拟器保留教学与验证用途。真实目标：通过工程实践理解 Transformer 原理，游戏是载体。
 
 **唯一执行依据：[`spec-v4.md`](spec-v4.md)**（2026-09-01 定稿）。`spec-v3.md` 及更早版本为冻结愿景，仅供对照。
 
 > 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 STS1。
 
-## 当前状态（第 2 周完成主线，排期见 spec-v4 §9）
+## 当前状态（最小切片基础环境）
 
-- [x] spec-v4 定稿入仓库（覆盖旧的未清理版）
-- [x] [docs/decisions.md](docs/decisions.md) —— 15 项裁定 + 推翻条件 + 未决事项（U4/U6/U7 已销账）
-- [x] [docs/mechanics.md](docs/mechanics.md) —— 结算顺序书面规格 v0.1 + 24 条单测清单 + 游戏本体 RNG 结构核实（§1.1）
-- [x] `eval_seeds.json` 生成并提交，sha256 见下方
-- [x] `sts_lightspeed` 克隆至 `third_party/`（commit `7476a81`，gitignore + 锁版本）；反编译落位规范见 [reference/README.md](reference/README.md)
-- [x] 游戏本体已定位：`E:\SteamLibrary\steamapps\common\SlayTheSpire\desktop-1.0.jar`
-- [ ] runlogger mod 未安装 → 创意工坊订阅 + 打几局 Ironclad（第 3 周前，非阻塞）
-- [x] `sts/env/rng.py`：java.util.Random 逐位复刻 + 11 项测试（D14）
-- [x] **最小切片模拟器**：state / cards / effects / enemies / combat / actions 全部落库；`tests/test_ordering.py` T01-T24 跑绿（T23 规格性 skip）
-- [x] **周 2 出口达成**：随机策略三种遭遇 60 局全部自然终局、同 seed 轨迹逐步一致（`tests/test_random_agent.py`）；随机胜率参考：Jaw Worm 18/20、Cultist 14/20、Louses 20/20（非门槛，供第 5-6 周规则基线对照）
-- [x] **U4 build 成功**：MSYS2 mingw64 gcc 16.2 + CMake 4.4 + Ninja 编过 `test` 目标，3 局 playout 冒烟通过（2.5ms）；Python 绑定已修复——pybind11 升级 v2.13.6（D15），`import slaythespire` 验证通过
+- 正式后端：`sts_lightspeed` C++，当前只开放 A0 的 Jaw Worm、Cultist、双虱遭遇。Python 模拟器保留教学及局部回归用途。
+- 运行接口：`IroncladBattleEnv.reset/step/action_mask/observation`。动作编号为 `slot * 3 + target`，30 为结束回合，无目标卡只使用目标 0。
+- 基础奖励：非终局 0；胜利 `1 + 0.5 * 剩余HP / 最大HP`；失败及硬超时 0。当前不实现势能整形，训练及 DT 累计回报使用 γ=1（D18/D20）。
+- 硬超时是任务内失败：返回 `terminated=true`、`truncated=false`、`info.timeout=1`，训练时不继续自举。
+- 已确认模型设计：选牌保留实体与动作的对应关系（D17）；状态只使用玩家可见信息（D19）。模型代码按原排期实现。
+- 现有真实游戏日志用于有限字段校准。当前不扩日志工具，缺少的字段明确记为未验证；后续更大范围测试发现差异后再处理（D20）。此状态不代表所有游戏机制已被证明正确。
+- `eval_seeds.json` 已固定；环境主 RNG 为 xorshift128+，洗牌临时使用 Java LCG，详见 [机制规格](docs/mechanics.md)。
+
+裁定与边界见 [决策日志](docs/decisions.md)；冻结的旧研究文档不作为实现依据。
+
+2026-09-05 本机验收：**82 项测试全部通过**；新版 C++ 环境 10000 场随机战斗无崩溃、无非法动作异常、无硬超时，60 场完整轨迹重放一致。单进程约 11.7 万步/秒；这些结果验证基础运行，不代表与真实游戏全部机制等价。
 
 ## 评估种子
 
@@ -30,21 +30,36 @@ Headless《杀戮尖塔 1》Ironclad 战斗模拟器 + A/B 两族模型对照（
 
 ```bash
 pip install -e ".[dev]"
-pytest   # 37 passed, 1 skipped（T23 规格性 skip）
+python -m pytest
 ```
 
-`sts_lightspeed` 构建复现（Windows + MSYS2，见 docs/decisions.md D15）：
+Python 测试可独立运行。正式后端的测试需要先构建 C++ 扩展；未构建时会显示跳过，不能把跳过当作后端通过验收。
+
+`sts_lightspeed` 构建复现（Windows + MSYS2 mingw64 + Python）：先在 MSYS2 安装工具链。
 
 ```bash
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja
-cd third_party/sts_lightspeed && git submodule update --init --recursive
-git -C pybind11 fetch --tags && git -C pybind11 checkout v2.13.6   # 绑定需 2.13+（D15）
-cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_COMPILER_LAUNCHER="cmd;/c;<repo>/scripts/lightspeed-gxx-wrap.bat"
-cmake --build build   # 含 test.exe 与 slaythespire 绑定模块
-cp /c/msys64/mingw64/bin/{libstdc++-6,libgcc_s_seh-1,libwinpthread-1}.dll build/
-./build/test.exe simple_agent_mt 1 1 3   # 冒烟：3 局 playout
-python -c "import sys; sys.path.insert(0, 'build'); import slaythespire; print('ok')"   # 绑定冒烟
 ```
+
+然后在项目根目录的 PowerShell 中运行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-lightspeed.ps1
+python -m pytest tests/test_cpp_env.py -q
+```
+
+脚本按 [版本锁文件](scripts/lightspeed-lock.json) 拉取上游及 pybind11，应用 [本项目适配器补丁](patches/lightspeed-battle-env.patch)，构建扩展并复制运行时 DLL。重复运行会识别已应用补丁；遇到版本不符或补丁冲突会停止，保留本地改动。可用 `-Python`、`-Toolchain`、`-Jobs` 指定解释器、MSYS2 mingw64 的 bin 目录和并行编译数。本机验证使用 Python 3.13；扩展须用运行测试的同一 Python 构建。
+
+观测按固定宽度存储，字段顺序由扩展的 `HAND_FEATURES`、`ENEMY_FEATURES`、`GLOBAL_FEATURES` 给出；手牌和敌人使用对应 mask 区分有效项。seed 和 RNG 计数只留在复现信息中。
+
+现有校准工具：
+
+```powershell
+python scripts/runlogger_replay.py
+python scripts/diff_harness.py 100000 12
+```
+
+回放工具读取本机游戏的现有日志；差分工具额外依赖开发用 `build/lightspeed_probe.exe`。这些工具会区分不一致、缺少证据和范围外跳过；不得以“没有可比样本”宣称机制验证通过。正式训练入口使用 C++ 适配器，不依赖此开发探针。
 
 ## 约定
 

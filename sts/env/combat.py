@@ -17,19 +17,13 @@ from sts.env.effects import compute_attack_damage, deal_damage
 from sts.env.enemies import (
     ENCOUNTERS,
     INTENT_BASE_DAMAGE,
+    roll_curl_up_block,
     roll_initial_intent,
     roll_next_intent,
     spawn_encounter,
 )
-from sts.env.rng import CombatRNG
+from sts.env.rng import CombatRNG, shuffle_pile
 from sts.env.state import CombatState, PlayerState
-
-
-def _shuffle(pile: list[str], stream) -> None:
-    """Fisher-Yates 全排列（§2.3 / §6.2）。Collections.shuffle 语义，[未核实] 待对拍。"""
-    for i in range(len(pile) - 1, 0, -1):
-        j = stream.next_int(i + 1)
-        pile[i], pile[j] = pile[j], pile[i]
 
 
 class Combat:
@@ -45,13 +39,16 @@ class Combat:
 
     # ------------------------------------------------------------- 生命周期
     def reset(self) -> None:
-        """§2 战斗初始化，按编号顺序执行。"""
+        """§2 战斗初始化，按编号顺序执行（消耗模式经 lightspeed 对拍验证）。"""
         rng = CombatRNG(self.seed)  # ① 4 条流同 seed 初始化
         deck = starter_deck()  # ② 固定构建顺序
-        _shuffle(deck, rng.shuffle)  # ③ 洗牌一次
-        enemies = spawn_encounter(self.encounter, rng)  # ④ 生成敌人 + HP roll
-        for enemy in enemies:  # ⑤ 初始意图，按生成顺序
+        shuffle_pile(deck, rng.shuffle)  # ③ 洗牌：randomLong → 临时 java LCG → Collections.shuffle
+        enemies = spawn_encounter(self.encounter, rng)  # ④ 生成敌人（louses 颜色走 misc 流）+ HP roll
+        for enemy in enemies:  # ⑤ 初始意图，按生成顺序（各消耗 enemy_ai 一次）
             roll_initial_intent(enemy, rng)
+        for enemy in enemies:  # ⑤' Louse Curl Up 格挡量 init 时 roll（对拍收口）
+            if enemy.kind in ("louse_red", "louse_green"):
+                roll_curl_up_block(enemy, rng)
         player = PlayerState()  # ⑥ HP 80 / block 0 / 能量 3 / 回合 1
         self.state = CombatState(
             player=player, enemies=enemies, draw_pile=deck, rng=rng,
@@ -116,17 +113,21 @@ class Combat:
             self.state.phase = "won"
 
     def _trigger_curl_up(self, enemy) -> None:
-        """Louse Curl Up：首次受到攻击伤害获得 block 3-7，每场一次（[未核实]）。"""
+        """Louse Curl Up：首次受到攻击伤害**启用**已 roll 好的格挡量，每场一次。
+
+        对拍收口：格挡量在战斗初始化 roll（enemy_roll 流），受击时只启用，不再消耗。"""
         if enemy.kind not in ("louse_red", "louse_green") or enemy.curl_up_used:
             return
         enemy.curl_up_used = True
-        enemy.block += 3 + self.rng.enemy_roll.next_int(5)  # 3-7，流归属 [未核实]
+        enemy.block += enemy.curl_up_block
 
     # ------------------------------------------------------------- 回合切换
     def _end_player_turn(self) -> None:
         """§3 T → N → P。"""
         # T1：手牌按槽位升序（列表序）入弃牌堆
-        self.state.discard_pile.extend(self.state.hand)
+        # T1：手牌入弃牌堆——游戏从手牌高位槽位往回收（列表反序入弃，日志对拍反推：
+        # 弃序影响下次洗牌排列，逐位可复现的前提）
+        self.state.discard_pile.extend(reversed(self.state.hand))
         self.state.hand.clear()
         # T2：玩家 debuff 递减（受影响方回合结束时，§3 裁定）
         self.state.player.weak = max(0, self.state.player.weak - 1)
@@ -140,8 +141,14 @@ class Combat:
             enemy.block = 0  # N1：各自回合开始清 block
             self._execute_intent(enemy)  # N2
             if enemy.ritual:  # N3：回合结束触发（Cultist Ritual）
-                enemy.strength += 3
-            roll_next_intent(enemy, self.rng)  # 下一意图 [未核实] 时机
+                # 游戏的 RitualPower 带「跳过首次」语义（lightspeed Monster.cpp:71-75
+                # 注释 + 日志对拍实证：施放当回合结束不加力量）
+                if enemy.ritual_skip_first:
+                    enemy.ritual_skip_first = False
+                else:
+                    enemy.strength += 3
+            # 意图在 roll 时已入史；执行时再次写入会误触发连续两次行动限制。
+            roll_next_intent(enemy, self.rng)  # 下一意图：结算后立即 roll（对拍收口）
             if self.state.player.hp <= 0:  # N4 / X2：立即判负
                 self.state.phase = "lost"
                 return
@@ -173,7 +180,7 @@ class Combat:
                     return
                 self.state.draw_pile = self.state.discard_pile
                 self.state.discard_pile = []
-                _shuffle(self.state.draw_pile, self.rng.shuffle)  # §6.2
+                shuffle_pile(self.state.draw_pile, self.rng.shuffle)  # §6.2
             self.state.hand.append(self.state.draw_pile.pop())  # §6.1 弹出牌库顶
 
     # ------------------------------------------------------------- 敌人意图
@@ -191,6 +198,7 @@ class Combat:
             return
         elif kind == "incantation":
             enemy.ritual = True
+            enemy.ritual_skip_first = True
             return
         elif kind == "spit_web":
             p.weak += 2

@@ -4,7 +4,6 @@
 不是从实现反推（规格文档开篇声明：照文档写测试，否则测试只验证"你实现了什么"）。
 
 约定：
-- T23 规格标注"可暂 skip"。
 - 构造类条目允许直接改置状态字段（手算场景，非自然对局）；被改置处均加注释说明。
 - 敌人 HP 为 seed 决定的 roll 值，断言一律用「差值」（hp_before / hp_after），不锚定绝对值。
 - T07 的 T1 期望按 §5.4 裁定（Bash 先伤害后上 Vuln）取 8；规格清单中"T1 伤 12"与其自身
@@ -138,6 +137,8 @@ def test_T08_虚弱持续两个玩家回合():
     _end(env)  # 敌 T1：红 Bite、绿 Spit Web → 玩家 Weak 2
     assert env.state.player.weak == 2
     for expected in (4, 4, 6):  # 我 T2、T3 各伤 4（Weak 递减于玩家回合末），T4 伤 6
+        red.intent = "bite"  # 双虱意图逐轮钉死：RNG 换芯后 roll 序列不同（红可能 roll 到
+        green.intent = "bite"  # grow 反杀绿虱破坏场面），本条只验 Weak 时序，须与其隔离
         env.state.hand = ["strike"]
         green_hp = green.hp
         env.step(action_index(0, 1))  # target 1 = 绿（第二只）
@@ -149,8 +150,8 @@ def test_T08_虚弱持续两个玩家回合():
 def test_T09_Cultist力量成长():
     env = Combat(encounter="cultist", seed=9)
     env.reset()
-    _end(env)  # 敌 T1：Incantation（无攻击）
-    for expected in (9, 12):  # 敌 T2：6+3=9；敌 T3：6+6=12
+    _end(env)  # 敌 T1：Incantation（无攻击；Ritual skipFirst：当回合结束不加力量）
+    for expected in (6, 9):  # 敌 T2：6+0=6；T2 结束首次 +3 → 敌 T3：6+3=9
         player_hp = env.state.player.hp
         _end(env)
         assert env.state.player.hp == player_hp - expected
@@ -323,8 +324,8 @@ def test_T21_弃牌堆按槽位升序():
     env.state.hand = ["strike", "defend", "strike", "defend", "bash"]
     env.step(action_index(2, 0))  # 打出槽位 2 → 弃牌堆 ["strike"]
     assert env.state.discard_pile == ["strike"]
-    _end(env)  # 余牌按槽位升序入弃牌堆
-    assert env.state.discard_pile == ["strike", "strike", "defend", "defend", "bash"]
+    _end(env)  # 余牌从高位槽位往回收（反序入弃，日志对拍反推，2026-09-04 规格修订）
+    assert env.state.discard_pile == ["strike", "bash", "defend", "defend", "strike"]
 
 
 # ---------------------------------------------------------------- T22（§8.3）
@@ -340,9 +341,18 @@ def test_T22_能量耗尽后非法():
 
 
 # ---------------------------------------------------------------- T23（§6.4）
-@pytest.mark.skip(reason="规格标注：防御性条目，可暂 skip")
 def test_T23_手牌满抽牌失败():
-    pass
+    env = Combat(encounter="jaw_worm", seed=23)
+    env.reset()
+    env.state.hand = ["strike"] * 10  # 构造：手牌已达到上限
+    env.state.draw_pile = ["defend", "bash"]  # 列表尾的 Bash 是牌库顶
+
+    hand_before = env.state.hand.copy()
+    draw_pile_before = env.state.draw_pile.copy()
+    env._draw(1)
+
+    assert env.state.hand == hand_before
+    assert env.state.draw_pile == draw_pile_before
 
 
 # ---------------------------------------------------------------- T24（X2）
@@ -356,3 +366,22 @@ def test_T24_玩家死亡立即负_后续敌人不再行动():
     _end(env)
     assert env.done and not env.won  # 立即判负
     assert env.state.player.weak == 0  # 绿的 Spit Web 不再执行
+
+
+def test_虱子可连续两次咬_第三次才强制换招():
+    """连续两次限制按两次真实行动计算，执行时不能重复登记当前意图。"""
+    class BiteRoll:
+        def random_int(self, high):
+            return 99  # 固定抽中咬，仅由连续行动约束决定何时换招。
+
+    env = Combat(encounter="louses", seed=100000)
+    env.reset()
+    env.rng.enemy_ai = BiteRoll()
+    for enemy in env.state.enemies:
+        enemy.intent = "bite"
+        enemy.move_history = ["bite"]
+    _end(env)
+    assert all(enemy.intent == "bite" for enemy in env.state.enemies)
+    assert all(enemy.move_history == ["bite", "bite"] for enemy in env.state.enemies)
+    _end(env)
+    assert all(enemy.intent in ("grow", "spit_web") for enemy in env.state.enemies)
