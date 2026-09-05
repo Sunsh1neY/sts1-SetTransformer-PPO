@@ -162,6 +162,41 @@
 - 可复现交付：本项目适配器补丁 `patches/lightspeed-battle-env.patch` 可应用于锁定上游的干净源码；版本锁定与构建入口见 `scripts/lightspeed-lock.json`、`scripts/build-lightspeed.ps1`。Python 可编辑安装已成功。
 - 评估种子哈希仍为 `38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c`。本次适配器补丁哈希为 `91569efde52d3bd5a1f8a82c5b18efa6c023d88109c8e579cf744f3ff7b3c07c`；详细本机冒烟记录在 `build/foundation-smoke.json`（构建产物，不入库）。这些基础结果不消除前述回放初态、日志字段与探针通道的已知限制。
 
+### D21 TokenWrapper 与可训练投影的阶段边界（2026-09-05，Week 4 T1）
+
+- 裁定：Week 4 的 TokenWrapper 只做确定性数据准备，输出按卡牌、敌人、全局分组的实体特征及 mask；类型专用的类别 embedding 和数值投影属于第 11–12 周模型编码器，由模型参数把这些特征映射到共同的 `[n_token, d_model]`。TokenWrapper 不使用固定或随机投影冒充模型编码器。
+- 同源约束：FlattenWrapper 与 TokenWrapper 都只读取 `docs/observation-contract.md` 定义的规范观测 dict，共用无效行清零、类别映射和连续值处理约定；两条路径不得从 `info` 或 C++ 内部对象补取字段。
+- 理由：投影需要随训练目标更新，把它放进纯数据 wrapper 会混淆可复现的数据转换与可训练表示，也会让 MLP/Transformer 的信息边界难以审计。此裁定澄清原 §4.2 将 TokenWrapper 直接写成 `[n_token, d_model]` 的阶段歧义，不改变 D5/D17/D19 的模型输入信息、动作对应或换位要求。
+- 验收：相同规范观测经 TokenWrapper 多次转换必须逐字节相同；投影参数只出现在模型状态中。仅改变隐藏调试信息时，两种 wrapper 输出均不变。具体编码宽度与缩放规则在 T3 实现时记录并测试。
+- 推翻条件：若后续框架强制 wrapper 持有模型参数，须先证明同源对照、保存/加载和确定性边界仍清晰，并登记替代接口。
+
+### D22 补齐玩家可见的牌堆无序构成（2026-09-05，Week 4 T3）
+
+- 裁定：正式观测新增 `draw_pile` 与 `discard_pile`，表示玩家当前可查看的抽牌堆、弃牌堆无序构成；绝不暴露抽牌堆真实顺序。当前最小切片仅有 Bash、Defend、Strike 且无升级，故两者均使用 `[bash_count, defend_count, strike_count]` 的 `int32[3]` 精确计数。原 `draw_count` / `discard_count` 暂保留并作为计数一致性校验。
+- wrapper：两条路径继续同源。FlattenWrapper 在全局段后依次加入抽牌堆、弃牌堆计数；TokenWrapper 将两堆分开保留为各一个 `[1,3]` 位置明确的 pile token 原始特征，未来模型投影时再加入 draw/discard location embedding。空牌堆仍是有效的全零计数向量，不使用 padding mask。
+- 边界：当前三张牌均不会进入消耗堆，消耗堆在合法轨迹中恒空且不影响当前决策，因此本切片不新增 exhaust 字段；第 5 周扩卡若出现可消耗卡，须同步开放其可见无序构成。若未来加入 Frozen Eye 等能公开抽牌顺序的机制，必须另行登记，不得沿用当前隐藏顺序约定。
+- 理由：此前观测只有两堆张数。两个状态可以拥有相同手牌、张数、玩家/敌人状态和 mask，却在“Bash 位于抽牌堆还是弃牌堆”上不同，下一轮可抽牌分布和当前决策因而不同；仅用张数会把玩家能区分的状态错误合并。
+- 验收：每一步三类卡在 `hand + draw_pile + discard_pile` 中的计数总和均为初始 `Bash=1, Defend=4, Strike=5`；结束回合前后可见构成按实际移动变化；仅重排 C++ 内部抽牌顺序时两个 pile 计数和双 wrapper 输出不变。范围外卡牌直接拒绝，不能静默漏计。
+- 推翻条件：扩容后若固定计数向量过宽，可改为带 location 的无序卡牌实体 token，但必须保持相同可见信息、隐藏顺序，并同步调整 MLP 对照输入。
+- [O1] ✅ 本机正版 STS1 `desktop-1.0.jar`：`DrawPilePanel.openDrawPile` 可在战斗中打开牌堆；`DrawPileViewScreen.open` 复制全部 draw-pile 卡牌，并在无 Frozen Eye 时排序后显示；`DiscardPilePanel.openDiscardPile` / `DiscardPileViewScreen.open` 显示弃牌堆卡牌。JAR sha256 `cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673`；定点反编译产物仅在 `reference/` 查阅、不入库 — 一手 — 2026-09-05。
+- [O2] ✅ 用户按正版 STS1 实际界面确认：“显示乱序，但是可以显示有哪些卡” — 一手实测陈述 — 2026-09-05。
+
+#### D22 实现验证补记（2026-09-05）
+
+- C++ `BattleObservation` 已新增两堆三类卡计数并重新构建；Python 规范 dict、FlattenWrapper 与 TokenWrapper 已贯通。训练 seed 100000 的双虱初态为 draw `[1,2,2]`、discard `[0,0,0]`，与各自 size 字段一致；结束首回合后的牌堆移动测试通过。
+- 三遭遇固定轨迹逐步检查 `hand + draw + discard = [Bash 1, Defend 4, Strike 5]`，且两堆计数和始终等于全局 size。完整回归 `115 passed in 0.35s`；补丁反向校验、`compileall`、主仓库及上游改动 `diff --check` 均通过。
+- 更新后的适配器补丁 sha256 为 `6753a1a7e4f131461de8ef2e7014445ded4527e38ec68fe3ff3d734ae708a511`，替代 D20 基础版本的旧补丁哈希；上游锁定提交不变。
+
+### D23 Agent 决策与环境执行分层（2026-09-05，T4 用户审计后修正）
+
+- 裁定：正式 Agent 统一通过 `decide(observation)` 返回 `AgentDecision`，其中包含掩码后的 `probabilities: float64[31]` 与本次已选的原动作编号 `action: int`。概率表示抽样前的策略分布；整数表示已经发生的单次抽样结果，两者不得混称或互相替代。用户复核后确认 one-hot 与整数表达同一个离散动作，接口直接使用更紧凑的整数，不传冗余 one-hot。
+- 随机 Agent：以全零 logits 调用同一 `masked_softmax`，得到合法动作上的均匀概率；随机抽样由 Agent 自己持有的独立 RNG 完成，随后返回所选整数。未来模型 Agent 也在自身边界内根据掩码后分布作出决策并保留训练所需概率或 log-prob。
+- 接入层：通用 episode runner 只调用 Agent、严格校验所选整数属于 0–30 且在该策略分布中概率大于 0，再原样交给环境；不持有 RNG，不读取卡牌、能量或敌人字段，不重算合法性。环境只负责 `reset/step` 与产生下一观测，Agent 与具体 wrapper 可互换。
+- 终局：runner 根据环境返回的 `terminated/truncated` 停止，不在终局再次调用 Agent。非终局全非法由 Agent 的 masked softmax 显式报错；终局观测全 False 由环境契约测试验证。
+- 理由：T4 初版 `MaskedRandomPolicy.act()` 直接返回整数且自身包含 `run_episode()`，把 Agent 决策、动作表示和环境控制流揉在一个类中；未来输出 31 维分布的模型无法无缝替换，且 masked softmax 没有进入随机 Agent 的真实路径。用户审计指出该耦合后，本决策取代 T4 初版接口，不改变 D17 的动作编号或 D19 的信息边界。
+- 验收：随机 Agent 的 31 维概率 shape/dtype/归一化正确，返回的整数动作必须属于环境 mask；runner 不含 RNG 且能用同一接口驱动 FlattenWrapper、TokenWrapper 与测试 Agent；两条正式 wrapper 路径均跑到终局并逐步核对后端实际收到的动作。
+- 推翻条件：若 PPO/DT 框架要求返回包含 action、log-prob、value 等更丰富的批量对象，可扩充 `AgentDecision`，但必须保留“Agent 内完成选择、runner 不重算合法性和不二次随机”的边界，并先登记迁移方案。
+
 ## 未决事项（v4 §12，不阻塞开工）
 
 | # | 事项 | 何时定 | 默认 |

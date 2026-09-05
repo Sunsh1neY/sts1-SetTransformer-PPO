@@ -9,7 +9,7 @@ Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set
 ## 当前状态（最小切片基础环境）
 
 - 正式后端：`sts_lightspeed` C++，当前只开放 A0 的 Jaw Worm、Cultist、双虱遭遇。Python 模拟器保留教学及局部回归用途。
-- 运行接口：`IroncladBattleEnv.reset/step/action_mask/observation`。动作编号为 `slot * 3 + target`，30 为结束回合，无目标卡只使用目标 0。
+- 运行接口：项目包入口 `LightspeedBattleEnv.reset/step/action_mask/observation`，内部复用 C++ `IroncladBattleEnv`。动作编号为 `slot * 3 + target`，30 为结束回合，无目标卡只使用目标 0。
 - 基础奖励：非终局 0；胜利 `1 + 0.5 * 剩余HP / 最大HP`；失败及硬超时 0。当前不实现势能整形，训练及 DT 累计回报使用 γ=1（D18/D20）。
 - 硬超时是任务内失败：返回 `terminated=true`、`truncated=false`、`info.timeout=1`，训练时不继续自举。
 - 已确认模型设计：选牌保留实体与动作的对应关系（D17）；状态只使用玩家可见信息（D19）。模型代码按原排期实现。
@@ -18,7 +18,7 @@ Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set
 
 裁定与边界见 [决策日志](docs/decisions.md)；冻结的旧研究文档不作为实现依据。
 
-2026-09-05 本机验收：**82 项测试全部通过**；新版 C++ 环境 10000 场随机战斗无崩溃、无非法动作异常、无硬超时，60 场完整轨迹重放一致。单进程约 11.7 万步/秒；这些结果验证基础运行，不代表与真实游戏全部机制等价。
+2026-09-05 本机验收：**128 项测试全部通过**；新版 C++ 环境 10000 场随机战斗无崩溃、无非法动作异常、无硬超时，60 场完整轨迹重放一致。单进程约 11.7 万步/秒；两条 wrapper 已接通统一 31 维 Agent 决策接口并通过三遭遇终局测试。这些结果验证基础运行，不代表与真实游戏全部机制等价。完整 wrapper 路径的稳定性与性能留到 Week 4 T5 单独验收。
 
 ## 评估种子
 
@@ -50,7 +50,41 @@ python -m pytest tests/test_cpp_env.py -q
 
 脚本按 [版本锁文件](scripts/lightspeed-lock.json) 拉取上游及 pybind11，应用 [本项目适配器补丁](patches/lightspeed-battle-env.patch)，构建扩展并复制运行时 DLL。重复运行会识别已应用补丁；遇到版本不符或补丁冲突会停止，保留本地改动。可用 `-Python`、`-Toolchain`、`-Jobs` 指定解释器、MSYS2 mingw64 的 bin 目录和并行编译数。本机验证使用 Python 3.13；扩展须用运行测试的同一 Python 构建。
 
-观测按固定宽度存储，字段顺序由扩展的 `HAND_FEATURES`、`ENEMY_FEATURES`、`GLOBAL_FEATURES` 给出；手牌和敌人使用对应 mask 区分有效项。seed 和 RNG 计数只留在复现信息中。
+观测按固定宽度存储，字段顺序由扩展的 `HAND_FEATURES`、`ENEMY_FEATURES`、`PILE_FEATURES`、`GLOBAL_FEATURES` 给出；手牌和敌人使用对应 mask 区分有效项，抽牌堆和弃牌堆只提供无序卡牌计数，不泄露抽牌顺序。seed 和 RNG 计数只留在复现信息中。
+
+正式 Python 入口：
+
+```python
+from sts import (
+    Encounter,
+    FlattenWrapper,
+    LightspeedBattleEnv,
+    MaskedRandomAgent,
+    TokenWrapper,
+    run_episode,
+)
+
+env = LightspeedBattleEnv()
+observation = env.reset(100000, Encounter.TWO_LOUSE)
+action = int(observation["action_mask"].nonzero()[0][0])
+observation, reward, terminated, truncated, info = env.step(action)
+
+flat_env = FlattenWrapper(LightspeedBattleEnv())
+flat_observation = flat_env.reset(100000, Encounter.TWO_LOUSE)
+
+token_env = TokenWrapper(LightspeedBattleEnv())
+token_observation = token_env.reset(100000, Encounter.TWO_LOUSE)
+
+# Agent 内部完成概率计算和抽样；接入层不持有 RNG 或游戏规则。
+agent = MaskedRandomAgent(seed=20260905)
+trace = run_episode(
+    token_env,
+    agent,
+    token_observation,
+)
+```
+
+规范观测仅含 `hand/enemies/draw_pile/discard_pile/global/hand_mask/enemy_mask/action_mask`；字段、shape、dtype 与信息边界见 [观测接口契约](docs/observation-contract.md)。`info` 只供复现和调试，不进入模型。
 
 现有校准工具：
 

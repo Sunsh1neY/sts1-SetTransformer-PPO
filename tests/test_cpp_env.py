@@ -63,6 +63,73 @@ def _attack_action(observation):
                  if legal and _hand(observation)[action // 3]["card_id"] in attacks), None)
 
 
+def test_observation_layout_matches_wrapper_contract():
+    env = _new_env()
+    obs = env.reset(100000, slaythespire.MonsterEncounter.TWO_LOUSE, 0)
+
+    assert list(slaythespire.HAND_FEATURES) == ["card_id", "upgraded", "cost"]
+    assert list(slaythespire.PILE_FEATURES) == [
+        "bash_count", "defend_count", "strike_count",
+    ]
+    assert list(slaythespire.ENEMY_FEATURES) == [
+        "monster_id", "hp", "max_hp", "block", "strength", "vulnerable", "weak",
+        "intent", "intent_damage", "intent_hits", "curl_up", "ritual",
+    ]
+    assert list(slaythespire.GLOBAL_FEATURES) == [
+        "hp", "max_hp", "block", "energy", "turn", "draw_count", "discard_count",
+        "total_enemy_hp", "strength", "vulnerable", "weak",
+    ]
+    assert len(obs.hand) == 10 * 3
+    assert len(obs.enemies) == 5 * 12
+    assert len(obs.draw_pile) == len(obs.discard_pile) == 3
+    assert len(_global(obs)) == 11
+    assert len(obs.hand_mask) == 10
+    assert len(obs.enemy_mask) == 5
+    assert len(obs.action_mask) == 31
+    integer_fields = (
+        obs.hand,
+        obs.enemies,
+        obs.draw_pile,
+        obs.discard_pile,
+        _global(obs),
+    )
+    mask_fields = (obs.hand_mask, obs.enemy_mask, obs.action_mask)
+    assert all(type(value) is int for values in integer_fields for value in values)
+    assert all(type(value) is bool for values in mask_fields for value in values)
+
+    # 物理敌人缓冲有 5 行，但动作目标仍只有 0、1、2；当前双敌人场景的目标 2 恒非法。
+    for slot in range(10):
+        assert obs.action_mask[slot * 3 + 2] is False
+
+
+def test_visible_pile_composition_is_counted_without_draw_order():
+    env = _new_env()
+    obs = env.reset(100000, slaythespire.MonsterEncounter.TWO_LOUSE, 0)
+    card_ids = (
+        int(slaythespire.CardId.BASH),
+        int(slaythespire.CardId.DEFEND_RED),
+        int(slaythespire.CardId.STRIKE_RED),
+    )
+
+    assert obs.draw_pile == [1, 2, 2]
+    assert obs.discard_pile == [0, 0, 0]
+    assert sum(obs.draw_pile) == _player(obs)["draw_count"]
+    assert sum(obs.discard_pile) == _player(obs)["discard_count"]
+
+    before_hand_counts = [
+        sum(card["card_id"] == card_id for card in _hand(obs)[:5])
+        for card_id in card_ids
+    ]
+    after = env.step(30).observation
+    after_hand_counts = [
+        sum(card["card_id"] == card_id for card in _hand(after)[:5])
+        for card_id in card_ids
+    ]
+    assert after.draw_pile == [0, 0, 0]
+    assert after.discard_pile == before_hand_counts
+    assert after_hand_counts == obs.draw_pile
+
+
 def test_reset_is_deterministic():
     env = _new_env()
     first = _reset(env)
@@ -72,6 +139,8 @@ def test_reset_is_deterministic():
 
     assert first.hand == second.hand
     assert first.enemies == second.enemies
+    assert first.draw_pile == second.draw_pile
+    assert first.discard_pile == second.discard_pile
     assert _global(first) == _global(second)
     assert first.hand_mask == second.hand_mask
     assert first.enemy_mask == second.enemy_mask
@@ -94,6 +163,8 @@ def test_same_actions_produce_same_snapshots():
         result_b = env_b.step(action)
         assert result_a.observation.hand == result_b.observation.hand
         assert result_a.observation.enemies == result_b.observation.enemies
+        assert result_a.observation.draw_pile == result_b.observation.draw_pile
+        assert result_a.observation.discard_pile == result_b.observation.discard_pile
         assert _global(result_a.observation) == _global(result_b.observation)
         assert result_a.reward == result_b.reward
         assert result_a.terminated == result_b.terminated

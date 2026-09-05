@@ -1,5 +1,8 @@
+warning: in the working copy of 'bindings/bindings-util.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bindings/slaythespire.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bindings/slaythespire.h', LF will be replaced by CRLF the next time Git touches it
 diff --git a/bindings/bindings-util.cpp b/bindings/bindings-util.cpp
-index 471ce96..fc049aa 100644
+index 471ce96..4f2db73 100644
 --- a/bindings/bindings-util.cpp
 +++ b/bindings/bindings-util.cpp
 @@ -3,9 +3,13 @@
@@ -16,14 +19,30 @@ index 471ce96..fc049aa 100644
  #include "sim/SimHelpers.h"
  #include "sim/PrintHelpers.h"
  #include "game/Game.h"
-@@ -13,6 +17,60 @@
+@@ -13,6 +17,76 @@
  
  #include "slaythespire.h"
  
 +namespace {
 +    constexpr int kHandFeatureWidth = sts::HAND_FEATURES.size();
 +    constexpr int kEnemyFeatureWidth = sts::ENEMY_FEATURES.size();
++    constexpr int kPileFeatureWidth = sts::PILE_FEATURES.size();
 +    constexpr int kGlobalFeatureWidth = sts::GLOBAL_FEATURES.size();
++
++    template <typename CardContainer>
++    std::vector<int> visiblePileCounts(const CardContainer &pile) {
++        std::vector<int> counts(kPileFeatureWidth, 0);
++        for (const auto &card : pile) {
++            switch (card.getId()) {
++                case sts::CardId::BASH: ++counts[0]; break;
++                case sts::CardId::DEFEND_RED: ++counts[1]; break;
++                case sts::CardId::STRIKE_RED: ++counts[2]; break;
++                default:
++                    throw std::runtime_error("unsupported card in the minimal battle pile observation");
++            }
++        }
++        return counts;
++    }
 +
 +    sts::BattleIntent visibleIntent(const sts::Monster &monster) {
 +        if (!monster.isTargetable()) {
@@ -77,7 +96,7 @@ index 471ce96..fc049aa 100644
  namespace sts {
  
      NNInterface::NNInterface() :
-@@ -138,6 +196,167 @@ namespace sts {
+@@ -138,6 +212,171 @@ namespace sts {
          return theInstance;
      }
  
@@ -136,6 +155,8 @@ index 471ce96..fc049aa 100644
 +        BattleObservation result;
 +        result.hand.assign(MAX_HAND * kHandFeatureWidth, 0);
 +        result.enemies.assign(MAX_ENEMIES * kEnemyFeatureWidth, 0);
++        result.draw_pile.assign(kPileFeatureWidth, 0);
++        result.discard_pile.assign(kPileFeatureWidth, 0);
 +        result.global.assign(kGlobalFeatureWidth, 0);
 +        result.hand_mask.assign(MAX_HAND, false);
 +        result.enemy_mask.assign(MAX_ENEMIES, false);
@@ -151,6 +172,8 @@ index 471ce96..fc049aa 100644
 +            result.hand[i * kHandFeatureWidth + 2] = card.costForTurn;
 +            result.hand_mask[i] = true;
 +        }
++        result.draw_pile = visiblePileCounts(bc_.cards.drawPile);
++        result.discard_pile = visiblePileCounts(bc_.cards.discardPile);
 +        int totalEnemyHp = 0;
 +        for (int i = 0; i < bc_.monsters.monsterCount && i < MAX_ENEMIES; ++i) {
 +            const auto &monster = bc_.monsters.arr[i];
@@ -245,7 +268,7 @@ index 471ce96..fc049aa 100644
  }
  
  namespace sts::py {
-@@ -224,7 +443,8 @@ namespace sts::py {
+@@ -224,7 +463,8 @@ namespace sts::py {
              }
          }
  
@@ -255,7 +278,7 @@ index 471ce96..fc049aa 100644
          // skip 14th row because it is invariant
          // 21 * 13 == 273 bits
          for (int y = 0; y < 14; ++y) {
-@@ -292,4 +512,4 @@ namespace sts::py {
+@@ -292,4 +532,4 @@ namespace sts::py {
          return false;
      }
  
@@ -263,16 +286,17 @@ index 471ce96..fc049aa 100644
 \ No newline at end of file
 +}
 diff --git a/bindings/slaythespire.cpp b/bindings/slaythespire.cpp
-index a9afe35..5761f16 100644
+index a9afe35..77abe17 100644
 --- a/bindings/slaythespire.cpp
 +++ b/bindings/slaythespire.cpp
-@@ -33,6 +33,40 @@ PYBIND11_MODULE(slaythespire, m) {
+@@ -33,6 +33,43 @@ PYBIND11_MODULE(slaythespire, m) {
          .def("getObservationMaximums", &NNInterface::getObservationMaximums, "get the defined maximum values of the observation space")
          .def_property_readonly("observation_space_size", []() { return NNInterface::observation_space_size; });
  
 +    pybind11::class_<BattleObservation> battleObservation(m, "BattleObservation");
 +    m.attr("HAND_FEATURES") = pybind11::cast(HAND_FEATURES);
 +    m.attr("ENEMY_FEATURES") = pybind11::cast(ENEMY_FEATURES);
++    m.attr("PILE_FEATURES") = pybind11::cast(PILE_FEATURES);
 +    m.attr("GLOBAL_FEATURES") = pybind11::cast(GLOBAL_FEATURES);
 +    pybind11::enum_<BattleIntent>(m, "BattleIntent")
 +        .value("NONE", BattleIntent::NONE)
@@ -283,6 +307,8 @@ index a9afe35..5761f16 100644
 +        .value("DEBUFF", BattleIntent::DEBUFF);
 +    battleObservation.def_readonly("hand", &BattleObservation::hand)
 +        .def_readonly("enemies", &BattleObservation::enemies)
++        .def_readonly("draw_pile", &BattleObservation::draw_pile)
++        .def_readonly("discard_pile", &BattleObservation::discard_pile)
 +        .def_readonly("global", &BattleObservation::global)
 +        .def_readonly("hand_mask", &BattleObservation::hand_mask)
 +        .def_readonly("enemy_mask", &BattleObservation::enemy_mask)
@@ -308,10 +334,10 @@ index a9afe35..5761f16 100644
      agent.def(pybind11::init<>());
      agent.def_readwrite("simulation_count_base", &search::ScumSearchAgent2::simulationCountBase, "number of simulations the agent uses for monte carlo tree search each turn")
 diff --git a/bindings/slaythespire.h b/bindings/slaythespire.h
-index 6ec4658..e7b320d 100644
+index 6ec4658..95414af 100644
 --- a/bindings/slaythespire.h
 +++ b/bindings/slaythespire.h
-@@ -8,11 +8,35 @@
+@@ -8,11 +8,38 @@
  #include <vector>
  #include <unordered_map>
  #include <array>
@@ -330,6 +356,9 @@ index 6ec4658..e7b320d 100644
 +    inline constexpr std::array<const char *, 3> HAND_FEATURES = {
 +        "card_id", "upgraded", "cost"
 +    };
++    inline constexpr std::array<const char *, 3> PILE_FEATURES = {
++        "bash_count", "defend_count", "strike_count"
++    };
 +    inline constexpr std::array<const char *, 12> ENEMY_FEATURES = {
 +        "monster_id", "hp", "max_hp", "block", "strength", "vulnerable", "weak",
 +        "intent", "intent_damage", "intent_hits", "curl_up", "ritual"
@@ -347,13 +376,15 @@ index 6ec4658..e7b320d 100644
      struct NNInterface {
          static constexpr int observation_space_size = 412;
          static constexpr int playerHpMax = 200;
-@@ -42,6 +66,57 @@ namespace sts {
+@@ -42,6 +69,59 @@ namespace sts {
      }
  
  
 +    struct BattleObservation {
 +        std::vector<int> hand;
 +        std::vector<int> enemies;
++        std::vector<int> draw_pile;
++        std::vector<int> discard_pile;
 +        std::vector<int> global;
 +        std::vector<bool> hand_mask;
 +        std::vector<bool> enemy_mask;
