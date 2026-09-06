@@ -13,12 +13,16 @@ Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set
 - 基础奖励：非终局 0；胜利 `1 + 0.5 * 剩余HP / 最大HP`；失败及硬超时 0。当前不实现势能整形，训练及 DT 累计回报使用 γ=1（D18/D20）。
 - 硬超时是任务内失败：返回 `terminated=true`、`truncated=false`、`info.timeout=1`，训练时不继续自举。
 - 已确认模型设计：选牌保留实体与动作的对应关系（D17）；状态只使用玩家可见信息（D19）。模型代码按原排期实现。
+- 当前输入协议已迁移为 D24 逐牌实体 V2：四区卡牌记录使用稳定注册 ID、location、升级与费用 known/valid 语义；Flatten/Token 共用同一准备路径，模型 embedding 仍按原排期实现。
 - 现有真实游戏日志用于有限字段校准。当前不扩日志工具，缺少的字段明确记为未验证；后续更大范围测试发现差异后再处理（D20）。此状态不代表所有游戏机制已被证明正确。
 - `eval_seeds.json` 已固定；环境主 RNG 为 xorshift128+，洗牌临时使用 Java LCG，详见 [机制规格](docs/mechanics.md)。
 
 裁定与边界见 [决策日志](docs/decisions.md)；冻结的旧研究文档不作为实现依据。
 
-2026-09-05 本机验收：**128 项测试全部通过**；新版 C++ 环境 10000 场随机战斗无崩溃、无非法动作异常、无硬超时，60 场完整轨迹重放一致。单进程约 11.7 万步/秒；两条 wrapper 已接通统一 31 维 Agent 决策接口并通过三遭遇终局测试。这些结果验证基础运行，不代表与真实游戏全部机制等价。完整 wrapper 路径的稳定性与性能留到 Week 4 T5 单独验收。
+当前进度：Week 4 与 D24 实体迁移已收口，Week 5–6 的 M1 卡表来源与候选范围审计已
+开始，任务拆解见 [Week 5–6 计划](docs/week-5-6-plan.md)。
+
+2026-09-06 D24 实体版本机验收：**146 项测试全部通过**；四条路径各以 10000 个唯一训练配置重复三轮，异常、非法动作、硬超时与奖励契约错误均为 0，60 场完整轨迹重放一致。raw / dict / Flatten / Token 完整路径单核中位数约为 14702 / 5882 / 3841 / 3790 steps/s，均超过 Gate 1 的 2000 门槛。详见 [实体基础验收报告](docs/entity-foundation-report.md)。这些结果验证当前切片，不代表与真实游戏全部机制等价。
 
 ## 评估种子
 
@@ -50,7 +54,7 @@ python -m pytest tests/test_cpp_env.py -q
 
 脚本按 [版本锁文件](scripts/lightspeed-lock.json) 拉取上游及 pybind11，应用 [本项目适配器补丁](patches/lightspeed-battle-env.patch)，构建扩展并复制运行时 DLL。重复运行会识别已应用补丁；遇到版本不符或补丁冲突会停止，保留本地改动。可用 `-Python`、`-Toolchain`、`-Jobs` 指定解释器、MSYS2 mingw64 的 bin 目录和并行编译数。本机验证使用 Python 3.13；扩展须用运行测试的同一 Python 构建。
 
-观测按固定宽度存储，字段顺序由扩展的 `HAND_FEATURES`、`ENEMY_FEATURES`、`PILE_FEATURES`、`GLOBAL_FEATURES` 给出；手牌和敌人使用对应 mask 区分有效项，抽牌堆和弃牌堆只提供无序卡牌计数，不泄露抽牌顺序。seed 和 RNG 计数只留在复现信息中。
+原始 C++ 观测按固定容量导出，Python 规范层转成 `hand/draw_pile/discard_pile/exhaust_pile` 四个逐牌列表；非手牌区域只提供允许公开的无序多重集，不泄露抽牌顺序。手牌槽位行保留动作对应，但槽位号不作为卡牌语义特征。seed 和 RNG 计数只留在复现信息中。
 
 正式 Python 入口：
 
@@ -84,7 +88,7 @@ trace = run_episode(
 )
 ```
 
-规范观测仅含 `hand/enemies/draw_pile/discard_pile/global/hand_mask/enemy_mask/action_mask`；字段、shape、dtype 与信息边界见 [观测接口契约](docs/observation-contract.md)。`info` 只供复现和调试，不进入模型。
+规范观测仅含 `hand/enemies/draw_pile/discard_pile/exhaust_pile/global/hand_mask/enemy_mask/action_mask`；字段、shape、dtype 与信息边界见 [观测接口契约](docs/observation-contract.md)。`info` 只供复现和调试，不进入模型。
 
 现有校准工具：
 

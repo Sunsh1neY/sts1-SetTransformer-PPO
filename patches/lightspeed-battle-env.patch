@@ -1,8 +1,5 @@
-warning: in the working copy of 'bindings/bindings-util.cpp', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'bindings/slaythespire.cpp', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'bindings/slaythespire.h', LF will be replaced by CRLF the next time Git touches it
 diff --git a/bindings/bindings-util.cpp b/bindings/bindings-util.cpp
-index 471ce96..4f2db73 100644
+index 471ce96..5f49b1f 100644
 --- a/bindings/bindings-util.cpp
 +++ b/bindings/bindings-util.cpp
 @@ -3,9 +3,13 @@
@@ -19,29 +16,45 @@ index 471ce96..4f2db73 100644
  #include "sim/SimHelpers.h"
  #include "sim/PrintHelpers.h"
  #include "game/Game.h"
-@@ -13,6 +17,76 @@
+@@ -13,6 +17,92 @@
  
  #include "slaythespire.h"
  
 +namespace {
-+    constexpr int kHandFeatureWidth = sts::HAND_FEATURES.size();
++    constexpr int kCardFeatureWidth = sts::CARD_FEATURES.size();
 +    constexpr int kEnemyFeatureWidth = sts::ENEMY_FEATURES.size();
-+    constexpr int kPileFeatureWidth = sts::PILE_FEATURES.size();
 +    constexpr int kGlobalFeatureWidth = sts::GLOBAL_FEATURES.size();
 +
 +    template <typename CardContainer>
-+    std::vector<int> visiblePileCounts(const CardContainer &pile) {
-+        std::vector<int> counts(kPileFeatureWidth, 0);
++    std::vector<int> visiblePileCards(const CardContainer &pile, sts::BattleCardLocation location) {
++        std::vector<std::array<int, kCardFeatureWidth>> rows;
++        rows.reserve(pile.size());
 +        for (const auto &card : pile) {
 +            switch (card.getId()) {
-+                case sts::CardId::BASH: ++counts[0]; break;
-+                case sts::CardId::DEFEND_RED: ++counts[1]; break;
-+                case sts::CardId::STRIKE_RED: ++counts[2]; break;
++                case sts::CardId::BASH:
++                case sts::CardId::DEFEND_RED:
++                case sts::CardId::STRIKE_RED:
++                    break;
 +                default:
 +                    throw std::runtime_error("unsupported card in the minimal battle pile observation");
 +            }
++            // 手牌外费用的公开显示语义尚未核验；0 由 cost_known=false 限定为缺失值。
++            rows.push_back({
++                static_cast<int>(card.getId()),
++                static_cast<int>(location),
++                card.isUpgraded() ? 1 : 0,
++                0,
++                0,
++            });
 +        }
-+        return counts;
++        // 只用公开字段排序，避免把后端实际抽取顺序泄露给 Python 原始观测。
++        std::sort(rows.begin(), rows.end());
++        std::vector<int> cards;
++        cards.reserve(rows.size() * kCardFeatureWidth);
++        for (const auto &row : rows) {
++            cards.insert(cards.end(), row.begin(), row.end());
++        }
++        return cards;
 +    }
 +
 +    sts::BattleIntent visibleIntent(const sts::Monster &monster) {
@@ -96,7 +109,7 @@ index 471ce96..4f2db73 100644
  namespace sts {
  
      NNInterface::NNInterface() :
-@@ -138,6 +212,171 @@ namespace sts {
+@@ -138,6 +228,177 @@ namespace sts {
          return theInstance;
      }
  
@@ -153,10 +166,11 @@ index 471ce96..4f2db73 100644
 +
 +    BattleObservation IroncladBattleEnv::makeObservation() const {
 +        BattleObservation result;
-+        result.hand.assign(MAX_HAND * kHandFeatureWidth, 0);
++        result.hand.assign(MAX_HAND * kCardFeatureWidth, 0);
 +        result.enemies.assign(MAX_ENEMIES * kEnemyFeatureWidth, 0);
-+        result.draw_pile.assign(kPileFeatureWidth, 0);
-+        result.discard_pile.assign(kPileFeatureWidth, 0);
++        result.draw_pile.clear();
++        result.discard_pile.clear();
++        result.exhaust_pile.clear();
 +        result.global.assign(kGlobalFeatureWidth, 0);
 +        result.hand_mask.assign(MAX_HAND, false);
 +        result.enemy_mask.assign(MAX_ENEMIES, false);
@@ -167,13 +181,16 @@ index 471ce96..4f2db73 100644
 +        }
 +        for (int i = 0; i < bc_.cards.cardsInHand && i < MAX_HAND; ++i) {
 +            const auto &card = bc_.cards.hand[i];
-+            result.hand[i * kHandFeatureWidth] = static_cast<int>(card.id);
-+            result.hand[i * kHandFeatureWidth + 1] = card.isUpgraded() ? 1 : 0;
-+            result.hand[i * kHandFeatureWidth + 2] = card.costForTurn;
++            result.hand[i * kCardFeatureWidth] = static_cast<int>(card.id);
++            result.hand[i * kCardFeatureWidth + 1] = static_cast<int>(BattleCardLocation::HAND);
++            result.hand[i * kCardFeatureWidth + 2] = card.isUpgraded() ? 1 : 0;
++            result.hand[i * kCardFeatureWidth + 3] = card.costForTurn;
++            result.hand[i * kCardFeatureWidth + 4] = 1;
 +            result.hand_mask[i] = true;
 +        }
-+        result.draw_pile = visiblePileCounts(bc_.cards.drawPile);
-+        result.discard_pile = visiblePileCounts(bc_.cards.discardPile);
++        result.draw_pile = visiblePileCards(bc_.cards.drawPile, BattleCardLocation::DRAW);
++        result.discard_pile = visiblePileCards(bc_.cards.discardPile, BattleCardLocation::DISCARD);
++        result.exhaust_pile = visiblePileCards(bc_.cards.exhaustPile, BattleCardLocation::EXHAUST);
 +        int totalEnemyHp = 0;
 +        for (int i = 0; i < bc_.monsters.monsterCount && i < MAX_ENEMIES; ++i) {
 +            const auto &monster = bc_.monsters.arr[i];
@@ -188,12 +205,14 @@ index 471ce96..4f2db73 100644
 +        result.global[2] = bc_.player.block;
 +        result.global[3] = bc_.player.energy;
 +        result.global[4] = bc_.turn;
-+        result.global[5] = static_cast<int>(bc_.cards.drawPile.size());
-+        result.global[6] = static_cast<int>(bc_.cards.discardPile.size());
-+        result.global[7] = totalEnemyHp;
-+        result.global[8] = bc_.player.strength;
-+        result.global[9] = bc_.player.getStatus<PS::VULNERABLE>();
-+        result.global[10] = bc_.player.getStatus<PS::WEAK>();
++        result.global[5] = bc_.cards.cardsInHand;
++        result.global[6] = static_cast<int>(bc_.cards.drawPile.size());
++        result.global[7] = static_cast<int>(bc_.cards.discardPile.size());
++        result.global[8] = static_cast<int>(bc_.cards.exhaustPile.size());
++        result.global[9] = totalEnemyHp;
++        result.global[10] = bc_.player.strength;
++        result.global[11] = bc_.player.getStatus<PS::VULNERABLE>();
++        result.global[12] = bc_.player.getStatus<PS::WEAK>();
 +        return result;
 +    }
 +
@@ -268,7 +287,7 @@ index 471ce96..4f2db73 100644
  }
  
  namespace sts::py {
-@@ -224,7 +463,8 @@ namespace sts::py {
+@@ -224,7 +485,8 @@ namespace sts::py {
              }
          }
  
@@ -278,7 +297,7 @@ index 471ce96..4f2db73 100644
          // skip 14th row because it is invariant
          // 21 * 13 == 273 bits
          for (int y = 0; y < 14; ++y) {
-@@ -292,4 +532,4 @@ namespace sts::py {
+@@ -292,4 +554,4 @@ namespace sts::py {
          return false;
      }
  
@@ -286,18 +305,23 @@ index 471ce96..4f2db73 100644
 \ No newline at end of file
 +}
 diff --git a/bindings/slaythespire.cpp b/bindings/slaythespire.cpp
-index a9afe35..77abe17 100644
+index a9afe35..32dd4ed 100644
 --- a/bindings/slaythespire.cpp
 +++ b/bindings/slaythespire.cpp
-@@ -33,6 +33,43 @@ PYBIND11_MODULE(slaythespire, m) {
+@@ -33,6 +33,49 @@ PYBIND11_MODULE(slaythespire, m) {
          .def("getObservationMaximums", &NNInterface::getObservationMaximums, "get the defined maximum values of the observation space")
          .def_property_readonly("observation_space_size", []() { return NNInterface::observation_space_size; });
  
 +    pybind11::class_<BattleObservation> battleObservation(m, "BattleObservation");
-+    m.attr("HAND_FEATURES") = pybind11::cast(HAND_FEATURES);
++    m.attr("CARD_FEATURES") = pybind11::cast(CARD_FEATURES);
 +    m.attr("ENEMY_FEATURES") = pybind11::cast(ENEMY_FEATURES);
-+    m.attr("PILE_FEATURES") = pybind11::cast(PILE_FEATURES);
 +    m.attr("GLOBAL_FEATURES") = pybind11::cast(GLOBAL_FEATURES);
++    pybind11::enum_<BattleCardLocation>(m, "BattleCardLocation")
++        .value("PAD", BattleCardLocation::PAD)
++        .value("HAND", BattleCardLocation::HAND)
++        .value("DRAW", BattleCardLocation::DRAW)
++        .value("DISCARD", BattleCardLocation::DISCARD)
++        .value("EXHAUST", BattleCardLocation::EXHAUST);
 +    pybind11::enum_<BattleIntent>(m, "BattleIntent")
 +        .value("NONE", BattleIntent::NONE)
 +        .value("ATTACK", BattleIntent::ATTACK)
@@ -309,6 +333,7 @@ index a9afe35..77abe17 100644
 +        .def_readonly("enemies", &BattleObservation::enemies)
 +        .def_readonly("draw_pile", &BattleObservation::draw_pile)
 +        .def_readonly("discard_pile", &BattleObservation::discard_pile)
++        .def_readonly("exhaust_pile", &BattleObservation::exhaust_pile)
 +        .def_readonly("global", &BattleObservation::global)
 +        .def_readonly("hand_mask", &BattleObservation::hand_mask)
 +        .def_readonly("enemy_mask", &BattleObservation::enemy_mask)
@@ -334,10 +359,10 @@ index a9afe35..77abe17 100644
      agent.def(pybind11::init<>());
      agent.def_readwrite("simulation_count_base", &search::ScumSearchAgent2::simulationCountBase, "number of simulations the agent uses for monte carlo tree search each turn")
 diff --git a/bindings/slaythespire.h b/bindings/slaythespire.h
-index 6ec4658..95414af 100644
+index 6ec4658..096d560 100644
 --- a/bindings/slaythespire.h
 +++ b/bindings/slaythespire.h
-@@ -8,11 +8,38 @@
+@@ -8,11 +8,39 @@
  #include <vector>
  #include <unordered_map>
  #include <array>
@@ -353,19 +378,20 @@ index 6ec4658..95414af 100644
  namespace sts {
  
 +    // 当前最小切片的可见观测字段；顺序同时暴露给 Python，避免消费者硬编码宽度。
-+    inline constexpr std::array<const char *, 3> HAND_FEATURES = {
-+        "card_id", "upgraded", "cost"
-+    };
-+    inline constexpr std::array<const char *, 3> PILE_FEATURES = {
-+        "bash_count", "defend_count", "strike_count"
++    inline constexpr std::array<const char *, 5> CARD_FEATURES = {
++        "backend_card_id", "location", "upgraded", "cost", "cost_known"
 +    };
 +    inline constexpr std::array<const char *, 12> ENEMY_FEATURES = {
 +        "monster_id", "hp", "max_hp", "block", "strength", "vulnerable", "weak",
 +        "intent", "intent_damage", "intent_hits", "curl_up", "ritual"
 +    };
-+    inline constexpr std::array<const char *, 11> GLOBAL_FEATURES = {
-+        "hp", "max_hp", "block", "energy", "turn", "draw_count", "discard_count",
-+        "total_enemy_hp", "strength", "vulnerable", "weak"
++    inline constexpr std::array<const char *, 13> GLOBAL_FEATURES = {
++        "hp", "max_hp", "block", "energy", "turn", "hand_count", "draw_count",
++        "discard_count", "exhaust_count", "total_enemy_hp", "strength", "vulnerable", "weak"
++    };
++
++    enum class BattleCardLocation {
++        PAD = 0, HAND = 1, DRAW = 2, DISCARD = 3, EXHAUST = 4
 +    };
 +
 +    // 只表达当前显示的意图类别，不包含内部招式编号或下次随机结果。
@@ -376,7 +402,7 @@ index 6ec4658..95414af 100644
      struct NNInterface {
          static constexpr int observation_space_size = 412;
          static constexpr int playerHpMax = 200;
-@@ -42,6 +69,59 @@ namespace sts {
+@@ -42,6 +70,60 @@ namespace sts {
      }
  
  
@@ -385,6 +411,7 @@ index 6ec4658..95414af 100644
 +        std::vector<int> enemies;
 +        std::vector<int> draw_pile;
 +        std::vector<int> discard_pile;
++        std::vector<int> exhaust_pile;
 +        std::vector<int> global;
 +        std::vector<bool> hand_mask;
 +        std::vector<bool> enemy_mask;

@@ -1,8 +1,12 @@
-# 观测与动作接口契约（Week 4 / T1）
+# 观测与动作接口契约（Week 4；V1 历史版，V2 已完成 P3）
 
 本文固定正式 C++ 后端到后续 Python wrapper 的输入边界。权威依据为
-`spec-v4.md` §4、D16、D17、D19、D21；后续实现若改变字段、语义或信息边界，
+`spec-v4.md` §4、D16、D17、D19、D21、D24；后续实现若改变字段、语义或信息边界，
 须先更新决策日志。
+
+版本状态：本文第 1–7 节记录已经实现并通过旧 Gate 1 的 **V1 三类计数版**；第 8 节
+记录 2026-09-06 裁定的 **V2 逐牌实体版**。P2 已使 C++ 与 Python 规范环境返回 V2，
+P3 已完成双 wrapper 与依赖入口迁移；第四类探针和正式压力/性能仍待 P4–P5。
 
 ## 1. 分层边界
 
@@ -258,3 +262,154 @@ FlattenWrapper 与 TokenWrapper 实际交给后端的动作均为
 `[9, 30, 13, 3, 1, 30, 4, 7, 30, 12, 3]`，11 步自然终局，累计奖励
 `1.381250023841858`，`terminated=True`、`truncated=False`。逐步测试保存了提交动作前的
 环境 mask，并确认每个动作对应项都为 `True`；终局 mask 全 `False`。
+
+## 8. V2 逐牌实体目标契约（D24；待实施）
+
+### 8.1 语义层：四个区域、每张牌一条记录
+
+规范观测将牌堆计数替换为四个变长列表：
+
+```text
+hand:          list[CardObservation]  # 列表位置就是当前手牌槽位
+draw_pile:     list[CardObservation]  # 公开字段的确定性排序
+discard_pile:  list[CardObservation]  # 公开字段的确定性排序
+exhaust_pile:  list[CardObservation]  # 公开字段的确定性排序
+```
+
+`CardObservation` 的最小字段：
+
+| 字段 | 语义 | dtype | 有效性与来源 |
+|---|---|---|---|
+| `card_id` | 项目注册 ID；不是槽位号或唯一实例号 | `int32` | C++ `CardId` 经 CardRegistry 显式映射 |
+| `location` | `HAND/DRAW/DISCARD/EXHAUST` | `int8` 类别 | 由卡牌所在公开区域产生 |
+| `upgraded` | 当前牌是否升级 | `bool` | 后端 `isUpgraded()`；当前项目正式配置恒为 False |
+| `cost` | 当前公开费用 | `int16` | 手牌取 `costForTurn`；未知区域值清零 |
+| `cost_known` | `cost` 是否为已核验的真实公开值 | `bool` | 手牌为 True；非手牌区域暂为 False |
+| `target_kind` | `NO_TARGET` 或 `ENEMY` | `int8` 类别 | CardRegistry 的公开规则元数据 |
+
+当前不输出后端 `uniqueId`、内部牌序、RNG、`specialData`、`freeToPlayOnce` 或 `retain`。
+这些字段即使后端可读，也不等于已证明应进入玩家可见观测。若中等档中的具体机制
+确实需要新的动态实例属性，先登记它的含义、可见性、缺失处理和测试，再扩 schema。
+
+重复牌是重复记录。例如 V1 的抽牌堆计数 `[1, 0, 2]` 在 V2 中展开为：
+
+```text
+card_id  location  upgraded  cost  cost_known  target_kind
+1        DRAW      False     0     False       ENEMY       # Bash
+3        DRAW      False     0     False       ENEMY       # Strike
+3        DRAW      False     0     False       ENEMY       # Strike
+```
+
+此处两个 Strike 都必须保留。将其中一张移动到弃牌堆后，应得到一张 DRAW Strike 和
+一张 DISCARD Strike；卡牌 ID 不变，两个区域 count 各自改变。
+
+### 8.2 CardRegistry
+
+注册表是普通版本化数据表，不是游戏规则 DSL：
+
+| registry_id | backend_card_id | name | target_kind |
+|---:|---:|---|---|
+| 0 | — | PAD | PAD |
+| 1 | 25 | Bash | ENEMY |
+| 2 | 104 | Defend | NO_TARGET |
+| 3 | 321 | Strike | ENEMY |
+
+已有 `registry_id` 永不因名称排序或新增卡牌而重编号。生产路径遇到未知有效
+`backend_card_id` 必须报错，不得映射为 PAD、静默丢弃或哈希到已有类别。实验配置、
+数据集和 checkpoint 记录 schema 版本、注册表版本及内容哈希。
+
+`target_kind` 是动作语义；环境动作仍为 31 位 `slot * 3 + environment_target_index`。
+因此 Defend 的环境列 0 解析成 `NO_TARGET`，Strike 的环境列 0 解析成 `ENEMY` 且
+指向敌人实体 0。二者不得共用模型内的目标表示。
+
+### 8.3 排序、数量和隐藏信息
+
+- 手牌列表保持后端槽位顺序；列表位置只用于动作对应，不复制为卡牌数值特征。
+- 三个非手牌区域分别使用 `(card_id, upgraded, cost_known, cost, target_kind)` 排序，
+  再按 `DRAW, DISCARD, EXHAUST` 顺序拼入张量。完全相同副本无需伪造唯一次序。
+- 排序不得使用真实抽取索引、`uniqueId`、对象地址、创建时间或 RNG，也不得消耗 RNG。
+- `hand_count/draw_count/discard_count/exhaust_count` 均由有效记录导出并交叉检查。
+- `global` V2 顺序固定为 `hp, max_hp, block, energy, turn, hand_count, draw_count,
+  discard_count, exhaust_count, total_enemy_hp, strength, vulnerable, weak`，共 13 项。
+
+当前消耗堆为空只表示最小切片没有牌进入该区域，不表示消耗机制已经验证。调试
+`info`、seed 和 RNG 继续在观测白名单之外。
+
+### 8.4 张量准备层
+
+语义层使用变长列表；wrapper 的确定性准备层使用固定容量：
+
+```text
+max_hand = 10
+pile_capacity = 10        # 当前最小切片；集中配置
+card_capacity = 20        # 前 10 行手牌，后 10 行非手牌
+```
+
+前 10 行与手牌槽位一一对应。后三个区域合计超过 `pile_capacity` 时，在任何截断前
+显式报错。扩容只能通过版本化配置并重新检查模型输入兼容性，不能静默取前 N 张。
+
+共同的卡牌张量事实为：
+
+| key | TokenInput shape | FlatInput shape | 内容 |
+|---|---:|---:|---|
+| `card_categorical` | `[20,4]` | `[80]` | `card_id, location, target_kind, upgraded` |
+| `card_numeric` | `[20,1]` | `[20]` | `cost` |
+| `card_numeric_known` | `[20,1]` | `[20]` | 费用是否已知 |
+| `card_valid` | `[20]` | `[20]` | 该行是否为真实卡牌 |
+| `enemy_features` | `[5,20]` | `[100]` | 暂沿用 V1 的敌人公开编码 |
+| `enemy_mask` | `[5]` | `[5]` | 有效敌人行 |
+| `global` | `[1,13]` | `[13]` | V2 全局公开量 |
+| `action_mask` | `[31]` | `[31]` | 环境合法动作 |
+
+类别编码约定：`location` 使用 `PAD=0, HAND=1, DRAW=2, DISCARD=3, EXHAUST=4`；
+`target_kind` 使用 `PAD=0, NO_TARGET=1, ENEMY=2`。无效卡牌行的所有类别设为 PAD、
+数值赋值为 0、known/valid 设为 False。不能先对无效越界 ID 查表再 mask，也不能用
+`0 * NaN` 清理。有效卡牌的真实零费用由 `cost_known=True, card_valid=True` 区分。
+
+两个 wrapper 必须能按固定布局恢复成相同的 V2 允许事实。类别整数不做连续缩放；
+wrapper 不创建 embedding 或其他可训练参数。MLP 在模型内分别查表/投影后 flatten，
+Set Transformer 在模型内保留实体维度；这两个模型步骤不属于 V2 数据准备实现。
+
+### 8.5 V2 实施与验收边界
+
+P1 已完成 D24、规格与本节契约；P2 已完成 C++ 四区逐牌导出、绑定与 Python 规范
+观测；P3 已完成共享 prepare、FlatInput、TokenInput 及依赖入口迁移。后续顺序固定为：
+
+1. P4：动作闭环、第四类合成卡和信息等价测试。
+2. P5：正式回归、确定性、稳定性、性能和交付报告。
+
+V2 完成前不得删除 V1 的历史证据，也不得用 V1 的 `138 passed`、10000 场或吞吐
+数字声称 V2 已通过。V2 实施会破坏 wrapper 返回 shape；代码、数据和未来 checkpoint
+须依 schema/registry 版本显式拒绝不匹配输入或走已测试迁移。
+
+#### P2 实现记录（2026-09-06）
+
+- 项目 C++ 适配层逐张导出手牌、抽牌堆、弃牌堆与消耗堆；非手牌区在原始 pybind
+  边界已经按公开字段排序，Python 不会先接触真实抽取顺序。
+- Python `CardRegistry` 将后端 `25/104/321` 映射为项目 `1/2/3`，并生成可记录的
+  registry 内容哈希；规范观测交叉检查四区记录数与 13 项 global 中的四区 count。
+- 锁定扩展重新构建成功；`tests/test_cpp_env.py tests/test_lightspeed_adapter.py`
+  实际结果为 `39 passed in 0.28s`，`compileall`、主仓库与上游 `diff --check`、补丁
+  反向检查通过。当前适配补丁 sha256 为
+  `619d7d1c00ec4fd9c1e1499d9a3b37d84d8b98f01cc932d68f61be07ce2e7a6e`，本机构建
+  扩展 sha256 为 `e55552b105755889b1130967420f37591cc6e74433fcac370d8218ff7bda4ec9`。
+- 完整套件实际结果为 `110 passed, 28 failed in 1.20s`；失败全部位于尚未迁移的
+  FlattenWrapper/TokenWrapper、依赖它们的 Agent 闭环和旧 V1 语义序列化。该结果是
+  P2 到 P3 的已知阶段断点，P3 必须恢复全绿，不能将其算入 P2 源头回归失败或隐藏。
+- 真实 seed `100000` 双虱样例：初态 `HAND/DRAW/DISCARD/EXHAUST=5/5/0/0`；结束
+  回合后为 `5/0/5/0`，记录 location 与四区 count 一致。该结果只验收 P2 源头和
+  Python 规范层；双 wrapper、完整套件、压力与性能留到 P3–P5。
+
+#### P3 实现记录（2026-09-06）
+
+- `FlattenWrapper` 与 `TokenWrapper` 现在只调用同一个确定性 prepare。前 10 行保持
+  手牌槽位，后 10 行按 DRAW、DISCARD、EXHAUST 拼接；超容量先报错，不截断。
+- 两种输出都包含 `card_categorical`、`card_numeric`、`card_numeric_known`、
+  `card_valid`、敌人公开编码、`global` 和环境 `action_mask`。FlatInput 只展平实体轴，
+  不把类别 ID 转成连续数值，也不创建可训练 embedding。
+- Week 4 验收序列化升级为 V2，逐字段编码四区变长记录，并在报告元数据记录 schema、
+  registry 版本、registry 内容哈希与序列化版本。手牌换位、敌人换位、location 移动、
+  未知费用、padding、隐藏调试字段、容量拒绝和双路径恢复均有回归覆盖。
+- `python -m pytest -q` 实际结果为 `145 passed in 0.72s`；P2 的 28 项已知阶段失败已
+  全部消除。这个结果完成 P3，不包含 P4 的第四类合成卡探针，也不替代 P5 的一万场
+  稳定性与分路径性能重验。

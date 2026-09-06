@@ -1,4 +1,4 @@
-"""FlattenWrapper 与 TokenWrapper 的同源、换位和信息边界测试。"""
+"""V2 双 wrapper 的同源、位置、容量和信息边界测试。"""
 
 from __future__ import annotations
 
@@ -8,26 +8,28 @@ import numpy as np
 import pytest
 
 from sts import Encounter, FlattenWrapper, LightspeedBattleEnv, TokenWrapper
+from sts.env.registry import (
+    DEFAULT_CARD_REGISTRY,
+    CardDefinition,
+    CardLocation,
+    CardRegistry,
+    TargetKind,
+)
 from sts.env.wrappers import (
-    CARD_TO_INDEX,
+    CARD_CAPACITY,
+    CARD_CATEGORICAL_DIM,
+    CARD_NUMERIC_DIM,
     ENEMY_ENCODED_DIM,
     FLAT_DIM,
-    FLAT_LAYOUT,
     GLOBAL_ENCODED_DIM,
-    HAND_ENCODED_DIM,
-    PILE_ENCODED_DIM,
-    TOKEN_COUNT,
+    MAX_ENEMIES,
+    MAX_HAND,
+    PILE_CAPACITY,
 )
 
 
 def _copy_observation(observation):
-    return {key: value.copy() if isinstance(value, np.ndarray) else deepcopy(value)
-            for key, value in observation.items()}
-
-
-def _segment(features, name):
-    _, start, end = next(item for item in FLAT_LAYOUT if item[0] == name)
-    return features[start:end]
+    return deepcopy(observation)
 
 
 def _assert_wrapped_equal(first, second):
@@ -36,241 +38,264 @@ def _assert_wrapped_equal(first, second):
         assert np.array_equal(first[key], second[key]), key
 
 
-def test_wrapper_shapes_dtypes_and_traceable_flat_layout():
+def _reshape_flat(flat):
+    return {
+        "card_categorical": flat["card_categorical"].reshape(
+            CARD_CAPACITY, CARD_CATEGORICAL_DIM
+        ),
+        "card_numeric": flat["card_numeric"].reshape(
+            CARD_CAPACITY, CARD_NUMERIC_DIM
+        ),
+        "card_numeric_known": flat["card_numeric_known"].reshape(
+            CARD_CAPACITY, CARD_NUMERIC_DIM
+        ),
+        "card_valid": flat["card_valid"],
+        "enemy_features": flat["enemy_features"].reshape(
+            MAX_ENEMIES, ENEMY_ENCODED_DIM
+        ),
+        "enemy_mask": flat["enemy_mask"],
+        "global": flat["global"].reshape(1, GLOBAL_ENCODED_DIM),
+        "action_mask": flat["action_mask"],
+    }
+
+
+def test_双输入_shape_dtype_及允许事实完全相同():
     env = LightspeedBattleEnv()
     source = env.reset(100000, Encounter.TWO_LOUSE)
     flat = FlattenWrapper(env).transform(source)
     tokens = TokenWrapper(env).transform(source)
 
-    assert flat["features"].shape == (FLAT_DIM,) == (182,)
-    assert flat["features"].dtype == np.float32
+    assert flat["card_categorical"].shape == (80,)
+    assert flat["card_numeric"].shape == (20,)
+    assert flat["card_numeric_known"].shape == (20,)
+    assert flat["card_valid"].shape == (20,)
+    assert flat["enemy_features"].shape == (100,)
+    assert flat["enemy_mask"].shape == (5,)
+    assert flat["global"].shape == (13,)
     assert flat["action_mask"].shape == (31,)
-    assert flat["action_mask"].dtype == np.bool_
-    assert tokens["hand"].shape == (10, HAND_ENCODED_DIM) == (10, 5)
-    assert tokens["enemies"].shape == (5, ENEMY_ENCODED_DIM) == (5, 20)
-    assert tokens["global"].shape == (1, GLOBAL_ENCODED_DIM) == (1, 11)
-    assert tokens["draw_pile"].shape == (1, PILE_ENCODED_DIM) == (1, 3)
-    assert tokens["discard_pile"].shape == (1, PILE_ENCODED_DIM) == (1, 3)
-    assert tokens["token_mask"].shape == (TOKEN_COUNT,) == (18,)
-    assert tokens["hand"].dtype == np.float32
-    assert tokens["enemies"].dtype == np.float32
-    assert tokens["global"].dtype == np.float32
-    assert tokens["draw_pile"].dtype == np.float32
-    assert tokens["discard_pile"].dtype == np.float32
-    assert tokens["token_mask"].dtype == np.bool_
+    assert FLAT_DIM == 258
 
-    assert np.array_equal(
-        _segment(flat["features"], "hand"),
-        tokens["hand"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "enemies"),
-        tokens["enemies"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "global"),
-        tokens["global"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "draw_pile"),
-        tokens["draw_pile"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "discard_pile"),
-        tokens["discard_pile"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "hand_mask"),
-        tokens["hand_mask"].astype(np.float32),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "enemy_mask"),
-        tokens["enemy_mask"].astype(np.float32),
-    )
-    assert np.array_equal(flat["action_mask"], tokens["action_mask"])
-    assert np.array_equal(tokens["global"].ravel(), source["global"].astype(np.float32))
-    assert np.array_equal(
-        tokens["draw_pile"].ravel(),
-        source["draw_pile"].astype(np.float32),
-    )
-    assert np.array_equal(
-        tokens["discard_pile"].ravel(),
-        source["discard_pile"].astype(np.float32),
-    )
-    for slot in np.flatnonzero(source["hand_mask"]):
-        assert tokens["hand"][slot, -2] == source["hand"][slot, 1]
-        assert tokens["hand"][slot, -1] == source["hand"][slot, 2]
-    for target in np.flatnonzero(source["enemy_mask"]):
-        assert np.array_equal(
-            tokens["enemies"][target, 4:10],
-            source["enemies"][target, 1:7].astype(np.float32),
-        )
-        assert np.array_equal(
-            tokens["enemies"][target, 16:20],
-            source["enemies"][target, 8:12].astype(np.float32),
-        )
+    assert tokens["card_categorical"].shape == (20, 4)
+    assert tokens["card_numeric"].shape == (20, 1)
+    assert tokens["card_numeric_known"].shape == (20, 1)
+    assert tokens["card_valid"].shape == (20,)
+    assert tokens["enemy_features"].shape == (5, 20)
+    assert tokens["enemy_mask"].shape == (5,)
+    assert tokens["global"].shape == (1, 13)
+    assert tokens["action_mask"].shape == (31,)
+
+    assert flat["card_categorical"].dtype == tokens["card_categorical"].dtype == np.int64
+    assert flat["card_numeric"].dtype == tokens["card_numeric"].dtype == np.float32
+    for key in ("card_numeric_known", "card_valid", "enemy_mask", "action_mask"):
+        assert flat[key].dtype == tokens[key].dtype == np.bool_
+    assert flat["enemy_features"].dtype == tokens["enemy_features"].dtype == np.float32
+    assert flat["global"].dtype == tokens["global"].dtype == np.float32
+    _assert_wrapped_equal(_reshape_flat(flat), tokens)
 
 
-def test_category_ids_are_one_hot_not_continuous_magnitudes():
+def test_前十行保留手牌槽位_后十行按区域拼接():
     env = LightspeedBattleEnv()
     source = env.reset(100000, Encounter.TWO_LOUSE)
     tokens = TokenWrapper(env).transform(source)
 
-    for slot in np.flatnonzero(source["hand_mask"]):
-        encoded = tokens["hand"][slot, :len(CARD_TO_INDEX)]
-        assert encoded.sum() == 1.0
-        assert set(encoded) <= {0.0, 1.0}
-        assert encoded[CARD_TO_INDEX[int(source["hand"][slot, 0])]] == 1.0
+    assert tokens["card_valid"][:5].all()
+    assert not tokens["card_valid"][5:MAX_HAND].any()
+    assert tokens["card_valid"][MAX_HAND:MAX_HAND + 5].all()
+    assert not tokens["card_valid"][MAX_HAND + 5:].any()
+    assert tokens["card_categorical"][:5, 1].tolist() == [int(CardLocation.HAND)] * 5
+    assert tokens["card_categorical"][MAX_HAND:MAX_HAND + 5, 1].tolist() == [
+        int(CardLocation.DRAW)
+    ] * 5
+    assert tokens["card_categorical"][~tokens["card_valid"]].sum() == 0
+    assert tokens["card_numeric"][~tokens["card_valid"]].sum() == 0.0
 
 
-def test_hand_permutation_moves_entities_and_action_blocks_only():
+def test_已知零费用与padding由known和valid区分():
     env = LightspeedBattleEnv()
-    source_a = env.reset(100000, Encounter.TWO_LOUSE)
-    source_a = _copy_observation(source_a)
-    source_a["hand"][0] = [25, 0, 2]  # Bash
-    source_a["hand"][1] = [321, 0, 1]  # Strike
-    source_a["global"][3] = 1
+    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    source["hand"][0]["cost"] = 0
+    tokens = TokenWrapper(env).transform(source)
+
+    assert tokens["card_numeric"][0, 0] == 0.0
+    assert tokens["card_numeric_known"][0, 0]
+    assert tokens["card_valid"][0]
+    assert tokens["card_numeric"][MAX_HAND + 5, 0] == 0.0
+    assert not tokens["card_numeric_known"][MAX_HAND + 5, 0]
+    assert not tokens["card_valid"][MAX_HAND + 5]
+
+
+def test_非手牌费用未知但卡牌仍然有效():
+    env = LightspeedBattleEnv()
+    tokens = TokenWrapper(env).reset(100000, Encounter.TWO_LOUSE)
+
+    rows = slice(MAX_HAND, MAX_HAND + 5)
+    assert tokens["card_valid"][rows].all()
+    assert not tokens["card_numeric_known"][rows].any()
+    assert tokens["card_numeric"][rows].sum() == 0.0
+
+
+def test_第四类合成卡只扩注册数据即可经过双路径四个区域():
+    registry = CardRegistry(
+        (*DEFAULT_CARD_REGISTRY.entries,
+         CardDefinition(4, 999999, "Synthetic Probe", TargetKind.ENEMY)),
+        version=2,
+    )
+    env = LightspeedBattleEnv(registry=registry)
+    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    source["hand"][0] = {
+        "card_id": 4,
+        "location": int(CardLocation.HAND),
+        "upgraded": True,
+        "cost": 2,
+        "cost_known": True,
+        "target_kind": int(TargetKind.ENEMY),
+    }
+    for key, location in (
+        ("draw_pile", CardLocation.DRAW),
+        ("discard_pile", CardLocation.DISCARD),
+        ("exhaust_pile", CardLocation.EXHAUST),
+    ):
+        source[key].append({
+            "card_id": 4,
+            "location": int(location),
+            "upgraded": False,
+            "cost": 0,
+            "cost_known": False,
+            "target_kind": int(TargetKind.ENEMY),
+        })
+    source["global"][5:9] = [
+        len(source["hand"]),
+        len(source["draw_pile"]),
+        len(source["discard_pile"]),
+        len(source["exhaust_pile"]),
+    ]
+
+    flat = FlattenWrapper(env).transform(source)
+    tokens = TokenWrapper(env).transform(source)
+
+    _assert_wrapped_equal(_reshape_flat(flat), tokens)
+    valid_rows = tokens["card_categorical"][tokens["card_valid"]]
+    probe_rows = valid_rows[valid_rows[:, 0] == 4]
+    assert probe_rows[:, 1].tolist() == [
+        int(CardLocation.HAND),
+        int(CardLocation.DRAW),
+        int(CardLocation.DISCARD),
+        int(CardLocation.EXHAUST),
+    ]
+    assert probe_rows[:, 2].tolist() == [int(TargetKind.ENEMY)] * 4
+
+
+def test_相同卡牌没有槽位号特征():
+    env = LightspeedBattleEnv()
+    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    source["hand"][1] = deepcopy(source["hand"][0])
+    tokens = TokenWrapper(env).transform(source)
+
+    assert np.array_equal(tokens["card_categorical"][0], tokens["card_categorical"][1])
+    assert np.array_equal(tokens["card_numeric"][0], tokens["card_numeric"][1])
+
+
+def test_手牌换位只移动实体行和对应动作块():
+    env = LightspeedBattleEnv()
+    source_a = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
     source_a["action_mask"][:] = False
-    source_a["action_mask"][3:5] = True  # 能量只够槽位 1 的 Strike
+    source_a["action_mask"][0:3] = [True, False, False]
+    source_a["action_mask"][3:6] = [False, True, False]
     source_a["action_mask"][30] = True
 
     source_b = _copy_observation(source_a)
-    source_b["hand"][[0, 1]] = source_b["hand"][[1, 0]]
-    source_b["hand_mask"][[0, 1]] = source_b["hand_mask"][[1, 0]]
+    source_b["hand"][0], source_b["hand"][1] = source_b["hand"][1], source_b["hand"][0]
     source_b["action_mask"][0:3] = source_a["action_mask"][3:6]
     source_b["action_mask"][3:6] = source_a["action_mask"][0:3]
 
-    token_wrapper = TokenWrapper(env)
-    flat_wrapper = FlattenWrapper(env)
-    token_a = token_wrapper.transform(source_a)
-    token_b = token_wrapper.transform(source_b)
-    flat_a = flat_wrapper.transform(source_a)
-    flat_b = flat_wrapper.transform(source_b)
-
-    assert np.array_equal(token_b["hand"][0], token_a["hand"][1])
-    assert np.array_equal(token_b["hand"][1], token_a["hand"][0])
-    assert np.array_equal(token_b["global"], token_a["global"])
-    assert np.array_equal(token_b["enemies"], token_a["enemies"])
-    assert np.array_equal(token_b["draw_pile"], token_a["draw_pile"])
-    assert np.array_equal(token_b["discard_pile"], token_a["discard_pile"])
-    assert np.array_equal(token_b["action_mask"][0:3], token_a["action_mask"][3:6])
-    assert np.array_equal(token_b["action_mask"][3:6], token_a["action_mask"][0:3])
-    assert np.array_equal(
-        _segment(flat_b["features"], "global"),
-        _segment(flat_a["features"], "global"),
-    )
-    bash_slot_a = int(np.flatnonzero(token_a["hand"][:, CARD_TO_INDEX[25]])[0])
-    bash_slot_b = int(np.flatnonzero(token_b["hand"][:, CARD_TO_INDEX[25]])[0])
-    assert (bash_slot_a, bash_slot_b) == (0, 1)
-    assert bash_slot_a * 3 == 0
-    assert bash_slot_b * 3 == 3
+    tokens_a = TokenWrapper(env).transform(source_a)
+    tokens_b = TokenWrapper(env).transform(source_b)
+    assert np.array_equal(tokens_b["card_categorical"][0], tokens_a["card_categorical"][1])
+    assert np.array_equal(tokens_b["card_categorical"][1], tokens_a["card_categorical"][0])
+    assert np.array_equal(tokens_b["card_categorical"][2:], tokens_a["card_categorical"][2:])
+    assert np.array_equal(tokens_b["action_mask"][0:3], tokens_a["action_mask"][3:6])
+    assert np.array_equal(tokens_b["action_mask"][3:6], tokens_a["action_mask"][0:3])
 
 
-def test_enemy_permutation_moves_target_columns_but_not_no_target_card():
+def test_敌人换位移动目标列_无目标牌仍使用环境列零():
     env = LightspeedBattleEnv()
-    source_a = _copy_observation(env.reset(100000, Encounter.JAW_WORM))
-    source_a["hand"][0] = [321, 0, 1]  # Strike，需要目标
-    source_a["hand"][1] = [104, 0, 1]  # Defend，无目标
+    source_a = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    enemy_slot = next(
+        index for index, card in enumerate(source_a["hand"])
+        if card["target_kind"] == int(TargetKind.ENEMY)
+    )
+    no_target_slot = next(
+        index for index, card in enumerate(source_a["hand"])
+        if card["target_kind"] == int(TargetKind.NO_TARGET)
+    )
     source_a["action_mask"][:] = False
-    source_a["action_mask"][0:3] = [True, False, False]
-    source_a["action_mask"][3:6] = [True, False, False]
+    source_a["action_mask"][enemy_slot * 3:enemy_slot * 3 + 3] = [True, False, False]
+    source_a["action_mask"][no_target_slot * 3] = True
     source_a["action_mask"][30] = True
 
     source_b = _copy_observation(source_a)
     source_b["enemies"][[0, 1]] = source_b["enemies"][[1, 0]]
     source_b["enemy_mask"][[0, 1]] = source_b["enemy_mask"][[1, 0]]
-    source_b["action_mask"][0:3] = [False, True, False]
-    # Defend 的 target=0 是无目标牌规范编号，不代表敌人 0，换敌人时保持不变。
-    source_b["action_mask"][3:6] = [True, False, False]
+    start = enemy_slot * 3
+    source_b["action_mask"][start:start + 3] = [False, True, False]
 
     tokens_a = TokenWrapper(env).transform(source_a)
     tokens_b = TokenWrapper(env).transform(source_b)
-
-    assert not tokens_a["enemy_mask"][1]
-    assert not tokens_b["enemy_mask"][0]
-    assert np.array_equal(tokens_b["enemies"][1], tokens_a["enemies"][0])
-    assert tokens_a["action_mask"][0:3].tolist() == [True, False, False]
-    assert tokens_b["action_mask"][0:3].tolist() == [False, True, False]
-    assert tokens_a["action_mask"][3:6].tolist() == [True, False, False]
-    assert tokens_b["action_mask"][3:6].tolist() == [True, False, False]
+    assert np.array_equal(tokens_b["enemy_features"][0], tokens_a["enemy_features"][1])
+    assert np.array_equal(tokens_b["enemy_features"][1], tokens_a["enemy_features"][0])
+    assert tokens_a["action_mask"][start:start + 3].tolist() == [True, False, False]
+    assert tokens_b["action_mask"][start:start + 3].tolist() == [False, True, False]
+    assert tokens_a["action_mask"][no_target_slot * 3]
+    assert tokens_b["action_mask"][no_target_slot * 3]
 
 
-def test_padding_residue_and_hidden_debug_values_do_not_change_outputs():
+def test_结束回合后location反映卡牌从手牌移入弃牌堆():
+    env = LightspeedBattleEnv()
+    before = env.reset(100000, Encounter.TWO_LOUSE)
+    after, *_ = env.step(30)
+    before_tokens = TokenWrapper(env).transform(before)
+    after_tokens = TokenWrapper(env).transform(after)
+
+    assert before["global"][5:9].tolist() == [5, 5, 0, 0]
+    assert after["global"][5:9].tolist() == [5, 0, 5, 0]
+    assert before_tokens["card_categorical"][MAX_HAND:MAX_HAND + 5, 1].tolist() == [2] * 5
+    assert after_tokens["card_categorical"][MAX_HAND:MAX_HAND + 5, 1].tolist() == [3] * 5
+
+
+def test_隐藏调试字段和无效敌人残留不进入输入():
     env = LightspeedBattleEnv()
     source = env.reset(100000, Encounter.TWO_LOUSE)
     changed = _copy_observation(source)
-    changed["hand"][~changed["hand_mask"]] = 123456
     changed["enemies"][~changed["enemy_mask"]] = 654321
     changed["seed"] = 999999
-    changed["shuffle_rng"] = 888888
-    changed["draw_order"] = [321, 25, 104]
+    changed["draw_order"] = [3, 1, 2]
 
     _assert_wrapped_equal(
-        FlattenWrapper(env).transform(source),
-        FlattenWrapper(env).transform(changed),
+        FlattenWrapper(env).transform(source), FlattenWrapper(env).transform(changed)
     )
     _assert_wrapped_equal(
-        TokenWrapper(env).transform(source),
-        TokenWrapper(env).transform(changed),
+        TokenWrapper(env).transform(source), TokenWrapper(env).transform(changed)
     )
 
 
 @pytest.mark.parametrize("wrapper_type", [FlattenWrapper, TokenWrapper])
-def test_transform_is_deterministic_and_returns_independent_arrays(wrapper_type):
+def test_transform确定且每次返回独立数组(wrapper_type):
     env = LightspeedBattleEnv()
     source = env.reset(100000, Encounter.TWO_LOUSE)
     wrapper = wrapper_type(env)
-
     first = wrapper.transform(source)
     second = wrapper.transform(source)
 
     _assert_wrapped_equal(first, second)
-    for key in first:
-        assert not np.shares_memory(first[key], second[key])
-
-
-def test_identical_cards_have_identical_token_features_without_slot_number():
-    env = LightspeedBattleEnv()
-    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
-    source["hand"][0] = [321, 0, 1]
-    source["hand"][1] = [321, 0, 1]
-
-    tokens = TokenWrapper(env).transform(source)
-
-    assert np.array_equal(tokens["hand"][0], tokens["hand"][1])
-
-
-def test_visible_pile_counts_move_through_both_wrappers():
-    env = LightspeedBattleEnv()
-    source = env.reset(100000, Encounter.TWO_LOUSE)
-    next_source, *_ = env.step(30)
-
-    assert source["draw_pile"].tolist() == [1, 2, 2]
-    assert source["discard_pile"].tolist() == [0, 0, 0]
-    assert next_source["draw_pile"].tolist() == [0, 0, 0]
-    assert next_source["discard_pile"].tolist() == [0, 2, 3]
-    assert source["draw_pile"].sum() == source["global"][5]
-    assert next_source["discard_pile"].sum() == next_source["global"][6]
-
-    flat = FlattenWrapper(env).transform(next_source)
-    tokens = TokenWrapper(env).transform(next_source)
-    assert np.array_equal(
-        _segment(flat["features"], "draw_pile"),
-        tokens["draw_pile"].ravel(),
-    )
-    assert np.array_equal(
-        _segment(flat["features"], "discard_pile"),
-        tokens["discard_pile"].ravel(),
-    )
+    assert all(not np.shares_memory(first[key], second[key]) for key in first)
 
 
 @pytest.mark.parametrize("wrapper_type", [FlattenWrapper, TokenWrapper])
 @pytest.mark.parametrize("encounter", list(Encounter))
-def test_wrapped_environment_preserves_control_flow(wrapper_type, encounter):
+def test_wrapper保留环境控制流(wrapper_type, encounter):
     wrapper = wrapper_type(LightspeedBattleEnv(max_turns=2))
     observation = wrapper.reset(100000, encounter)
-    action_mask = observation["action_mask"]
-    action = int(np.flatnonzero(action_mask)[0])
+    action = int(np.flatnonzero(observation["action_mask"])[0])
     next_observation, reward, terminated, truncated, info = wrapper.step(action)
 
     assert next_observation["action_mask"].shape == (31,)
@@ -278,14 +303,35 @@ def test_wrapped_environment_preserves_control_flow(wrapper_type, encounter):
     assert isinstance(terminated, bool)
     assert isinstance(truncated, bool)
     assert "shuffle_rng" in info
-    assert "shuffle_rng" not in next_observation
 
 
 @pytest.mark.parametrize("wrapper_type", [FlattenWrapper, TokenWrapper])
-def test_unknown_visible_category_is_rejected(wrapper_type):
+def test_未知card_id在写张量前报错(wrapper_type):
     env = LightspeedBattleEnv()
     source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
-    source["hand"][0, 0] = 999999
+    source["hand"][0]["card_id"] = 999999
 
-    with pytest.raises(ValueError, match="card_id.*范围外"):
+    with pytest.raises(ValueError, match="未知 registry_id"):
+        wrapper_type(env).transform(source)
+
+
+@pytest.mark.parametrize("wrapper_type", [FlattenWrapper, TokenWrapper])
+def test_location与所在列表不一致时报错(wrapper_type):
+    env = LightspeedBattleEnv()
+    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    source["draw_pile"][0]["location"] = int(CardLocation.DISCARD)
+
+    with pytest.raises(ValueError, match="location 应为 2"):
+        wrapper_type(env).transform(source)
+
+
+@pytest.mark.parametrize("wrapper_type", [FlattenWrapper, TokenWrapper])
+def test_非手牌超过容量时拒绝截断(wrapper_type):
+    env = LightspeedBattleEnv()
+    source = _copy_observation(env.reset(100000, Encounter.TWO_LOUSE))
+    while sum(len(source[key]) for key in ("draw_pile", "discard_pile", "exhaust_pile")) <= PILE_CAPACITY:
+        source["draw_pile"].append(deepcopy(source["draw_pile"][0]))
+    source["global"][6] = len(source["draw_pile"])
+
+    with pytest.raises(ValueError, match="超过 pile_capacity=10"):
         wrapper_type(env).transform(source)

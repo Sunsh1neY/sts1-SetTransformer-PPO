@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 from types import SimpleNamespace
 
 import numpy as np
@@ -10,15 +11,15 @@ import pytest
 from sts import Encounter, LightspeedBattleEnv
 from sts.env.lightspeed import (
     ACTION_COUNT,
+    CARD_FEATURES,
     ENEMY_FEATURES,
     GLOBAL_FEATURES,
-    HAND_FEATURES,
     MAX_ENEMIES,
     MAX_HAND,
-    PILE_FEATURES,
     _check_backend_layout,
     _observation_to_dict,
 )
+from sts.env.registry import CardLocation
 
 
 EXPECTED_KEYS = {
@@ -26,8 +27,8 @@ EXPECTED_KEYS = {
     "enemies",
     "draw_pile",
     "discard_pile",
+    "exhaust_pile",
     "global",
-    "hand_mask",
     "enemy_mask",
     "action_mask",
 }
@@ -35,20 +36,27 @@ EXPECTED_KEYS = {
 
 def _assert_observation_contract(observation):
     assert set(observation) == EXPECTED_KEYS
-    assert observation["hand"].shape == (MAX_HAND, len(HAND_FEATURES))
+    assert 0 <= len(observation["hand"]) <= MAX_HAND
     assert observation["enemies"].shape == (MAX_ENEMIES, len(ENEMY_FEATURES))
-    assert observation["draw_pile"].shape == (len(PILE_FEATURES),)
-    assert observation["discard_pile"].shape == (len(PILE_FEATURES),)
+    assert all(isinstance(observation[key], list) for key in (
+        "hand", "draw_pile", "discard_pile", "exhaust_pile",
+    ))
+    for key in ("hand", "draw_pile", "discard_pile", "exhaust_pile"):
+        for card in observation[key]:
+            assert set(card) == {
+                "card_id", "location", "upgraded", "cost", "cost_known", "target_kind",
+            }
+            assert isinstance(card["card_id"], int)
+            assert isinstance(card["location"], int)
+            assert isinstance(card["upgraded"], bool)
+            assert isinstance(card["cost"], int)
+            assert isinstance(card["cost_known"], bool)
+            assert isinstance(card["target_kind"], int)
     assert observation["global"].shape == (len(GLOBAL_FEATURES),)
-    assert observation["hand_mask"].shape == (MAX_HAND,)
     assert observation["enemy_mask"].shape == (MAX_ENEMIES,)
     assert observation["action_mask"].shape == (ACTION_COUNT,)
-    assert observation["hand"].dtype == np.int32
     assert observation["enemies"].dtype == np.int32
-    assert observation["draw_pile"].dtype == np.int32
-    assert observation["discard_pile"].dtype == np.int32
     assert observation["global"].dtype == np.int32
-    assert observation["hand_mask"].dtype == np.bool_
     assert observation["enemy_mask"].dtype == np.bool_
     assert observation["action_mask"].dtype == np.bool_
 
@@ -74,46 +82,62 @@ def test_package_entry_runs_all_minimal_encounters(encounter):
 def test_observation_snapshot_is_independent_across_steps():
     env = LightspeedBattleEnv()
     before = env.reset(100000, Encounter.TWO_LOUSE)
-    saved = {key: value.copy() for key, value in before.items()}
+    saved = deepcopy(before)
 
     action = int(np.flatnonzero(before["action_mask"])[0])
     after, *_ = env.step(action)
 
     for key in EXPECTED_KEYS:
-        assert np.array_equal(before[key], saved[key])
-        assert not np.shares_memory(before[key], after[key])
+        if isinstance(before[key], np.ndarray):
+            assert np.array_equal(before[key], saved[key])
+            assert not np.shares_memory(before[key], after[key])
+        else:
+            assert before[key] == saved[key]
+            assert before[key] is not after[key]
 
 
-def test_invalid_entity_rows_are_canonicalized_to_zero():
-    hand = np.full((MAX_HAND, len(HAND_FEATURES)), 7, dtype=np.int32)
+def test_raw_card_records_are_validated_and_invalid_enemy_rows_are_zeroed():
+    hand = np.zeros((MAX_HAND, len(CARD_FEATURES)), dtype=np.int32)
+    hand[0] = [25, int(CardLocation.HAND), 0, 2, 1]
     enemies = np.full((MAX_ENEMIES, len(ENEMY_FEATURES)), 9, dtype=np.int32)
     raw = SimpleNamespace(
         hand=hand.ravel().tolist(),
         enemies=enemies.ravel().tolist(),
-        draw_pile=[1, 2, 2],
-        discard_pile=[0, 0, 0],
-        hand_mask=[True, False, *([True] * 8)],
-        enemy_mask=[False, True, True, True, True],
+        draw_pile=[],
+        discard_pile=[],
+        exhaust_pile=[],
+        hand_mask=[True, *([False] * 9)],
+        enemy_mask=[False] * MAX_ENEMIES,
         action_mask=[False] * ACTION_COUNT,
     )
-    setattr(raw, "global", [1] * len(GLOBAL_FEATURES))
+    global_values = [0] * len(GLOBAL_FEATURES)
+    global_values[5] = 1
+    setattr(raw, "global", global_values)
 
     observation = _observation_to_dict(raw)
 
-    assert np.all(observation["hand"][1] == 0)
+    assert observation["hand"] == [{
+        "card_id": 1,
+        "location": int(CardLocation.HAND),
+        "upgraded": False,
+        "cost": 2,
+        "cost_known": True,
+        "target_kind": 2,
+    }]
     assert np.all(observation["enemies"][0] == 0)
-    assert np.all(observation["hand"][0] == 7)
-    assert np.all(observation["enemies"][1] == 9)
+
+    raw.hand[0] = 999999
+    with pytest.raises(ValueError, match="未登记"):
+        _observation_to_dict(raw)
 
 
 def test_backend_field_drift_is_rejected():
     backend = SimpleNamespace(
-        HAND_FEATURES=["cost", "card_id", "upgraded"],
+        CARD_FEATURES=["location", "backend_card_id", "upgraded", "cost", "cost_known"],
         ENEMY_FEATURES=ENEMY_FEATURES,
-        PILE_FEATURES=PILE_FEATURES,
         GLOBAL_FEATURES=GLOBAL_FEATURES,
     )
-    with pytest.raises(RuntimeError, match="HAND_FEATURES 已漂移"):
+    with pytest.raises(RuntimeError, match="CARD_FEATURES 已漂移"):
         _check_backend_layout(backend)
 
 
@@ -121,23 +145,25 @@ def test_backend_field_drift_is_rejected():
 def test_visible_card_counts_are_conserved_through_trajectory(encounter):
     env = LightspeedBattleEnv(max_turns=10)
     observation = env.reset(100000, encounter)
-    card_ids = (25, 104, 321)
+    card_ids = (1, 2, 3)
 
     for _ in range(100):
-        hand_counts = np.array([
-            np.count_nonzero(
-                observation["hand"][observation["hand_mask"], 0] == card_id
-            )
+        all_cards = [
+            *observation["hand"],
+            *observation["draw_pile"],
+            *observation["discard_pile"],
+            *observation["exhaust_pile"],
+        ]
+        total_counts = np.array([
+            sum(card["card_id"] == card_id for card in all_cards)
             for card_id in card_ids
         ])
-        total_counts = (
-            hand_counts
-            + observation["draw_pile"]
-            + observation["discard_pile"]
-        )
         assert total_counts.tolist() == [1, 4, 5]
-        assert observation["draw_pile"].sum() == observation["global"][5]
-        assert observation["discard_pile"].sum() == observation["global"][6]
+        player = dict(zip(GLOBAL_FEATURES, observation["global"]))
+        assert len(observation["hand"]) == player["hand_count"]
+        assert len(observation["draw_pile"]) == player["draw_count"]
+        assert len(observation["discard_pile"]) == player["discard_count"]
+        assert len(observation["exhaust_pile"]) == player["exhaust_count"]
 
         legal = np.flatnonzero(observation["action_mask"])
         if legal.size == 0:
@@ -160,7 +186,10 @@ def test_adapter_preserves_raw_trajectory(encounter):
     raw_observation = raw.reset(100001, backend_encounter, 0)
     raw_dict = _observation_to_dict(raw_observation)
     for key in EXPECTED_KEYS:
-        assert np.array_equal(wrapped_observation[key], raw_dict[key])
+        if isinstance(wrapped_observation[key], np.ndarray):
+            assert np.array_equal(wrapped_observation[key], raw_dict[key])
+        else:
+            assert wrapped_observation[key] == raw_dict[key]
 
     for _ in range(100):
         action = int(np.flatnonzero(wrapped_observation["action_mask"])[0])
@@ -170,7 +199,10 @@ def test_adapter_preserves_raw_trajectory(encounter):
         raw_dict = _observation_to_dict(raw_result.observation)
 
         for key in EXPECTED_KEYS:
-            assert np.array_equal(wrapped_observation[key], raw_dict[key])
+            if isinstance(wrapped_observation[key], np.ndarray):
+                assert np.array_equal(wrapped_observation[key], raw_dict[key])
+            else:
+                assert wrapped_observation[key] == raw_dict[key]
         assert reward == raw_result.reward
         assert terminated == raw_result.terminated
         assert truncated == raw_result.truncated

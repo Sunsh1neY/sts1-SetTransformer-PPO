@@ -86,7 +86,7 @@
 **状态编码**
 
 - 类型化专用 MLP 投影：卡牌、敌人、玩家各走独立小 MLP 投影到统一 `d_model`；
-- 注入 `entity_type_embedding` 与 `location_embedding`（手牌 / 抽牌堆 / 弃牌堆 / 消耗堆）；牌堆内容若纳入特征，先按 D19 核验可见性，抽牌堆采用无序集合或计数，不暴露实际抽取顺序；
+- 注入 `entity_type_embedding` 与 `location_embedding`（手牌 / 抽牌堆 / 弃牌堆 / 消耗堆）；按 D24，四区卡牌统一为逐牌多重集，抽牌堆、弃牌堆和消耗堆只按允许公开字段确定性排序，不暴露实际抽取顺序；
 - **卡牌语义特征替代手牌索引**——索引每回合含义漂移，是已知陷阱；
 - 全局池化用 attention pooling (PMA)，不用裸 sum-pooling；
 - **seed 不进状态编码**，只保留给环境复现，防学到伪相关；模型状态仅使用 D19 规定的玩家可见信息，排除 RNG 状态、消耗计数及未来随机结果。
@@ -142,31 +142,43 @@
 
 ```python
 obs = {
-    "hand":        [n_hand,  D_card],    # 变长，每张牌一个 token
-    "enemies":     [n_enemy, D_enemy],   # 变长，每个敌人一个 token
-    "draw_pile":   [D_pile],             # 无序卡牌构成；当前为三类卡计数
-    "discard_pile":[D_pile],             # 无序卡牌构成；当前为三类卡计数
-    "global":      [D_global],           # 定长：能量、堆计数、玩家 HP/block/buff、回合数
-    "hand_mask":   [n_hand],             # padding 掩码
+    "hand":         list[CardObservation], # 按环境手牌槽位顺序
+    "draw_pile":    list[CardObservation], # 无序多重集的规范排序
+    "discard_pile": list[CardObservation], # 无序多重集的规范排序
+    "exhaust_pile": list[CardObservation], # 无序多重集；当前真实轨迹为空
+    "enemies":      [n_enemy, D_enemy],    # 变长，每个敌人一个 token
+    "global":       [D_global],            # 定长：能量、四区计数、玩家 HP/block/buff、回合数
     "enemy_mask":  [n_enemy],
-    "action_mask": [A],                  # 合法动作掩码
+    "action_mask":  [A],                   # 合法动作掩码
+}
+
+CardObservation = {
+    "card_id":     int,   # 项目稳定注册 ID；PAD=0，有效卡从 1 开始
+    "location":    int,   # HAND / DRAW / DISCARD / EXHAUST
+    "upgraded":    bool,
+    "cost":        int,   # 当前公开费用；未知时数值清零并令 cost_known=False
+    "cost_known":  bool,
+    "target_kind": int,   # 注册表语义：NO_TARGET / ENEMY
 }
 ```
 
 两个 wrapper 从同一份 dict 派生，保证 MLP 与 Transformer 的特征同源，对照实验才干净：
 
-- `FlattenWrapper` → `[D_flat]`，给 MLP 基线
-- `TokenWrapper` → 分类型的确定性实体特征 + mask；模型内的类型专用可训练投影再产生 `[n_token, d_model]`，给 Set Transformer（D21）
+- `FlattenWrapper` → 结构化 `FlatInput`；MLP 在模型内完成类别 embedding/数值投影后 flatten
+- `TokenWrapper` → 保留相同字段实体维度的 `TokenInput`；模型内的类型专用可训练投影再产生 `[n_token, d_model]`，给 Set Transformer（D21/D24）
 
 观测字段与数据边界：
 
-- **补齐可见状态**：卡牌语义及当前费用、玩家能量与格挡、双方可见 buff/debuff 的层数或时长、敌人当前显示的意图与伤害等。已实现且可见的 Weak 等字段不能遗漏；具体显示字段与数值的可见性待逐项核验，未核实项标记 `[未核实]`。
+- **逐牌记录与注册表**：`CardRegistry` 集中维护稳定项目 ID、后端 ID、名称与 `target_kind`；当前固定 `PAD=0, Bash=1, Defend=2, Strike=3`，未知有效后端 ID 报错。每张重复牌保留独立记录；手牌记录行维持动作槽位对应，但槽位号不进入语义特征。
+- **补齐可见状态**：卡牌语义及当前费用、玩家能量与格挡、双方可见 buff/debuff 的层数或时长、敌人当前显示的意图与伤害等。已实现且可见的 Weak 等字段不能遗漏；手牌外费用在显示语义核验前使用 `cost_known=False`，未知不能编码成真实 0。具体显示字段与数值的可见性待逐项核验，未核实项标记 `[未核实]`。
 - **意图按显示语义编码**：内部招式 ID 须映射为经核验的可见信息；不直接提供当前未显示的伤害 roll、未来招式或未来随机结果。
-- **区分牌堆内容与顺序**：已按 D22 核验并纳入玩家可查看的抽牌堆、弃牌堆无序构成；当前最小切片使用 Bash / Defend / Strike 三类计数，不提供抽牌堆的实际抽取顺序。手牌与当前动作编号的对应关系仍按 D17 保留。消耗堆在当前三张牌下恒空，待扩卡出现可消耗牌时同步开放。
+- **区分牌堆内容与顺序**：D22 已核验玩家可查看抽牌堆、弃牌堆无序构成；D24 将正式输入从三类计数迁移为带 location 的逐牌记录，不提供抽牌堆实际抽取顺序。消耗堆从接口起纳入，当前三张牌下真实轨迹为空；这不表示消耗机制已经验证。
 - **调试信息不自动进入模型**：seed、RNG 状态及计数、完整内部牌序可另存供复现和验证使用；编码器只读取观测白名单，训练与评估不能拼入整个 `info`。
 - **A/B 遵守同一状态信息边界**：DT 可以读取此前已获得的合法观测、已执行动作和已发生奖励。训练用 return-to-go 可由完整轨迹计算；评估时须使用预设目标并按已发生奖励更新，不能读取本场尚未发生的真实回报。目标回报条件不属于游戏状态观测。
 
-验收：固定允许输入的当前可见信息、合法动作及历史，仅改变隐藏值时，编码后的模型输入必须一致；固定目标回报并关闭模型随机性后，动作分布也保持一致。可见信息的完整性另按白名单逐项核对。当前 C++ 观测仍待按此边界修订和验证。
+语义层使用四个变长列表；张量准备层固定 10 行手牌，并将三个非手牌区合并到配置化 `pile_capacity` 行，当前最小切片为 10。超容量必须在丢信息前报错。无效行类别使用 PAD、数值清零；有效真实零值不能当作 padding。类别整数不按大小缩放，wrapper 不含可训练 embedding。
+
+验收：固定允许输入的当前可见信息、合法动作及历史，仅改变隐藏值时，编码后的模型输入必须一致；固定目标回报并关闭模型随机性后，动作分布也保持一致。可见信息的完整性另按白名单逐项核对。D22 计数版的既有实现与 Gate 结果只作为历史输入版本；D24 实体版 C++ 导出、双 wrapper 与完整回归须重新实施和验证。
 
 ### 4.3 动作
 
@@ -294,7 +306,7 @@ $$R = \mathbb{1}[\text{win}] \cdot \left(1 + \lambda \cdot \frac{\text{HP}_{\tex
 
 | 经典 GPT | A 阶段 Set Transformer | B 阶段 Decision Transformer |
 |---|---|---|
-| token = subword | token = **实体**：一张手牌 / 一个敌人 / 玩家 | token = 轨迹项：`return-to-go` / `state` / `action` |
+| token = subword | token = **实体**：四区中的一张卡牌 / 一个敌人 / 玩家 | token = 轨迹项：`return-to-go` / `state` / `action` |
 | 词表查表 | 卡牌 ID 查表 + 连续特征经类型专用 MLP 投影 | action 走词表查表；return / state 是线性投影，无词表 |
 | 位置编码必需 | **故意没有**——实体编码随输入换位，全局池化结果不变 | timestep embedding，同一时刻三 token 共享 |
 | causal mask | 无，集合内双向全连接（近 BERT encoder） | 有 |
@@ -378,7 +390,7 @@ MLP 基线：同参数量级，吃 `FlattenWrapper` 输出。
 | 1 | v4 定稿；仓库骨架；`eval_seeds.json` 生成提交；拉 `runlogger` 摸清格式与 `runs/` 覆盖 | 状态机建模、RNG 与可复现性 | 评估集入版本控制 |
 | 2 | 最小切片模拟器；半天试 build `sts_lightspeed`，卡住即弃 | POMDP、动作掩码语义 | 随机策略能打完一场 |
 | 3 | 保留关键结算与接口回归；现有日志片段过滤与有限字段校准，不扩日志工具 | 力量/易伤/虚弱的结算代数 | 校准记录明确匹配、差异与未验证范围 |
-| 4 | 性能优化（去深拷贝）；观测 dict + 双 wrapper；动作掩码 | — | **Gate 1** |
+| 4 | 性能优化（去深拷贝）；观测 dict + 双 wrapper；动作掩码；D24 逐牌实体协议作为 Gate 1 后的补充迁移，模型实现不前移 | — | **Gate 1**；实体版另行重新验收 |
 | 5-6 | 扩中等档；规则 agent；评估 harness + 配对 bootstrap；按需校准一次并锁死血量系数 λ | 分层评估、效应量 | **Gate 2** |
 | 7-8 | CleanRL PPO 读懂并接入；MLP 策略；监控面板 | GAE、ratio clipping、mask 下梯度 | 训练跑通不崩 |
 | 9-10 | PPO 调参；熵与 explained variance 诊断 | 失败模式：熵塌陷、value 失配 | **Gate 3** |

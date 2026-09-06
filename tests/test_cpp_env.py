@@ -46,7 +46,15 @@ def _rows(values, fields):
 
 
 def _hand(observation):
-    return _rows(observation.hand, slaythespire.HAND_FEATURES)
+    rows = _rows(observation.hand, slaythespire.CARD_FEATURES)
+    return [
+        {"card_id": row["backend_card_id"], **row}
+        for row in rows
+    ]
+
+
+def _pile(values):
+    return _rows(values, slaythespire.CARD_FEATURES)
 
 
 def _enemies(observation):
@@ -67,22 +75,22 @@ def test_observation_layout_matches_wrapper_contract():
     env = _new_env()
     obs = env.reset(100000, slaythespire.MonsterEncounter.TWO_LOUSE, 0)
 
-    assert list(slaythespire.HAND_FEATURES) == ["card_id", "upgraded", "cost"]
-    assert list(slaythespire.PILE_FEATURES) == [
-        "bash_count", "defend_count", "strike_count",
+    assert list(slaythespire.CARD_FEATURES) == [
+        "backend_card_id", "location", "upgraded", "cost", "cost_known",
     ]
     assert list(slaythespire.ENEMY_FEATURES) == [
         "monster_id", "hp", "max_hp", "block", "strength", "vulnerable", "weak",
         "intent", "intent_damage", "intent_hits", "curl_up", "ritual",
     ]
     assert list(slaythespire.GLOBAL_FEATURES) == [
-        "hp", "max_hp", "block", "energy", "turn", "draw_count", "discard_count",
-        "total_enemy_hp", "strength", "vulnerable", "weak",
+        "hp", "max_hp", "block", "energy", "turn", "hand_count", "draw_count",
+        "discard_count", "exhaust_count", "total_enemy_hp", "strength", "vulnerable", "weak",
     ]
-    assert len(obs.hand) == 10 * 3
+    assert len(obs.hand) == 10 * 5
     assert len(obs.enemies) == 5 * 12
-    assert len(obs.draw_pile) == len(obs.discard_pile) == 3
-    assert len(_global(obs)) == 11
+    assert len(obs.draw_pile) == 5 * 5
+    assert len(obs.discard_pile) == len(obs.exhaust_pile) == 0
+    assert len(_global(obs)) == 13
     assert len(obs.hand_mask) == 10
     assert len(obs.enemy_mask) == 5
     assert len(obs.action_mask) == 31
@@ -91,6 +99,7 @@ def test_observation_layout_matches_wrapper_contract():
         obs.enemies,
         obs.draw_pile,
         obs.discard_pile,
+        obs.exhaust_pile,
         _global(obs),
     )
     mask_fields = (obs.hand_mask, obs.enemy_mask, obs.action_mask)
@@ -102,7 +111,7 @@ def test_observation_layout_matches_wrapper_contract():
         assert obs.action_mask[slot * 3 + 2] is False
 
 
-def test_visible_pile_composition_is_counted_without_draw_order():
+def test_visible_pile_composition_is_exported_as_entities_without_draw_order():
     env = _new_env()
     obs = env.reset(100000, slaythespire.MonsterEncounter.TWO_LOUSE, 0)
     card_ids = (
@@ -111,10 +120,12 @@ def test_visible_pile_composition_is_counted_without_draw_order():
         int(slaythespire.CardId.STRIKE_RED),
     )
 
-    assert obs.draw_pile == [1, 2, 2]
-    assert obs.discard_pile == [0, 0, 0]
-    assert sum(obs.draw_pile) == _player(obs)["draw_count"]
-    assert sum(obs.discard_pile) == _player(obs)["discard_count"]
+    draw = _pile(obs.draw_pile)
+    assert [row["backend_card_id"] for row in draw] == [25, 104, 104, 321, 321]
+    assert all(row["location"] == int(slaythespire.BattleCardLocation.DRAW) for row in draw)
+    assert all(row["cost"] == 0 and row["cost_known"] == 0 for row in draw)
+    assert _pile(obs.discard_pile) == _pile(obs.exhaust_pile) == []
+    assert len(draw) == _player(obs)["draw_count"]
 
     before_hand_counts = [
         sum(card["card_id"] == card_id for card in _hand(obs)[:5])
@@ -125,9 +136,18 @@ def test_visible_pile_composition_is_counted_without_draw_order():
         sum(card["card_id"] == card_id for card in _hand(after)[:5])
         for card_id in card_ids
     ]
-    assert after.draw_pile == [0, 0, 0]
-    assert after.discard_pile == before_hand_counts
-    assert after_hand_counts == obs.draw_pile
+    after_draw = _pile(after.draw_pile)
+    after_discard = _pile(after.discard_pile)
+    assert after_draw == []
+    assert [
+        sum(row["backend_card_id"] == card_id for row in after_discard)
+        for card_id in card_ids
+    ] == before_hand_counts
+    assert after_hand_counts == [1, 2, 2]
+    assert all(
+        row["location"] == int(slaythespire.BattleCardLocation.DISCARD)
+        for row in after_discard
+    )
 
 
 def test_reset_is_deterministic():
@@ -141,6 +161,7 @@ def test_reset_is_deterministic():
     assert first.enemies == second.enemies
     assert first.draw_pile == second.draw_pile
     assert first.discard_pile == second.discard_pile
+    assert first.exhaust_pile == second.exhaust_pile
     assert _global(first) == _global(second)
     assert first.hand_mask == second.hand_mask
     assert first.enemy_mask == second.enemy_mask
@@ -165,6 +186,7 @@ def test_same_actions_produce_same_snapshots():
         assert result_a.observation.enemies == result_b.observation.enemies
         assert result_a.observation.draw_pile == result_b.observation.draw_pile
         assert result_a.observation.discard_pile == result_b.observation.discard_pile
+        assert result_a.observation.exhaust_pile == result_b.observation.exhaust_pile
         assert _global(result_a.observation) == _global(result_b.observation)
         assert result_a.reward == result_b.reward
         assert result_a.terminated == result_b.terminated
