@@ -1,5 +1,5 @@
 diff --git a/bindings/bindings-util.cpp b/bindings/bindings-util.cpp
-index 471ce96..5f49b1f 100644
+index 471ce96..af78f73 100644
 --- a/bindings/bindings-util.cpp
 +++ b/bindings/bindings-util.cpp
 @@ -3,9 +3,13 @@
@@ -109,7 +109,7 @@ index 471ce96..5f49b1f 100644
  namespace sts {
  
      NNInterface::NNInterface() :
-@@ -138,6 +228,177 @@ namespace sts {
+@@ -138,6 +228,189 @@ namespace sts {
          return theInstance;
      }
  
@@ -220,10 +220,19 @@ index 471ce96..5f49b1f 100644
 +        return makeObservation();
 +    }
 +
-+    float IroncladBattleEnv::rewardForStep(bool won) const {
-+        // D18：先使用终局成绩；过程、失败和硬超时均为 0，暂不启用势能辅助反馈。
-+        return won ? 1.0f + WIN_HP_LAMBDA * static_cast<float>(bc_.player.curHp) /
-+                               static_cast<float>(std::max(1, bc_.player.maxHp)) : 0.0f;
++    float IroncladBattleEnv::rewardForStep(bool terminal, bool won) const {
++        // D27 battle_reward_v1：过程、失败和硬超时均为0；胜利在全部结算后读取退出HP。
++        if (!terminal) {
++            return 0.0f;
++        }
++        if (bc_.player.maxHp <= 0 || bc_.player.curHp < 0 || bc_.player.curHp > bc_.player.maxHp) {
++            throw std::runtime_error("invalid exit HP for battle_reward_v1");
++        }
++        if (!won) {
++            return 0.0f;
++        }
++        return 1.0f + ALPHA_HP * static_cast<float>(bc_.player.curHp) /
++                                    static_cast<float>(bc_.player.maxHp);
 +    }
 +
 +    bool IroncladBattleEnv::terminated() const {
@@ -278,7 +287,10 @@ index 471ce96..5f49b1f 100644
 +        BattleStepResult result;
 +        result.terminated = terminated();
 +        result.truncated = truncated();
-+        result.reward = rewardForStep(result.terminated && bc_.outcome == Outcome::PLAYER_VICTORY);
++        result.reward = rewardForStep(
++            result.terminated,
++            result.terminated && bc_.outcome == Outcome::PLAYER_VICTORY
++        );
 +        result.observation = makeObservation();
 +        result.info = makeInfo();
 +        return result;
@@ -287,7 +299,7 @@ index 471ce96..5f49b1f 100644
  }
  
  namespace sts::py {
-@@ -224,7 +485,8 @@ namespace sts::py {
+@@ -224,7 +497,8 @@ namespace sts::py {
              }
          }
  
@@ -297,7 +309,7 @@ index 471ce96..5f49b1f 100644
          // skip 14th row because it is invariant
          // 21 * 13 == 273 bits
          for (int y = 0; y < 14; ++y) {
-@@ -292,4 +554,4 @@ namespace sts::py {
+@@ -292,4 +566,4 @@ namespace sts::py {
          return false;
      }
  
@@ -359,7 +371,7 @@ index a9afe35..32dd4ed 100644
      agent.def(pybind11::init<>());
      agent.def_readwrite("simulation_count_base", &search::ScumSearchAgent2::simulationCountBase, "number of simulations the agent uses for monte carlo tree search each turn")
 diff --git a/bindings/slaythespire.h b/bindings/slaythespire.h
-index 6ec4658..096d560 100644
+index 6ec4658..03a7b1e 100644
 --- a/bindings/slaythespire.h
 +++ b/bindings/slaythespire.h
 @@ -8,11 +8,39 @@
@@ -432,7 +444,7 @@ index 6ec4658..096d560 100644
 +        static constexpr int MAX_HAND = 10;
 +        static constexpr int MAX_ENEMIES = 5;
 +        static constexpr float DEFAULT_GAMMA = 1.0f;
-+        static constexpr float WIN_HP_LAMBDA = 0.5f;
++        static constexpr float ALPHA_HP = 0.5f;
 +
 +        explicit IroncladBattleEnv(int maxTurns=50, float gamma=DEFAULT_GAMMA);
 +
@@ -448,13 +460,13 @@ index 6ec4658..096d560 100644
 +        std::unique_ptr<GameContext> gc_;
 +        BattleContext bc_;
 +        int maxTurns_;
-+        float gamma_; // 基础奖励阶段锁定为 1，A/B 都使用不折扣的累计成绩。
++        float gamma_; // battle_reward_v1 锁定为 1，同一任务的模型使用未折扣累计成绩。
 +        bool hasReset_ = false;
 +        bool timedOut_ = false;
 +
 +        BattleObservation makeObservation() const;
 +        std::vector<bool> makeActionMask() const;
-+        float rewardForStep(bool won) const;
++        float rewardForStep(bool terminal, bool won) const;
 +        bool terminated() const;
 +        bool truncated() const;
 +        std::unordered_map<std::string, std::int64_t> makeInfo() const;

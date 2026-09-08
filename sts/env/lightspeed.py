@@ -18,6 +18,7 @@ from sts.env.registry import (
     CardLocation,
     CardRegistry,
 )
+from sts.rewards import BATTLE_REWARD_CONTRACT, normalize_battle_step_info
 
 CARD_FEATURES = ("backend_card_id", "location", "upgraded", "cost", "cost_known")
 ENEMY_FEATURES = (
@@ -148,6 +149,14 @@ def _reshape_mask(values: Any, size: int, name: str) -> NDArray[np.bool_]:
     if result.size != size:
         raise ValueError(f"{name} 长度应为 {size}，实际为 {result.size}")
     return result.reshape(size).copy()
+
+
+def _control_integer(value: Any, name: str) -> int:
+    """控制参数拒绝隐式截断；允许 Python 与 NumPy 整数，但不接受布尔值。"""
+
+    if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, np.integer)):
+        raise TypeError(f"{name} 必须为整数")
+    return int(value)
 
 
 def _card_rows(values: Any, name: str, row_count: int | None = None) -> NDArray[np.int32]:
@@ -320,6 +329,22 @@ class LightspeedBattleEnv:
         return float(self._env.gamma)
 
     @property
+    def reward_contract(self) -> dict[str, Any]:
+        return BATTLE_REWARD_CONTRACT.to_dict()
+
+    @property
+    def task_type(self) -> str:
+        return BATTLE_REWARD_CONTRACT.task_type
+
+    @property
+    def task_spec_id(self) -> str:
+        return BATTLE_REWARD_CONTRACT.task_spec_id
+
+    @property
+    def reward_version(self) -> str:
+        return BATTLE_REWARD_CONTRACT.reward_version
+
+    @property
     def schema_version(self) -> int:
         return SCHEMA_VERSION
 
@@ -351,24 +376,33 @@ class LightspeedBattleEnv:
         ascension: int = 0,
     ) -> Observation:
         raw = self._env.reset(
-            int(seed),
+            _control_integer(seed, "seed"),
             self._backend_encounter(encounter),
-            int(ascension),
+            _control_integer(ascension, "ascension"),
         )
         return _observation_to_dict(raw, self.registry)
 
     def step(
         self,
         action: int,
-    ) -> tuple[Observation, float, bool, bool, dict[str, int]]:
-        result = self._env.step(int(action))
+    ) -> tuple[Observation, float, bool, bool, dict[str, Any]]:
+        result = self._env.step(_control_integer(action, "action"))
         observation = _observation_to_dict(result.observation, self.registry)
-        info = {str(key): int(value) for key, value in result.info.items()}
+        raw_info = {str(key): int(value) for key, value in result.info.items()}
+        reward = float(result.reward)
+        terminated = bool(result.terminated)
+        truncated = bool(result.truncated)
+        info = normalize_battle_step_info(
+            raw_info,
+            actual_reward=reward,
+            terminated=terminated,
+            truncated=truncated,
+        )
         return (
             observation,
-            float(result.reward),
-            bool(result.terminated),
-            bool(result.truncated),
+            reward,
+            terminated,
+            truncated,
             info,
         )
 

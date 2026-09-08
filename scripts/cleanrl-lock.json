@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/vwxyzjn/cleanrl",
+  "commit": "fe8d8a03c41a7ef5b523e2e354bd01c363e786bb",
+  "path": "cleanrl/ppo.py",
+  "source_sha256": "d8dfbb7ac0b21e747b77d6e6673e566db4d6cdacc83bcebcd19cf87ad0e459ae",
+  "license": "MIT",
+  "verified_date": "2026-09-08"
+}

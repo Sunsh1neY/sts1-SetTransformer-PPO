@@ -1,6 +1,6 @@
 
 
-> **文档状态**：本文档为当前唯一执行依据。
+> **文档状态：已冻结为历史方案（2026-09-08）。** 当前唯一执行依据为 [spec-v6.md](spec-v6.md)；v5 亦已由 D27 冻结。下文保留冻结时的内容，章节内的执行性措辞不再作为当前指令。
 > `spec-v3.md` 已冻结为长期愿景文档，不再更新，其目标（STS2 / A10 / 完整 run）不进入本项目排期。
 > `学习路径.md` 的方法论部分继续有效，排期部分被本文档 §10 取代。
 
@@ -166,6 +166,11 @@ CardObservation = {
 
 - `FlattenWrapper` → 结构化 `FlatInput`；MLP 在模型内完成类别 embedding/数值投影后 flatten
 - `TokenWrapper` → 保留相同字段实体维度的 `TokenInput`；模型内的类型专用可训练投影再产生 `[n_token, d_model]`，给 Set Transformer（D21/D24）
+
+D25 S2 起，在模型内以固定正数尺度调整连续值数量级；费用/能量除以3，HP、block、
+total_enemy_hp、intent_damage除以100，回合除以50，牌数及其他层数/次数除以10。
+one-hot和类别ID不按大小缩放，不裁剪数值、不用评估集拟合统计量。尺度由
+`sts/models/mlp.py` 集中声明并随 checkpoint 版本校验；后续 Set 编码器须共用。
 
 观测字段与数据边界：
 
@@ -391,9 +396,9 @@ MLP 基线：同参数量级，吃 `FlattenWrapper` 输出。
 | 2 | 最小切片模拟器；半天试 build `sts_lightspeed`，卡住即弃 | POMDP、动作掩码语义 | 随机策略能打完一场 |
 | 3 | 保留关键结算与接口回归；现有日志片段过滤与有限字段校准，不扩日志工具 | 力量/易伤/虚弱的结算代数 | 校准记录明确匹配、差异与未验证范围 |
 | 4 | 性能优化（去深拷贝）；观测 dict + 双 wrapper；动作掩码；D24 逐牌实体协议作为 Gate 1 后的补充迁移，模型实现不前移 | — | **Gate 1**；实体版另行重新验收 |
-| 5-6 | 扩中等档；规则 agent；评估 harness + 配对 bootstrap；按需校准一次并锁死血量系数 λ | 分层评估、效应量 | **Gate 2** |
-| 7-8 | CleanRL PPO 读懂并接入；MLP 策略；监控面板 | GAE、ratio clipping、mask 下梯度 | 训练跑通不崩 |
-| 9-10 | PPO 调参；熵与 explained variance 诊断 | 失败模式：熵塌陷、value 失配 | **Gate 3** |
+| 5-6 | 先在已验收最小切片完成三层 PPO+MLP 冒烟，再按机制批次扩中等档；规则 agent；评估 harness + 配对 bootstrap；按需校准一次并锁死血量系数 λ（D25） | 基础学习闭环、分层评估、效应量 | **Gate 2** |
+| 7-8 | 在锁定中等档上完成 CleanRL PPO 逐行核对、MLP 正式训练与监控面板；复用最小切片冒烟代码，不复用其通过结论 | GAE、ratio clipping、mask 下梯度 | 中等档训练跑通不崩 |
+| 9-10 | 中等档 PPO 调参；熵与 explained variance 诊断 | 失败模式：熵塌陷、value 失配 | **Gate 3** |
 | 11-12 | 手写 QKV / MHA / ISAB / PMA；接入 PPO | 注意力、置换不变、padding mask | Set Transformer 收敛 |
 | 13 | MLP vs Set Transformer 配对对照，分桶报告 | — | **Gate 4** |
 | 14 | 规则 agent + ε 噪声生成 20 万条轨迹（多进程 CPU） | 离线数据分布与覆盖 | 数据集落盘 |
@@ -402,7 +407,7 @@ MLP 基线：同参数量级，吃 `FlattenWrapper` 输出。
 
 ### 9.1 排期风险
 
-**第 11-12 周把 Set Transformer 接在已调通的 PPO 上是刻意的。** 先有能训起来的 MLP 基线，换架构出问题时才能确定是架构的事。反序（先上 Transformer）会让你分不清是注意力实现错了还是 PPO 没调好。
+**第 11-12 周把 Set Transformer 接在已调通的 PPO 上是刻意的。** D25 进一步要求在扩容前先以最小切片验证 PPO+MLP 的基础闭环，再在中等档确认正式 MLP 基线。换架构出问题时才能确定是架构的事；反序（先上 Transformer）会让你分不清是注意力实现错了还是 PPO 没调好。最小切片的冒烟不替代中等档 Gate 3，简单环境下两种架构效果接近也只是待检验假设。
 
 **第 14 周的数据质量决定 B 阶段上限。** 若 Gate 2 时规则策略只是勉强赢随机，DT 天花板会很低。届时改用 A 阶段训好的 PPO 策略加噪声生成，质量更高。
 

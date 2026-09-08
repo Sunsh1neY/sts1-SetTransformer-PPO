@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Mapping, TypedDict
+from typing import Any, TypedDict
 
 import numpy as np
 from numpy.typing import NDArray
@@ -17,8 +18,7 @@ from sts.env.lightspeed import (
     CardObservation,
     LightspeedBattleEnv,
 )
-from sts.env.registry import CardLocation, CardRegistry, PAD_ID
-
+from sts.env.registry import PAD_ID, CardLocation, CardRegistry
 
 # 固定容量属于输入 schema；扩容时必须显式改版本并重新检查模型兼容性。
 PILE_CAPACITY = 10
@@ -348,6 +348,10 @@ class _ObservationWrapper:
         return self.env.gamma
 
     @property
+    def reward_contract(self) -> dict[str, Any]:
+        return self.env.reward_contract
+
+    @property
     def schema_version(self) -> int:
         return self.env.schema_version
 
@@ -362,7 +366,7 @@ class _ObservationWrapper:
     def reset(self, *args: Any, **kwargs: Any) -> Any:
         return self.transform(self.env.reset(*args, **kwargs))
 
-    def step(self, action: int) -> tuple[Any, float, bool, bool, dict[str, int]]:
+    def step(self, action: int) -> tuple[Any, float, bool, bool, dict[str, Any]]:
         observation, reward, terminated, truncated, info = self.env.step(action)
         return self.transform(observation), reward, terminated, truncated, info
 

@@ -21,7 +21,6 @@ from sts.env.lightspeed import (
 )
 from sts.env.registry import CardLocation
 
-
 EXPECTED_KEYS = {
     "hand",
     "enemies",
@@ -32,6 +31,33 @@ EXPECTED_KEYS = {
     "enemy_mask",
     "action_mask",
 }
+
+
+@pytest.mark.parametrize("field", ["seed", "ascension", "action"])
+@pytest.mark.parametrize("invalid", [0.9, True, np.bool_(False), "0"])
+def test_控制参数拒绝隐式转换且不改变战斗(field, invalid):
+    env = LightspeedBattleEnv()
+    before = env.reset(100000, Encounter.TWO_LOUSE)
+    with pytest.raises(TypeError, match=field + " 必须为整数"):
+        if field == "action":
+            env.step(invalid)
+        else:
+            config = {"seed": 100000, "encounter": Encounter.TWO_LOUSE, "ascension": 0}
+            config[field] = invalid
+            env.reset(**config)
+    after = env.observation()
+    for key, value in before.items():
+        if isinstance(value, np.ndarray):
+            assert np.array_equal(value, after[key])
+        else:
+            assert value == after[key]
+
+
+def test_控制参数继续接受numpy整数():
+    env = LightspeedBattleEnv()
+    observation = env.reset(np.int64(100000), Encounter.TWO_LOUSE, np.int32(0))
+    action = np.flatnonzero(observation["action_mask"])[0]
+    env.step(action)
 
 
 def _assert_observation_contract(observation):
@@ -206,7 +232,12 @@ def test_adapter_preserves_raw_trajectory(encounter):
         assert reward == raw_result.reward
         assert terminated == raw_result.terminated
         assert truncated == raw_result.truncated
-        assert info == raw_result.info
+        assert all(info[key] == value for key, value in raw_result.info.items())
+        assert info["task_type"] == "battle"
+        assert info["task_spec_id"] == "minimal-v1"
+        assert info["reward_version"] == "battle_reward_v1"
+        assert info["reward_base"] == info["reward_train"] == reward
+        assert info["run_won"] is None
         if terminated or truncated:
             break
     else:
@@ -224,6 +255,8 @@ def test_terminal_observation_stops_sampling_and_step():
     assert terminated is True
     assert truncated is False
     assert info["timeout"] == 1
+    assert info["task_outcome"] == "hard_timeout"
+    assert info["termination_reason"] == "hard_timeout"
     assert not observation["action_mask"].any()
     assert not env.action_mask().any()
     with pytest.raises(RuntimeError, match="finished"):

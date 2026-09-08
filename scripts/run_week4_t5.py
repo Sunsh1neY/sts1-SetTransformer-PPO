@@ -23,9 +23,10 @@ import statistics
 import subprocess
 import sys
 import time
+from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Mapping, Sequence
+from typing import Any
 
 import numpy as np
 
@@ -38,9 +39,9 @@ from sts.env.lightspeed import (
     _load_backend,
     _observation_to_dict,
 )
-from sts.env.wrappers import FlattenWrapper, TokenWrapper
 from sts.env.registry import DEFAULT_CARD_REGISTRY, SCHEMA_VERSION
-
+from sts.env.wrappers import FlattenWrapper, TokenWrapper
+from sts.rewards import battle_step_reward, normalize_battle_step_info
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLCHAIN = Path(r"C:\msys64\mingw64\bin")
@@ -78,7 +79,7 @@ class BucketStats:
     total_reward: float = 0.0
     elapsed_seconds: float = 0.0
 
-    def add(self, other: "BucketStats") -> None:
+    def add(self, other: BucketStats) -> None:
         for name in self.__dataclass_fields__:
             setattr(self, name, getattr(self, name) + getattr(other, name))
 
@@ -163,15 +164,24 @@ class PathDriver:
             )
         return self.env.reset(config.seed, config.encounter, 0)
 
-    def step(self, action: int) -> tuple[Any, float, bool, bool, dict[str, int]]:
+    def step(self, action: int) -> tuple[Any, float, bool, bool, dict[str, Any]]:
         if self.raw_env is not None:
             result = self.raw_env.step(action)
+            reward = float(result.reward)
+            terminated = bool(result.terminated)
+            truncated = bool(result.truncated)
+            info = normalize_battle_step_info(
+                {str(key): int(value) for key, value in result.info.items()},
+                actual_reward=reward,
+                terminated=terminated,
+                truncated=truncated,
+            )
             return (
                 result.observation,
-                float(result.reward),
-                bool(result.terminated),
-                bool(result.truncated),
-                {str(key): int(value) for key, value in result.info.items()},
+                reward,
+                terminated,
+                truncated,
+                info,
             )
         return self.env.step(action)
 
@@ -240,7 +250,7 @@ def _check_reward(
     rewards: Sequence[float],
     terminated: bool,
     truncated: bool,
-    info: Mapping[str, int],
+    info: Mapping[str, Any],
 ) -> bool:
     if not rewards or not terminated or truncated:
         return False
@@ -249,13 +259,14 @@ def _check_reward(
     if any(value != 0.0 for value in rewards[:-1]):
         return False
     outcome = int(info.get("outcome", -1))
-    if outcome == VICTORY_OUTCOME:
-        max_hp = max(1, int(info["player_max_hp"]))
-        expected = 1.0 + 0.5 * max(0, int(info["player_hp"])) / max_hp
-    elif outcome == LOSS_OUTCOME:
-        expected = 0.0
-    else:
+    if outcome not in (VICTORY_OUTCOME, LOSS_OUTCOME):
         return False
+    expected = battle_step_reward(
+        battle_won=outcome == VICTORY_OUTCOME,
+        terminated=True,
+        hp_exit=info["player_hp"],
+        max_hp_exit=info["player_max_hp"],
+    )
     return math.isclose(sum(rewards), expected, rel_tol=1e-6, abs_tol=1e-6)
 
 
@@ -303,7 +314,7 @@ def run_path(
                 truncated,
                 info,
             )
-        except Exception as exc:  # 验收必须继续并分开报告真实异常。
+        except Exception as exc:  # noqa: BLE001 - 验收必须继续并分开报告真实异常。
             episode.exceptions += 1
             if len(exception_samples) < 10:
                 exception_samples.append(
@@ -373,18 +384,7 @@ def serialize_path_observation(path_name: str, observation: Any) -> bytes:
         return serialize_semantic(_observation_to_dict(observation))
     if path_name == "dict":
         return serialize_semantic(observation)
-    if path_name == "flatten":
-        fields = (
-            ("card_categorical", "<i8"),
-            ("card_numeric", "<f4"),
-            ("card_numeric_known", "|b1"),
-            ("card_valid", "|b1"),
-            ("enemy_features", "<f4"),
-            ("enemy_mask", "|b1"),
-            ("global", "<f4"),
-            ("action_mask", "|b1"),
-        )
-    elif path_name == "token":
+    if path_name == "flatten" or path_name == "token":
         fields = (
             ("card_categorical", "<i8"),
             ("card_numeric", "<f4"),
@@ -445,7 +445,9 @@ def replay_trace(path_name: str, config: EpisodeConfig) -> list[dict[str, Any]]:
                 "reward_hex": np.asarray(reward, dtype="<f8").tobytes().hex(),
                 "terminated": terminated,
                 "truncated": truncated,
-                "info": {key: int(info[key]) for key in sorted(info)},
+                # v6 的 info 同时包含整数复现字段、字符串版本字段、bool 与 null。
+                # Python 适配层已规范为 JSON 基础类型，这里只固定键序，不再强转整数。
+                "info": {key: info[key] for key in sorted(info)},
             }
         )
         observation = next_observation
@@ -457,6 +459,8 @@ def run_determinism(
     configs: Sequence[EpisodeConfig],
     count: int = 60,
 ) -> dict[str, Any]:
+    if count <= 0:
+        raise ValueError("确定性场数必须为正，不能把零样本记为通过")
     if count > len(configs):
         raise ValueError("确定性场数不能超过唯一配置数")
     buckets = {
@@ -632,24 +636,61 @@ def metadata(configs: Sequence[EpisodeConfig], patch_path: Path | None) -> dict[
     }
 
 
-def acceptance_passed(report: Mapping[str, Any]) -> bool:
-    if not report["determinism"]["passed"]:
+def checks_passed(report: Mapping[str, Any]) -> bool:
+    """只判断本次已执行检查；样本规模是否足够正式验收单独判断。"""
+
+    determinism = report["determinism"]
+    if (
+        not determinism["passed"]
+        or determinism["episodes"] <= 0
+        or determinism["within_path_failures"]
+        or determinism["cross_path_semantic_failures"]
+    ):
+        return False
+    config_count = report["metadata"]["configuration"]["unique_configs"]
+    repeat_count = report["performance_repeats"]
+    if config_count <= 0 or repeat_count <= 0:
         return False
     for path_name in PATH_NAMES:
         repetitions = report["performance"][path_name]["repetitions"]
+        if len(repetitions) != repeat_count:
+            return False
         for run in repetitions:
             total = run["total"]
             if (
-                total["episodes"] != report["metadata"]["configuration"]["unique_configs"]
+                total["episodes"] != config_count
+                or total["steps"] <= 0
+                or total["wins"] + total["losses"] != config_count
                 or total["exceptions"]
                 or total["illegal_actions"]
                 or total["hard_timeouts"]
                 or not total["reward_contract_ok"]
             ):
                 return False
-        if report["performance"][path_name]["median_steps_per_second"] < 2000.0:
+        throughput = report["performance"][path_name]["median_steps_per_second"]
+        if not math.isfinite(throughput) or throughput < 2000.0:
             return False
     return True
+
+
+def _formal_coverage(report: Mapping[str, Any]) -> bool:
+    """沿用 T5/D24 的一万配置、三轮性能和三遭遇各二十场重放口径。"""
+
+    return (
+        report["metadata"]["configuration"]["unique_configs"] >= 10_000
+        and report["performance_repeats"] >= 3
+        and report["determinism"]["episodes"] >= 60
+        and all(
+            report["determinism"]["encounter_counts"].get(encounter.value, 0) >= 20
+            for encounter in Encounter
+        )
+    )
+
+
+def acceptance_passed(report: Mapping[str, Any]) -> bool:
+    """只有检查通过且达到正式样本规模，才能报告正式验收通过。"""
+
+    return checks_passed(report) and _formal_coverage(report)
 
 
 def run_acceptance(
@@ -697,6 +738,8 @@ def run_acceptance(
         "determinism": run_determinism(configs, determinism_episodes),
         "performance": performance,
     }
+    report["scope"] = "acceptance" if _formal_coverage(report) else "smoke"
+    report["checks_passed"] = checks_passed(report)
     report["passed"] = acceptance_passed(report)
     return report
 
@@ -733,13 +776,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     print(json.dumps({
         "output": str(args.output.resolve()),
+        "scope": report["scope"],
+        "checks_passed": report["checks_passed"],
         "passed": report["passed"],
         "median_steps_per_second": {
             name: report["performance"][name]["median_steps_per_second"]
             for name in PATH_NAMES
         },
     }, ensure_ascii=False, indent=2))
-    return 0 if report["passed"] else 1
+    # 小规模命令可以成功完成检查，但 passed 仍为 False，不能充当正式验收证据。
+    return 0 if report["checks_passed"] else 1
 
 
 if __name__ == "__main__":

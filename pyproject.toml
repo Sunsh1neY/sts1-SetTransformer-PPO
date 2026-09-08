@@ -10,7 +10,9 @@ requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.26",
     "pyyaml>=6.0",
-    # torch 刻意不在开工时装：第 7 周 PPO 阶段前再加入
+    # D25 将最小切片 PPO+MLP 冒烟前移；Set Transformer 仍按后续阶段实现。
+    "torch>=2.6,<3",
+    "tensorboard>=2.18,<3",
 ]
 
 [project.optional-dependencies]

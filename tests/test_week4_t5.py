@@ -11,7 +11,9 @@ from scripts.run_week4_t5 import (
     PATH_NAMES,
     EpisodeConfig,
     _check_reward,
+    acceptance_passed,
     build_configs,
+    checks_passed,
     replay_trace,
     run_determinism,
     run_path,
@@ -138,3 +140,59 @@ def test_小规模确定性验收包含路径内与跨路径比较():
     assert result["within_path_failures"] == []
     assert result["cross_path_semantic_failures"] == []
     assert result["passed"] is True
+
+
+def _successful_report(config_count=10_000, determinism_count=60):
+    """构造统计全部成功的结果，以独立检查正式验收的样本门槛。"""
+
+    return {
+        "metadata": {"configuration": {"unique_configs": config_count}},
+        "performance_repeats": 3,
+        "determinism": {
+            "passed": True,
+            "episodes": determinism_count,
+            "encounter_counts": {encounter.value: determinism_count // 3 for encounter in Encounter},
+            "within_path_failures": [],
+            "cross_path_semantic_failures": [],
+        },
+        "performance": {
+            name: {
+                "median_steps_per_second": 3000.0,
+                "repetitions": [
+                    {"total": {
+                        "episodes": config_count, "steps": config_count * 10,
+                        "wins": config_count, "losses": 0,
+                        "exceptions": 0, "illegal_actions": 0,
+                        "hard_timeouts": 0, "reward_contract_ok": True,
+                    }}
+                    for _ in range(3)
+                ],
+            }
+            for name in PATH_NAMES
+        },
+    }
+
+
+def test_正式验收与小规模冒烟分别判定():
+    assert acceptance_passed(_successful_report())
+    for report in (_successful_report(3, 3), _successful_report(10_000, 3)):
+        assert checks_passed(report)
+        assert not acceptance_passed(report)
+
+
+@pytest.mark.parametrize("invalid", ["empty-repeats", "nan-throughput", "zero-determinism"])
+def test_缺失或无效证据不能判为通过(invalid):
+    report = _successful_report()
+    if invalid == "empty-repeats":
+        report["performance"]["token"]["repetitions"] = []
+    elif invalid == "nan-throughput":
+        report["performance"]["token"]["median_steps_per_second"] = float("nan")
+    else:
+        report["determinism"]["episodes"] = 0
+    assert not checks_passed(report)
+    assert not acceptance_passed(report)
+
+
+def test_确定性重放拒绝零样本():
+    with pytest.raises(ValueError, match="确定性场数必须为正"):
+        run_determinism(build_configs(3), count=0)
