@@ -1,4 +1,101 @@
+diff --git a/bindings/ironclad-contract-config.h b/bindings/ironclad-contract-config.h
+new file mode 100644
+index 0000000..61cd432
+--- /dev/null
++++ b/bindings/ironclad-contract-config.h
+@@ -0,0 +1,90 @@
++// 自动生成：独立全卡扩展契约。
++#pragma once
++#include <array>
++namespace sts {
++inline constexpr const char* IRONCLAD_OBSERVATION_SCHEMA = "ironclad-observation-v4";
++inline constexpr const char* IRONCLAD_REGISTRY_SHA256 = "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6";
++inline constexpr const char* IRONCLAD_CONTRACT_SHA256 = "52abb54afc0fae49b0fc578fbeee3b5306cfc59f5d31a6c0f266fa72a8a6827a";
++inline constexpr std::array<const char*, 80> IRONCLAD_CARD_NAMES = {
++"Bash",
++"Defend_R",
++"Strike_R",
++"Battle Trance",
++"Bludgeon",
++"Body Slam",
++"Carnage",
++"Cleave",
++"Clothesline",
++"Demon Form",
++"Dropkick",
++"Entrench",
++"Feel No Pain",
++"Flame Barrier",
++"Flex",
++"Ghostly Armor",
++"Heavy Blade",
++"Immolate",
++"Impervious",
++"Inflame",
++"Metallicize",
++"Pommel Strike",
++"Power Through",
++"Pummel",
++"Rage",
++"Reckless Charge",
++"Seeing Red",
++"Sentinel",
++"Shrug It Off",
++"Spot Weakness",
++"Thunderclap",
++"True Grit",
++"Twin Strike",
++"Uppercut",
++"Wild Strike",
++"AscendersBane",
++"Wound",
++"Dazed",
++"Burn",
++"Slimed",
++"Anger",
++"Armaments",
++"Barricade",
++"Berserk",
++"Blood for Blood",
++"Bloodletting",
++"Brutality",
++"Burning Pact",
++"Clash",
++"Combust",
++"Corruption",
++"Dark Embrace",
++"Disarm",
++"Double Tap",
++"Dual Wield",
++"Evolve",
++"Exhume",
++"Feed",
++"Fiend Fire",
++"Fire Breathing",
++"Havoc",
++"Headbutt",
++"Hemokinesis",
++"Infernal Blade",
++"Intimidate",
++"Iron Wave",
++"Juggernaut",
++"Limit Break",
++"Offering",
++"Perfected Strike",
++"Rampage",
++"Reaper",
++"Rupture",
++"Searing Blow",
++"Second Wind",
++"Sever Soul",
++"Shockwave",
++"Sword Boomerang",
++"Warcry",
++"Whirlwind",
++};
++}
 diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
+index af31688..ded1371 100644
 --- a/bindings/public-battle-env.cpp
 +++ b/bindings/public-battle-env.cpp
 @@ -1,5 +1,6 @@
@@ -8,7 +105,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
  #include <pybind11/stl.h>
  #include <nlohmann/json.hpp>
  #include <algorithm>
-@@ -149,6 +150,7 @@
+@@ -149,6 +150,7 @@ class PublicBattleEnv {
      std::unique_ptr<GameContext> gc_;
      BattleContext bc_;
      int maxActions_;
@@ -16,7 +113,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
      int actionCount_ = 0;
      int initialCards_ = 0;
      bool hasReset_ = false;
-@@ -163,6 +165,42 @@
+@@ -163,6 +165,42 @@ class PublicBattleEnv {
          int damage = 0, block = 0, magic = 0, hits = 1;
          bool all = false;
          switch (c.id) {
@@ -59,7 +156,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
              case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
              case CardId::DEFEND_RED: block = up ? 8 : 5; break;
              case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
-@@ -186,7 +224,7 @@
+@@ -186,7 +224,7 @@ class PublicBattleEnv {
              case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
              case CardId::SEEING_RED: magic = 2; break;
              case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
@@ -68,7 +165,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
              case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
              case CardId::FLEX: magic = up ? 4 : 2; break;
              case CardId::METALLICIZE: magic = up ? 4 : 3; break;
-@@ -214,7 +252,7 @@
+@@ -214,7 +252,7 @@ class PublicBattleEnv {
          }
          const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
          // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
@@ -77,7 +174,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
              {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
              {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
              {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
-@@ -222,6 +260,23 @@
+@@ -222,6 +260,23 @@ class PublicBattleEnv {
              {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
              {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
              {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
@@ -93,7 +190,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
 +                c.costForTurn != c.cost ? "TURN" : "COMBAT";
 +            row["combat_damage_bonus"] = c.id == CardId::RAMPAGE ? c.specialData : 0;
 +            row["is_strike"] = c.isStrikeCard();
-+            row["cost_kind"] = c.isXCost() ? "X" : c.cost == -2 ? "UNPLAYABLE" : "ENERGY";
++            row["cost_kind"] = c.isXCost() ? "X" : c.cost < 0 ? "UNPLAYABLE" : "ENERGY";
 +            row["effective_exhaust"] = c.doesExhaust() ||
 +                (c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>());
 +        }
@@ -101,7 +198,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -231,14 +286,24 @@
+@@ -231,14 +286,24 @@ class PublicBattleEnv {
          return rows;
      }
  
@@ -128,7 +225,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
              throw std::runtime_error("生成量超出已证明边界");
      }
  
-@@ -252,7 +317,8 @@
+@@ -252,7 +317,8 @@ class PublicBattleEnv {
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -138,7 +235,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +352,27 @@
+@@ -286,14 +352,27 @@ class PublicBattleEnv {
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -168,7 +265,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -338,14 +417,24 @@
+@@ -338,14 +417,24 @@ public:
              const auto plus = name.find('+');
              if (plus != std::string::npos) {
                  const auto suffix = name.substr(plus + 1);
@@ -198,7 +295,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
          }
          initialCards_ = gc_->deck.size();
          relicNames_.clear();
-@@ -391,6 +480,11 @@
+@@ -391,6 +480,11 @@ public:
          return mask;
      }
  
@@ -210,7 +307,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
      std::string observation() const { return observeJson().dump(); }
  
      std::string step(int action) {
-@@ -400,6 +494,40 @@
+@@ -400,6 +494,40 @@ public:
          if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
          else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
          else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
@@ -251,7 +348,7 @@ diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
          // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
          std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
          const int oldTurn = bc_.turn;
-@@ -439,9 +567,27 @@
+@@ -439,9 +567,27 @@ public:
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
@@ -526,7 +623,7 @@ index 2bd9c9d..be152fc 100644
              break;
  
 diff --git a/src/combat/CardManager.cpp b/src/combat/CardManager.cpp
-index e46d0cc..0a9e2f3 100644
+index e46d0cc..f7553b3 100644
 --- a/src/combat/CardManager.cpp
 +++ b/src/combat/CardManager.cpp
 @@ -94,14 +94,15 @@ void CardManager::createTempCardInDrawPile(int idx, CardInstance c) {
@@ -580,6 +677,19 @@ index e46d0cc..0a9e2f3 100644
      if (c.isBloodCard()) {
          --drawPileBloodCardCount;
      }
+@@ -389,6 +393,12 @@ void CardManager::resetAttributesAtEndOfTurn() {
+     for (auto &c : drawPile) {
+         c.setCostForTurn(c.cost);
+     }
++
++    // 消耗堆中的实例仍可能被Exhume取回；本回合临时费用不能跨回合泄漏。
++    // setCostForTurn会保留X费用等负哨兵值，只恢复已有costForTurn语义的实例。
++    for (auto &c : exhaustPile) {
++        c.setCostForTurn(c.cost);
++    }
+ }
+ 
+ // **************** BEGIN SPECIAL HELPERS ****************
 diff --git a/src/combat/CardQueue.cpp b/src/combat/CardQueue.cpp
 index 045cf4a..905f82f 100644
 --- a/src/combat/CardQueue.cpp

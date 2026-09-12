@@ -9,6 +9,12 @@
 - 修复前定向基线：`python -m pytest -q tests/test_card_token_fixes.py`为1 passed、9 failed；失败与审计反例一致，不能作为验收通过。
 - 修复后定向复测：10 passed。增量后端补丁从基础补丁应用后生成并通过正向`git apply --check`；标准独立构建及C++最小导入通过。F2/F3的正式提交和全仓回归尚未完成，不能据此宣布合并。
 
+## F2：费用与分类修复（2026-09-13）
+
+- B01：`CardManager::resetAttributesAtEndOfTurn`补齐消耗堆实例，复用`costForTurn`的非负语义恢复；X费用等负哨兵仍由既有setter保护。F1同回合/跨回合Exhume回归中的支付、合法mask和实例字段均通过。
+- B04：公开绑定先判X费用，再将负费用实例归为`UNPLAYABLE`；CARD 115维布局不变，`pay_cost=0`仍只作不可打出占位。四牌区token与普通mask定向回归通过。
+- F2构建：基础补丁应用后重新生成增量补丁，正向检查通过；标准C++/pybind构建通过。B02/B03在本中间提交仍保持未修复反例，未写成F2通过。
+
 ## E7补验：无牌但仍有持续效果/药水（2026-09-13）
 
 - 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。
