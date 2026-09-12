@@ -2,6 +2,13 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## F1：修复裁定登记与问题复现（2026-09-13）
+
+- 用户最新裁定已登记到`docs/decisions.md`与`docs/ironclad-full-expansion-plan.md`：CARD 115维不承载自动/重复/暂停流程；+100不作为本轮合并阻塞；B01/B02/B04先修，B05先做成对输入核验；不自动合并、推送或启动正式长时间PPO。
+- 新增`tests/test_card_token_fixes.py`，覆盖B01同回合/跨回合、B02五种不可用Havoc顶牌与Wound耗尽触发、B03 Armaments+1与Searing Blow+100、B04四牌区token类别和普通mask。
+- 修复前定向基线：`python -m pytest -q tests/test_card_token_fixes.py`为1 passed、9 failed；失败与审计反例一致，不能作为验收通过。
+- 修复后定向复测：10 passed。增量后端补丁从基础补丁应用后生成并通过正向`git apply --check`；标准独立构建及C++最小导入通过。F2/F3的正式提交和全仓回归尚未完成，不能据此宣布合并。
+
 ## E7补验：无牌但仍有持续效果/药水（2026-09-13）
 
 - 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。
