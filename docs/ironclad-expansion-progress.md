@@ -28,6 +28,14 @@
 - 版本同步为`unified-entity-interface-v4`/`unified-entity-set-v3`、扩展契约v2/观测v5/单选动作v2；B05定向2项通过，联合定向回归43项通过，构建及增量补丁正向检查通过。旧checkpoint因指纹变化拒绝精确恢复尚待独立检查。
 - F5仍未完成：CPU全仓回归、短时前向/反向/采集、新checkpoint保存/恢复、审计同步最终检查和`docs/card-token-fix-report.md`。
 
+## F5：最终回归与交付前验证（2026-09-13）
+
+- 全仓CPU回归最终为`950 passed in 36.59s`。中间第一次运行的69项失败均为旧测试硬编码`ironclad-expansion-contract-v1`；断言改为读取当前v2契约后重跑通过，未发现新的行为失败。
+- F4定向验证：`test_card_token_b05.py`为2 passed；修复/统一实体/输入/选择/模型/恢复联合回归为54 passed；台账检查150/150，`check-spec-v6.py` PASS。
+- 短时全卡统一实体诊断：`runs/card-token-fix-f5-20260913-rerun2`，32 steps、full-card inputs、5次选择、最多103实体、32×103 batch、3次截断、0自然终止；参数119922，有限PPO反向、保存/加载和下一次更新逐值一致。它是工程诊断，不是正式训练成绩。
+- 新接口导致容量契约按实际资源与当前后端重新绑定：`unified-entity-capacity-v2`和`ironclad-capacity-v1`同步当前输入/运行契约/后端hash；不是绕过校验改哈希。基础补丁加增量补丁在全新worktree正向检查通过。
+- F5代码/容量/兼容性验证已完成；最终报告待提交，正式PPO、完整活动环境恢复、泛化和合并操作仍不在本轮授权范围。
+
 ## E7补验：无牌但仍有持续效果/药水（2026-09-13）
 
 - 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。

@@ -5,7 +5,7 @@ import json
 import numpy as np
 import pytest
 
-from sts.env.ironclad import IroncladEnv, normalize_ironclad, semantic_extensions
+from sts.env.ironclad import CONTRACT, IroncladEnv, normalize_ironclad, semantic_extensions
 from sts.env.public_battle import CARD_BY_NAME, PublicBattleEnv, load_scene_manifest
 
 
@@ -63,7 +63,7 @@ def test_inherited_versions_preserve_transition_and_full_final_observation(name,
         b, other_reward, other_terminal, other_truncated, info = expanded.step(action)
         assert legacy_view(b) == plain(a)
         assert (reward, terminal, truncated) == (other_reward, other_terminal, other_truncated)
-        assert info["contract_id"] == "ironclad-expansion-contract-v1"
+        assert info["contract_id"] == CONTRACT["schema"]
         assert info["observation_schema"] == b["schema"]
         if terminal or truncated:
             if truncated:
