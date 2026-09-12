@@ -26,7 +26,7 @@ def check():
             assert row["evidence"], f"准入缺证据：{row}"
             assert all((ROOT / path).is_file() for path in row["evidence"])
     public = json.loads((ROOT / "sts/env/public-battle-contract.json").read_text(encoding="utf-8"))
-    assert all(by_name[r["name"]] == r for r in public["cards"]), "旧项目ID或升级范围被改写"
+    assert all(by_name[r["name"]]["id"] == r["id"] and by_name[r["name"]]["max_upgrade"] >= r["max_upgrade"] for r in public["cards"]), "旧项目ID被改写或升级能力减少"
     for path, expected_hash in contract["frozen_sha256"].items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == expected_hash, f"冻结文件改变：{path}"
     assert contract["reward_version"] == "battle_reward_v1" and contract["gamma"] == 1

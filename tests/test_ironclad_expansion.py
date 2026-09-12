@@ -24,6 +24,7 @@ def legacy_view(obs):
     value = copy.deepcopy(obs)
     value["schema"] = "public-observation-v1"
     del value["decision"]
+    assert not value.pop("resolving", [])
     del value["player"]["combust_hp_loss"]
     for pile in ("hand", "draw_pile", "discard_pile", "exhaust_pile"):
         for card in value[pile]:
@@ -97,7 +98,7 @@ def test_hidden_fields_and_incomplete_phase_are_rejected():
         normalize_ironclad(raw)
 
 
-@pytest.mark.parametrize("card", ["Havoc", "Exhume", "True Grit+1", "Infernal Blade"])
+@pytest.mark.parametrize("card", ["Havoc", "Exhume", "Warcry", "Infernal Blade"])
 def test_pending_cards_remain_rejected(card):
     with pytest.raises(ValueError):
         IroncladEnv().reset(scene([card] * 5), 982001, diagnostic=True)

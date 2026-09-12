@@ -1275,8 +1275,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_true_grit_selection.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Warcry",

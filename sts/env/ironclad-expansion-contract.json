@@ -6,14 +6,15 @@
   "alpha_hp": 0.5,
   "beta": 0.0,
   "task_type": "battle",
-  "model_family": "set",
-  "observation_schema": "ironclad-observation-v2",
-  "action_schema": "ironclad-normal-66-v1",
+  "model_family": "unified-entity-set",
+  "observation_schema": "ironclad-observation-v4",
+  "action_schema": "ironclad-normal-66-and-single-select-v1",
   "normal_action_count": 66,
   "supported_phases": [
-    "NORMAL"
+    "NORMAL",
+    "SELECT_CARD"
   ],
-  "selection_status": "pending-E3",
+  "selection_status": "EXHAUST_ONE-only",
   "capacity_status": "legacy-bound-valid-for-five-no-generation-probes; full-expansion-proof-pending",
   "training_admitted": false,
   "baseline_commit": "50b756e",

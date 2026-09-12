@@ -10,6 +10,7 @@ import numpy as np
 
 from sts.env.lightspeed import _load_backend
 from sts.env.public_battle import PUBLIC_CONTRACT, PublicBattleEnv, _integer, normalize_observation
+from sts.env.selection import SelectionRouter
 
 PATH = Path(__file__).with_name("ironclad-expansion-contract.json")
 CONTRACT = json.loads(PATH.read_text(encoding="utf-8"))
@@ -19,7 +20,8 @@ REGISTRY = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
 REGISTRY_HASH = hashlib.sha256(REGISTRY_PATH.read_bytes()).hexdigest()
 CARD_BY_NAME = {r["name"]: r for r in REGISTRY["cards"]}
 RUNTIME_CONTRACT = {**PUBLIC_CONTRACT, "cards": REGISTRY["cards"], "observation_schema": CONTRACT["observation_schema"]}
-REGIONS = ("hand", "draw_pile", "discard_pile", "exhaust_pile")
+REGIONS = ("hand", "draw_pile", "discard_pile", "exhaust_pile", "resolving")
+RUNTIME_CONTRACT["card_regions"] = REGIONS
 
 
 def normalize_ironclad(raw):
@@ -27,8 +29,9 @@ def normalize_ironclad(raw):
     value = json.loads(json.dumps(raw, allow_nan=False))
     if value.get("schema") != CONTRACT["observation_schema"]:
         raise ValueError("扩展观测schema不匹配")
-    if value.get("decision") != {"phase": "NORMAL", "selection": None}:
-        raise ValueError("选择阶段尚未验收")
+    if value.get("decision") not in ({"phase": "NORMAL", "selection": None},
+                                     {"phase": "SELECT_CARD", "selection": {"kind": "EXHAUST_ONE"}}):
+        raise ValueError("未知或不完整的选择阶段")
     # 复用旧字段的严格准入检查，同时保留所有扩展字段与逐实体排序。
     value = normalize_observation(value, contract=RUNTIME_CONTRACT)
     hp_loss = _integer(value["player"].get("combust_hp_loss"), "combust_hp_loss")
@@ -56,9 +59,19 @@ def normalize_ironclad(raw):
 class IroncladEnv(PublicBattleEnv):
     """仅允许显式机制夹具；当前不批准正式扩展训练或旧数据自动迁移。"""
 
-    _normalize_observation = staticmethod(normalize_ironclad)
+    def _normalize_observation(self, raw):
+        obs = normalize_ironclad(raw)
+        if obs["decision"]["phase"] == "SELECT_CARD":
+            try:
+                view = self._selection.snapshot()
+            except RuntimeError:
+                indices = self._env.selection_indices()
+                view = self._selection.publish("EXHAUST_ONE", [(i, obs["hand"][i]) for i in indices])
+            obs["decision"] = {"phase": "SELECT_CARD", "selection": view["semantic"], "routing": view["routing"]}
+        return obs
 
     def __init__(self, max_actions=512):
+        self._selection = SelectionRouter()
         module = _load_backend()
         if not hasattr(module, "IroncladExpandedBattleEnv"):
             raise RuntimeError("请先用独立扩展构建脚本编译后端")
@@ -68,6 +81,8 @@ class IroncladEnv(PublicBattleEnv):
         super().__init__(max_actions, backend=SimpleNamespace(PublicBattleEnv=module.IroncladExpandedBattleEnv))
 
     def reset(self, scene, seed, *, diagnostic=False, purpose="development"):
+        self._selection.invalidate()
+        self._finished = True
         if not diagnostic or purpose != "development":
             raise ValueError("当前扩展仅批准development机制夹具，正式采集尚未开放")
         if _integer(scene.get("ascension"), "ascension") != CONTRACT["scope"]["ascension"]:
@@ -82,12 +97,26 @@ class IroncladEnv(PublicBattleEnv):
                              registry_hash=REGISTRY_HASH, training_admitted=False)
         return obs
 
+    def step(self, action):
+        if self._finished:
+            raise RuntimeError("场景已结束，必须reset")
+        try:
+            if isinstance(action, dict):
+                target = self._selection.take(action)
+                return self._decode_result(json.loads(self._env.select_card(target.backend_index)))
+            self._selection.invalidate()
+            return super().step(action)
+        except Exception:
+            self._finished = True
+            self._selection.invalidate()
+            raise
+
 
 def semantic_extensions(obs):
     """命名增量数值，供后续Set编码接入；不含槽号、候选ID或随机状态。"""
     cards = []
     for region in REGIONS:
-        for card in obs[region]:
+        for card in obs.get(region, []):
             cards.append([card["combat_damage_bonus"] / 50, float(card["is_strike"]),
                           float(card["effective_exhaust"]),
                           *[float(card["cost_kind"] == kind) for kind in ("ENERGY", "X", "UNPLAYABLE")],

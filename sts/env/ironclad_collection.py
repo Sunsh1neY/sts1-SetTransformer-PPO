@@ -70,7 +70,7 @@ class IroncladCollectionEnv:
                 info.update(termination_reason="external_card_capacity", truncation_reason="external_card_capacity")
             self.count, self.allocated = count, allocated
             self.counters["decision_steps"] += 1
-            self.counters["card_plays" if action < 50 else "end_turns" if action == 50 else "potion_uses"] += 1
+            self.counters["selections" if isinstance(action, dict) else "card_plays" if action < 50 else "end_turns" if action == 50 else "potion_uses"] += 1
             info.update(self.counters)
             info.update(card_entities=count, allocated_card_entities=allocated, generated_card_entities=growth,
                         collection_contract_hash=self.contract["sha256"], collection_version=self.contract["schema"],

@@ -26,6 +26,15 @@
              case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
              case CardId::DEFEND_RED: block = up ? 8 : 5; break;
              case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
+@@ -186,7 +192,7 @@
+             case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
+             case CardId::SEEING_RED: magic = 2; break;
+             case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
+-            case CardId::TRUE_GRIT: block = 7; magic = 1; break;
++            case CardId::TRUE_GRIT: block = up ? 9 : 7; magic = 1; break;
+             case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
+             case CardId::FLEX: magic = up ? 4 : 2; break;
+             case CardId::METALLICIZE: magic = up ? 4 : 3; break;
 @@ -214,7 +220,7 @@
          }
          const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
@@ -57,7 +66,17 @@
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -252,7 +273,8 @@
+@@ -233,7 +254,8 @@
+ 
+     void verifyDecision() const {
+         if (bc_.undefinedBehaviorEvoked) throw std::runtime_error("后端标记未定义行为");
+-        if (!terminal() && bc_.inputState != InputState::PLAYER_NORMAL)
++        if (!terminal() && bc_.inputState != InputState::PLAYER_NORMAL &&
++            !(expanded_ && bc_.inputState == InputState::CARD_SELECT && bc_.cardSelectInfo.cardSelectTask == CardSelectTask::EXHAUST_ONE))
+             throw std::runtime_error("出现未支持的二次选择或未结算队列");
+         if (bc_.monsters.monsterCount > PUBLIC_TARGET_CAPACITY || bc_.cards.cardsInHand > PUBLIC_HAND_CAPACITY)
+             throw std::runtime_error("后端实体数超出动作容量");
+@@ -252,7 +274,8 @@
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -67,7 +86,7 @@
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +308,20 @@
+@@ -286,14 +309,29 @@
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -78,8 +97,17 @@
              {"relics", relics}, {"action_mask", actionMask()}};
 +        if (expanded_) {
 +            result["schema"] = IRONCLAD_OBSERVATION_SCHEMA;
++            result["resolving"] = Json::array();
++            if (!terminal() && bc_.inputState == InputState::CARD_SELECT) {
++                // 仅当前已公开的来源卡；不导出整个动作队列或隐藏实例ID。
++                if (bc_.curCardQueueItem.card.id != CardId::TRUE_GRIT || !bc_.curCardQueueItem.card.isUpgraded())
++                    throw std::runtime_error("选牌来源尚未验收");
++                result["resolving"].push_back(cardRow(bc_.curCardQueueItem.card, false));
++            }
 +            result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
 +            result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
++            if (!terminal() && bc_.inputState == InputState::CARD_SELECT)
++                result["decision"] = {{"phase", "SELECT_CARD"}, {"selection", {{"kind", "EXHAUST_ONE"}}}};
 +        }
 +        return result;
      }
@@ -90,16 +118,19 @@
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -341,7 +369,7 @@
+@@ -341,9 +379,9 @@
                  if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
                  upgrade = 1; name.resize(plus);
              }
 -            if (!listed(PUBLIC_CARD_NAMES, name)) throw std::invalid_argument("卡牌不在完整闭包: " + name);
 +            if (!(expanded_ ? listed(IRONCLAD_CARD_NAMES, name) : listed(PUBLIC_CARD_NAMES, name))) throw std::invalid_argument("卡牌不在完整闭包: " + name);
              const auto id = parseCard(name);
-             if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
+-            if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
++            if (upgrade && ((id == CardId::TRUE_GRIT && !expanded_) || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
                  throw std::invalid_argument("该卡升级路径不支持");
-@@ -391,6 +419,11 @@
+             gc_->deck.obtainRaw(Card(id, upgrade));
+         }
+@@ -391,6 +429,11 @@
          return mask;
      }
  
@@ -111,7 +142,36 @@
      std::string observation() const { return observeJson().dump(); }
  
      std::string step(int action) {
-@@ -439,9 +472,24 @@
+@@ -400,6 +443,28 @@
+         if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
+         else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
+         else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
++        return executeDecision(selected, action);
++    }
++
++    std::vector<int> selectionIndices() const {
++        if (!expanded_ || terminal() || bc_.inputState != InputState::CARD_SELECT ||
++            bc_.cardSelectInfo.cardSelectTask != CardSelectTask::EXHAUST_ONE)
++            throw std::runtime_error("不是受支持的选牌暂停点");
++        std::vector<int> indices;
++        for (int i = 0; i < bc_.cards.cardsInHand; ++i)
++            if (search::Action(search::ActionType::SINGLE_CARD_SELECT, i).isValidAction(bc_)) indices.push_back(i);
++        return indices;
++    }
++
++    std::string selectCard(int index) {
++        if (!hasReset_ || terminal() || truncated_) throw std::runtime_error("不允许继续已结束场景");
++        const auto indices = selectionIndices();
++        if (std::find(indices.begin(), indices.end(), index) == indices.end()) throw std::invalid_argument("非法选牌对象");
++        return executeDecision(search::Action(search::ActionType::SINGLE_CARD_SELECT, index), -1);
++    }
++
++private:
++    std::string executeDecision(const search::Action &selected, int action) {
+         // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
+         std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
+         const int oldTurn = bc_.turn;
+@@ -439,9 +504,26 @@
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
@@ -132,7 +192,9 @@
 +        .def("step", &IroncladBattleEnv::step)
 +        .def("observation", &IroncladBattleEnv::observation)
 +        .def("action_mask", &IroncladBattleEnv::actionMask)
-+        .def("allocated_card_count", &IroncladBattleEnv::allocationCount);
++        .def("allocated_card_count", &IroncladBattleEnv::allocationCount)
++        .def("selection_indices", &IroncladBattleEnv::selectionIndices)
++        .def("select_card", &IroncladBattleEnv::selectCard);
      pybind11::class_<PublicBattleEnv>(module, "PublicBattleEnv")
          .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
          .def("reset_scene", &PublicBattleEnv::resetScene, pybind11::arg("scene_json"), pybind11::arg("seed"))

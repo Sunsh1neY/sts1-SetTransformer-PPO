@@ -1,8 +1,8 @@
 {
   "schema": "ironclad-capacity-v1",
-  "scope": "79-versions-normal-phase-only",
-  "registry_sha256": "17e4f7140a52e48480a39d9b7043f41a4bf36c906b5531b0589e60a14c7f69b5",
-  "runtime_contract_sha256": "85ffd9b3ae6ba8b9c8e2f278364e7545ed8aca954a3ef8f0868e415434b223d6",
+  "scope": "80-versions-with-true-grit-single-selection",
+  "registry_sha256": "0fdaecb234682adc8a6d5da736403dd4e026ca8b5e97ef69e0488359940d7cd0",
+  "runtime_contract_sha256": "fb977bfe95e2151f87677dec8e0e620ed5850e5628316940ff44b984707c64f6",
   "card_entities": 64,
   "initial_cards": 49,
   "truncate_at": 50,

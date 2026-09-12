@@ -5,11 +5,13 @@ import numpy as np
 from sts.env.public_battle import _canonical
 from torch import nn
 
-from sts.env.ironclad import CONTRACT, REGIONS, CARD_BY_NAME, RUNTIME_CONTRACT, semantic_extensions
+from sts.env.ironclad import CONTRACT, REGIONS as EXPANDED_REGIONS, CARD_BY_NAME, RUNTIME_CONTRACT, semantic_extensions
 from sts.models.comparison import (
     CARD_KEYS, FEATURES, SLOTS, CARD_NUMERIC, CARD_BOOL, PLAYER, HISTORY,
     CONTRACT as BASE_ENCODING, ComparisonActorCritic, exact_keys, statuses, onehot,
 )
+
+REGIONS = EXPANDED_REGIONS[:4]
 
 EXTRA_CARD_KEYS = {"combat_damage_bonus", "is_strike", "effective_exhaust", "cost_kind",
                    "printed_cost", "effective_cost", "effective_cost_known", "cost_scope"}
@@ -23,6 +25,9 @@ def encode(obs):
         raise ValueError("扩展编码schema不匹配")
     if obs.get("decision") != {"phase": "NORMAL", "selection": None}:
         raise ValueError("候选头尚未验收")
+    if obs.get("resolving"):
+        raise ValueError("旧卡牌Set不支持选牌暂停，请使用统一实体模型")
+    obs = {k: v for k, v in obs.items() if k != "resolving"}
     base = copy.deepcopy(obs)
     del base["decision"]
     del base["player"]["combust_hp_loss"]
