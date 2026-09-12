@@ -48,7 +48,7 @@ class EntityBlock(nn.Module):
 
 
 class UnifiedEntityActorCritic(nn.Module):
-    model_version = "unified-entity-set-v3"
+    model_version = "unified-entity-set-v4"
 
     def __init__(self, architecture=None):
         super().__init__()
@@ -61,7 +61,7 @@ class UnifiedEntityActorCritic(nn.Module):
         self.final_norm = nn.LayerNorm(w)
         self.action_embedding = nn.Embedding(len(KINDS), 8)
         self.action_head = nn.Sequential(nn.Linear(3 * w + 10 + CANDIDATE_CONTEXT_DIM, w), nn.GELU(), nn.Linear(w, 1))
-        self.value_head = nn.Sequential(nn.Linear(w, w), nn.GELU(), nn.Linear(w, 1))
+        self.value_head = nn.Sequential(nn.Linear(w + CANDIDATE_CONTEXT_DIM, w), nn.GELU(), nn.Linear(w, 1))
 
     def encode_entities(self, batch):
         valid = batch["entity_valid"]
@@ -102,7 +102,12 @@ class UnifiedEntityActorCritic(nn.Module):
                                batch["candidate_context"]], -1)
         scores = self.action_head(features).squeeze(-1)
         mask = batch["candidate_valid"] & batch["legal"]
-        return scores.masked_fill(~mask, -torch.inf), self.value_head(context).squeeze(-1)
+        # 当前同一选择的上下文一致；只汇总有效候选，避免padding和候选数量改变价值。
+        valid = batch["candidate_valid"]
+        public_context = batch["candidate_context"].masked_fill(~valid[..., None], 0).sum(1)
+        public_context = public_context / valid.sum(1, keepdim=True).clamp_min(1)
+        value_features = torch.cat([context, public_context], -1)
+        return scores.masked_fill(~mask, -torch.inf), self.value_head(value_features).squeeze(-1)
 
     def distribution(self, batch):
         if not (batch["candidate_valid"] & batch["legal"]).any(1).all():

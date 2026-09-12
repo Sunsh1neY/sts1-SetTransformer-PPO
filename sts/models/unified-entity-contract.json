@@ -1,6 +1,6 @@
 {
   "schema": "unified-entity-interface-v4",
-  "model": "unified-entity-set-v3",
+  "model": "unified-entity-set-v4",
   "architecture": {
     "width": 64,
     "heads": 4,

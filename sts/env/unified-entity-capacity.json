@@ -11,6 +11,6 @@
   "max_allocated_entities": 32766,
   "termination_rule_version": "unified-entity-runtime-guards-v3",
   "training_admitted": false,
-  "entity_contract_sha256": "4f3dddb9313059a70c303461832bb089c3984603e51e37628cd664daf7783760",
-  "backend_sha256": "002bc09bbb829b0222747b191e8a37968e889c9e334c454333f0abfc64c2b350"
+  "entity_contract_sha256": "12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843",
+  "backend_sha256": "0953711a5b37a38d00a788ce6220e8848950290c6e372534a485325f0212dc55"
 }

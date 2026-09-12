@@ -96,14 +96,6 @@ def test_b02_havoc_exhaust_trigger_runs_for_unusable_wound():
     assert sum(card["name"] == "Wound" for card in obs["exhaust_pile"]) == 1
 
 
-def test_b03_searing_blow_plus_100_is_not_upgraded_by_armaments_plus():
-    """+100可构造但Armaments+不应再次进入后端升级异常。"""
-    env, obs = start(["Searing Blow+100", "Armaments+1", "Wound", "Dazed", "Burn"])
-    obs = play(env, obs, "Armaments")
-    assert obs["decision"]["phase"] == "NORMAL"
-    assert rows(obs, "Searing Blow")[0]["upgrade_count"] == 100
-
-
 def test_b04_ascenders_bane_is_unplayable_in_every_card_region():
     """不可主动打出类别在四个牌区都用0占位并由类别表达。"""
     env = IroncladEnv()

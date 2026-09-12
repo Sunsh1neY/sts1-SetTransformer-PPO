@@ -75,3 +75,48 @@ def test_b05_candidate_context_reaches_action_scorer():
         second, _ = model(collate([altered]))
     legal = collate([sample])["legal"]
     assert not torch.equal(first[legal], second[legal])
+
+
+def test_resolution_context_reaches_value_with_padding_and_candidate_invariance():
+    """人工成对编码验证接入和梯度，不冒充真实状态碰撞证明。"""
+    env = IroncladEnv()
+    obs = env.reset(_scene(["Headbutt", "Strike_R", "Defend_R", "Pommel Strike", "Seeing Red"]), 982401, diagnostic=True)
+    for card in ("Seeing Red", "Defend_R", "Strike_R", "Headbutt"):
+        obs = play(env, obs, card)
+    sample = encode_observation(obs)
+    first = collate([sample])
+    second = copy.deepcopy(first)
+    second["candidate_context"][..., -1] = 0.25
+    model = UnifiedEntityActorCritic().eval()
+    # 隔离公开次数到value的通路，避免随机初始化抵消造成脆弱断言。
+    with torch.no_grad():
+        model.value_head[0].weight.zero_()
+        model.value_head[0].bias.zero_()
+        model.value_head[0].weight[0, -1] = 1
+        model.value_head[2].weight.zero_()
+        model.value_head[2].weight[0, 0] = 1
+        model.value_head[2].bias.zero_()
+    _, v0 = model(first)
+    _, v1 = model(second)
+    assert v1.item() > v0.item()
+    v1.sum().backward()
+    assert model.value_head[0].weight.grad[0, -1] != 0
+    padded = copy.deepcopy(second)
+    # 增加一个有效候选的复制，以及一个带污染值的无效padding。
+    for key in ("kinds", "source", "target", "candidate_context", "candidate_valid", "legal"):
+        padded[key] = torch.cat([padded[key], padded[key][:, :1], padded[key][:, :1]], dim=1)
+    padded["candidate_valid"][:, -1] = False
+    padded["legal"][:, -1] = False
+    padded["candidate_context"][:, -1] = float("nan")
+    _, vp = model(padded)
+    torch.testing.assert_close(vp, v1, rtol=0, atol=0)
+    for key in ("kinds", "source", "target", "candidate_context", "candidate_valid", "legal"):
+        padded[key] = padded[key].flip(1)
+    _, vr = model(padded)
+    torch.testing.assert_close(vr, v1, rtol=0, atol=0)
+    empty = copy.deepcopy(first)
+    for key in ("kinds", "source", "target", "candidate_context", "candidate_valid", "legal"):
+        empty[key] = empty[key][:, :0]
+    logits, value = model(empty)
+    assert logits.shape == (1, 0)
+    assert torch.isfinite(value).all()

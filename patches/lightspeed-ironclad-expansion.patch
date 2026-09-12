@@ -95,7 +95,6 @@ index 0000000..e195543
 +};
 +}
 diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
-index af31688..5b2a132 100644
 --- a/bindings/public-battle-env.cpp
 +++ b/bindings/public-battle-env.cpp
 @@ -1,5 +1,6 @@
@@ -105,7 +104,7 @@ index af31688..5b2a132 100644
  #include <pybind11/stl.h>
  #include <nlohmann/json.hpp>
  #include <algorithm>
-@@ -149,6 +150,7 @@ class PublicBattleEnv {
+@@ -149,6 +150,7 @@
      std::unique_ptr<GameContext> gc_;
      BattleContext bc_;
      int maxActions_;
@@ -113,7 +112,7 @@ index af31688..5b2a132 100644
      int actionCount_ = 0;
      int initialCards_ = 0;
      bool hasReset_ = false;
-@@ -163,6 +165,42 @@ class PublicBattleEnv {
+@@ -163,6 +165,42 @@
          int damage = 0, block = 0, magic = 0, hits = 1;
          bool all = false;
          switch (c.id) {
@@ -156,7 +155,7 @@ index af31688..5b2a132 100644
              case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
              case CardId::DEFEND_RED: block = up ? 8 : 5; break;
              case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
-@@ -186,7 +224,7 @@ class PublicBattleEnv {
+@@ -186,7 +224,7 @@
              case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
              case CardId::SEEING_RED: magic = 2; break;
              case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
@@ -165,7 +164,7 @@ index af31688..5b2a132 100644
              case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
              case CardId::FLEX: magic = up ? 4 : 2; break;
              case CardId::METALLICIZE: magic = up ? 4 : 3; break;
-@@ -214,7 +252,7 @@ class PublicBattleEnv {
+@@ -214,7 +252,7 @@
          }
          const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
          // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
@@ -174,7 +173,7 @@ index af31688..5b2a132 100644
              {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
              {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
              {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
-@@ -222,6 +260,23 @@ class PublicBattleEnv {
+@@ -222,6 +260,23 @@
              {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
              {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
              {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
@@ -198,7 +197,7 @@ index af31688..5b2a132 100644
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -231,14 +286,38 @@ class PublicBattleEnv {
+@@ -231,14 +286,38 @@
          return rows;
      }
  
@@ -239,7 +238,7 @@ index af31688..5b2a132 100644
              throw std::runtime_error("生成量超出已证明边界");
      }
  
-@@ -252,7 +331,8 @@ class PublicBattleEnv {
+@@ -252,7 +331,8 @@
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -249,7 +248,7 @@ index af31688..5b2a132 100644
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +366,28 @@ class PublicBattleEnv {
+@@ -286,14 +366,28 @@
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -280,7 +279,7 @@ index af31688..5b2a132 100644
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -338,14 +432,24 @@ public:
+@@ -338,14 +432,24 @@
              const auto plus = name.find('+');
              if (plus != std::string::npos) {
                  const auto suffix = name.substr(plus + 1);
@@ -310,7 +309,7 @@ index af31688..5b2a132 100644
          }
          initialCards_ = gc_->deck.size();
          relicNames_.clear();
-@@ -391,6 +495,11 @@ public:
+@@ -391,6 +495,11 @@
          return mask;
      }
  
@@ -322,7 +321,7 @@ index af31688..5b2a132 100644
      std::string observation() const { return observeJson().dump(); }
  
      std::string step(int action) {
-@@ -400,6 +509,40 @@ public:
+@@ -400,6 +509,40 @@
          if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
          else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
          else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
@@ -363,7 +362,7 @@ index af31688..5b2a132 100644
          // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
          std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
          const int oldTurn = bc_.turn;
-@@ -439,9 +582,27 @@ public:
+@@ -439,9 +582,27 @@
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
@@ -631,7 +630,7 @@ index 965faef..57159b0 100644
      cards.removeFromHandAtIdx(handIdx);
  }
 diff --git a/src/combat/CardInstance.cpp b/src/combat/CardInstance.cpp
-index 2bd9c9d..3875d6b 100644
+index 2bd9c9d..be152fc 100644
 --- a/src/combat/CardInstance.cpp
 +++ b/src/combat/CardInstance.cpp
 @@ -3,6 +3,7 @@
@@ -642,15 +641,7 @@ index 2bd9c9d..3875d6b 100644
  
  #include "combat/BattleContext.h"
  
-@@ -54,6 +55,7 @@ int CardInstance::getUpgradeCount() const {
- 
- bool CardInstance::canUpgrade() const {
-     return (!upgraded || id == CardId::SEARING_BLOW) &&
-+        !(id == CardId::SEARING_BLOW && specialData >= 100) &&
-         getType() != CardType::CURSE &&
-         getType() != CardType::STATUS;
- }
-@@ -142,6 +144,7 @@ void CardInstance::upgrade() {
+@@ -142,6 +143,7 @@ void CardInstance::upgrade() {
  
      switch (id) {
          case CardId::SEARING_BLOW:

@@ -541,3 +541,9 @@
 - 采用最小独立`resolution_context`，不改变CARD 115维。字段固定为`source_mode`、`source_will_exhaust`、`pending_replay_count`；编码为候选上下文并实际拼入`UnifiedEntityActorCritic.action_head`。NORMAL候选上下文全零。
 - `pending_replay_count`只是公开重复队列语义的数量汇总，不发布队列条目、卡牌内部ID、随机状态或隐藏牌序；当前不增加X能量快照、通用来源枚举或完整历史记忆。
 - 因动作评分输入变化，接口/模型升级为`unified-entity-interface-v4`/`unified-entity-set-v3`，扩展观测/动作契约升级为v2/v5；旧checkpoint必须通过指纹拒绝精确恢复。该决策不等于正式训练准入。
+
+## 最终复核收尾裁定（2026-09-13）
+
+- 用户授权完成复核收尾：同一公开结算上下文同时进入动作头与价值头，普通CARD保持115维；模型升级为unified-entity-set-v4，接口仍v4。价值头使用有效候选上下文的均值，排除padding，空候选取零，不依赖候选数量和顺序。当前真实选择的上下文在所有候选间相同。
+- 撤销Searing Blow +100的canUpgrade额外过滤，保留直接升级时的明确资源异常；此极端资源限制不作为本轮合并阻塞，不改变游戏升级终点。
+- B05真实路径测试证明公开来源及接入，但尚未证明移除上下文后完整输入碰撞；保留最小公开流程提示的工程选择，不宣称三字段均有不可替代性证明。人工成对编码探针只验证模型接入。
