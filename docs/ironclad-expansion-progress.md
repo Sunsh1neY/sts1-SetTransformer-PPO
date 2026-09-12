@@ -2,6 +2,13 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## U5审计：卡牌逐维输入及协作阻塞（2026-09-12）
+
+- 应用户要求参照敌人阻塞分组整理 [卡牌输入审计](card-token-input-audit.md) 与 [122维逐维字典](card-token-dimensions.md)。区分122维原始输入、64维学习表示、关系特征、全局状态及模型外路由；列出剩35类70版本的互斥分组。
+- 明确新增字段对应Rampage/Blood for Blood/Corruption/True Grit+与未来牌的需求；登记C1费用/公开记忆、C2连锁资源、C3目标生命周期、C4可选多效果编码建议，尚未据此修改接口契约。
+- `python scripts/audit-card-token.py`：122维顺序与实际编码对拍通过；三组针对性测试 `test_unified_entities.py`、`test_ironclad_dynamics.py`、`test_true_grit_selection.py` 共55 passed in 4.30s；覆盖检查150目标、80扩展准入、69旧准入、7冻结文件通过。
+- 本轮仅新增审计文档、生成核对脚本和本记录；无后端/模型修改，无训练，无全仓重跑；不将静态风险或合成接口夹具当成真实机制验收。
+
 ## E0a：隔离版本与覆盖台账（2026-09-12）
 
 - 基线：独立目录 `sts2-full-card`，分支 `codex/ironclad-full-expansion`，起始快照 `50b756e`。原对照报告在检查时仍为 running；F0最终冻结与同步未完成。
