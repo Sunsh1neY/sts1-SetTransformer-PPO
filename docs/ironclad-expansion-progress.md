@@ -15,6 +15,12 @@
 - B04：公开绑定先判X费用，再将负费用实例归为`UNPLAYABLE`；CARD 115维布局不变，`pay_cost=0`仍只作不可打出占位。四牌区token与普通mask定向回归通过。
 - F2构建：基础补丁应用后重新生成增量补丁，正向检查通过；标准C++/pybind构建通过。B02/B03在本中间提交仍保持未修复反例，未写成F2通过。
 
+## F3：Havoc生命周期与+100过滤修复（2026-09-13）
+
+- B02：自动牌不可执行且`exhaustOnUse`时进入既有`triggerAndMoveToExhaustPile`；Wound、Dazed、Burn、AscendersBane及条件不满足Clash均保留为消耗堆实例，Wound的Feel No Pain耗尽触发已验证。未通过mask隐藏或伪造战败。
+- B03：`CardInstance::canUpgrade`将Searing Blow `specialData>=100`视为过滤终端；+100仍可构造、编码和保留原公式，直接越过边界的后端资源保护仍存在，不把它改写成游戏规则终点。
+- F3标准增量构建通过；F1定向回归最终10 passed。尚未执行CPU全仓回归、B05动作上下文修复、最终checkpoint恢复和合并报告，不能宣布最终可合并。
+
 ## E7补验：无牌但仍有持续效果/药水（2026-09-13）
 
 - 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。
