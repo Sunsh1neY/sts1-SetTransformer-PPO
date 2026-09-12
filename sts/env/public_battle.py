@@ -151,6 +151,8 @@ class PublicBattleEnv:
         self._context: dict[str, Any] = {}
         self._finished = True
 
+    _normalize_observation = staticmethod(normalize_observation)
+
     def reset(self, scene: Mapping[str, Any], seed: int, *, diagnostic: bool = False, purpose: str = "development") -> dict[str, Any]:
         environment_seed = _integer(seed, "environment_seed")
         if purpose not in {"development", "train", "evaluation"}:
@@ -182,7 +184,7 @@ class PublicBattleEnv:
             raise ValueError("只支持Ironclad第一幕入口")
         payload = {key: candidate[key] for key in runtime_keys if key in candidate}
         self._finished = True
-        observation = normalize_observation(json.loads(self._env.reset_scene(json.dumps(payload, allow_nan=False), environment_seed)))
+        observation = self._normalize_observation(json.loads(self._env.reset_scene(json.dumps(payload, allow_nan=False), environment_seed)))
         self._context = {**source_context, "environment_seed": environment_seed, "seed_purpose": purpose,
                          "contract_id": PUBLIC_CONTRACT["contract_id"], "contract_hash": CONTRACT_HASH,
                          "reward_version": PUBLIC_CONTRACT["reward_version"], "gamma": 1.0,
@@ -201,7 +203,7 @@ class PublicBattleEnv:
         if not 0 <= selected < ACTION_COUNT:
             raise ValueError("动作必须在0..65")
         result = json.loads(self._env.step(selected))
-        observation = normalize_observation(result["observation"])
+        observation = self._normalize_observation(result["observation"])
         terminated, truncated = result["terminated"], result["truncated"]
         if not isinstance(terminated, bool) or not isinstance(truncated, bool) or terminated and truncated:
             raise ValueError("终止/截断字段非法")
@@ -215,7 +217,7 @@ class PublicBattleEnv:
         return observation, reward, terminated, truncated, info
 
     def observation(self) -> dict[str, Any]:
-        return normalize_observation(json.loads(self._env.observation()))
+        return self._normalize_observation(json.loads(self._env.observation()))
 
     def action_mask(self) -> np.ndarray:
         mask = np.asarray(self._env.action_mask())

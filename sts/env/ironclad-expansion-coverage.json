@@ -27,8 +27,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Bash",
@@ -36,8 +39,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Blood for Blood",
@@ -63,8 +69,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Bludgeon",
@@ -72,8 +81,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Body Slam",
@@ -81,8 +93,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Body Slam",
@@ -90,8 +105,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Carnage",
@@ -99,8 +117,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Carnage",
@@ -108,8 +129,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Clash",
@@ -135,8 +159,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Cleave",
@@ -144,8 +171,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Clothesline",
@@ -153,8 +183,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Clothesline",
@@ -162,8 +195,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Dropkick",
@@ -171,8 +207,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Dropkick",
@@ -180,8 +219,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Feed",
@@ -243,8 +285,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Heavy Blade",
@@ -252,8 +297,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Hemokinesis",
@@ -279,8 +327,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Immolate",
@@ -288,8 +339,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Iron Wave",
@@ -333,8 +387,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Pommel Strike",
@@ -342,8 +399,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Pummel",
@@ -351,8 +411,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Pummel",
@@ -360,8 +423,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Rampage",
@@ -405,8 +471,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Reckless Charge",
@@ -414,8 +483,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Searing Blow",
@@ -459,8 +531,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Strike_R",
@@ -468,8 +543,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sword Boomerang",
@@ -495,8 +573,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Thunderclap",
@@ -504,8 +585,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Twin Strike",
@@ -513,8 +597,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Twin Strike",
@@ -522,8 +609,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Uppercut",
@@ -531,8 +621,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Uppercut",
@@ -540,8 +633,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Whirlwind",
@@ -567,8 +663,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Wild Strike",
@@ -576,8 +675,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Armaments",
@@ -603,8 +705,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Battle Trance",
@@ -612,8 +717,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Bloodletting",
@@ -657,8 +765,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Defend_R",
@@ -666,8 +777,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Disarm",
@@ -729,8 +843,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Entrench",
@@ -738,8 +855,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Exhume",
@@ -765,8 +885,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Flame Barrier",
@@ -774,8 +897,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Flex",
@@ -783,8 +909,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Flex",
@@ -792,8 +921,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Ghostly Armor",
@@ -801,8 +933,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Ghostly Armor",
@@ -810,8 +945,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Havoc",
@@ -837,8 +975,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Impervious",
@@ -846,8 +987,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Infernal Blade",
@@ -927,8 +1071,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Power Through",
@@ -936,8 +1083,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Rage",
@@ -945,8 +1095,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Rage",
@@ -954,8 +1107,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Second Wind",
@@ -981,8 +1137,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Seeing Red",
@@ -990,8 +1149,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sentinel",
@@ -999,8 +1161,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sentinel",
@@ -1008,8 +1173,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Shockwave",
@@ -1035,8 +1203,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Shrug It Off",
@@ -1044,8 +1215,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Spot Weakness",
@@ -1053,8 +1227,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Spot Weakness",
@@ -1062,8 +1239,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "True Grit",
@@ -1071,8 +1251,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "True Grit",
@@ -1215,8 +1398,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Demon Form",
@@ -1224,8 +1410,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Evolve",
@@ -1251,8 +1440,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Feel No Pain",
@@ -1260,8 +1452,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Fire Breathing",
@@ -1287,8 +1482,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Inflame",
@@ -1296,8 +1494,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Juggernaut",
@@ -1323,8 +1524,11 @@
       "upgrade_count": 0,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Metallicize",
@@ -1332,8 +1536,11 @@
       "upgrade_count": 1,
       "milestone": "baseline",
       "legacy_admitted": true,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Rupture",

@@ -2,7 +2,8 @@
 param(
     [string]$Python = 'python',
     [string]$Toolchain = 'C:\msys64\mingw64\bin',
-    [int]$Jobs = 4
+    [int]$Jobs = 4,
+    [string]$ExtraPatch = ""
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
@@ -70,15 +71,27 @@ if ($bindingCommit -ne $lock.pybind11_commit) {
     Invoke-Checked 'git' @('-C', $bindingDir, 'checkout', '--detach', $lock.pybind11_commit)
 }
 
+# 增量补丁已经应用时，基础补丁的整文件反向检查会受新增内容影响。
+$extraAlreadyApplied = $false
+if ($ExtraPatch) {
+    $ExtraPatch = (Resolve-Path -LiteralPath $ExtraPatch).Path
+    & git -C $sourceDir apply --reverse --check $ExtraPatch 2>$null
+    $extraAlreadyApplied = $LASTEXITCODE -eq 0
+}
 # 允许重复执行；若补丁未完整应用且与本地改动冲突，直接报告，不强行覆盖。
 $previousErrorPreference = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
 & git -C $sourceDir apply --reverse --check $patchPath 2>&1 | Out-Null
 $patchAlreadyApplied = $LASTEXITCODE -eq 0
 $ErrorActionPreference = $previousErrorPreference
-if (-not $patchAlreadyApplied) {
+if (-not $patchAlreadyApplied -and -not $extraAlreadyApplied) {
     Invoke-Checked 'git' @('-C', $sourceDir, 'apply', '--check', $patchPath)
     Invoke-Checked 'git' @('-C', $sourceDir, 'apply', $patchPath)
+}
+
+if ($ExtraPatch -and -not $extraAlreadyApplied) {
+    Invoke-Checked 'git' @('-C', $sourceDir, 'apply', '--check', $ExtraPatch)
+    Invoke-Checked 'git' @('-C', $sourceDir, 'apply', $ExtraPatch)
 }
 
 # 新公开环境的动作/容量与Python共用单一JSON契约。

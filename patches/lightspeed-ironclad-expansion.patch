@@ -1,0 +1,90 @@
+--- a/bindings/public-battle-env.cpp
++++ b/bindings/public-battle-env.cpp
+@@ -149,6 +149,7 @@
+     std::unique_ptr<GameContext> gc_;
+     BattleContext bc_;
+     int maxActions_;
++    bool expanded_ = false;
+     int actionCount_ = 0;
+     int initialCards_ = 0;
+     bool hasReset_ = false;
+@@ -214,7 +215,7 @@
+         }
+         const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
+         // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
+-        return {{"name", sourceCardName(c.id)}, {"card_id", static_cast<int>(c.id)},
++        Json row = {{"name", sourceCardName(c.id)}, {"card_id", static_cast<int>(c.id)},
+             {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
+             {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
+             {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
+@@ -222,6 +223,15 @@
+             {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
+             {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
+             {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
++        if (expanded_) {
++            // 只输出具名公开属性，不输出specialData或实例ID。
++            row["combat_damage_bonus"] = c.id == CardId::RAMPAGE ? c.specialData : 0;
++            row["is_strike"] = c.isStrikeCard();
++            row["cost_kind"] = c.isXCost() ? "X" : c.cost == -2 ? "UNPLAYABLE" : "ENERGY";
++            row["effective_exhaust"] = c.doesExhaust() ||
++                (c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>());
++        }
++        return row;
+     }
+ 
+     template <typename C> Json pileRows(const C &pile) const {
+@@ -252,7 +262,8 @@
+             const auto id = static_cast<PS>(i);
+             if (!bc_.player.hasStatusRuntime(id)) continue;
+             // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
+-            if (id == PS::NO_DRAW || id == PS::ENTANGLED) statuses[playerStatusStrings[i]] = 1;
++            if (id == PS::NO_DRAW || id == PS::ENTANGLED ||
++                (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION))) statuses[playerStatusStrings[i]] = 1;
+             else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
+         }
+         Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
+@@ -286,14 +297,20 @@
+                 {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
+         }
+         for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
+-        return {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
++        Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
+             {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
+             {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
+             {"relics", relics}, {"action_mask", actionMask()}};
++        if (expanded_) {
++            result["schema"] = "ironclad-observation-v1";
++            result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
++            result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
++        }
++        return result;
+     }
+ 
+ public:
+-    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS) : maxActions_(maxActions) {
++    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS, bool expanded = false) : maxActions_(maxActions), expanded_(expanded) {
+         if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
+         static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
+                       "生成牌ID必须保持int16范围");
+@@ -439,9 +456,21 @@
+             {"truncated", truncated_}, {"info", info}}.dump();
+     }
+ };
++
++// 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
++class IroncladBattleEnv : public PublicBattleEnv {
++public:
++    explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
++};
+ }
+ 
+ void registerPublicBattleEnv(pybind11::module_ &module) {
++    pybind11::class_<IroncladBattleEnv>(module, "IroncladExpandedBattleEnv")
++        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
++        .def("reset_scene", &IroncladBattleEnv::resetScene)
++        .def("step", &IroncladBattleEnv::step)
++        .def("observation", &IroncladBattleEnv::observation)
++        .def("action_mask", &IroncladBattleEnv::actionMask);
+     pybind11::class_<PublicBattleEnv>(module, "PublicBattleEnv")
+         .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
+         .def("reset_scene", &PublicBattleEnv::resetScene, pybind11::arg("scene_json"), pybind11::arg("seed"))

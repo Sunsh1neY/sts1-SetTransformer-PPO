@@ -14,7 +14,7 @@
 Set-Location C:\Users\19091\Desktop\sts2-full-card
 .\.venv\Scripts\python.exe -m pytest -q tests/test_public_battle.py tests/test_real_deck_batch.py
 # 后续确有 C++ 修改时再独立构建；当前初始化没有运行编译。
-.\scripts\build-lightspeed.ps1 -Python .\.venv\Scripts\python.exe -Jobs 1
+.\scripts\build-lightspeed.ps1 -Python .\.venv\Scripts\python.exe -Jobs 1 -ExtraPatch .\patches\lightspeed-ironclad-expansion.patch
 ```
 
 新 `.venv` 使用系统只读依赖作为基础（`--system-site-packages`），项目可编辑安装位于新环境，当前 torch 为 `2.6.0+cpu`。这并非完全独立的依赖副本；后续安装应指定新环境的 Python，不要升级系统依赖或原 `.venv-gpu`。当前不启动训练。日志和 checkpoint 使用新目录下相对路径 `runs/full-card-...`；不要把原训练输出目录作为目标。
