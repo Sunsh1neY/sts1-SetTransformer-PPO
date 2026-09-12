@@ -202,6 +202,11 @@
       "max_upgrade": 0
     },
     {
+      "id": 42,
+      "name": "Armaments",
+      "max_upgrade": 1
+    },
+    {
       "id": 43,
       "name": "Barricade",
       "max_upgrade": 1
@@ -227,6 +232,11 @@
       "max_upgrade": 1
     },
     {
+      "id": 48,
+      "name": "Burning Pact",
+      "max_upgrade": 1
+    },
+    {
       "id": 49,
       "name": "Clash",
       "max_upgrade": 1
@@ -247,8 +257,18 @@
       "max_upgrade": 1
     },
     {
+      "id": 55,
+      "name": "Dual Wield",
+      "max_upgrade": 1
+    },
+    {
       "id": 56,
       "name": "Evolve",
+      "max_upgrade": 1
+    },
+    {
+      "id": 57,
+      "name": "Exhume",
       "max_upgrade": 1
     },
     {
@@ -259,6 +279,11 @@
     {
       "id": 60,
       "name": "Fire Breathing",
+      "max_upgrade": 1
+    },
+    {
+      "id": 62,
+      "name": "Headbutt",
       "max_upgrade": 1
     },
     {
@@ -319,6 +344,11 @@
     {
       "id": 78,
       "name": "Sword Boomerang",
+      "max_upgrade": 1
+    },
+    {
+      "id": 79,
+      "name": "Warcry",
       "max_upgrade": 1
     }
   ]

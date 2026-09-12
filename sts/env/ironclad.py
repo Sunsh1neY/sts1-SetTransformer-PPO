@@ -10,7 +10,7 @@ import numpy as np
 
 from sts.env.lightspeed import _load_backend
 from sts.env.public_battle import PUBLIC_CONTRACT, PublicBattleEnv, _integer, normalize_observation
-from sts.env.selection import SelectionRouter
+from sts.env.selection import SelectionRouter, ZONES
 
 PATH = Path(__file__).with_name("ironclad-expansion-contract.json")
 CONTRACT = json.loads(PATH.read_text(encoding="utf-8"))
@@ -29,8 +29,8 @@ def normalize_ironclad(raw):
     value = json.loads(json.dumps(raw, allow_nan=False))
     if value.get("schema") != CONTRACT["observation_schema"]:
         raise ValueError("扩展观测schema不匹配")
-    if value.get("decision") not in ({"phase": "NORMAL", "selection": None},
-                                     {"phase": "SELECT_CARD", "selection": {"kind": "EXHAUST_ONE"}}):
+    if value.get("decision") not in ([{"phase": "NORMAL", "selection": None}] +
+                                    [{"phase": "SELECT_CARD", "selection": {"kind": k}} for k in ZONES if k != "DISCOVERY"]):
         raise ValueError("未知或不完整的选择阶段")
     # 复用旧字段的严格准入检查，同时保留所有扩展字段与逐实体排序。
     value = normalize_observation(value, contract=RUNTIME_CONTRACT)
@@ -66,7 +66,15 @@ class IroncladEnv(PublicBattleEnv):
                 view = self._selection.snapshot()
             except RuntimeError:
                 indices = self._env.selection_indices()
-                view = self._selection.publish("EXHAUST_ONE", [(i, obs["hand"][i]) for i in indices])
+                raw_value = json.loads(raw) if isinstance(raw, str) else raw
+                kind = raw_value["decision"]["selection"]["kind"]
+                zone = ZONES[kind]
+                pairs = []
+                for index in indices:
+                    probe = json.loads(json.dumps(raw_value))
+                    probe[zone] = [json.loads(self._env.selection_card(index))]
+                    pairs.append((index, normalize_ironclad(probe)[zone][0]))
+                view = self._selection.publish(kind, pairs)
             obs["decision"] = {"phase": "SELECT_CARD", "selection": view["semantic"], "routing": view["routing"]}
         return obs
 

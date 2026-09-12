@@ -2,6 +2,13 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E3：六类选牌与公开顶牌（2026-09-12）
+
+- Armaments、Burning Pact、Dual Wield、Exhume、Headbutt、Warcry基础/+接入，当前130/150。跨区候选逐张规范化并保留模型外后端索引，不以排序后的牌区索引冒充后端索引；True Grit既有路径复用。
+- 新12项真实牌测试与既有选牌/路由共33项通过。覆盖单选/自动升级、Sentinel耗尽续跑、复制升级实例、消耗堆取回、弃牌堆置顶和抽取清除、Warcry来源耗尽与统一模型。
+- 修复Armaments+错误升级Wound：全手牌升级须检查canUpgrade。已知顶牌仅在公开Headbutt/Warcry事件记住一张，抽走及洗牌清除，无隐藏牌序导出。
+- 一次全仓902通过、2失败仅为旧测试仍把Exhume/Warcry当作未准入；改为明确范围外的四张牌拒绝测试，最终回归在全卡收口重跑。构建完成前误启动测试的指纹拒绝不计为机制缺陷。
+
 ## E4：能力链七类（2026-09-12）
 
 - Berserk、Brutality、Dark Embrace、Evolve、Fire Breathing、Juggernaut、Rupture基础/+接入；当前118/150。26项针对性测试通过，覆盖能量生效、Artifact、自伤、状态抽牌、耗尽、格挡药水触发和统一实体模型。

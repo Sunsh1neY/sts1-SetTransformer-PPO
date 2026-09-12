@@ -285,8 +285,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Headbutt",
@@ -294,8 +297,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Heavy Blade",
@@ -735,8 +741,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Armaments",
@@ -744,8 +753,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Battle Trance",
@@ -801,8 +813,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Burning Pact",
@@ -810,8 +825,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Defend_R",
@@ -879,8 +897,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Dual Wield",
@@ -888,8 +909,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Entrench",
@@ -921,8 +945,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Exhume",
@@ -930,8 +957,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Flame Barrier",
@@ -1359,8 +1389,11 @@
       "upgrade_count": 0,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Warcry",
@@ -1368,8 +1401,11 @@
       "upgrade_count": 1,
       "milestone": "E3",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Barricade",

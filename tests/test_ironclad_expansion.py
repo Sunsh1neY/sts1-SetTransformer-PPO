@@ -98,8 +98,8 @@ def test_hidden_fields_and_incomplete_phase_are_rejected():
         normalize_ironclad(raw)
 
 
-@pytest.mark.parametrize("card", ["Havoc", "Exhume", "Warcry", "Infernal Blade"])
-def test_pending_cards_remain_rejected(card):
+@pytest.mark.parametrize("card", ["Zap", "Alchemize", "Discovery", "Apparition"])
+def test_out_of_scope_cards_remain_rejected(card):
     with pytest.raises(ValueError):
         IroncladEnv().reset(scene([card] * 5), 982001, diagnostic=True)
 
