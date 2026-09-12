@@ -1,0 +1,1357 @@
+{
+  "schema": "ironclad-expansion-coverage-v1",
+  "target_classes": 75,
+  "target_versions": 150,
+  "versions": [
+    {
+      "name": "Anger",
+      "backend_enum": "ANGER",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Anger",
+      "backend_enum": "ANGER",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bash",
+      "backend_enum": "BASH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bash",
+      "backend_enum": "BASH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Blood for Blood",
+      "backend_enum": "BLOOD_FOR_BLOOD",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Blood for Blood",
+      "backend_enum": "BLOOD_FOR_BLOOD",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bludgeon",
+      "backend_enum": "BLUDGEON",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bludgeon",
+      "backend_enum": "BLUDGEON",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Body Slam",
+      "backend_enum": "BODY_SLAM",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Body Slam",
+      "backend_enum": "BODY_SLAM",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Carnage",
+      "backend_enum": "CARNAGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Carnage",
+      "backend_enum": "CARNAGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Clash",
+      "backend_enum": "CLASH",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Clash",
+      "backend_enum": "CLASH",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Cleave",
+      "backend_enum": "CLEAVE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Cleave",
+      "backend_enum": "CLEAVE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Clothesline",
+      "backend_enum": "CLOTHESLINE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Clothesline",
+      "backend_enum": "CLOTHESLINE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dropkick",
+      "backend_enum": "DROPKICK",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dropkick",
+      "backend_enum": "DROPKICK",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Feed",
+      "backend_enum": "FEED",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Feed",
+      "backend_enum": "FEED",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Fiend Fire",
+      "backend_enum": "FIEND_FIRE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Fiend Fire",
+      "backend_enum": "FIEND_FIRE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Headbutt",
+      "backend_enum": "HEADBUTT",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Headbutt",
+      "backend_enum": "HEADBUTT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Heavy Blade",
+      "backend_enum": "HEAVY_BLADE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Heavy Blade",
+      "backend_enum": "HEAVY_BLADE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Hemokinesis",
+      "backend_enum": "HEMOKINESIS",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Hemokinesis",
+      "backend_enum": "HEMOKINESIS",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Immolate",
+      "backend_enum": "IMMOLATE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Immolate",
+      "backend_enum": "IMMOLATE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Iron Wave",
+      "backend_enum": "IRON_WAVE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Iron Wave",
+      "backend_enum": "IRON_WAVE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Perfected Strike",
+      "backend_enum": "PERFECTED_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Perfected Strike",
+      "backend_enum": "PERFECTED_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Pommel Strike",
+      "backend_enum": "POMMEL_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Pommel Strike",
+      "backend_enum": "POMMEL_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Pummel",
+      "backend_enum": "PUMMEL",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Pummel",
+      "backend_enum": "PUMMEL",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rampage",
+      "backend_enum": "RAMPAGE",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rampage",
+      "backend_enum": "RAMPAGE",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Reaper",
+      "backend_enum": "REAPER",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Reaper",
+      "backend_enum": "REAPER",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Reckless Charge",
+      "backend_enum": "RECKLESS_CHARGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Reckless Charge",
+      "backend_enum": "RECKLESS_CHARGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Searing Blow",
+      "backend_enum": "SEARING_BLOW",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Searing Blow",
+      "backend_enum": "SEARING_BLOW",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sever Soul",
+      "backend_enum": "SEVER_SOUL",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sever Soul",
+      "backend_enum": "SEVER_SOUL",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Strike_R",
+      "backend_enum": "STRIKE_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Strike_R",
+      "backend_enum": "STRIKE_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sword Boomerang",
+      "backend_enum": "SWORD_BOOMERANG",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sword Boomerang",
+      "backend_enum": "SWORD_BOOMERANG",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Thunderclap",
+      "backend_enum": "THUNDERCLAP",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Thunderclap",
+      "backend_enum": "THUNDERCLAP",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Twin Strike",
+      "backend_enum": "TWIN_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Twin Strike",
+      "backend_enum": "TWIN_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Uppercut",
+      "backend_enum": "UPPERCUT",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Uppercut",
+      "backend_enum": "UPPERCUT",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Whirlwind",
+      "backend_enum": "WHIRLWIND",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Whirlwind",
+      "backend_enum": "WHIRLWIND",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Wild Strike",
+      "backend_enum": "WILD_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Wild Strike",
+      "backend_enum": "WILD_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Armaments",
+      "backend_enum": "ARMAMENTS",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Armaments",
+      "backend_enum": "ARMAMENTS",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Battle Trance",
+      "backend_enum": "BATTLE_TRANCE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Battle Trance",
+      "backend_enum": "BATTLE_TRANCE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bloodletting",
+      "backend_enum": "BLOODLETTING",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Bloodletting",
+      "backend_enum": "BLOODLETTING",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Burning Pact",
+      "backend_enum": "BURNING_PACT",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Burning Pact",
+      "backend_enum": "BURNING_PACT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Defend_R",
+      "backend_enum": "DEFEND_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Defend_R",
+      "backend_enum": "DEFEND_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Disarm",
+      "backend_enum": "DISARM",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Disarm",
+      "backend_enum": "DISARM",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Double Tap",
+      "backend_enum": "DOUBLE_TAP",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Double Tap",
+      "backend_enum": "DOUBLE_TAP",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dual Wield",
+      "backend_enum": "DUAL_WIELD",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dual Wield",
+      "backend_enum": "DUAL_WIELD",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Entrench",
+      "backend_enum": "ENTRENCH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Entrench",
+      "backend_enum": "ENTRENCH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Exhume",
+      "backend_enum": "EXHUME",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Exhume",
+      "backend_enum": "EXHUME",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Flame Barrier",
+      "backend_enum": "FLAME_BARRIER",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Flame Barrier",
+      "backend_enum": "FLAME_BARRIER",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Flex",
+      "backend_enum": "FLEX",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Flex",
+      "backend_enum": "FLEX",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Ghostly Armor",
+      "backend_enum": "GHOSTLY_ARMOR",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Ghostly Armor",
+      "backend_enum": "GHOSTLY_ARMOR",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Havoc",
+      "backend_enum": "HAVOC",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Havoc",
+      "backend_enum": "HAVOC",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Impervious",
+      "backend_enum": "IMPERVIOUS",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Impervious",
+      "backend_enum": "IMPERVIOUS",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Infernal Blade",
+      "backend_enum": "INFERNAL_BLADE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Infernal Blade",
+      "backend_enum": "INFERNAL_BLADE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Intimidate",
+      "backend_enum": "INTIMIDATE",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Intimidate",
+      "backend_enum": "INTIMIDATE",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Limit Break",
+      "backend_enum": "LIMIT_BREAK",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Limit Break",
+      "backend_enum": "LIMIT_BREAK",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Offering",
+      "backend_enum": "OFFERING",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Offering",
+      "backend_enum": "OFFERING",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Power Through",
+      "backend_enum": "POWER_THROUGH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Power Through",
+      "backend_enum": "POWER_THROUGH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rage",
+      "backend_enum": "RAGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rage",
+      "backend_enum": "RAGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Second Wind",
+      "backend_enum": "SECOND_WIND",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Second Wind",
+      "backend_enum": "SECOND_WIND",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Seeing Red",
+      "backend_enum": "SEEING_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Seeing Red",
+      "backend_enum": "SEEING_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sentinel",
+      "backend_enum": "SENTINEL",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Sentinel",
+      "backend_enum": "SENTINEL",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Shockwave",
+      "backend_enum": "SHOCKWAVE",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Shockwave",
+      "backend_enum": "SHOCKWAVE",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Shrug It Off",
+      "backend_enum": "SHRUG_IT_OFF",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Shrug It Off",
+      "backend_enum": "SHRUG_IT_OFF",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Spot Weakness",
+      "backend_enum": "SPOT_WEAKNESS",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Spot Weakness",
+      "backend_enum": "SPOT_WEAKNESS",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "True Grit",
+      "backend_enum": "TRUE_GRIT",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "True Grit",
+      "backend_enum": "TRUE_GRIT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Warcry",
+      "backend_enum": "WARCRY",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Warcry",
+      "backend_enum": "WARCRY",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Barricade",
+      "backend_enum": "BARRICADE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Barricade",
+      "backend_enum": "BARRICADE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Berserk",
+      "backend_enum": "BERSERK",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Berserk",
+      "backend_enum": "BERSERK",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Brutality",
+      "backend_enum": "BRUTALITY",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Brutality",
+      "backend_enum": "BRUTALITY",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Combust",
+      "backend_enum": "COMBUST",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Combust",
+      "backend_enum": "COMBUST",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Corruption",
+      "backend_enum": "CORRUPTION",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Corruption",
+      "backend_enum": "CORRUPTION",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dark Embrace",
+      "backend_enum": "DARK_EMBRACE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Dark Embrace",
+      "backend_enum": "DARK_EMBRACE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Demon Form",
+      "backend_enum": "DEMON_FORM",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Demon Form",
+      "backend_enum": "DEMON_FORM",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Evolve",
+      "backend_enum": "EVOLVE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Evolve",
+      "backend_enum": "EVOLVE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Feel No Pain",
+      "backend_enum": "FEEL_NO_PAIN",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Feel No Pain",
+      "backend_enum": "FEEL_NO_PAIN",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Fire Breathing",
+      "backend_enum": "FIRE_BREATHING",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Fire Breathing",
+      "backend_enum": "FIRE_BREATHING",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Inflame",
+      "backend_enum": "INFLAME",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Inflame",
+      "backend_enum": "INFLAME",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Juggernaut",
+      "backend_enum": "JUGGERNAUT",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Juggernaut",
+      "backend_enum": "JUGGERNAUT",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Metallicize",
+      "backend_enum": "METALLICIZE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Metallicize",
+      "backend_enum": "METALLICIZE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rupture",
+      "backend_enum": "RUPTURE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    },
+    {
+      "name": "Rupture",
+      "backend_enum": "RUPTURE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": false,
+      "evidence": []
+    }
+  ]
+}

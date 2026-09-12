@@ -1,0 +1,43 @@
+{
+  "schema": "ironclad-expansion-contract-v1",
+  "status": "development",
+  "reward_version": "battle_reward_v1",
+  "gamma": 1.0,
+  "alpha_hp": 0.5,
+  "beta": 0.0,
+  "task_type": "battle",
+  "model_family": "set",
+  "observation_schema": "ironclad-observation-v1",
+  "action_schema": "ironclad-normal-66-v1",
+  "normal_action_count": 66,
+  "supported_phases": [
+    "NORMAL"
+  ],
+  "selection_status": "pending-E3",
+  "capacity_status": "legacy-content-only; expansion-proof-pending",
+  "training_admitted": false,
+  "baseline_commit": "50b756e",
+  "comparison_freeze_status": "pending",
+  "scope": {
+    "act": 1,
+    "ascension": 20,
+    "encounters": [
+      "JAW_WORM",
+      "EXORDIUM_THUGS",
+      "GREMLIN_NOB",
+      "LAGAVULIN",
+      "THREE_SENTRIES"
+    ],
+    "relics": "legacy-public-8",
+    "potions": "legacy-public-15"
+  },
+  "frozen_sha256": {
+    "sts/env/public-battle-contract.json": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
+    "sts/env/comparison-contract.json": "6d0dcf25ba2a603c4edc7c32c28484eb419255a7cf79bb7bae10245aa1cf6497",
+    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
+    "sts/models/comparison.py": "7184acd18ae807bceb7e59ee8ec5b48a437e738c8c0d6d997468cbd05e0962de",
+    "sts/train/comparison.py": "951f49137f1e7b62b8723b6204097ee768f56669525f3bfb923882d7286f0b2c",
+    "patches/lightspeed-battle-env.patch": "fe8168a3cbfa5595fefa7e9bf205ea9db0dc017096ac4809120feb8d8896c9aa",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  }
+}
