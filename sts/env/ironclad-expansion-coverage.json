@@ -9,8 +9,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Anger",
@@ -18,8 +21,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Bash",
@@ -267,8 +273,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Fiend Fire",
@@ -276,8 +285,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Headbutt",
@@ -381,8 +393,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Iron Wave",
@@ -390,8 +405,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Perfected Strike",
@@ -399,8 +417,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Perfected Strike",
@@ -408,8 +429,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Pommel Strike",
@@ -537,8 +561,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Searing Blow",
@@ -546,8 +573,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sever Soul",
@@ -699,8 +729,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Whirlwind",
@@ -708,8 +741,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Wild Strike",
@@ -861,8 +897,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Disarm",
@@ -870,8 +909,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Double Tap",
@@ -879,8 +921,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Double Tap",
@@ -888,8 +933,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Dual Wield",
@@ -1041,8 +1089,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Havoc",
@@ -1050,8 +1101,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Impervious",
@@ -1083,8 +1137,11 @@
       "upgrade_count": 0,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Infernal Blade",
@@ -1092,8 +1149,11 @@
       "upgrade_count": 1,
       "milestone": "E6",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Intimidate",

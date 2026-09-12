@@ -202,6 +202,11 @@
       "max_upgrade": 0
     },
     {
+      "id": 41,
+      "name": "Anger",
+      "max_upgrade": 1
+    },
+    {
       "id": 42,
       "name": "Armaments",
       "max_upgrade": 1
@@ -257,6 +262,16 @@
       "max_upgrade": 1
     },
     {
+      "id": 53,
+      "name": "Disarm",
+      "max_upgrade": 1
+    },
+    {
+      "id": 54,
+      "name": "Double Tap",
+      "max_upgrade": 1
+    },
+    {
       "id": 55,
       "name": "Dual Wield",
       "max_upgrade": 1
@@ -277,8 +292,18 @@
       "max_upgrade": 1
     },
     {
+      "id": 59,
+      "name": "Fiend Fire",
+      "max_upgrade": 1
+    },
+    {
       "id": 60,
       "name": "Fire Breathing",
+      "max_upgrade": 1
+    },
+    {
+      "id": 61,
+      "name": "Havoc",
       "max_upgrade": 1
     },
     {
@@ -292,8 +317,18 @@
       "max_upgrade": 1
     },
     {
+      "id": 64,
+      "name": "Infernal Blade",
+      "max_upgrade": 1
+    },
+    {
       "id": 65,
       "name": "Intimidate",
+      "max_upgrade": 1
+    },
+    {
+      "id": 66,
+      "name": "Iron Wave",
       "max_upgrade": 1
     },
     {
@@ -312,6 +347,11 @@
       "max_upgrade": 1
     },
     {
+      "id": 70,
+      "name": "Perfected Strike",
+      "max_upgrade": 1
+    },
+    {
       "id": 71,
       "name": "Rampage",
       "max_upgrade": 1
@@ -325,6 +365,11 @@
       "id": 73,
       "name": "Rupture",
       "max_upgrade": 1
+    },
+    {
+      "id": 74,
+      "name": "Searing Blow",
+      "max_upgrade": 100
     },
     {
       "id": 75,
@@ -349,6 +394,11 @@
     {
       "id": 79,
       "name": "Warcry",
+      "max_upgrade": 1
+    },
+    {
+      "id": 80,
+      "name": "Whirlwind",
       "max_upgrade": 1
     }
   ]

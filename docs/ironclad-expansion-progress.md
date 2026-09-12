@@ -2,6 +2,16 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E5/E6：最后十类与全卡机制收口（2026-09-13）
+
+- Anger、Perfected Strike、Searing Blow、Whirlwind、Disarm、Iron Wave、Fiend Fire、Double Tap、Havoc、Infernal Blade基础/+接入；达到75类150/150版本。Searing Blow另支持+0至+100，边界外拒绝。
+- 最后十类32项测试通过，含Double Tap×Rampage动态成长、复制增伤、Searing Blow重复升级、Infernal Blade28张原池全部实际生成、Havoc自动打出后的真实选择、Fiend Fire×Dark Embrace耗尽快照及资源异常。
+- 修复Disarm+减力、Iron Wave重复格挡修饰、Fiend Fire错误随机耗尽及指定耗尽helper旧索引错误、Combust无牌提前判败、Searing Blow初始多次升级计数。Fiend Fire来源自身耗尽也触发Dark Embrace，测试抽牌数从3修正为4。
+- 新统一collector移除旧每decision15张证明，改用实际编号32766、动作队列50、卡队列10、结算预算与力量/格挡1000000资源保护；资源异常不伪装战败。不解除512模型实体资源保护或96张初始准入范围。
+- 最终全仓936 passed in 33.44s；150版本×两策略300局6665transition、66次选牌，50局具名组合1232transition、59次选牌；350局全部自然结束、0截断、0异常。
+- 全卡输入64步模型诊断：75类出现在大型场景输入，5片段、7次选择、最大103实体、1自然终止/4预算截断；更新边界恢复后的下一次更新一致。仅工程验证，没有正式长训。
+- 最终报告docs/ironclad-full-cards-report.md；产物runs/all-ironclad-20260913。旧四组正式实验、U4/U6结果保持历史身份，敌人/药水合流和正式泛化不属于本次完成范围。
+
 ## E3：六类选牌与公开顶牌（2026-09-12）
 
 - Armaments、Burning Pact、Dual Wield、Exhume、Headbutt、Warcry基础/+接入，当前130/150。跨区候选逐张规范化并保留模型外后端索引，不以排序后的牌区索引冒充后端索引；True Grit既有路径复用。

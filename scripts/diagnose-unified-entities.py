@@ -19,7 +19,7 @@ from sts.train.entitycheckpoint import load_entity_checkpoint, save_entity_check
 from sts.train.ppo import compute_gae, ppo_loss
 
 
-def run(output, steps):
+def run(output, steps, full_cards=False):
     if not 2 <= steps <= 64 or output.exists():
         raise ValueError("诊断仅允许2..64步且输出目录必须为新目录")
     output.mkdir(parents=True)
@@ -39,6 +39,10 @@ def run(output, steps):
                      "player": {"hp": 75, "max_hp": 75, "gold": 0},
                      "deck": ["True Grit+1", "Sentinel", *["Strike_R"] * (n - 2)],
                      "relics": ["Burning Blood", "Vajra"], "potions": ["Weak Potion", "Block Potion"]}
+            if full_cards:
+                names = sorted({r["name"] for r in json.loads((ROOT / "sts/env/ironclad-expansion-coverage.json").read_text(encoding="utf-8"))["versions"]})
+                scene["deck"] = (["True Grit+1", "Sentinel", "Headbutt", "Havoc", "Armaments"] if n == 5 else
+                                 [name + ("+1" if episode % 4 == 3 else "") for name in names] + ["Strike_R"] * (n - len(names)))
             env = UnifiedEntityCollectionEnv(max_actions=16)
             obs = env.reset(scene, 986500 + episode, diagnostic=True)
             # 首个小场景从真实选牌暂停状态开始采样；准备动作不是PPO样本。
@@ -104,7 +108,7 @@ def run(output, steps):
     torch.testing.assert_close(actual_loss, expected_loss, rtol=0, atol=0)
     for key, value in restored.state_dict().items():
         torch.testing.assert_close(value, expected_state[key], rtol=0, atol=0)
-    report = {"schema": "unified-entity-diagnostic-v1", "engineering_only": True,
+    report = {"schema": "unified-entity-diagnostic-v1", "engineering_only": True, "full_card_inputs": full_cards,
               "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "architecture": model.configuration(), "parameters": sum(p.numel() for p in model.parameters()),
               "steps": steps, "episodes_started": episode,
@@ -122,5 +126,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--steps", type=int, default=64)
+    parser.add_argument("--full-cards", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(run(args.output, args.steps), ensure_ascii=False))
+    print(json.dumps(run(args.output, args.steps, args.full_cards), ensure_ascii=False))

@@ -15,7 +15,7 @@
     "SELECT_CARD"
   ],
   "selection_status": "six-single-selection-kinds",
-  "capacity_status": "legacy-bound-valid-for-five-no-generation-probes; full-expansion-proof-pending",
+  "capacity_status": "full-card-runtime-resource-guards",
   "training_admitted": false,
   "baseline_commit": "50b756e",
   "comparison_freeze_status": "pending",

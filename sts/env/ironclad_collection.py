@@ -17,7 +17,7 @@ def load_capacity(path=None):
         raise ValueError("初始容量未保留动作余量")
     if value["truncate_at"] is not None and value["truncate_at"] - 1 + value["generated_per_decision"] > value["card_entities"]:
         raise ValueError("容量阈值未预留完整原子动作余量")
-    if value["max_allocated_entities"] != value["initial_cards"] + value["max_actions"] * value["generated_per_decision"]:
+    if value["generated_per_decision"] is not None and value["max_allocated_entities"] != value["initial_cards"] + value["max_actions"] * value["generated_per_decision"]:
         raise ValueError("累计分配预算不一致")
     if value["max_allocated_entities"] >= 32767:
         raise ValueError("累计分配可能溢出后端int16")
@@ -61,7 +61,7 @@ class IroncladCollectionEnv:
             count = card_count(obs)
             allocated = self.env._env.allocated_card_count()
             growth = allocated - self.allocated
-            if not 0 <= growth <= self.contract["generated_per_decision"]:
+            if growth < 0 or (self.contract["generated_per_decision"] is not None and growth > self.contract["generated_per_decision"]):
                 raise RuntimeError("实际累计ID增长超出证明，轨迹异常")
             if count > self.contract["card_entities"] or allocated > self.contract["max_allocated_entities"]:
                 raise RuntimeError("完整最终状态超出已证明容量，轨迹异常")
