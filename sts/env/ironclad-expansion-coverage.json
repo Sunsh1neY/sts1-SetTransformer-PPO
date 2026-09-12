@@ -1401,8 +1401,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Berserk",
@@ -1410,8 +1413,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Brutality",
@@ -1419,8 +1425,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Brutality",
@@ -1428,8 +1437,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Combust",
@@ -1485,8 +1497,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Dark Embrace",
@@ -1494,8 +1509,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Demon Form",
@@ -1527,8 +1545,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Evolve",
@@ -1536,8 +1557,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Feel No Pain",
@@ -1569,8 +1593,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Fire Breathing",
@@ -1578,8 +1605,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Inflame",
@@ -1611,8 +1641,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Juggernaut",
@@ -1620,8 +1653,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Metallicize",
@@ -1653,8 +1689,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Rupture",
@@ -1662,8 +1701,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     }
   ]
 }

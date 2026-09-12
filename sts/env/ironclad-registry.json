@@ -207,6 +207,11 @@
       "max_upgrade": 1
     },
     {
+      "id": 44,
+      "name": "Berserk",
+      "max_upgrade": 1
+    },
+    {
       "id": 45,
       "name": "Blood for Blood",
       "max_upgrade": 1
@@ -214,6 +219,11 @@
     {
       "id": 46,
       "name": "Bloodletting",
+      "max_upgrade": 1
+    },
+    {
+      "id": 47,
+      "name": "Brutality",
       "max_upgrade": 1
     },
     {
@@ -232,8 +242,23 @@
       "max_upgrade": 1
     },
     {
+      "id": 52,
+      "name": "Dark Embrace",
+      "max_upgrade": 1
+    },
+    {
+      "id": 56,
+      "name": "Evolve",
+      "max_upgrade": 1
+    },
+    {
       "id": 58,
       "name": "Feed",
+      "max_upgrade": 1
+    },
+    {
+      "id": 60,
+      "name": "Fire Breathing",
       "max_upgrade": 1
     },
     {
@@ -244,6 +269,11 @@
     {
       "id": 65,
       "name": "Intimidate",
+      "max_upgrade": 1
+    },
+    {
+      "id": 67,
+      "name": "Juggernaut",
       "max_upgrade": 1
     },
     {
@@ -264,6 +294,11 @@
     {
       "id": 72,
       "name": "Reaper",
+      "max_upgrade": 1
+    },
+    {
+      "id": 73,
+      "name": "Rupture",
       "max_upgrade": 1
     },
     {

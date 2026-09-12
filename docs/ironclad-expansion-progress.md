@@ -2,6 +2,13 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E4：能力链七类（2026-09-12）
+
+- Berserk、Brutality、Dark Embrace、Evolve、Fire Breathing、Juggernaut、Rupture基础/+接入；当前118/150。26项针对性测试通过，覆盖能量生效、Artifact、自伤、状态抽牌、耗尽、格挡药水触发和统一实体模型。
+- 复现并修复Brutality未触发Rupture：Player.cpp回合开始扣血必须标记selfDamage=true。依据既有Brutality/Rupture机制审计，修复保存在增量后端补丁，旧实验二进制归档不改写。
+- 当前新增能力只触发抽牌/伤害/状态，不主动打出生成牌，15张生成保护仍适用于当前内容；重新绑定注册和二进制。完整回归在后续选择批次合并后执行。
+- 首次补丁生成误包含public已冻结Cards.h/MonsterSpecific.cpp修改，已排除；Windows源文件行尾不一致导致反向校验失败，规范后重新编译成功，非游戏机制失败。
+
 ## E2b：治疗、随机多段与自动耗尽（2026-09-12）
 
 - Feed、Reaper、Sword Boomerang、Second Wind、Sever Soul基础/+接入并通过28项定向测试；当前104/150版本。完整证据与限制见docs/ironclad-direct-cards-report.md。

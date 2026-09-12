@@ -1,7 +1,7 @@
 {
   "schema": "ironclad-capacity-v1",
-  "scope": "104-versions-direct-effects-no-new-generation",
-  "registry_sha256": "6c009b28aecf789d930578da05875dc2035b3f027c1641a9c53d06d3c8cd40ff",
+  "scope": "118-versions-reviewed-content",
+  "registry_sha256": "d03d7d5468d681d9eaded269ba128cb4e2c46aa7e7358f6486fe6d65c8dc7f1f",
   "runtime_contract_sha256": "fb977bfe95e2151f87677dec8e0e620ed5850e5628316940ff44b984707c64f6",
   "card_entities": 64,
   "initial_cards": 49,
