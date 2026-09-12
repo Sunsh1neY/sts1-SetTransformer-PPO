@@ -1,0 +1,2304 @@
+{
+  "schema": "real-deck-batch-v1",
+  "source_admission_policy": "real-deck-configured-battle-v1",
+  "contract_sha256": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
+  "source_manifest_sha256": "fdc06a7c786a27d10505d4cb6e95ffa0bfda1cf27dbcf9bcc33f202ce575f437",
+  "split_policy": "sha256(real-deck-dev-v1:group_id)%5;0=development;others=train;no-formal-holdout",
+  "sampling_policy": "uniform run group, then uniform distinct deck within group, then uniform profile and encounter",
+  "common": {
+    "entry_timing": "pre_combat_initialization",
+    "initialization_phase": "before_destination_room_entry",
+    "character": "IRONCLAD",
+    "act": 1,
+    "floor": 8,
+    "ascension": 20,
+    "burning_elite": false
+  },
+  "profiles": {
+    "full-basic": {
+      "player": {
+        "hp": 75,
+        "max_hp": 75,
+        "gold": 0
+      },
+      "relics": [
+        "Burning Blood"
+      ],
+      "potions": [
+        null,
+        null
+      ]
+    },
+    "wounded-equipped": {
+      "player": {
+        "hp": 45,
+        "max_hp": 75,
+        "gold": 0
+      },
+      "relics": [
+        "Burning Blood",
+        "Anchor",
+        "Vajra"
+      ],
+      "potions": [
+        "Block Potion",
+        "Weak Potion"
+      ]
+    }
+  },
+  "encounters": [
+    "JAW_WORM",
+    "EXORDIUM_THUGS",
+    "GREMLIN_NOB",
+    "LAGAVULIN",
+    "THREE_SENTRIES"
+  ],
+  "decks": [
+    {
+      "deck_id": "run-group:016044a031542a7a95ad:deck:ba26b6f4ded94524",
+      "group_id": "run-group:016044a031542a7a95ad",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663439941.run",
+      "raw_sha256": "b255dc7b2eab27dbfd7e7d0957033fc86368681acba485b88e8a952d681119f2",
+      "source_scene_ids": [
+        "run-group:016044a031542a7a95ad:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:03869ca33f76f9685375:deck:ba26b6f4ded94524",
+      "group_id": "run-group:03869ca33f76f9685375",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1667161552.run",
+      "raw_sha256": "bce176f2d12a4ed982762e727c48afc8527d881f1fad10ca7377867f9a2601b3",
+      "source_scene_ids": [
+        "run-group:03869ca33f76f9685375:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:04bee3c6f71d06011a06:deck:ba26b6f4ded94524",
+      "group_id": "run-group:04bee3c6f71d06011a06",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708382464.run",
+      "raw_sha256": "21257063557fc512eff81148dcb724e7781096f17c36e484bca47d867aef3f31",
+      "source_scene_ids": [
+        "run-group:04bee3c6f71d06011a06:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:080240f5747d395efc6f:deck:ba26b6f4ded94524",
+      "group_id": "run-group:080240f5747d395efc6f",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1670211901.run",
+      "raw_sha256": "47990a8b2e2259bd9b91cc68e7bf3310d73ee08acd1c229012b9390ce631ba78",
+      "source_scene_ids": [
+        "run-group:080240f5747d395efc6f:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:0b6b50af8aca36367e6f:deck:16327de1abde0f8f",
+      "group_id": "run-group:0b6b50af8aca36367e6f",
+      "deck_sha256": "16327de1abde0f8f3ea71a080dceaea3164c5710d0ce83a3ea1cc7576ac6ae00",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707616107.run",
+      "raw_sha256": "8e48fb242e87e22ed1db7d3197c0c41f34d49115d3d8dff0343bc14cda80f817",
+      "source_scene_ids": [
+        "run-group:0b6b50af8aca36367e6f:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:0fcf5d9688a4c657cc87:deck:ba26b6f4ded94524",
+      "group_id": "run-group:0fcf5d9688a4c657cc87",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1663185665.run",
+      "raw_sha256": "f07795f7f344d0f12e41a41ffc9b57177cb6b407447087aefe45e39598ff2ce0",
+      "source_scene_ids": [
+        "run-group:0fcf5d9688a4c657cc87:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:1471c7fe3e6c265b23b2:deck:ba26b6f4ded94524",
+      "group_id": "run-group:1471c7fe3e6c265b23b2",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1666315363.run",
+      "raw_sha256": "a1a6ed42868b6f4aeb53b926b9c866b9fac957f0e66a29fc164f08cad5f55367",
+      "source_scene_ids": [
+        "run-group:1471c7fe3e6c265b23b2:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:1ec24dd4ecb402f82c36:deck:b6313a31fb958dcb",
+      "group_id": "run-group:1ec24dd4ecb402f82c36",
+      "deck_sha256": "b6313a31fb958dcb5224c3a5df4cc52b7bf82c01fe16b92119c8fe1eaeac30dc",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "raw_sha256": "e31c5f6f896ac029651efca2daeb96f3161c412438974ec8a356dea7a2bca7e8",
+      "source_scene_ids": [
+        "run-group:1ec24dd4ecb402f82c36:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:1ec24dd4ecb402f82c36:deck:ba26b6f4ded94524",
+      "group_id": "run-group:1ec24dd4ecb402f82c36",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "raw_sha256": "e31c5f6f896ac029651efca2daeb96f3161c412438974ec8a356dea7a2bca7e8",
+      "source_scene_ids": [
+        "run-group:1ec24dd4ecb402f82c36:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:25205448091f30b1b558:deck:3776c95e9deddf08",
+      "group_id": "run-group:25205448091f30b1b558",
+      "deck_sha256": "3776c95e9deddf08b1884b73aec1442adb24b20bbfe68ac35a090c1eb3d9c5e5",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668644450.run",
+      "raw_sha256": "272c302c318c3a93928df2460647db48cee194ac5901f7075e534aef330d8e5a",
+      "source_scene_ids": [
+        "run-group:25205448091f30b1b558:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:25205448091f30b1b558:deck:ba26b6f4ded94524",
+      "group_id": "run-group:25205448091f30b1b558",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668644450.run",
+      "raw_sha256": "272c302c318c3a93928df2460647db48cee194ac5901f7075e534aef330d8e5a",
+      "source_scene_ids": [
+        "run-group:25205448091f30b1b558:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:25e2d8e7d27e8b874d1e:deck:ba26b6f4ded94524",
+      "group_id": "run-group:25e2d8e7d27e8b874d1e",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707774950.run",
+      "raw_sha256": "4b726e55f0ef88f94f8cd02bb25b2ee626e742c521a7a6c04c284997ecd306ea",
+      "source_scene_ids": [
+        "run-group:25e2d8e7d27e8b874d1e:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:274691e9f61e82281a1f:deck:ba26b6f4ded94524",
+      "group_id": "run-group:274691e9f61e82281a1f",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663019150.run",
+      "raw_sha256": "b0766597c4679a1236154e5a5aa1d74e72d6d08c224b150a55fc554b598b9192",
+      "source_scene_ids": [
+        "run-group:274691e9f61e82281a1f:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:2a23a97ee1fa599d0039:deck:ba26b6f4ded94524",
+      "group_id": "run-group:2a23a97ee1fa599d0039",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708291610.run",
+      "raw_sha256": "4b4ef7c4900650b3be15d648a1fcf98420b9d4b2eed4ab33433d62a75ec4be90",
+      "source_scene_ids": [
+        "run-group:2a23a97ee1fa599d0039:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:2ab4de78551223c9e3f1:deck:ba26b6f4ded94524",
+      "group_id": "run-group:2ab4de78551223c9e3f1",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707519696.run",
+      "raw_sha256": "7330d604cb083de72c6fb0115b524e47f20bd6bbc34e7ecd17e76422547e4f53",
+      "source_scene_ids": [
+        "run-group:2ab4de78551223c9e3f1:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:2d059afe66dca09002f6:deck:16327de1abde0f8f",
+      "group_id": "run-group:2d059afe66dca09002f6",
+      "deck_sha256": "16327de1abde0f8f3ea71a080dceaea3164c5710d0ce83a3ea1cc7576ac6ae00",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663893019.run",
+      "raw_sha256": "31e0c996f6768310bc7cdf74f374f5b2d9b63e4aa6307347e2305b9be8625cf2",
+      "source_scene_ids": [
+        "run-group:2d059afe66dca09002f6:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:2dc85ff71ba6d9a28b62:deck:8c993ae65dec2b48",
+      "group_id": "run-group:2dc85ff71ba6d9a28b62",
+      "deck_sha256": "8c993ae65dec2b48f20c2347cb5c7ceaa61b8837ea64b7b055a7955b820b96d9",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Wild Strike"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1670196367.run",
+      "raw_sha256": "30c08cd4c038443ff9b25a5d36d0c5827ea39853655290183b302265ead6469c",
+      "source_scene_ids": [
+        "run-group:2dc85ff71ba6d9a28b62:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:32d1ec29c2ee30b98050:deck:37a4102b7f0187e2",
+      "group_id": "run-group:32d1ec29c2ee30b98050",
+      "deck_sha256": "37a4102b7f0187e2bf88d68667b8c3091a560db3059420dee146a6068833a6c4",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1666774509.run",
+      "raw_sha256": "e4982e8d904e1e8611659c35d0d3ca5679233123e3a39fcdbc5bd102e3f448f7",
+      "source_scene_ids": [
+        "run-group:32d1ec29c2ee30b98050:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:32d1ec29c2ee30b98050:deck:52a4994934eb7ae4",
+      "group_id": "run-group:32d1ec29c2ee30b98050",
+      "deck_sha256": "52a4994934eb7ae44e84e3607a98f3a179da316169c0e3b938a8c3b235f0262b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Reckless Charge",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1666774509.run",
+      "raw_sha256": "e4982e8d904e1e8611659c35d0d3ca5679233123e3a39fcdbc5bd102e3f448f7",
+      "source_scene_ids": [
+        "run-group:32d1ec29c2ee30b98050:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:33c70f66905a836d5918:deck:ba26b6f4ded94524",
+      "group_id": "run-group:33c70f66905a836d5918",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1669685251.run",
+      "raw_sha256": "00edf93d3c91c80354c9c97423433060411daf54d6eace1c433d542c0dfbb38c",
+      "source_scene_ids": [
+        "run-group:33c70f66905a836d5918:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:3e0285dc659ea66751e3:deck:3776c95e9deddf08",
+      "group_id": "run-group:3e0285dc659ea66751e3",
+      "deck_sha256": "3776c95e9deddf08b1884b73aec1442adb24b20bbfe68ac35a090c1eb3d9c5e5",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708824228.run",
+      "raw_sha256": "10e58e4332671316252532b8c1dd0c2bafc3ce4645bbc4df3ee08893d57ef7c6",
+      "source_scene_ids": [
+        "run-group:3e0285dc659ea66751e3:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:3e0285dc659ea66751e3:deck:ba26b6f4ded94524",
+      "group_id": "run-group:3e0285dc659ea66751e3",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708824228.run",
+      "raw_sha256": "10e58e4332671316252532b8c1dd0c2bafc3ce4645bbc4df3ee08893d57ef7c6",
+      "source_scene_ids": [
+        "run-group:3e0285dc659ea66751e3:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:3f59e5d32006abf5ab88:deck:ba26b6f4ded94524",
+      "group_id": "run-group:3f59e5d32006abf5ab88",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671993683.run",
+      "raw_sha256": "f7ee868de73b34f6f0dfaedd4164556d6415f04dd00e40aac6f602a09aadb496",
+      "source_scene_ids": [
+        "run-group:3f59e5d32006abf5ab88:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:48ee6344d274a5f75a07:deck:ba26b6f4ded94524",
+      "group_id": "run-group:48ee6344d274a5f75a07",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668452862.run",
+      "raw_sha256": "fc8b34a48b965142f0aeb1587820e089f385f8fad74e13330aa842aa22a0bb74",
+      "source_scene_ids": [
+        "run-group:48ee6344d274a5f75a07:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:4a50927b4670b528f773:deck:ba26b6f4ded94524",
+      "group_id": "run-group:4a50927b4670b528f773",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668290007.run",
+      "raw_sha256": "4d7cd07b304a948a4e44beb1f9021777d7ddc881caad074ac6a7b973513f2795",
+      "source_scene_ids": [
+        "run-group:4a50927b4670b528f773:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:4cba167963d81b179ac7:deck:ba26b6f4ded94524",
+      "group_id": "run-group:4cba167963d81b179ac7",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1669505708.run",
+      "raw_sha256": "bcf065289509a5daa8242e1fcaba3c97c7232d5baa55eb2e6fbdcf60fdf66641",
+      "source_scene_ids": [
+        "run-group:4cba167963d81b179ac7:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:51eec4e1ba47369fe5e2:deck:ba26b6f4ded94524",
+      "group_id": "run-group:51eec4e1ba47369fe5e2",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/chegs/all/1708559371.run",
+      "raw_sha256": "ab41bab1fe0fe7e530ef14a65e2e8bdb03c034d352c40610026db2ad55943d89",
+      "source_scene_ids": [
+        "run-group:51eec4e1ba47369fe5e2:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:53c16194b16286bd892d:deck:ba26b6f4ded94524",
+      "group_id": "run-group:53c16194b16286bd892d",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672867344.run",
+      "raw_sha256": "ad1ac5722d33ac9548e38c117bf6d47d3bb07bac04c48b7b8b2a172419a8f33f",
+      "source_scene_ids": [
+        "run-group:53c16194b16286bd892d:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:546440614bb2f5effa8f:deck:b8c5f623801e72c5",
+      "group_id": "run-group:546440614bb2f5effa8f",
+      "deck_sha256": "b8c5f623801e72c50cc15c5a4208f5978b8f6d16a56b3320d530995a5269223c",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Body Slam",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665946466.run",
+      "raw_sha256": "aa468db409e6335b32bd8ae5afd88f831bca9e951f956652dd54f1a1657baf68",
+      "source_scene_ids": [
+        "run-group:546440614bb2f5effa8f:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:58037a37ca7acdbb1388:deck:29f48a2fbb11b9a0",
+      "group_id": "run-group:58037a37ca7acdbb1388",
+      "deck_sha256": "29f48a2fbb11b9a05e33f758bb1bf5ef758cc622fa5a276fe0d56c0a7b265ba9",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665761187.run",
+      "raw_sha256": "b8f93d405f2aa7883effdd76f6ec8d51a597826cdab606e205d36d49b31a68ed",
+      "source_scene_ids": [
+        "run-group:58037a37ca7acdbb1388:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:59e3e0bbe251993a438e:deck:ba26b6f4ded94524",
+      "group_id": "run-group:59e3e0bbe251993a438e",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672700747.run",
+      "raw_sha256": "57ad236018a382b41fec2037b2cab1683e40957a20f4ea61dc1ea17916c5bdd4",
+      "source_scene_ids": [
+        "run-group:59e3e0bbe251993a438e:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:5ba42d6055d2ced8f960:deck:ba26b6f4ded94524",
+      "group_id": "run-group:5ba42d6055d2ced8f960",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1668207848.run",
+      "raw_sha256": "3780e6d5db536bb6500a85e9e9130613146f95e94ec3bc601dedaa184b4b7c82",
+      "source_scene_ids": [
+        "run-group:5ba42d6055d2ced8f960:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:5bade670577f01ea1632:deck:ba26b6f4ded94524",
+      "group_id": "run-group:5bade670577f01ea1632",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665953909.run",
+      "raw_sha256": "0b8d2d59bdb9733dfede18c26622c66fe40ec5e624a55607a8a9b8a120598ce4",
+      "source_scene_ids": [
+        "run-group:5bade670577f01ea1632:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:63fd5a205e4d8b9434f5:deck:017001274412900d",
+      "group_id": "run-group:63fd5a205e4d8b9434f5",
+      "deck_sha256": "017001274412900dcb2cbc6e7a696a91b8f2cb01e77e9948773a0a37e4407119",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Clothesline",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668133125.run",
+      "raw_sha256": "41489d1eee24b031669077525a969e7f30cf69a8dcffc40ee22abe241b17ab23",
+      "source_scene_ids": [
+        "run-group:63fd5a205e4d8b9434f5:floor-5:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:63fd5a205e4d8b9434f5:deck:88d725dbb8aa97e9",
+      "group_id": "run-group:63fd5a205e4d8b9434f5",
+      "deck_sha256": "88d725dbb8aa97e9a47b508b3872f91d68e0e1ffe070e73f046e3d3024e4f3e2",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668133125.run",
+      "raw_sha256": "41489d1eee24b031669077525a969e7f30cf69a8dcffc40ee22abe241b17ab23",
+      "source_scene_ids": [
+        "run-group:63fd5a205e4d8b9434f5:floor-4:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:63fd5a205e4d8b9434f5:deck:b6313a31fb958dcb",
+      "group_id": "run-group:63fd5a205e4d8b9434f5",
+      "deck_sha256": "b6313a31fb958dcb5224c3a5df4cc52b7bf82c01fe16b92119c8fe1eaeac30dc",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668133125.run",
+      "raw_sha256": "41489d1eee24b031669077525a969e7f30cf69a8dcffc40ee22abe241b17ab23",
+      "source_scene_ids": [
+        "run-group:63fd5a205e4d8b9434f5:floor-2:combat-0",
+        "run-group:63fd5a205e4d8b9434f5:floor-3:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:63fd5a205e4d8b9434f5:deck:ba26b6f4ded94524",
+      "group_id": "run-group:63fd5a205e4d8b9434f5",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1668133125.run",
+      "raw_sha256": "41489d1eee24b031669077525a969e7f30cf69a8dcffc40ee22abe241b17ab23",
+      "source_scene_ids": [
+        "run-group:63fd5a205e4d8b9434f5:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:658739f7ab9d60659b6e:deck:64876a75b49ca26d",
+      "group_id": "run-group:658739f7ab9d60659b6e",
+      "deck_sha256": "64876a75b49ca26d12e9d2eb0a29f21e478e956bd730a2b47f3b5fef86525809",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form",
+        "Heavy Blade",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/chegs/all/1707091976.run",
+      "raw_sha256": "d68fa86037dba48eec1a8592de6b1cf5f0aac7625883bcfefdbbfe6c27fb4f0f",
+      "source_scene_ids": [
+        "run-group:658739f7ab9d60659b6e:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:6ab5ecf45b0a88a64df0:deck:ba26b6f4ded94524",
+      "group_id": "run-group:6ab5ecf45b0a88a64df0",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1667785731.run",
+      "raw_sha256": "291c2da3369888e10c008c355eab0da5fa7367536b7c59c1bc39924d49df9d95",
+      "source_scene_ids": [
+        "run-group:6ab5ecf45b0a88a64df0:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:6c219a536f2fd8bc7d30:deck:ba26b6f4ded94524",
+      "group_id": "run-group:6c219a536f2fd8bc7d30",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/chegs/all/1708135863.run",
+      "raw_sha256": "b49bd0d343fafa70ebde472b348e02983aba0495e3ab5dc92ae00709c5c58a7e",
+      "source_scene_ids": [
+        "run-group:6c219a536f2fd8bc7d30:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:6d8e7bcd740481cd0a56:deck:ba26b6f4ded94524",
+      "group_id": "run-group:6d8e7bcd740481cd0a56",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1667437226.run",
+      "raw_sha256": "d5f634e10f1b28749d0924fb2436b862bed8b0daaea43a5d59477f22f12154e8",
+      "source_scene_ids": [
+        "run-group:6d8e7bcd740481cd0a56:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:741b7c85f80e1ca362aa:deck:ba26b6f4ded94524",
+      "group_id": "run-group:741b7c85f80e1ca362aa",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672792917.run",
+      "raw_sha256": "96af6bf8126e8105ecb45dc150a70b6c0fe25ac879ac476daf06689ab441bffa",
+      "source_scene_ids": [
+        "run-group:741b7c85f80e1ca362aa:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:791d67b4daf01a7e67cf:deck:ba26b6f4ded94524",
+      "group_id": "run-group:791d67b4daf01a7e67cf",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672873031.run",
+      "raw_sha256": "2e266f186448952a08529bc071cf199386501e21d71472a1d15bdeb9457eac10",
+      "source_scene_ids": [
+        "run-group:791d67b4daf01a7e67cf:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:79cc161b4b335483b55e:deck:bf2a91174bc6db65",
+      "group_id": "run-group:79cc161b4b335483b55e",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671150411.run",
+      "raw_sha256": "86774556190886f555fae7dae1a5aab9ef377d5fbb7f742786d5ce5de782b629",
+      "source_scene_ids": [
+        "run-group:79cc161b4b335483b55e:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:7c812ca46500fb5f6a41:deck:ba26b6f4ded94524",
+      "group_id": "run-group:7c812ca46500fb5f6a41",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665771036.run",
+      "raw_sha256": "119d46107ef9dc728a45454db387bd677f5427dcef0084ba299cfc111c311df3",
+      "source_scene_ids": [
+        "run-group:7c812ca46500fb5f6a41:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:7c812ca46500fb5f6a41:deck:e32324675dfa65d1",
+      "group_id": "run-group:7c812ca46500fb5f6a41",
+      "deck_sha256": "e32324675dfa65d17b2f206449da43fb8d2c79419cb43bebea8002201125e32b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665771036.run",
+      "raw_sha256": "119d46107ef9dc728a45454db387bd677f5427dcef0084ba299cfc111c311df3",
+      "source_scene_ids": [
+        "run-group:7c812ca46500fb5f6a41:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:7fed54b57ab672194647:deck:ba26b6f4ded94524",
+      "group_id": "run-group:7fed54b57ab672194647",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1665789079.run",
+      "raw_sha256": "4234d7b8959bdc35a55a81b275c018f84aae28ee7b9015b0a4a2c7b2bc90227d",
+      "source_scene_ids": [
+        "run-group:7fed54b57ab672194647:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:857303c9b035c095e9d4:deck:29f48a2fbb11b9a0",
+      "group_id": "run-group:857303c9b035c095e9d4",
+      "deck_sha256": "29f48a2fbb11b9a05e33f758bb1bf5ef758cc622fa5a276fe0d56c0a7b265ba9",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1666061338.run",
+      "raw_sha256": "c8a1b5942cfea37a42a43db51a833e9ed70445cc2a068a6687b6cffe53c0bd29",
+      "source_scene_ids": [
+        "run-group:857303c9b035c095e9d4:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:884462f149c7fb11dc6c:deck:f4e1c8c4cb641081",
+      "group_id": "run-group:884462f149c7fb11dc6c",
+      "deck_sha256": "f4e1c8c4cb64108166ecb46eda28224964321069fdb48091c781acfd6e14892d",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707197569.run",
+      "raw_sha256": "ae968dd35504e5671a0c23925f1d0e850aa73338eae87ad9ac4d41df8a5e1cf9",
+      "source_scene_ids": [
+        "run-group:884462f149c7fb11dc6c:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:884bbe22ef7bae5bdcba:deck:bf2a91174bc6db65",
+      "group_id": "run-group:884bbe22ef7bae5bdcba",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1665776136.run",
+      "raw_sha256": "de24a81d41899b2f9be0c0e00883f862f1ff593fd3f23f7d36cf6243df1c3513",
+      "source_scene_ids": [
+        "run-group:884bbe22ef7bae5bdcba:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:88d7120f540a2eaa5da6:deck:ba26b6f4ded94524",
+      "group_id": "run-group:88d7120f540a2eaa5da6",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672618634.run",
+      "raw_sha256": "6578985f73105e0667359cc27f58917453b4da740d241bf7df8e81ecf097418c",
+      "source_scene_ids": [
+        "run-group:88d7120f540a2eaa5da6:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:8db27ce2ad907224365f:deck:ba26b6f4ded94524",
+      "group_id": "run-group:8db27ce2ad907224365f",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/chegs/all/1708907876.run",
+      "raw_sha256": "5725430fac7dc580ad2d1e484981287ce196e5fbad0480e7a780917a75673692",
+      "source_scene_ids": [
+        "run-group:8db27ce2ad907224365f:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:91c83dc1897accd34a9d:deck:ba26b6f4ded94524",
+      "group_id": "run-group:91c83dc1897accd34a9d",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672879436.run",
+      "raw_sha256": "838894507ce170ea768ccca643983a85bc249f89920a3695f413426e90094593",
+      "source_scene_ids": [
+        "run-group:91c83dc1897accd34a9d:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:93875aa00e713b9f1072:deck:bf2a91174bc6db65",
+      "group_id": "run-group:93875aa00e713b9f1072",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1669951769.run",
+      "raw_sha256": "b4c57e2553796f5e6945273338c2abda074b84bb15d18f90ef58a3d4fad41268",
+      "source_scene_ids": [
+        "run-group:93875aa00e713b9f1072:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:99171439576ecb8a16ea:deck:0e5365956076b98d",
+      "group_id": "run-group:99171439576ecb8a16ea",
+      "deck_sha256": "0e5365956076b98d41cccb0b906eb13d08962d6f6e0f4bdab33d2ce8ec8ea77d",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Power Through",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1667071560.run",
+      "raw_sha256": "5fa4d34bc5311d8de0b93dd9f0eb8ff7c4072b7a835ab432b38e0a72928e7861",
+      "source_scene_ids": [
+        "run-group:99171439576ecb8a16ea:floor-3:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:99171439576ecb8a16ea:deck:29f48a2fbb11b9a0",
+      "group_id": "run-group:99171439576ecb8a16ea",
+      "deck_sha256": "29f48a2fbb11b9a05e33f758bb1bf5ef758cc622fa5a276fe0d56c0a7b265ba9",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "development",
+      "source_path": "runs/panacea-ironclad-sample/1667071560.run",
+      "raw_sha256": "5fa4d34bc5311d8de0b93dd9f0eb8ff7c4072b7a835ab432b38e0a72928e7861",
+      "source_scene_ids": [
+        "run-group:99171439576ecb8a16ea:floor-1:combat-0",
+        "run-group:99171439576ecb8a16ea:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:a066308a795dedf381b5:deck:23fd977ba744d598",
+      "group_id": "run-group:a066308a795dedf381b5",
+      "deck_sha256": "23fd977ba744d598cc23e935261e82e920ccffad763e23aa5c2e715ea4b048c8",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Pommel Strike",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663972477.run",
+      "raw_sha256": "522473413c961ce040081270fc2a2393b45236b8e994a487fe1778b6207a7497",
+      "source_scene_ids": [
+        "run-group:a066308a795dedf381b5:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:a066308a795dedf381b5:deck:bf2a91174bc6db65",
+      "group_id": "run-group:a066308a795dedf381b5",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663972477.run",
+      "raw_sha256": "522473413c961ce040081270fc2a2393b45236b8e994a487fe1778b6207a7497",
+      "source_scene_ids": [
+        "run-group:a066308a795dedf381b5:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b0d25cc2fe2535349b58:deck:ba26b6f4ded94524",
+      "group_id": "run-group:b0d25cc2fe2535349b58",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707698260.run",
+      "raw_sha256": "1fc783a3f049d8d012ea206456cc50020dc5dce741490567441e89e0fbe9a1a4",
+      "source_scene_ids": [
+        "run-group:b0d25cc2fe2535349b58:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b2369c6719096d2afc57:deck:8b171db3518cb25a",
+      "group_id": "run-group:b2369c6719096d2afc57",
+      "deck_sha256": "8b171db3518cb25a5b5b0fd112b66186c41d35324d325b365bc626d6dc68832f",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672778869.run",
+      "raw_sha256": "fa589a559c18b8f1eccbad5e6a96c44ca3fecfab7206837dda3bc96a6e69e77d",
+      "source_scene_ids": [
+        "run-group:b2369c6719096d2afc57:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b2369c6719096d2afc57:deck:ba26b6f4ded94524",
+      "group_id": "run-group:b2369c6719096d2afc57",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672778869.run",
+      "raw_sha256": "fa589a559c18b8f1eccbad5e6a96c44ca3fecfab7206837dda3bc96a6e69e77d",
+      "source_scene_ids": [
+        "run-group:b2369c6719096d2afc57:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b5ff805d7227cfc1b35d:deck:ba26b6f4ded94524",
+      "group_id": "run-group:b5ff805d7227cfc1b35d",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672786796.run",
+      "raw_sha256": "02cbe7c3086e5f61c9f67eabe572d1b9b8dcb1c0bdeb495fbef6448725765f7f",
+      "source_scene_ids": [
+        "run-group:b5ff805d7227cfc1b35d:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b6175e52933ee15aff70:deck:bf2a91174bc6db65",
+      "group_id": "run-group:b6175e52933ee15aff70",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707956126.run",
+      "raw_sha256": "e6f67c9033af66ea447d7f3c68dee48e0b16ef7368ba26dcdfec37d0bd74b381",
+      "source_scene_ids": [
+        "run-group:b6175e52933ee15aff70:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b8045ef282f29cd71ab4:deck:29f48a2fbb11b9a0",
+      "group_id": "run-group:b8045ef282f29cd71ab4",
+      "deck_sha256": "29f48a2fbb11b9a05e33f758bb1bf5ef758cc622fa5a276fe0d56c0a7b265ba9",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1664576350.run",
+      "raw_sha256": "8109107c68fb4c42c5391bf4878559f96f7218121238f58604b31177213ec83e",
+      "source_scene_ids": [
+        "run-group:b8045ef282f29cd71ab4:floor-1:combat-0",
+        "run-group:b8045ef282f29cd71ab4:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:b9056fc50a3ea89b1392:deck:b8c5f623801e72c5",
+      "group_id": "run-group:b9056fc50a3ea89b1392",
+      "deck_sha256": "b8c5f623801e72c50cc15c5a4208f5978b8f6d16a56b3320d530995a5269223c",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Body Slam",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663667485.run",
+      "raw_sha256": "d1b918c1451fcb656186972a8e8e93ad0c49ffc0f7ea75c6041fd6b5bb8cc8d7",
+      "source_scene_ids": [
+        "run-group:b9056fc50a3ea89b1392:floor-1:combat-0",
+        "run-group:b9056fc50a3ea89b1392:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:ba4a36f016779b09dcb2:deck:ba26b6f4ded94524",
+      "group_id": "run-group:ba4a36f016779b09dcb2",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1666217644.run",
+      "raw_sha256": "8379857ea06f14d18bf803f44d410f0ca3b426d312b9c33fdfc29f654dd21be8",
+      "source_scene_ids": [
+        "run-group:ba4a36f016779b09dcb2:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:bb9729c2b5a44461e261:deck:a2a165827e62dfc1",
+      "group_id": "run-group:bb9729c2b5a44461e261",
+      "deck_sha256": "a2a165827e62dfc1b7d422c11c7735331572d3b0b30f7221b78f29c3b3ebcdcc",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Immolate",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708040040.run",
+      "raw_sha256": "c97048d128bac510e17bd0cbf2a7bdc3d1f2bc48cc0faeb9bf484d146d17945c",
+      "source_scene_ids": [
+        "run-group:bb9729c2b5a44461e261:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:bcb873ad5d194f1967a8:deck:20c2cc46bd8883ae",
+      "group_id": "run-group:bcb873ad5d194f1967a8",
+      "deck_sha256": "20c2cc46bd8883aea0bc9afc5d095ec02f58bb62cdf2f95ccbc65ba304f4ee2d",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Clothesline",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708123581.run",
+      "raw_sha256": "a03db44635513cecab47a00f1d61652bdbb5a5e791b023b9eb050cd79a23548f",
+      "source_scene_ids": [
+        "run-group:bcb873ad5d194f1967a8:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:bcb873ad5d194f1967a8:deck:37a4102b7f0187e2",
+      "group_id": "run-group:bcb873ad5d194f1967a8",
+      "deck_sha256": "37a4102b7f0187e2bf88d68667b8c3091a560db3059420dee146a6068833a6c4",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708123581.run",
+      "raw_sha256": "a03db44635513cecab47a00f1d61652bdbb5a5e791b023b9eb050cd79a23548f",
+      "source_scene_ids": [
+        "run-group:bcb873ad5d194f1967a8:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:bebeecd213a33f1fe8e4:deck:db5512893d240afa",
+      "group_id": "run-group:bebeecd213a33f1fe8e4",
+      "deck_sha256": "db5512893d240afa373bdfacfd737aa0052ab9324204fd6123fa47faec7c0f83",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1667778896.run",
+      "raw_sha256": "1a4067da5f57d5e22f18b44b94f0ba56a5a87e62d5017a19a83019f59b6a90cd",
+      "source_scene_ids": [
+        "run-group:bebeecd213a33f1fe8e4:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:bf54bf22df13ddda78bc:deck:ba26b6f4ded94524",
+      "group_id": "run-group:bf54bf22df13ddda78bc",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1666565086.run",
+      "raw_sha256": "ca171029f625acb541cc230261ad598ff6e2db7a014fa0153c2ef9717bbc3db0",
+      "source_scene_ids": [
+        "run-group:bf54bf22df13ddda78bc:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:c141c78420544b641568:deck:b3188781c0e50b9a",
+      "group_id": "run-group:c141c78420544b641568",
+      "deck_sha256": "b3188781c0e50b9aca90266fb637f206969257c7b9dc5a88b4d200b603d63ae2",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663664431.run",
+      "raw_sha256": "c839e765f02be3fd45e86fa7fada07b1cd8e87a458a5c3d201587c3f25f133e4",
+      "source_scene_ids": [
+        "run-group:c141c78420544b641568:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:c57eab02bae3ed55c8d7:deck:ba26b6f4ded94524",
+      "group_id": "run-group:c57eab02bae3ed55c8d7",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1663026387.run",
+      "raw_sha256": "7e8901fc7979f1f8846a42b765ae0d773f0155adf1b688524d9a93d9e00cf10e",
+      "source_scene_ids": [
+        "run-group:c57eab02bae3ed55c8d7:floor-1:combat-0",
+        "run-group:c57eab02bae3ed55c8d7:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:cd57eed0acce0ee4a937:deck:ba26b6f4ded94524",
+      "group_id": "run-group:cd57eed0acce0ee4a937",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1665444896.run",
+      "raw_sha256": "31a6dc8c65bc0bc259a1eaa42da8d8b374b48ef3b63bb966226e1b94ed75df11",
+      "source_scene_ids": [
+        "run-group:cd57eed0acce0ee4a937:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:cf94e4dc395d4e6004e0:deck:bf2a91174bc6db65",
+      "group_id": "run-group:cf94e4dc395d4e6004e0",
+      "deck_sha256": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "deck": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1664567436.run",
+      "raw_sha256": "565629cfca0845549f16d51adbb5d1d5fddd19ec23ea24df21535a44528d30f4",
+      "source_scene_ids": [
+        "run-group:cf94e4dc395d4e6004e0:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:da554fe39e95811ffbdb:deck:ba26b6f4ded94524",
+      "group_id": "run-group:da554fe39e95811ffbdb",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671733857.run",
+      "raw_sha256": "e27e98a08fcc1d4c4a63a50017d1dddc068cf7f16a399c8e0ef3ea0918a2a4c6",
+      "source_scene_ids": [
+        "run-group:da554fe39e95811ffbdb:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:da554fe39e95811ffbdb:deck:e32324675dfa65d1",
+      "group_id": "run-group:da554fe39e95811ffbdb",
+      "deck_sha256": "e32324675dfa65d17b2f206449da43fb8d2c79419cb43bebea8002201125e32b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671733857.run",
+      "raw_sha256": "e27e98a08fcc1d4c4a63a50017d1dddc068cf7f16a399c8e0ef3ea0918a2a4c6",
+      "source_scene_ids": [
+        "run-group:da554fe39e95811ffbdb:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:dcbee8daed7563720dae:deck:ba26b6f4ded94524",
+      "group_id": "run-group:dcbee8daed7563720dae",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708201008.run",
+      "raw_sha256": "65cd50fb333753da4d2ff0beb5e9bacf1a88cb04b379398c47319fb32dba013d",
+      "source_scene_ids": [
+        "run-group:dcbee8daed7563720dae:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:df4e3889ce44dca3031d:deck:ba26b6f4ded94524",
+      "group_id": "run-group:df4e3889ce44dca3031d",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671329786.run",
+      "raw_sha256": "eea26ad972032a565a1cf870868d33eac6b58b3fa45b69569bd273934ff4dd0a",
+      "source_scene_ids": [
+        "run-group:df4e3889ce44dca3031d:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:df4e3889ce44dca3031d:deck:e32324675dfa65d1",
+      "group_id": "run-group:df4e3889ce44dca3031d",
+      "deck_sha256": "e32324675dfa65d17b2f206449da43fb8d2c79419cb43bebea8002201125e32b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1671329786.run",
+      "raw_sha256": "eea26ad972032a565a1cf870868d33eac6b58b3fa45b69569bd273934ff4dd0a",
+      "source_scene_ids": [
+        "run-group:df4e3889ce44dca3031d:floor-2:combat-0",
+        "run-group:df4e3889ce44dca3031d:floor-3:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:e3911a0e8861134f5d07:deck:ba26b6f4ded94524",
+      "group_id": "run-group:e3911a0e8861134f5d07",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708397628.run",
+      "raw_sha256": "565f9a68da7f5357cdc54506dff24a4d45414e0f75b3c2dd2b0706edf7c26a55",
+      "source_scene_ids": [
+        "run-group:e3911a0e8861134f5d07:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:e6accfdebe74c83edfc9:deck:ba26b6f4ded94524",
+      "group_id": "run-group:e6accfdebe74c83edfc9",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672803794.run",
+      "raw_sha256": "d4623a932b766bc264c71d78336e08637d659d0463110efcfc96cc3955ceed94",
+      "source_scene_ids": [
+        "run-group:e6accfdebe74c83edfc9:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:e6accfdebe74c83edfc9:deck:bbb1392b9880d6fc",
+      "group_id": "run-group:e6accfdebe74c83edfc9",
+      "deck_sha256": "bbb1392b9880d6fc125ce0f98a0fb23e0f9646dca2eccaef2dd12d05afd9afb0",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Reckless Charge",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672803794.run",
+      "raw_sha256": "d4623a932b766bc264c71d78336e08637d659d0463110efcfc96cc3955ceed94",
+      "source_scene_ids": [
+        "run-group:e6accfdebe74c83edfc9:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:ec7667df669ed05ced93:deck:ba26b6f4ded94524",
+      "group_id": "run-group:ec7667df669ed05ced93",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1665362526.run",
+      "raw_sha256": "7ea3f36af5fd27932df733fd77468ff1879c6e363b98df27ab5f9dd045a29ecd",
+      "source_scene_ids": [
+        "run-group:ec7667df669ed05ced93:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:eccf864a7be944653ec4:deck:a2a165827e62dfc1",
+      "group_id": "run-group:eccf864a7be944653ec4",
+      "deck_sha256": "a2a165827e62dfc1b7d422c11c7735331572d3b0b30f7221b78f29c3b3ebcdcc",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Immolate",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707434832.run",
+      "raw_sha256": "1b083576c7325b25a51255f754dbf212c5938b78c4cd4034294735cf9c18884c",
+      "source_scene_ids": [
+        "run-group:eccf864a7be944653ec4:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f0e194bbfab4422cd282:deck:c05b0c4d2ad77171",
+      "group_id": "run-group:f0e194bbfab4422cd282",
+      "deck_sha256": "c05b0c4d2ad771712cdec521f86dcb9cf88f57e7a54cd46f47e3af8b4598f135",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Seeing Red",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1667968163.run",
+      "raw_sha256": "fd8d1c13e390420555ee8bb272c72a9e5e10735bb0146bcb0cebd534334b3a32",
+      "source_scene_ids": [
+        "run-group:f0e194bbfab4422cd282:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f1f4b8e45aa959f263ae:deck:ba26b6f4ded94524",
+      "group_id": "run-group:f1f4b8e45aa959f263ae",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/panacea-ironclad-sample/1665958755.run",
+      "raw_sha256": "65a93bfd5c86c41a8858fbb2daa10665094d881d8bd686e8849cc82a392069d7",
+      "source_scene_ids": [
+        "run-group:f1f4b8e45aa959f263ae:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f2672b82929351d73ae6:deck:42cba4c4a75951dd",
+      "group_id": "run-group:f2672b82929351d73ae6",
+      "deck_sha256": "42cba4c4a75951dd0b39691542350e30766177f1f35229c74cfd0e2202c3d889",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Bludgeon",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Flame Barrier",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708745103.run",
+      "raw_sha256": "eaeac71dc3405553ee83e6dce7c029899377e8a33178db3133fcbc4b86970449",
+      "source_scene_ids": [
+        "run-group:f2672b82929351d73ae6:floor-3:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f2672b82929351d73ae6:deck:7ec18d0cbba5b97f",
+      "group_id": "run-group:f2672b82929351d73ae6",
+      "deck_sha256": "7ec18d0cbba5b97f19b52846e7d2fee4701630ba713f28f1f003c592c972049d",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Bludgeon",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1708745103.run",
+      "raw_sha256": "eaeac71dc3405553ee83e6dce7c029899377e8a33178db3133fcbc4b86970449",
+      "source_scene_ids": [
+        "run-group:f2672b82929351d73ae6:floor-1:combat-0",
+        "run-group:f2672b82929351d73ae6:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f931ab7c9ab54689a052:deck:ba26b6f4ded94524",
+      "group_id": "run-group:f931ab7c9ab54689a052",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/chegs/all/1707864656.run",
+      "raw_sha256": "7bf27f928aae41c01be5c044afa3abbc1448350ae90da56bf2714bb11d8827d4",
+      "source_scene_ids": [
+        "run-group:f931ab7c9ab54689a052:floor-1:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f9a6cc34066c9e8290f9:deck:10a6b73ca094300a",
+      "group_id": "run-group:f9a6cc34066c9e8290f9",
+      "deck_sha256": "10a6b73ca094300a8f902c5b69b82edf8b581f80846b221c6208122761aec8c8",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Carnage",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1669250910.run",
+      "raw_sha256": "7e05252733051ecd04791aad97d023973937440dbbd368dc41832494a674e91e",
+      "source_scene_ids": [
+        "run-group:f9a6cc34066c9e8290f9:floor-2:combat-0"
+      ]
+    },
+    {
+      "deck_id": "run-group:f9a6cc34066c9e8290f9:deck:ba26b6f4ded94524",
+      "group_id": "run-group:f9a6cc34066c9e8290f9",
+      "deck_sha256": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "deck": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "split": "train",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1669250910.run",
+      "raw_sha256": "7e05252733051ecd04791aad97d023973937440dbbd368dc41832494a674e91e",
+      "source_scene_ids": [
+        "run-group:f9a6cc34066c9e8290f9:floor-1:combat-0"
+      ]
+    }
+  ],
+  "summary": {
+    "source_scenes": 99,
+    "deck_rows": 92,
+    "run_groups": 75,
+    "unique_decks": 27,
+    "cross_split_identical_decks": 4,
+    "rows_by_split": {
+      "train": 80,
+      "development": 12
+    },
+    "groups_by_split": {
+      "train": 65,
+      "development": 10
+    },
+    "configured_scenes": 920
+  },
+  "payload_sha256": "22f66b7e319c8db3588b74cb862b5ace853b27d0b57b0fe00615a774a430ba78"
+}

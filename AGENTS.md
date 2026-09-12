@@ -7,6 +7,16 @@
 - 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 **STS1**。
 - 排期与止损以 `spec-v6.md` §9/§10 为准；学习目标与方法见 `docs/learning-path-v2.md`，`学习路径.md` 为旧版历史存档。
 
+## 当前进度（2026-09-11）
+
+- 最新提交基线为 `80d2340`；其中已包含 S4 三初始化诊断、S5 最小可学习检查点冻结，以及 PPO 训练观察学习记录和固定状态诊断脚本。
+- M0 / D25 S1–S5 工程已完成：三组各完成 256 轮、262144 个 transition；S4 三组 300 局开发配对回报差 CI 下界均大于 0；S5 恢复、最终 checkpoint、评估和 278 项完整回归已记录。证据见 `docs/ppo-s4-report.md`、`docs/ppo-s5-freeze.md`。
+- 当前不宣称正式 Gate 2、Gate 3、中等环境泛化、Set Transformer 完成或跨更大任务稳定性；负 `explained_variance` 仍是诊断项，原因未定。
+- M1 候选审计已于 2026-09-11 收口：覆盖正版 JAR 的 75 个 Ironclad 类、150 个卡牌版本，分类为 A6/B123/C16/D5；`docs/m1-candidate-batches.md` 提供 35 类实施候选，`docs/m1-numeric-evidence.md` 补齐原十张正版数值定位。正式白名单、reset 配置、扩展卡行为测试和 M2 契约仍未完成。
+- M2–M8 尚未完成；当前 31 位动作协议不变，扩容不得绕过二次选择、容量、可见字段和版本契约。
+- PPO 训练观察学习的工程展示已完成：TensorBoard 续训日志、固定 seed `900000` 的 32/128/256 概率对照及学习记录均已落盘；用户独立理解复述仍另行验收。
+- 当前工作区保留未提交的 M1 进度：`docs/decisions.md` 的 S5/M1 补记，以及 `docs/ironclad-card-audit.md`、`docs/ironclad-card-audit-review.md`、`docs/m1-candidate-batches.md`、`docs/m1-numeric-evidence.md`；不得重置、覆盖或把候选审计当作正式白名单。
+
 ## 文档层级（权威顺序）
 
 | 文件 | 地位 |

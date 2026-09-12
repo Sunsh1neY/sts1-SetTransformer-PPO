@@ -1,0 +1,2292 @@
+{
+  "audit_schema_version": "m2-public-run-audit-v2",
+  "raw_root": "reference/public-run-audit",
+  "sample_count": 12,
+  "rows": [
+    {
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663630852.run",
+      "source_run_id": "00e79398-c318-4f25-9b6e-1eeba5ca55ec",
+      "source_seed": "8942134355144449980",
+      "raw_sha256": "56fa4cede549310f35e6ab4e571e312df19477d18f9ad2ef9fd55a98745cf423",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 7,
+          "enemies": "Jaw Worm",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 7,
+            "enemies": "Jaw Worm",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "TRANSFORM_TWO_CARDS",
+          "cost": "TEN_PERCENT_HP_LOSS",
+          "log": {
+            "cardsObtained": [
+              "Bloodletting",
+              "Rampage"
+            ],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "relicsObtained": [],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 7
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "cardsObtained": [
+              "Bloodletting",
+              "Rampage"
+            ],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Bloodletting",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Rampage",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              67
+            ],
+            "max_hp_per_floor": [
+              68
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [
+            {
+              "floor": 1,
+              "key": "Ancient Potion"
+            }
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Jaw Worm",
+          "backend_id": "JAW_WORM",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Dual Wield",
+                "Havoc"
+              ],
+              "picked": "Evolve",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": [
+            {
+              "floor": 1,
+              "key": "Ancient Potion"
+            }
+          ]
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/chegs/ironclad/1707009021.run",
+      "source_run_id": "bafe70cc-8c24-49db-b4c2-a1735d9cdd7a",
+      "source_seed": "5825453042510105463",
+      "raw_sha256": "1f00403c49f3baa143734da4293db418a7684d5e1cc63a2d5cef1d42b662a8fd",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 1.0,
+          "enemies": "Cultist",
+          "floor": 1.0,
+          "turns": 3.0
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 1.0,
+            "enemies": "Cultist",
+            "floor": 1.0,
+            "turns": 3.0
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "THREE_RARE_CARDS",
+          "cost": "CURSE",
+          "log": {
+            "cardsObtained": [
+              "Parasite"
+            ],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [
+              "Parasite"
+            ],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Parasite",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              73
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Cultist",
+          "backend_id": "CULTIST",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Feed",
+                "Bludgeon"
+              ],
+              "picked": "Fiend Fire",
+              "floor": 0.0
+            },
+            {
+              "not_picked": [
+                "Perfected Strike",
+                "Metallicize"
+              ],
+              "picked": "Anger",
+              "floor": 1.0
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "PRE_ENTRY_MUTATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "PRE_ENTRY_MUTATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672618634.run",
+      "source_run_id": "f178cc91-68ec-422b-86cc-535956ea20ef",
+      "source_seed": "2168720235307158719",
+      "raw_sha256": "6578985f73105e0667359cc27f58917453b4da740d241bf7df8e81ecf097418c",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 1,
+          "enemies": "Cultist",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 1,
+            "enemies": "Cultist",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "TWENTY_PERCENT_HP_BONUS",
+          "cost": "NO_GOLD",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 14,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 99,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              87
+            ],
+            "max_hp_per_floor": [
+              89
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Cultist",
+          "backend_id": "CULTIST",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Flex",
+                "Rampage"
+              ],
+              "picked": "Headbutt",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/panacea-ironclad-sample/1663019150.run",
+      "source_run_id": "bac59578-52c6-48d9-a0df-c9ae30aacb51",
+      "source_seed": "1385172482362559823",
+      "raw_sha256": "b0766597c4679a1236154e5a5aa1d74e72d6d08c224b150a55fc554b598b9192",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 6,
+          "enemies": "Cultist",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 6,
+            "enemies": "Cultist",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "RANDOM_COMMON_RELIC",
+          "cost": "NONE",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [
+              "Lantern"
+            ],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              68
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [
+            "Lantern"
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [
+            {
+              "floor": 1,
+              "key": "Weak Potion"
+            }
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Cultist",
+          "backend_id": "CULTIST",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Fire Breathing",
+                "Wild Strike"
+              ],
+              "picked": "Headbutt",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": [
+            {
+              "floor": 1,
+              "key": "Weak Potion"
+            }
+          ]
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663717142.run",
+      "source_run_id": "cb177c64-9d8b-4824-ae6d-677c3510d005",
+      "source_seed": "-1854141603364313707",
+      "raw_sha256": "22f5ec5007998801850873e1a308084353b1435a76991b0d75108a40cc675d91",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 4,
+          "enemies": "Small Slimes",
+          "floor": 1,
+          "turns": 5
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 4,
+            "enemies": "Small Slimes",
+            "floor": 1,
+            "turns": 5
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "ONE_RARE_RELIC",
+          "cost": "TEN_PERCENT_HP_LOSS",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [
+              "Dead Branch"
+            ],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 7
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              68
+            ],
+            "max_hp_per_floor": [
+              68
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [
+            "Dead Branch"
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [
+            {
+              "floor": 1,
+              "key": "GamblersBrew"
+            }
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "unknown",
+          "label": "Small Slimes",
+          "backend_id": null,
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Disarm",
+                "Havoc"
+              ],
+              "picked": "Battle Trance",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": [
+            {
+              "floor": 1,
+              "key": "GamblersBrew"
+            }
+          ]
+        },
+        "missing_or_ambiguous": [
+          "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "unknown",
+      "a_missing_or_ambiguous": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/chegs/ironclad/1707019780.run",
+      "source_run_id": "4243ddb3-01da-44de-8689-7ba67132d1a1",
+      "source_seed": "-7392948269980444707",
+      "raw_sha256": "92f5b4890884a600cc6fe88f3715995d3cbc14db9d6cf9f9aa6ca05beba3c9e4",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 8,
+          "enemies": "Small Slimes",
+          "floor": 1,
+          "turns": 5
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 8,
+            "enemies": "Small Slimes",
+            "floor": 1,
+            "turns": 5
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "ONE_RARE_RELIC",
+          "cost": "CURSE",
+          "log": {
+            "cardsObtained": [
+              "Doubt"
+            ],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [
+              "Bird Faced Urn"
+            ],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [
+              "Doubt"
+            ],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Doubt",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              66
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [
+            "Bird Faced Urn"
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "unknown",
+          "label": "Small Slimes",
+          "backend_id": null,
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Dark Embrace",
+                "Cleave"
+              ],
+              "picked": "Inflame",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "unknown",
+      "a_missing_or_ambiguous": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "source_run_id": "8182d980-e0b8-4017-98bf-4d80e15d6505",
+      "source_seed": "8283005578391039350",
+      "raw_sha256": "e31c5f6f896ac029651efca2daeb96f3161c412438974ec8a356dea7a2bca7e8",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 7,
+          "enemies": "Small Slimes",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 7,
+            "enemies": "Small Slimes",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "TWENTY_PERCENT_HP_BONUS",
+          "cost": "NO_GOLD",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 14,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 99,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              81
+            ],
+            "max_hp_per_floor": [
+              89
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "unknown",
+          "label": "Small Slimes",
+          "backend_id": null,
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Warcry",
+                "Sword Boomerang"
+              ],
+              "picked": "Cleave",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "unknown",
+      "a_missing_or_ambiguous": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/panacea-ironclad-sample/1663026387.run",
+      "source_run_id": "ee3e27cd-57fd-48ad-ab25-b4fd810fef7e",
+      "source_seed": "431906119610756110",
+      "raw_sha256": "7e8901fc7979f1f8846a42b765ae0d773f0155adf1b688524d9a93d9e00cf10e",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "rule_constructible_source_unverified",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 6,
+          "enemies": "Cultist",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "rule_constructible_source_unverified",
+      "a_evidence": {
+        "status": "rule_constructible_source_unverified",
+        "rule_constructible": true,
+        "first_combat": {
+          "row": {
+            "damage": 6,
+            "enemies": "Cultist",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "HUNDRED_GOLD",
+          "cost": "NONE",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 0,
+            "goldGained": 100,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "derived-with-evidence",
+          "hp_current": 68,
+          "hp_max": 75,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              68
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "derived-with-evidence",
+          "entries": [
+            {
+              "id": "Burning Blood",
+              "counter": null,
+              "counter_semantics": "not_applicable"
+            }
+          ],
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "derived-with-evidence",
+          "slots": [
+            null,
+            null
+          ],
+          "obtained_rows_before_or_at_floor": [
+            {
+              "floor": 1,
+              "key": "Fruit Juice"
+            }
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Cultist",
+          "backend_id": "CULTIST",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Havoc",
+                "Sword Boomerang",
+                "Heavy Blade"
+              ],
+              "picked": "SKIP",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": [
+            {
+              "floor": 1,
+              "key": "Fruit Juice"
+            }
+          ]
+        },
+        "missing_or_ambiguous": [],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": {
+          "scene_id": "summary-a:ee3e27cd-57fd-48ad-ab25-b4fd810fef7e:floor-1",
+          "entry_timing": "pre_combat_initialization",
+          "source_path": "runs/panacea-ironclad-sample/1663026387.run",
+          "raw_sha256": "7e8901fc7979f1f8846a42b765ae0d773f0155adf1b688524d9a93d9e00cf10e",
+          "source_run_group": "seed:IRONCLAD:431906119610756110",
+          "source_seed": "431906119610756110",
+          "source_build_version": "2022-03-07",
+          "environment_replay_seed": null,
+          "character": "IRONCLAD",
+          "ascension": 20,
+          "floor": 1,
+          "act": 1,
+          "room_kind": "MONSTER",
+          "burning_elite": false,
+          "player": {
+            "hp_current": 68,
+            "hp_max": 75,
+            "gold": 199
+          },
+          "deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "relics": [
+            {
+              "id": "Burning Blood",
+              "counter": null,
+              "counter_semantics": "not_applicable"
+            }
+          ],
+          "potions": [
+            null,
+            null
+          ],
+          "encounter": {
+            "status": "resampled-by-policy",
+            "label": "Cultist",
+            "backend_id": "CULTIST",
+            "generated_fields": [
+              "monster_hp",
+              "initial_intent",
+              "instance_ids",
+              "move_history",
+              "slot_order"
+            ],
+            "policy": "public-battle-a-resample-v1",
+            "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+          },
+          "battle_initialization": "execute_once",
+          "already_resolved_effects": [
+            "standard_run_start",
+            "neow_hundred_gold"
+          ],
+          "generated_by_backend": [
+            "energy",
+            "block",
+            "powers",
+            "piles",
+            "queues",
+            "card_instance_ids",
+            "monster_state",
+            "rng_streams"
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md",
+          "formal_eligibility": "audit-only",
+          "source_compatibility": "unverified",
+          "exact_historical_replay": false
+        }
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "derived-with-evidence",
+      "a_relic_status": "derived-with-evidence",
+      "a_potion_status": "derived-with-evidence",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663893019.run",
+      "source_run_id": "47f02244-feea-45da-8519-38f6bb0fcef4",
+      "source_seed": "-1340207862638898885",
+      "raw_sha256": "31e0c996f6768310bc7cdf74f374f5b2d9b63e4aa6307347e2305b9be8625cf2",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 7,
+          "enemies": "Cultist",
+          "floor": 1,
+          "turns": 4
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 7,
+            "enemies": "Cultist",
+            "floor": 1,
+            "turns": 4
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "REMOVE_TWO",
+          "cost": "PERCENT_DAMAGE",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 18,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              49
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Cultist",
+          "backend_id": "CULTIST",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Heavy Blade",
+                "Warcry"
+              ],
+              "picked": "Perfected Strike",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/chegs/ironclad/1707091976.run",
+      "source_run_id": "eff36188-fdbd-4988-b2f4-28b61fd29824",
+      "source_seed": "5248525184149188418",
+      "raw_sha256": "d68fa86037dba48eec1a8592de6b1cf5f0aac7625883bcfefdbbfe6c27fb4f0f",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 14,
+          "enemies": "Jaw Worm",
+          "floor": 1,
+          "turns": 5
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 14,
+            "enemies": "Jaw Worm",
+            "floor": 1,
+            "turns": 5
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "TRANSFORM_TWO_CARDS",
+          "cost": "TEN_PERCENT_HP_LOSS",
+          "log": {
+            "cardsObtained": [
+              "Heavy Blade",
+              "Demon Form"
+            ],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "relicsObtained": [],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 7
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [
+              "Strike_R",
+              "Defend_R"
+            ],
+            "cardsObtained": [
+              "Heavy Blade",
+              "Demon Form"
+            ],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Demon Form",
+            "Heavy Blade",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              60
+            ],
+            "max_hp_per_floor": [
+              68
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "Jaw Worm",
+          "backend_id": "JAW_WORM",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Entrench",
+                "Armaments"
+              ],
+              "picked": "Headbutt",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672700747.run",
+      "source_run_id": "06ff2073-b88b-453a-a6db-969d62307338",
+      "source_seed": "7898521099966816684",
+      "raw_sha256": "57ad236018a382b41fec2037b2cab1683e40957a20f4ea61dc1ea17916c5bdd4",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-12-18",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 8,
+          "enemies": "2 Louse",
+          "floor": 1,
+          "turns": 3
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 8,
+            "enemies": "2 Louse",
+            "floor": 1,
+            "turns": 3
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "TWENTY_PERCENT_HP_BONUS",
+          "cost": "NO_GOLD",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [],
+            "maxHpGained": 14,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 99,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              80
+            ],
+            "max_hp_per_floor": [
+              89
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [
+            {
+              "floor": 1,
+              "key": "Weak Potion"
+            }
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "2 Louse",
+          "backend_id": "TWO_LOUSE",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Disarm",
+                "Cleave"
+              ],
+              "picked": "Anger",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": [
+            {
+              "floor": 1,
+              "key": "Weak Potion"
+            }
+          ]
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    },
+    {
+      "source_path": "runs/panacea-ironclad-sample/1663181737.run",
+      "source_run_id": "d59ee005-2baa-4215-8d98-7553b8017839",
+      "source_seed": "-504180739479953194",
+      "raw_sha256": "9fcdfffbbd529f74350da7b13ea1cb8106624706ca431f60dc078ac03b0f376f",
+      "character": "IRONCLAD",
+      "ascension": 20,
+      "build_version": "2022-03-07",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "formal_candidate": false,
+      "first_combat": {
+        "row": {
+          "damage": 2,
+          "enemies": "2 Louse",
+          "floor": 1,
+          "turns": 2
+        },
+        "source": "damage_taken[0]",
+        "floor": 1
+      },
+      "a_status": "partial_reconstruction_attempt",
+      "a_evidence": {
+        "status": "partial_reconstruction_attempt",
+        "rule_constructible": false,
+        "first_combat": {
+          "row": {
+            "damage": 2,
+            "enemies": "2 Louse",
+            "floor": 1,
+            "turns": 2
+          },
+          "source": "damage_taken[0]",
+          "floor": 1
+        },
+        "starting_bonus": {
+          "bonus": "RANDOM_COMMON_RELIC",
+          "cost": "NONE",
+          "log": {
+            "cardsObtained": [],
+            "cardsUpgraded": [],
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "relicsObtained": [
+              "Pen Nib"
+            ],
+            "maxHpGained": 0,
+            "goldGained": 0,
+            "damageTaken": 0,
+            "goldLost": 0,
+            "maxHpLost": 0
+          }
+        },
+        "deck": {
+          "status": "candidate_multiset",
+          "base_deck_rule": "Ironclad starter deck；ascension>=10 另加 AscendersBane",
+          "base_deck": [
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Bash",
+            "AscendersBane"
+          ],
+          "delta_fields": {
+            "cardsRemoved": [],
+            "cardsTransformed": [],
+            "cardsObtained": [],
+            "cardsUpgraded": []
+          },
+          "reconstructed_unupgraded_multiset": [
+            "AscendersBane",
+            "Bash",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "upgrade_targets_without_uuid": [],
+          "instance_identity": "同名重复牌无 UUID；升级目标只能按多重集记录",
+          "reason_codes": []
+        },
+        "hp": {
+          "status": "unknown",
+          "hp_current": null,
+          "hp_max": null,
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据",
+          "floor_metrics_not_used_as_entry": {
+            "current_hp_per_floor": [
+              72
+            ],
+            "max_hp_per_floor": [
+              75
+            ]
+          }
+        },
+        "relics": {
+          "status": "unknown",
+          "entries": null,
+          "neow_relics_obtained": [
+            "Pen Nib"
+          ],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "potions": {
+          "status": "unknown",
+          "slots": null,
+          "obtained_rows_before_or_at_floor": [],
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "encounter": {
+          "status": "resampled-by-policy",
+          "label": "2 Louse",
+          "backend_id": "TWO_LOUSE",
+          "generated_fields": [
+            "monster_hp",
+            "initial_intent",
+            "instance_ids",
+            "move_history",
+            "slot_order"
+          ],
+          "policy": "public-battle-a-resample-v1",
+          "evidence": "docs/m2-entry-a-evidence.md#规则证据"
+        },
+        "early_history": {
+          "card_choices": [
+            {
+              "not_picked": [
+                "Body Slam",
+                "Perfected Strike"
+              ],
+              "picked": "Twin Strike",
+              "floor": 1
+            }
+          ],
+          "event_choices": [],
+          "campfire_choices": [],
+          "relics_obtained": [],
+          "potions_obtained": []
+        },
+        "missing_or_ambiguous": [
+          "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+          "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+          "POTION_ENTRY_DERIVATION_UNPROVEN",
+          "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+        ],
+        "source_evidence_blockers": [
+          "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED",
+          "SOURCE_MOD_MANIFEST_UNAVAILABLE"
+        ],
+        "candidate_scene": null
+      },
+      "a_deck_status": "candidate_multiset",
+      "a_hp_status": "unknown",
+      "a_relic_status": "unknown",
+      "a_potion_status": "unknown",
+      "a_encounter_status": "resampled-by-policy",
+      "a_missing_or_ambiguous": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN"
+      ],
+      "b_missing_or_ambiguous": [
+        "B_HAND_PILES_MISSING",
+        "B_ENEMY_INTENT_MISSING",
+        "B_CONTROL_STATE_MISSING"
+      ]
+    }
+  ]
+}

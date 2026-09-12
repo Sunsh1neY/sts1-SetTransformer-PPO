@@ -81,6 +81,9 @@ if (-not $patchAlreadyApplied) {
     Invoke-Checked 'git' @('-C', $sourceDir, 'apply', $patchPath)
 }
 
+# 新公开环境的动作/容量与Python共用单一JSON契约。
+Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-public-contract.py'))
+
 $previousPath = $env:PATH
 try {
     $env:PATH = "$Toolchain;$previousPath"
@@ -93,7 +96,7 @@ try {
     foreach ($dll in @('libstdc++-6.dll', 'libgcc_s_seh-1.dll', 'libwinpthread-1.dll')) {
         Copy-Item -LiteralPath (Join-Path $Toolchain $dll) -Destination $buildDir -Force
     }
-    Invoke-Checked $pythonPath @('-c', 'import sys; sys.path.insert(0, sys.argv[1]); import slaythespire as s; assert hasattr(s, ''IroncladBattleEnv''); print(''IroncladBattleEnv import OK'')', $buildDir)
+    Invoke-Checked $pythonPath @('-c', 'import sys; sys.path.insert(0, sys.argv[1]); import slaythespire as s; assert hasattr(s, ''IroncladBattleEnv'') and hasattr(s, ''PublicBattleEnv''); print(''minimal/public battle imports OK'')', $buildDir)
     Write-Host "战斗扩展已构建：$buildDir"
 } finally {
     $env:PATH = $previousPath

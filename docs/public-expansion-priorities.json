@@ -1,0 +1,746 @@
+{
+  "baseline": {
+    "actual_net_new_scene_count_vs_baseline_99": 0,
+    "baseline_scene_count": 99,
+    "current_99_all_development_integration_checked": true,
+    "current_executable_run_count": 75,
+    "current_executable_scene_count": 99
+  },
+  "mandatory_source_evidence_gate": {
+    "acceptance_conditions": [
+      "固定提交重新运行离线审计，逐场同时通过来源前缀、入口A字段、版本/修饰和内容闭包检查",
+      "保留所有原始 blocker 与完整场景内容；只把实际无 blocker 的行升级为证据完整候选",
+      "新旧关联组仍按完整run隔离，不能把同一run的不同楼层拆到不同split"
+    ],
+    "definite_complete_scene_gain": 0,
+    "id": "source-prefix-evidence-gate",
+    "potential": {
+      "category_potential": [
+        {
+          "category": "source_prefix",
+          "confirmed_scene_gain": 0,
+          "description": "来源版本/房间前缀或事件、商店历史尚未证明",
+          "overlap_safe": false,
+          "potential_encounter_count": 18,
+          "potential_floor_values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "potential_independent_run_count": 157,
+          "potential_only": true,
+          "potential_scene_count": 989
+        },
+        {
+          "category": "burning_elite_modifier",
+          "confirmed_scene_gain": 0,
+          "description": "精英燃烧强化未由来源记录恢复",
+          "overlap_safe": false,
+          "potential_encounter_count": 3,
+          "potential_floor_values": [
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "potential_independent_run_count": 146,
+          "potential_only": true,
+          "potential_scene_count": 388
+        },
+        {
+          "category": "relic_counter_hook",
+          "confirmed_scene_gain": 0,
+          "description": "遗物动态计数或跨战斗 hook 尚未证明",
+          "overlap_safe": false,
+          "potential_encounter_count": 18,
+          "potential_floor_values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "potential_independent_run_count": 35,
+          "potential_only": true,
+          "potential_scene_count": 257
+        },
+        {
+          "category": "potion_inventory_or_generation",
+          "confirmed_scene_gain": 0,
+          "description": "药水库存时序、自动使用或生成历史尚未证明",
+          "overlap_safe": false,
+          "potential_encounter_count": 15,
+          "potential_floor_values": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "potential_independent_run_count": 8,
+          "potential_only": true,
+          "potential_scene_count": 54
+        },
+        {
+          "category": "entry_type",
+          "confirmed_scene_gain": 0,
+          "description": "入口房间类型或同层多战斗尚未证明",
+          "overlap_safe": false,
+          "potential_encounter_count": 3,
+          "potential_floor_values": [
+            7,
+            8,
+            10,
+            11,
+            12,
+            13
+          ],
+          "potential_independent_run_count": 14,
+          "potential_only": true,
+          "potential_scene_count": 14
+        },
+        {
+          "category": "encounter_generation",
+          "confirmed_scene_gain": 0,
+          "description": "遭遇生成器尚未纳入来源闭包",
+          "overlap_safe": false,
+          "potential_encounter_count": 1,
+          "potential_floor_values": [
+            7,
+            8,
+            10,
+            12,
+            13
+          ],
+          "potential_independent_run_count": 7,
+          "potential_only": true,
+          "potential_scene_count": 7
+        }
+      ],
+      "raw_blocker_potential": [
+        {
+          "blocker": "PREFIX_UNPROVEN:ROOM_HISTORY_PENDING:?",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 77,
+          "potential_only": true,
+          "potential_scene_count": 474
+        },
+        {
+          "blocker": "BURNING_ELITE_MODIFIER_UNRECORDED",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 146,
+          "potential_only": true,
+          "potential_scene_count": 388
+        },
+        {
+          "blocker": "PREFIX_UNPROVEN:RELIC_HISTORY_PENDING",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 34,
+          "potential_only": true,
+          "potential_scene_count": 224
+        },
+        {
+          "blocker": "PREFIX_UNPROVEN:ROOM_HISTORY_PENDING:$",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 27,
+          "potential_only": true,
+          "potential_scene_count": 155
+        },
+        {
+          "blocker": "PREFIX_UNPROVEN:POTION_AUTO_USE_OR_GENERATION_PENDING",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 8,
+          "potential_only": true,
+          "potential_scene_count": 54
+        },
+        {
+          "blocker": "PREFIX_UNPROVEN:NEOW_EFFECT_PENDING:BOSS_RELIC/NONE",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 5,
+          "potential_only": true,
+          "potential_scene_count": 42
+        },
+        {
+          "blocker": "PREFIX_UNPROVEN:NEOW_EFFECT_PENDING:THREE_ENEMY_KILL/NONE",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 6,
+          "potential_only": true,
+          "potential_scene_count": 40
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Old Coin",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 3,
+          "potential_only": true,
+          "potential_scene_count": 25
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Dead Branch",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 3,
+          "potential_only": true,
+          "potential_scene_count": 19
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Tiny Chest",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 2,
+          "potential_only": true,
+          "potential_scene_count": 17
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Bird Faced Urn",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 2,
+          "potential_only": true,
+          "potential_scene_count": 15
+        },
+        {
+          "blocker": "ENTRY_ROOM_OR_MULTIPLE_COMBATS_PENDING",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 14,
+          "potential_only": true,
+          "potential_scene_count": 14
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Art of War",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 11
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Torii",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 2,
+          "potential_only": true,
+          "potential_scene_count": 11
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Ice Cream",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 10
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Ginger",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 9
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Mango",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 9
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Unceasing Top",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 9
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Boot",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Centennial Puzzle",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Champion Belt",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Omamori",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Peace Pipe",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Shovel",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Toy Ornithopter",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Whetstone",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 8
+        },
+        {
+          "blocker": "ENCOUNTER_GENERATOR_PENDING:The Mushroom Lair",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 7,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Calipers",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Dream Catcher",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:FossilizedHelix",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Meat on the Bone",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Pen Nib",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Regal Pillow",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 7
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Pantograph",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 5
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Paper Frog",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 5
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:MawBank",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 3
+        },
+        {
+          "blocker": "RELIC_COUNTER_OR_HOOK_PENDING:Pocketwatch",
+          "confirmed_scene_gain": 0,
+          "potential_independent_run_count": 1,
+          "potential_only": true,
+          "potential_scene_count": 3
+        }
+      ],
+      "source_incomplete_run_count": 157,
+      "source_incomplete_scene_count": 1025,
+      "warning": "来源缺口场景至少还可能有其他 blocker；这些数字是潜在覆盖，不是实现后确定收益，也不可相加。"
+    },
+    "potential_only": true,
+    "reason": "当前证据完整候选最高只到floor5；卡牌实现本身不能产生floor6–14或425条精英记录的来源证据。",
+    "required_observations": [
+      "?/$ 房间的完整 path_per_floor、event_choices 与 shop/purchase/purge 前缀",
+      "每一场精英对应的燃烧强化/绿钥匙状态，而不是只知道存在某个精英",
+      "遗物跨战斗 counter/data 与获得楼层；不能用默认0",
+      "药水获得、使用、丢弃、自动生成的楼层内时序"
+    ],
+    "status": "mandatory_before_claiming_floor_6_plus_or_real_elite_coverage"
+  },
+  "non_selected_observation": {
+    "m1_missing_reward_cards_warning": "Dropkick、Entrench、Rage、Sentinel、Thunderclap、True Grit 的奖励记录不是入口A完整牌组证据，未据此生成场景。",
+    "potion_frequency_warning": "GamblersBrew 5场、SkillPotion 4场等出现次数不等于独立可解锁场景；其候选常同时被卡牌 blocker 阻断。",
+    "single_item_ranking_is_in_report_analysis": true
+  },
+  "ordering": {
+    "basis": [
+      "完整候选的闭包收益，而不是卡牌单独出现次数",
+      "新增独立run、遭遇和内容维度",
+      "动作/容量/观测风险及M1既有延期裁定"
+    ],
+    "not_used": [
+      "RuleAgent胜率",
+      "PPO胜率",
+      "单次集成回报",
+      "将来源潜在收益当作确定收益"
+    ],
+    "recommended_execution_order_after_risk_review": [
+      "direct-state-cards",
+      "hand-copy-secondary",
+      "direct-generated-potions"
+    ],
+    "scene_gain_rank_in_the_three_candidates": [
+      "hand-copy-secondary",
+      "direct-state-cards",
+      "direct-generated-potions"
+    ]
+  },
+  "recommended_batches": [
+    {
+      "acceptance_conditions": [
+        "逐卡基础/升级/目标/mask/状态回归通过",
+        "17个精确 scene_id 全部能以入口A reset 并在随机与规则开发集成中完整终止",
+        "不因某一场失败而删除该场卡牌、药水或遗物；失败场景继续留在拒绝索引"
+      ],
+      "dependency_kind": "evidence_complete_content_candidate",
+      "engineering_risk": "中等：需新增3类卡及数值/升级行为；若三类均为直接动作，当前66位、手牌10、目标5和变长牌堆可维持，但 target_kind 与状态字段必须逐卡核验。",
+      "id": "direct-state-cards",
+      "not_actual_implementation": true,
+      "projected_complete_scene_gain": {
+        "candidate_group_share": 0.06779661016949153,
+        "candidate_scene_share": 0.06614785992217899,
+        "encounter_labels": [
+          "2 Fungi Beasts",
+          "2 Louse",
+          "3 Louse",
+          "Cultist",
+          "Jaw Worm",
+          "Looter",
+          "Red Slaver",
+          "Small Slimes"
+        ],
+        "floor_values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "independent_run_count": 8,
+        "new_content_vs_current_99": {
+          "generated_card_classes": [],
+          "initial_card_classes": [
+            "Hemokinesis",
+            "Intimidate",
+            "Metallicize",
+            "Shockwave"
+          ],
+          "potions": [
+            "LiquidBronze",
+            "Regen Potion",
+            "Weak Potion"
+          ],
+          "relics": [],
+          "upgraded_card_versions": []
+        },
+        "new_encounter_labels_vs_current_99": [
+          "3 Louse",
+          "Red Slaver"
+        ],
+        "new_floor_values_vs_current_99": [],
+        "new_independent_runs_vs_current_99": 2,
+        "overlap_safe": true,
+        "run_ids": [
+          "run-group:2a23a97ee1fa599d0039",
+          "run-group:5ba42d6055d2ced8f960",
+          "run-group:9b629d3fde613cc6d2af",
+          "run-group:b0d25cc2fe2535349b58",
+          "run-group:ba4a36f016779b09dcb2",
+          "run-group:bebeecd213a33f1fe8e4",
+          "run-group:df4e3889ce44dca3031d",
+          "run-group:e3aa52d15557129c9fcf"
+        ],
+        "scene_count": 17,
+        "scene_ids": [
+          "run-group:2a23a97ee1fa599d0039:floor-2:combat-0",
+          "run-group:2a23a97ee1fa599d0039:floor-3:combat-0",
+          "run-group:5ba42d6055d2ced8f960:floor-2:combat-0",
+          "run-group:5ba42d6055d2ced8f960:floor-3:combat-0",
+          "run-group:5ba42d6055d2ced8f960:floor-4:combat-0",
+          "run-group:9b629d3fde613cc6d2af:floor-1:combat-0",
+          "run-group:b0d25cc2fe2535349b58:floor-2:combat-0",
+          "run-group:b0d25cc2fe2535349b58:floor-3:combat-0",
+          "run-group:ba4a36f016779b09dcb2:floor-2:combat-0",
+          "run-group:ba4a36f016779b09dcb2:floor-3:combat-0",
+          "run-group:ba4a36f016779b09dcb2:floor-4:combat-0",
+          "run-group:ba4a36f016779b09dcb2:floor-5:combat-0",
+          "run-group:bebeecd213a33f1fe8e4:floor-2:combat-0",
+          "run-group:df4e3889ce44dca3031d:floor-4:combat-0",
+          "run-group:df4e3889ce44dca3031d:floor-5:combat-0",
+          "run-group:e3aa52d15557129c9fcf:floor-1:combat-0",
+          "run-group:e3aa52d15557129c9fcf:floor-2:combat-0"
+        ],
+        "selection_by_policy_outcome": false,
+        "support_atoms": [
+          "card:Hemokinesis",
+          "card:Intimidate",
+          "card:Shockwave"
+        ]
+      },
+      "reason": "在证据完整候选中一次覆盖17场、8个关联组，并新增3 Louse与Red Slaver两个遭遇标签；收益低于含Anger的更大组合，但不依赖当前缺失的二次选择协议。",
+      "required_action_changes": [
+        "更新版本化 CardRegistry、central contract 与 mask；不得把未知卡映射为 PAD",
+        "若行为核验确认无二次选择/随机生成，保持66位动作；否则转入协议迁移而不是静默代选"
+      ],
+      "required_capacity_changes": [
+        "确认这些精确场景的 master deck 均不超过96；初始牌组逐副本保留",
+        "证明新增卡没有未登记的状态牌生成或把其生成上界纳入容量测试"
+      ],
+      "required_observations": [
+        "三类卡的正版基础/升级数值与 target_kind",
+        "Hemokinesis 的玩家 HP 变化及奖励读取时点",
+        "Shockwave/Intimidate 造成的具名敌方减益与多目标观测"
+      ],
+      "uses_policy_outcome": false
+    },
+    {
+      "acceptance_conditions": [
+        "20个精确 scene_id 的全部原子依赖都通过后才计入新增；部分卡通过不提前入场",
+        "choice/生成/容量/恢复/完整观测回归通过，并记录新的输入、动作、序列化版本",
+        "从头开发集成不异常终止；不使用规则或PPO胜率选出其中子集"
+      ],
+      "dependency_kind": "evidence_complete_content_candidate",
+      "engineering_risk": "高：M1 已明确 Anger/复制路径延期；二次选择、手牌多牌消耗、复制实体和动态容量不能由当前66位动作自动代替。",
+      "id": "hand-copy-secondary",
+      "not_actual_implementation": true,
+      "projected_complete_scene_gain": {
+        "candidate_group_share": 0.1271186440677966,
+        "candidate_scene_share": 0.07782101167315175,
+        "encounter_labels": [
+          "2 Louse",
+          "Cultist",
+          "Jaw Worm",
+          "Small Slimes"
+        ],
+        "floor_values": [
+          1,
+          2,
+          3
+        ],
+        "independent_run_count": 15,
+        "new_content_vs_current_99": {
+          "generated_card_classes": [],
+          "initial_card_classes": [
+            "Anger",
+            "Fiend Fire",
+            "Ghostly Armor",
+            "Headbutt"
+          ],
+          "potions": [
+            "Dexterity Potion",
+            "Weak Potion"
+          ],
+          "relics": [],
+          "upgraded_card_versions": []
+        },
+        "new_encounter_labels_vs_current_99": [],
+        "new_floor_values_vs_current_99": [],
+        "new_independent_runs_vs_current_99": 7,
+        "overlap_safe": true,
+        "run_ids": [
+          "run-group:274691e9f61e82281a1f",
+          "run-group:2dc85ff71ba6d9a28b62",
+          "run-group:3a4d5f7cd5778f7c3b36",
+          "run-group:4905777f17e06ee65bba",
+          "run-group:4a50927b4670b528f773",
+          "run-group:59e6ade594f5ff999e8e",
+          "run-group:63413f18719e98f2800a",
+          "run-group:72e766c3ad2370c4d929",
+          "run-group:791d67b4daf01a7e67cf",
+          "run-group:79cc161b4b335483b55e",
+          "run-group:884462f149c7fb11dc6c",
+          "run-group:88d7120f540a2eaa5da6",
+          "run-group:93875aa00e713b9f1072",
+          "run-group:a54366757119e0fb09ac",
+          "run-group:c307dfd44a34bb5e6d64"
+        ],
+        "scene_count": 20,
+        "scene_ids": [
+          "run-group:274691e9f61e82281a1f:floor-2:combat-0",
+          "run-group:274691e9f61e82281a1f:floor-3:combat-0",
+          "run-group:2dc85ff71ba6d9a28b62:floor-2:combat-0",
+          "run-group:3a4d5f7cd5778f7c3b36:floor-1:combat-0",
+          "run-group:4905777f17e06ee65bba:floor-1:combat-0",
+          "run-group:4905777f17e06ee65bba:floor-2:combat-0",
+          "run-group:4a50927b4670b528f773:floor-2:combat-0",
+          "run-group:59e6ade594f5ff999e8e:floor-1:combat-0",
+          "run-group:63413f18719e98f2800a:floor-1:combat-0",
+          "run-group:63413f18719e98f2800a:floor-2:combat-0",
+          "run-group:63413f18719e98f2800a:floor-3:combat-0",
+          "run-group:72e766c3ad2370c4d929:floor-1:combat-0",
+          "run-group:791d67b4daf01a7e67cf:floor-2:combat-0",
+          "run-group:79cc161b4b335483b55e:floor-2:combat-0",
+          "run-group:884462f149c7fb11dc6c:floor-2:combat-0",
+          "run-group:88d7120f540a2eaa5da6:floor-2:combat-0",
+          "run-group:93875aa00e713b9f1072:floor-2:combat-0",
+          "run-group:93875aa00e713b9f1072:floor-3:combat-0",
+          "run-group:a54366757119e0fb09ac:floor-1:combat-0",
+          "run-group:c307dfd44a34bb5e6d64:floor-1:combat-0"
+        ],
+        "selection_by_policy_outcome": false,
+        "support_atoms": [
+          "card:Anger",
+          "card:Fiend Fire",
+          "card:Headbutt"
+        ]
+      },
+      "reason": "完整依赖闭包的场景收益为20场、15个关联组，收益最高但工程前置最重；它不应被误写成当前66位协议可以直接加入。",
+      "required_action_changes": [
+        "新增版本化二次选择动作或等价结构化 choice API；不得用固定默认目标或随机代选",
+        "动作 mask 必须表达每个合法选择，训练轨迹与 checkpoint 任务版本一起迁移"
+      ],
+      "required_capacity_changes": [
+        "按单动作生成上界、master deck<=96和int16临时ID边界证明最坏情况",
+        "证明Anger重复复制在动作预算内不会造成未编码牌区；不把丢牌后truncated当作完整场景"
+      ],
+      "required_observations": [
+        "完整手牌/弃牌/消耗区语义及每个副本的升级/动态字段",
+        "需要玩家选择的 card/pile 对象及选择完成前的可见状态（具体卡逐条正版核验）",
+        "复制/临时牌的生成数量、唯一实体生命周期和外部截断前最后完整观测"
+      ],
+      "uses_policy_outcome": false
+    },
+    {
+      "acceptance_conditions": [
+        "4个精确 scene_id 的药水机制、库存和生成闭包全部通过",
+        "开发集成验证自然终止、完整观测和药水 mask；不因成功率筛掉困难药水场景",
+        "剩余GamblersBrew/SkillPotion等场景继续按其卡牌联合依赖统计，不冒充本批收益"
+      ],
+      "dependency_kind": "evidence_complete_content_candidate",
+      "engineering_risk": "高且收益低：只解除PowerPotion与DistilledChaos可确定打开4场、2个关联组且没有新独立run；其余非空药水多与未支持卡牌重叠。",
+      "id": "direct-generated-potions",
+      "not_actual_implementation": true,
+      "projected_complete_scene_gain": {
+        "candidate_group_share": 0.01694915254237288,
+        "candidate_scene_share": 0.01556420233463035,
+        "encounter_labels": [
+          "Cultist",
+          "Exordium Wildlife",
+          "Jaw Worm",
+          "Small Slimes"
+        ],
+        "floor_values": [
+          2,
+          3,
+          4
+        ],
+        "independent_run_count": 2,
+        "new_content_vs_current_99": {
+          "generated_card_classes": [],
+          "initial_card_classes": [
+            "Metallicize",
+            "Spot Weakness"
+          ],
+          "potions": [
+            "DistilledChaos",
+            "PowerPotion"
+          ],
+          "relics": [],
+          "upgraded_card_versions": []
+        },
+        "new_encounter_labels_vs_current_99": [
+          "Exordium Wildlife"
+        ],
+        "new_floor_values_vs_current_99": [],
+        "new_independent_runs_vs_current_99": 0,
+        "overlap_safe": true,
+        "run_ids": [
+          "run-group:25205448091f30b1b558",
+          "run-group:f931ab7c9ab54689a052"
+        ],
+        "scene_count": 4,
+        "scene_ids": [
+          "run-group:25205448091f30b1b558:floor-3:combat-0",
+          "run-group:f931ab7c9ab54689a052:floor-2:combat-0",
+          "run-group:f931ab7c9ab54689a052:floor-3:combat-0",
+          "run-group:f931ab7c9ab54689a052:floor-4:combat-0"
+        ],
+        "selection_by_policy_outcome": false,
+        "support_atoms": [
+          "potion:DistilledChaos",
+          "potion:PowerPotion"
+        ]
+      },
+      "reason": "它是按目标覆盖补齐药水的最低可证批次，而不是按药水出现次数排序；4场收益小于卡牌批次，但会带来PowerPotion、DistilledChaos和Exordium Wildlife。",
+      "required_action_changes": [
+        "只有确认药水不需要玩家二次选择时才可复用66位；选择型药水另建动作/序列化版本",
+        "空槽、角色容量和药水动作 mask 必须分别验证，不把预留第三行当作可用槽"
+      ],
+      "required_capacity_changes": [
+        "为随机/自动生成实体给出单动作上界和完整牌区容量证明",
+        "按库存时序核对获得、使用、丢弃，无法恢复槽位时只使用明确命名的规范化策略"
+      ],
+      "required_observations": [
+        "药水库存多重集、A20实际2槽与规范3行预留的区分",
+        "随机生成卡/自动出牌药水的完整可达实体闭包与环境seed复现",
+        "药水使用目标、自动结算、药水对玩家状态的可见影响"
+      ],
+      "uses_policy_outcome": false
+    }
+  ],
+  "schema": "public-expansion-priorities-v1"
+}

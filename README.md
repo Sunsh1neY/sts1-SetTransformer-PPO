@@ -125,3 +125,24 @@ python scripts/diff_harness.py 100000 12
 - 每个训练 run 必须落盘：commit 与实际源码快照/逐文件哈希、完整配置、任务/奖励/终止版本、环境及各 RNG seed、后端/扩展/数据指纹、`eval_seeds.json` 哈希、曲线和 checkpoint；PPO 另须保存优化器/计数/RNG/进行中任务恢复依据并验证续训一致性（[v6 §8.1](spec-v6.md)）。
 - 每个 run 记录 `eval_seeds.json` 的 sha256，保证跨周结论可比。
 - 决策变更先登记 `docs/decisions.md`；结算规格修订先登记 `docs/mechanics.md` 文末变更记录。
+
+
+## 公开派生战斗与规则基线
+
+新接口独立于旧31动作环境。先运行 `./scripts/build-lightspeed.ps1 -Jobs 3`；构建使用中央JSON契约与完整后端补丁。
+
+```python
+from sts.env.public_battle import PublicBattleEnv, load_scene_manifest
+from sts.agents.rule_agent import RuleAgent
+from sts.agents.public_runner import run_public_episode
+
+_, scenes = load_scene_manifest()
+env = PublicBattleEnv(max_actions=512)
+observation = env.reset(scenes[0], 100000)
+trace = run_public_episode(env, RuleAgent(), observation)
+print(trace["total_reward"], trace["terminated"], trace["truncated"])
+```
+
+`python scripts/diagnose-public-scenes.py`复核99场完整派生场景的随机/规则集成；
+`python scripts/diagnose-public-encounters.py`执行显式机制诊断。它们不替代正式Gate评估。
+当前工程验收与未完成的新MLP/Set训练迁移见 [公开环境实施报告](docs/public-battle-implementation.md)。

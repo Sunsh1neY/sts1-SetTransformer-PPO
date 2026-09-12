@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "repository": "https://github.com/MaT1g3R/Slay-the-Spire-data",
+      "commit": "097aaf3564c2247835162d267cbc7c55d2c9039e",
+      "local_archive": "reference\\public-run-corpus\\matiger-fixed.zip",
+      "bytes": 9838209,
+      "sha256": "0b21c5fe489ac0980131d0dd14350efdf1c68f180488b6d2072ae0e81cea565e"
+    },
+    {
+      "repository": "https://github.com/modargo/RunHistoryPlus",
+      "commit": "99ad7fbb462caaa2eb82ed0fc2151dd2bf2fc48b",
+      "local_archive": "reference\\public-run-corpus\\run-history-plus-2022.zip",
+      "bytes": 90236,
+      "sha256": "4272eb2dec27d613f356bfa0f2df21358cef9a00a5fda54de3db76a177425cf3"
+    },
+    {
+      "repository": "https://github.com/modargo/RunHistoryPlus",
+      "commit": "8d482facdcebf8a018743ac27005c21b52165863",
+      "local_archive": "reference\\public-run-corpus\\run-history-plus.zip",
+      "bytes": 94114,
+      "sha256": "c0636b186b2930308a0f288b77bc4af94d50f5b296e7a6b0d2cd02647f283269"
+    }
+  ]
+}

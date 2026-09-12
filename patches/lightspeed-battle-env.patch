@@ -1,3 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d04312b..e8e4742 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS  "-Wno-shift-count-overflow -O3")
+ add_subdirectory(json)
+ add_subdirectory(pybind11)
+ 
+-pybind11_add_module(slaythespire bindings/slaythespire.cpp bindings/bindings-util.cpp ${sts_lightspeed_SOURCES})
++pybind11_add_module(slaythespire bindings/slaythespire.cpp bindings/bindings-util.cpp bindings/public-battle-env.cpp ${sts_lightspeed_SOURCES})
+ target_include_directories(slaythespire PUBLIC include)
+ target_include_directories(slaythespire PUBLIC json/single_include)
+ target_include_directories(slaythespire PUBLIC bindings)
 diff --git a/bindings/bindings-util.cpp b/bindings/bindings-util.cpp
 index 471ce96..af78f73 100644
 --- a/bindings/bindings-util.cpp
@@ -316,11 +329,604 @@ index 471ce96..af78f73 100644
 -}
 \ No newline at end of file
 +}
+diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
+new file mode 100644
+index 0000000..af31688
+--- /dev/null
++++ b/bindings/public-battle-env.cpp
+@@ -0,0 +1,452 @@
++#include "public-battle-env.h"
++#include "public-contract-config.h"
++#include <pybind11/stl.h>
++#include <nlohmann/json.hpp>
++#include <algorithm>
++#include <memory>
++#include <stdexcept>
++#include <string>
++#include <vector>
++#include "game/GameContext.h"
++#include "combat/BattleContext.h"
++#include "sim/search/Action.h"
++
++#ifdef sts_card_manager_use_fixed_list
++#error "PublicBattleEnv生成容量证明要求牌堆使用vector，不能启用64张fixed_list"
++#endif
++
++namespace sts {
++namespace {
++using Json = nlohmann::json;
++
++template <typename C> bool listed(const C &values, const std::string &name) {
++    return std::find_if(values.begin(), values.end(), [&](const char *v) { return name == v; }) != values.end();
++}
++
++std::string sourceCardName(CardId id) {
++    if (id == CardId::STRIKE_RED) return "Strike_R";
++    if (id == CardId::DEFEND_RED) return "Defend_R";
++    if (id == CardId::ASCENDERS_BANE) return "AscendersBane";
++    return cardNames[static_cast<int>(id)];
++}
++
++CardId parseCard(const std::string &name) {
++    for (int i = 1; i < static_cast<int>(CardId::ZAP) + 1; ++i)
++        if (sourceCardName(static_cast<CardId>(i)) == name) return static_cast<CardId>(i);
++    throw std::invalid_argument("未识别卡牌: " + name);
++}
++
++std::string sourcePotionName(Potion p) {
++    switch (p) {
++        case Potion::ESSENCE_OF_STEEL: return "EssenceOfSteel";
++        case Potion::FEAR_POTION: return "FearPotion";
++        case Potion::LIQUID_BRONZE: return "LiquidBronze";
++        case Potion::SPEED_POTION: return "SpeedPotion";
++        case Potion::HEART_OF_IRON: return "HeartOfIron";
++        default: return potionNames[static_cast<int>(p)];
++    }
++}
++
++Potion parsePotion(const std::string &name) {
++    if (!listed(PUBLIC_POTION_NAMES, name)) throw std::invalid_argument("药水不在完整动作闭包内: " + name);
++    for (int i = 2; i <= static_cast<int>(Potion::WEAK_POTION); ++i)
++        if (sourcePotionName(static_cast<Potion>(i)) == name) return static_cast<Potion>(i);
++    throw std::invalid_argument("未识别药水: " + name);
++}
++
++RelicId parseRelic(const std::string &name) {
++    if (!listed(PUBLIC_RELIC_NAMES, name)) throw std::invalid_argument("遗物不在入口闭包内: " + name);
++    if (name == "Burning Blood") return R::BURNING_BLOOD;
++    if (name == "Lantern") return R::LANTERN;
++    if (name == "Anchor") return R::ANCHOR;
++    if (name == "Bag of Preparation") return R::BAG_OF_PREPARATION;
++    if (name == "Vajra") return R::VAJRA;
++    if (name == "Oddly Smooth Stone") return R::ODDLY_SMOOTH_STONE;
++    if (name == "Blood Vial") return R::BLOOD_VIAL;
++    if (name == "Bronze Scales") return R::BRONZE_SCALES;
++    throw std::invalid_argument("未识别遗物: " + name);
++}
++
++int strictInt(const Json &obj, const char *name, int lo, int hi) {
++    const auto &value = obj.at(name);
++    if (!value.is_number_integer()) throw std::invalid_argument(std::string("字段必须为整数: ") + name);
++    const auto n = value.get<std::int64_t>();
++    if (n < lo || n > hi) throw std::invalid_argument(std::string("字段越界: ") + name);
++    return static_cast<int>(n);
++}
++
++std::string visibleIntent(const Monster &m) {
++    if (!m.isTargetable()) return "NONE";
++    switch (m.moveHistory[0]) {
++        case MMID::GENERIC_ESCAPE_MOVE: case MMID::LOOTER_ESCAPE: return "ESCAPE";
++        case MMID::JAW_WORM_THRASH: return "ATTACK_DEFEND";
++        case MMID::JAW_WORM_BELLOW: return "DEFEND_BUFF";
++        case MMID::CULTIST_INCANTATION: case MMID::RED_LOUSE_GROW:
++        case MMID::FUNGI_BEAST_GROW: case MMID::GREMLIN_NOB_BELLOW: return "BUFF";
++        case MMID::ACID_SLIME_L_LICK: case MMID::ACID_SLIME_M_LICK: case MMID::ACID_SLIME_S_LICK:
++        case MMID::SPIKE_SLIME_L_LICK: case MMID::SPIKE_SLIME_M_LICK:
++        case MMID::GREEN_LOUSE_SPIT_WEB: case MMID::RED_SLAVER_ENTANGLE:
++        case MMID::LAGAVULIN_SIPHON_SOUL: case MMID::SENTRY_BOLT: return "DEBUFF";
++        case MMID::BLUE_SLAVER_RAKE: case MMID::RED_SLAVER_SCRAPE:
++        case MMID::FAT_GREMLIN_SMASH: case MMID::GREMLIN_NOB_SKULL_BASH:
++        case MMID::ACID_SLIME_L_CORROSIVE_SPIT: case MMID::ACID_SLIME_M_CORROSIVE_SPIT:
++        case MMID::SPIKE_SLIME_L_FLAME_TACKLE: case MMID::SPIKE_SLIME_M_FLAME_TACKLE: return "ATTACK_DEBUFF";
++        case MMID::SHIELD_GREMLIN_PROTECT: return "DEFEND";
++        case MMID::LOOTER_SMOKE_BOMB: return "DEFEND";
++        case MMID::ACID_SLIME_L_SPLIT: case MMID::SPIKE_SLIME_L_SPLIT: return "UNKNOWN";
++        case MMID::LAGAVULIN_SLEEP: return "SLEEP";
++        case MMID::GREMLIN_WIZARD_CHARGING: return "UNKNOWN";
++        default:
++            if (isMoveAttack(m.moveHistory[0])) return "ATTACK";
++            throw std::runtime_error("未映射可见意图，拒绝不完整观测");
++    }
++}
++
++Json monsterStatuses(const Monster &m) {
++    Json ret = Json::object();
++#define PUBLIC_MONSTER_STATUS(x) if (m.hasStatus<MS::x>()) ret[enemyStatusStrings[static_cast<int>(MS::x)]] = m.getStatus<MS::x>();
++    PUBLIC_MONSTER_STATUS(ARTIFACT)
++    // 敌方Strength单独存储，buff不会设置statusBits，负值同样可见。
++    if (m.strength != 0) ret["Strength"] = m.strength;
++    PUBLIC_MONSTER_STATUS(VULNERABLE)
++    PUBLIC_MONSTER_STATUS(WEAK)
++    PUBLIC_MONSTER_STATUS(METALLICIZE)
++    PUBLIC_MONSTER_STATUS(REGEN)
++    PUBLIC_MONSTER_STATUS(ANGRY)
++    PUBLIC_MONSTER_STATUS(CURL_UP)
++    PUBLIC_MONSTER_STATUS(ENRAGE)
++    PUBLIC_MONSTER_STATUS(RITUAL)
++    PUBLIC_MONSTER_STATUS(SPORE_CLOUD)
++    PUBLIC_MONSTER_STATUS(THIEVERY)
++    if (m.hasStatus<MS::ASLEEP>()) ret["Asleep"] = 1;
++#undef PUBLIC_MONSTER_STATUS
++    return ret;
++}
++
++int potionPotency(Potion p) {
++    switch (p) {
++        case Potion::WEAK_POTION: case Potion::FEAR_POTION: case Potion::LIQUID_BRONZE: case Potion::SWIFT_POTION: return 3;
++        case Potion::REGEN_POTION: case Potion::SPEED_POTION: case Potion::FRUIT_JUICE: return 5;
++        case Potion::ESSENCE_OF_STEEL: return 4;
++        case Potion::EXPLOSIVE_POTION: return 10;
++        case Potion::ANCIENT_POTION: return 1;
++        case Potion::ENERGY_POTION: case Potion::DEXTERITY_POTION: case Potion::STRENGTH_POTION: return 2;
++        case Potion::HEART_OF_IRON: return 6;
++        case Potion::BLOCK_POTION: return 12;
++        default: throw std::runtime_error("未注册药水效力");
++    }
++}
++
++class PublicBattleEnv {
++    struct PublicEnemyHistory {
++        std::string name;
++        std::string lastIntent = "NONE";
++        std::string previousIntent = "NONE";
++        int completedTurns = 0;
++        int chargeTurns = 0;
++        int sleepTurns = 0;
++    };
++    std::unique_ptr<GameContext> gc_;
++    BattleContext bc_;
++    int maxActions_;
++    int actionCount_ = 0;
++    int initialCards_ = 0;
++    bool hasReset_ = false;
++    bool truncated_ = false;
++    std::vector<std::string> relicNames_;
++    std::array<PublicEnemyHistory, PUBLIC_TARGET_CAPACITY> publicHistory_{};
++
++    bool terminal() const { return hasReset_ && bc_.outcome != Outcome::UNDECIDED; }
++
++    Json cardRow(const CardInstance &c, bool inHand) const {
++        const bool up = c.isUpgraded();
++        int damage = 0, block = 0, magic = 0, hits = 1;
++        bool all = false;
++        switch (c.id) {
++            case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
++            case CardId::DEFEND_RED: block = up ? 8 : 5; break;
++            case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
++            case CardId::BLUDGEON: damage = up ? 42 : 32; break;
++            case CardId::CLEAVE: damage = up ? 11 : 8; all = true; break;
++            case CardId::CLOTHESLINE: damage = up ? 14 : 12; magic = up ? 3 : 2; break;
++            case CardId::TWIN_STRIKE: damage = up ? 7 : 5; hits = 2; break;
++            case CardId::THUNDERCLAP: damage = up ? 7 : 4; magic = 1; all = true; break;
++            case CardId::UPPERCUT: damage = 13; magic = up ? 2 : 1; break;
++            case CardId::BODY_SLAM: damage = bc_.player.block; break;
++            case CardId::ENTRENCH: block = bc_.player.block; break;
++            case CardId::HEAVY_BLADE: damage = 14; magic = up ? 5 : 3; break;
++            case CardId::SPOT_WEAKNESS: magic = up ? 4 : 3; break;
++            case CardId::INFLAME: magic = up ? 3 : 2; break;
++            case CardId::POMMEL_STRIKE: damage = up ? 10 : 9; magic = up ? 2 : 1; break;
++            case CardId::SHRUG_IT_OFF: block = up ? 11 : 8; magic = 1; break;
++            case CardId::DROPKICK: damage = up ? 8 : 5; magic = 1; break;
++            case CardId::CARNAGE: damage = up ? 28 : 20; break;
++            case CardId::GHOSTLY_ARMOR: block = up ? 13 : 10; break;
++            case CardId::IMPERVIOUS: block = up ? 40 : 30; break;
++            case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
++            case CardId::SEEING_RED: magic = 2; break;
++            case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
++            case CardId::TRUE_GRIT: block = 7; magic = 1; break;
++            case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
++            case CardId::FLEX: magic = up ? 4 : 2; break;
++            case CardId::METALLICIZE: magic = up ? 4 : 3; break;
++            case CardId::DEMON_FORM: magic = up ? 3 : 2; break;
++            case CardId::RAGE: magic = up ? 5 : 3; break;
++            case CardId::FLAME_BARRIER: block = up ? 16 : 12; magic = up ? 6 : 4; break;
++            case CardId::FEEL_NO_PAIN: magic = up ? 4 : 3; break;
++            case CardId::WILD_STRIKE: damage = up ? 17 : 12; magic = 1; break;
++            case CardId::RECKLESS_CHARGE: damage = up ? 10 : 7; magic = 1; break;
++            case CardId::POWER_THROUGH: block = up ? 20 : 15; magic = 2; break;
++            case CardId::IMMOLATE: damage = up ? 28 : 21; magic = 1; all = true; break;
++            case CardId::BURN: magic = up ? 4 : 2; break;
++            case CardId::ASCENDERS_BANE: case CardId::WOUND: case CardId::DAZED: case CardId::SLIMED: break;
++            default: throw std::runtime_error("生成了注册表之外的卡，拒绝观测");
++        }
++        Json damages = Json::array();
++        for (int target = 0; target < PUBLIC_TARGET_CAPACITY; ++target) {
++            int value = 0;
++            if (c.getType() == CardType::ATTACK && bc_.monsters.arr[target].isTargetable()) {
++                int base = damage;
++                if (c.id == CardId::HEAVY_BLADE) base += (up ? 4 : 2) * bc_.player.strength;
++                value = bc_.calculateCardDamage(c, target, base);
++            }
++            damages.push_back(value);
++        }
++        const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
++        // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
++        return {{"name", sourceCardName(c.id)}, {"card_id", static_cast<int>(c.id)},
++            {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
++            {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
++            {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
++            {"hits", hits}, {"damage_by_target", damages}, {"all_enemies", all},
++            {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
++            {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
++            {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
++    }
++
++    template <typename C> Json pileRows(const C &pile) const {
++        std::vector<Json> rows;
++        for (const auto &card : pile) rows.push_back(cardRow(card, false));
++        std::sort(rows.begin(), rows.end(), [](const Json &a, const Json &b) { return a.dump() < b.dump(); });
++        return rows;
++    }
++
++    void verifyDecision() const {
++        if (bc_.undefinedBehaviorEvoked) throw std::runtime_error("后端标记未定义行为");
++        if (!terminal() && bc_.inputState != InputState::PLAYER_NORMAL)
++            throw std::runtime_error("出现未支持的二次选择或未结算队列");
++        if (bc_.monsters.monsterCount > PUBLIC_TARGET_CAPACITY || bc_.cards.cardsInHand > PUBLIC_HAND_CAPACITY)
++            throw std::runtime_error("后端实体数超出动作容量");
++        // 白名单中每个玩家动作最多生成2张；一次结束回合5敌各至多3张。
++        if (bc_.cards.nextUniqueCardId > initialCards_ + PUBLIC_GENERATED_PER_ACTION * actionCount_)
++            throw std::runtime_error("生成量超出已证明边界");
++    }
++
++    Json observeJson() const {
++        if (!hasReset_) throw std::runtime_error("必须先reset_scene");
++        verifyDecision();
++        Json hand = Json::array(), enemies = Json::array(), potions = Json::array(), relics = Json::array();
++        for (int i = 0; i < bc_.cards.cardsInHand; ++i) hand.push_back(cardRow(bc_.cards.hand[i], true));
++        Json statuses = Json::object();
++        for (int i = 1; i < static_cast<int>(PS::THE_BOMB); ++i) {
++            const auto id = static_cast<PS>(i);
++            if (!bc_.player.hasStatusRuntime(id)) continue;
++            // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
++            if (id == PS::NO_DRAW || id == PS::ENTANGLED) statuses[playerStatusStrings[i]] = 1;
++            else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
++        }
++        Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
++            {"energy", bc_.player.energy}, {"energy_per_turn", bc_.player.energyPerTurn},
++            {"turn", bc_.turn}, {"ascension", bc_.ascension}, {"statuses", statuses},
++            {"cards_played_this_turn", bc_.player.cardsPlayedThisTurn},
++            {"attacks_played_this_turn", bc_.player.attacksPlayedThisTurn},
++            {"skills_played_this_turn", bc_.player.skillsPlayedThisTurn}};
++        for (int i = 0; i < PUBLIC_TARGET_CAPACITY; ++i) {
++            const auto &m = bc_.monsters.arr[i];
++            const bool present = i < bc_.monsters.monsterCount;
++            const bool targetable = present && m.isTargetable();
++            const bool attack = targetable && isMoveAttack(m.moveHistory[0]);
++            const auto damage = attack ? m.getMoveBaseDamage(bc_) : DamageInfo{};
++            const auto &history = publicHistory_[i];
++            const Json publicHistory = {{"last_intent_kind", history.lastIntent},
++                {"previous_intent_kind", history.previousIntent}, {"completed_enemy_turns", history.completedTurns},
++                {"charge_turns_observed", history.chargeTurns}, {"sleep_turns_observed", history.sleepTurns}};
++            enemies.push_back({{"present", present}, {"targetable", targetable},
++                {"name", present ? monsterIdStrings[static_cast<int>(m.id)] : ""},
++                {"hp", present ? m.curHp : 0}, {"max_hp", present ? m.maxHp : 0}, {"block", present ? m.block : 0},
++                {"intent_kind", targetable ? visibleIntent(m) : "NONE"},
++                {"intent_damage", attack ? m.calculateDamageToPlayer(bc_, damage.damage) : 0},
++                {"intent_hits", attack ? damage.attackCount : 0}, {"statuses", present ? monsterStatuses(m) : Json::object()},
++                {"public_history", publicHistory}});
++        }
++        for (int i = 0; i < PUBLIC_POTION_CAPACITY; ++i) {
++            const auto p = bc_.potions[i];
++            const bool present = i < bc_.potionCapacity && p != Potion::EMPTY_POTION_SLOT && p != Potion::INVALID;
++            potions.push_back({{"present", present}, {"name", present ? sourcePotionName(p) : ""},
++                {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
++        }
++        for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
++        return {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
++            {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
++            {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
++            {"relics", relics}, {"action_mask", actionMask()}};
++    }
++
++public:
++    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS) : maxActions_(maxActions) {
++        if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
++        static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
++                      "生成牌ID必须保持int16范围");
++    }
++
++    std::string resetScene(const std::string &encoded, std::uint64_t seed) {
++        hasReset_ = false;
++        const auto scene = Json::parse(encoded);
++        if (scene.at("entry_timing") != "pre_combat_initialization" || scene.at("initialization_phase") != "before_destination_room_entry")
++            throw std::invalid_argument("只支持明确的入口A");
++        if (scene.contains("character") && scene.at("character") != "IRONCLAD") throw std::invalid_argument("只支持Ironclad");
++        const int ascension = strictInt(scene, "ascension", 0, 20);
++        const int floor = strictInt(scene, "floor", 1, 15);
++        const auto encounterName = scene.at("encounter").get<std::string>();
++        if (!listed(PUBLIC_ENCOUNTER_NAMES, encounterName)) throw std::invalid_argument("遭遇不在白名单");
++        MonsterEncounter encounter = ME::INVALID;
++        for (int i = 1; i <= static_cast<int>(ME::THREE_SENTRIES); ++i)
++            if (encounterName == monsterEncounterEnumNames[i]) encounter = static_cast<ME>(i);
++        if (encounter == ME::INVALID) throw std::invalid_argument("遭遇映射失败");
++        const bool elite = encounter == ME::GREMLIN_NOB || encounter == ME::LAGAVULIN || encounter == ME::THREE_SENTRIES;
++        if (elite && (!scene.contains("burning_elite") || !scene.at("burning_elite").is_boolean()))
++            throw std::invalid_argument("精英必须显式给出燃烧强化条件");
++        if (scene.value("burning_elite", false)) throw std::invalid_argument("燃烧强化尚未验收，拒绝整场");
++        const auto &p = scene.at("player");
++        const int maxHp = strictInt(p, "max_hp", 1, 32767);
++        const int hp = strictInt(p, "hp", 1, maxHp);
++        const int gold = strictInt(p, "gold", 0, 32767);
++        gc_ = std::make_unique<GameContext>(CharacterClass::IRONCLAD, seed, ascension);
++        gc_->floorNum = floor;
++        gc_->curRoom = elite ? Room::ELITE : Room::MONSTER;
++        gc_->info.encounter = encounter;
++        // 不使用随机地图上的燃烧坐标假装真实入口条件。
++        gc_->curMapNodeX = -2;
++        gc_->curMapNodeY = -2;
++        gc_->curHp = hp; gc_->maxHp = maxHp; gc_->gold = gold;
++        const auto &deck = scene.at("deck");
++        if (!deck.is_array() || deck.empty() || deck.size() > PUBLIC_MAX_INITIAL_CARDS) throw std::invalid_argument("入口牌组容量无效");
++        gc_->deck = Deck{};
++        for (const auto &value : deck) {
++            auto name = value.get<std::string>();
++            int upgrade = 0;
++            const auto plus = name.find('+');
++            if (plus != std::string::npos) {
++                const auto suffix = name.substr(plus + 1);
++                if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
++                upgrade = 1; name.resize(plus);
++            }
++            if (!listed(PUBLIC_CARD_NAMES, name)) throw std::invalid_argument("卡牌不在完整闭包: " + name);
++            const auto id = parseCard(name);
++            if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
++                throw std::invalid_argument("该卡升级路径不支持");
++            gc_->deck.obtainRaw(Card(id, upgrade));
++        }
++        initialCards_ = gc_->deck.size();
++        relicNames_.clear();
++        gc_->relics = RelicContainer{};
++        if (!scene.at("relics").is_array()) throw std::invalid_argument("遗物必须为完整列表");
++        for (const auto &value : scene.at("relics")) {
++            auto name = value.get<std::string>();
++            if (std::find(relicNames_.begin(), relicNames_.end(), name) != relicNames_.end()) throw std::invalid_argument("重复遗物");
++            gc_->relics.add({parseRelic(name), 0}); relicNames_.push_back(name);
++        }
++        gc_->potionCapacity = ascension >= 11 ? 2 : 3;
++        gc_->potionCount = 0;
++        std::fill(gc_->potions.begin(), gc_->potions.end(), Potion::EMPTY_POTION_SLOT);
++        const auto &pots = scene.at("potions");
++        if (!pots.is_array() || pots.size() != static_cast<std::size_t>(gc_->potionCapacity)) throw std::invalid_argument("药水库存槽数与进阶不一致");
++        for (int i = 0; i < gc_->potionCapacity; ++i) if (!pots[i].is_null()) {
++            gc_->potions[i] = parsePotion(pots[i].get<std::string>()); ++gc_->potionCount;
++        }
++        // 这8种遗物无目的普通/精英房间独立入口效果；BattleContext执行其开战效果一次。
++        bc_ = BattleContext{};
++        bc_.init(*gc_, encounter);
++        bc_.player.cc = CharacterClass::IRONCLAD;
++        publicHistory_ = {};
++        for (int i = 0; i < bc_.monsters.monsterCount; ++i)
++            publicHistory_[i].name = monsterIdStrings[static_cast<int>(bc_.monsters.arr[i].id)];
++        actionCount_ = 0; truncated_ = false; hasReset_ = true;
++        return observeJson().dump();
++    }
++
++    std::vector<bool> actionMask() const {
++        std::vector<bool> mask(PUBLIC_ACTION_COUNT, false);
++        // 外部截断的最终观测仍保留原MDP合法动作，供价值自举。
++        if (!hasReset_ || terminal()) return mask;
++        for (int h = 0; h < bc_.cards.cardsInHand; ++h) for (int t = 0; t < PUBLIC_TARGET_CAPACITY; ++t) {
++            if (!bc_.cards.hand[h].requiresTarget() && t != 0) continue;
++            mask[h * PUBLIC_TARGET_CAPACITY + t] = search::Action(search::ActionType::CARD, h, t).isValidAction(bc_);
++        }
++        mask[PUBLIC_END_TURN] = search::Action(search::ActionType::END_TURN).isValidAction(bc_);
++        for (int p = 0; p < bc_.potionCapacity; ++p) for (int t = 0; t < PUBLIC_TARGET_CAPACITY; ++t) {
++            if (!potionRequiresTarget(bc_.potions[p]) && t != 0) continue;
++            mask[PUBLIC_END_TURN + 1 + p * PUBLIC_TARGET_CAPACITY + t] = search::Action(search::ActionType::POTION, p, t).isValidAction(bc_);
++        }
++        return mask;
++    }
++
++    std::string observation() const { return observeJson().dump(); }
++
++    std::string step(int action) {
++        if (!hasReset_ || terminal() || truncated_) throw std::runtime_error("不允许在未开始或已结束场景step");
++        if (action < 0 || action >= PUBLIC_ACTION_COUNT || !actionMask()[action]) throw std::invalid_argument("非法动作");
++        search::Action selected;
++        if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
++        else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
++        else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
++        // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
++        std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
++        const int oldTurn = bc_.turn;
++        if (action == PUBLIC_END_TURN) for (int i = 0; i < bc_.monsters.monsterCount; ++i) {
++            if (!bc_.monsters.arr[i].isTargetable()) continue;
++            oldNames[i] = monsterIdStrings[static_cast<int>(bc_.monsters.arr[i].id)];
++            oldIntents[i] = visibleIntent(bc_.monsters.arr[i]);
++        }
++        selected.execute(bc_);
++        ++actionCount_;
++        if (action == PUBLIC_END_TURN && !terminal() && bc_.turn > oldTurn) {
++            for (int i = 0; i < bc_.monsters.monsterCount; ++i) {
++                auto &history = publicHistory_[i];
++                const auto name = std::string(monsterIdStrings[static_cast<int>(bc_.monsters.arr[i].id)]);
++                // 分裂替换的实体不继承旧怪物的行动历史。
++                if (name != oldNames[i] || !bc_.monsters.arr[i].isTargetable()) {
++                    history = {}; history.name = name; continue;
++                }
++                history.previousIntent = history.lastIntent;
++                history.lastIntent = oldIntents[i];
++                ++history.completedTurns;
++                if (oldIntents[i] == "SLEEP") ++history.sleepTurns;
++                if (bc_.monsters.arr[i].id == MonsterId::GREMLIN_WIZARD) {
++                    if (oldIntents[i] == "UNKNOWN") ++history.chargeTurns;
++                    else if (oldIntents[i] == "ATTACK" && bc_.ascension < 17) history.chargeTurns = 0;
++                }
++            }
++        }
++        const bool won = terminal() && bc_.outcome == Outcome::PLAYER_VICTORY;
++        if (won && gc_->relics.has(R::BURNING_BLOOD)) bc_.player.heal(6);
++        truncated_ = !terminal() && actionCount_ >= maxActions_;
++        const double reward = won ? 1.0 + 0.5 * bc_.player.curHp / bc_.player.maxHp : 0.0;
++        const Json info = {{"action_count", actionCount_}, {"outcome", static_cast<int>(bc_.outcome)},
++            {"truncation_reason", truncated_ ? "external_action_budget" : ""}, {"reward_version", "battle_reward_v1"},
++            {"exit_effects_applied", won}, {"player_hp", bc_.player.curHp}, {"player_max_hp", bc_.player.maxHp}};
++        return Json{{"observation", observeJson()}, {"reward", reward}, {"terminated", terminal()},
++            {"truncated", truncated_}, {"info", info}}.dump();
++    }
++};
++}
++
++void registerPublicBattleEnv(pybind11::module_ &module) {
++    pybind11::class_<PublicBattleEnv>(module, "PublicBattleEnv")
++        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
++        .def("reset_scene", &PublicBattleEnv::resetScene, pybind11::arg("scene_json"), pybind11::arg("seed"))
++        .def("step", &PublicBattleEnv::step)
++        .def("observation", &PublicBattleEnv::observation)
++        .def("action_mask", &PublicBattleEnv::actionMask);
++}
++}
+diff --git a/bindings/public-battle-env.h b/bindings/public-battle-env.h
+new file mode 100644
+index 0000000..0e7fce4
+--- /dev/null
++++ b/bindings/public-battle-env.h
+@@ -0,0 +1,8 @@
++#pragma once
++
++#include <pybind11/pybind11.h>
++
++namespace sts {
++// 独立公开构筑重模拟接口，不修改旧最小环境。
++void registerPublicBattleEnv(pybind11::module_ &module);
++}
+diff --git a/bindings/public-contract-config.h b/bindings/public-contract-config.h
+new file mode 100644
+index 0000000..5b13758
+--- /dev/null
++++ b/bindings/public-contract-config.h
+@@ -0,0 +1,101 @@
++// 自动生成；请修改sts/env/public-battle-contract.json并重新运行生成器。
++#pragma once
++#include <array>
++namespace sts {
++inline constexpr int PUBLIC_HAND_CAPACITY = 10;
++inline constexpr int PUBLIC_TARGET_CAPACITY = 5;
++inline constexpr int PUBLIC_POTION_CAPACITY = 3;
++inline constexpr int PUBLIC_ACTION_COUNT = 66;
++inline constexpr int PUBLIC_END_TURN = 50;
++inline constexpr int PUBLIC_MAX_ACTIONS = 512;
++inline constexpr int PUBLIC_MAX_INITIAL_CARDS = 96;
++inline constexpr int PUBLIC_GENERATED_PER_ACTION = 15;
++inline constexpr std::array<const char*, 40> PUBLIC_CARD_NAMES = {
++    "Bash",
++    "Defend_R",
++    "Strike_R",
++    "Battle Trance",
++    "Bludgeon",
++    "Body Slam",
++    "Carnage",
++    "Cleave",
++    "Clothesline",
++    "Demon Form",
++    "Dropkick",
++    "Entrench",
++    "Feel No Pain",
++    "Flame Barrier",
++    "Flex",
++    "Ghostly Armor",
++    "Heavy Blade",
++    "Immolate",
++    "Impervious",
++    "Inflame",
++    "Metallicize",
++    "Pommel Strike",
++    "Power Through",
++    "Pummel",
++    "Rage",
++    "Reckless Charge",
++    "Seeing Red",
++    "Sentinel",
++    "Shrug It Off",
++    "Spot Weakness",
++    "Thunderclap",
++    "True Grit",
++    "Twin Strike",
++    "Uppercut",
++    "Wild Strike",
++    "AscendersBane",
++    "Wound",
++    "Dazed",
++    "Burn",
++    "Slimed",
++};
++inline constexpr std::array<const char*, 15> PUBLIC_POTION_NAMES = {
++    "Weak Potion",
++    "Regen Potion",
++    "EssenceOfSteel",
++    "Explosive Potion",
++    "Ancient Potion",
++    "FearPotion",
++    "LiquidBronze",
++    "Energy Potion",
++    "SpeedPotion",
++    "Dexterity Potion",
++    "HeartOfIron",
++    "Fruit Juice",
++    "Block Potion",
++    "Strength Potion",
++    "Swift Potion",
++};
++inline constexpr std::array<const char*, 8> PUBLIC_RELIC_NAMES = {
++    "Burning Blood",
++    "Lantern",
++    "Anchor",
++    "Bag of Preparation",
++    "Vajra",
++    "Oddly Smooth Stone",
++    "Blood Vial",
++    "Bronze Scales",
++};
++inline constexpr std::array<const char*, 17> PUBLIC_ENCOUNTER_NAMES = {
++    "CULTIST",
++    "JAW_WORM",
++    "TWO_LOUSE",
++    "SMALL_SLIMES",
++    "BLUE_SLAVER",
++    "RED_SLAVER",
++    "LOOTER",
++    "LARGE_SLIME",
++    "THREE_LOUSE",
++    "TWO_FUNGI_BEASTS",
++    "EXORDIUM_WILDLIFE",
++    "EXORDIUM_THUGS",
++    "GREMLIN_GANG",
++    "LOTS_OF_SLIMES",
++    "GREMLIN_NOB",
++    "LAGAVULIN",
++    "THREE_SENTRIES",
++};
++}
 diff --git a/bindings/slaythespire.cpp b/bindings/slaythespire.cpp
-index a9afe35..32dd4ed 100644
+index a9afe35..cb1fad4 100644
 --- a/bindings/slaythespire.cpp
 +++ b/bindings/slaythespire.cpp
-@@ -33,6 +33,49 @@ PYBIND11_MODULE(slaythespire, m) {
+@@ -17,11 +17,13 @@
+ #include "game/Game.h"
+ 
+ #include "slaythespire.h"
++#include "public-battle-env.h"
+ 
+ 
+ using namespace sts;
+ 
+ PYBIND11_MODULE(slaythespire, m) {
++    registerPublicBattleEnv(m);
+     m.doc() = "pybind11 example plugin"; // optional module docstring
+     m.def("play", &sts::py::play, "play Slay the Spire Console");
+     m.def("get_seed_str", &SeedHelper::getString, "gets the integral representation of seed string used in the game ui");
+@@ -33,6 +35,49 @@ PYBIND11_MODULE(slaythespire, m) {
          .def("getObservationMaximums", &NNInterface::getObservationMaximums, "get the defined maximum values of the observation space")
          .def_property_readonly("observation_space_size", []() { return NNInterface::observation_space_size; });
  
@@ -475,3 +1081,37 @@ index 6ec4658..03a7b1e 100644
      class GameContext;
      class Map;
  
+diff --git a/include/constants/Cards.h b/include/constants/Cards.h
+index 9583f6c..96a63eb 100644
+--- a/include/constants/Cards.h
++++ b/include/constants/Cards.h
+@@ -543,6 +543,7 @@ namespace sts {
+             case CardId::FEED:
+             case CardId::FIEND_FIRE:
+             case CardId::IMPERVIOUS:
++            case CardId::SEEING_RED:
+             case CardId::OFFERING:
+             case CardId::REAPER:
+ 
+diff --git a/src/combat/MonsterSpecific.cpp b/src/combat/MonsterSpecific.cpp
+index f6f6c4a..7543326 100644
+--- a/src/combat/MonsterSpecific.cpp
++++ b/src/combat/MonsterSpecific.cpp
+@@ -1015,6 +1015,8 @@ void Monster::takeTurn(BattleContext &bc) {     // todo, maybe for monsters that
+         // ************ RED SLAVER ************
+ 
+         case MMID::RED_SLAVER_ENTANGLE:
++            // 正版SlaverRed在首次施放后锁定已使用状态，后续选招不得再次缠绕。
++            miscInfo = 1;
+             bc.addToBot(Actions::DebuffPlayer<PS::ENTANGLED>(1));
+             bc.addToBot(Actions::RollMove(idx));
+             break;
+@@ -2782,7 +2784,7 @@ MMID Monster::getMoveForRoll(BattleContext &bc, int &monsterData, const int roll
+             } else if (roll >= 75 && !usedEntangle) {
+                 return (MMID::RED_SLAVER_ENTANGLE);
+ 
+-            } else if (roll >= 50 && usedEntangle && !lastTwoMoves(MMID::RED_SLAVER_STAB)) {
++            } else if (roll >= 55 && usedEntangle && !lastTwoMoves(MMID::RED_SLAVER_STAB)) {
+                 return (MMID::RED_SLAVER_STAB);
+ 
+             } else if (!lastTwoMoves(MMID::RED_SLAVER_SCRAPE) || (asc17 && !lastMove(MMID::RED_SLAVER_SCRAPE))) {

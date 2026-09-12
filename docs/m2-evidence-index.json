@@ -1,0 +1,147 @@
+{
+  "audit_schema_version": "m2-public-run-audit-v2",
+  "raw_root": "reference/public-run-audit",
+  "raw_manifest": "reference/public-run-audit/source-manifest.json",
+  "audit_report": "reference/public-run-audit/audit.json",
+  "scene_index": "docs/m2-scene-candidates.json",
+  "exclusion_index": "docs/m2-exclusions.json",
+  "summary_reconstruction_index": "docs/m2-summary-reconstruction.json",
+  "summary_a_rule_constructible_count": 1,
+  "summary_formal_candidate_count": 0,
+  "source_files": [
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663630852.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/200-rotating-sample/IRONCLAD/1663630852.run",
+      "local_file": "matiger/sample-000.run",
+      "sha256": "56fa4cede549310f35e6ab4e571e312df19477d18f9ad2ef9fd55a98745cf423",
+      "bytes": 11498
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/chegs/ironclad/1707009021.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/chegs/ironclad/1707009021.run",
+      "local_file": "matiger/sample-001.run",
+      "sha256": "1f00403c49f3baa143734da4293db418a7684d5e1cc63a2d5cef1d42b662a8fd",
+      "bytes": 15178
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672618634.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/lose-all-gold-max-hp-sample/IRONCLAD/1672618634.run",
+      "local_file": "matiger/sample-002.run",
+      "sha256": "6578985f73105e0667359cc27f58917453b4da740d241bf7df8e81ecf097418c",
+      "bytes": 13135
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/panacea-ironclad-sample/1663019150.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/panacea-ironclad-sample/1663019150.run",
+      "local_file": "matiger/sample-003.run",
+      "sha256": "b0766597c4679a1236154e5a5aa1d74e72d6d08c224b150a55fc554b598b9192",
+      "bytes": 14252
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663717142.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/200-rotating-sample/IRONCLAD/1663717142.run",
+      "local_file": "matiger/sample-004.run",
+      "sha256": "22f5ec5007998801850873e1a308084353b1435a76991b0d75108a40cc675d91",
+      "bytes": 8910
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/chegs/ironclad/1707019780.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/chegs/ironclad/1707019780.run",
+      "local_file": "matiger/sample-005.run",
+      "sha256": "92f5b4890884a600cc6fe88f3715995d3cbc14db9d6cf9f9aa6ca05beba3c9e4",
+      "bytes": 13812
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "local_file": "matiger/sample-006.run",
+      "sha256": "e31c5f6f896ac029651efca2daeb96f3161c412438974ec8a356dea7a2bca7e8",
+      "bytes": 14835
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/panacea-ironclad-sample/1663026387.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/panacea-ironclad-sample/1663026387.run",
+      "local_file": "matiger/sample-007.run",
+      "sha256": "7e8901fc7979f1f8846a42b765ae0d773f0155adf1b688524d9a93d9e00cf10e",
+      "bytes": 12502
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663893019.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/200-rotating-sample/IRONCLAD/1663893019.run",
+      "local_file": "matiger/sample-008.run",
+      "sha256": "31e0c996f6768310bc7cdf74f374f5b2d9b63e4aa6307347e2305b9be8625cf2",
+      "bytes": 14669
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/chegs/ironclad/1707091976.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/chegs/ironclad/1707091976.run",
+      "local_file": "matiger/sample-009.run",
+      "sha256": "d68fa86037dba48eec1a8592de6b1cf5f0aac7625883bcfefdbbfe6c27fb4f0f",
+      "bytes": 13290
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672700747.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/lose-all-gold-max-hp-sample/IRONCLAD/1672700747.run",
+      "local_file": "matiger/sample-010.run",
+      "sha256": "57ad236018a382b41fec2037b2cab1683e40957a20f4ea61dc1ea17916c5bdd4",
+      "bytes": 14044
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_path": "runs/panacea-ironclad-sample/1663181737.run",
+      "source_url": "https://raw.githubusercontent.com/MaT1g3R/Slay-the-Spire-data/097aaf3564c2247835162d267cbc7c55d2c9039e/runs/panacea-ironclad-sample/1663181737.run",
+      "local_file": "matiger/sample-011.run",
+      "sha256": "9fcdfffbbd529f74350da7b13ea1cb8106624706ca431f60dc078ac03b0f376f",
+      "bytes": 13397
+    },
+    {
+      "source_kind": "github-runlogger-jsonl",
+      "source_path": "runs/ironclad_1706139943.json",
+      "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+      "local_file": "runlogger/ironclad_1706139943.jsonl",
+      "sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+      "bytes": 99588
+    }
+  ],
+  "scene_count": 7,
+  "scene_status_counts": {
+    "excluded": 5,
+    "visible_entry_verified_internal_state_unproven": 2
+  },
+  "exclusion_count": 17,
+  "split_check": {
+    "rule_version": "public-run-group-sha256-v1",
+    "rule": "先按整局 group_key 计算 SHA-256 前8位 mod 100，再按 0-79/80-89/90-99 划 train/dev/reserved-eval；本次场景仍 audit-only",
+    "unique_group_count": 13,
+    "source_record_count": 13,
+    "duplicate_group_keys_across_sources": [],
+    "assignments": {
+      "seed:IRONCLAD:-1340207862638898885": "train",
+      "seed:IRONCLAD:-1854141603364313707": "train",
+      "seed:IRONCLAD:-504180739479953194": "train",
+      "seed:IRONCLAD:-7392948269980444707": "train",
+      "seed:IRONCLAD:1385172482362559823": "train",
+      "seed:IRONCLAD:1VKGN2DPUYVCJ": "train",
+      "seed:IRONCLAD:2168720235307158719": "train",
+      "seed:IRONCLAD:431906119610756110": "train",
+      "seed:IRONCLAD:5248525184149188418": "train",
+      "seed:IRONCLAD:5825453042510105463": "train",
+      "seed:IRONCLAD:7898521099966816684": "train",
+      "seed:IRONCLAD:8283005578391039350": "train",
+      "seed:IRONCLAD:8942134355144449980": "train"
+    },
+    "cross_split_leakage": false,
+    "formal_split_applied": false
+  }
+}

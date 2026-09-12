@@ -1,0 +1,4197 @@
+{
+  "audit_schema_version": "m2-public-run-audit-v2",
+  "generated_from": {
+    "audit_raw_root": "reference/public-run-audit",
+    "audit_sha256": "08d8aacb29f8f6ba38cf6c6ccbf062c4b9be6c10d0b9ea20f94cd6a10d15c3c5"
+  },
+  "scenes": [
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-1:line-11",
+      "floor": 1,
+      "room_type": "MonsterRoom",
+      "status": "visible_entry_verified_internal_state_unproven",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "parseable",
+        "visible_entry_status": "verified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [],
+        "visible_reason_codes": []
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 1,
+        "source_line": 11,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "M",
+          "x": 1,
+          "y": 0,
+          "_source_line": 10
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 5
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 6
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 7
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 8
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 9
+          }
+        ],
+        "count": 10,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 5,
+          "mutation_counts_from_snapshot_diffs": {},
+          "upgrade_transition_count_upper_bound": 0,
+          "action_counts_before_entry": {
+            "action:select_dialog": 3,
+            "action:select_map": 1
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": null
+      },
+      "piles": {
+        "hand": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "draw": [
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": null,
+          "draw": null,
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Bash",
+            "Strike_R"
+          ],
+          "draw": [
+            "Defend_R",
+            "Strike_R",
+            "Defend_R",
+            "Strike_R",
+            "Defend_R"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": 2,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 2,
+            "id": "NeowsBlessing"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "counter": 2,
+          "id": "NeowsBlessing"
+        }
+      ],
+      "potions": {
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "Cultist"
+        ],
+        "scenario_id": "cultist",
+        "backend_encounter": "CULTIST",
+        "group_match": "exact"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "hp_current": 1,
+          "hp_max": 48,
+          "id": "Cultist",
+          "intent": "BUFF"
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [],
+          "dynamic_dependencies": {
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing"
+          ],
+          "unknown": [],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [],
+          "deferred": [],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "Cultist"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [],
+          "unknown": [],
+          "parameters": {}
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "checked",
+        "deck_count": 10,
+        "pile_count": 10,
+        "missing_deck_cards": [],
+        "extra_pile_cards": [],
+        "multiset_equal": true,
+        "rule": "post-init first-decision snapshot must account for every card; generation/removal paths require explicit mechanism evidence"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[1].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": true,
+          "draw_pile": true,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 10,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 10,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 1,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 1,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 2,
+          "public_b0_core_max": 2,
+          "status": "within_public_b0_core"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-3:line-25",
+      "floor": 3,
+      "room_type": "MonsterRoom",
+      "status": "visible_entry_verified_internal_state_unproven",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "parseable",
+        "visible_entry_status": "verified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [],
+        "visible_reason_codes": []
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 3,
+        "source_line": 25,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "M",
+          "x": 2,
+          "y": 2,
+          "_source_line": 24
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 5
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 6
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 7
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 8
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 9
+          },
+          {
+            "raw": "Anger",
+            "name": "Anger",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 4,
+            "semantic_status": "registered",
+            "source_ordinal": 10
+          }
+        ],
+        "count": 11,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 12,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 1
+          },
+          "upgrade_transition_count_upper_bound": 0,
+          "action_counts_before_entry": {
+            "action:open_chest": 1,
+            "action:play_card": 1,
+            "action:select_dialog": 3,
+            "action:select_map": 3,
+            "action:select_reward": 3
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": null
+      },
+      "piles": {
+        "hand": [
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "draw": [
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          },
+          {
+            "raw": "Anger",
+            "name": "Anger",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 4,
+            "semantic_status": "registered",
+            "source_ordinal": 5
+          }
+        ],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": null,
+          "draw": null,
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R"
+          ],
+          "draw": [
+            "Bash",
+            "Strike_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Anger"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "counter": 1,
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        }
+      ],
+      "potions": {
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "JawWorm"
+        ],
+        "scenario_id": "jaw-worm",
+        "backend_encounter": "JAW_WORM",
+        "group_match": "exact"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "damage": 11,
+          "hp_current": 1,
+          "hp_max": 41,
+          "id": "JawWorm",
+          "intent": "ATTACK"
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [],
+          "deferred": [],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "JawWorm"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [],
+          "unknown": [],
+          "parameters": {}
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "checked",
+        "deck_count": 11,
+        "pile_count": 11,
+        "missing_deck_cards": [],
+        "extra_pile_cards": [],
+        "multiset_equal": true,
+        "rule": "post-init first-decision snapshot must account for every card; generation/removal paths require explicit mechanism evidence"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[1].counter": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": true,
+          "draw_pile": true,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 6,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 11,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 11,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 1,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 1,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 3,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-5:line-37",
+      "floor": 5,
+      "room_type": "MonsterRoom",
+      "status": "excluded",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "invalid",
+        "visible_entry_status": "unverified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [
+          "DYNAMIC_RELIC_COUNTER_MISSING"
+        ],
+        "visible_reason_codes": [
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ]
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 5,
+        "source_line": 37,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "M",
+          "x": 2,
+          "y": 4,
+          "_source_line": 36
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 5
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 6
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 7
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 8
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 9
+          },
+          {
+            "raw": "Anger",
+            "name": "Anger",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 4,
+            "semantic_status": "registered",
+            "source_ordinal": 10
+          },
+          {
+            "raw": "Twin Strike",
+            "name": "Twin Strike",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 11
+          },
+          {
+            "raw": "Uppercut",
+            "name": "Uppercut",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 12
+          }
+        ],
+        "count": 13,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger",
+          "Twin Strike",
+          "Uppercut"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 18,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 3
+          },
+          "upgrade_transition_count_upper_bound": 0,
+          "action_counts_before_entry": {
+            "action:buy": 1,
+            "action:open_chest": 1,
+            "action:play_card": 2,
+            "action:select_dialog": 3,
+            "action:select_map": 5,
+            "action:select_reward": 5
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": null
+      },
+      "piles": {
+        "hand": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "draw": [
+          {
+            "raw": "Uppercut",
+            "name": "Uppercut",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Anger",
+            "name": "Anger",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 4,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 5
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 6
+          },
+          {
+            "raw": "Twin Strike",
+            "name": "Twin Strike",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 7
+          }
+        ],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": null,
+          "draw": null,
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "draw": [
+            "Uppercut",
+            "Defend_R",
+            "Defend_R",
+            "Anger",
+            "Strike_R",
+            "Bash",
+            "Strike_R",
+            "Twin Strike"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        }
+      ],
+      "potions": {
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "AcidSlime_S",
+          "SpikeSlime_M"
+        ],
+        "scenario_id": null,
+        "backend_encounter": null,
+        "group_match": "unregistered"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "damage": 3,
+          "hp_current": 1,
+          "hp_max": 9,
+          "id": "AcidSlime_S",
+          "intent": "ATTACK"
+        },
+        {
+          "damage": 8,
+          "hp_current": 1,
+          "hp_max": 29,
+          "id": "SpikeSlime_M",
+          "intent": "ATTACK_DEBUFF"
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [
+            "Twin Strike",
+            "Uppercut"
+          ],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [],
+          "deferred": [],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "AcidSlime_S",
+            "SpikeSlime_M"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [],
+          "unknown": [],
+          "parameters": {}
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "checked",
+        "deck_count": 13,
+        "pile_count": 13,
+        "missing_deck_cards": [],
+        "extra_pile_cards": [],
+        "multiset_equal": true,
+        "rule": "post-init first-decision snapshot must account for every card; generation/removal paths require explicit mechanism evidence"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed",
+        "monsters[1].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": true,
+          "draw_pile": true,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 8,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 13,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 13,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 2,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 2,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 3,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-7:line-49",
+      "floor": 7,
+      "room_type": "MonsterRoomElite",
+      "status": "excluded",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "invalid",
+        "visible_entry_status": "unverified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "visible_reason_codes": [
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ]
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 7,
+        "source_line": 49,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "E",
+          "x": 2,
+          "y": 6,
+          "_source_line": 48
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [],
+        "count": 0,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger",
+          "Twin Strike",
+          "Uppercut+"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 24,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 4,
+            "removed": 1
+          },
+          "upgrade_transition_count_upper_bound": 1,
+          "action_counts_before_entry": {
+            "action:buy": 1,
+            "action:open_chest": 1,
+            "action:play_card": 4,
+            "action:select_dialog": 3,
+            "action:select_map": 7,
+            "action:select_reward": 6,
+            "action:smith": 1
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": "state:floor.deck[12] 的升级标记不完整：'Uppercut+'"
+      },
+      "piles": {
+        "hand": [
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Anger",
+            "name": "Anger",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 4,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Twin Strike",
+            "name": "Twin Strike",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "draw": [],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": null,
+          "draw": "combat_state.draw_pile[6] 的升级标记不完整：'Uppercut+'",
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Bash",
+            "Anger",
+            "Twin Strike",
+            "Strike_R",
+            "Strike_R"
+          ],
+          "draw": [
+            "Defend_R",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Uppercut+",
+            "Strike_R"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        }
+      ],
+      "potions": {
+        "slots": [
+          null,
+          null,
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "GremlinNob"
+        ],
+        "scenario_id": null,
+        "backend_encounter": null,
+        "group_match": "unregistered"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "hp_current": 85,
+          "hp_max": 85,
+          "id": "GremlinNob",
+          "intent": "BUFF"
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [
+            "Twin Strike",
+            "Uppercut"
+          ],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [],
+          "deferred": [],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "GremlinNob"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [],
+          "unknown": [],
+          "parameters": {}
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "skipped_parse_failure"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": true,
+          "draw_pile": false,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 5,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 0,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 1,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 1,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 3,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNKNOWN_ENTITY_OR_SEMANTICS",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-12:line-97",
+      "floor": 12,
+      "room_type": "MonsterRoom",
+      "status": "excluded",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "invalid",
+        "visible_entry_status": "unverified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "visible_reason_codes": [
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ]
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 12,
+        "source_line": 97,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "?",
+          "x": 3,
+          "y": 11,
+          "_source_line": 96
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [],
+        "count": 0,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger",
+          "Twin Strike",
+          "Uppercut+",
+          "Shockwave",
+          "Feel No Pain+"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 47,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 7,
+            "removed": 2
+          },
+          "upgrade_transition_count_upper_bound": 2,
+          "action_counts_before_entry": {
+            "action:buy": 3,
+            "action:end_turn": 2,
+            "action:open_chest": 2,
+            "action:play_card": 11,
+            "action:select_dialog": 6,
+            "action:select_map": 12,
+            "action:select_reward": 10,
+            "action:smith": 2
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": "state:floor.deck[12] 的升级标记不完整：'Uppercut+'"
+      },
+      "piles": {
+        "hand": [
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 0
+          },
+          {
+            "raw": "Strike_R",
+            "name": "Strike_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 3,
+            "semantic_status": "registered",
+            "source_ordinal": 1
+          },
+          {
+            "raw": "Defend_R",
+            "name": "Defend_R",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 2,
+            "semantic_status": "registered",
+            "source_ordinal": 2
+          },
+          {
+            "raw": "Twin Strike",
+            "name": "Twin Strike",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": null,
+            "semantic_status": "unknown",
+            "source_ordinal": 3
+          },
+          {
+            "raw": "Bash",
+            "name": "Bash",
+            "upgrade_count": 0,
+            "upgrade_count_known": true,
+            "registry_id": 1,
+            "semantic_status": "registered",
+            "source_ordinal": 4
+          }
+        ],
+        "draw": [],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": null,
+          "draw": "combat_state.draw_pile[3] 的升级标记不完整：'Feel No Pain+'",
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Strike_R",
+            "Strike_R",
+            "Defend_R",
+            "Twin Strike",
+            "Bash"
+          ],
+          "draw": [
+            "Strike_R",
+            "Defend_R",
+            "Anger",
+            "Feel No Pain+",
+            "Strike_R",
+            "Defend_R",
+            "Uppercut+",
+            "Shockwave",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        },
+        {
+          "id": "Mummified Hand",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Mummified Hand"
+          }
+        },
+        {
+          "id": "Meat on the Bone",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Meat on the Bone"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        },
+        {
+          "id": "Mummified Hand"
+        },
+        {
+          "id": "Meat on the Bone"
+        }
+      ],
+      "potions": {
+        "slots": [
+          "BloodPotion",
+          null,
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "AcidSlime_M",
+          "Looter"
+        ],
+        "scenario_id": null,
+        "backend_encounter": null,
+        "group_match": "unregistered"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "damage": 7,
+          "hp_current": 29,
+          "hp_max": 29,
+          "id": "AcidSlime_M",
+          "intent": "ATTACK_DEBUFF"
+        },
+        {
+          "damage": 10,
+          "hp_current": 44,
+          "hp_max": 44,
+          "id": "Looter",
+          "intent": "ATTACK",
+          "powers": [
+            {
+              "amount": 15,
+              "id": "Thievery"
+            }
+          ]
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [
+            "Feel No Pain",
+            "Shockwave",
+            "Twin Strike",
+            "Uppercut"
+          ],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [
+            "Meat on the Bone",
+            "Mummified Hand"
+          ],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [
+            "BloodPotion"
+          ],
+          "deferred": [
+            "BloodPotion"
+          ],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "AcidSlime_M",
+            "Looter"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [
+            "Thievery"
+          ],
+          "unknown": [],
+          "parameters": {
+            "Thievery": "amount"
+          }
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "skipped_parse_failure"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed",
+        "monsters[1].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": true,
+          "draw_pile": false,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 5,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 5,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 0,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 2,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 2,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 5,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-14:line-137",
+      "floor": 14,
+      "room_type": "MonsterRoom",
+      "status": "excluded",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "invalid",
+        "visible_entry_status": "unverified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "visible_reason_codes": [
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ]
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 14,
+        "source_line": 137,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "M",
+          "x": 4,
+          "y": 13,
+          "_source_line": 136
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 59,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [],
+        "count": 0,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger",
+          "Twin Strike",
+          "Uppercut+",
+          "Shockwave",
+          "Feel No Pain+"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 65,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 7,
+            "removed": 2
+          },
+          "upgrade_transition_count_upper_bound": 2,
+          "action_counts_before_entry": {
+            "action:buy": 3,
+            "action:end_turn": 6,
+            "action:open_chest": 2,
+            "action:play_card": 24,
+            "action:select_dialog": 6,
+            "action:select_map": 14,
+            "action:select_reward": 13,
+            "action:smith": 2
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": "state:floor.deck[12] 的升级标记不完整：'Uppercut+'"
+      },
+      "piles": {
+        "hand": [],
+        "draw": [],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": "combat_state.hand[1] 的升级标记不完整：'Uppercut+'",
+          "draw": "combat_state.draw_pile[8] 的升级标记不完整：'Feel No Pain+'",
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Shockwave",
+            "Uppercut+",
+            "Strike_R",
+            "Bash",
+            "Defend_R"
+          ],
+          "draw": [
+            "Defend_R",
+            "Strike_R",
+            "Defend_R",
+            "Anger",
+            "Twin Strike",
+            "Defend_R",
+            "Strike_R",
+            "Strike_R",
+            "Feel No Pain+",
+            "Strike_R"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        },
+        {
+          "id": "Mummified Hand",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Mummified Hand"
+          }
+        },
+        {
+          "id": "Meat on the Bone",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Meat on the Bone"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        },
+        {
+          "id": "Mummified Hand"
+        },
+        {
+          "id": "Meat on the Bone"
+        }
+      ],
+      "potions": {
+        "slots": [
+          "BloodPotion",
+          "Weak Potion",
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "SlaverRed"
+        ],
+        "scenario_id": null,
+        "backend_encounter": null,
+        "group_match": "unregistered"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "damage": 13,
+          "hp_current": 50,
+          "hp_max": 50,
+          "id": "SlaverRed",
+          "intent": "ATTACK"
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [
+            "Feel No Pain",
+            "Shockwave",
+            "Twin Strike",
+            "Uppercut"
+          ],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [
+            "Meat on the Bone",
+            "Mummified Hand"
+          ],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [
+            "BloodPotion",
+            "Weak Potion"
+          ],
+          "deferred": [
+            "BloodPotion",
+            "Weak Potion"
+          ],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "SlaverRed"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [],
+          "unknown": [],
+          "parameters": {}
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "skipped_parse_failure"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": false,
+          "draw_pile": false,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 0,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 0,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 1,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 1,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 5,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-16:line-172",
+      "floor": 16,
+      "room_type": "MonsterRoomBoss",
+      "status": "excluded",
+      "formal_eligibility": "audit-only",
+      "validation_status": {
+        "structure_parse_status": "invalid",
+        "visible_entry_status": "unverified",
+        "internal_state_status": "unproven",
+        "version_mod_status": "pending_review",
+        "backend_status": "pending-m3-state-injection",
+        "structural_reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "visible_reason_codes": [
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS"
+        ]
+      },
+      "backend_status": "pending-m3-state-injection",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "split": "audit-only",
+      "source": {
+        "source_id": "runlogger-example-ironclad-1706139943",
+        "source_url": "https://raw.githubusercontent.com/colinking/runlogger/02679f51c19c7a8d26da618ec0377faa390f347f/runs/ironclad_1706139943.json",
+        "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82",
+        "source_run_id": "1VKGN2DPUYVCJ",
+        "floor": 16,
+        "source_line": 172,
+        "predecessor": {
+          "_type": "action:select_map",
+          "symbol": "B",
+          "x": 3,
+          "y": 16,
+          "_source_line": 171
+        }
+      },
+      "run": {
+        "character": "IRONCLAD",
+        "source_seed": "1VKGN2DPUYVCJ",
+        "environment_replay_seed": null,
+        "seed_policy": "source seed is provenance only; assign a separate training/eval seed after group split",
+        "ascension": 0,
+        "versions": {
+          "java": "1.8.0_252",
+          "sts": "12-18-2022"
+        },
+        "mods": {
+          "recorded": {
+            "CommunicationMod": "1.2.1",
+            "SerializationMod": "0.1.0",
+            "basemod": "5.53.2",
+            "superfastmode": "1.0.8"
+          },
+          "instrumentation": [
+            "CommunicationMod",
+            "SerializationMod"
+          ],
+          "review_required": [
+            "basemod",
+            "superfastmode"
+          ]
+        },
+        "log_completion": false
+      },
+      "entry_timing": {
+        "canonical": "post_combat_initialization_after_initial_draw",
+        "pre_initialization_snapshot_available": false,
+        "source_anchor": "first state:floor combat_state after action:select_map for this floor",
+        "effect_rule": "reset must inject the already-resolved snapshot and must not repeat start-of-combat/start-of-turn effects",
+        "control_state": "not_recorded; must be PLAYER_NORMAL with empty action/card queue before continuation",
+        "turn": {
+          "value": 1,
+          "recorded": false,
+          "evidence": "first combat entry after map selection; source does not emit turn"
+        }
+      },
+      "player": {
+        "hp_current": 80,
+        "hp_max": 80,
+        "energy": 3,
+        "block": 0,
+        "block_recorded": false,
+        "block_evidence": "direct when serializer field present; omitted means serializer condition, not arbitrary fill",
+        "turn": 1,
+        "turn_recorded": false,
+        "powers": {},
+        "powers_recorded": false,
+        "raw": {
+          "energy": 3
+        }
+      },
+      "deck": {
+        "instances": [],
+        "count": 0,
+        "raw_values_on_parse_failure": [
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Strike_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Defend_R",
+          "Bash",
+          "Anger",
+          "Twin Strike",
+          "Uppercut+",
+          "Shockwave",
+          "Feel No Pain+",
+          "Armaments"
+        ],
+        "source": "state:floor.deck",
+        "identity": "名称+升级次数+源顺序；重复牌没有游戏 UUID",
+        "history": {
+          "status": "partial",
+          "snapshot_count_before_entry": 81,
+          "mutation_counts_from_snapshot_diffs": {
+            "added": 8,
+            "removed": 2
+          },
+          "upgrade_transition_count_upper_bound": 2,
+          "action_counts_before_entry": {
+            "action:buy": 3,
+            "action:end_turn": 9,
+            "action:open_chest": 2,
+            "action:play_card": 35,
+            "action:rest": 1,
+            "action:select_dialog": 6,
+            "action:select_map": 16,
+            "action:select_reward": 15,
+            "action:smith": 2
+          },
+          "instance_identity": "名称+升级次数+源顺序；没有游戏 UUID",
+          "limitation": "当前条目快照可直接使用；完整因果历史、变形来源和每张牌 UUID 未公开记录"
+        },
+        "parse_error": "state:floor.deck[12] 的升级标记不完整：'Uppercut+'"
+      },
+      "piles": {
+        "hand": [],
+        "draw": [],
+        "discard": [],
+        "exhaust": [],
+        "limbo": [],
+        "parse_errors": {
+          "hand": "combat_state.hand[3] 的升级标记不完整：'Feel No Pain+'",
+          "draw": "combat_state.draw_pile[4] 的升级标记不完整：'Uppercut+'",
+          "discard": null,
+          "exhaust": null,
+          "limbo": null
+        },
+        "raw_values_on_parse_failure": {
+          "hand": [
+            "Strike_R",
+            "Defend_R",
+            "Defend_R",
+            "Feel No Pain+",
+            "Strike_R"
+          ],
+          "draw": [
+            "Strike_R",
+            "Armaments",
+            "Twin Strike",
+            "Shockwave",
+            "Uppercut+",
+            "Strike_R",
+            "Strike_R",
+            "Bash",
+            "Defend_R",
+            "Anger",
+            "Defend_R"
+          ],
+          "discard": [],
+          "exhaust": [],
+          "limbo": []
+        },
+        "draw_order_recorded_by_logger": true,
+        "model_policy": "非手牌只向模型提供规范化无序多重集；源顺序可供后端复跑但不得进入模型"
+      },
+      "relics": [
+        {
+          "id": "Burning Blood",
+          "registry_id": 1,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Burning Blood"
+          }
+        },
+        {
+          "id": "NeowsBlessing",
+          "registry_id": 2,
+          "backend_id": "NEOWS_LAMENT",
+          "semantic_status": "registered",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "NeowsBlessing"
+          }
+        },
+        {
+          "id": "StoneCalendar",
+          "registry_id": 3,
+          "backend_id": null,
+          "semantic_status": "registered",
+          "counter": 1,
+          "counter_recorded": true,
+          "raw": {
+            "counter": 1,
+            "id": "StoneCalendar"
+          }
+        },
+        {
+          "id": "Mummified Hand",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Mummified Hand"
+          }
+        },
+        {
+          "id": "Meat on the Bone",
+          "registry_id": null,
+          "backend_id": null,
+          "semantic_status": "unknown",
+          "counter": null,
+          "counter_recorded": false,
+          "raw": {
+            "id": "Meat on the Bone"
+          }
+        }
+      ],
+      "raw_relics_on_parse_failure": [
+        {
+          "id": "Burning Blood"
+        },
+        {
+          "id": "NeowsBlessing"
+        },
+        {
+          "counter": 1,
+          "id": "StoneCalendar"
+        },
+        {
+          "id": "Mummified Hand"
+        },
+        {
+          "id": "Meat on the Bone"
+        }
+      ],
+      "potions": {
+        "slots": [
+          "BloodPotion",
+          "Weak Potion",
+          null
+        ],
+        "capacity": 3,
+        "source": "state:floor.potions",
+        "parse_error": null
+      },
+      "encounter": {
+        "monster_ids": [
+          "SlimeBoss"
+        ],
+        "scenario_id": null,
+        "backend_encounter": null,
+        "group_match": "unregistered"
+      },
+      "raw_monsters_on_parse_failure": [
+        {
+          "hp_current": 140,
+          "hp_max": 140,
+          "id": "SlimeBoss",
+          "intent": "STRONG_DEBUFF",
+          "powers": [
+            {
+              "amount": -1,
+              "id": "Split"
+            }
+          ]
+        }
+      ],
+      "entity_semantics": {
+        "cards": {
+          "known": [
+            "Anger",
+            "Bash",
+            "Defend_R",
+            "Strike_R"
+          ],
+          "unknown": [
+            "Armaments",
+            "Feel No Pain",
+            "Shockwave",
+            "Twin Strike",
+            "Uppercut"
+          ],
+          "dynamic_dependencies": {
+            "Anger": {
+              "dynamic_semantics": "damage_and_discard_copy",
+              "generation": {
+                "zone": "discard",
+                "copies_per_play": 1
+              }
+            },
+            "Bash": {
+              "dynamic_semantics": "damage_and_vulnerable",
+              "generation": null
+            },
+            "Defend_R": {
+              "dynamic_semantics": "fixed_block",
+              "generation": null
+            },
+            "Strike_R": {
+              "dynamic_semantics": "fixed_damage",
+              "generation": null
+            }
+          }
+        },
+        "relics": {
+          "known": [
+            "Burning Blood",
+            "NeowsBlessing",
+            "StoneCalendar"
+          ],
+          "unknown": [
+            "Meat on the Bone",
+            "Mummified Hand"
+          ],
+          "counter_semantics": {
+            "Burning Blood": "not_applicable",
+            "NeowsBlessing": "source_combat_charge; decrement_point_pending",
+            "StoneCalendar": "source_counter; trigger_threshold_and_timing_pending"
+          }
+        },
+        "potions": {
+          "known_observed": [
+            "BloodPotion",
+            "Weak Potion"
+          ],
+          "deferred": [
+            "BloodPotion",
+            "Weak Potion"
+          ],
+          "unknown": []
+        },
+        "monsters": {
+          "known": [
+            "SlimeBoss"
+          ],
+          "unknown": []
+        },
+        "statuses": {
+          "known": [
+            "Split"
+          ],
+          "unknown": [],
+          "parameters": {
+            "Split": "amount"
+          }
+        },
+        "encounter_registration": "checked separately from individual monster IDs"
+      },
+      "pile_consistency": {
+        "status": "skipped_parse_failure"
+      },
+      "range_checks": {
+        "floor": "passed",
+        "player.hp": "passed",
+        "player.max_hp": "passed",
+        "player.hp_le_max_hp": "passed",
+        "player.energy": "passed",
+        "relics[2].counter": "passed",
+        "monsters[0].hp_le_max_hp": "passed"
+      },
+      "internal_state_audit": {
+        "status": "unproven",
+        "constructible": false,
+        "required_for_continuation": [
+          "input_state=PLAYER_NORMAL、outcome=UNDECIDED、actionQueue/cardQueue为空",
+          "CardInstance.uniqueId、升级次数、specialData、costForTurn、freeToPlayOnce、retain、bottle关系",
+          "draw/discard/exhaust/limbo的后端顺序；规范观测仍须隐藏非手牌顺序",
+          "Monster moveHistory[0/1]、当前move、miscInfo、status bits、targetable/dead/half-dead",
+          "玩家完整战斗status、遗物bitset/data/counter/order、药水capacity/count/slot IDs",
+          "各RNG stream及counter，至少包括敌人AI、怪物HP、洗牌、card random、misc、potion"
+        ],
+        "recorded_at_entry": {
+          "hand": false,
+          "draw_pile": false,
+          "discard_pile": false,
+          "exhaust_pile": false,
+          "limbo": false,
+          "enemy_public_fields": true,
+          "relic_ids_and_some_counters": true,
+          "potion_slots": true,
+          "control_state": false,
+          "hidden_rng_streams": false,
+          "card_dynamic_values": false,
+          "monster_internal_history": false
+        },
+        "missing_or_unproven": [
+          "source snapshot未记录InputState/queue为空的证明",
+          "source snapshot未记录完整CardInstance动态值和后端uniqueId",
+          "source snapshot未记录monster move/history/miscInfo及全部状态位",
+          "source snapshot未记录完整遗物bit/data回写和药水count/capacity来源",
+          "source snapshot未记录完整RNG stream/counter"
+        ],
+        "resampling_policy": {
+          "policy_id": "public-battle-a-resample-v1",
+          "mode": "优先原生入口A；B转A必须另附HP/counter/开战效果的逐字段逆向证据，当前两个B候选不具备该证据",
+          "development_seed": "100000 + (int(SHA256(scene_id)前8位,16) mod 900000)",
+          "evaluation_seed": "仅使用已提交且不可变的eval_seeds.json；本轮不分配",
+          "restore_directly": [
+            "source deck multiset及已解析upgrade/dynamic字段",
+            "source player HP/maxHP",
+            "source relic IDs与已知counter",
+            "source potion slots（若容量规则已核验）",
+            "source encounter group、ascension和game version"
+          ],
+          "resample_explicitly": [
+            "shuffle/draw order、enemy HP roll、initial move和敌人隐藏misc",
+            "future RNG streams/counters、new CardInstance uniqueId"
+          ],
+          "never_fill_with_zero": [
+            "dynamic relic counter",
+            "missing potion inventory/capacity",
+            "card specialData/costForTurn",
+            "monster move history/status bit"
+          ],
+          "exact_historical_replay": false
+        },
+        "run_context": {
+          "source_seed": "1VKGN2DPUYVCJ",
+          "game_version": {
+            "java": "1.8.0_252",
+            "sts": "12-18-2022"
+          },
+          "source_mods": {
+            "recorded": {
+              "CommunicationMod": "1.2.1",
+              "SerializationMod": "0.1.0",
+              "basemod": "5.53.2",
+              "superfastmode": "1.0.8"
+            },
+            "instrumentation": [
+              "CommunicationMod",
+              "SerializationMod"
+            ],
+            "review_required": [
+              "basemod",
+              "superfastmode"
+            ]
+          }
+        }
+      },
+      "capacity_audit": {
+        "hand": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "non_hand_including_limbo": {
+          "actual": 0,
+          "contract_max": 10
+        },
+        "card_entities_total": {
+          "actual": 0,
+          "rule": "hand + one combined non-hand capacity"
+        },
+        "deck_snapshot": {
+          "actual": 0,
+          "sample_only": true
+        },
+        "enemy_observation_rows": {
+          "actual": 1,
+          "contract_max": 5
+        },
+        "targetable_enemy_count": {
+          "actual": 1,
+          "action_contract_max": 5
+        },
+        "relics": {
+          "actual": 5,
+          "public_b0_core_max": 2,
+          "status": "requires_separate_batch_profile"
+        },
+        "potions": {
+          "actual": 3,
+          "public_b0_core_max": 3,
+          "status": "within_public_b0_core"
+        },
+        "status_feature_width": 5,
+        "warning": "实际数量不是生成/分裂/召唤全过程上界；每批仍需按机制路径证明或拒绝"
+      },
+      "hidden_state": {
+        "rng_counters_recorded": false,
+        "future_rng_policy": "重新采样",
+        "exact_historical_replay": false,
+        "reason": "该日志快照没有可供锁定后端直接恢复的完整 RNG stream/counter；这不影响记录入口牌堆快照，但不能宣称逐步复盘"
+      },
+      "field_evidence": {
+        "deck_at_entry": "direct_record",
+        "per_card_upgrade_count_at_entry": "direct_record_from_name_suffix",
+        "upgrade_add_remove_transform_history": "partial_or_ambiguous",
+        "hp_and_max_hp": "direct_record",
+        "floor_and_room": "direct_record",
+        "encounter_group": "direct_record_from_monster_ids",
+        "enemy_hp_and_intent": "direct_record",
+        "enemy_and_player_powers": "direct_record_when_serializer_field_present",
+        "omitted_zero_block_or_damage": "serializer_conditional_field; not an assumed game default",
+        "relic_ids": "direct_record",
+        "relic_counters": "direct_if_present; missing is ambiguous and blocks candidate",
+        "potion_slots": "direct_record",
+        "pre_initialization_state": "missing",
+        "hidden_rng": "missing"
+      },
+      "quality_flags": {
+        "reason_codes": [
+          "DECK_EMPTY_OR_MISSING",
+          "DYNAMIC_RELIC_COUNTER_MISSING",
+          "ENCOUNTER_NOT_REGISTERED",
+          "UNAPPROVED_ENTITY_SEMANTICS",
+          "UNKNOWN_ENTITY_OR_SEMANTICS",
+          "UPGRADE_FORMAT_AMBIGUOUS"
+        ],
+        "mod_note": "存在未核实的非日志 mod；进入正式训练前需独立确认不改变游戏性",
+        "mod_review_required": true
+      },
+      "act": 1
+    }
+  ]
+}

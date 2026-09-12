@@ -1,0 +1,340 @@
+{
+  "contract_id": "public-battle-v1",
+  "observation_schema": "public-observation-v1",
+  "registry_version": 2,
+  "action_schema_version": 2,
+  "source_admission_policy": "public-derived-standard-v1",
+  "reward_version": "battle_reward_v1",
+  "gamma": 1.0,
+  "alpha_hp": 0.5,
+  "termination_rule_version": "battle-natural-with-external-action-budget-v1",
+  "capacity": {
+    "hand": 10,
+    "targets": 5,
+    "potions": 3,
+    "max_initial_cards": 96,
+    "max_actions": 512,
+    "generated_per_action_bound": 15,
+    "max_card_entities_bound": 7776,
+    "piles": "variable-complete"
+  },
+  "action_count": 66,
+  "end_turn": 50,
+  "cards": [
+    {
+      "id": 1,
+      "name": "Bash",
+      "max_upgrade": 1
+    },
+    {
+      "id": 2,
+      "name": "Defend_R",
+      "max_upgrade": 1
+    },
+    {
+      "id": 3,
+      "name": "Strike_R",
+      "max_upgrade": 1
+    },
+    {
+      "id": 4,
+      "name": "Battle Trance",
+      "max_upgrade": 1
+    },
+    {
+      "id": 5,
+      "name": "Bludgeon",
+      "max_upgrade": 1
+    },
+    {
+      "id": 6,
+      "name": "Body Slam",
+      "max_upgrade": 1
+    },
+    {
+      "id": 7,
+      "name": "Carnage",
+      "max_upgrade": 1
+    },
+    {
+      "id": 8,
+      "name": "Cleave",
+      "max_upgrade": 1
+    },
+    {
+      "id": 9,
+      "name": "Clothesline",
+      "max_upgrade": 1
+    },
+    {
+      "id": 10,
+      "name": "Demon Form",
+      "max_upgrade": 1
+    },
+    {
+      "id": 11,
+      "name": "Dropkick",
+      "max_upgrade": 1
+    },
+    {
+      "id": 12,
+      "name": "Entrench",
+      "max_upgrade": 1
+    },
+    {
+      "id": 13,
+      "name": "Feel No Pain",
+      "max_upgrade": 1
+    },
+    {
+      "id": 14,
+      "name": "Flame Barrier",
+      "max_upgrade": 1
+    },
+    {
+      "id": 15,
+      "name": "Flex",
+      "max_upgrade": 1
+    },
+    {
+      "id": 16,
+      "name": "Ghostly Armor",
+      "max_upgrade": 1
+    },
+    {
+      "id": 17,
+      "name": "Heavy Blade",
+      "max_upgrade": 1
+    },
+    {
+      "id": 18,
+      "name": "Immolate",
+      "max_upgrade": 1
+    },
+    {
+      "id": 19,
+      "name": "Impervious",
+      "max_upgrade": 1
+    },
+    {
+      "id": 20,
+      "name": "Inflame",
+      "max_upgrade": 1
+    },
+    {
+      "id": 21,
+      "name": "Metallicize",
+      "max_upgrade": 1
+    },
+    {
+      "id": 22,
+      "name": "Pommel Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 23,
+      "name": "Power Through",
+      "max_upgrade": 1
+    },
+    {
+      "id": 24,
+      "name": "Pummel",
+      "max_upgrade": 1
+    },
+    {
+      "id": 25,
+      "name": "Rage",
+      "max_upgrade": 1
+    },
+    {
+      "id": 26,
+      "name": "Reckless Charge",
+      "max_upgrade": 1
+    },
+    {
+      "id": 27,
+      "name": "Seeing Red",
+      "max_upgrade": 1
+    },
+    {
+      "id": 28,
+      "name": "Sentinel",
+      "max_upgrade": 1
+    },
+    {
+      "id": 29,
+      "name": "Shrug It Off",
+      "max_upgrade": 1
+    },
+    {
+      "id": 30,
+      "name": "Spot Weakness",
+      "max_upgrade": 1
+    },
+    {
+      "id": 31,
+      "name": "Thunderclap",
+      "max_upgrade": 1
+    },
+    {
+      "id": 32,
+      "name": "True Grit",
+      "max_upgrade": 0
+    },
+    {
+      "id": 33,
+      "name": "Twin Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 34,
+      "name": "Uppercut",
+      "max_upgrade": 1
+    },
+    {
+      "id": 35,
+      "name": "Wild Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 36,
+      "name": "AscendersBane",
+      "max_upgrade": 0
+    },
+    {
+      "id": 37,
+      "name": "Wound",
+      "max_upgrade": 0
+    },
+    {
+      "id": 38,
+      "name": "Dazed",
+      "max_upgrade": 0
+    },
+    {
+      "id": 39,
+      "name": "Burn",
+      "max_upgrade": 0
+    },
+    {
+      "id": 40,
+      "name": "Slimed",
+      "max_upgrade": 0
+    }
+  ],
+  "potions": [
+    {
+      "id": 1,
+      "name": "Weak Potion"
+    },
+    {
+      "id": 2,
+      "name": "Regen Potion"
+    },
+    {
+      "id": 3,
+      "name": "EssenceOfSteel"
+    },
+    {
+      "id": 4,
+      "name": "Explosive Potion"
+    },
+    {
+      "id": 5,
+      "name": "Ancient Potion"
+    },
+    {
+      "id": 6,
+      "name": "FearPotion"
+    },
+    {
+      "id": 7,
+      "name": "LiquidBronze"
+    },
+    {
+      "id": 8,
+      "name": "Energy Potion"
+    },
+    {
+      "id": 9,
+      "name": "SpeedPotion"
+    },
+    {
+      "id": 10,
+      "name": "Dexterity Potion"
+    },
+    {
+      "id": 11,
+      "name": "HeartOfIron"
+    },
+    {
+      "id": 12,
+      "name": "Fruit Juice"
+    },
+    {
+      "id": 13,
+      "name": "Block Potion"
+    },
+    {
+      "id": 14,
+      "name": "Strength Potion"
+    },
+    {
+      "id": 15,
+      "name": "Swift Potion"
+    }
+  ],
+  "relics": [
+    {
+      "id": 1,
+      "name": "Burning Blood"
+    },
+    {
+      "id": 2,
+      "name": "Lantern"
+    },
+    {
+      "id": 3,
+      "name": "Anchor"
+    },
+    {
+      "id": 4,
+      "name": "Bag of Preparation"
+    },
+    {
+      "id": 5,
+      "name": "Vajra"
+    },
+    {
+      "id": 6,
+      "name": "Oddly Smooth Stone"
+    },
+    {
+      "id": 7,
+      "name": "Blood Vial"
+    },
+    {
+      "id": 8,
+      "name": "Bronze Scales"
+    }
+  ],
+  "encounters": [
+    "CULTIST",
+    "JAW_WORM",
+    "TWO_LOUSE",
+    "SMALL_SLIMES",
+    "BLUE_SLAVER",
+    "RED_SLAVER",
+    "LOOTER",
+    "LARGE_SLIME",
+    "THREE_LOUSE",
+    "TWO_FUNGI_BEASTS",
+    "EXORDIUM_WILDLIFE",
+    "EXORDIUM_THUGS",
+    "GREMLIN_GANG",
+    "LOTS_OF_SLIMES",
+    "GREMLIN_NOB",
+    "LAGAVULIN",
+    "THREE_SENTRIES"
+  ]
+}

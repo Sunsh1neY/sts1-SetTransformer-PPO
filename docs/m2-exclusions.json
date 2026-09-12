@@ -1,0 +1,301 @@
+{
+  "audit_schema_version": "m2-public-run-audit-v2",
+  "generated_from": {
+    "audit_raw_root": "reference/public-run-audit",
+    "audit_sha256": "80bba2a4b7af3ca61b036edbb31b436bfa5d0166d0024a50c3f9d30f13f3201f"
+  },
+  "exclusions": [
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "00e79398-c318-4f25-9b6e-1eeba5ca55ec",
+      "group_key": "seed:IRONCLAD:8942134355144449980",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663630852.run",
+      "raw_sha256": "56fa4cede549310f35e6ab4e571e312df19477d18f9ad2ef9fd55a98745cf423"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "bafe70cc-8c24-49db-b4c2-a1735d9cdd7a",
+      "group_key": "seed:IRONCLAD:5825453042510105463",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "PRE_ENTRY_MUTATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/chegs/ironclad/1707009021.run",
+      "raw_sha256": "1f00403c49f3baa143734da4293db418a7684d5e1cc63a2d5cef1d42b662a8fd"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "f178cc91-68ec-422b-86cc-535956ea20ef",
+      "group_key": "seed:IRONCLAD:2168720235307158719",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672618634.run",
+      "raw_sha256": "6578985f73105e0667359cc27f58917453b4da740d241bf7df8e81ecf097418c"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "bac59578-52c6-48d9-a0df-c9ae30aacb51",
+      "group_key": "seed:IRONCLAD:1385172482362559823",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/panacea-ironclad-sample/1663019150.run",
+      "raw_sha256": "b0766597c4679a1236154e5a5aa1d74e72d6d08c224b150a55fc554b598b9192"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "cb177c64-9d8b-4824-ae6d-677c3510d005",
+      "group_key": "seed:IRONCLAD:-1854141603364313707",
+      "status": "excluded",
+      "reason_codes": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663717142.run",
+      "raw_sha256": "22f5ec5007998801850873e1a308084353b1435a76991b0d75108a40cc675d91"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "4243ddb3-01da-44de-8689-7ba67132d1a1",
+      "group_key": "seed:IRONCLAD:-7392948269980444707",
+      "status": "excluded",
+      "reason_codes": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/chegs/ironclad/1707019780.run",
+      "raw_sha256": "92f5b4890884a600cc6fe88f3715995d3cbc14db9d6cf9f9aa6ca05beba3c9e4"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "8182d980-e0b8-4017-98bf-4d80e15d6505",
+      "group_key": "seed:IRONCLAD:8283005578391039350",
+      "status": "excluded",
+      "reason_codes": [
+        "ENCOUNTER_GENERATOR_NOT_REGISTERED",
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672692433.run",
+      "raw_sha256": "e31c5f6f896ac029651efca2daeb96f3161c412438974ec8a356dea7a2bca7e8"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "ee3e27cd-57fd-48ad-ab25-b4fd810fef7e",
+      "group_key": "seed:IRONCLAD:431906119610756110",
+      "status": "excluded",
+      "reason_codes": [
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "rule_constructible_source_unverified",
+      "source_path": "runs/panacea-ironclad-sample/1663026387.run",
+      "raw_sha256": "7e8901fc7979f1f8846a42b765ae0d773f0155adf1b688524d9a93d9e00cf10e"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "47f02244-feea-45da-8519-38f6bb0fcef4",
+      "group_key": "seed:IRONCLAD:-1340207862638898885",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/200-rotating-sample/IRONCLAD/1663893019.run",
+      "raw_sha256": "31e0c996f6768310bc7cdf74f374f5b2d9b63e4aa6307347e2305b9be8625cf2"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "eff36188-fdbd-4988-b2f4-28b61fd29824",
+      "group_key": "seed:IRONCLAD:5248525184149188418",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/chegs/ironclad/1707091976.run",
+      "raw_sha256": "d68fa86037dba48eec1a8592de6b1cf5f0aac7625883bcfefdbbfe6c27fb4f0f"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "06ff2073-b88b-453a-a6db-969d62307338",
+      "group_key": "seed:IRONCLAD:7898521099966816684",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/lose-all-gold-max-hp-sample/IRONCLAD/1672700747.run",
+      "raw_sha256": "57ad236018a382b41fec2037b2cab1683e40957a20f4ea61dc1ea17916c5bdd4"
+    },
+    {
+      "source_kind": "github-run-summary",
+      "source_run_id": "d59ee005-2baa-4215-8d98-7553b8017839",
+      "group_key": "seed:IRONCLAD:-504180739479953194",
+      "status": "excluded",
+      "reason_codes": [
+        "NEOW_EFFECT_RULE_NOT_YET_VERIFIED",
+        "PLAYER_ENTRY_HP_DERIVATION_UNPROVEN",
+        "POTION_ENTRY_DERIVATION_UNPROVEN",
+        "RELIC_ENTRY_SEMANTICS_UNPROVEN",
+        "SOURCE_MOD_MANIFEST_UNAVAILABLE",
+        "SOURCE_RULESET_COMPATIBILITY_UNVERIFIED"
+      ],
+      "exclusion_scope": "formal-admission",
+      "reconstruction_status": "not_reconstructable_from_summary",
+      "source_path": "runs/panacea-ironclad-sample/1663181737.run",
+      "raw_sha256": "9fcdfffbbd529f74350da7b13ea1cb8106624706ca431f60dc078ac03b0f376f"
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-5:line-37",
+      "source_kind": "github-runlogger-jsonl",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "status": "excluded",
+      "reason_codes": [
+        "DYNAMIC_RELIC_COUNTER_MISSING",
+        "ENCOUNTER_NOT_REGISTERED",
+        "UNKNOWN_ENTITY_OR_SEMANTICS"
+      ],
+      "source_line": 37,
+      "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82"
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-7:line-49",
+      "source_kind": "github-runlogger-jsonl",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "status": "excluded",
+      "reason_codes": [
+        "DECK_EMPTY_OR_MISSING",
+        "DYNAMIC_RELIC_COUNTER_MISSING",
+        "ENCOUNTER_NOT_REGISTERED",
+        "UNKNOWN_ENTITY_OR_SEMANTICS",
+        "UPGRADE_FORMAT_AMBIGUOUS"
+      ],
+      "source_line": 49,
+      "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82"
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-12:line-97",
+      "source_kind": "github-runlogger-jsonl",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "status": "excluded",
+      "reason_codes": [
+        "DECK_EMPTY_OR_MISSING",
+        "DYNAMIC_RELIC_COUNTER_MISSING",
+        "ENCOUNTER_NOT_REGISTERED",
+        "UNAPPROVED_ENTITY_SEMANTICS",
+        "UNKNOWN_ENTITY_OR_SEMANTICS",
+        "UPGRADE_FORMAT_AMBIGUOUS"
+      ],
+      "source_line": 97,
+      "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82"
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-14:line-137",
+      "source_kind": "github-runlogger-jsonl",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "status": "excluded",
+      "reason_codes": [
+        "DECK_EMPTY_OR_MISSING",
+        "DYNAMIC_RELIC_COUNTER_MISSING",
+        "ENCOUNTER_NOT_REGISTERED",
+        "UNAPPROVED_ENTITY_SEMANTICS",
+        "UNKNOWN_ENTITY_OR_SEMANTICS",
+        "UPGRADE_FORMAT_AMBIGUOUS"
+      ],
+      "source_line": 137,
+      "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82"
+    },
+    {
+      "scene_id": "runlogger-example-ironclad-1706139943:1VKGN2DPUYVCJ:floor-16:line-172",
+      "source_kind": "github-runlogger-jsonl",
+      "group_key": "seed:IRONCLAD:1VKGN2DPUYVCJ",
+      "status": "excluded",
+      "reason_codes": [
+        "DECK_EMPTY_OR_MISSING",
+        "DYNAMIC_RELIC_COUNTER_MISSING",
+        "ENCOUNTER_NOT_REGISTERED",
+        "UNAPPROVED_ENTITY_SEMANTICS",
+        "UNKNOWN_ENTITY_OR_SEMANTICS",
+        "UPGRADE_FORMAT_AMBIGUOUS"
+      ],
+      "source_line": 172,
+      "raw_sha256": "e7e6178e1d4566f1e827c6c917471a7bec736b26d6beb53488bf97e1f3c8cb82"
+    }
+  ]
+}
