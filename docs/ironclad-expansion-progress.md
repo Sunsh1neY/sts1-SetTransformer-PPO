@@ -2,6 +2,13 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E2a：直接效果七类（2026-09-12）
+
+- Clash、Hemokinesis、Bloodletting、Intimidate、Limit Break、Offering、Shockwave基础/+接入注册、C++公开导出与统一实体模型；当前94/150版本。旧public白名单未扩展。
+- 36项定向测试通过：Clash非攻击手牌限制、自伤与Blood for Blood事件、实际攻击、全体减益、Artifact先消耗Weak、Limit Break与Flex到期、Offering抽牌及No Draw、14版本新模型前向。
+- 数值与机制依据为docs/ironclad-card-audit.md对应七牌行及本地后端真实分支；没有照抄正版代码。此批不生成新实体、不增加选择或自动打出，现每decision15增长检查仍适用；重建后更新注册/二进制指纹。旧U4/U6checkpoint保持历史身份，当前指纹变化拒绝精确恢复。
+- 生成补丁已保存到patches/lightspeed-ironclad-expansion.patch。治疗/随机/自动耗尽继续下一小批；不宣称94版本全部组合穷尽。
+
 ## U6b：实施简化输入v3与资源保护（2026-09-12）
 
 - U6a已提交75d102d，先登记用户裁定。随后实现115维卡牌输入、set-v2模型：移除伤害关系bias/评分输入，保留格挡、实例增伤与费用恢复信息；新增已知顶牌字段和严格区域/唯一性检查。

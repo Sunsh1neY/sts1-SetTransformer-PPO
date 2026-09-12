@@ -212,6 +212,16 @@
       "max_upgrade": 1
     },
     {
+      "id": 46,
+      "name": "Bloodletting",
+      "max_upgrade": 1
+    },
+    {
+      "id": 49,
+      "name": "Clash",
+      "max_upgrade": 1
+    },
+    {
       "id": 50,
       "name": "Combust",
       "max_upgrade": 1
@@ -222,8 +232,33 @@
       "max_upgrade": 1
     },
     {
+      "id": 63,
+      "name": "Hemokinesis",
+      "max_upgrade": 1
+    },
+    {
+      "id": 65,
+      "name": "Intimidate",
+      "max_upgrade": 1
+    },
+    {
+      "id": 68,
+      "name": "Limit Break",
+      "max_upgrade": 1
+    },
+    {
+      "id": 69,
+      "name": "Offering",
+      "max_upgrade": 1
+    },
+    {
       "id": 71,
       "name": "Rampage",
+      "max_upgrade": 1
+    },
+    {
+      "id": 77,
+      "name": "Shockwave",
       "max_upgrade": 1
     }
   ]

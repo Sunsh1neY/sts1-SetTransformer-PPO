@@ -147,8 +147,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Clash",
@@ -156,8 +159,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Cleave",
@@ -315,8 +321,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Hemokinesis",
@@ -324,8 +333,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Immolate",
@@ -741,8 +753,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Bloodletting",
@@ -750,8 +765,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Burning Pact",
@@ -1029,8 +1047,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Intimidate",
@@ -1038,8 +1059,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Limit Break",
@@ -1047,8 +1071,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Limit Break",
@@ -1056,8 +1083,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Offering",
@@ -1065,8 +1095,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Offering",
@@ -1074,8 +1107,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Power Through",
@@ -1197,8 +1233,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Shockwave",
@@ -1206,8 +1245,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Shrug It Off",

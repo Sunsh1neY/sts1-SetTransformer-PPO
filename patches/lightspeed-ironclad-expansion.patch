@@ -1,3 +1,4 @@
+diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
 --- a/bindings/public-battle-env.cpp
 +++ b/bindings/public-battle-env.cpp
 @@ -1,5 +1,6 @@
@@ -15,10 +16,17 @@
      int actionCount_ = 0;
      int initialCards_ = 0;
      bool hasReset_ = false;
-@@ -163,6 +165,10 @@
+@@ -163,6 +165,17 @@
          int damage = 0, block = 0, magic = 0, hits = 1;
          bool all = false;
          switch (c.id) {
++            case CardId::CLASH: damage = up ? 18 : 14; break;
++            case CardId::HEMOKINESIS: damage = up ? 20 : 15; magic = 2; break;
++            case CardId::BLOODLETTING: magic = up ? 3 : 2; break;
++            case CardId::INTIMIDATE: magic = up ? 2 : 1; all = true; break;
++            case CardId::LIMIT_BREAK: magic = 2; break;
++            case CardId::OFFERING: magic = up ? 5 : 3; break;
++            case CardId::SHOCKWAVE: magic = up ? 5 : 3; all = true; break;
 +            case CardId::RAMPAGE: damage = 8 + c.specialData; magic = up ? 8 : 5; break;
 +            case CardId::BLOOD_FOR_BLOOD: damage = up ? 22 : 18; break;
 +            case CardId::BARRICADE: case CardId::CORRUPTION: magic = 1; break;
@@ -26,7 +34,7 @@
              case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
              case CardId::DEFEND_RED: block = up ? 8 : 5; break;
              case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
-@@ -186,7 +192,7 @@
+@@ -186,7 +199,7 @@
              case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
              case CardId::SEEING_RED: magic = 2; break;
              case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
@@ -35,7 +43,7 @@
              case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
              case CardId::FLEX: magic = up ? 4 : 2; break;
              case CardId::METALLICIZE: magic = up ? 4 : 3; break;
-@@ -214,7 +220,7 @@
+@@ -214,7 +227,7 @@
          }
          const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
          // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
@@ -44,7 +52,7 @@
              {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
              {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
              {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
-@@ -222,6 +228,21 @@
+@@ -222,6 +235,21 @@
              {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
              {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
              {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
@@ -66,7 +74,7 @@
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -233,7 +254,8 @@
+@@ -233,7 +261,8 @@
  
      void verifyDecision() const {
          if (bc_.undefinedBehaviorEvoked) throw std::runtime_error("后端标记未定义行为");
@@ -76,7 +84,7 @@
              throw std::runtime_error("出现未支持的二次选择或未结算队列");
          if (bc_.monsters.monsterCount > PUBLIC_TARGET_CAPACITY || bc_.cards.cardsInHand > PUBLIC_HAND_CAPACITY)
              throw std::runtime_error("后端实体数超出动作容量");
-@@ -252,7 +274,8 @@
+@@ -252,7 +281,8 @@
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -86,7 +94,7 @@
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +309,29 @@
+@@ -286,14 +316,29 @@
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -118,7 +126,7 @@
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -341,9 +379,9 @@
+@@ -341,9 +386,9 @@
                  if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
                  upgrade = 1; name.resize(plus);
              }
@@ -130,7 +138,7 @@
                  throw std::invalid_argument("该卡升级路径不支持");
              gc_->deck.obtainRaw(Card(id, upgrade));
          }
-@@ -391,6 +429,11 @@
+@@ -391,6 +436,11 @@
          return mask;
      }
  
@@ -142,7 +150,7 @@
      std::string observation() const { return observeJson().dump(); }
  
      std::string step(int action) {
-@@ -400,6 +443,28 @@
+@@ -400,6 +450,28 @@
          if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
          else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
          else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
@@ -171,7 +179,7 @@
          // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
          std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
          const int oldTurn = bc_.turn;
-@@ -439,9 +504,26 @@
+@@ -439,9 +511,26 @@
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
