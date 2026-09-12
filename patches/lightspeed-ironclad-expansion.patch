@@ -1,6 +1,6 @@
 diff --git a/bindings/ironclad-contract-config.h b/bindings/ironclad-contract-config.h
 new file mode 100644
-index 0000000..61cd432
+index 0000000..e195543
 --- /dev/null
 +++ b/bindings/ironclad-contract-config.h
 @@ -0,0 +1,90 @@
@@ -8,9 +8,9 @@ index 0000000..61cd432
 +#pragma once
 +#include <array>
 +namespace sts {
-+inline constexpr const char* IRONCLAD_OBSERVATION_SCHEMA = "ironclad-observation-v4";
++inline constexpr const char* IRONCLAD_OBSERVATION_SCHEMA = "ironclad-observation-v5";
 +inline constexpr const char* IRONCLAD_REGISTRY_SHA256 = "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6";
-+inline constexpr const char* IRONCLAD_CONTRACT_SHA256 = "52abb54afc0fae49b0fc578fbeee3b5306cfc59f5d31a6c0f266fa72a8a6827a";
++inline constexpr const char* IRONCLAD_CONTRACT_SHA256 = "c92d3bdf5ea47438e8b178c2079c5605c013fc68b91ec8033275bcfa4f0d3399";
 +inline constexpr std::array<const char*, 80> IRONCLAD_CARD_NAMES = {
 +"Bash",
 +"Defend_R",
@@ -95,7 +95,7 @@ index 0000000..61cd432
 +};
 +}
 diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
-index af31688..ded1371 100644
+index af31688..5b2a132 100644
 --- a/bindings/public-battle-env.cpp
 +++ b/bindings/public-battle-env.cpp
 @@ -1,5 +1,6 @@
@@ -198,7 +198,7 @@ index af31688..ded1371 100644
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -231,14 +286,24 @@ class PublicBattleEnv {
+@@ -231,14 +286,38 @@ class PublicBattleEnv {
          return rows;
      }
  
@@ -209,6 +209,20 @@ index af31688..ded1371 100644
 +            case CardSelectTask::HEADBUTT: case CardSelectTask::WARCRY: return true;
 +            default: return false;
 +        }
++    }
++
++    Json resolutionContext() const {
++        if (bc_.inputState != InputState::CARD_SELECT) return Json::object();
++        const auto &item = bc_.curCardQueueItem;
++        int pendingReplayCount = 0;
++        for (int i = 0; i < bc_.cardQueue.size; ++i) {
++            const int index = (bc_.cardQueue.frontIdx + i) % CardQueue::capacity;
++            if (bc_.cardQueue.arr[index].purgeOnUse) ++pendingReplayCount;
++        }
++        const char *sourceMode = item.purgeOnUse ? "REPLAY" : item.autoplay ? "AUTOPLAY" : "MANUAL";
++        return {{"source_mode", sourceMode},
++                {"source_will_exhaust", item.exhaustOnUse || item.card.doesExhaust()},
++                {"pending_replay_count", pendingReplayCount}};
 +    }
 +
      void verifyDecision() const {
@@ -225,7 +239,7 @@ index af31688..ded1371 100644
              throw std::runtime_error("生成量超出已证明边界");
      }
  
-@@ -252,7 +317,8 @@ class PublicBattleEnv {
+@@ -252,7 +331,8 @@ class PublicBattleEnv {
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -235,7 +249,7 @@ index af31688..ded1371 100644
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +352,27 @@ class PublicBattleEnv {
+@@ -286,14 +366,28 @@ class PublicBattleEnv {
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -254,7 +268,8 @@ index af31688..ded1371 100644
 +            result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
 +            result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
 +            if (!terminal() && bc_.inputState == InputState::CARD_SELECT)
-+                result["decision"] = {{"phase", "SELECT_CARD"}, {"selection", {{"kind", cardSelectTaskStrings[static_cast<int>(bc_.cardSelectInfo.cardSelectTask)]}}}};
++                result["decision"] = {{"phase", "SELECT_CARD"}, {"selection", {{"kind", cardSelectTaskStrings[static_cast<int>(bc_.cardSelectInfo.cardSelectTask)]}}},
++                    {"resolution_context", resolutionContext()}};
 +        }
 +        return result;
      }
@@ -265,7 +280,7 @@ index af31688..ded1371 100644
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -338,14 +417,24 @@ public:
+@@ -338,14 +432,24 @@ public:
              const auto plus = name.find('+');
              if (plus != std::string::npos) {
                  const auto suffix = name.substr(plus + 1);
@@ -295,7 +310,7 @@ index af31688..ded1371 100644
          }
          initialCards_ = gc_->deck.size();
          relicNames_.clear();
-@@ -391,6 +480,11 @@ public:
+@@ -391,6 +495,11 @@ public:
          return mask;
      }
  
@@ -307,7 +322,7 @@ index af31688..ded1371 100644
      std::string observation() const { return observeJson().dump(); }
  
      std::string step(int action) {
-@@ -400,6 +494,40 @@ public:
+@@ -400,6 +509,40 @@ public:
          if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
          else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
          else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
@@ -348,7 +363,7 @@ index af31688..ded1371 100644
          // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
          std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
          const int oldTurn = bc_.turn;
-@@ -439,9 +567,27 @@ public:
+@@ -439,9 +582,27 @@ public:
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };

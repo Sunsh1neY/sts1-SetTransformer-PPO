@@ -1,4 +1,11 @@
-> 2026-09-12修订：下文为v2输入/v1模型的历史说明。当前实施以 [输入v3契约](entity-input-v3-contract.md) 为准；115维卡牌、无伤害预览关系、取消466牌数截断。
+> 2026-09-13修订：下文的大部分内容是历史v2/v1说明。当前实施以[输入v3契约](entity-input-v3-contract.md)及本节v4补充为准；CARD 115维保持不变，动作评分新增独立公开结算上下文，不扩充普通卡牌token。
+
+## 当前v4动作评分补充（2026-09-13）
+
+- 统一实体模型版本为`unified-entity-set-v3`，共享接口版本为`unified-entity-interface-v4`。CARD token仍是115维，`feature_dimensions`和牌区布局不变。
+- SELECT_CARD暂停的`decision.resolution_context`是独立于实体token的公开上下文，字段固定为：`source_mode`（MANUAL/AUTOPLAY/REPLAY）、`source_will_exhaust`、`pending_replay_count`。它只表示已经发生的公开来源/队列语义汇总，不包含内部队列条目、内部实例ID、RNG、隐藏牌序或未来随机结果。
+- `Candidate.context`将上述上下文编码为3位来源one-hot、1位耗尽标记和1位数量/4，并与候选source/target实体表示、池化上下文和动作类别一起进入`UnifiedEntityActorCritic.action_head`。NORMAL候选使用全零上下文；环境`legal` mask仍在softmax前应用，流程上下文不替代合法性。
+- 真实核验覆盖手动Headbutt、Double Tap→Headbutt的待重复选择和Havoc→Headbutt的自动强制耗尽；同一候选实体可在不同公开暂停上下文下得到不同动作评分。CARD token不因B05扩维。
 
 # 统一实体接口：提供给敌人/药水扩展任务
 

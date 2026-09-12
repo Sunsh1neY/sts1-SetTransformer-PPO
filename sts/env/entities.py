@@ -24,6 +24,10 @@ CARD_NUMERIC = CONTRACT["card_numeric_scales"]
 CARD_BOOL = CONTRACT["card_boolean_fields"]
 PLAYER_NUMERIC = CONTRACT["player_numeric_scales"]
 HISTORY_NUMERIC = CONTRACT["history_numeric_fields"]
+CANDIDATE_CONTEXT = CONTRACT["candidate_context"]
+CANDIDATE_CONTEXT_DIM = CANDIDATE_CONTEXT["dimension"]
+RESOLUTION_MODES = CANDIDATE_CONTEXT["source_modes"]
+DEFAULT_CANDIDATE_CONTEXT = (0.0,) * CANDIDATE_CONTEXT_DIM
 
 
 def exact(obj, keys):
@@ -50,6 +54,17 @@ def onehot(value, choices):
     if value not in choices:
         raise ValueError(f"词表未登记：{value}")
     return [float(value == choice) for choice in choices]
+
+
+def resolution_context_features(value):
+    """把公开结算上下文变成候选特征；不进入任何普通实体token。"""
+    exact(value, set(CANDIDATE_CONTEXT["fields"]))
+    count = _integer(value["pending_replay_count"], "pending_replay_count")
+    if count < 0 or count > 10:
+        raise ValueError("待处理重复动作数量超出公开队列汇总边界")
+    return (onehot(value["source_mode"], RESOLUTION_MODES) +
+            [boolean(value["source_will_exhaust"]),
+             number(count, CANDIDATE_CONTEXT["pending_replay_count_scale"])])
 
 
 def status_features(values, vocabulary):
@@ -104,6 +119,7 @@ class Candidate:
     source: int
     target: int
     legal: bool
+    context: tuple[float, ...] = DEFAULT_CANDIDATE_CONTEXT
 
 
 @dataclass
@@ -120,7 +136,7 @@ class EntitySample:
         inverse = {old: new for new, old in enumerate(order)}
         remap = lambda i: -1 if i == -1 else inverse[i]
         return EntitySample([self.tokens[i] for i in order], self.edges[order][:, order].copy(),
-                            [Candidate(c.kind, remap(c.source), remap(c.target), c.legal) for c in self.candidates],
+                            [Candidate(c.kind, remap(c.source), remap(c.target), c.legal, c.context) for c in self.candidates],
                             copy.deepcopy(self.routes))
 
 
@@ -210,12 +226,13 @@ def encode_observation(obs):
             raise ValueError("NORMAL不能携带尚未结算的来源或offer")
         selection_kind, lo, hi = "NONE", 0, 0
     elif phase == "SELECT_CARD":
-        exact(decision, {"phase", "selection", "routing"})
+        exact(decision, {"phase", "selection", "routing", "resolution_context"})
         exact(decision["routing"], {"decision_id"} | ({"source_ref"} & set(decision["routing"])))
         exact(selection, {"phase", "selection_kind", "candidate_zone", "min_choices", "max_choices", "candidates", "candidate_mask"})
         if selection["phase"] != phase or normal_mask.any():
             raise ValueError("选择阶段不能开放普通动作")
         selection_kind, lo, hi = selection["selection_kind"], selection["min_choices"], selection["max_choices"]
+        candidate_context = tuple(resolution_context_features(decision["resolution_context"]))
         if lo != 1 or hi != 1:
             raise ValueError("多选与确认尚未接入")
     else:
@@ -235,8 +252,8 @@ def encode_observation(obs):
     edges = np.zeros((len(tokens), len(tokens), 0), dtype=np.float32)
     candidates, routes = [], []
 
-    def candidate(kind, source, target, legal, route):
-        candidates.append(Candidate(kind, source, target, bool(legal)))
+    def candidate(kind, source, target, legal, route, context=DEFAULT_CANDIDATE_CONTEXT):
+        candidates.append(Candidate(kind, source, target, bool(legal), tuple(context)))
         routes.append(copy.deepcopy(route))
 
     if phase == "NORMAL":
@@ -285,7 +302,8 @@ def encode_observation(obs):
                 raise ValueError("候选没有对应的公开实体")
             source = matches.pop(0)
             candidate("SELECT_CARD", source, origin, mask[i],
-                      {"kind": "SELECT_CARD", "decision_id": decision["routing"]["decision_id"], "candidate_index": i})
+                      {"kind": "SELECT_CARD", "decision_id": decision["routing"]["decision_id"], "candidate_index": i},
+                      candidate_context)
     return EntitySample(tokens, edges, candidates, routes)
 
 
@@ -301,6 +319,7 @@ def collate(samples, *, heads=4, resources=None):
              "features": {t: torch.zeros(b, n, dim) for t, dim in FEATURE_DIMS.items()},
              "edges": torch.zeros(b, n, n, 0), "kinds": torch.zeros(b, a, dtype=torch.long),
              "source": torch.full((b, a), -1, dtype=torch.long), "target": torch.full((b, a), -1, dtype=torch.long),
+             "candidate_context": torch.zeros(b, a, CANDIDATE_CONTEXT_DIM),
              "candidate_valid": torch.zeros(b, a, dtype=torch.bool), "legal": torch.zeros(b, a, dtype=torch.bool)}
     for i, sample in enumerate(samples):
         length = len(sample.tokens)
@@ -317,6 +336,9 @@ def collate(samples, *, heads=4, resources=None):
             if (c.kind not in KINDS or type(c.source) is not int or type(c.target) is not int or
                     not -1 <= c.source < length or not -1 <= c.target < length or not isinstance(c.legal, bool)):
                 raise ValueError("候选类型/引用/合法性错误")
+            if (len(c.context) != CANDIDATE_CONTEXT_DIM or
+                    not np.isfinite(np.asarray(c.context, dtype=np.float32)).all()):
+                raise ValueError("候选公开结算上下文布局或数值错误")
             expected_source = {"PLAY_TARGET": "CARD", "PLAY_SELF": "CARD", "END_TURN": "PLAYER_GLOBAL",
                                "POTION_TARGET": "POTION", "POTION_SELF": "POTION", "SELECT_CARD": "CARD"}[c.kind]
             if c.source < 0 or sample.tokens[c.source].entity_type != expected_source:
@@ -328,6 +350,7 @@ def collate(samples, *, heads=4, resources=None):
             if c.kind == "SELECT_CARD" and c.target >= 0 and sample.tokens[c.target].entity_type not in {"CARD", "POTION"}:
                 raise ValueError("当前选择来源只支持公开卡牌或药水")
             batch["kinds"][i, j], batch["source"][i, j], batch["target"][i, j] = KINDS.index(c.kind), c.source, c.target
+            batch["candidate_context"][i, j] = torch.tensor(c.context, dtype=torch.float32)
             batch["candidate_valid"][i, j], batch["legal"][i, j] = True, c.legal
     return batch
 

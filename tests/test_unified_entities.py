@@ -237,7 +237,9 @@ def test_offer_cards_and_resolving_potion_have_distinct_lifecycle_and_origin():
     obs["decision"] = {"phase": "SELECT_CARD", "selection": {"phase": "SELECT_CARD", "selection_kind": "DISCOVERY",
                         "candidate_zone": "offer", "min_choices": 1, "max_choices": 1,
                         "candidates": copy.deepcopy(obs["offers"]), "candidate_mask": [True, False]},
-                       "routing": {"decision_id": "interface-fixture", "source_ref": {"region": "resolving_potion", "index": 0}}}
+                       "routing": {"decision_id": "interface-fixture", "source_ref": {"region": "resolving_potion", "index": 0}},
+                       "resolution_context": {"source_mode": "MANUAL", "source_will_exhaust": False,
+                                              "pending_replay_count": 0}}
     sample = encode_observation(obs)
     assert len(sample.candidates) == 2
     assert all(sample.tokens[c.source].entity_type == "CARD" and sample.tokens[c.target].entity_type == "POTION"

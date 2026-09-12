@@ -1,8 +1,9 @@
 # 统一实体输入v3实施契约
 
-2026-09-12，用户逐项裁定后授权实施。替代v2输入及v1模型的对应设计；历史实验和checkpoint保持原身份。
+2026-09-13修订：CARD 115维布局保持不变；统一实体接口升级为`unified-entity-interface-v4`，模型为`unified-entity-set-v3`。历史实验和checkpoint保持原身份，旧checkpoint因代码/输入/动作评分契约指纹变化拒绝精确恢复。
 
-- 模型为unified-entity-set-v2，输入为unified-entity-interface-v3。仍2层/64宽/4头/FF128，无位置编码。删除伤害关系bias与动作头伤害关系输入；动作头保留源、目标、上下文、动作类别及引用有效位。
+- 模型仍为2层/64宽/4头/FF128、无位置编码。删除伤害关系bias与动作头伤害关系输入；动作头保留源、目标、池化上下文、动作类别、引用有效位及独立候选`resolution_context`。
+- `resolution_context`只在真实SELECT_CARD暂停出现，不进入普通CARD token。当前字段为`source_mode`（MANUAL/AUTOPLAY/REPLAY）、`source_will_exhaust`和`pending_replay_count`；它们由已经发生的公开队列语义汇总而来，供候选动作评分器使用，不导出队列条目、内部ID、RNG或隐藏牌序。候选上下文归一化为3位来源one-hot、1位耗尽标记和1位数量/4，不改变CARD 115维。
 - 费用：pay_cost在手牌为当前支付费用，非手牌为卡牌原始印刷费用（按卡名/升级获取）。这是一项用户指定的展示约定，不在本报告声称已完成正版显示行为对拍。base_cost保留实例战斗基础费用；recovery_cost保留一次免费影响前的本回合费用。当前旧观测仅手牌公开本回合费用，非手牌恢复值回退到公开base_cost；未来临时改费牌必须显式导出公开recovery_cost才能准入，不得用回退冒充完整记忆。X/不可打出类别的pay_cost置0作非数值占位，类别区分含义；X实际消耗、攻击次数、自动打出快照由环境处理，不增加策略动作。
 - 删除模型中的cost_known/effective_cost_known、printed_cost独立列、effective_cost独立列、cost_scope。保留free_to_play_once与上述恢复信息。不引入通用多效果编码。
 - 保留damage、combat_damage_bonus（damage已经包含该增量，不能再次相加）、base_block、后端block预览；保留公开玩家/敌人状态。伤害预览仍可存在于兼容环境原始行，但不可进入新模型tensor或评分。
@@ -16,7 +17,7 @@
 
 ## 验收与迁移
 
-必须验证费用差异、非手牌原始费用、X类别、顶牌标记合法性、伤害预览改变不影响模型、实体置换/候选路由、格挡保留、超过旧466阈值无牌数截断、资源异常、前向反向与严格恢复。旧checkpoint因结构与指纹改变拒绝加载；不声称全卡/完整活动环境恢复，不启动正式长训。
+必须验证费用差异、非手牌原始费用、X类别、顶牌标记合法性、公开结算上下文进入候选评分且不进入CARD token、伤害预览改变不影响模型、实体置换/候选路由、格挡保留、超过旧466阈值无牌数截断、资源异常、前向反向与严格恢复。旧checkpoint因结构与指纹改变拒绝加载；不声称全卡/完整活动环境恢复，不启动正式长训。
 
 ## 当前字段与跨任务接入
 

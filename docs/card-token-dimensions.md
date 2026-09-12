@@ -2,6 +2,8 @@
 
 2026-09-12；由 `scripts/audit-card-token.py` 从当前契约生成并对拍实际 `card_features`。索引从0开始；数值只除以尺度，不裁剪到[0,1]。所有115维为float32。身份是卡牌种类，不是隐藏实例ID。
 
+2026-09-13补充：B05未改变CARD 115维。SELECT_CARD候选另有5维`Candidate.context`（来源MANUAL/AUTOPLAY/REPLAY、来源强制耗尽、待重复选择数量/4），该上下文不属于卡牌token维度。
+
 | 索引 | 字段/类别 | 含义 | 编码 |
 |---|---|---|---|
 | 0 | `upgrade_count` | 升级次数 | 原值/5 |

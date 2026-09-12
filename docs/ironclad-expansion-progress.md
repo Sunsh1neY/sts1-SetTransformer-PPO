@@ -21,6 +21,13 @@
 - B03：`CardInstance::canUpgrade`将Searing Blow `specialData>=100`视为过滤终端；+100仍可构造、编码和保留原公式，直接越过边界的后端资源保护仍存在，不把它改写成游戏规则终点。
 - F3标准增量构建通过；F1定向回归最终10 passed。尚未执行CPU全仓回归、B05动作上下文修复、最终checkpoint恢复和合并报告，不能宣布最终可合并。
 
+## F4：暂停动作接口核验与最小上下文（2026-09-13）
+
+- 成对真实路径覆盖手动Headbutt、Double Tap→Headbutt和Havoc→Headbutt。当前候选实体/选择种类/mask/路由可见，但来源模式、强制耗尽和待重复选择数量此前没有进入动作评分输入。
+- 新增公开`resolution_context`：`source_mode`、`source_will_exhaust`、`pending_replay_count`；通过`Candidate.context`进入动作评分器，CARD token、PLAYER_GLOBAL token、普通66动作和环境mask均未扩充。未导出完整队列、内部ID、RNG或隐藏牌序。
+- 版本同步为`unified-entity-interface-v4`/`unified-entity-set-v3`、扩展契约v2/观测v5/单选动作v2；B05定向2项通过，联合定向回归43项通过，构建及增量补丁正向检查通过。旧checkpoint因指纹变化拒绝精确恢复尚待独立检查。
+- F5仍未完成：CPU全仓回归、短时前向/反向/采集、新checkpoint保存/恢复、审计同步最终检查和`docs/card-token-fix-report.md`。
+
 ## E7补验：无牌但仍有持续效果/药水（2026-09-13）
 
 - 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。

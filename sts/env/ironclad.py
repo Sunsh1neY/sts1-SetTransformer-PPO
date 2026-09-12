@@ -29,8 +29,20 @@ def normalize_ironclad(raw):
     value = json.loads(json.dumps(raw, allow_nan=False))
     if value.get("schema") != CONTRACT["observation_schema"]:
         raise ValueError("扩展观测schema不匹配")
-    if value.get("decision") not in ([{"phase": "NORMAL", "selection": None}] +
-                                    [{"phase": "SELECT_CARD", "selection": {"kind": k}} for k in ZONES if k != "DISCOVERY"]):
+    decision = value.get("decision")
+    if not isinstance(decision, dict):
+        raise ValueError("未知或不完整的选择阶段")
+    if decision.get("phase") == "NORMAL":
+        if decision != {"phase": "NORMAL", "selection": None}:
+            raise ValueError("未知或不完整的普通阶段")
+    elif decision.get("phase") == "SELECT_CARD":
+        selection = decision.get("selection")
+        if not isinstance(selection, dict) or selection.get("kind") not in {k for k in ZONES if k != "DISCOVERY"}:
+            raise ValueError("未知或不完整的选择阶段")
+        context = decision.get("resolution_context")
+        if not isinstance(context, dict) or set(context) != {"source_mode", "source_will_exhaust", "pending_replay_count"}:
+            raise ValueError("选择阶段缺少公开结算上下文")
+    else:
         raise ValueError("未知或不完整的选择阶段")
     # 复用旧字段的严格准入检查，同时保留所有扩展字段与逐实体排序。
     value = normalize_observation(value, contract=RUNTIME_CONTRACT)
@@ -75,7 +87,9 @@ class IroncladEnv(PublicBattleEnv):
                     probe[zone] = [json.loads(self._env.selection_card(index))]
                     pairs.append((index, normalize_ironclad(probe)[zone][0]))
                 view = self._selection.publish(kind, pairs)
-            obs["decision"] = {"phase": "SELECT_CARD", "selection": view["semantic"], "routing": view["routing"]}
+            obs["decision"] = {"phase": "SELECT_CARD", "selection": view["semantic"],
+                                "routing": view["routing"],
+                                "resolution_context": obs["decision"]["resolution_context"]}
         return obs
 
     def __init__(self, max_actions=512):

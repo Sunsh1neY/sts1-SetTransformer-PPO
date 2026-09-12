@@ -534,3 +534,10 @@
 - B01、B02、B04按审计反例修复并补行为/编码/合法性证据；优先复用现有费用字段和既有区域/队列语义。B05先完成现有输入的成对可区分性核验，只有证实动作评分缺少公开差异才新增最小候选上下文。B01–B05不改变battle_reward_v1、不启动正式长时间PPO、不自动合并或推送。
 - 修复小里程碑依次为：裁定登记与问题复现；费用与分类（B01/B04）；Havoc生命周期（B02）；暂停动作接口核验及必要修复（B05）；最终回归、恢复契约和合并报告。每步提交对应代码、测试和记录；旧MLP/Set实验、旧checkpoint及历史里程碑保持历史身份。
 - 当前状态：裁定已登记，B01/B02/B04/B05修复和最终回归尚未验收。完成结论以`docs/card-token-fix-report.md`为准，可合并与仍有阻塞不得预先写死。
+
+## B05公开暂停上下文收口（2026-09-13）
+
+- 成对真实路径核验确认：手动Headbutt、Double Tap→Headbutt和Havoc→Headbutt的当前CARD/PLAYER_GLOBAL/选择候选能表达当前候选集合，但不能直接表达来源模式、来源强制耗尽和待重复选择数量。日志、路由凭据和mask不能替代这些动作评分输入。
+- 采用最小独立`resolution_context`，不改变CARD 115维。字段固定为`source_mode`、`source_will_exhaust`、`pending_replay_count`；编码为候选上下文并实际拼入`UnifiedEntityActorCritic.action_head`。NORMAL候选上下文全零。
+- `pending_replay_count`只是公开重复队列语义的数量汇总，不发布队列条目、卡牌内部ID、随机状态或隐藏牌序；当前不增加X能量快照、通用来源枚举或完整历史记忆。
+- 因动作评分输入变化，接口/模型升级为`unified-entity-interface-v4`/`unified-entity-set-v3`，扩展观测/动作契约升级为v2/v5；旧checkpoint必须通过指纹拒绝精确恢复。该决策不等于正式训练准入。

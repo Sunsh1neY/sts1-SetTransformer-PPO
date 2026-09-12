@@ -1,5 +1,5 @@
 {
-  "schema": "ironclad-expansion-contract-v1",
+  "schema": "ironclad-expansion-contract-v2",
   "status": "development",
   "reward_version": "battle_reward_v1",
   "gamma": 1.0,
@@ -7,14 +7,20 @@
   "beta": 0.0,
   "task_type": "battle",
   "model_family": "unified-entity-set",
-  "observation_schema": "ironclad-observation-v4",
-  "action_schema": "ironclad-normal-66-and-single-select-v1",
+  "observation_schema": "ironclad-observation-v5",
+  "action_schema": "ironclad-normal-66-and-single-select-v2",
   "normal_action_count": 66,
   "supported_phases": [
     "NORMAL",
     "SELECT_CARD"
   ],
   "selection_status": "six-single-selection-kinds",
+  "resolution_context_schema": "resolution-context-v1",
+  "resolution_context_fields": [
+    "source_mode",
+    "source_will_exhaust",
+    "pending_replay_count"
+  ],
   "capacity_status": "full-card-runtime-resource-guards",
   "training_admitted": false,
   "baseline_commit": "50b756e",

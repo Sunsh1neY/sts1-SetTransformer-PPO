@@ -1,4 +1,10 @@
-> 2026-09-12修订：下文为v2输入/v1模型的历史说明。当前实施以 [输入v3契约](entity-input-v3-contract.md) 为准；115维卡牌、无伤害预览关系、取消466牌数截断。
+> 2026-09-13修订：下文的旧数字和旧版本保持历史身份。当前实施以[输入v3契约](entity-input-v3-contract.md)和统一实体接口v4为准；CARD 115维不变，动作评分另接公开`resolution_context`。
+
+## 当前修复后接口状态（2026-09-13）
+
+- 当前模型/接口为`unified-entity-set-v3`/`unified-entity-interface-v4`。候选评分在实体source/target和池化上下文之外接收5维公开结算上下文：来源MANUAL/AUTOPLAY/REPLAY、是否强制耗尽、待重复选择数量/4。
+- 该上下文只存在于SELECT_CARD决策和候选评分路径，不进入CARD token、PLAYER_GLOBAL token或普通66动作语义；mask来源和路由凭据边界保持不变。
+- 手动Headbutt、Double Tap→Headbutt、Havoc→Headbutt的真实暂停探针已通过；旧模型/旧checkpoint因输入与动作评分契约指纹变化拒绝精确恢复。本文历史段落中的CARD122、v1模型、旧关系bias和旧容量描述不适用于当前版本。
 
 # 统一实体架构交付与验证报告
 

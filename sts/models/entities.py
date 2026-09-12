@@ -5,7 +5,7 @@ import torch
 from torch import nn
 from torch.distributions import Categorical
 
-from sts.env.entities import CONTRACT, FEATURE_DIMS, KINDS, TYPES
+from sts.env.entities import CANDIDATE_CONTEXT_DIM, CONTRACT, FEATURE_DIMS, KINDS, TYPES
 
 
 @dataclass(frozen=True)
@@ -48,7 +48,7 @@ class EntityBlock(nn.Module):
 
 
 class UnifiedEntityActorCritic(nn.Module):
-    model_version = "unified-entity-set-v2"
+    model_version = "unified-entity-set-v3"
 
     def __init__(self, architecture=None):
         super().__init__()
@@ -60,7 +60,7 @@ class UnifiedEntityActorCritic(nn.Module):
         self.blocks = nn.ModuleList([EntityBlock(self.architecture) for _ in range(self.architecture.layers)])
         self.final_norm = nn.LayerNorm(w)
         self.action_embedding = nn.Embedding(len(KINDS), 8)
-        self.action_head = nn.Sequential(nn.Linear(3 * w + 10, w), nn.GELU(), nn.Linear(w, 1))
+        self.action_head = nn.Sequential(nn.Linear(3 * w + 10 + CANDIDATE_CONTEXT_DIM, w), nn.GELU(), nn.Linear(w, 1))
         self.value_head = nn.Sequential(nn.Linear(w, w), nn.GELU(), nn.Linear(w, 1))
 
     def encode_entities(self, batch):
@@ -97,8 +97,9 @@ class UnifiedEntityActorCritic(nn.Module):
 
         source, target = batch["source"], batch["target"]
         features = torch.cat([gather(source), gather(target), context[:, None].expand(-1, a, -1),
-                              self.action_embedding(batch["kinds"]),
-                              (source >= 0).float()[..., None], (target >= 0).float()[..., None]], -1)
+                               self.action_embedding(batch["kinds"]),
+                               (source >= 0).float()[..., None], (target >= 0).float()[..., None],
+                               batch["candidate_context"]], -1)
         scores = self.action_head(features).squeeze(-1)
         mask = batch["candidate_valid"] & batch["legal"]
         return scores.masked_fill(~mask, -torch.inf), self.value_head(context).squeeze(-1)

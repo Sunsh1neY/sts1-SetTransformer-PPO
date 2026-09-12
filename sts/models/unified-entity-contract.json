@@ -1,6 +1,6 @@
 {
-  "schema": "unified-entity-interface-v3",
-  "model": "unified-entity-set-v2",
+  "schema": "unified-entity-interface-v4",
+  "model": "unified-entity-set-v3",
   "architecture": {
     "width": 64,
     "heads": 4,
@@ -28,6 +28,21 @@
     "POTION_SELF",
     "SELECT_CARD"
   ],
+  "candidate_context": {
+    "schema": "resolution-context-v1",
+    "source_modes": [
+      "MANUAL",
+      "AUTOPLAY",
+      "REPLAY"
+    ],
+    "fields": [
+      "source_mode",
+      "source_will_exhaust",
+      "pending_replay_count"
+    ],
+    "dimension": 5,
+    "pending_replay_count_scale": 4
+  },
   "regions": [
     "hand",
     "draw_pile",
