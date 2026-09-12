@@ -94,6 +94,9 @@ if ($ExtraPatch -and -not $extraAlreadyApplied) {
     Invoke-Checked 'git' @('-C', $sourceDir, 'apply', $ExtraPatch)
 }
 
+if ($ExtraPatch) {
+    Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-ironclad-contract.py'))
+}
 # 新公开环境的动作/容量与Python共用单一JSON契约。
 Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-public-contract.py'))
 

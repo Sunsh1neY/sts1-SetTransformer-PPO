@@ -1,0 +1,230 @@
+{
+  "schema": "ironclad-registry-v1",
+  "cards": [
+    {
+      "id": 1,
+      "name": "Bash",
+      "max_upgrade": 1
+    },
+    {
+      "id": 2,
+      "name": "Defend_R",
+      "max_upgrade": 1
+    },
+    {
+      "id": 3,
+      "name": "Strike_R",
+      "max_upgrade": 1
+    },
+    {
+      "id": 4,
+      "name": "Battle Trance",
+      "max_upgrade": 1
+    },
+    {
+      "id": 5,
+      "name": "Bludgeon",
+      "max_upgrade": 1
+    },
+    {
+      "id": 6,
+      "name": "Body Slam",
+      "max_upgrade": 1
+    },
+    {
+      "id": 7,
+      "name": "Carnage",
+      "max_upgrade": 1
+    },
+    {
+      "id": 8,
+      "name": "Cleave",
+      "max_upgrade": 1
+    },
+    {
+      "id": 9,
+      "name": "Clothesline",
+      "max_upgrade": 1
+    },
+    {
+      "id": 10,
+      "name": "Demon Form",
+      "max_upgrade": 1
+    },
+    {
+      "id": 11,
+      "name": "Dropkick",
+      "max_upgrade": 1
+    },
+    {
+      "id": 12,
+      "name": "Entrench",
+      "max_upgrade": 1
+    },
+    {
+      "id": 13,
+      "name": "Feel No Pain",
+      "max_upgrade": 1
+    },
+    {
+      "id": 14,
+      "name": "Flame Barrier",
+      "max_upgrade": 1
+    },
+    {
+      "id": 15,
+      "name": "Flex",
+      "max_upgrade": 1
+    },
+    {
+      "id": 16,
+      "name": "Ghostly Armor",
+      "max_upgrade": 1
+    },
+    {
+      "id": 17,
+      "name": "Heavy Blade",
+      "max_upgrade": 1
+    },
+    {
+      "id": 18,
+      "name": "Immolate",
+      "max_upgrade": 1
+    },
+    {
+      "id": 19,
+      "name": "Impervious",
+      "max_upgrade": 1
+    },
+    {
+      "id": 20,
+      "name": "Inflame",
+      "max_upgrade": 1
+    },
+    {
+      "id": 21,
+      "name": "Metallicize",
+      "max_upgrade": 1
+    },
+    {
+      "id": 22,
+      "name": "Pommel Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 23,
+      "name": "Power Through",
+      "max_upgrade": 1
+    },
+    {
+      "id": 24,
+      "name": "Pummel",
+      "max_upgrade": 1
+    },
+    {
+      "id": 25,
+      "name": "Rage",
+      "max_upgrade": 1
+    },
+    {
+      "id": 26,
+      "name": "Reckless Charge",
+      "max_upgrade": 1
+    },
+    {
+      "id": 27,
+      "name": "Seeing Red",
+      "max_upgrade": 1
+    },
+    {
+      "id": 28,
+      "name": "Sentinel",
+      "max_upgrade": 1
+    },
+    {
+      "id": 29,
+      "name": "Shrug It Off",
+      "max_upgrade": 1
+    },
+    {
+      "id": 30,
+      "name": "Spot Weakness",
+      "max_upgrade": 1
+    },
+    {
+      "id": 31,
+      "name": "Thunderclap",
+      "max_upgrade": 1
+    },
+    {
+      "id": 32,
+      "name": "True Grit",
+      "max_upgrade": 0
+    },
+    {
+      "id": 33,
+      "name": "Twin Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 34,
+      "name": "Uppercut",
+      "max_upgrade": 1
+    },
+    {
+      "id": 35,
+      "name": "Wild Strike",
+      "max_upgrade": 1
+    },
+    {
+      "id": 36,
+      "name": "AscendersBane",
+      "max_upgrade": 0
+    },
+    {
+      "id": 37,
+      "name": "Wound",
+      "max_upgrade": 0
+    },
+    {
+      "id": 38,
+      "name": "Dazed",
+      "max_upgrade": 0
+    },
+    {
+      "id": 39,
+      "name": "Burn",
+      "max_upgrade": 0
+    },
+    {
+      "id": 40,
+      "name": "Slimed",
+      "max_upgrade": 0
+    },
+    {
+      "id": 43,
+      "name": "Barricade",
+      "max_upgrade": 1
+    },
+    {
+      "id": 45,
+      "name": "Blood for Blood",
+      "max_upgrade": 1
+    },
+    {
+      "id": 50,
+      "name": "Combust",
+      "max_upgrade": 1
+    },
+    {
+      "id": 51,
+      "name": "Corruption",
+      "max_upgrade": 1
+    },
+    {
+      "id": 71,
+      "name": "Rampage",
+      "max_upgrade": 1
+    }
+  ]
+}

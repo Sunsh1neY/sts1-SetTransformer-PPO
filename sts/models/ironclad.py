@@ -2,16 +2,19 @@
 import copy
 
 import numpy as np
+from sts.env.public_battle import _canonical
 from torch import nn
 
-from sts.env.ironclad import CONTRACT, REGIONS, semantic_extensions
+from sts.env.ironclad import CONTRACT, REGIONS, CARD_BY_NAME, RUNTIME_CONTRACT, semantic_extensions
 from sts.models.comparison import (
-    CARD_KEYS, FEATURES, SLOTS, ComparisonActorCritic, encode as encode_comparison,
+    CARD_KEYS, FEATURES, SLOTS, CARD_NUMERIC, CARD_BOOL, PLAYER, HISTORY,
+    CONTRACT as BASE_ENCODING, ComparisonActorCritic, exact_keys, statuses, onehot,
 )
 
-EXTRA_CARD_KEYS = {"combat_damage_bonus", "is_strike", "effective_exhaust", "cost_kind"}
-EXTRA_FEATURES = 6
-ENCODING_VERSION = "ironclad-set-encoding-v1"
+EXTRA_CARD_KEYS = {"combat_damage_bonus", "is_strike", "effective_exhaust", "cost_kind",
+                   "printed_cost", "effective_cost", "effective_cost_known", "cost_scope"}
+EXTRA_FEATURES = 14
+ENCODING_VERSION = "ironclad-set-encoding-v2"
 
 
 def encode(obs):
@@ -22,7 +25,6 @@ def encode(obs):
         raise ValueError("候选头尚未验收")
     base = copy.deepcopy(obs)
     del base["decision"]
-    base["schema"] = "public-observation-v1"
     del base["player"]["combust_hp_loss"]
     for region in REGIONS:
         for card in base[region]:
@@ -33,14 +35,13 @@ def encode(obs):
                         for card in base[region]]
     # 基础编码会重排非手牌；必须以同一完整公开排序绑定增量行。
     # 逐卡拼接后再排序，避免同名不同动态属性与基础行失配。
-    from sts.env.public_battle import _canonical
     ordered = copy.deepcopy(obs)
     for region in REGIONS[1:]:
         pairs = list(zip(base[region], ordered[region]))
         pairs.sort(key=lambda pair: _canonical(pair[0]))
         base[region] = [a for a, _ in pairs]
         ordered[region] = [b for _, b in pairs]
-    result = encode_comparison(base)
+    result = _encode_base(base)
     extra = semantic_extensions(ordered)
     padded = np.zeros((SLOTS, EXTRA_FEATURES), dtype=np.float32)
     padded[:len(extra["cards"])] = extra["cards"]
@@ -56,5 +57,79 @@ class IroncladActorCritic(ComparisonActorCritic):
 
     def __init__(self, global_dim):
         super().__init__("set", global_dim)
+        self.embedding = nn.Embedding(max(r["id"] for r in RUNTIME_CONTRACT["cards"]) + 1, 8, padding_idx=0)
         self.card_projection = nn.Sequential(nn.Linear(FEATURES + EXTRA_FEATURES + 8, 32), nn.Tanh())
         self.encoding_version = ENCODING_VERSION
+
+
+def _encode_base(obs):
+    exact_keys(obs, {"schema", "hand", "draw_pile", "discard_pile", "exhaust_pile", "player", "enemies", "potions", "potion_capacity", "relics", "action_mask"})
+    if obs["schema"] != RUNTIME_CONTRACT["observation_schema"] or sum(len(obs[k]) for k in REGIONS) > BASE_ENCODING["card_entities"]:
+        raise ValueError("观测schema或实体容量不符")
+    ids = np.zeros(SLOTS, dtype=np.int64)
+    features = np.zeros((SLOTS, FEATURES), dtype=np.float32)
+    valid = np.zeros(SLOTS, dtype=np.bool_)
+    cursor = 0
+    for region, pile in enumerate(("hand", "draw_pile", "discard_pile", "exhaust_pile")):
+        rows = obs[pile] if region == 0 else sorted(obs[pile], key=_canonical)
+        if region == 0 and len(rows) > 10:
+            raise ValueError("手牌超容量")
+        for i, card in enumerate(rows):
+            exact_keys(card, CARD_KEYS)
+            if CARD_BY_NAME[card["name"]]["id"] != card["card_id"]:
+                raise ValueError("卡牌名称与ID矛盾")
+            # 手牌依实际顺序放在最前，随后紧凑放三种非手牌区；区域特征明确区分。
+            # 少于10张手牌时，后面的出牌动作由环境mask关闭，不把非手牌当手牌。
+            pos = cursor
+            cursor += 1
+            ids[pos], valid[pos] = card["card_id"], True
+            if len(card["damage_by_target"]) != 5:
+                raise ValueError("目标伤害缺行")
+            features[pos] = ([card[k] / s for k, s in CARD_NUMERIC.items()] +
+                             [float(card[k]) for k in CARD_BOOL] + [v / 50 for v in card["damage_by_target"]] +
+                             onehot(card["card_type"], BASE_ENCODING["card_types"]) + onehot(region, list(range(4))) +
+                             [onehot(card["target_kind"], ["NO_TARGET", "ENEMY"])[1]])
+    player = obs["player"]
+    exact_keys(player, set(PLAYER) | {"statuses"})
+    global_values = [player[k] / s for k, s in PLAYER.items()] + statuses(player["statuses"], BASE_ENCODING["player_statuses"])
+    for enemy in obs["enemies"]:
+        exact_keys(enemy, {"name", "present", "targetable", "hp", "max_hp", "block", "intent_damage", "intent_hits", "intent_kind", "public_history", "statuses"})
+        history = enemy["public_history"]
+        exact_keys(history, set(HISTORY) | {"last_intent_kind", "previous_intent_kind"})
+        global_values += [float(enemy[k]) for k in ("present", "targetable")]
+        global_values += [enemy[k] / 100 for k in ("hp", "max_hp", "block", "intent_damage")]
+        global_values += [enemy["intent_hits"] / 5] + onehot(enemy["name"], BASE_ENCODING["enemy_names"])
+        global_values += onehot(enemy["intent_kind"], BASE_ENCODING["intent_kinds"])
+        global_values += statuses(enemy["statuses"], BASE_ENCODING["enemy_statuses"])
+        global_values += [history[k] / 50 for k in HISTORY]
+        for key in ("last_intent_kind", "previous_intent_kind"):
+            global_values += onehot(history[key], BASE_ENCODING["intent_kinds"])
+    for potion in obs["potions"]:
+        exact_keys(potion, {"name", "present", "potency", "target_kind", "potion_id"})
+        names = [""] + [r["name"] for r in RUNTIME_CONTRACT["potions"]]
+        if potion["potion_id"] != names.index(potion["name"]):
+            raise ValueError("药水ID不一致")
+        global_values += onehot(potion["name"], names) + [float(potion["present"]), potion["potency"] / 20,
+                         onehot(potion["target_kind"], ["NO_TARGET", "ENEMY"])[1]]
+    by_relic = {}
+    for relic in obs["relics"]:
+        exact_keys(relic, {"name", "counter", "relic_id"})
+        if relic["name"] in by_relic:
+            raise ValueError("重复遗物")
+        by_relic[relic["name"]] = relic
+    if set(by_relic) - {r["name"] for r in RUNTIME_CONTRACT["relics"]}:
+        raise ValueError("未知遗物")
+    for definition in RUNTIME_CONTRACT["relics"]:
+        relic = by_relic.get(definition["name"])
+        if relic and relic["relic_id"] != definition["id"]:
+            raise ValueError("遗物ID不一致")
+        counter = None if relic is None else relic["counter"]
+        global_values += [float(relic is not None), float(counter is not None), (counter or 0) / 10]
+    global_values += [obs["potion_capacity"] / 3]
+    result = {"ids": ids, "cards": features, "valid": valid,
+              "global": np.asarray(global_values, dtype=np.float32), "mask": np.asarray(obs["action_mask"], dtype=np.bool_).copy()}
+    if len(obs["enemies"]) != 5 or len(obs["potions"]) != 3 or result["mask"].shape != (66,):
+        raise ValueError("实体或动作维度错误")
+    if not np.isfinite(features).all() or not np.isfinite(result["global"]).all():
+        raise ValueError("非有限观测")
+    return result

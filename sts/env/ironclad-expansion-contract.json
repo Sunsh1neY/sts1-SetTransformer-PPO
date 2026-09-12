@@ -7,14 +7,14 @@
   "beta": 0.0,
   "task_type": "battle",
   "model_family": "set",
-  "observation_schema": "ironclad-observation-v1",
+  "observation_schema": "ironclad-observation-v2",
   "action_schema": "ironclad-normal-66-v1",
   "normal_action_count": 66,
   "supported_phases": [
     "NORMAL"
   ],
   "selection_status": "pending-E3",
-  "capacity_status": "legacy-content-only; expansion-proof-pending",
+  "capacity_status": "legacy-bound-valid-for-five-no-generation-probes; full-expansion-proof-pending",
   "training_admitted": false,
   "baseline_commit": "50b756e",
   "comparison_freeze_status": "pending",
@@ -39,5 +39,6 @@
     "sts/train/comparison.py": "951f49137f1e7b62b8723b6204097ee768f56669525f3bfb923882d7286f0b2c",
     "patches/lightspeed-battle-env.patch": "fe8168a3cbfa5595fefa7e9bf205ea9db0dc017096ac4809120feb8d8896c9aa",
     "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
-  }
+  },
+  "registry": "ironclad-registry-v1"
 }

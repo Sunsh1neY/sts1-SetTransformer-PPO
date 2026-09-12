@@ -42,17 +42,18 @@ def _reject_hidden_fields(value: Any) -> None:
             _reject_hidden_fields(item)
 
 
-def normalize_observation(raw: Mapping[str, Any]) -> dict[str, Any]:
+def normalize_observation(raw: Mapping[str, Any], *, contract: Mapping[str, Any] = PUBLIC_CONTRACT) -> dict[str, Any]:
     """复制并检查语义输出，映射项目ID；不丢失牌堆或状态。"""
+    card_by_name = {entry["name"]: entry for entry in contract["cards"]}
     observation = json.loads(json.dumps(raw, allow_nan=False))
-    if observation.get("schema") != PUBLIC_CONTRACT["observation_schema"]:
+    if observation.get("schema") != contract["observation_schema"]:
         raise ValueError("public观测schema不匹配")
     _reject_hidden_fields(observation)
     for key in ("hand", "draw_pile", "discard_pile", "exhaust_pile"):
         if not isinstance(observation.get(key), list):
             raise ValueError(f"观测缺少完整{key}")
         for card in observation[key]:
-            definition = CARD_BY_NAME.get(card.get("name"))
+            definition = card_by_name.get(card.get("name"))
             if definition is None:
                 raise ValueError(f"后端返回未登记卡牌：{card.get('name')}")
             upgrade = _integer(card.get("upgrade_count"), "upgrade_count")
@@ -65,13 +66,13 @@ def normalize_observation(raw: Mapping[str, Any]) -> dict[str, Any]:
                 raise ValueError("非手牌费用未完成可见性核验")
         if key != "hand":
             observation[key].sort(key=lambda card: _canonical(card))
-    if len(observation["hand"]) > PUBLIC_CONTRACT["capacity"]["hand"]:
+    if len(observation["hand"]) > contract["capacity"]["hand"]:
         raise ValueError("手牌容量越界")
     count = sum(len(observation[key]) for key in ("hand", "draw_pile", "discard_pile", "exhaust_pile"))
-    if count > PUBLIC_CONTRACT["capacity"]["max_card_entities_bound"]:
+    if count > contract["capacity"]["max_card_entities_bound"]:
         raise ValueError("完整卡实体超过已证明的采集预算上界")
     for key, capacity in (("enemies", "targets"), ("potions", "potions")):
-        if not isinstance(observation.get(key), list) or len(observation[key]) != PUBLIC_CONTRACT["capacity"][capacity]:
+        if not isinstance(observation.get(key), list) or len(observation[key]) != contract["capacity"][capacity]:
             raise ValueError(f"{key}容量不匹配")
     for potion in observation["potions"]:
         if potion.get("present"):
@@ -93,7 +94,7 @@ def normalize_observation(raw: Mapping[str, Any]) -> dict[str, Any]:
     if max_hp <= 0 or not 0 <= hp <= max_hp:
         raise ValueError("玩家HP非法")
     mask = np.asarray(observation.get("action_mask"))
-    if mask.dtype != np.bool_ or mask.shape != (ACTION_COUNT,):
+    if mask.dtype != np.bool_ or mask.shape != (contract["action_count"],):
         raise ValueError("public动作mask必须为66位布尔值")
     observation["action_mask"] = mask.copy()
     return observation

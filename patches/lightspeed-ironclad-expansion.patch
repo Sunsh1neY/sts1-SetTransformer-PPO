@@ -1,6 +1,13 @@
 --- a/bindings/public-battle-env.cpp
 +++ b/bindings/public-battle-env.cpp
-@@ -149,6 +149,7 @@
+@@ -1,5 +1,6 @@
+ #include "public-battle-env.h"
+ #include "public-contract-config.h"
++#include "ironclad-contract-config.h"
+ #include <pybind11/stl.h>
+ #include <nlohmann/json.hpp>
+ #include <algorithm>
+@@ -149,6 +150,7 @@
      std::unique_ptr<GameContext> gc_;
      BattleContext bc_;
      int maxActions_;
@@ -8,7 +15,18 @@
      int actionCount_ = 0;
      int initialCards_ = 0;
      bool hasReset_ = false;
-@@ -214,7 +215,7 @@
+@@ -163,6 +165,10 @@
+         int damage = 0, block = 0, magic = 0, hits = 1;
+         bool all = false;
+         switch (c.id) {
++            case CardId::RAMPAGE: damage = 8 + c.specialData; magic = up ? 8 : 5; break;
++            case CardId::BLOOD_FOR_BLOOD: damage = up ? 22 : 18; break;
++            case CardId::BARRICADE: case CardId::CORRUPTION: magic = 1; break;
++            case CardId::COMBUST: magic = up ? 7 : 5; break;
+             case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
+             case CardId::DEFEND_RED: block = up ? 8 : 5; break;
+             case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
+@@ -214,7 +220,7 @@
          }
          const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
          // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
@@ -17,12 +35,18 @@
              {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
              {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
              {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
-@@ -222,6 +223,15 @@
+@@ -222,6 +228,21 @@
              {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
              {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
              {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
 +        if (expanded_) {
 +            // 只输出具名公开属性，不输出specialData或实例ID。
++            const bool corruption = c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>();
++            row["printed_cost"] = getEnergyCost(c.id, up);
++            row["effective_cost_known"] = inHand;
++            row["effective_cost"] = inHand ? (corruption || c.isFreeToPlay(bc_) ? 0 : std::max(0, static_cast<int>(c.costForTurn))) : 0;
++            row["cost_scope"] = !inHand ? "UNKNOWN" : corruption ? "POWER" : c.freeToPlayOnce ? "ONCE" :
++                c.costForTurn != c.cost ? "TURN" : "COMBAT";
 +            row["combat_damage_bonus"] = c.id == CardId::RAMPAGE ? c.specialData : 0;
 +            row["is_strike"] = c.isStrikeCard();
 +            row["cost_kind"] = c.isXCost() ? "X" : c.cost == -2 ? "UNPLAYABLE" : "ENERGY";
@@ -33,7 +57,7 @@
      }
  
      template <typename C> Json pileRows(const C &pile) const {
-@@ -252,7 +262,8 @@
+@@ -252,7 +273,8 @@
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -43,7 +67,7 @@
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
          Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
-@@ -286,14 +297,20 @@
+@@ -286,14 +308,20 @@
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
          for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
@@ -53,7 +77,7 @@
              {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
              {"relics", relics}, {"action_mask", actionMask()}};
 +        if (expanded_) {
-+            result["schema"] = "ironclad-observation-v1";
++            result["schema"] = IRONCLAD_OBSERVATION_SCHEMA;
 +            result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
 +            result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
 +        }
@@ -66,7 +90,16 @@
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -439,9 +456,21 @@
+@@ -341,7 +369,7 @@
+                 if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
+                 upgrade = 1; name.resize(plus);
+             }
+-            if (!listed(PUBLIC_CARD_NAMES, name)) throw std::invalid_argument("卡牌不在完整闭包: " + name);
++            if (!(expanded_ ? listed(IRONCLAD_CARD_NAMES, name) : listed(PUBLIC_CARD_NAMES, name))) throw std::invalid_argument("卡牌不在完整闭包: " + name);
+             const auto id = parseCard(name);
+             if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
+                 throw std::invalid_argument("该卡升级路径不支持");
+@@ -439,9 +467,23 @@
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
@@ -79,6 +112,8 @@
  }
  
  void registerPublicBattleEnv(pybind11::module_ &module) {
++    module.attr("IRONCLAD_REGISTRY_SHA256") = IRONCLAD_REGISTRY_SHA256;
++    module.attr("IRONCLAD_CONTRACT_SHA256") = IRONCLAD_CONTRACT_SHA256;
 +    pybind11::class_<IroncladBattleEnv>(module, "IroncladExpandedBattleEnv")
 +        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
 +        .def("reset_scene", &IroncladBattleEnv::resetScene)

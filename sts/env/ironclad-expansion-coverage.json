@@ -51,8 +51,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Blood for Blood",
@@ -60,8 +63,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Bludgeon",
@@ -435,8 +441,11 @@
       "upgrade_count": 0,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Rampage",
@@ -444,8 +453,11 @@
       "upgrade_count": 1,
       "milestone": "E5",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Reaper",
@@ -1290,8 +1302,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Barricade",
@@ -1299,8 +1314,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Berserk",
@@ -1344,8 +1362,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Combust",
@@ -1353,8 +1374,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Corruption",
@@ -1362,8 +1386,11 @@
       "upgrade_count": 0,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Corruption",
@@ -1371,8 +1398,11 @@
       "upgrade_count": 1,
       "milestone": "E4",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
     },
     {
       "name": "Dark Embrace",

@@ -36,7 +36,7 @@ def test_duplicate_dynamic_rows_stay_attached_and_set_ignores_nonhand_order():
         card["combat_damage_bonus"] = i * 8
     a = encode(obs)
     assert a["valid"].sum() == 12
-    assert sorted(a["cards"][5:12, -6]) == pytest.approx([i * 8 / 50 for i in range(7)])
+    assert sorted(a["cards"][5:12, -14]) == pytest.approx([i * 8 / 50 for i in range(7)])
     shuffled = copy.deepcopy(obs)
     shuffled["draw_pile"].reverse()
     b = encode(shuffled)

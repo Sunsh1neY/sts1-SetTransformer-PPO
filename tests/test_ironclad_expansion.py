@@ -27,7 +27,7 @@ def legacy_view(obs):
     del value["player"]["combust_hp_loss"]
     for pile in ("hand", "draw_pile", "discard_pile", "exhaust_pile"):
         for card in value[pile]:
-            for key in ("combat_damage_bonus", "is_strike", "cost_kind", "effective_exhaust"):
+            for key in ("combat_damage_bonus", "is_strike", "cost_kind", "effective_exhaust", "printed_cost", "effective_cost", "effective_cost_known", "cost_scope"):
                 del card[key]
         if pile != "hand":
             value[pile].sort(key=lambda c: json.dumps(c, sort_keys=True))
@@ -74,7 +74,7 @@ def test_named_extensions_preserve_instance_differences():
     env = IroncladEnv()
     obs = env.reset(scene(["Strike_R"] * 5), 982001, diagnostic=True)
     encoded = semantic_extensions(obs)
-    assert encoded["cards"].shape == (5, 6)
+    assert encoded["cards"].shape == (5, 14)
     assert encoded["cards"][:, 1].all()
     # 合成观测用于输入可辨识性，不冒称Rampage/Combust实战行为已验收。
     changed = copy.deepcopy(obs)
@@ -97,7 +97,7 @@ def test_hidden_fields_and_incomplete_phase_are_rejected():
         normalize_ironclad(raw)
 
 
-@pytest.mark.parametrize("card", ["Rampage", "Combust", "True Grit+1", "Infernal Blade"])
+@pytest.mark.parametrize("card", ["Havoc", "Exhume", "True Grit+1", "Infernal Blade"])
 def test_pending_cards_remain_rejected(card):
     with pytest.raises(ValueError):
         IroncladEnv().reset(scene([card] * 5), 982001, diagnostic=True)
