@@ -1,5 +1,5 @@
 {
-  "schema": "unified-entity-interface-v1",
+  "schema": "unified-entity-interface-v2",
   "model": "unified-entity-set-v1",
   "architecture": {
     "width": 64,
@@ -43,7 +43,8 @@
     "EXHAUST_ONE",
     "EXHUME",
     "HEADBUTT",
-    "WARCRY"
+    "WARCRY",
+    "DISCOVERY"
   ],
   "cards": [
     {
@@ -736,8 +737,12 @@
   "feature_dimensions": {
     "CARD": 122,
     "ENEMY": 196,
-    "POTION": 19,
+    "POTION": 21,
     "RELIC": 10,
-    "PLAYER_GLOBAL": 197
-  }
+    "PLAYER_GLOBAL": 198
+  },
+  "potion_regions": [
+    "inventory",
+    "resolving"
+  ]
 }

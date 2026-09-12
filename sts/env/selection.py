@@ -18,7 +18,7 @@ CARD_FIELDS = frozenset({
 })
 ZONES = {
     "ARMAMENTS": "hand", "DUAL_WIELD": "hand", "EXHAUST_ONE": "hand",
-    "EXHUME": "exhaust_pile", "HEADBUTT": "discard_pile", "WARCRY": "hand",
+    "EXHUME": "exhaust_pile", "HEADBUTT": "discard_pile", "WARCRY": "hand", "DISCOVERY": "offer",
 }
 
 
@@ -34,7 +34,7 @@ class SelectionTarget:
 class SelectionRouter:
     """发布已由后端筛选的合法候选；本组件不猜测合法性或自动代选。"""
 
-    def __init__(self, capacity=64):
+    def __init__(self, capacity=4096):
         self.capacity = _integer(capacity, "候选容量")
         if not 1 <= self.capacity <= 65536:
             raise ValueError("候选容量超出单选路由索引范围")

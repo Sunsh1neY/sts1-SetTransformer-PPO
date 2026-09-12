@@ -8,8 +8,8 @@ from sts.env.ironclad import CONTRACT_HASH, REGISTRY_HASH, REGIONS, IroncladEnv
 PATH = Path(__file__).with_name("ironclad-capacity.json")
 
 
-def load_capacity():
-    raw = PATH.read_bytes()
+def load_capacity(path=None):
+    raw = (PATH if path is None else path).read_bytes()
     value = json.loads(raw)
     if value["registry_sha256"] != REGISTRY_HASH or value["runtime_contract_sha256"] != CONTRACT_HASH:
         raise ValueError("内容或运行契约改变，必须重新证明容量边界")
@@ -31,8 +31,10 @@ def card_count(obs):
 class IroncladCollectionEnv:
     """仅开发采集；未完成正式批次准入和PPO版本绑定。"""
 
+    load_contract = staticmethod(load_capacity)
+
     def __init__(self, max_actions=512):
-        self.contract = load_capacity()
+        self.contract = self.load_contract()
         self.env = IroncladEnv(max_actions=max_actions)
         if not hasattr(self.env._env, "allocated_card_count"):
             raise RuntimeError("后端缺少累计分配计数，请重建")
@@ -41,7 +43,7 @@ class IroncladCollectionEnv:
     def reset(self, scene, seed, *, diagnostic=False, purpose="development"):
         self.finished = True
         if not 1 <= len(scene.get("deck", [])) <= self.contract["initial_cards"]:
-            raise ValueError("采集初始卡组必须完整且不超过49张")
+            raise ValueError(f"采集初始卡组必须完整且不超过{self.contract['initial_cards']}张")
         obs = self.env.reset(scene, seed, diagnostic=diagnostic, purpose=purpose)
         self.count = card_count(obs)
         self.allocated = self.env._env.allocated_card_count()

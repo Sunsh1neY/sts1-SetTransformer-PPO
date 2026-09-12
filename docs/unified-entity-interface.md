@@ -20,7 +20,7 @@
 
 `sts.env.entities.encode_observation(obs)`已实现并输出EntitySample：实际token记录、公开关系边、Candidate序列及单独routes。`collate(samples)`只输出模型tensor，不携带routes或decision_id。
 
-Candidate的source/target是当前sample内token引用，缺省为-1；这些是gather路由，不作为数值特征。每项含kind和环境提供的legal。模型输出与候选顺序一一对应；选定候选后由调用者读取sample.routes[index]回送环境。不能用模型推断legal代替环境mask。
+Candidate的source/target是当前sample内token引用；当前六类动作均要求匹配的source，无目标的target为-1；这些是gather路由，不作为数值特征。每项含kind和环境提供的legal。模型输出与候选顺序一一对应；选定候选后由调用者读取sample.routes[index]回送环境。不能用模型推断legal代替环境mask。
 
 有目标药水使用POTION_TARGET，绑定瓶子实体和真实目标ENEMY。无目标药水用POTION_SELF、target=-1。目标位变动时同步外部引用；不能把目标列当作选牌列表。
 
@@ -39,7 +39,18 @@ True Grit+首先验证单选。来源卡暂停时在resolving区域；后续药�
 ## 首版实现定位与维度
 
 - 共享字典：`sts/models/unified-entity-contract.json`，字段顺序/数值缩放/词表/资源限制统一版本化。
-- 编码与候选：`sts/env/entities.py`，`EntityToken`、`Candidate`、`EntitySample`、`encode_observation`、`collate`；五类原始语义维度依次为CARD122、ENEMY196、POTION19、RELIC10、PLAYER_GLOBAL197，全部投影到64维。
+- 编码与候选：`sts/env/entities.py`，`EntityToken`、`Candidate`、`EntitySample`、`encode_observation`、`collate`；五类原始语义维度依次为CARD122、ENEMY196、POTION21、RELIC10、PLAYER_GLOBAL198，全部投影到64维。
 - 模型：`sts/models/entities.py::UnifiedEntityActorCritic`；`encode_entities`返回每个实体的上下文表示及masked pooling上下文；`forward`返回逐候选masked logits和value；`distribution`拒绝对无合法动作终局采样。
 - `EntitySample.permuted`同时更新实体、关系边和候选引用，routes保持动作身份；调用者不得只改实体顺序而保留旧引用。候选顺序也可独立改变，但须同步routes。
 - 全部有效token经两层编码后再作最终LayerNorm。padding不会作为假实体参与池化；非本类型的存储位置先清零再投影。每类投影的梯度、手牌/敌人槽位映射及全实体置换均有实际测试。
+
+## 药水来源与offer的共享接口补充（已按登记实现，v2）
+
+- `offers`可选列表中的每张候选卡使用CARD、offer区域；不计作持有卡副本。新增选择任务词表DISCOVERY只表示接口可编码，不批准后端药水机制。
+- `resolving_potions`可选列表承载已经从库存移除、但仍作为当前选择来源的公开药水记录。POTION新增inventory/resolving生命周期one-hot，维度由19增至21，避免将已消耗来源误认为仍可用库存。
+- `decision.routing.source_ref`可选，格式为`{"region":"resolving_potion","index":0}`，也可引用现有公开resolving卡；只用于定位候选动作的目标来源token，不把index作为特征。未提供时沿用当前True Grit+唯一resolving卡。
+- 该共享接口升级unified-entity-interface-v2，PLAYER_GLOBAL因DISCOVERY类别增加1维至198；旧开发checkpoint须拒绝。只增加表示与路由测试，不实现新药水的选择、生成或耗用规则。
+
+## 交接验收状态
+
+当前共享实现与限制见[交付报告](unified-entity-report.md)。数值必须有限，布尔标志严格为bool，语义ID/升级次数/引用为整数；statuses沿用具名数值约定（布尔能力用0/1），不能把bool误当计数。mask来自环境。主采集入口为`sts.env.entitycollection.UnifiedEntityCollectionEnv`，恢复入口为`sts.train.entitycheckpoint`。新后端二进制会使容量证明失效，须明确重审，不要只更新文件hash而跳过验证。

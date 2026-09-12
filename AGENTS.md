@@ -7,7 +7,17 @@
 - 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 **STS1**。
 - 排期与止损以 `spec-v6.md` §9/§10 为准；学习目标与方法见 `docs/learning-path-v2.md`，`学习路径.md` 为旧版历史存档。
 
-## 当前进度（2026-09-11）
+## 当前分支进度（2026-09-12：统一实体扩展）
+
+- 本worktree为`sts2-full-card`、分支`codex/ironclad-full-expansion`，不修改原训练目录。主架构按用户最新裁定改为统一实体Set，所有卡/敌人/药水/遗物及玩家全局token共同注意力，2层/64宽/4头/FF128；动态padding，不沿用MLP的64张模型限制。
+- 主代码入口：`sts/env/entities.py`、`sts/models/entities.py`、`sts/env/entitycollection.py`；共享接口与恢复限制见`docs/unified-entity-interface.md`、`docs/unified-entity-report.md`。旧卡牌Set模块仅作历史回归，不作为扩展主线。
+- 当前准入80/150版本，True Grit+真实单选/resolving已接通。剩余70版本、跨区选牌/公开置顶/生成闭包继续验收，不宣称全卡完成。
+- 798项回归通过；64条transition的新模型短诊断含5次真实选牌，动态batch为64×103；限定CPU/FP32更新边界的模型/Adam/Torch RNG恢复通过。没有新的正式PPO成绩；完整活动环境恢复尚未完成。
+- 新增敌人/药水机制由另一独立任务负责；本任务维护共享模型/编码/候选接口及战士全卡工作，不重复实现其新增内容。新增后端必须重审容量证明；不能只改hash。
+- 原四组MLP/旧Set实验保持冻结历史身份，不能改名为统一实体结果、不能直接恢复旧权重。本轮仅授权小规模工程验证，不启动长时间正式PPO。
+- 每个小里程碑提交并落盘，进展见`docs/ironclad-expansion-progress.md`。以下旧进度只作历史快照。
+
+## 2026-09-11 历史进度快照
 
 - 最新提交基线为 `80d2340`；其中已包含 S4 三初始化诊断、S5 最小可学习检查点冻结，以及 PPO 训练观察学习记录和固定状态诊断脚本。
 - M0 / D25 S1–S5 工程已完成：三组各完成 256 轮、262144 个 transition；S4 三组 300 局开发配对回报差 CI 下界均大于 0；S5 恢复、最终 checkpoint、评估和 278 项完整回归已记录。证据见 `docs/ppo-s4-report.md`、`docs/ppo-s5-freeze.md`。

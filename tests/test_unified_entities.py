@@ -218,3 +218,36 @@ def test_backward_reaches_each_entity_projection_and_is_finite():
     for projection in model.projections.values():
         assert projection.weight.grad is not None and projection.weight.grad.abs().sum() > 0
     assert all(torch.isfinite(p.grad).all() for p in model.parameters() if p.grad is not None)
+
+
+def test_offer_cards_and_resolving_potion_have_distinct_lifecycle_and_origin():
+    _, obs = observation()
+    # 纯接口夹具，不执行或宣称新药水机制已实现。
+    obs["offers"] = [copy.deepcopy(obs["hand"][0]), copy.deepcopy(obs["hand"][1])]
+    obs["resolving_potions"] = [copy.deepcopy(obs["potions"][0])]
+    obs["potions"][0] = {"name": "", "present": False, "potency": 0, "target_kind": "NO_TARGET", "potion_id": 0}
+    obs["action_mask"][:] = False
+    obs["decision"] = {"phase": "SELECT_CARD", "selection": {"phase": "SELECT_CARD", "selection_kind": "DISCOVERY",
+                        "candidate_zone": "offer", "min_choices": 1, "max_choices": 1,
+                        "candidates": copy.deepcopy(obs["offers"]), "candidate_mask": [True, False]},
+                       "routing": {"decision_id": "interface-fixture", "source_ref": {"region": "resolving_potion", "index": 0}}}
+    sample = encode_observation(obs)
+    assert len(sample.candidates) == 2
+    assert all(sample.tokens[c.source].entity_type == "CARD" and sample.tokens[c.target].entity_type == "POTION"
+               for c in sample.candidates)
+    assert sample.tokens[sample.candidates[0].target].features[-2:].tolist() == [0, 1]
+    distribution, _ = UnifiedEntityActorCritic().distribution(collate([sample]))
+    assert distribution.probs[0].tolist() == [1, 0]
+    assert "source_ref" not in sample.routes[0]
+
+
+def test_shared_candidates_reject_wrong_entity_types_and_boolean_indices():
+    _, obs = observation()
+    sample = encode_observation(obs)
+    enemy = next(i for i, t in enumerate(sample.tokens) if t.entity_type == "ENEMY")
+    for invalid in (Candidate("PLAY_TARGET", enemy, enemy, True), Candidate("PLAY_SELF", True, -1, True),
+                    Candidate("PLAY_SELF", 0, enemy, True)):
+        changed = copy.deepcopy(sample)
+        changed.candidates[0] = invalid
+        with pytest.raises(ValueError):
+            collate([changed])
