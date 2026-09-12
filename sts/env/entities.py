@@ -1,0 +1,294 @@
+"""共享统一实体编码与候选接口；槽位和一次性凭据仅在模型外路由。"""
+from __future__ import annotations
+
+import copy
+from dataclasses import dataclass
+import hashlib
+import json
+from pathlib import Path
+
+import numpy as np
+import torch
+
+from sts.env.public_battle import _canonical, _reject_hidden_fields
+from sts.env.selection import CARD_FIELDS
+
+CONTRACT_PATH = Path(__file__).parents[1] / "models/unified-entity-contract.json"
+CONTRACT = json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
+CONTRACT_HASH = hashlib.sha256(CONTRACT_PATH.read_bytes()).hexdigest()
+TYPES = CONTRACT["types"]
+KINDS = CONTRACT["action_kinds"]
+REGIONS = CONTRACT["regions"]
+CARD_IDS = {r["name"]: r["id"] for r in CONTRACT["cards"]}
+CARD_NUMERIC = CONTRACT["card_numeric_scales"]
+CARD_BOOL = CONTRACT["card_boolean_fields"]
+PLAYER_NUMERIC = CONTRACT["player_numeric_scales"]
+HISTORY_NUMERIC = CONTRACT["history_numeric_fields"]
+
+
+def exact(obj, keys):
+    if set(obj) != set(keys):
+        raise ValueError(f"实体语义字段变化：{set(obj) ^ set(keys)}")
+
+
+def number(value, scale=1):
+    if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)):
+        raise TypeError("语义数值类型错误")
+    result = float(value) / scale
+    if not np.isfinite(result):
+        raise ValueError("非有限语义数值")
+    return result
+
+
+def boolean(value):
+    if not isinstance(value, (bool, np.bool_)):
+        raise TypeError("语义布尔类型错误")
+    return float(value)
+
+
+def onehot(value, choices):
+    if value not in choices:
+        raise ValueError(f"词表未登记：{value}")
+    return [float(value == choice) for choice in choices]
+
+
+def status_features(values, vocabulary):
+    if set(values) - set(vocabulary):
+        raise ValueError("出现未登记的状态，必须扩充共享契约")
+    return [v for name in vocabulary for v in (float(name in values), number(values.get(name, 0), 10))]
+
+
+def card_features(card, region):
+    exact(card, CARD_FIELDS)
+    if CARD_IDS.get(card["name"]) != card["card_id"]:
+        raise ValueError("卡牌语义ID与名称不一致")
+    return ([number(card[k], scale) for k, scale in CARD_NUMERIC.items()] +
+            [boolean(card[k]) for k in CARD_BOOL] +
+            onehot(card["card_id"], range(81)) + onehot(card["card_type"], CONTRACT["card_types"]) +
+            onehot(card["target_kind"], ["NO_TARGET", "ENEMY"]) +
+            onehot(card["cost_kind"], ["ENERGY", "X", "UNPLAYABLE"]) +
+            onehot(card["cost_scope"], ["UNKNOWN", "COMBAT", "TURN", "POWER", "ONCE"]) + onehot(region, REGIONS))
+
+
+FEATURE_DIMS = {
+    "CARD": len(CARD_NUMERIC) + len(CARD_BOOL) + 81 + len(CONTRACT["card_types"]) + 2 + 3 + 5 + len(REGIONS),
+    "ENEMY": 2 + 5 + len(CONTRACT["enemy_names"]) + 3 * len(CONTRACT["intent_kinds"]) + 2 * len(CONTRACT["enemy_statuses"]) + 3,
+    "POTION": len(CONTRACT["potions"]) + 1 + 1 + 2,
+    "RELIC": len(CONTRACT["relics"]) + 2,
+    "PLAYER_GLOBAL": len(PLAYER_NUMERIC) + 2 * len(CONTRACT["player_statuses"]) + 1 + 2 + len(CONTRACT["selection_kinds"]) + 2,
+}
+
+
+if FEATURE_DIMS != CONTRACT["feature_dimensions"]:
+    raise ValueError("统一实体字段维度与契约不一致")
+
+
+@dataclass
+class EntityToken:
+    entity_type: str
+    features: np.ndarray
+
+
+@dataclass(frozen=True)
+class Candidate:
+    kind: str
+    source: int
+    target: int
+    legal: bool
+
+
+@dataclass
+class EntitySample:
+    tokens: list[EntityToken]
+    edges: np.ndarray
+    candidates: list[Candidate]
+    routes: list
+
+    def permuted(self, order):
+        order = list(order)
+        if sorted(order) != list(range(len(self.tokens))):
+            raise ValueError("必须提供完整实体置换")
+        inverse = {old: new for new, old in enumerate(order)}
+        remap = lambda i: -1 if i == -1 else inverse[i]
+        return EntitySample([self.tokens[i] for i in order], self.edges[order][:, order].copy(),
+                            [Candidate(c.kind, remap(c.source), remap(c.target), c.legal) for c in self.candidates],
+                            copy.deepcopy(self.routes))
+
+
+def encode_observation(obs):
+    """适配当前具名战斗观测；新增机制必须显式提供合法性和完整字段。"""
+    from sts.env.ironclad import CONTRACT as RUNTIME
+    _reject_hidden_fields(obs)
+    expected = {"schema", "hand", "draw_pile", "discard_pile", "exhaust_pile", "resolving",
+                "player", "enemies", "potions", "potion_capacity", "relics", "action_mask", "decision"}
+    exact(obs, expected | ({"offers"} if "offers" in obs else set()))
+    if obs["schema"] != RUNTIME["observation_schema"]:
+        raise ValueError("统一实体适配器的观测版本不匹配")
+    normal_mask = np.asarray(obs["action_mask"])
+    if normal_mask.dtype != np.bool_ or normal_mask.shape != (66,):
+        raise ValueError("环境必须提供66位布尔普通动作mask")
+    tokens, refs, cards = [], {}, []
+
+    def add(entity_type, features):
+        row = np.asarray(features, dtype=np.float32)
+        if row.shape != (FEATURE_DIMS[entity_type],) or not np.isfinite(row).all():
+            raise ValueError(f"{entity_type}字段布局或数值错误：{row.shape}")
+        tokens.append(EntityToken(entity_type, row))
+        return len(tokens) - 1
+
+    for region in REGIONS:
+        rows = obs.get("offers", []) if region == "offer" else obs[region]
+        if region == "hand" and len(rows) > 10:
+            raise ValueError("手牌超过后端路由容量")
+        for i, card in enumerate(rows):
+            refs[(region, i)] = add("CARD", card_features(card, region))
+            if len(card["damage_by_target"]) != 5:
+                raise ValueError("目标预览缺行")
+            cards.append((refs[(region, i)], card))
+    if len(obs["enemies"]) != 5 or len(obs["potions"]) != 3:
+        raise ValueError("当前后端槽位容量已变化，需要新适配器")
+    for i, enemy in enumerate(obs["enemies"]):
+        exact(enemy, {"name", "present", "targetable", "hp", "max_hp", "block", "intent_damage", "intent_hits", "intent_kind", "public_history", "statuses"})
+        if not boolean(enemy["present"]):
+            if enemy["targetable"]:
+                raise ValueError("不存在的敌人不能成为目标")
+            continue
+        history = enemy["public_history"]
+        exact(history, set(HISTORY_NUMERIC) | {"last_intent_kind", "previous_intent_kind"})
+        features = [boolean(enemy[k]) for k in ("present", "targetable")]
+        features += [number(enemy[k], 5 if k == "intent_hits" else 100) for k in ("hp", "max_hp", "block", "intent_damage", "intent_hits")]
+        features += onehot(enemy["name"], CONTRACT["enemy_names"]) + onehot(enemy["intent_kind"], CONTRACT["intent_kinds"])
+        features += status_features(enemy["statuses"], CONTRACT["enemy_statuses"])
+        features += [number(history[k], 50) for k in HISTORY_NUMERIC]
+        for key in ("last_intent_kind", "previous_intent_kind"):
+            features += onehot(history[key], CONTRACT["intent_kinds"])
+        refs[("enemy", i)] = add("ENEMY", features)
+    potion_names = [r["name"] for r in CONTRACT["potions"]]
+    for i, potion in enumerate(obs["potions"]):
+        exact(potion, {"name", "present", "potency", "target_kind", "potion_id"})
+        if not boolean(potion["present"]):
+            continue
+        definition = next((r for r in CONTRACT["potions"] if r["name"] == potion["name"]), None)
+        if definition is None or potion["potion_id"] != definition["id"]:
+            raise ValueError("药水名称/ID未登记")
+        refs[("potion", i)] = add("POTION", onehot(potion["name"], potion_names) +
+                                  [1.0, number(potion["potency"], 20)] + onehot(potion["target_kind"], ["NO_TARGET", "ENEMY"]))
+    relic_names = [r["name"] for r in CONTRACT["relics"]]
+    seen_relics = set()
+    for relic in obs["relics"]:
+        exact(relic, {"name", "relic_id", "counter"})
+        definition = next((r for r in CONTRACT["relics"] if r["name"] == relic["name"]), None)
+        if definition is None or definition["id"] != relic["relic_id"] or relic["name"] in seen_relics:
+            raise ValueError("遗物名称/ID不一致或重复")
+        seen_relics.add(relic["name"])
+        add("RELIC", onehot(relic["name"], relic_names) + [float(relic["counter"] is not None), number(relic["counter"] or 0, 10)])
+    decision = obs["decision"]
+    phase = decision.get("phase")
+    selection = decision.get("selection")
+    if phase == "NORMAL":
+        exact(decision, {"phase", "selection"})
+        if selection is not None:
+            raise ValueError("NORMAL不能携带选牌状态")
+        selection_kind, lo, hi = "NONE", 0, 0
+    elif phase == "SELECT_CARD":
+        exact(decision, {"phase", "selection", "routing"})
+        exact(decision["routing"], {"decision_id"})
+        exact(selection, {"phase", "selection_kind", "candidate_zone", "min_choices", "max_choices", "candidates", "candidate_mask"})
+        if selection["phase"] != phase or normal_mask.any():
+            raise ValueError("选择阶段不能开放普通动作")
+        selection_kind, lo, hi = selection["selection_kind"], selection["min_choices"], selection["max_choices"]
+        if lo != 1 or hi != 1:
+            raise ValueError("多选与确认尚未接入")
+    else:
+        raise ValueError("未知决策阶段")
+    player = obs["player"]
+    exact(player, set(PLAYER_NUMERIC) | {"statuses"})
+    player_features = [number(player[k], scale) for k, scale in PLAYER_NUMERIC.items()]
+    player_features += status_features(player["statuses"], CONTRACT["player_statuses"])
+    player_features += [number(obs["potion_capacity"], 3)] + onehot(phase, ["NORMAL", "SELECT_CARD"])
+    player_features += onehot(selection_kind, CONTRACT["selection_kinds"]) + [number(lo, 10), number(hi, 10)]
+    player_ref = add("PLAYER_GLOBAL", player_features)
+    if len(tokens) > CONTRACT["resources"]["max_entities"]:
+        raise ValueError("总实体超出资源边界；不能丢弃实体")
+    edges = np.zeros((len(tokens), len(tokens), 2), dtype=np.float32)
+    for source, card in cards:
+        for i, enemy in enumerate(obs["enemies"]):
+            if ("enemy", i) in refs:
+                edges[source, refs[("enemy", i)]] = [number(card["damage_by_target"][i], 50), 1.0]
+    candidates, routes = [], []
+
+    def candidate(kind, source, target, legal, route):
+        candidates.append(Candidate(kind, source, target, bool(legal)))
+        routes.append(copy.deepcopy(route))
+
+    if phase == "NORMAL":
+        for i, card in enumerate(obs["hand"]):
+            if card["target_kind"] == "ENEMY":
+                for j in range(5):
+                    if ("enemy", j) in refs:
+                        candidate("PLAY_TARGET", refs[("hand", i)], refs[("enemy", j)], normal_mask[i * 5 + j], i * 5 + j)
+            else:
+                candidate("PLAY_SELF", refs[("hand", i)], -1, normal_mask[i * 5], i * 5)
+        candidate("END_TURN", player_ref, -1, normal_mask[50], 50)
+        for i, potion in enumerate(obs["potions"]):
+            if ("potion", i) not in refs:
+                continue
+            if potion["target_kind"] == "ENEMY":
+                for j in range(5):
+                    if ("enemy", j) in refs:
+                        candidate("POTION_TARGET", refs[("potion", i)], refs[("enemy", j)], normal_mask[51 + i * 5 + j], 51 + i * 5 + j)
+            else:
+                candidate("POTION_SELF", refs[("potion", i)], -1, normal_mask[51 + i * 5], 51 + i * 5)
+        if {r for r, c in zip(routes, candidates) if c.legal} != set(np.flatnonzero(normal_mask)):
+            raise ValueError("环境合法动作存在未映射实体或目标")
+    else:
+        zone = selection["candidate_zone"]
+        if zone not in REGIONS:
+            raise ValueError("未知候选区域")
+        rows = obs.get("offers", []) if zone == "offer" else obs[zone]
+        positions = {}
+        for i, row in enumerate(rows):
+            positions.setdefault(_canonical(row), []).append(refs[(zone, i)])
+        mask = np.asarray(selection["candidate_mask"])
+        if mask.dtype != np.bool_ or mask.shape != (len(selection["candidates"]),):
+            raise ValueError("候选mask不匹配")
+        for i, row in enumerate(selection["candidates"]):
+            matches = positions.get(_canonical(row), [])
+            if not matches:
+                raise ValueError("候选没有对应的公开实体")
+            source = matches.pop(0)
+            candidate("SELECT_CARD", source, refs.get(("resolving", 0), -1), mask[i],
+                      {"kind": "SELECT_CARD", **decision["routing"], "candidate_index": i})
+    return EntitySample(tokens, edges, candidates, routes)
+
+
+def collate(samples, *, heads=4, resources=None):
+    """只按本批实际最大长度补齐，资源越界整批拒绝，路由信息不进入tensor。"""
+    limits = CONTRACT["resources"] if resources is None else resources
+    if not samples:
+        raise ValueError("不能编码空批次")
+    b, n, a = len(samples), max(len(s.tokens) for s in samples), max(len(s.candidates) for s in samples)
+    if n < 1 or a < 1 or n > limits["max_entities"] or a > limits["max_candidates"] or b * heads * n * n > limits["max_attention_elements"]:
+        raise ValueError("统一实体批次超出资源边界；必须拆分或重设资源契约，不能丢弃实体")
+    batch = {"types": torch.zeros(b, n, dtype=torch.long), "entity_valid": torch.zeros(b, n, dtype=torch.bool),
+             "features": {t: torch.zeros(b, n, dim) for t, dim in FEATURE_DIMS.items()},
+             "edges": torch.zeros(b, n, n, 2), "kinds": torch.zeros(b, a, dtype=torch.long),
+             "source": torch.full((b, a), -1, dtype=torch.long), "target": torch.full((b, a), -1, dtype=torch.long),
+             "candidate_valid": torch.zeros(b, a, dtype=torch.bool), "legal": torch.zeros(b, a, dtype=torch.bool)}
+    for i, sample in enumerate(samples):
+        length = len(sample.tokens)
+        if sample.edges.shape != (length, length, 2) or not np.isfinite(sample.edges).all() or len(sample.routes) != len(sample.candidates):
+            raise ValueError("实体关系或路由长度错误")
+        for j, token in enumerate(sample.tokens):
+            if token.entity_type not in TYPES or token.features.shape != (FEATURE_DIMS[token.entity_type],) or not np.isfinite(token.features).all():
+                raise ValueError("实体类型或语义向量错误")
+            batch["types"][i, j] = TYPES.index(token.entity_type)
+            batch["features"][token.entity_type][i, j] = torch.from_numpy(token.features)
+        batch["entity_valid"][i, :length] = True
+        batch["edges"][i, :length, :length] = torch.from_numpy(sample.edges)
+        for j, c in enumerate(sample.candidates):
+            if c.kind not in KINDS or not -1 <= c.source < length or not -1 <= c.target < length or not isinstance(c.legal, bool):
+                raise ValueError("候选类型/引用/合法性错误")
+            batch["kinds"][i, j], batch["source"][i, j], batch["target"][i, j] = KINDS.index(c.kind), c.source, c.target
+            batch["candidate_valid"][i, j], batch["legal"][i, j] = True, c.legal
+    return batch

@@ -18,7 +18,7 @@
 
 ## 模型输入与候选接口
 
-`sts.env.entities.encode_observation(obs)`计划输出EntitySample：实际token记录、公开关系边、Candidate序列及单独routes。`collate(samples)`只输出模型tensor，不携带routes或decision_id。
+`sts.env.entities.encode_observation(obs)`已实现并输出EntitySample：实际token记录、公开关系边、Candidate序列及单独routes。`collate(samples)`只输出模型tensor，不携带routes或decision_id。
 
 Candidate的source/target是当前sample内token引用，缺省为-1；这些是gather路由，不作为数值特征。每项含kind和环境提供的legal。模型输出与候选顺序一一对应；选定候选后由调用者读取sample.routes[index]回送环境。不能用模型推断legal代替环境mask。
 
@@ -35,3 +35,11 @@ True Grit+首先验证单选。来源卡暂停时在resolving区域；后续药�
 - 新机制影响生成/回收/自动打出/暂停时，必须重审累计ID、当前/resolving/offer实体和原子动作余量；当前80版本容量hash不能自动沿用。
 - 接入需提供：新字段与可见性依据、实体与目标映射、legal来源、选择来源/数量/生命周期、异常与终止处理、内容/后端hash及真实行为测试。
 - 冻结四组旧PPO不重命名，不回填为新模型成绩。新编码或机制变化都要求新的恢复契约；活动环境恢复仍须完整重放验证。
+
+## 首版实现定位与维度
+
+- 共享字典：`sts/models/unified-entity-contract.json`，字段顺序/数值缩放/词表/资源限制统一版本化。
+- 编码与候选：`sts/env/entities.py`，`EntityToken`、`Candidate`、`EntitySample`、`encode_observation`、`collate`；五类原始语义维度依次为CARD122、ENEMY196、POTION19、RELIC10、PLAYER_GLOBAL197，全部投影到64维。
+- 模型：`sts/models/entities.py::UnifiedEntityActorCritic`；`encode_entities`返回每个实体的上下文表示及masked pooling上下文；`forward`返回逐候选masked logits和value；`distribution`拒绝对无合法动作终局采样。
+- `EntitySample.permuted`同时更新实体、关系边和候选引用，routes保持动作身份；调用者不得只改实体顺序而保留旧引用。候选顺序也可独立改变，但须同步routes。
+- 全部有效token经两层编码后再作最终LayerNorm。padding不会作为假实体参与池化；非本类型的存储位置先清零再投影。每类投影的梯度、手牌/敌人槽位映射及全实体置换均有实际测试。
