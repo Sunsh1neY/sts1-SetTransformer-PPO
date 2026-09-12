@@ -12,5 +12,5 @@
   "termination_rule_version": "unified-entity-runtime-guards-v3",
   "training_admitted": false,
   "entity_contract_sha256": "d6aae1e5d38af9a0e7f5c69537885615afdd77d21d546910b4c80864183c0ebb",
-  "backend_sha256": "9ed4ecf639c32f2f0dae4d6ffa7de4c5fd2cb2e937ea538532490abc3f338acc"
+  "backend_sha256": "17ac436364a4cd47e0bc0793e65bf6c036236ceb4302547b0ed43c8effce7f97"
 }

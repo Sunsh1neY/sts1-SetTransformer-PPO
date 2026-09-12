@@ -2,6 +2,12 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E7补验：无牌但仍有持续效果/药水（2026-09-13）
+
+- 最后审查补齐Juggernaut×Metallicize/Plated Armor以及剩余药水的无牌继续战斗条件；真实回归验证不再提前判败。
+- 最终全仓938 passed in 33.66s。最终二进制重新完成300局逐版本及50局组合，仍为7897transition、125次选牌，350局全部自然终止、0异常/0截断。
+- 全卡64步模型诊断及下一次更新恢复重测通过：1自然终止/4预算截断、7次选择。最终产物改为runs/all-ironclad-20260913-final；前一次目录保持历史身份，不能混用其二进制指纹。
+
 ## E5/E6：最后十类与全卡机制收口（2026-09-13）
 
 - Anger、Perfected Strike、Searing Blow、Whirlwind、Disarm、Iron Wave、Fiend Fire、Double Tap、Havoc、Infernal Blade基础/+接入；达到75类150/150版本。Searing Blow另支持+0至+100，边界外拒绝。

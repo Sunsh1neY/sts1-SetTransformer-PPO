@@ -169,3 +169,18 @@ def test_dual_wield_keeps_rampage_growth_in_copies():
     obs=play(env,obs,'Rampage');obs=env.step(50)[0]
     obs=play(env,obs,'Dual Wield');obs=choose(env,obs,'Rampage')
     assert [c['combat_damage_bonus'] for c in rows(obs,'Rampage')]==[5,5]
+
+
+def test_juggernaut_metallicize_can_continue_without_cards():
+    env,obs=start(['Juggernaut','Metallicize','Fiend Fire','Sentinel','Wound'],['Energy Potion',None])
+    obs=env.step(51)[0];obs=play(env,obs,'Juggernaut');obs=play(env,obs,'Metallicize');obs=play(env,obs,'Fiend Fire')
+    assert not obs['hand'] and obs['action_mask'][50]
+    before=obs['enemies'][0]['hp']+obs['enemies'][0]['block'];obs,_,terminated,_,_=env.step(50)
+    assert not terminated
+    assert obs['enemies'][0]['hp']+obs['enemies'][0]['block']<before
+
+
+def test_remaining_potion_prevents_no_card_automatic_loss():
+    env,obs=start(['Fiend Fire','Sentinel','Wound','Dazed','Burn'],['Explosive Potion',None])
+    obs=play(env,obs,'Fiend Fire')
+    assert not obs['hand'] and obs['action_mask'][51]

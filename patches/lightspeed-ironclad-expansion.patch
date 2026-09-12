@@ -410,7 +410,7 @@ index 93db96f..b8a07c9 100644
  }
  
 diff --git a/src/combat/BattleContext.cpp b/src/combat/BattleContext.cpp
-index 965faef..f221755 100644
+index 965faef..0bfdd11 100644
 --- a/src/combat/BattleContext.cpp
 +++ b/src/combat/BattleContext.cpp
 @@ -725,17 +725,8 @@ void BattleContext::executeActions() {
@@ -433,16 +433,18 @@ index 965faef..f221755 100644
  
          if (inputState != InputState::EXECUTING_ACTIONS) {
              break;
-@@ -765,7 +756,7 @@ void BattleContext::executeActions() {
+@@ -765,7 +756,9 @@ void BattleContext::executeActions() {
  
          // can't win check
          if (cards.cardsInHand + cards.discardPile.size() + cards.drawPile.size() == 0) {
 -            bool hasDamageWithoutCards = player.hasStatus<PS::OMEGA>() ||
 +            bool hasDamageWithoutCards = player.hasStatus<PS::OMEGA>() || player.hasStatus<PS::COMBUST>() ||
++                    (player.hasStatus<PS::JUGGERNAUT>() && (player.hasStatus<PS::METALLICIZE>() || player.hasStatus<PS::PLATED_ARMOR>())) ||
++                    std::any_of(potions.begin(), potions.end(), [](Potion p) { return p != Potion::EMPTY_POTION_SLOT && p != Potion::INVALID; }) ||
                      player.hasStatus<PS::THORNS>() ||
                      player.bomb1 ||
                      player.bomb2 ||
-@@ -1073,7 +1064,7 @@ void BattleContext::useAttackCard() {
+@@ -1073,7 +1066,7 @@ void BattleContext::useAttackCard() {
          }
  
          case CardId::IRON_WAVE: {
@@ -451,7 +453,7 @@ index 965faef..f221755 100644
              addToBot( Actions::AttackEnemy(t, calculateCardDamage(c, t, up ? 7 : 5)) );
              break;
          }
-@@ -1279,7 +1270,7 @@ void BattleContext::useSkillCard() {
+@@ -1279,7 +1272,7 @@ void BattleContext::useSkillCard() {
              break;
  
          case CardId::DISARM:
@@ -460,7 +462,7 @@ index 965faef..f221755 100644
              break;
  
          case CardId::DISCOVERY:
-@@ -2547,7 +2538,7 @@ void BattleContext::exhaustSpecificCardInHand(int idx, std::int16_t uniqueId) {
+@@ -2547,7 +2540,7 @@ void BattleContext::exhaustSpecificCardInHand(int idx, std::int16_t uniqueId) {
          foundIdx = idx;
      } else {
          for (int i = 0; i < cards.cardsInHand; ++i) {
@@ -469,7 +471,7 @@ index 965faef..f221755 100644
                 foundIdx = i;
                 break;
              }
-@@ -2928,7 +2919,7 @@ void BattleContext::chooseArmamentsCard(int handIdx) {
+@@ -2928,7 +2921,7 @@ void BattleContext::chooseArmamentsCard(int handIdx) {
  
  void BattleContext::chooseCodexCard(CardId id) {
      CardInstance c(id);
@@ -478,7 +480,7 @@ index 965faef..f221755 100644
      cards.notifyAddCardToCombat(c);
      cards.shuffleIntoDrawPile(cardRandomRng, c);
  }
-@@ -2968,7 +2959,7 @@ void BattleContext::chooseDualWieldCard(int handIdx) {
+@@ -2968,7 +2961,7 @@ void BattleContext::chooseDualWieldCard(int handIdx) {
          cards.hand[i++] = c;
      }
  
@@ -487,7 +489,7 @@ index 965faef..f221755 100644
      cards.hand[i++] = dualWieldCard;
  
      for (int x = 0; x < copyCount; ++x) {
-@@ -3039,6 +3030,7 @@ void BattleContext::chooseHeadbuttCard(int discardIdx) {
+@@ -3039,6 +3032,7 @@ void BattleContext::chooseHeadbuttCard(int discardIdx) {
  #ifdef sts_asserts
      assert(discardIdx >= 0 && discardIdx < cards.discardPile.size());
  #endif
@@ -495,7 +497,7 @@ index 965faef..f221755 100644
      cards.moveToDrawPileTop(cards.discardPile[discardIdx]);
      cards.removeFromDiscard(discardIdx);
  }
-@@ -3051,6 +3043,7 @@ void BattleContext::chooseWarcryCard(int handIdx) {
+@@ -3051,6 +3045,7 @@ void BattleContext::chooseWarcryCard(int handIdx) {
  #ifdef sts_asserts
      assert(handIdx >= 0 && handIdx < cards.cardsInHand);
  #endif

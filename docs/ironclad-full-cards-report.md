@@ -23,13 +23,13 @@
 
 分批证据：tests/test_ironclad_direct.py、test_ironclad_direct_chain.py、test_ironclad_powers.py、test_ironclad_selection_cards.py、test_ironclad_final_cards.py及原白名单回归。150条逐版本准入和证据路径见sts/env/ironclad-expansion-coverage.json。
 
-可直接审阅的75行表见[全卡完成表](ironclad-full-card-coverage.md)。当前源码和后端二进制将随最终提交打包为runs/all-ironclad-20260913/source-and-backend.zip，并记录逐文件SHA256清单；Python环境、被忽略的正版仲裁资料及历史语料不包含在包内，不能把该包称作全依赖安装包。
+可直接审阅的75行表见[全卡完成表](ironclad-full-card-coverage.md)。当前源码和后端二进制将随最终提交打包为runs/all-ironclad-20260913-final/source-and-backend.zip，并记录逐文件SHA256清单；Python环境、被忽略的正版仲裁资料及历史语料不包含在包内，不能把该包称作全依赖安装包。
 
 首次全版本受控集成：150版本×随机/规则两策略，300局、6665transition、66次真实选牌，全部自然结束，0截断、0异常；报告runs/all-ironclad-20260912/integration-1.json。该版本之后还添加数值资源保护，最终复测与checkpoint结果记于实施日志。
 
-最终二进制复测：全仓936 passed in 33.44s。全版本300局仍为6665transition、66次选择；另有10种具名组合×5遭遇共50局、1232transition、59次选择。两项合计350局全部自然终止、0截断、0异常；最终报告分别为runs/all-ironclad-20260913/integration.json与combinations.json。
+最终二进制复测：全仓938 passed in 33.66s。全版本300局仍为6665transition、66次选择；另有10种具名组合×5遭遇共50局、1232transition、59次选择。两项合计350局全部自然终止、0截断、0异常；最终报告分别为runs/all-ironclad-20260913-final/integration.json与combinations.json。
 
-全卡输入模型诊断：64transition，5片段，7次选择；大场景包含全部75类牌，最多103实体，动态batch64×103；1自然终止、4预算截断；参数119602。PPO反向有限，保存并恢复后下一次动作采样、loss与参数更新一致。报告及update-1.pt位于runs/all-ironclad-20260913/model；3.143秒为工程诊断用时，不是正式训练成绩。容量/奖励/schema冻结检查与后端补丁反向校验通过。
+全卡输入模型诊断：64transition，5片段，7次选择；大场景包含全部75类牌，最多103实体，动态batch64×103；1自然终止、4预算截断；参数119602。PPO反向有限，保存并恢复后下一次动作采样、loss与参数更新一致。报告及update-1.pt位于runs/all-ironclad-20260913-final/model；3.197秒为工程诊断用时，不是正式训练成绩。容量/奖励/schema冻结检查与后端补丁反向校验通过。
 
 这不是胜率提升或正式训练结果；300局不穷尽卡牌组合。最终模型恢复只验CPU/FP32无活动环境更新边界，不宣称恢复活动战斗、隐藏队列、跨机器或GPU位级一致。旧四组MLP/Set和U4/U6诊断均保留历史身份，不能直接恢复为本次后端。
 
