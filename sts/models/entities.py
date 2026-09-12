@@ -24,7 +24,7 @@ class EntityArchitecture:
 
 
 class EntityBlock(nn.Module):
-    """pre-LN多头注意力、公开关系bias、双残差及逐token前馈。"""
+    """pre-LN多头注意力、双残差及逐token前馈；无伤害预览。"""
 
     def __init__(self, config):
         super().__init__()
@@ -33,15 +33,13 @@ class EntityBlock(nn.Module):
         self.norm1, self.norm2 = nn.LayerNorm(w), nn.LayerNorm(w)
         self.qkv = nn.Linear(w, 3 * w)
         self.output = nn.Linear(w, w)
-        self.edge_bias = nn.Linear(2, self.heads, bias=False)
         self.ff = nn.Sequential(nn.Linear(w, config.ff_width), nn.GELU(), nn.Linear(config.ff_width, w))
 
-    def forward(self, x, valid, edges):
+    def forward(self, x, valid):
         b, n, w = x.shape
         qkv = self.qkv(self.norm1(x)).reshape(b, n, 3, self.heads, w // self.heads)
         q, k, v = qkv.permute(2, 0, 3, 1, 4).unbind(0)
         logits = q @ k.transpose(-1, -2) / (w // self.heads) ** 0.5
-        logits = logits + self.edge_bias(edges).permute(0, 3, 1, 2)
         logits = logits.masked_fill(~valid[:, None, None, :], -torch.inf)
         attended = (logits.softmax(-1) @ v).transpose(1, 2).reshape(b, n, w)
         x = x + self.output(attended)
@@ -50,7 +48,7 @@ class EntityBlock(nn.Module):
 
 
 class UnifiedEntityActorCritic(nn.Module):
-    model_version = "unified-entity-set-v1"
+    model_version = "unified-entity-set-v2"
 
     def __init__(self, architecture=None):
         super().__init__()
@@ -62,7 +60,7 @@ class UnifiedEntityActorCritic(nn.Module):
         self.blocks = nn.ModuleList([EntityBlock(self.architecture) for _ in range(self.architecture.layers)])
         self.final_norm = nn.LayerNorm(w)
         self.action_embedding = nn.Embedding(len(KINDS), 8)
-        self.action_head = nn.Sequential(nn.Linear(3 * w + 12, w), nn.GELU(), nn.Linear(w, 1))
+        self.action_head = nn.Sequential(nn.Linear(3 * w + 10, w), nn.GELU(), nn.Linear(w, 1))
         self.value_head = nn.Sequential(nn.Linear(w, w), nn.GELU(), nn.Linear(w, 1))
 
     def encode_entities(self, batch):
@@ -80,9 +78,8 @@ class UnifiedEntityActorCritic(nn.Module):
             # 先清除非本类型及padding输入，避免无效位置数值影响投影。
             features = batch["features"][kind].masked_fill(~selected[..., None], 0)
             x = x + self.projections[kind](features).masked_fill(~selected[..., None], 0)
-        edges = batch["edges"].masked_fill(~(valid[:, :, None] & valid[:, None, :])[..., None], 0)
         for block in self.blocks:
-            x = block(x, valid, edges)
+            x = block(x, valid)
         x = self.final_norm(x).masked_fill(~valid[..., None], 0)
         context = x.sum(1) / valid.sum(1, keepdim=True)
         return x, context
@@ -99,12 +96,9 @@ class UnifiedEntityActorCritic(nn.Module):
             return values.masked_fill((index < 0)[..., None], 0)
 
         source, target = batch["source"], batch["target"]
-        row = torch.arange(b, device=x.device)[:, None]
-        edge = batch["edges"][row, source.clamp_min(0), target.clamp_min(0)]
-        edge = edge.masked_fill(((source < 0) | (target < 0))[..., None], 0)
         features = torch.cat([gather(source), gather(target), context[:, None].expand(-1, a, -1),
                               self.action_embedding(batch["kinds"]),
-                              (source >= 0).float()[..., None], (target >= 0).float()[..., None], edge], -1)
+                              (source >= 0).float()[..., None], (target >= 0).float()[..., None]], -1)
         scores = self.action_head(features).squeeze(-1)
         mask = batch["candidate_valid"] & batch["legal"]
         return scores.masked_fill(~mask, -torch.inf), self.value_head(context).squeeze(-1)

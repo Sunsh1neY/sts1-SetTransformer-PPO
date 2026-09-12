@@ -13,9 +13,9 @@ def load_capacity(path=None):
     value = json.loads(raw)
     if value["registry_sha256"] != REGISTRY_HASH or value["runtime_contract_sha256"] != CONTRACT_HASH:
         raise ValueError("内容或运行契约改变，必须重新证明容量边界")
-    if value["initial_cards"] >= value["truncate_at"]:
+    if value["truncate_at"] is not None and value["initial_cards"] >= value["truncate_at"]:
         raise ValueError("初始容量未保留动作余量")
-    if value["truncate_at"] - 1 + value["generated_per_decision"] > value["card_entities"]:
+    if value["truncate_at"] is not None and value["truncate_at"] - 1 + value["generated_per_decision"] > value["card_entities"]:
         raise ValueError("容量阈值未预留完整原子动作余量")
     if value["max_allocated_entities"] != value["initial_cards"] + value["max_actions"] * value["generated_per_decision"]:
         raise ValueError("累计分配预算不一致")
@@ -66,7 +66,7 @@ class IroncladCollectionEnv:
             if count > self.contract["card_entities"] or allocated > self.contract["max_allocated_entities"]:
                 raise RuntimeError("完整最终状态超出已证明容量，轨迹异常")
             reasons = [info["truncation_reason"]] if truncated else []
-            if not terminated and count >= self.contract["truncate_at"]:
+            if not terminated and self.contract["truncate_at"] is not None and count >= self.contract["truncate_at"]:
                 truncated = True
                 reasons.append("external_card_capacity")
                 info.update(termination_reason="external_card_capacity", truncation_reason="external_card_capacity")

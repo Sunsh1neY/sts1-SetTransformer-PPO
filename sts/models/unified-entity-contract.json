@@ -1,6 +1,6 @@
 {
-  "schema": "unified-entity-interface-v2",
-  "model": "unified-entity-set-v1",
+  "schema": "unified-entity-interface-v3",
+  "model": "unified-entity-set-v2",
   "architecture": {
     "width": 64,
     "heads": 4,
@@ -687,26 +687,21 @@
       "name": "Bronze Scales"
     }
   ],
-  "edge_features": [
-    "damage_preview_div_50",
-    "known"
-  ],
+  "edge_features": [],
   "normal_action_count": 66,
   "card_numeric_scales": {
     "upgrade_count": 5,
     "base_cost": 4,
-    "cost": 4,
     "damage": 50,
     "block": 50,
     "base_block": 50,
     "magic": 10,
     "hits": 5,
     "combat_damage_bonus": 50,
-    "printed_cost": 4,
-    "effective_cost": 4
+    "pay_cost": 4,
+    "recovery_cost": 4
   },
   "card_boolean_fields": [
-    "cost_known",
     "all_enemies",
     "ethereal",
     "exhaust",
@@ -714,7 +709,7 @@
     "retain",
     "is_strike",
     "effective_exhaust",
-    "effective_cost_known"
+    "known_top"
   ],
   "player_numeric_scales": {
     "hp": 100,
@@ -735,7 +730,7 @@
     "sleep_turns_observed"
   ],
   "feature_dimensions": {
-    "CARD": 122,
+    "CARD": 115,
     "ENEMY": 196,
     "POTION": 21,
     "RELIC": 10,

@@ -108,13 +108,20 @@ def test_every_legal_action_maps_to_real_source_and_target_entities():
     assert not distribution.probs[~batch["legal"]].any()
 
 
-def test_damage_preview_is_relation_and_not_fixed_enemy_slot_feature():
+def test_damage_preview_is_excluded_from_all_model_inputs():
     _, obs = observation()
     changed = copy.deepcopy(obs)
     changed["hand"][0]["damage_by_target"][0] += 13
     a, b = encode_observation(obs), encode_observation(changed)
     np.testing.assert_array_equal(a.tokens[0].features, b.tokens[0].features)
-    assert not np.array_equal(a.edges, b.edges)
+    assert a.edges.shape[-1] == 0
+    np.testing.assert_array_equal(a.edges, b.edges)
+    model = UnifiedEntityActorCritic().eval()
+    with torch.no_grad():
+        x, vx = model(collate([a]))
+        y, vy = model(collate([b]))
+    torch.testing.assert_close(x, y, rtol=0, atol=0)
+    torch.testing.assert_close(vx, vy, rtol=0, atol=0)
 
 
 @pytest.mark.parametrize("swap", ["hand", "enemy"])

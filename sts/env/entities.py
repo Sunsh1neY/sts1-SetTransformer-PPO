@@ -59,22 +59,28 @@ def status_features(values, vocabulary):
 
 
 def card_features(card, region):
-    exact(card, CARD_FIELDS)
+    exact(card, CARD_FIELDS | ({"known_top", "recovery_cost"} & set(card)))
     _integer(card["card_id"], "卡牌语义ID")
     if _integer(card["upgrade_count"], "升级次数") < 0:
         raise ValueError("升级次数不能为负")
     if CARD_IDS.get(card["name"]) != card["card_id"]:
         raise ValueError("卡牌语义ID与名称不一致")
+    card = dict(card)
+    card["pay_cost"] = (card["effective_cost"] if region == "hand" else card["printed_cost"]) if card["cost_kind"] == "ENERGY" else 0
+    card["recovery_cost"] = card.get("recovery_cost", card["cost"] if region == "hand" else card["base_cost"])
+    card["known_top"] = card.get("known_top", False)
+    if card["known_top"] and region != "draw_pile":
+        raise ValueError("已知顶牌只能在抽牌堆")
     return ([number(card[k], scale) for k, scale in CARD_NUMERIC.items()] +
             [boolean(card[k]) for k in CARD_BOOL] +
             onehot(card["card_id"], range(81)) + onehot(card["card_type"], CONTRACT["card_types"]) +
             onehot(card["target_kind"], ["NO_TARGET", "ENEMY"]) +
             onehot(card["cost_kind"], ["ENERGY", "X", "UNPLAYABLE"]) +
-            onehot(card["cost_scope"], ["UNKNOWN", "COMBAT", "TURN", "POWER", "ONCE"]) + onehot(region, REGIONS))
+            onehot(region, REGIONS))
 
 
 FEATURE_DIMS = {
-    "CARD": len(CARD_NUMERIC) + len(CARD_BOOL) + 81 + len(CONTRACT["card_types"]) + 2 + 3 + 5 + len(REGIONS),
+    "CARD": len(CARD_NUMERIC) + len(CARD_BOOL) + 81 + len(CONTRACT["card_types"]) + 2 + 3 + len(REGIONS),
     "ENEMY": 2 + 5 + len(CONTRACT["enemy_names"]) + 3 * len(CONTRACT["intent_kinds"]) + 2 * len(CONTRACT["enemy_statuses"]) + 3,
     "POTION": len(CONTRACT["potions"]) + 1 + 1 + 2 + len(CONTRACT["potion_regions"]),
     "RELIC": len(CONTRACT["relics"]) + 2,
@@ -223,11 +229,10 @@ def encode_observation(obs):
     player_ref = add("PLAYER_GLOBAL", player_features)
     if len(tokens) > CONTRACT["resources"]["max_entities"]:
         raise ValueError("总实体超出资源边界；不能丢弃实体")
-    edges = np.zeros((len(tokens), len(tokens), 2), dtype=np.float32)
-    for source, card in cards:
-        for i, enemy in enumerate(obs["enemies"]):
-            if ("enemy", i) in refs:
-                edges[source, refs[("enemy", i)]] = [number(card["damage_by_target"][i], 50), 1.0]
+    if sum(bool(c.get("known_top", False)) for c in obs["draw_pile"]) > 1:
+        raise ValueError("只能有一张已知顶牌")
+    # 保留零宽关系容器供路由置换兼容；任何伤害预览均不进入tensor。
+    edges = np.zeros((len(tokens), len(tokens), 0), dtype=np.float32)
     candidates, routes = [], []
 
     def candidate(kind, source, target, legal, route):
@@ -294,12 +299,12 @@ def collate(samples, *, heads=4, resources=None):
         raise ValueError("统一实体批次超出资源边界；必须拆分或重设资源契约，不能丢弃实体")
     batch = {"types": torch.zeros(b, n, dtype=torch.long), "entity_valid": torch.zeros(b, n, dtype=torch.bool),
              "features": {t: torch.zeros(b, n, dim) for t, dim in FEATURE_DIMS.items()},
-             "edges": torch.zeros(b, n, n, 2), "kinds": torch.zeros(b, a, dtype=torch.long),
+             "edges": torch.zeros(b, n, n, 0), "kinds": torch.zeros(b, a, dtype=torch.long),
              "source": torch.full((b, a), -1, dtype=torch.long), "target": torch.full((b, a), -1, dtype=torch.long),
              "candidate_valid": torch.zeros(b, a, dtype=torch.bool), "legal": torch.zeros(b, a, dtype=torch.bool)}
     for i, sample in enumerate(samples):
         length = len(sample.tokens)
-        if sample.edges.shape != (length, length, 2) or not np.isfinite(sample.edges).all() or len(sample.routes) != len(sample.candidates):
+        if sample.edges.shape != (length, length, 0) or not np.isfinite(sample.edges).all() or len(sample.routes) != len(sample.candidates):
             raise ValueError("实体关系或路由长度错误")
         for j, token in enumerate(sample.tokens):
             if token.entity_type not in TYPES or token.features.shape != (FEATURE_DIMS[token.entity_type],) or not np.isfinite(token.features).all():
@@ -325,3 +330,17 @@ def collate(samples, *, heads=4, resources=None):
             batch["kinds"][i, j], batch["source"][i, j], batch["target"][i, j] = KINDS.index(c.kind), c.source, c.target
             batch["candidate_valid"][i, j], batch["legal"][i, j] = True, c.legal
     return batch
+
+
+def collate_chunks(samples, *, heads=4):
+    """按实际注意力资源拆批；单样本超限仍明确拒绝。"""
+    pending = []
+    for sample in samples:
+        candidate = pending + [sample]
+        n = max(len(s.tokens) for s in candidate)
+        if pending and len(candidate) * heads * n * n > CONTRACT["resources"]["max_attention_elements"]:
+            yield collate(pending, heads=heads)
+            pending = []
+        pending.append(sample)
+    if pending:
+        yield collate(pending, heads=heads)

@@ -1,16 +1,16 @@
 {
-  "schema": "unified-entity-capacity-v1",
+  "schema": "unified-entity-capacity-v2",
   "scope": "80-versions-with-true-grit-single-selection",
   "registry_sha256": "0fdaecb234682adc8a6d5da736403dd4e026ca8b5e97ef69e0488359940d7cd0",
   "runtime_contract_sha256": "fb977bfe95e2151f87677dec8e0e620ed5850e5628316940ff44b984707c64f6",
-  "card_entities": 480,
+  "card_entities": 512,
   "initial_cards": 96,
-  "truncate_at": 466,
+  "truncate_at": null,
   "generated_per_decision": 15,
   "max_actions": 512,
   "max_allocated_entities": 7776,
-  "termination_rule_version": "unified-entity-complete-decision-capacity-v1",
+  "termination_rule_version": "unified-entity-resource-guard-v2",
   "training_admitted": false,
-  "entity_contract_sha256": "a39eb59048bc544dae75ff7edfc96922544975c922686c7a8d00c14e34357970",
+  "entity_contract_sha256": "d6aae1e5d38af9a0e7f5c69537885615afdd77d21d546910b4c80864183c0ebb",
   "backend_sha256": "2dcb91a6b3658802ecd1d8cc0e5320649bcbb77a9ef779678dc3ebdfd110d0fc"
 }

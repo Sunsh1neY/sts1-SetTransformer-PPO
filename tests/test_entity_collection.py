@@ -16,7 +16,7 @@ def test_unified_collection_accepts_96_initial_cards_without_old_model_cap():
         env.reset(scene(["Strike_R"] * 97), 986101, diagnostic=True)
 
 
-def test_real_sentry_generation_reaches_new_resource_cut_with_complete_entities():
+def test_real_sentry_generation_passes_old_card_cut_with_complete_entities():
     env = UnifiedEntityCollectionEnv(max_actions=128)
     candidate = scene(["Defend_R"] * 96)
     candidate.update(encounter="THREE_SENTRIES", burning_elite=False, relics=[])
@@ -24,10 +24,11 @@ def test_real_sentry_generation_reaches_new_resource_cut_with_complete_entities(
     obs = env.reset(candidate, 986102, diagnostic=True)
     for _ in range(128):
         obs, reward, terminated, truncated, info = env.step(50)
-        if terminated or truncated:
+        if info["card_entities"] >= 466:
             break
-    assert truncated and not terminated and reward == 0
-    assert info["termination_reason"] == "external_card_capacity"
+        assert not terminated and not truncated
+    assert not truncated and not terminated and reward == 0
+    assert "external_card_capacity" not in info["truncation_reasons"]
     assert 466 <= info["card_entities"] <= 480
     sample = encode_observation(obs)
     assert sum(t.entity_type == "CARD" for t in sample.tokens) == info["card_entities"]
