@@ -1,0 +1,14 @@
+{
+  "schema": "ironclad-capacity-v1",
+  "scope": "79-versions-normal-phase-only",
+  "registry_sha256": "17e4f7140a52e48480a39d9b7043f41a4bf36c906b5531b0589e60a14c7f69b5",
+  "runtime_contract_sha256": "85ffd9b3ae6ba8b9c8e2f278364e7545ed8aca954a3ef8f0868e415434b223d6",
+  "card_entities": 64,
+  "initial_cards": 49,
+  "truncate_at": 50,
+  "generated_per_decision": 15,
+  "max_actions": 512,
+  "max_allocated_entities": 7729,
+  "termination_rule_version": "ironclad-complete-decision-capacity-v1",
+  "training_admitted": false
+}

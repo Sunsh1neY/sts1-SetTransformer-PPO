@@ -99,7 +99,19 @@
              const auto id = parseCard(name);
              if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
                  throw std::invalid_argument("该卡升级路径不支持");
-@@ -439,9 +467,23 @@
+@@ -391,6 +419,11 @@
+         return mask;
+     }
+ 
++    // 仅供采集资源计数与info，不进入模型公开观测。
++    int allocationCount() const {
++        if (!hasReset_) throw std::runtime_error("必须先reset_scene");
++        return bc_.cards.nextUniqueCardId;
++    }
+     std::string observation() const { return observeJson().dump(); }
+ 
+     std::string step(int action) {
+@@ -439,9 +472,24 @@
              {"truncated", truncated_}, {"info", info}}.dump();
      }
  };
@@ -119,7 +131,8 @@
 +        .def("reset_scene", &IroncladBattleEnv::resetScene)
 +        .def("step", &IroncladBattleEnv::step)
 +        .def("observation", &IroncladBattleEnv::observation)
-+        .def("action_mask", &IroncladBattleEnv::actionMask);
++        .def("action_mask", &IroncladBattleEnv::actionMask)
++        .def("allocated_card_count", &IroncladBattleEnv::allocationCount);
      pybind11::class_<PublicBattleEnv>(module, "PublicBattleEnv")
          .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
          .def("reset_scene", &PublicBattleEnv::resetScene, pybind11::arg("scene_json"), pybind11::arg("seed"))
