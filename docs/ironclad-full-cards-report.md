@@ -23,6 +23,8 @@
 
 分批证据：tests/test_ironclad_direct.py、test_ironclad_direct_chain.py、test_ironclad_powers.py、test_ironclad_selection_cards.py、test_ironclad_final_cards.py及原白名单回归。150条逐版本准入和证据路径见sts/env/ironclad-expansion-coverage.json。
 
+可直接审阅的75行表见[全卡完成表](ironclad-full-card-coverage.md)。当前源码和后端二进制将随最终提交打包为runs/all-ironclad-20260913/source-and-backend.zip，并记录逐文件SHA256清单；Python环境、被忽略的正版仲裁资料及历史语料不包含在包内，不能把该包称作全依赖安装包。
+
 首次全版本受控集成：150版本×随机/规则两策略，300局、6665transition、66次真实选牌，全部自然结束，0截断、0异常；报告runs/all-ironclad-20260912/integration-1.json。该版本之后还添加数值资源保护，最终复测与checkpoint结果记于实施日志。
 
 最终二进制复测：全仓936 passed in 33.44s。全版本300局仍为6665transition、66次选择；另有10种具名组合×5遭遇共50局、1232transition、59次选择。两项合计350局全部自然终止、0截断、0异常；最终报告分别为runs/all-ironclad-20260913/integration.json与combinations.json。
