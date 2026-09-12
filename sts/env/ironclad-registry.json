@@ -232,6 +232,11 @@
       "max_upgrade": 1
     },
     {
+      "id": 58,
+      "name": "Feed",
+      "max_upgrade": 1
+    },
+    {
       "id": 63,
       "name": "Hemokinesis",
       "max_upgrade": 1
@@ -257,8 +262,28 @@
       "max_upgrade": 1
     },
     {
+      "id": 72,
+      "name": "Reaper",
+      "max_upgrade": 1
+    },
+    {
+      "id": 75,
+      "name": "Second Wind",
+      "max_upgrade": 1
+    },
+    {
+      "id": 76,
+      "name": "Sever Soul",
+      "max_upgrade": 1
+    },
+    {
       "id": 77,
       "name": "Shockwave",
+      "max_upgrade": 1
+    },
+    {
+      "id": 78,
+      "name": "Sword Boomerang",
       "max_upgrade": 1
     }
   ]

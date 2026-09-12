@@ -2,6 +2,12 @@
 
 每个小里程碑独立提交；提交号由 `git log -- docs/ironclad-expansion-progress.md` 查得，避免记录自身提交号造成循环。未列为通过的阶段保持未完成。
 
+## E2b：治疗、随机多段与自动耗尽（2026-09-12）
+
+- Feed、Reaper、Sword Boomerang、Second Wind、Sever Soul基础/+接入并通过28项定向测试；当前104/150版本。完整证据与限制见docs/ironclad-direct-cards-report.md。
+- E2两批后全仓866 passed in 31.52s；48局受控随机集成980transition，全部自然终止，0截断/0异常。当前二进制16步模型诊断及下一次更新恢复一致；没有新增长时间正式训练。
+- 更新注册、覆盖、增量C++补丁与容量指纹。Feed长期收益仍属独立奖励待办，本轮致死奖励严格沿用battle_reward_v1。
+
 ## E2a：直接效果七类（2026-09-12）
 
 - Clash、Hemokinesis、Bloodletting、Intimidate、Limit Break、Offering、Shockwave基础/+接入注册、C++公开导出与统一实体模型；当前94/150版本。旧public白名单未扩展。

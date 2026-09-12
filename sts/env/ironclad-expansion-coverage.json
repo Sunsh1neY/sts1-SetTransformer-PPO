@@ -243,8 +243,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Feed",
@@ -252,8 +255,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Fiend Fire",
@@ -477,8 +483,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Reaper",
@@ -486,8 +495,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Reckless Charge",
@@ -537,8 +549,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sever Soul",
@@ -546,8 +561,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Strike_R",
@@ -579,8 +597,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Sword Boomerang",
@@ -588,8 +609,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Thunderclap",
@@ -1167,8 +1191,11 @@
       "upgrade_count": 0,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Second Wind",
@@ -1176,8 +1203,11 @@
       "upgrade_count": 1,
       "milestone": "E2",
       "legacy_admitted": false,
-      "expanded_admitted": false,
-      "evidence": []
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
     },
     {
       "name": "Seeing Red",
