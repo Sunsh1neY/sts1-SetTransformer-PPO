@@ -31,7 +31,7 @@ def test_permutation_upgrade_and_final_origin_do_not_drive_grouping():
     assert classify([c+'+1' if c != 'AscendersBane' else c for c in cards]) == a
 
 
-def test_eligible_inventory_mass_balance_and_transition_proposal():
+def test_eligible_inventory_mass_balance_and_no_formal_group_quotas():
     result = MODULE['build']()
     rows = result['contents']
     assert len(rows) == 74 and sum(len(r['sources']) for r in rows) == 139
@@ -42,10 +42,10 @@ def test_eligible_inventory_mass_balance_and_transition_proposal():
     dev = [r for r in rows if r['split'] == 'development']
     assert not ({r['component_id'] for r in train} & {r['component_id'] for r in dev})
     assert all(classify(r['cards'])['group'] == r['group'] for r in rows)
-    # 仅核对提案算术，不能声称实际采集已经达到此份额。
     proposal = result['proposal']
-    assert sum(proposal['persistent_env_slots'].values()) == 8
-    for group, slots in proposal['persistent_env_slots'].items():
-        assert slots / 8 == proposal['transition_weights'][group]
+    assert proposal['formal_group_quotas'] is None
+    assert proposal['persistent_env_group_binding'] is False
+    assert proposal['ppo_shuffle'] == 'global_rollout_random_permutation_per_epoch'
+    assert proposal['optional_diagnostic']['formal_training_distribution'] is False
     assert all({s['origin'] for s in r['sources']} == {'intermediate'} for r in train if r['group'] == 'simple')
     assert any(any(s['origin'] == 'final' for s in r['sources']) for r in dev if r['group'] == 'simple')

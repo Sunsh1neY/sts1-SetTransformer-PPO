@@ -714,3 +714,21 @@ I0算法不变，模型与Agent首批项目验收完成，证据和T01–T32边�
 用户原则上接受B，但要求防止最终卡组主导：先按实际内容梳理简单与组合卡组，解释分组采样及简单组保留比例，评估逐组报告，不只凭混合平均回报判成功；方案解释前不冻结训练池。
 
 本轮仅形成a-path-group-sampling-proposal.md及逐内容台账。建议S/T/C真实transition配额50/25/25、8环境按4/2/2、minibatch64按32/16/16；当前内容分类得到训练10/8/21种，历史开发17/5/13种。此处登记建议不等于用户已批准比例。正式采样、数据池冻结和训练仍未执行。
+
+## I3：撤销正式内容配额，来源组均匀与全局PPO shuffle分离（2026-09-14）
+
+用户认可三组内容分类作为评估诊断维度，但不批准50/25/25正式训练分布、4/2/2环境绑定或32/16/16 minibatch配额。四小时训练暂停，修订后审核。I2的上述配额建议由本条替代，未曾运行。
+
+核查comparison实际完成版本为comparison-battle-v2；冻结范围与run均匀采样保持不变。A路径属于对照后的Set-only扩展，拟新设source-group-aware baseline，不回写旧对照。新提案先均匀抽33个已知关联来源组，再均匀抽组内去重deck/状态，再抽条件和遭遇；每次reset独立抽环境seed。PPO每epoch对完整rollout全局随机排列，无内容组配额或重加权。
+
+精确概率审计为39deck、390个不含环境seed的初态配置候选，simple/transition/compositional自然开局比例13/66、7/33、13/22；不是实际transition比例。完整机会表和评估口径见a-path-group-sampling-proposal.md、a-path-source-sampling-audit.json。
+
+simple-heavy最多32768 transition仅保留为独立smoke/curriculum diagnostic提案，不启动、不作为正式结果、不用其权重启动正式baseline。正式数据入口、PPO闭环与恢复仍待工程验收；四小时预算继续暂停。
+
+## I4：用户授权直接启动四小时正式训练（2026-09-14）
+
+用户最新明确要求尽快开始四小时训练、可以跳过smoke，并在训练实际启动后结束对话。此授权替代I3暂停与等待审核要求。继续采用来源关联组均匀initial-state sampler、独立环境seed及全局PPO shuffle；不恢复50/25/25或固定env/minibatch组配额。
+
+已完成33个train来源组的当前已知来源隔离核验；39种训练卡组×两条件×五遭遇，在随机和未训练A路径两策略下780局全部自然终止。每来源组27组一副、6组两副，无大组稀释问题。冻结独立a-path-training-pool.json，不改旧comparison。正式入口严格校验注册内容与训练/开发划分，未用diagnostic执行PPO。
+
+完成真实PPO更新、联合概率目标、全局shuffle、活动环境重放及CPU/CUDA下一更新一致性短预检后直接启动正式运行，不单独执行32k smoke。每初始化最多262144真实transition、最多三初始化，与四小时训练评估时限取早者；学习率从开始按262144定义。预留保存/评估时间，后台程序到限或异常保存并停止，不自动延长预算。

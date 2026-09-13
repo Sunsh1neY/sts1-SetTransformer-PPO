@@ -1,5 +1,13 @@
 # A路径续接记录
 
+## 2026-09-14正式训练启动授权（最新）
+
+用户授权直接开始四小时训练，可跳过smoke，训练实际开始后结束对话。I4优先于下方暂停记录。新正式入口sts/env/apath.py、训练器sts/train/apath.py及限时后台脚本scripts/run-a-path-ppo.py已实施。运行目录计划runs/a-path-ppo-20260914-v1，状态以该目录status.json为准，不据此手工重复启动。最多三初始化各262144步，四小时训练评估上限。启动后的代码/数据勿修改，否则严格checkpoint指纹会拒绝恢复。
+
+## 2026-09-14最新更新
+
+用户原则接受B并保留三组内容分类，但撤销正式50/25/25、固定env绑定和PPO minibatch组配额；最新裁定I3优先。source-group均匀提案为33组/36run/39deck/390个初态配置候选；自然开局约19.70/21.21/59.09%，PPO全局shuffle。四小时正式训练和可选32k诊断均未启动。最新方案见a-path-group-sampling-proposal.md。
+
 ## 2026-09-13压缩后更新（优先于下方旧快照）
 
 - 用户已追加基准commit/push授权；main与远端均615cffa，基准已发布。下方“不push”是旧授权历史。

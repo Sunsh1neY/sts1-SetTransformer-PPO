@@ -6,7 +6,7 @@ from pathlib import Path
 import runpy
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = 'a-path-deck-grouping-proposal-v1'
+VERSION = 'a-path-deck-grouping-proposal-v2'
 BASE = {'Strike_R', 'Defend_R', 'Bash', 'AscendersBane'}
 EXHAUST = {'Corruption', 'Second Wind', 'Fiend Fire', 'Burning Pact', 'True Grit', 'Sever Soul', 'Havoc'}
 EXHAUST_PAYOFF = {'Feel No Pain', 'Dark Embrace', 'Sentinel'}
@@ -114,14 +114,19 @@ def build():
                 resource_dense_contents=sum(r['resource_dense'] for r in rows)))
     result = dict(schema=VERSION, status='proposal_awaiting_user_review', training_pool_frozen=False,
         source_sha256=audit['source_sha256'], summary=summary,
-        proposal={'transition_weights': {'simple': .5, 'transition': .25, 'combo': .25},
-                  'persistent_env_slots': {'simple': 4, 'transition': 2, 'combo': 2},
-                  'final_source_transition_cap': .5, 'rollout_steps_per_slot': 128,
-                  'sampling_unit': '固定组环境槽保证真实transition份额；组内reset时完整内容均匀，再选来源记录、配置和遭遇',
-                  'group_labels_are_policy_inputs': False},
+        content_classification_version='a-path-content-structure-v1',
+        proposal={'formal_sampler': 'a-path-source-group-uniform-v1-proposal',
+                  'formal_group_quotas': None, 'persistent_env_group_binding': False,
+                  'ppo_shuffle': 'global_rollout_random_permutation_per_epoch',
+                  'sampling_unit': '独立来源关联组均匀→组内去重完整卡组均匀→条件均匀→遭遇均匀；reset另抽环境seed',
+                  'group_labels_are_policy_inputs': False,
+                  'optional_diagnostic': {'status': 'not_started_pending_review', 'maximum_transitions': 32768,
+                      'kind': 'smoke_curriculum_diagnostic',
+                      'initial_group_probabilities': {'simple': .5, 'transition': .25, 'combo': .25},
+                      'formal_training_distribution': False, 'weights_reused_by_formal_baseline': False}},
         limitations=['内容标签是可审核的工程分层，不是真实难度、胜率或无限循环证明',
                      '来源完整保留，选择阶段不改组，不用训练结果重新分组',
-                     '最终卡组尚未reset/资源准入；冻结前逐项复核，缺组时不自动将份额转给最终卡组'],
+                     '最终卡组尚未reset/资源准入；正式池和四小时训练均未启动；标签不设置正式份额'],
         contents=sorted(contents.values(), key=lambda r: (r['split'], r['group'], r['content_id'])))
     return result
 

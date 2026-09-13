@@ -1,171 +1,54 @@
 {
-  "schema": "a-path-deck-grouping-proposal-v2",
-  "status": "proposal_awaiting_user_review",
-  "training_pool_frozen": false,
-  "source_sha256": {
-    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
-    "docs/real-deck-manifest.json": "aa121e0a269752be284b21d25d2272184ecd07dbbcbc5dbcbd3b00d773b1e924",
-    "sts/env/ironclad-registry.json": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
-    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  "schema": "a-path-source-group-uniform-v1",
+  "runtime_contract_hash": "91ee4851930e21854d51bc66872295302260716c70bfc42dc2ee38c2252d43ae",
+  "registry_hash": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+  "common": {
+    "entry_timing": "pre_combat_initialization",
+    "initialization_phase": "before_destination_room_entry",
+    "character": "IRONCLAD",
+    "act": 1,
+    "floor": 8,
+    "ascension": 20,
+    "burning_elite": false
   },
-  "summary": [
-    {
-      "split": "train_candidate",
-      "group": "simple",
-      "label": "基础与单牌主导",
-      "contents": 10,
-      "source_rows": 13,
-      "runs": 12,
-      "components": 9,
-      "origin_contents": {
-        "intermediate": 10
+  "profiles": {
+    "full-basic": {
+      "player": {
+        "hp": 75,
+        "max_hp": 75,
+        "gold": 0
       },
-      "card_count_range": [
-        9,
-        13
+      "relics": [
+        "Burning Blood"
       ],
-      "combo_family_counts": {},
-      "resource_dense_contents": 0
+      "potions": [
+        null,
+        null
+      ]
     },
-    {
-      "split": "train_candidate",
-      "group": "transition",
-      "label": "过渡与局部配合",
-      "contents": 8,
-      "source_rows": 8,
-      "runs": 8,
-      "components": 8,
-      "origin_contents": {
-        "final": 8
+    "wounded-equipped": {
+      "player": {
+        "hp": 45,
+        "max_hp": 75,
+        "gold": 0
       },
-      "card_count_range": [
-        14,
-        24
+      "relics": [
+        "Burning Blood",
+        "Anchor",
+        "Vajra"
       ],
-      "combo_family_counts": {
-        "block_to_damage": 1,
-        "self_damage": 1,
-        "strength": 1
-      },
-      "resource_dense_contents": 0
-    },
-    {
-      "split": "train_candidate",
-      "group": "combo",
-      "label": "多机制组合",
-      "contents": 21,
-      "source_rows": 21,
-      "runs": 21,
-      "components": 21,
-      "origin_contents": {
-        "final": 21
-      },
-      "card_count_range": [
-        19,
-        39
-      ],
-      "combo_family_counts": {
-        "exhaust": 18,
-        "strength": 14,
-        "self_damage": 6,
-        "status": 9,
-        "block_to_damage": 7,
-        "vulnerable_draw_energy": 3
-      },
-      "resource_dense_contents": 12
-    },
-    {
-      "split": "development",
-      "group": "simple",
-      "label": "基础与单牌主导",
-      "contents": 17,
-      "source_rows": 79,
-      "runs": 62,
-      "components": 4,
-      "origin_contents": {
-        "intermediate": 16,
-        "final": 1
-      },
-      "card_count_range": [
-        9,
-        14
-      ],
-      "combo_family_counts": {},
-      "resource_dense_contents": 0
-    },
-    {
-      "split": "development",
-      "group": "transition",
-      "label": "过渡与局部配合",
-      "contents": 5,
-      "source_rows": 5,
-      "runs": 5,
-      "components": 2,
-      "origin_contents": {
-        "intermediate": 1,
-        "final": 4
-      },
-      "card_count_range": [
-        11,
-        22
-      ],
-      "combo_family_counts": {
-        "strength": 1,
-        "exhaust": 1
-      },
-      "resource_dense_contents": 0
-    },
-    {
-      "split": "development",
-      "group": "combo",
-      "label": "多机制组合",
-      "contents": 13,
-      "source_rows": 13,
-      "runs": 13,
-      "components": 3,
-      "origin_contents": {
-        "final": 13
-      },
-      "card_count_range": [
-        20,
-        34
-      ],
-      "combo_family_counts": {
-        "exhaust": 8,
-        "status": 7,
-        "strength": 8,
-        "self_damage": 7,
-        "block_to_damage": 4,
-        "vulnerable_draw_energy": 1
-      },
-      "resource_dense_contents": 9
-    }
-  ],
-  "content_classification_version": "a-path-content-structure-v1",
-  "proposal": {
-    "formal_sampler": "a-path-source-group-uniform-v1-proposal",
-    "formal_group_quotas": null,
-    "persistent_env_group_binding": false,
-    "ppo_shuffle": "global_rollout_random_permutation_per_epoch",
-    "sampling_unit": "独立来源关联组均匀→组内去重完整卡组均匀→条件均匀→遭遇均匀；reset另抽环境seed",
-    "group_labels_are_policy_inputs": false,
-    "optional_diagnostic": {
-      "status": "not_started_pending_review",
-      "maximum_transitions": 32768,
-      "kind": "smoke_curriculum_diagnostic",
-      "initial_group_probabilities": {
-        "simple": 0.5,
-        "transition": 0.25,
-        "combo": 0.25
-      },
-      "formal_training_distribution": false,
-      "weights_reused_by_formal_baseline": false
+      "potions": [
+        "Block Potion",
+        "Weak Potion"
+      ]
     }
   },
-  "limitations": [
-    "内容标签是可审核的工程分层，不是真实难度、胜率或无限循环证明",
-    "来源完整保留，选择阶段不改组，不用训练结果重新分组",
-    "最终卡组尚未reset/资源准入；正式池和四小时训练均未启动；标签不设置正式份额"
+  "encounters": [
+    "JAW_WORM",
+    "EXORDIUM_THUGS",
+    "GREMLIN_NOB",
+    "LAGAVULIN",
+    "THREE_SENTRIES"
   ],
   "contents": [
     {
@@ -6104,5 +5987,62 @@
       "energy_copies": 0,
       "resource_dense": false
     }
-  ]
+  ],
+  "resources": {
+    "max_actions": 512,
+    "max_initial_cards": 39,
+    "max_generated_per_decision": 15,
+    "truncate_at_entities": 448,
+    "hard_entity_limit": 512,
+    "max_allocated_cards_bound": 7719
+  },
+  "admission_evidence": {
+    "train_configurations": 390,
+    "policies": [
+      {
+        "policy": "uniform_complete_action",
+        "episodes": 390,
+        "status_counts": {
+          "terminated": 390
+        },
+        "total_transitions": 7801,
+        "max_entities": 87,
+        "max_legal_actions": 41,
+        "max_allocated_cards": 88,
+        "selection_transitions": 159
+      },
+      {
+        "policy": "untrained_a_path",
+        "episodes": 390,
+        "status_counts": {
+          "terminated": 390
+        },
+        "total_transitions": 6493,
+        "max_entities": 160,
+        "max_legal_actions": 32,
+        "max_allocated_cards": 160,
+        "selection_transitions": 147
+      }
+    ],
+    "runtime_report_sha256": "0194e2e0f81c52a62be02b6d2fcecd90aaec259863cc34bf13a8c6c2e7404be9",
+    "scope": "39种训练卡组×两条件×五遭遇，随机与未训练Pointer均自然终止；评估来源不参与训练",
+    "source_isolation": {
+      "train_component_count": 33,
+      "development_component_count": 5,
+      "component_overlap": [],
+      "run_overlap": [],
+      "deck_content_overlap": [],
+      "heldout_source_set": "不存在新未见保留集；当前评估沿用历史开发来源",
+      "eval_seeds_sha256": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+    }
+  },
+  "sampling": "source-component uniform then unique deck then condition then encounter; separate random environment seed",
+  "ppo_shuffle": "global random permutation; no content quotas",
+  "source_hashes": {
+    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
+    "docs/real-deck-manifest.json": "aa121e0a269752be284b21d25d2272184ecd07dbbcbc5dbcbd3b00d773b1e924",
+    "sts/env/ironclad-registry.json": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  },
+  "payload_sha256": "61d3fbefe5006faa092bffe23791b1eedd7195a21615c4d1bc1b0e95578b7d79"
 }
