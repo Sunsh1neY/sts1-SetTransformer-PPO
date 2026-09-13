@@ -92,7 +92,7 @@ def test_enemy_information_participates_in_card_attention_not_late_fusion():
 def test_every_legal_action_maps_to_real_source_and_target_entities():
     _, obs = observation()
     sample = encode_observation(obs)
-    assert {r for c, r in zip(sample.candidates, sample.routes) if c.legal} == set(np.flatnonzero(obs["action_mask"]))
+    assert {r["action"] for c, r in zip(sample.candidates, sample.routes) if c.legal} == set(np.flatnonzero(obs["action_mask"]))
     for c in sample.candidates:
         if c.kind in {"PLAY_TARGET", "POTION_TARGET"}:
             assert sample.tokens[c.target].entity_type == "ENEMY"
@@ -138,6 +138,7 @@ def test_environment_slot_changes_only_remap_actions(swap):
     else:
         assert obs["enemies"][0]["present"] and obs["enemies"][1]["present"]
         changed["enemies"][0], changed["enemies"][1] = changed["enemies"][1], changed["enemies"][0]
+        changed["routing"]["enemy_refs"][0], changed["routing"]["enemy_refs"][1] = changed["routing"]["enemy_refs"][1], changed["routing"]["enemy_refs"][0]
         for zone in ("hand", "draw_pile", "discard_pile", "exhaust_pile", "resolving"):
             for card in changed[zone]:
                 values = card["damage_by_target"]
@@ -159,8 +160,8 @@ def test_environment_slot_changes_only_remap_actions(swap):
     with torch.no_grad():
         da, va = model.distribution(collate([a]))
         db, vb = model.distribution(collate([b]))
-    by_route = dict(zip(b.routes, db.probs[0].tolist()))
-    np.testing.assert_allclose(da.probs[0].numpy(), [by_route[remap(r)] for r in a.routes], atol=1e-6, rtol=1e-5)
+    by_route = dict(zip([r["action"] for r in b.routes], db.probs[0].tolist()))
+    np.testing.assert_allclose(da.probs[0].numpy(), [by_route[remap(r["action"])] for r in a.routes], atol=1e-6, rtol=1e-5)
     torch.testing.assert_close(va, vb, atol=1e-6, rtol=1e-5)
 
 

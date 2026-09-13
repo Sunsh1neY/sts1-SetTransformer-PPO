@@ -23,6 +23,13 @@ def scene(cards=None):
 def legacy_view(obs):
     value = copy.deepcopy(obs)
     value["schema"] = "public-observation-v1"
+    # 仅比较旧入口可表达的投影；新增公开信息另有实体和机制专项验收。
+    assert not value.pop("stasis", []) and not value.pop("relations", [])
+    value.pop("routing", None)
+    for enemy in value["enemies"]:
+        assert enemy.pop("phase", "NONE") == "NONE"
+        enemy.pop("intent_history", None)
+        enemy.pop("intent_history_valid", None)
     del value["decision"]
     assert not value.pop("resolving", [])
     del value["player"]["combust_hp_loss"]
@@ -38,6 +45,9 @@ def legacy_view(obs):
 
 def plain(obs):
     value = copy.deepcopy(obs)
+    for enemy in value["enemies"]:
+        enemy["public_history"].pop("last_intent_kind", None)
+        enemy["public_history"].pop("previous_intent_kind", None)
     for pile in ("draw_pile", "discard_pile", "exhaust_pile"):
         value[pile].sort(key=lambda c: json.dumps(c, sort_keys=True))
     value["action_mask"] = value["action_mask"].tolist()
@@ -61,7 +71,12 @@ def test_inherited_versions_preserve_transition_and_full_final_observation(name,
         action = int(rng.choice(np.flatnonzero(a["action_mask"])))
         a, reward, terminal, truncated, _ = old.step(action)
         b, other_reward, other_terminal, other_truncated, info = expanded.step(action)
-        assert legacy_view(b) == plain(a)
+        left, right = legacy_view(b), plain(a)
+        if terminal:
+            # 集成版终局清理全部敌人，旧版保留尸体或失败时存活者；独立比较其余结果。
+            assert not any(e["present"] for e in b["enemies"])
+            left.pop("enemies"); right.pop("enemies")
+        assert left == right
         assert (reward, terminal, truncated) == (other_reward, other_terminal, other_truncated)
         assert info["contract_id"] == CONTRACT["schema"]
         assert info["observation_schema"] == b["schema"]

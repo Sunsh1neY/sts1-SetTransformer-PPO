@@ -42,18 +42,17 @@ def _reject_hidden_fields(value: Any) -> None:
             _reject_hidden_fields(item)
 
 
-def normalize_observation(raw: Mapping[str, Any], *, contract: Mapping[str, Any] = PUBLIC_CONTRACT) -> dict[str, Any]:
+def normalize_observation(raw: Mapping[str, Any]) -> dict[str, Any]:
     """复制并检查语义输出，映射项目ID；不丢失牌堆或状态。"""
-    card_by_name = {entry["name"]: entry for entry in contract["cards"]}
     observation = json.loads(json.dumps(raw, allow_nan=False))
-    if observation.get("schema") != contract["observation_schema"]:
+    if observation.get("schema") != PUBLIC_CONTRACT["observation_schema"]:
         raise ValueError("public观测schema不匹配")
     _reject_hidden_fields(observation)
-    for key in contract.get("card_regions", ("hand", "draw_pile", "discard_pile", "exhaust_pile")):
+    for key in ("hand", "draw_pile", "discard_pile", "exhaust_pile"):
         if not isinstance(observation.get(key), list):
             raise ValueError(f"观测缺少完整{key}")
         for card in observation[key]:
-            definition = card_by_name.get(card.get("name"))
+            definition = CARD_BY_NAME.get(card.get("name"))
             if definition is None:
                 raise ValueError(f"后端返回未登记卡牌：{card.get('name')}")
             upgrade = _integer(card.get("upgrade_count"), "upgrade_count")
@@ -66,13 +65,13 @@ def normalize_observation(raw: Mapping[str, Any], *, contract: Mapping[str, Any]
                 raise ValueError("非手牌费用未完成可见性核验")
         if key != "hand":
             observation[key].sort(key=lambda card: _canonical(card))
-    if len(observation["hand"]) > contract["capacity"]["hand"]:
+    if len(observation["hand"]) > PUBLIC_CONTRACT["capacity"]["hand"]:
         raise ValueError("手牌容量越界")
-    count = sum(len(observation[key]) for key in contract.get("card_regions", ("hand", "draw_pile", "discard_pile", "exhaust_pile")))
-    if count > contract["capacity"]["max_card_entities_bound"]:
+    count = sum(len(observation[key]) for key in ("hand", "draw_pile", "discard_pile", "exhaust_pile"))
+    if count > PUBLIC_CONTRACT["capacity"]["max_card_entities_bound"]:
         raise ValueError("完整卡实体超过已证明的采集预算上界")
     for key, capacity in (("enemies", "targets"), ("potions", "potions")):
-        if not isinstance(observation.get(key), list) or len(observation[key]) != contract["capacity"][capacity]:
+        if not isinstance(observation.get(key), list) or len(observation[key]) != PUBLIC_CONTRACT["capacity"][capacity]:
             raise ValueError(f"{key}容量不匹配")
     for potion in observation["potions"]:
         if potion.get("present"):
@@ -94,7 +93,7 @@ def normalize_observation(raw: Mapping[str, Any], *, contract: Mapping[str, Any]
     if max_hp <= 0 or not 0 <= hp <= max_hp:
         raise ValueError("玩家HP非法")
     mask = np.asarray(observation.get("action_mask"))
-    if mask.dtype != np.bool_ or mask.shape != (contract["action_count"],):
+    if mask.dtype != np.bool_ or mask.shape != (ACTION_COUNT,):
         raise ValueError("public动作mask必须为66位布尔值")
     observation["action_mask"] = mask.copy()
     return observation
@@ -152,8 +151,6 @@ class PublicBattleEnv:
         self._context: dict[str, Any] = {}
         self._finished = True
 
-    _normalize_observation = staticmethod(normalize_observation)
-
     def reset(self, scene: Mapping[str, Any], seed: int, *, diagnostic: bool = False, purpose: str = "development") -> dict[str, Any]:
         environment_seed = _integer(seed, "environment_seed")
         if purpose not in {"development", "train", "evaluation"}:
@@ -185,7 +182,7 @@ class PublicBattleEnv:
             raise ValueError("只支持Ironclad第一幕入口")
         payload = {key: candidate[key] for key in runtime_keys if key in candidate}
         self._finished = True
-        observation = self._normalize_observation(json.loads(self._env.reset_scene(json.dumps(payload, allow_nan=False), environment_seed)))
+        observation = normalize_observation(json.loads(self._env.reset_scene(json.dumps(payload, allow_nan=False), environment_seed)))
         self._context = {**source_context, "environment_seed": environment_seed, "seed_purpose": purpose,
                          "contract_id": PUBLIC_CONTRACT["contract_id"], "contract_hash": CONTRACT_HASH,
                          "reward_version": PUBLIC_CONTRACT["reward_version"], "gamma": 1.0,
@@ -203,10 +200,8 @@ class PublicBattleEnv:
             raise RuntimeError("必须先reset，终局后不能继续step")
         if not 0 <= selected < ACTION_COUNT:
             raise ValueError("动作必须在0..65")
-        return self._decode_result(json.loads(self._env.step(selected)))
-
-    def _decode_result(self, result):
-        observation = self._normalize_observation(result["observation"])
+        result = json.loads(self._env.step(selected))
+        observation = normalize_observation(result["observation"])
         terminated, truncated = result["terminated"], result["truncated"]
         if not isinstance(terminated, bool) or not isinstance(truncated, bool) or terminated and truncated:
             raise ValueError("终止/截断字段非法")
@@ -220,7 +215,7 @@ class PublicBattleEnv:
         return observation, reward, terminated, truncated, info
 
     def observation(self) -> dict[str, Any]:
-        return self._normalize_observation(json.loads(self._env.observation()))
+        return normalize_observation(json.loads(self._env.observation()))
 
     def action_mask(self) -> np.ndarray:
         mask = np.asarray(self._env.action_mask())

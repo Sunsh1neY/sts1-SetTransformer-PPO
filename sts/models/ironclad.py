@@ -16,7 +16,7 @@ REGIONS = EXPANDED_REGIONS[:4]
 EXTRA_CARD_KEYS = {"combat_damage_bonus", "is_strike", "effective_exhaust", "cost_kind",
                    "printed_cost", "effective_cost", "effective_cost_known", "cost_scope"}
 EXTRA_FEATURES = 14
-ENCODING_VERSION = "ironclad-set-encoding-v2"
+ENCODING_VERSION = "ironclad-set-encoding-v3-history-counts"
 
 
 def encode(obs):
@@ -29,6 +29,16 @@ def encode(obs):
         raise ValueError("旧卡牌Set不支持选牌暂停，请使用统一实体模型")
     obs = {k: v for k, v in obs.items() if k != "resolving"}
     base = copy.deepcopy(obs)
+    # 历史原型只投影原五遭遇的无关系普通状态；新敌人必须使用统一实体模型。
+    if base.get("stasis") or base.get("relations") or any(e["present"] and e["name"] not in BASE_ENCODING["enemy_names"] for e in base["enemies"]):
+        raise ValueError("旧卡牌Set不支持新增敌人或扣牌关系")
+    for key in ("stasis", "relations", "routing"):
+        base.pop(key, None)
+    for enemy in base["enemies"]:
+        if enemy.get("phase", "NONE") != "NONE":
+            raise ValueError("旧卡牌Set不支持敌人阶段")
+        for key in ("intent_history", "intent_history_valid", "phase"):
+            enemy.pop(key, None)
     del base["decision"]
     del base["player"]["combust_hp_loss"]
     for region in REGIONS:
@@ -100,15 +110,13 @@ def _encode_base(obs):
     for enemy in obs["enemies"]:
         exact_keys(enemy, {"name", "present", "targetable", "hp", "max_hp", "block", "intent_damage", "intent_hits", "intent_kind", "public_history", "statuses"})
         history = enemy["public_history"]
-        exact_keys(history, set(HISTORY) | {"last_intent_kind", "previous_intent_kind"})
+        exact_keys(history, set(HISTORY))
         global_values += [float(enemy[k]) for k in ("present", "targetable")]
         global_values += [enemy[k] / 100 for k in ("hp", "max_hp", "block", "intent_damage")]
         global_values += [enemy["intent_hits"] / 5] + onehot(enemy["name"], BASE_ENCODING["enemy_names"])
         global_values += onehot(enemy["intent_kind"], BASE_ENCODING["intent_kinds"])
         global_values += statuses(enemy["statuses"], BASE_ENCODING["enemy_statuses"])
         global_values += [history[k] / 50 for k in HISTORY]
-        for key in ("last_intent_kind", "previous_intent_kind"):
-            global_values += onehot(history[key], BASE_ENCODING["intent_kinds"])
     for potion in obs["potions"]:
         exact_keys(potion, {"name", "present", "potency", "target_kind", "potion_id"})
         names = [""] + [r["name"] for r in RUNTIME_CONTRACT["potions"]]

@@ -56,7 +56,7 @@ def test_iron_wave_dexterity_applies_once(up):
 
 @pytest.mark.parametrize('up',[False,True])
 def test_fiend_fire_hits_original_hand_and_exhausts_source(up):
-    env,obs=start([upgraded('Fiend Fire',up),'Sentinel','Wound','Strike_R','Defend_R'])
+    env,obs=start([upgraded('Fiend Fire',up),'Sentinel','Wound','Strike_R','Defend_R'], ['Explosive Potion', None])
     before=obs['enemies'][0]['hp']+obs['enemies'][0]['block'];obs=play(env,obs,'Fiend Fire')
     assert before-obs['enemies'][0]['hp']-obs['enemies'][0]['block']==4*(10 if up else 7)
     assert len(obs['exhaust_pile'])==5

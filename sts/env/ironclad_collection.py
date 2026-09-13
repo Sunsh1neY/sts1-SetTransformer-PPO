@@ -25,7 +25,7 @@ def load_capacity(path=None):
 
 
 def card_count(obs):
-    return sum(len(obs[zone]) for zone in REGIONS)
+    return sum(len(obs[zone]) for zone in (*REGIONS, "stasis"))
 
 
 class IroncladCollectionEnv:
@@ -44,6 +44,8 @@ class IroncladCollectionEnv:
         self.finished = True
         if not 1 <= len(scene.get("deck", [])) <= self.contract["initial_cards"]:
             raise ValueError(f"采集初始卡组必须完整且不超过{self.contract['initial_cards']}张")
+        if scene.get("encounter") not in self.contract["encounters"]:
+            raise ValueError("历史采集容量仅覆盖原五遭遇")
         obs = self.env.reset(scene, seed, diagnostic=diagnostic, purpose=purpose)
         self.count = card_count(obs)
         self.allocated = self.env._env.allocated_card_count()
@@ -72,7 +74,8 @@ class IroncladCollectionEnv:
                 info.update(termination_reason="external_card_capacity", truncation_reason="external_card_capacity")
             self.count, self.allocated = count, allocated
             self.counters["decision_steps"] += 1
-            self.counters["selections" if isinstance(action, dict) else "card_plays" if action < 50 else "end_turns" if action == 50 else "potion_uses"] += 1
+            routed = action.get("action") if isinstance(action, dict) and action.get("kind") == "NORMAL" else action
+            self.counters["selections" if isinstance(routed, dict) else "card_plays" if routed < 50 else "end_turns" if routed == 50 else "potion_uses"] += 1
             info.update(self.counters)
             info.update(card_entities=count, allocated_card_entities=allocated, generated_card_entities=growth,
                         collection_contract_hash=self.contract["sha256"], collection_version=self.contract["schema"],

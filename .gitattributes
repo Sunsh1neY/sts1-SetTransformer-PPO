@@ -3,3 +3,6 @@
 eval_seeds.json -text
 # 补丁按上游文本的 LF 保存；空白上下文行的单空格是 unified diff 语法，不作尾空格报错。
 *.patch text eol=lf whitespace=-trailing-space
+
+# 历史审计清单绑定实际原始字节，保留已核验的混合换行。
+scripts/audit-public-corpus.py -text whitespace=cr-at-eol

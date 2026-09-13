@@ -18,6 +18,8 @@ if (-not $installed) {
     git -C $source apply $patch
     if ($LASTEXITCODE -ne 0) { throw '应用增量补丁失败。' }
 }
+& $Python (Join-Path $PSScriptRoot 'generate-public-contract.py')
+if ($LASTEXITCODE -ne 0) { throw '基础契约生成失败。' }
 & $Python (Join-Path $PSScriptRoot 'generate-enemy-potion-contract.py')
 if ($LASTEXITCODE -ne 0) { throw '扩展契约生成失败。' }
 & $Python (Join-Path $PSScriptRoot 'generate-ironclad-contract.py')

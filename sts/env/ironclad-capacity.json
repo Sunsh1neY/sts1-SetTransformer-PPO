@@ -1,8 +1,8 @@
 {
-  "schema": "ironclad-capacity-v1",
-  "scope": "150-versions-reviewed-content",
+  "schema": "ironclad-capacity-v1-integrated-v1",
+  "scope": "historical-five-encounters-on-integrated-backend",
   "registry_sha256": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
-  "runtime_contract_sha256": "c92d3bdf5ea47438e8b178c2079c5605c013fc68b91ec8033275bcfa4f0d3399",
+  "runtime_contract_sha256": "91ee4851930e21854d51bc66872295302260716c70bfc42dc2ee38c2252d43ae",
   "card_entities": 64,
   "initial_cards": 49,
   "truncate_at": 50,
@@ -10,5 +10,12 @@
   "max_actions": 512,
   "max_allocated_entities": 7729,
   "termination_rule_version": "ironclad-complete-decision-capacity-v1",
-  "training_admitted": false
+  "training_admitted": false,
+  "encounters": [
+    "JAW_WORM",
+    "EXORDIUM_THUGS",
+    "GREMLIN_NOB",
+    "LAGAVULIN",
+    "THREE_SENTRIES"
+  ]
 }
