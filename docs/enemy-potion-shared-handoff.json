@@ -1,9 +1,9 @@
 {
   "schema": "enemy-potion-shared-handoff-v1",
   "audit_kind": "static-read-only",
-  "shared_contract_schema": "unified-entity-interface-v1",
-  "shared_contract_sha256": "ea662205a5a908e2047c04263c25edd823ed9fa7a9854d6dcb01a8c1be214f0c",
-  "shared_encoder_sha256": "24f46705b76406e8504f4b44806cdacd69a9563732b6cc8f58a054c997660bd4",
+  "shared_contract_schema": "unified-entity-interface-v4",
+  "shared_contract_sha256": "12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843",
+  "shared_encoder_sha256": "39b02cbe5bed2f8820632bd10295d01c592cacfff8d604944ca5373293723597",
   "append_potions": [
     {
       "id": 16,
@@ -46,7 +46,8 @@
     "EXHAUST_ONE",
     "EXHUME",
     "HEADBUTT",
-    "WARCRY"
+    "WARCRY",
+    "DISCOVERY"
   ],
   "integration_requirements": [
     "以共享EntitySample/Candidate/routes为统一输出，本分支视图是机制交接材料，不另建编码器",
