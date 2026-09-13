@@ -1,0 +1,521 @@
+{
+  "schema": "enemy-potion-coverage-v1",
+  "potions": [
+    {
+      "backend_id": "BLOOD_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "implemented-targeted-verified",
+      "dependency": "独立机制回归"
+    },
+    {
+      "backend_id": "ELIXIR_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "HEART_OF_IRON",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "BLOCK_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "DEXTERITY_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "ENERGY_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "EXPLOSIVE_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "FIRE_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "implemented-targeted-verified",
+      "dependency": "独立机制回归"
+    },
+    {
+      "backend_id": "STRENGTH_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "SWIFT_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "WEAK_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "FEAR_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "ATTACK_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "SKILL_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "POWER_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "COLORLESS_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "FLEX_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "implemented-targeted-verified",
+      "dependency": "独立机制回归"
+    },
+    {
+      "backend_id": "SPEED_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "BLESSING_OF_THE_FORGE",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "全卡升级行为闭包（如True Grit升级后需要选牌）"
+    },
+    {
+      "backend_id": "REGEN_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "ANCIENT_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "LIQUID_BRONZE",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "GAMBLERS_BREW",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "ESSENCE_OF_STEEL",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "DUPLICATION_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "重复打牌与全卡选择/生成闭包、实例计数"
+    },
+    {
+      "backend_id": "DISTILLED_CHAOS",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "自动打牌与选择阶段、生成闭包和累计分配上界"
+    },
+    {
+      "backend_id": "LIQUID_MEMORIES",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "复用全卡选择阶段和候选路由"
+    },
+    {
+      "backend_id": "CULTIST_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "implemented-targeted-verified",
+      "dependency": "独立机制回归"
+    },
+    {
+      "backend_id": "FRUIT_JUICE",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "inherited",
+      "dependency": "无；继承直接药水回归"
+    },
+    {
+      "backend_id": "SNECKO_OIL",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "全卡临时费用实例语义和有效期"
+    },
+    {
+      "backend_id": "FAIRY_POTION",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "implemented-targeted-verified",
+      "dependency": "独立机制回归"
+    },
+    {
+      "backend_id": "SMOKE_BOMB",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "逃跑不是击杀胜利；需独立battle结果与run逃跑契约"
+    },
+    {
+      "backend_id": "ENTROPIC_BREW",
+      "backend_support": "分支或被动钩子存在；不等于行为通过",
+      "status": "dependency-blocked",
+      "dependency": "随机生成药水完整闭包、弃药动作和槽位；不得自动代选"
+    }
+  ],
+  "encounters": [
+    {
+      "name": "CULTIST",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "JAW_WORM",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "TWO_LOUSE",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "SMALL_SLIMES",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "BLUE_SLAVER",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "GREMLIN_GANG",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "LOOTER",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "LARGE_SLIME",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "LOTS_OF_SLIMES",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "EXORDIUM_THUGS",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "EXORDIUM_WILDLIFE",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "RED_SLAVER",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "THREE_LOUSE",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "TWO_FUNGI_BEASTS",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "GREMLIN_NOB",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "LAGAVULIN",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "THREE_SENTRIES",
+      "status": "inherited-regression-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "SLIME_BOSS",
+      "status": "implemented-targeted-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "THE_GUARDIAN",
+      "status": "implemented-targeted-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "HEXAGHOST",
+      "status": "implemented-targeted-verified",
+      "dependency": "第一幕5目标与状态牌闭包"
+    },
+    {
+      "name": "SPHERIC_GUARDIAN",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "CHOSEN",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "SHELL_PARASITE",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "THREE_BYRDS",
+      "status": "pending-user-review",
+      "dependency": "飞行减伤、按攻击次数坠落、眩晕和恢复飞行，需要完整公开阶段及多段攻击对拍"
+    },
+    {
+      "name": "TWO_THIEVES",
+      "status": "pending-user-review",
+      "dependency": "偷取金币和敌人逃跑，需确认战斗胜利与金币返还/持久化边界"
+    },
+    {
+      "name": "CHOSEN_AND_BYRDS",
+      "status": "pending-user-review",
+      "dependency": "天选者本体已在首批，组合等待飞鸟坠落/恢复验收"
+    },
+    {
+      "name": "SENTRY_AND_SPHERE",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "SNAKE_PLANT",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "SNECKO",
+      "status": "pending-user-review",
+      "dependency": "混乱与逐卡随机费用有效期；依赖全卡实例费用观测集成"
+    },
+    {
+      "name": "CENTURION_AND_HEALER",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "CULTIST_AND_CHOSEN",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "THREE_CULTIST",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "SHELLED_PARASITE_AND_FUNGI",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "GREMLIN_LEADER",
+      "status": "pending-user-review",
+      "dependency": "召唤与同槽同种实例替换，首领死亡后的随从结算"
+    },
+    {
+      "name": "SLAVERS",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "BOOK_OF_STABBING",
+      "status": "pending-user-review",
+      "dependency": "多段次数逐回合增加且未格挡伤害可生成Wound；不能沿用固定15单步生成上界"
+    },
+    {
+      "name": "AUTOMATON",
+      "status": "pending-user-review",
+      "dependency": "召唤铜球、Stasis捕获/归还具体卡牌、首领与随从生命期"
+    },
+    {
+      "name": "COLLECTOR",
+      "status": "pending-user-review",
+      "dependency": "召唤火炬头、替换实例、群体强化和首领死亡语义"
+    },
+    {
+      "name": "CHAMP",
+      "status": "pending-user-review",
+      "dependency": "半血触发强化/清除减益与后续行动阶段，需要独立实战对拍"
+    },
+    {
+      "name": "THREE_DARKLINGS",
+      "status": "pending-user-review",
+      "dependency": "倒地并非死亡；复活、三只同时倒地才终局，当前省略不可选实体规则不适用"
+    },
+    {
+      "name": "ORB_WALKER",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "THREE_SHAPES",
+      "status": "pending-user-review",
+      "dependency": "随机包含爆炸体/反冲机/尖刺机；自爆、自毁终局、荆棘和状态牌组合"
+    },
+    {
+      "name": "SPIRE_GROWTH",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "TRANSIENT",
+      "status": "pending-user-review",
+      "dependency": "伤害转临时力量下降、Fading倒计时和自然消失的战斗结果"
+    },
+    {
+      "name": "FOUR_SHAPES",
+      "status": "pending-user-review",
+      "dependency": "同上，四目标组合及自爆中途终局检查"
+    },
+    {
+      "name": "MAW",
+      "status": "pending-user-review",
+      "dependency": "攻击段数随回合增加，需要重新证明50项结算队列与极端长战斗预算"
+    },
+    {
+      "name": "SPHERE_AND_TWO_SHAPES",
+      "status": "pending-user-review",
+      "dependency": "守护者本体已在首批；组合等待几何体的自爆与终局验收"
+    },
+    {
+      "name": "JAW_WORM_HORDE",
+      "status": "implemented-targeted-verified",
+      "dependency": "第二/三幕本批公开字段与77项专项测试已通过；统一模型集成待验收"
+    },
+    {
+      "name": "WRITHING_MASS",
+      "status": "pending-user-review",
+      "dependency": "受攻击后反应换意图、永久寄生诅咒和可见状态/卡组持续化"
+    },
+    {
+      "name": "GIANT_HEAD",
+      "status": "pending-user-review",
+      "dependency": "正版count初值5且A18开战减1；后端固定回合阈值/伤害公式不同，需复核修复并补Slow递增语义"
+    },
+    {
+      "name": "NEMESIS",
+      "status": "pending-user-review",
+      "dependency": "无实体回合交替及持续时点；后端注释提示与游戏递减时机差异，需定点对拍"
+    },
+    {
+      "name": "REPTOMANCER",
+      "status": "pending-user-review",
+      "dependency": "召唤匕首、同槽替换、匕首自毁与首领死亡后的随从结算"
+    },
+    {
+      "name": "AWAKENED_ONE",
+      "status": "pending-user-review",
+      "dependency": "两阶段死亡/复活、能力牌触发、随从仍存活时不得提前终局"
+    },
+    {
+      "name": "TIME_EATER",
+      "status": "pending-user-review",
+      "dependency": "累计12张牌强制结束回合、半血治疗/清除减益，涉及动作结算边界"
+    },
+    {
+      "name": "DONU_AND_DECA",
+      "status": "pending-user-review",
+      "dependency": "双Boss互相强化/格挡、单体死亡后援助目标与A19护甲；本轮Boss统一保留审核"
+    },
+    {
+      "name": "SHIELD_AND_SPEAR",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "THE_HEART",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "LAGAVULIN_EVENT",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "COLOSSEUM_EVENT_SLAVERS",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "COLOSSEUM_EVENT_NOBS",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "MASKED_BANDITS_EVENT",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "MUSHROOMS_EVENT",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    },
+    {
+      "name": "MYSTERIOUS_SPHERE_EVENT",
+      "status": "out-of-batch",
+      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+    }
+  ],
+  "training_admitted": false
+}

@@ -1,0 +1,6 @@
+{
+  "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c",
+  "patches/lightspeed-battle-env.patch": "fe8168a3cbfa5595fefa7e9bf205ea9db0dc017096ac4809120feb8d8896c9aa",
+  "sts/env/public-battle-contract.json": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
+  "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe"
+}

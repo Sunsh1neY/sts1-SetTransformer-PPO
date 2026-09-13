@@ -1,0 +1,136 @@
+{
+  "description": "独立真实后端：两虱虫，火药水击杀目标1，消耗后实体变化",
+  "before": {
+    "schema": "enemy-potion-entities-v1",
+    "revision": 2,
+    "enemy_entities": [
+      {
+        "entity_type": "enemy",
+        "reference": "enemy:1:0:1",
+        "features": {
+          "name": "RED_LOUSE",
+          "hp": 10,
+          "max_hp": 10,
+          "block": 0,
+          "intent_kind": "BUFF",
+          "intent_damage": 0,
+          "intent_hits": 0,
+          "statuses": {
+            "Curl Up": 5
+          },
+          "public_history": {
+            "charge_turns_observed": 0,
+            "completed_enemy_turns": 0,
+            "last_intent_kind": "NONE",
+            "previous_intent_kind": "NONE",
+            "sleep_turns_observed": 0
+          }
+        }
+      },
+      {
+        "entity_type": "enemy",
+        "reference": "enemy:1:1:1",
+        "features": {
+          "name": "GREEN_LOUSE",
+          "hp": 16,
+          "max_hp": 16,
+          "block": 0,
+          "intent_kind": "ATTACK",
+          "intent_damage": 6,
+          "intent_hits": 1,
+          "statuses": {
+            "Curl Up": 3
+          },
+          "public_history": {
+            "charge_turns_observed": 0,
+            "completed_enemy_turns": 0,
+            "last_intent_kind": "NONE",
+            "previous_intent_kind": "NONE",
+            "sleep_turns_observed": 0
+          }
+        }
+      }
+    ],
+    "potion_entities": [
+      {
+        "entity_type": "potion",
+        "reference": "potion:1:0:1",
+        "features": {
+          "name": "Fire Potion",
+          "potency": 20,
+          "target_kind": "ENEMY",
+          "activation": "active",
+          "potency_unit": "effect_amount"
+        }
+      }
+    ],
+    "routing": {
+      "enemy_target_references": {
+        "0": "enemy:1:0:1",
+        "1": "enemy:1:1:1"
+      },
+      "potion_slot_references": {
+        "0": "potion:1:0:1"
+      },
+      "legal_potion_actions": [
+        {
+          "source_reference": "potion:1:0:1",
+          "target_reference": "enemy:1:0:1",
+          "action": 51
+        },
+        {
+          "source_reference": "potion:1:0:1",
+          "target_reference": "enemy:1:1:1",
+          "action": 52
+        }
+      ]
+    },
+    "integration": {
+      "card_candidates": "owned-by-full-card-task",
+      "batching": "dynamic-padding-owned-by-shared-encoder",
+      "training_admitted": false
+    }
+  },
+  "after": {
+    "schema": "enemy-potion-entities-v1",
+    "revision": 3,
+    "enemy_entities": [
+      {
+        "entity_type": "enemy",
+        "reference": "enemy:1:0:1",
+        "features": {
+          "name": "RED_LOUSE",
+          "hp": 10,
+          "max_hp": 10,
+          "block": 0,
+          "intent_kind": "BUFF",
+          "intent_damage": 0,
+          "intent_hits": 0,
+          "statuses": {
+            "Curl Up": 5
+          },
+          "public_history": {
+            "charge_turns_observed": 0,
+            "completed_enemy_turns": 0,
+            "last_intent_kind": "NONE",
+            "previous_intent_kind": "NONE",
+            "sleep_turns_observed": 0
+          }
+        }
+      }
+    ],
+    "potion_entities": [],
+    "routing": {
+      "enemy_target_references": {
+        "0": "enemy:1:0:1"
+      },
+      "potion_slot_references": {},
+      "legal_potion_actions": []
+    },
+    "integration": {
+      "card_candidates": "owned-by-full-card-task",
+      "batching": "dynamic-padding-owned-by-shared-encoder",
+      "training_admitted": false
+    }
+  }
+}

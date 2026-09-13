@@ -1,0 +1,283 @@
+{
+  "schema": "act23-enemy-audit-v1",
+  "entries": [
+    {
+      "encounter": "SPHERIC_GUARDIAN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "CHOSEN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "SHELL_PARASITE",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "THREE_BYRDS",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "三只异鸟",
+      "reason": "飞行减伤、按攻击次数坠落、眩晕和恢复飞行，需要完整公开阶段及多段攻击对拍",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "TWO_THIEVES",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "双盗贼",
+      "reason": "偷取金币和敌人逃跑，需确认战斗胜利与金币返还/持久化边界",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "CHOSEN_AND_BYRDS",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "被拣选者＋异鸟",
+      "reason": "天选者本体已在首批，组合等待飞鸟坠落/恢复验收",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "SENTRY_AND_SPHERE",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "SNAKE_PLANT",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "SNECKO",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "异蛇",
+      "reason": "混乱与逐卡随机费用有效期；依赖全卡实例费用观测集成",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "CENTURION_AND_HEALER",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "CULTIST_AND_CHOSEN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "THREE_CULTIST",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "SHELLED_PARASITE_AND_FUNGI",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "GREMLIN_LEADER",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "地精首领",
+      "reason": "召唤与同槽同种实例替换，首领死亡后的随从结算",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "SLAVERS",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "BOOK_OF_STABBING",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "扎人的书",
+      "reason": "多段次数逐回合增加且未格挡伤害可生成Wound；不能沿用固定15单步生成上界",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "AUTOMATON",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "铜制机械人偶",
+      "reason": "召唤铜球、Stasis捕获/归还具体卡牌、首领与随从生命期",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "COLLECTOR",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "收藏家",
+      "reason": "召唤火炬头、替换实例、群体强化和首领死亡语义",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "CHAMP",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "第一勇士",
+      "reason": "半血触发强化/清除减益与后续行动阶段，需要独立实战对拍",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "THREE_DARKLINGS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "三只小黑",
+      "reason": "倒地并非死亡；复活、三只同时倒地才终局，当前省略不可选实体规则不适用",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "ORB_WALKER",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "THREE_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "三个几何体",
+      "reason": "随机包含爆炸体/反冲机/尖刺机；自爆、自毁终局、荆棘和状态牌组合",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "SPIRE_GROWTH",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "TRANSIENT",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "倏忽魔",
+      "reason": "伤害转临时力量下降、Fading倒计时和自然消失的战斗结果",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "FOUR_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "四个几何体",
+      "reason": "同上，四目标组合及自爆中途终局检查",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "MAW",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "巨口",
+      "reason": "攻击段数随回合增加，需要重新证明50项结算队列与极端长战斗预算",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "SPHERE_AND_TWO_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "球形守护者＋两个几何体",
+      "reason": "守护者本体已在首批；组合等待几何体的自爆与终局验收",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "JAW_WORM_HORDE",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "WRITHING_MASS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "扭曲团块",
+      "reason": "受攻击后反应换意图、永久寄生诅咒和可见状态/卡组持续化",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "GIANT_HEAD",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "大脑袋",
+      "reason": "正版count初值5且A18开战减1；后端固定回合阈值/伤害公式不同，需复核修复并补Slow递增语义",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "NEMESIS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "天罚",
+      "reason": "无实体回合交替及持续时点；后端注释提示与游戏递减时机差异，需定点对拍",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "REPTOMANCER",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "拜蛇术士",
+      "reason": "召唤匕首、同槽替换、匕首自毁与首领死亡后的随从结算",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "AWAKENED_ONE",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "觉醒者",
+      "reason": "两阶段死亡/复活、能力牌触发、随从仍存活时不得提前终局",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "TIME_EATER",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "时间吞噬者",
+      "reason": "累计12张牌强制结束回合、半血治疗/清除减益，涉及动作结算边界",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "DONU_AND_DECA",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "甜圈与八体",
+      "reason": "双Boss互相强化/格挡、单体死亡后援助目标与A19护甲；本轮Boss统一保留审核",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    }
+  ],
+  "potion_audit": "paused-by-user",
+  "full_run": false
+}
