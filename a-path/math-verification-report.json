@@ -1,0 +1,24 @@
+{
+  "scope": "standalone_a_path_math_only",
+  "project_integration_tested": false,
+  "game_environment_tested": false,
+  "gpu_training_tested": false,
+  "python_version": "3.13.5",
+  "torch_version": "2.10.0+cpu",
+  "passed_count": 11,
+  "passed_checks": [
+    "来源和条件目标组成完整归一化分布",
+    "精确联合熵与完整动作枚举一致",
+    "联合logp相加及联合ratio",
+    "无目标分支logp和熵为零",
+    "目标logits整行平移不改变条件概率",
+    "识别raw b+t全局softmax与A路径不等价",
+    "顺序贪心不等于joint MAP",
+    "联合ratio与分别clipping的差异",
+    "精确联合熵对来源与目标参数的梯度匹配枚举oracle",
+    "完整动作PPO同时训练来源和已选来源的目标分支",
+    "Pointer的Query/Key局部反向传播公式"
+  ],
+  "skipped_checks": [],
+  "status": "passed"
+}

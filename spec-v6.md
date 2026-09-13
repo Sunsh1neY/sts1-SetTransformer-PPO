@@ -25,6 +25,8 @@
 
 ### 0.2 交付物
 
+2026-09-12执行补记：冻结comparison-battle-v2范围的M3工程和MLP/Set各两组GPU训练已完成，每组70656transition，训练评估合计1097.41秒。四组相对初始策略的开发改善区间下界均大于0，架构差异区间均含0。见[实测报告](docs/comparison-ppo-report.md)；这不等于正式Gate或全卡/更大分布泛化通过。
+
 2026-09-12 用户裁定：MLP-PPO 与 Set-PPO 的架构对照仅在冻结的 `comparison-battle-v1` 环境进行，范围见[对照边界](docs/mlp-set-comparison-boundary.md)。后续扩展环境只推进 Set Transformer，MLP 保留原环境可复现结果；跨环境分数不作为直接架构对照。此裁定不改变奖励、原排期及 Gate。
 
 1. 可复现的 headless STS1 Ironclad 战斗环境（正式训练后端为 `sts_lightspeed` C++，Python 模拟器保留为教学/验证用途），带基础回归与现有真实日志的有限字段校准记录；
@@ -749,3 +751,8 @@ v5 的历史方案条款不等于对应代码已经实现。除 §0.4 列明的�
 | R1–R14 | §5.6 | 当前可执行分支以确定性测试验收；完整 RunEnv/终局反序列化分支待集成 |
 
 ---
+
+
+## 2026-09-12 统一实体架构纠偏执行裁定
+
+以docs/decisions.md本日统一实体条目为依据：本次实现使用4层SAB（非ISAB×2）、64维4头Pre-LN，五类实体共同注意力、PMA摘要及动态候选匹配评分。旧比较模型保留历史证据，不代表本规格统一实体模型完成。本轮两初始化GPU训练评估上限四小时，实际步数先预检冻结。详细配置及范围见docs/unified-set-training.md。

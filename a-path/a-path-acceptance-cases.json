@@ -1,0 +1,111 @@
+{
+  "fixture_version": "a-path-math-v1",
+  "provenance": "synthetic_contract_fixture",
+  "purpose": "仅用于概率和自动求导契约测试，不是自然游戏初态或训练样本",
+  "joint_probability_case": {
+    "sources": [
+      {
+        "key": "PLAY_CARD:A",
+        "p_source": 0.4,
+        "requires_target": true,
+        "target_keys": [
+          "X",
+          "Y"
+        ],
+        "target_probs": [
+          0.7,
+          0.3
+        ]
+      },
+      {
+        "key": "PLAY_CARD:B",
+        "p_source": 0.2,
+        "requires_target": false,
+        "target_keys": [
+          "NO_TARGET"
+        ],
+        "target_probs": [
+          1.0
+        ]
+      },
+      {
+        "key": "USE_POTION:P",
+        "p_source": 0.3,
+        "requires_target": true,
+        "target_keys": [
+          "X",
+          "Y"
+        ],
+        "target_probs": [
+          0.25,
+          0.75
+        ]
+      },
+      {
+        "key": "END_TURN",
+        "p_source": 0.1,
+        "requires_target": false,
+        "target_keys": [
+          "NO_TARGET"
+        ],
+        "target_probs": [
+          1.0
+        ]
+      }
+    ],
+    "joint_action_order": [
+      "A->X",
+      "A->Y",
+      "B->NO_TARGET",
+      "P->X",
+      "P->Y",
+      "END_TURN"
+    ],
+    "expected_joint_probs": [
+      0.28,
+      0.12,
+      0.2,
+      0.075,
+      0.225,
+      0.1
+    ],
+    "expected_source_entropy_nats": 1.2798542258336676,
+    "expected_weighted_target_entropy_nats": 0.4130462642075999,
+    "expected_joint_entropy_nats": 1.6929004900412674
+  },
+  "selected_action_ratio_case": {
+    "action": "A->X",
+    "old_source_probability": 0.4,
+    "old_target_probability": 0.7,
+    "new_source_probability": 0.45,
+    "new_target_probability": 0.6,
+    "expected_old_joint_probability": 0.28,
+    "expected_new_joint_probability": 0.27,
+    "expected_old_joint_log_probability": -1.2729656758128876,
+    "expected_ratio": 0.9642857142857144
+  },
+  "sequential_greedy_counterexample": {
+    "source_probs": [
+      0.6,
+      0.4
+    ],
+    "source_a_target_probs": [
+      0.51,
+      0.49
+    ],
+    "source_b_target_probs": [
+      1.0
+    ],
+    "sequential_greedy_joint_probability": 0.306,
+    "joint_map_probability": 0.4
+  },
+  "joint_clipping_counterexample": {
+    "source_ratio": 1.15,
+    "target_ratio": 1.15,
+    "joint_ratio": 1.3225,
+    "epsilon": 0.2,
+    "advantage": 1.0,
+    "expected_joint_clipped_objective": 1.2,
+    "note": "两个分项均在[0.8,1.2]内，但联合ratio已越上界；不允许分别clipping代替联合目标"
+  }
+}
