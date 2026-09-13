@@ -9,12 +9,23 @@
 | 共同源码基线 | 已整理，待基线提交 SHA 写回 | EP3 成果源 `8f3d3c7...`；主工作树 dirty 成果已单独记录 |
 | 后端补丁链 | 已验证 | 锁定后端 → 基础补丁 → 敌人增量补丁正向、逆向均可复现 |
 | 独立干净构建 | 已验证 | `sts2-enemy-baseline-backend` / `sts2-enemy-baseline-build`，契约指纹导入通过 |
-| A/B/C/D worktree | 待创建 | 目标路径已核验不存在；创建后写入最终基线 SHA |
+| A/B/C/D worktree | 已创建 | 四个目录均为干净 worktree，当前共同基线 `29013d334c...`；路径和后端指纹见下表 |
 | 全卡共享接口 | 已只读核对 | 当前为 `unified-entity-interface-v4`；旧 handoff v1 哈希已刷新，尚未接入敌人生产入口 |
 | 字段审批 | 待用户批准 | 具体包见 `docs/enemy-field-approval.md`；等待不视为批准 |
 | 奖励 | 冻结 | 继续使用 `battle_reward_v1`，不增加金币、诅咒、掉落或辅助奖励 |
 | 药水审计 | 暂停 | 不扩充药水白名单，不以药水结果代替敌人审核 |
 | 正式训练 / push / 主分支合并 | 未执行 | 本任务不启动这些动作 |
+
+## 已创建的隔离目录
+
+| 组 | 顶层 HEAD | 分支 | 后端 HEAD | `json` | `pybind11` | build 目录 | build 状态 |
+|---|---|---|---|---|---|---|---|
+| A | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-a` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-a/third_party/sts_lightspeed/build` | 已建立，未编译 |
+| B | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-b` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-b/third_party/sts_lightspeed/build` | 已建立，未编译 |
+| C | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-c` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-c/third_party/sts_lightspeed/build` | 已建立，未编译 |
+| D | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-d` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-d/third_party/sts_lightspeed/build` | 已建立，未编译 |
+
+四个目录均含同一生成契约头 `bindings/enemy-potion-config.h`，SHA256 为 `11c3f8cc7641eef2320130a5f8cdd5fe4a2088f64eab916f4ba4ca03d7980bd1`。没有启动任何 agent；这些目录只作为分发隔离边界，等待用户字段裁决和后续人工安排。
 
 ## 22 个遭遇逐项表
 

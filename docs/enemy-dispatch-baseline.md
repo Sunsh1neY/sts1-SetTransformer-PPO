@@ -11,8 +11,8 @@
 | 敌人扩展目录 | `C:/Users/19091/Desktop/sts2-enemy-potion` |
 | 分支 | `codex/enemy-potion-expansion` |
 | 敌人扩展成果源提交 | `8f3d3c74885fd4766c1ef29ad9b8617af3a9e08a` |
-| 共同基线提交 | 本文件首次提交后写入；最终以本文件所在分支的最终 SHA 为准 |
-| 分发原则 | A/B/C/D 从同一共同基线创建，worker 只写自己的 worktree |
+| 共同基线提交 | `29013d334c8ad6adeceea00dc29d442067bb982b`；路径状态更新后四个 worker 分支快进到本文件所在的最终交接提交 |
+| 分发原则 | A/B/C/D 从同一共同基线创建，worker 只写自己的 worktree；当前四个目录均已创建 |
 | 全卡参考目录 | `C:/Users/19091/Desktop/sts2-full-card`，只读 |
 | 全卡参考提交 | `2325d550bee2e3ffb28474af8652e7c852b756b4` |
 | 全卡共享契约 | `unified-entity-interface-v4`，SHA256 `12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843` |
@@ -28,6 +28,8 @@
 | D | `C:/Users/19091/Desktop/sts2-enemy-d` | `codex/enemy-d` | `C:/Users/19091/Desktop/sts2-enemy-d/third_party/sts_lightspeed` | `C:/Users/19091/Desktop/sts2-enemy-d/third_party/sts_lightspeed/build` |
 
 四个目录在记录时均不存在；创建它们不会覆盖现有目录。每个后端副本都必须由锁定后端和两份补丁重新生成，不能复制或共享当前 `third_party` 下的可写构建树。
+
+已创建结果：四个 worktree 的顶层状态均干净，且均从共同基线提交创建；四个后端 build 目录均已建立但尚未编译，避免在未分配任务前重复占用资源。后端源码与生成头的 SHA、锁定子模块和路径在本文件第 3 节及最终状态表中复核。
 
 ## 2. 未提交成果的保留记录
 
