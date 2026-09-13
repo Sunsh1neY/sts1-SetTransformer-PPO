@@ -1,0 +1,6103 @@
+{
+  "schema": "a-path-deck-grouping-proposal-v1",
+  "status": "proposal_awaiting_user_review",
+  "training_pool_frozen": false,
+  "source_sha256": {
+    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
+    "docs/real-deck-manifest.json": "aa121e0a269752be284b21d25d2272184ecd07dbbcbc5dbcbd3b00d773b1e924",
+    "sts/env/ironclad-registry.json": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  },
+  "summary": [
+    {
+      "split": "train_candidate",
+      "group": "simple",
+      "label": "基础与单牌主导",
+      "contents": 10,
+      "source_rows": 13,
+      "runs": 12,
+      "components": 9,
+      "origin_contents": {
+        "intermediate": 10
+      },
+      "card_count_range": [
+        9,
+        13
+      ],
+      "combo_family_counts": {},
+      "resource_dense_contents": 0
+    },
+    {
+      "split": "train_candidate",
+      "group": "transition",
+      "label": "过渡与局部配合",
+      "contents": 8,
+      "source_rows": 8,
+      "runs": 8,
+      "components": 8,
+      "origin_contents": {
+        "final": 8
+      },
+      "card_count_range": [
+        14,
+        24
+      ],
+      "combo_family_counts": {
+        "block_to_damage": 1,
+        "self_damage": 1,
+        "strength": 1
+      },
+      "resource_dense_contents": 0
+    },
+    {
+      "split": "train_candidate",
+      "group": "combo",
+      "label": "多机制组合",
+      "contents": 21,
+      "source_rows": 21,
+      "runs": 21,
+      "components": 21,
+      "origin_contents": {
+        "final": 21
+      },
+      "card_count_range": [
+        19,
+        39
+      ],
+      "combo_family_counts": {
+        "exhaust": 18,
+        "strength": 14,
+        "self_damage": 6,
+        "status": 9,
+        "block_to_damage": 7,
+        "vulnerable_draw_energy": 3
+      },
+      "resource_dense_contents": 12
+    },
+    {
+      "split": "development",
+      "group": "simple",
+      "label": "基础与单牌主导",
+      "contents": 17,
+      "source_rows": 79,
+      "runs": 62,
+      "components": 4,
+      "origin_contents": {
+        "intermediate": 16,
+        "final": 1
+      },
+      "card_count_range": [
+        9,
+        14
+      ],
+      "combo_family_counts": {},
+      "resource_dense_contents": 0
+    },
+    {
+      "split": "development",
+      "group": "transition",
+      "label": "过渡与局部配合",
+      "contents": 5,
+      "source_rows": 5,
+      "runs": 5,
+      "components": 2,
+      "origin_contents": {
+        "intermediate": 1,
+        "final": 4
+      },
+      "card_count_range": [
+        11,
+        22
+      ],
+      "combo_family_counts": {
+        "strength": 1,
+        "exhaust": 1
+      },
+      "resource_dense_contents": 0
+    },
+    {
+      "split": "development",
+      "group": "combo",
+      "label": "多机制组合",
+      "contents": 13,
+      "source_rows": 13,
+      "runs": 13,
+      "components": 3,
+      "origin_contents": {
+        "final": 13
+      },
+      "card_count_range": [
+        20,
+        34
+      ],
+      "combo_family_counts": {
+        "exhaust": 8,
+        "status": 7,
+        "strength": 8,
+        "self_damage": 7,
+        "block_to_damage": 4,
+        "vulnerable_draw_energy": 1
+      },
+      "resource_dense_contents": 9
+    }
+  ],
+  "proposal": {
+    "transition_weights": {
+      "simple": 0.5,
+      "transition": 0.25,
+      "combo": 0.25
+    },
+    "persistent_env_slots": {
+      "simple": 4,
+      "transition": 2,
+      "combo": 2
+    },
+    "final_source_transition_cap": 0.5,
+    "rollout_steps_per_slot": 128,
+    "sampling_unit": "固定组环境槽保证真实transition份额；组内reset时完整内容均匀，再选来源记录、配置和遭遇",
+    "group_labels_are_policy_inputs": false
+  },
+  "limitations": [
+    "内容标签是可审核的工程分层，不是真实难度、胜率或无限循环证明",
+    "来源完整保留，选择阶段不改组，不用训练结果重新分组",
+    "最终卡组尚未reset/资源准入；冻结前逐项复核，缺组时不自动将份额转给最终卡组"
+  ],
+  "contents": [
+    {
+      "content_id": "2c1e6f2987181ca9d6f064b9b0a998769a00dcc06b867f9a792ffd246f53b474",
+      "split": "development",
+      "component_id": "1f83d07017c4e10dbae41bf530d6c4d916113859f4b7fb08b3f215265ce379be",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash+1",
+        "Battle Trance",
+        "Battle Trance+1",
+        "Bloodletting",
+        "Burning Pact+1",
+        "Cleave",
+        "Clothesline",
+        "Corruption+1",
+        "Dark Embrace+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form+1",
+        "Dual Wield+1",
+        "Evolve+1",
+        "Feed",
+        "Fiend Fire+1",
+        "Headbutt",
+        "Heavy Blade",
+        "Immolate+1",
+        "Impervious+1",
+        "Inflame+1",
+        "Metallicize+1",
+        "Sentinel",
+        "Sentinel+1",
+        "Shrug It Off+1",
+        "Strike_R",
+        "Strike_R",
+        "Sword Boomerang+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Battle Trance": 1,
+        "Battle Trance+1": 1,
+        "Bloodletting": 1,
+        "Burning Pact+1": 1,
+        "Cleave": 1,
+        "Clothesline": 1,
+        "Corruption+1": 1,
+        "Dark Embrace+1": 1,
+        "Defend_R": 4,
+        "Demon Form+1": 1,
+        "Dual Wield+1": 1,
+        "Evolve+1": 1,
+        "Feed": 1,
+        "Fiend Fire+1": 1,
+        "Headbutt": 1,
+        "Heavy Blade": 1,
+        "Immolate+1": 1,
+        "Impervious+1": 1,
+        "Inflame+1": 1,
+        "Metallicize+1": 1,
+        "Sentinel": 1,
+        "Sentinel+1": 1,
+        "Shrug It Off+1": 1,
+        "Strike_R": 2,
+        "Sword Boomerang+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:93875aa00e713b9f1072:final-master-deck",
+          "origin": "final",
+          "run": "run-group:93875aa00e713b9f1072"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 32,
+      "base_count": 8,
+      "base_fraction": 0.25,
+      "extra_count": 24,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Corruption",
+            "Fiend Fire"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Sentinel"
+          ]
+        },
+        "status": {
+          "source": [
+            "Immolate"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form",
+            "Inflame"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Heavy Blade",
+            "Sword Boomerang"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 4,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "2d5de4f2a4b4fd1e764031be9df046bb4f618a217105b67304ef8fcf31cf3b22",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash+1",
+        "Blood for Blood",
+        "Burning Pact",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Evolve",
+        "Inflame",
+        "Inflame",
+        "Offering",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Seeing Red",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "True Grit+1",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Blood for Blood": 1,
+        "Burning Pact": 1,
+        "Defend_R": 2,
+        "Defend_R+1": 2,
+        "Evolve": 1,
+        "Inflame": 2,
+        "Offering": 1,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Seeing Red": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 3,
+        "True Grit+1": 1,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:3e0285dc659ea66751e3:final-master-deck",
+          "origin": "final",
+          "run": "run-group:3e0285dc659ea66751e3"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 23,
+      "base_count": 9,
+      "base_fraction": 0.391304347826087,
+      "extra_count": 14,
+      "families": {
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 5,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "2e41e7d76ce20d73caae415f137a765dcb9ee8b68ae0fded528ef784ffaa06fd",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Battle Trance",
+        "Battle Trance+1",
+        "Dark Embrace+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Demon Form+1",
+        "Disarm+1",
+        "Evolve",
+        "Feel No Pain",
+        "Fiend Fire+1",
+        "Hemokinesis+1",
+        "Limit Break+1",
+        "Perfected Strike+1",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Power Through",
+        "Reaper",
+        "Second Wind+1",
+        "Seeing Red",
+        "Seeing Red",
+        "Shockwave+1",
+        "Shrug It Off",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Uppercut",
+        "Warcry+1"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Battle Trance": 1,
+        "Battle Trance+1": 1,
+        "Dark Embrace+1": 1,
+        "Defend_R+1": 4,
+        "Demon Form+1": 1,
+        "Disarm+1": 1,
+        "Evolve": 1,
+        "Feel No Pain": 1,
+        "Fiend Fire+1": 1,
+        "Hemokinesis+1": 1,
+        "Limit Break+1": 1,
+        "Perfected Strike+1": 1,
+        "Pommel Strike": 1,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Reaper": 1,
+        "Second Wind+1": 1,
+        "Seeing Red": 2,
+        "Shockwave+1": 1,
+        "Shrug It Off": 1,
+        "Strike_R+1": 3,
+        "Uppercut": 1,
+        "Warcry+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:4cba167963d81b179ac7:final-master-deck",
+          "origin": "final",
+          "run": "run-group:4cba167963d81b179ac7"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 30,
+      "base_count": 8,
+      "base_fraction": 0.26666666666666666,
+      "extra_count": 22,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Fiend Fire",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Limit Break",
+            "Reaper"
+          ]
+        }
+      },
+      "engines": [
+        "exhaust_draw_block_chain",
+        "strength_scaling_payoff"
+      ],
+      "draw_copies": 6,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "38c053c760e5c9e127465c2a2e1c7393615904b82e0ef1b84a8b80cda69ecc0a",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Barricade+1",
+        "Bash+1",
+        "Battle Trance",
+        "Battle Trance",
+        "Battle Trance+1",
+        "Bloodletting+1",
+        "Bloodletting+1",
+        "Cleave+1",
+        "Corruption+1",
+        "Dark Embrace+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Entrench",
+        "Exhume",
+        "Feel No Pain+1",
+        "Feel No Pain+1",
+        "Flame Barrier",
+        "Headbutt",
+        "Heavy Blade+1",
+        "Hemokinesis+1",
+        "Impervious+1",
+        "Pommel Strike",
+        "Power Through",
+        "Power Through",
+        "Reaper",
+        "Sever Soul",
+        "True Grit+1",
+        "Uppercut+1",
+        "Warcry+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash+1": 1,
+        "Battle Trance": 2,
+        "Battle Trance+1": 1,
+        "Bloodletting+1": 2,
+        "Cleave+1": 1,
+        "Corruption+1": 1,
+        "Dark Embrace+1": 1,
+        "Defend_R": 4,
+        "Entrench": 1,
+        "Exhume": 1,
+        "Feel No Pain+1": 2,
+        "Flame Barrier": 1,
+        "Headbutt": 1,
+        "Heavy Blade+1": 1,
+        "Hemokinesis+1": 1,
+        "Impervious+1": 1,
+        "Pommel Strike": 1,
+        "Power Through": 2,
+        "Reaper": 1,
+        "Sever Soul": 1,
+        "True Grit+1": 1,
+        "Uppercut+1": 1,
+        "Warcry+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:6d8e7bcd740481cd0a56:final-master-deck",
+          "origin": "final",
+          "run": "run-group:6d8e7bcd740481cd0a56"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 33,
+      "base_count": 6,
+      "base_fraction": 0.18181818181818182,
+      "extra_count": 27,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption",
+            "Sever Soul",
+            "True Grit"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Barricade"
+          ],
+          "payoff": [
+            "Entrench"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain",
+        "exhaust_draw_block_chain",
+        "block_retention_scaling"
+      ],
+      "draw_copies": 5,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "39b07ecc7ba0a8aaa91930e17c28f9e83ca19b6da37b0049e0cc5ee4b59b390a",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Blood for Blood+1",
+        "Burning Pact+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form+1",
+        "Evolve+1",
+        "Feed",
+        "Flame Barrier",
+        "Flex+1",
+        "Headbutt",
+        "Heavy Blade+1",
+        "Iron Wave",
+        "Limit Break",
+        "Offering",
+        "Pommel Strike+1",
+        "Power Through",
+        "Reaper",
+        "Second Wind",
+        "Shockwave+1",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Blood for Blood+1": 1,
+        "Burning Pact+1": 1,
+        "Defend_R": 4,
+        "Demon Form+1": 1,
+        "Evolve+1": 1,
+        "Feed": 1,
+        "Flame Barrier": 1,
+        "Flex+1": 1,
+        "Headbutt": 1,
+        "Heavy Blade+1": 1,
+        "Iron Wave": 1,
+        "Limit Break": 1,
+        "Offering": 1,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Reaper": 1,
+        "Second Wind": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off": 2,
+        "Shrug It Off+1": 1,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:cd57eed0acce0ee4a937:final-master-deck",
+          "origin": "final",
+          "run": "run-group:cd57eed0acce0ee4a937"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 31,
+      "base_count": 9,
+      "base_fraction": 0.2903225806451613,
+      "extra_count": 22,
+      "families": {
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form",
+            "Flex"
+          ],
+          "payoff": [
+            "Heavy Blade",
+            "Limit Break",
+            "Reaper"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [
+        "strength_scaling_payoff"
+      ],
+      "draw_copies": 7,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "5279d04e6adfcc9978290922f8214e8f0d11bf39f4a417e5c0833bcaf73daadb",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Armaments",
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Berserk",
+        "Blood for Blood+1",
+        "Bloodletting+1",
+        "Body Slam",
+        "Brutality",
+        "Burning Pact+1",
+        "Carnage",
+        "Dropkick",
+        "Dropkick+1",
+        "Evolve",
+        "Feed",
+        "Feed",
+        "Feel No Pain+1",
+        "Havoc+1",
+        "Headbutt",
+        "Hemokinesis+1",
+        "Immolate",
+        "Infernal Blade",
+        "Inflame+1",
+        "Power Through",
+        "Reaper",
+        "Second Wind",
+        "Seeing Red+1",
+        "Shockwave",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Uppercut",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Armaments": 1,
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Berserk": 1,
+        "Blood for Blood+1": 1,
+        "Bloodletting+1": 1,
+        "Body Slam": 1,
+        "Brutality": 1,
+        "Burning Pact+1": 1,
+        "Carnage": 1,
+        "Dropkick": 1,
+        "Dropkick+1": 1,
+        "Evolve": 1,
+        "Feed": 2,
+        "Feel No Pain+1": 1,
+        "Havoc+1": 1,
+        "Headbutt": 1,
+        "Hemokinesis+1": 1,
+        "Immolate": 1,
+        "Infernal Blade": 1,
+        "Inflame+1": 1,
+        "Power Through": 1,
+        "Reaper": 1,
+        "Second Wind": 1,
+        "Seeing Red+1": 1,
+        "Shockwave": 1,
+        "Shrug It Off": 2,
+        "Shrug It Off+1": 1,
+        "Uppercut": 1,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:b5ff805d7227cfc1b35d:final-master-deck",
+          "origin": "final",
+          "run": "run-group:b5ff805d7227cfc1b35d"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 34,
+      "base_count": 2,
+      "base_fraction": 0.058823529411764705,
+      "extra_count": 32,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Havoc",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Immolate",
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Reaper"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Brutality",
+            "Hemokinesis"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        },
+        "vulnerable_draw_energy": {
+          "source": [
+            "Bash",
+            "Shockwave",
+            "Uppercut"
+          ],
+          "payoff": [
+            "Dropkick"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 6,
+      "energy_copies": 3,
+      "resource_dense": true
+    },
+    {
+      "content_id": "7ec7c7567712246e33c4adb16a3f5ad090e8e63d6e5b52c82701ffd44349f85f",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Barricade",
+        "Bash",
+        "Blood for Blood+1",
+        "Bloodletting",
+        "Burning Pact+1",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R+1",
+        "Exhume",
+        "Feel No Pain+1",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Pummel+1",
+        "Reaper",
+        "Second Wind+1",
+        "Shockwave",
+        "Shockwave+1",
+        "Spot Weakness+1",
+        "True Grit+1",
+        "True Grit+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash": 1,
+        "Blood for Blood+1": 1,
+        "Bloodletting": 1,
+        "Burning Pact+1": 1,
+        "Corruption": 1,
+        "Defend_R": 3,
+        "Defend_R+1": 1,
+        "Exhume": 1,
+        "Feel No Pain+1": 1,
+        "Offering+1": 1,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Pummel+1": 1,
+        "Reaper": 1,
+        "Second Wind+1": 1,
+        "Shockwave": 1,
+        "Shockwave+1": 1,
+        "Spot Weakness+1": 1,
+        "True Grit+1": 2
+      },
+      "sources": [
+        {
+          "id": "run-group:48ee6344d274a5f75a07:final-master-deck",
+          "origin": "final",
+          "run": "run-group:48ee6344d274a5f75a07"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 26,
+      "base_count": 6,
+      "base_fraction": 0.23076923076923078,
+      "extra_count": 20,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Corruption",
+            "Second Wind",
+            "True Grit"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Pummel",
+            "Reaper"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 4,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "80e878d462e7e9b21f5f6d2f8e8dfbe05a3472a99142b49a3065e426c9cc5e1e",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Bloodletting",
+        "Burning Pact+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form+1",
+        "Disarm+1",
+        "Fiend Fire+1",
+        "Flame Barrier+1",
+        "Headbutt",
+        "Hemokinesis+1",
+        "Offering",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Second Wind",
+        "Seeing Red",
+        "Seeing Red+1",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut+1",
+        "Warcry+1",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Bloodletting": 1,
+        "Burning Pact+1": 1,
+        "Defend_R": 4,
+        "Demon Form+1": 1,
+        "Disarm+1": 1,
+        "Fiend Fire+1": 1,
+        "Flame Barrier+1": 1,
+        "Headbutt": 1,
+        "Hemokinesis+1": 1,
+        "Offering": 1,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Second Wind": 1,
+        "Seeing Red": 1,
+        "Seeing Red+1": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 2,
+        "Uppercut+1": 1,
+        "Warcry+1": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:88d7120f540a2eaa5da6:final-master-deck",
+          "origin": "final",
+          "run": "run-group:88d7120f540a2eaa5da6"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 28,
+      "base_count": 8,
+      "base_fraction": 0.2857142857142857,
+      "extra_count": 20,
+      "families": {
+        "strength": {
+          "source": [
+            "Demon Form"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Whirlwind"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 6,
+      "energy_copies": 4,
+      "resource_dense": true
+    },
+    {
+      "content_id": "953dda3b59dd600813b2fe7273404d94bd8db4486a00222340ce790b06e63e32",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Body Slam+1",
+        "Corruption",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Demon Form+1",
+        "Disarm+1",
+        "Exhume",
+        "Exhume",
+        "Flame Barrier+1",
+        "Hemokinesis+1",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Power Through+1",
+        "Second Wind",
+        "Second Wind+1",
+        "Seeing Red",
+        "Sentinel",
+        "Shockwave+1",
+        "Shrug It Off+1"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Body Slam+1": 1,
+        "Corruption": 2,
+        "Defend_R": 2,
+        "Defend_R+1": 2,
+        "Demon Form+1": 1,
+        "Disarm+1": 1,
+        "Exhume": 2,
+        "Flame Barrier+1": 1,
+        "Hemokinesis+1": 1,
+        "Offering+1": 1,
+        "Pommel Strike+1": 1,
+        "Power Through+1": 1,
+        "Second Wind": 1,
+        "Second Wind+1": 1,
+        "Seeing Red": 1,
+        "Sentinel": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:ba4a36f016779b09dcb2:final-master-deck",
+          "origin": "final",
+          "run": "run-group:ba4a36f016779b09dcb2"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 23,
+      "base_count": 5,
+      "base_fraction": 0.21739130434782608,
+      "extra_count": 18,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Sentinel"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Flame Barrier",
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 3,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "b2abe05db98c617d574132c514673aa3af10dcb2b4a713d73fde2718e076e6bb",
+      "split": "development",
+      "component_id": "dbc00d0dec4bd967d4f7cab5ed23ccfcf019187dfde406dcde01eec40247e5b2",
+      "cards": [
+        "Anger",
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Body Slam+1",
+        "Clothesline",
+        "Combust",
+        "Corruption",
+        "Feed",
+        "Fire Breathing",
+        "Flame Barrier+1",
+        "Havoc+1",
+        "Headbutt",
+        "Inflame",
+        "Pommel Strike",
+        "Reckless Charge",
+        "Rupture",
+        "Sever Soul+1",
+        "Shockwave",
+        "Shrug It Off+1",
+        "True Grit+1",
+        "Warcry+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Body Slam+1": 1,
+        "Clothesline": 1,
+        "Combust": 1,
+        "Corruption": 1,
+        "Feed": 1,
+        "Fire Breathing": 1,
+        "Flame Barrier+1": 1,
+        "Havoc+1": 1,
+        "Headbutt": 1,
+        "Inflame": 1,
+        "Pommel Strike": 1,
+        "Reckless Charge": 1,
+        "Rupture": 1,
+        "Sever Soul+1": 1,
+        "Shockwave": 1,
+        "Shrug It Off+1": 1,
+        "True Grit+1": 1,
+        "Warcry+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:58037a37ca7acdbb1388:final-master-deck",
+          "origin": "final",
+          "run": "run-group:58037a37ca7acdbb1388"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 22,
+      "base_count": 2,
+      "base_fraction": 0.09090909090909091,
+      "extra_count": 20,
+      "families": {
+        "status": {
+          "source": [
+            "Reckless Charge"
+          ],
+          "payoff": [
+            "Fire Breathing"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Flame Barrier"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Combust"
+          ],
+          "payoff": [
+            "Rupture"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 3,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "ca17b4d61272ce1896fe817affdc25b57285ba0991b7eff952448eb33fbaddc2",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Blood for Blood",
+        "Bloodletting",
+        "Fire Breathing",
+        "Headbutt",
+        "Infernal Blade",
+        "Inflame",
+        "Inflame",
+        "Iron Wave",
+        "Limit Break",
+        "Metallicize",
+        "Offering",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Second Wind",
+        "Second Wind",
+        "Sentinel",
+        "Twin Strike"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Blood for Blood": 1,
+        "Bloodletting": 1,
+        "Fire Breathing": 1,
+        "Headbutt": 1,
+        "Infernal Blade": 1,
+        "Inflame": 2,
+        "Iron Wave": 1,
+        "Limit Break": 1,
+        "Metallicize": 1,
+        "Offering": 1,
+        "Pommel Strike": 1,
+        "Pommel Strike+1": 1,
+        "Second Wind": 2,
+        "Sentinel": 1,
+        "Twin Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:f931ab7c9ab54689a052:final-master-deck",
+          "origin": "final",
+          "run": "run-group:f931ab7c9ab54689a052"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 20,
+      "base_count": 2,
+      "base_fraction": 0.1,
+      "extra_count": 18,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Second Wind"
+          ],
+          "payoff": [
+            "Sentinel"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Limit Break",
+            "Twin Strike"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [
+        "strength_scaling_payoff"
+      ],
+      "draw_copies": 3,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "f82f663cb1126927aacb21ba8d2c3be76a124bd25603d71c4b0fdb0cf6b91168",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Barricade",
+        "Bash+1",
+        "Battle Trance",
+        "Berserk+1",
+        "Blood for Blood+1",
+        "Bloodletting",
+        "Brutality",
+        "Dark Embrace",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Disarm",
+        "Disarm",
+        "Evolve",
+        "Exhume+1",
+        "Feed",
+        "Flame Barrier",
+        "Hemokinesis",
+        "Immolate+1",
+        "Infernal Blade",
+        "Iron Wave",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Reaper",
+        "Shockwave+1",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Warcry+1"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash+1": 1,
+        "Battle Trance": 1,
+        "Berserk+1": 1,
+        "Blood for Blood+1": 1,
+        "Bloodletting": 1,
+        "Brutality": 1,
+        "Dark Embrace": 1,
+        "Defend_R+1": 4,
+        "Disarm": 2,
+        "Evolve": 1,
+        "Exhume+1": 1,
+        "Feed": 1,
+        "Flame Barrier": 1,
+        "Hemokinesis": 1,
+        "Immolate+1": 1,
+        "Infernal Blade": 1,
+        "Iron Wave": 1,
+        "Pommel Strike": 1,
+        "Pommel Strike+1": 1,
+        "Reaper": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off": 1,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 1,
+        "Strike_R+1": 2,
+        "Warcry+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:59e3e0bbe251993a438e:final-master-deck",
+          "origin": "final",
+          "run": "run-group:59e3e0bbe251993a438e"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 33,
+      "base_count": 8,
+      "base_fraction": 0.24242424242424243,
+      "extra_count": 25,
+      "families": {
+        "status": {
+          "source": [
+            "Immolate"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Reaper"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Brutality",
+            "Hemokinesis"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 7,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "fcf644119d6dcc88af17ed5b15a5dff14d2ad49dea34d721ae5f9316f036532a",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade",
+        "Bash",
+        "Battle Trance+1",
+        "Bludgeon+1",
+        "Burning Pact",
+        "Carnage+1",
+        "Clothesline+1",
+        "Dark Embrace+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Dual Wield+1",
+        "Exhume",
+        "Exhume",
+        "Feel No Pain+1",
+        "Feel No Pain+1",
+        "Impervious+1",
+        "Iron Wave+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Second Wind",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash": 1,
+        "Battle Trance+1": 1,
+        "Bludgeon+1": 1,
+        "Burning Pact": 1,
+        "Carnage+1": 1,
+        "Clothesline+1": 1,
+        "Dark Embrace+1": 1,
+        "Defend_R": 4,
+        "Dual Wield+1": 1,
+        "Exhume": 2,
+        "Feel No Pain+1": 2,
+        "Impervious+1": 1,
+        "Iron Wave+1": 1,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Second Wind": 1,
+        "Shrug It Off": 3,
+        "Strike_R": 4,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:e3911a0e8861134f5d07:final-master-deck",
+          "origin": "final",
+          "run": "run-group:e3911a0e8861134f5d07"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 33,
+      "base_count": 10,
+      "base_fraction": 0.30303030303030304,
+      "extra_count": 23,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        }
+      },
+      "engines": [
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 7,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "017001274412900dcb2cbc6e7a696a91b8f2cb01e77e9948773a0a37e4407119",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Clothesline",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave": 1,
+        "Clothesline": 1,
+        "Defend_R": 4,
+        "Shrug It Off": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:63fd5a205e4d8b9434f5:deck:017001274412900d",
+          "origin": "intermediate",
+          "run": "run-group:63fd5a205e4d8b9434f5"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 14,
+      "base_count": 11,
+      "base_fraction": 0.7857142857142857,
+      "extra_count": 3,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "0e5365956076b98d41cccb0b906eb13d08962d6f6e0f4bdab33d2ce8ec8ea77d",
+      "split": "development",
+      "component_id": "dbc00d0dec4bd967d4f7cab5ed23ccfcf019187dfde406dcde01eec40247e5b2",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Power Through",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Power Through": 1,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:99171439576ecb8a16ea:deck:0e5365956076b98d",
+          "origin": "intermediate",
+          "run": "run-group:99171439576ecb8a16ea"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 10,
+      "base_count": 9,
+      "base_fraction": 0.9,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "10a6b73ca094300a8f902c5b69b82edf8b581f80846b221c6208122761aec8c8",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Carnage",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Carnage": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:f9a6cc34066c9e8290f9:deck:10a6b73ca094300a",
+          "origin": "intermediate",
+          "run": "run-group:f9a6cc34066c9e8290f9"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "20c2cc46bd8883aea0bc9afc5d095ec02f58bb62cdf2f95ccbc65ba304f4ee2d",
+      "split": "development",
+      "component_id": "84bdac9ea43c5d7a7b4bd973e41ab2f13db66741b49549ade3a18bf9138139c5",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Clothesline",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Clothesline": 1,
+        "Defend_R": 4,
+        "Impervious": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:bcb873ad5d194f1967a8:deck:20c2cc46bd8883ae",
+          "origin": "intermediate",
+          "run": "run-group:bcb873ad5d194f1967a8"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 13,
+      "base_count": 11,
+      "base_fraction": 0.8461538461538461,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "23fd977ba744d598cc23e935261e82e920ccffad763e23aa5c2e715ea4b048c8",
+      "split": "development",
+      "component_id": "1f83d07017c4e10dbae41bf530d6c4d916113859f4b7fb08b3f215265ce379be",
+      "cards": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Pommel Strike",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Defend_R": 4,
+        "Pommel Strike": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:a066308a795dedf381b5:deck:23fd977ba744d598",
+          "origin": "intermediate",
+          "run": "run-group:a066308a795dedf381b5"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "29f48a2fbb11b9a05e33f758bb1bf5ef758cc622fa5a276fe0d56c0a7b265ba9",
+      "split": "development",
+      "component_id": "dbc00d0dec4bd967d4f7cab5ed23ccfcf019187dfde406dcde01eec40247e5b2",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:58037a37ca7acdbb1388:deck:29f48a2fbb11b9a0",
+          "origin": "intermediate",
+          "run": "run-group:58037a37ca7acdbb1388"
+        },
+        {
+          "id": "run-group:857303c9b035c095e9d4:deck:29f48a2fbb11b9a0",
+          "origin": "intermediate",
+          "run": "run-group:857303c9b035c095e9d4"
+        },
+        {
+          "id": "run-group:99171439576ecb8a16ea:deck:29f48a2fbb11b9a0",
+          "origin": "intermediate",
+          "run": "run-group:99171439576ecb8a16ea"
+        },
+        {
+          "id": "run-group:b8045ef282f29cd71ab4:deck:29f48a2fbb11b9a0",
+          "origin": "intermediate",
+          "run": "run-group:b8045ef282f29cd71ab4"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 9,
+      "base_count": 9,
+      "base_fraction": 1.0,
+      "extra_count": 0,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "3776c95e9deddf08b1884b73aec1442adb24b20bbfe68ac35a090c1eb3d9c5e5",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Shrug It Off": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:25205448091f30b1b558:deck:3776c95e9deddf08",
+          "origin": "intermediate",
+          "run": "run-group:25205448091f30b1b558"
+        },
+        {
+          "id": "run-group:3e0285dc659ea66751e3:deck:3776c95e9deddf08",
+          "origin": "intermediate",
+          "run": "run-group:3e0285dc659ea66751e3"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "37a4102b7f0187e2bf88d68667b8c3091a560db3059420dee146a6068833a6c4",
+      "split": "development",
+      "component_id": "84bdac9ea43c5d7a7b4bd973e41ab2f13db66741b49549ade3a18bf9138139c5",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Impervious": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:32d1ec29c2ee30b98050:deck:37a4102b7f0187e2",
+          "origin": "intermediate",
+          "run": "run-group:32d1ec29c2ee30b98050"
+        },
+        {
+          "id": "run-group:bcb873ad5d194f1967a8:deck:37a4102b7f0187e2",
+          "origin": "intermediate",
+          "run": "run-group:bcb873ad5d194f1967a8"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "52a4994934eb7ae44e84e3607a98f3a179da316169c0e3b938a8c3b235f0262b",
+      "split": "development",
+      "component_id": "84bdac9ea43c5d7a7b4bd973e41ab2f13db66741b49549ade3a18bf9138139c5",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Impervious",
+        "Reckless Charge",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Impervious": 1,
+        "Reckless Charge": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:32d1ec29c2ee30b98050:deck:52a4994934eb7ae4",
+          "origin": "intermediate",
+          "run": "run-group:32d1ec29c2ee30b98050"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 13,
+      "base_count": 11,
+      "base_fraction": 0.8461538461538461,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "5ba069ab419d787c8124aadb24a371243210f9bfdb0b48f657c55b0f96211294",
+      "split": "development",
+      "component_id": "dbc00d0dec4bd967d4f7cab5ed23ccfcf019187dfde406dcde01eec40247e5b2",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Bash",
+        "Body Slam",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Body Slam": 1,
+        "Defend_R": 4,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:857303c9b035c095e9d4:final-master-deck",
+          "origin": "final",
+          "run": "run-group:857303c9b035c095e9d4"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 9,
+      "base_fraction": 0.8181818181818182,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "88d725dbb8aa97e9a47b508b3872f91d68e0e1ffe070e73f046e3d3024e4f3e2",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave": 1,
+        "Defend_R": 4,
+        "Shrug It Off": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:63fd5a205e4d8b9434f5:deck:88d725dbb8aa97e9",
+          "origin": "intermediate",
+          "run": "run-group:63fd5a205e4d8b9434f5"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 13,
+      "base_count": 11,
+      "base_fraction": 0.8461538461538461,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "8b171db3518cb25a5b5b0fd112b66186c41d35324d325b365bc626d6dc68832f",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:b2369c6719096d2afc57:deck:8b171db3518cb25a",
+          "origin": "intermediate",
+          "run": "run-group:b2369c6719096d2afc57"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "b6313a31fb958dcb5224c3a5df4cc52b7bf82c01fe16b92119c8fe1eaeac30dc",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:1ec24dd4ecb402f82c36:deck:b6313a31fb958dcb",
+          "origin": "intermediate",
+          "run": "run-group:1ec24dd4ecb402f82c36"
+        },
+        {
+          "id": "run-group:63fd5a205e4d8b9434f5:deck:b6313a31fb958dcb",
+          "origin": "intermediate",
+          "run": "run-group:63fd5a205e4d8b9434f5"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "ba26b6f4ded94524089e6a9ded88fdcedcbfe4dd0c548b28c72f0c9c9dcc230b",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:016044a031542a7a95ad:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:016044a031542a7a95ad"
+        },
+        {
+          "id": "run-group:03869ca33f76f9685375:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:03869ca33f76f9685375"
+        },
+        {
+          "id": "run-group:04bee3c6f71d06011a06:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:04bee3c6f71d06011a06"
+        },
+        {
+          "id": "run-group:080240f5747d395efc6f:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:080240f5747d395efc6f"
+        },
+        {
+          "id": "run-group:0fcf5d9688a4c657cc87:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:0fcf5d9688a4c657cc87"
+        },
+        {
+          "id": "run-group:1471c7fe3e6c265b23b2:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:1471c7fe3e6c265b23b2"
+        },
+        {
+          "id": "run-group:1ec24dd4ecb402f82c36:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:1ec24dd4ecb402f82c36"
+        },
+        {
+          "id": "run-group:25205448091f30b1b558:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:25205448091f30b1b558"
+        },
+        {
+          "id": "run-group:25e2d8e7d27e8b874d1e:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:25e2d8e7d27e8b874d1e"
+        },
+        {
+          "id": "run-group:274691e9f61e82281a1f:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:274691e9f61e82281a1f"
+        },
+        {
+          "id": "run-group:2a23a97ee1fa599d0039:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:2a23a97ee1fa599d0039"
+        },
+        {
+          "id": "run-group:2ab4de78551223c9e3f1:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:2ab4de78551223c9e3f1"
+        },
+        {
+          "id": "run-group:33c70f66905a836d5918:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:33c70f66905a836d5918"
+        },
+        {
+          "id": "run-group:3e0285dc659ea66751e3:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:3e0285dc659ea66751e3"
+        },
+        {
+          "id": "run-group:3f59e5d32006abf5ab88:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:3f59e5d32006abf5ab88"
+        },
+        {
+          "id": "run-group:48ee6344d274a5f75a07:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:48ee6344d274a5f75a07"
+        },
+        {
+          "id": "run-group:4a50927b4670b528f773:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:4a50927b4670b528f773"
+        },
+        {
+          "id": "run-group:4cba167963d81b179ac7:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:4cba167963d81b179ac7"
+        },
+        {
+          "id": "run-group:51eec4e1ba47369fe5e2:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:51eec4e1ba47369fe5e2"
+        },
+        {
+          "id": "run-group:53c16194b16286bd892d:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:53c16194b16286bd892d"
+        },
+        {
+          "id": "run-group:59e3e0bbe251993a438e:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:59e3e0bbe251993a438e"
+        },
+        {
+          "id": "run-group:5ba42d6055d2ced8f960:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:5ba42d6055d2ced8f960"
+        },
+        {
+          "id": "run-group:5bade670577f01ea1632:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:5bade670577f01ea1632"
+        },
+        {
+          "id": "run-group:63fd5a205e4d8b9434f5:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:63fd5a205e4d8b9434f5"
+        },
+        {
+          "id": "run-group:6ab5ecf45b0a88a64df0:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:6ab5ecf45b0a88a64df0"
+        },
+        {
+          "id": "run-group:6c219a536f2fd8bc7d30:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:6c219a536f2fd8bc7d30"
+        },
+        {
+          "id": "run-group:6d8e7bcd740481cd0a56:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:6d8e7bcd740481cd0a56"
+        },
+        {
+          "id": "run-group:741b7c85f80e1ca362aa:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:741b7c85f80e1ca362aa"
+        },
+        {
+          "id": "run-group:791d67b4daf01a7e67cf:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:791d67b4daf01a7e67cf"
+        },
+        {
+          "id": "run-group:7c812ca46500fb5f6a41:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:7c812ca46500fb5f6a41"
+        },
+        {
+          "id": "run-group:7fed54b57ab672194647:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:7fed54b57ab672194647"
+        },
+        {
+          "id": "run-group:88d7120f540a2eaa5da6:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:88d7120f540a2eaa5da6"
+        },
+        {
+          "id": "run-group:8db27ce2ad907224365f:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:8db27ce2ad907224365f"
+        },
+        {
+          "id": "run-group:91c83dc1897accd34a9d:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:91c83dc1897accd34a9d"
+        },
+        {
+          "id": "run-group:b0d25cc2fe2535349b58:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:b0d25cc2fe2535349b58"
+        },
+        {
+          "id": "run-group:b2369c6719096d2afc57:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:b2369c6719096d2afc57"
+        },
+        {
+          "id": "run-group:b5ff805d7227cfc1b35d:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:b5ff805d7227cfc1b35d"
+        },
+        {
+          "id": "run-group:ba4a36f016779b09dcb2:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:ba4a36f016779b09dcb2"
+        },
+        {
+          "id": "run-group:bf54bf22df13ddda78bc:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:bf54bf22df13ddda78bc"
+        },
+        {
+          "id": "run-group:c57eab02bae3ed55c8d7:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:c57eab02bae3ed55c8d7"
+        },
+        {
+          "id": "run-group:cd57eed0acce0ee4a937:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:cd57eed0acce0ee4a937"
+        },
+        {
+          "id": "run-group:da554fe39e95811ffbdb:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:da554fe39e95811ffbdb"
+        },
+        {
+          "id": "run-group:dcbee8daed7563720dae:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:dcbee8daed7563720dae"
+        },
+        {
+          "id": "run-group:df4e3889ce44dca3031d:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:df4e3889ce44dca3031d"
+        },
+        {
+          "id": "run-group:e3911a0e8861134f5d07:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:e3911a0e8861134f5d07"
+        },
+        {
+          "id": "run-group:e6accfdebe74c83edfc9:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:e6accfdebe74c83edfc9"
+        },
+        {
+          "id": "run-group:ec7667df669ed05ced93:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:ec7667df669ed05ced93"
+        },
+        {
+          "id": "run-group:f1f4b8e45aa959f263ae:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:f1f4b8e45aa959f263ae"
+        },
+        {
+          "id": "run-group:f931ab7c9ab54689a052:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:f931ab7c9ab54689a052"
+        },
+        {
+          "id": "run-group:f9a6cc34066c9e8290f9:deck:ba26b6f4ded94524",
+          "origin": "intermediate",
+          "run": "run-group:f9a6cc34066c9e8290f9"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 11,
+      "base_fraction": 1.0,
+      "extra_count": 0,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "bbb1392b9880d6fc125ce0f98a0fb23e0f9646dca2eccaef2dd12d05afd9afb0",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Reckless Charge",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Reckless Charge": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:e6accfdebe74c83edfc9:deck:bbb1392b9880d6fc",
+          "origin": "intermediate",
+          "run": "run-group:e6accfdebe74c83edfc9"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "bf2a91174bc6db657e802f63aab246b358935ee6a5571f7ffc039599dc82fba3",
+      "split": "development",
+      "component_id": "1f83d07017c4e10dbae41bf530d6c4d916113859f4b7fb08b3f215265ce379be",
+      "cards": [
+        "AscendersBane",
+        "Bash+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:79cc161b4b335483b55e:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:79cc161b4b335483b55e"
+        },
+        {
+          "id": "run-group:884bbe22ef7bae5bdcba:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:884bbe22ef7bae5bdcba"
+        },
+        {
+          "id": "run-group:93875aa00e713b9f1072:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:93875aa00e713b9f1072"
+        },
+        {
+          "id": "run-group:a066308a795dedf381b5:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:a066308a795dedf381b5"
+        },
+        {
+          "id": "run-group:b6175e52933ee15aff70:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:b6175e52933ee15aff70"
+        },
+        {
+          "id": "run-group:cf94e4dc395d4e6004e0:deck:bf2a91174bc6db65",
+          "origin": "intermediate",
+          "run": "run-group:cf94e4dc395d4e6004e0"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 11,
+      "base_fraction": 1.0,
+      "extra_count": 0,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "e32324675dfa65d17b2f206449da43fb8d2c79419cb43bebea8002201125e32b",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Strike_R": 5,
+        "Twin Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:7c812ca46500fb5f6a41:deck:e32324675dfa65d1",
+          "origin": "intermediate",
+          "run": "run-group:7c812ca46500fb5f6a41"
+        },
+        {
+          "id": "run-group:da554fe39e95811ffbdb:deck:e32324675dfa65d1",
+          "origin": "intermediate",
+          "run": "run-group:da554fe39e95811ffbdb"
+        },
+        {
+          "id": "run-group:df4e3889ce44dca3031d:deck:e32324675dfa65d1",
+          "origin": "intermediate",
+          "run": "run-group:df4e3889ce44dca3031d"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "5e94813e3d9a05738831a4df70e42735a4a5c5871f57db07f86ccdb3b9bd240a",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash+1",
+        "Battle Trance",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Double Tap",
+        "Infernal Blade",
+        "Perfected Strike+1",
+        "Seeing Red",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Battle Trance": 1,
+        "Corruption": 1,
+        "Defend_R": 4,
+        "Double Tap": 1,
+        "Infernal Blade": 1,
+        "Perfected Strike+1": 1,
+        "Seeing Red": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:2ab4de78551223c9e3f1:final-master-deck",
+          "origin": "final",
+          "run": "run-group:2ab4de78551223c9e3f1"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 18,
+      "base_count": 11,
+      "base_fraction": 0.6111111111111112,
+      "extra_count": 7,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "64876a75b49ca26d12e9d2eb0a29f21e478e956bd730a2b47f3b5fef86525809",
+      "split": "development",
+      "component_id": "102a217e0eeebba32479d6469e0cfcc0cecced6451632aeefa39570e46deb640",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form",
+        "Heavy Blade",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 3,
+        "Demon Form": 1,
+        "Heavy Blade": 1,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:658739f7ab9d60659b6e:deck:64876a75b49ca26d",
+          "origin": "intermediate",
+          "run": "run-group:658739f7ab9d60659b6e"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 11,
+      "base_count": 9,
+      "base_fraction": 0.8181818181818182,
+      "extra_count": 2,
+      "families": {
+        "strength": {
+          "source": [
+            "Demon Form"
+          ],
+          "payoff": [
+            "Heavy Blade"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "7a6e0f3d9ac8333fb190fb1cef3ac97122c0608cb1fd34454423165b46b580b1",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Bloodletting",
+        "Clash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Exhume",
+        "Feed",
+        "Hemokinesis",
+        "Impervious",
+        "Iron Wave",
+        "Perfected Strike+1",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Bloodletting": 1,
+        "Clash": 1,
+        "Defend_R": 4,
+        "Exhume": 1,
+        "Feed": 1,
+        "Hemokinesis": 1,
+        "Impervious": 1,
+        "Iron Wave": 1,
+        "Perfected Strike+1": 1,
+        "Shrug It Off": 2,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:04bee3c6f71d06011a06:final-master-deck",
+          "origin": "final",
+          "run": "run-group:04bee3c6f71d06011a06"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 22,
+      "base_count": 11,
+      "base_fraction": 0.5,
+      "extra_count": 11,
+      "families": {},
+      "engines": [],
+      "draw_copies": 2,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "7ad44b785151e089fa0570d97d82a6f5673a1d8366e71c519225cf98a4ab2548",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Burning Pact",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Feel No Pain",
+        "Iron Wave",
+        "Pommel Strike",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Burning Pact": 1,
+        "Defend_R": 4,
+        "Feel No Pain": 1,
+        "Iron Wave": 1,
+        "Pommel Strike": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 5,
+        "Twin Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:25e2d8e7d27e8b874d1e:final-master-deck",
+          "origin": "final",
+          "run": "run-group:25e2d8e7d27e8b874d1e"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 17,
+      "base_count": 11,
+      "base_fraction": 0.6470588235294118,
+      "extra_count": 6,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 3,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "fa9c085a13115261d45baa3457b4ce237a610b84ff92670c0f90f57d966962c8",
+      "split": "development",
+      "component_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Cleave+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Headbutt",
+        "Intimidate",
+        "Pommel Strike",
+        "Second Wind",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave+1": 1,
+        "Defend_R": 4,
+        "Headbutt": 1,
+        "Intimidate": 1,
+        "Pommel Strike": 1,
+        "Second Wind": 1,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:b0d25cc2fe2535349b58:final-master-deck",
+          "origin": "final",
+          "run": "run-group:b0d25cc2fe2535349b58"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 15,
+      "base_count": 10,
+      "base_fraction": 0.6666666666666666,
+      "extra_count": 5,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "094368841d564a6c1f3d799ca2da63a61c4b3508ea48e708c0abf9ed1ce0b966",
+      "split": "train_candidate",
+      "component_id": "7665a2e2ba6114081ddd1223ce6cb47e7b231a2e6a081615685d8cc7f4f347cc",
+      "cards": [
+        "Anger+1",
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade",
+        "Bash+1",
+        "Clothesline+1",
+        "Demon Form+1",
+        "Disarm",
+        "Disarm",
+        "Double Tap+1",
+        "Dual Wield",
+        "Exhume",
+        "Exhume",
+        "Feed+1",
+        "Feel No Pain",
+        "Flame Barrier",
+        "Flame Barrier",
+        "Headbutt+1",
+        "Immolate+1",
+        "Impervious",
+        "Iron Wave+1",
+        "Limit Break",
+        "Perfected Strike+1",
+        "Perfected Strike+1",
+        "Perfected Strike+1",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Power Through",
+        "Rupture",
+        "Second Wind",
+        "Sever Soul+1",
+        "Shrug It Off",
+        "Shrug It Off",
+        "True Grit+1",
+        "Uppercut+1",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash+1": 1,
+        "Clothesline+1": 1,
+        "Demon Form+1": 1,
+        "Disarm": 2,
+        "Double Tap+1": 1,
+        "Dual Wield": 1,
+        "Exhume": 2,
+        "Feed+1": 1,
+        "Feel No Pain": 1,
+        "Flame Barrier": 2,
+        "Headbutt+1": 1,
+        "Immolate+1": 1,
+        "Impervious": 1,
+        "Iron Wave+1": 1,
+        "Limit Break": 1,
+        "Perfected Strike+1": 3,
+        "Pommel Strike": 1,
+        "Pommel Strike+1": 3,
+        "Power Through": 2,
+        "Rupture": 1,
+        "Second Wind": 1,
+        "Sever Soul+1": 1,
+        "Shrug It Off": 2,
+        "True Grit+1": 1,
+        "Uppercut+1": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:eed21c6334d7d9c16f13:final-master-deck",
+          "origin": "final",
+          "run": "run-group:eed21c6334d7d9c16f13"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 39,
+      "base_count": 2,
+      "base_fraction": 0.05128205128205128,
+      "extra_count": 37,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Second Wind",
+            "Sever Soul",
+            "True Grit"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form"
+          ],
+          "payoff": [
+            "Limit Break",
+            "Whirlwind"
+          ]
+        }
+      },
+      "engines": [
+        "strength_scaling_payoff"
+      ],
+      "draw_copies": 6,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "0b6ee81e19c74ec19272a459207f0462330d770f25d61c5642c4be44d7d0cfdf",
+      "split": "train_candidate",
+      "component_id": "33cc643ad2490557af9f9efc3136de27f95cd6080614b9a2202f8f1dcd25f60a",
+      "cards": [
+        "AscendersBane",
+        "Barricade+1",
+        "Bash",
+        "Battle Trance+1",
+        "Bloodletting+1",
+        "Bludgeon+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form+1",
+        "Dual Wield",
+        "Feel No Pain+1",
+        "Feel No Pain+1",
+        "Feel No Pain+1",
+        "Fiend Fire+1",
+        "Fiend Fire+1",
+        "Power Through",
+        "Power Through",
+        "Power Through",
+        "Power Through",
+        "Reaper",
+        "Second Wind",
+        "Second Wind+1",
+        "Shockwave+1",
+        "Spot Weakness"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash": 1,
+        "Battle Trance+1": 1,
+        "Bloodletting+1": 1,
+        "Bludgeon+1": 1,
+        "Defend_R": 4,
+        "Demon Form+1": 1,
+        "Dual Wield": 1,
+        "Feel No Pain+1": 3,
+        "Fiend Fire+1": 2,
+        "Power Through": 4,
+        "Reaper": 1,
+        "Second Wind": 1,
+        "Second Wind+1": 1,
+        "Shockwave+1": 1,
+        "Spot Weakness": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:72e766c3ad2370c4d929:final-master-deck",
+          "origin": "final",
+          "run": "run-group:72e766c3ad2370c4d929"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 26,
+      "base_count": 6,
+      "base_fraction": 0.23076923076923078,
+      "extra_count": 20,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Fiend Fire",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form",
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Reaper"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "267875376ee4a9fb40c1160258fbf472d62d62e2670b437d6aa8adf3fe778b9d",
+      "split": "train_candidate",
+      "component_id": "4be10ddab4989902d2efc2ac2af5b612bfe77817b95832cbda3f257b4e460aeb",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash+1",
+        "Battle Trance+1",
+        "Corruption",
+        "Dark Embrace",
+        "Defend_R",
+        "Disarm+1",
+        "Feed",
+        "Feed+1",
+        "Feel No Pain+1",
+        "Flame Barrier",
+        "Flame Barrier+1",
+        "Offering",
+        "Offering",
+        "Perfected Strike+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Seeing Red",
+        "Sentinel",
+        "Shockwave+1",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Strike_R",
+        "Strike_R",
+        "True Grit+1",
+        "Twin Strike",
+        "Twin Strike+1",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Battle Trance+1": 1,
+        "Corruption": 1,
+        "Dark Embrace": 1,
+        "Defend_R": 1,
+        "Disarm+1": 1,
+        "Feed": 1,
+        "Feed+1": 1,
+        "Feel No Pain+1": 1,
+        "Flame Barrier": 1,
+        "Flame Barrier+1": 1,
+        "Offering": 2,
+        "Perfected Strike+1": 1,
+        "Pommel Strike+1": 3,
+        "Power Through": 1,
+        "Seeing Red": 1,
+        "Sentinel": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 1,
+        "Strike_R": 2,
+        "True Grit+1": 1,
+        "Twin Strike": 1,
+        "Twin Strike+1": 1,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:2d059afe66dca09002f6:final-master-deck",
+          "origin": "final",
+          "run": "run-group:2d059afe66dca09002f6"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 31,
+      "base_count": 5,
+      "base_fraction": 0.16129032258064516,
+      "extra_count": 26,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption",
+            "True Grit"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain",
+            "Sentinel"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Twin Strike"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain",
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 7,
+      "energy_copies": 3,
+      "resource_dense": true
+    },
+    {
+      "content_id": "2c7c29e9f11a313409c51c18f0a99174e6011b4b739487d34e463413db35d757",
+      "split": "train_candidate",
+      "component_id": "a1b996f7c9eb8c977c85f7a4c3b25f5fc52c4f68d25b67487fa7d54d15510ecb",
+      "cards": [
+        "Anger",
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Berserk+1",
+        "Carnage",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Double Tap",
+        "Evolve",
+        "Feed",
+        "Ghostly Armor",
+        "Metallicize",
+        "Pommel Strike",
+        "Power Through",
+        "Pummel",
+        "Shrug It Off",
+        "Spot Weakness",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Berserk+1": 1,
+        "Carnage": 1,
+        "Defend_R": 3,
+        "Double Tap": 1,
+        "Evolve": 1,
+        "Feed": 1,
+        "Ghostly Armor": 1,
+        "Metallicize": 1,
+        "Pommel Strike": 1,
+        "Power Through": 1,
+        "Pummel": 1,
+        "Shrug It Off": 1,
+        "Spot Weakness": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:025f28159bea0c8655d5:final-master-deck",
+          "origin": "final",
+          "run": "run-group:025f28159bea0c8655d5"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 20,
+      "base_count": 5,
+      "base_fraction": 0.25,
+      "extra_count": 15,
+      "families": {
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Pummel",
+            "Whirlwind"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 2,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "455932e5ee991755b52ef9a75c77c40918f08edf3b6c6d21052773e31832ac70",
+      "split": "train_candidate",
+      "component_id": "3c65bf45205a681d01e02f74e46c7c07a59599120271ba59d7d670106df39222",
+      "cards": [
+        "AscendersBane",
+        "Barricade",
+        "Bash",
+        "Brutality",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Entrench",
+        "Evolve",
+        "Feel No Pain",
+        "Fiend Fire+1",
+        "Flame Barrier",
+        "Headbutt",
+        "Immolate",
+        "Pommel Strike",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Power Through",
+        "Seeing Red",
+        "Shrug It Off",
+        "Strike_R+1",
+        "Strike_R+1"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash": 1,
+        "Brutality": 1,
+        "Defend_R": 4,
+        "Entrench": 1,
+        "Evolve": 1,
+        "Feel No Pain": 1,
+        "Fiend Fire+1": 1,
+        "Flame Barrier": 1,
+        "Headbutt": 1,
+        "Immolate": 1,
+        "Pommel Strike": 2,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Seeing Red": 1,
+        "Shrug It Off": 1,
+        "Strike_R+1": 2
+      },
+      "sources": [
+        {
+          "id": "run-group:4905777f17e06ee65bba:final-master-deck",
+          "origin": "final",
+          "run": "run-group:4905777f17e06ee65bba"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 23,
+      "base_count": 8,
+      "base_fraction": 0.34782608695652173,
+      "extra_count": 15,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Fiend Fire"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Immolate",
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Barricade"
+          ],
+          "payoff": [
+            "Entrench"
+          ]
+        }
+      },
+      "engines": [
+        "block_retention_scaling"
+      ],
+      "draw_copies": 5,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "6a7ffe01371df1e690c0dfdebe1861980d9032398a2c3a3ea29d88058b024744",
+      "split": "train_candidate",
+      "component_id": "5336d2da2511ff3d973098f645c11ead31bad1bec3c67425daf317319d35ec6f",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade",
+        "Bash",
+        "Carnage+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Feel No Pain",
+        "Intimidate",
+        "Juggernaut",
+        "Pommel Strike",
+        "Pommel Strike",
+        "Rampage",
+        "Sever Soul",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash": 1,
+        "Carnage+1": 1,
+        "Defend_R": 3,
+        "Feel No Pain": 1,
+        "Intimidate": 1,
+        "Juggernaut": 1,
+        "Pommel Strike": 2,
+        "Rampage": 1,
+        "Sever Soul": 1,
+        "Strike_R": 3,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:52a931e93c54074bcdeb:final-master-deck",
+          "origin": "final",
+          "run": "run-group:52a931e93c54074bcdeb"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 19,
+      "base_count": 8,
+      "base_fraction": 0.42105263157894735,
+      "extra_count": 11,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Sever Soul"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Feel No Pain"
+          ],
+          "payoff": [
+            "Juggernaut"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 2,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "7d62336fd26f3d4d15717cc868d2e858845adb452cecb117b5a22e2d70011eae",
+      "split": "train_candidate",
+      "component_id": "e1fb07a453c701b4895d50d29ae53d4ec9db13375d89c30635a0304c27468c6f",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash+1",
+        "Clothesline+1",
+        "Corruption+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Disarm+1",
+        "Disarm+1",
+        "Evolve",
+        "Exhume",
+        "Feed",
+        "Flame Barrier",
+        "Flex+1",
+        "Ghostly Armor",
+        "Headbutt",
+        "Immolate+1",
+        "Impervious",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Rage+1",
+        "Sentinel",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike+1",
+        "Uppercut+1",
+        "Whirlwind+1",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Clothesline+1": 1,
+        "Corruption+1": 1,
+        "Defend_R": 4,
+        "Disarm+1": 2,
+        "Evolve": 1,
+        "Exhume": 1,
+        "Feed": 1,
+        "Flame Barrier": 1,
+        "Flex+1": 1,
+        "Ghostly Armor": 1,
+        "Headbutt": 1,
+        "Immolate+1": 1,
+        "Impervious": 1,
+        "Pommel Strike+1": 2,
+        "Rage+1": 1,
+        "Sentinel": 1,
+        "Shrug It Off": 2,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 1,
+        "Strike_R": 2,
+        "Twin Strike+1": 1,
+        "Uppercut+1": 1,
+        "Whirlwind+1": 2
+      },
+      "sources": [
+        {
+          "id": "run-group:97618dcbc0858eef3629:final-master-deck",
+          "origin": "final",
+          "run": "run-group:97618dcbc0858eef3629"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 34,
+      "base_count": 8,
+      "base_fraction": 0.23529411764705882,
+      "extra_count": 26,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption"
+          ],
+          "payoff": [
+            "Sentinel"
+          ]
+        },
+        "status": {
+          "source": [
+            "Immolate"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Flex",
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Twin Strike",
+            "Whirlwind"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 5,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "7ee5a5e320e600786758f777a2272ac4f0d0966430b777b17ad7207bb8d0b450",
+      "split": "train_candidate",
+      "component_id": "a9aa2a0f74c5c0234a514166756e852f17eb2fd3b1896e835c00f1024ce377b6",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Burning Pact",
+        "Burning Pact",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Feel No Pain",
+        "Headbutt",
+        "Hemokinesis+1",
+        "Infernal Blade",
+        "Pommel Strike+1",
+        "Shockwave",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Burning Pact": 2,
+        "Corruption": 1,
+        "Defend_R": 4,
+        "Feel No Pain": 1,
+        "Headbutt": 1,
+        "Hemokinesis+1": 1,
+        "Infernal Blade": 1,
+        "Pommel Strike+1": 1,
+        "Shockwave": 1,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:14ab5992e54a220f12ac:final-master-deck",
+          "origin": "final",
+          "run": "run-group:14ab5992e54a220f12ac"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 19,
+      "base_count": 10,
+      "base_fraction": 0.5263157894736842,
+      "extra_count": 9,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Corruption"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 3,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "8943a5541bc50695e4a534f8d2a525e6418fc429e131bd9dc848d842f52621d2",
+      "split": "train_candidate",
+      "component_id": "3f165c23470d4970fe373b6e4b8b1549f14294977a654df0c769819642d9fe74",
+      "cards": [
+        "AscendersBane",
+        "Blood for Blood",
+        "Bloodletting",
+        "Body Slam+1",
+        "Carnage",
+        "Dark Embrace+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Disarm+1",
+        "Feel No Pain",
+        "Feel No Pain+1",
+        "Fiend Fire+1",
+        "Flame Barrier",
+        "Flex",
+        "Headbutt",
+        "Inflame+1",
+        "Offering",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Second Wind",
+        "Seeing Red",
+        "Shrug It Off",
+        "Warcry+1",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Blood for Blood": 1,
+        "Bloodletting": 1,
+        "Body Slam+1": 1,
+        "Carnage": 1,
+        "Dark Embrace+1": 1,
+        "Defend_R": 4,
+        "Disarm+1": 1,
+        "Feel No Pain": 1,
+        "Feel No Pain+1": 1,
+        "Fiend Fire+1": 1,
+        "Flame Barrier": 1,
+        "Flex": 1,
+        "Headbutt": 1,
+        "Inflame+1": 1,
+        "Offering": 1,
+        "Offering+1": 1,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Second Wind": 1,
+        "Seeing Red": 1,
+        "Shrug It Off": 1,
+        "Warcry+1": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:e80e0d17f00296e57f81:final-master-deck",
+          "origin": "final",
+          "run": "run-group:e80e0d17f00296e57f81"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 28,
+      "base_count": 5,
+      "base_fraction": 0.17857142857142858,
+      "extra_count": 23,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Fiend Fire",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Flame Barrier",
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Flex",
+            "Inflame"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Whirlwind"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 6,
+      "energy_copies": 4,
+      "resource_dense": true
+    },
+    {
+      "content_id": "8ec1c6c85c063b15feaa8c82a4b979e3053d527239cbe06c6fc9a3a38ba9d375",
+      "split": "train_candidate",
+      "component_id": "f449cb559ef6b2b13eab2c287ab95da528625b4398186641debcbc8f9da01c05",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Bloodletting",
+        "Bludgeon+1",
+        "Brutality",
+        "Dark Embrace",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R+1",
+        "Evolve",
+        "Exhume",
+        "Feed+1",
+        "Fiend Fire",
+        "Impervious",
+        "Infernal Blade+1",
+        "Iron Wave",
+        "Metallicize",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Rage+1",
+        "Rupture",
+        "Seeing Red",
+        "Sentinel+1",
+        "Sever Soul",
+        "Shockwave+1",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Whirlwind+1",
+        "Wild Strike"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Bloodletting": 1,
+        "Bludgeon+1": 1,
+        "Brutality": 1,
+        "Dark Embrace": 1,
+        "Defend_R": 2,
+        "Defend_R+1": 1,
+        "Evolve": 1,
+        "Exhume": 1,
+        "Feed+1": 1,
+        "Fiend Fire": 1,
+        "Impervious": 1,
+        "Infernal Blade+1": 1,
+        "Iron Wave": 1,
+        "Metallicize": 1,
+        "Offering+1": 1,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Rage+1": 1,
+        "Rupture": 1,
+        "Seeing Red": 1,
+        "Sentinel+1": 1,
+        "Sever Soul": 1,
+        "Shockwave+1": 1,
+        "Strike_R": 3,
+        "Whirlwind+1": 1,
+        "Wild Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:e88a6dca46d18b6c8657:final-master-deck",
+          "origin": "final",
+          "run": "run-group:e88a6dca46d18b6c8657"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 32,
+      "base_count": 8,
+      "base_fraction": 0.25,
+      "extra_count": 24,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Fiend Fire",
+            "Sever Soul"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Sentinel"
+          ]
+        },
+        "status": {
+          "source": [
+            "Power Through",
+            "Wild Strike"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Brutality",
+            "Offering"
+          ],
+          "payoff": [
+            "Rupture"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 4,
+      "energy_copies": 3,
+      "resource_dense": true
+    },
+    {
+      "content_id": "98a7f7c1ca15d606199b69bb869c758dd6ec52275c7a2f3f7fb1346566686ae6",
+      "split": "train_candidate",
+      "component_id": "7948f8e13afd6382c84d69c4e844939319d4482d8b882958ad456ba61a9b69e9",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade+1",
+        "Bash",
+        "Battle Trance",
+        "Body Slam",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Entrench+1",
+        "Entrench+1",
+        "Exhume",
+        "Feel No Pain+1",
+        "Fiend Fire+1",
+        "Metallicize",
+        "Offering+1",
+        "Power Through+1",
+        "Second Wind",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Strike_R+1",
+        "Twin Strike+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Body Slam": 1,
+        "Corruption": 1,
+        "Defend_R": 2,
+        "Defend_R+1": 2,
+        "Entrench+1": 2,
+        "Exhume": 1,
+        "Feel No Pain+1": 1,
+        "Fiend Fire+1": 1,
+        "Metallicize": 1,
+        "Offering+1": 1,
+        "Power Through+1": 1,
+        "Second Wind": 1,
+        "Shrug It Off": 3,
+        "Strike_R+1": 1,
+        "Twin Strike+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:03420f7d707f7af9dc35:final-master-deck",
+          "origin": "final",
+          "run": "run-group:03420f7d707f7af9dc35"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 25,
+      "base_count": 7,
+      "base_fraction": 0.28,
+      "extra_count": 18,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption",
+            "Fiend Fire",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Barricade",
+            "Entrench",
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain",
+        "block_retention_scaling"
+      ],
+      "draw_copies": 5,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "9ebfabe4a2b3f32461ba82de0a3822e974bb567a3731f303d77e6047efea2e00",
+      "split": "train_candidate",
+      "component_id": "778a78ea890112046c0a19f01c71077b95a48154f9e5adece354059f322a3f5a",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Barricade+1",
+        "Bash",
+        "Battle Trance+1",
+        "Brutality",
+        "Burning Pact",
+        "Carnage+1",
+        "Dark Embrace+1",
+        "Dropkick+1",
+        "Evolve",
+        "Feed",
+        "Feel No Pain",
+        "Feel No Pain",
+        "Ghostly Armor",
+        "Ghostly Armor+1",
+        "Havoc",
+        "Havoc",
+        "Havoc+1",
+        "Impervious+1",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Rage+1",
+        "Reckless Charge",
+        "Second Wind",
+        "Seeing Red+1",
+        "Shockwave",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Uppercut+1",
+        "Warcry",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash": 1,
+        "Battle Trance+1": 1,
+        "Brutality": 1,
+        "Burning Pact": 1,
+        "Carnage+1": 1,
+        "Dark Embrace+1": 1,
+        "Dropkick+1": 1,
+        "Evolve": 1,
+        "Feed": 1,
+        "Feel No Pain": 2,
+        "Ghostly Armor": 1,
+        "Ghostly Armor+1": 1,
+        "Havoc": 2,
+        "Havoc+1": 1,
+        "Impervious+1": 1,
+        "Offering+1": 1,
+        "Pommel Strike+1": 1,
+        "Rage+1": 1,
+        "Reckless Charge": 1,
+        "Second Wind": 1,
+        "Seeing Red+1": 1,
+        "Shockwave": 1,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 1,
+        "Uppercut+1": 1,
+        "Warcry": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:9b629d3fde613cc6d2af:final-master-deck",
+          "origin": "final",
+          "run": "run-group:9b629d3fde613cc6d2af"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 32,
+      "base_count": 2,
+      "base_fraction": 0.0625,
+      "extra_count": 30,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Havoc",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Reckless Charge"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Whirlwind"
+          ]
+        },
+        "vulnerable_draw_energy": {
+          "source": [
+            "Bash",
+            "Shockwave",
+            "Uppercut"
+          ],
+          "payoff": [
+            "Dropkick"
+          ]
+        }
+      },
+      "engines": [
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 7,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "abe93c249bf74ad389197e43c72b2f31ceb1f4b8c4301225ff257286a6b2b2d0",
+      "split": "train_candidate",
+      "component_id": "12435e31df0e598eaddd1c40d7626ce3e64072595173df2920ae7cfe09bf3dcf",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade+1",
+        "Bash",
+        "Battle Trance",
+        "Berserk",
+        "Blood for Blood",
+        "Bloodletting",
+        "Bloodletting+1",
+        "Burning Pact",
+        "Carnage",
+        "Corruption+1",
+        "Corruption+1",
+        "Dark Embrace",
+        "Headbutt",
+        "Impervious",
+        "Impervious",
+        "Offering+1",
+        "Offering+1",
+        "Perfected Strike",
+        "Pommel Strike",
+        "Reaper",
+        "Reckless Charge",
+        "Rupture+1",
+        "Second Wind+1",
+        "Seeing Red",
+        "Shockwave",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Spot Weakness",
+        "Thunderclap",
+        "Twin Strike",
+        "Warcry+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Berserk": 1,
+        "Blood for Blood": 1,
+        "Bloodletting": 1,
+        "Bloodletting+1": 1,
+        "Burning Pact": 1,
+        "Carnage": 1,
+        "Corruption+1": 2,
+        "Dark Embrace": 1,
+        "Headbutt": 1,
+        "Impervious": 2,
+        "Offering+1": 2,
+        "Perfected Strike": 1,
+        "Pommel Strike": 1,
+        "Reaper": 1,
+        "Reckless Charge": 1,
+        "Rupture+1": 1,
+        "Second Wind+1": 1,
+        "Seeing Red": 1,
+        "Shockwave": 1,
+        "Shrug It Off": 3,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 2,
+        "Thunderclap": 1,
+        "Twin Strike": 1,
+        "Warcry+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:c85cec4102609d94c531:final-master-deck",
+          "origin": "final",
+          "run": "run-group:c85cec4102609d94c531"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 36,
+      "base_count": 2,
+      "base_fraction": 0.05555555555555555,
+      "extra_count": 34,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Corruption",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Reaper",
+            "Twin Strike"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood",
+            "Rupture"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 10,
+      "energy_copies": 6,
+      "resource_dense": true
+    },
+    {
+      "content_id": "affaf3e2f63abbae1554a95b8e6130d10898ce9fa870b8234d0f5f23474ad7bc",
+      "split": "train_candidate",
+      "component_id": "a294084db0d22cde3df337ca9fd10b9590784f2ce7fab5279c02e060f442b477",
+      "cards": [
+        "Armaments",
+        "AscendersBane",
+        "Barricade+1",
+        "Battle Trance",
+        "Body Slam",
+        "Burning Pact",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Entrench",
+        "Exhume",
+        "Feed+1",
+        "Feel No Pain+1",
+        "Fire Breathing",
+        "Inflame+1",
+        "Iron Wave",
+        "Offering",
+        "Offering",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Second Wind",
+        "Seeing Red",
+        "Shrug It Off+1",
+        "Warcry",
+        "Whirlwind+1"
+      ],
+      "composition": {
+        "Armaments": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Battle Trance": 1,
+        "Body Slam": 1,
+        "Burning Pact": 1,
+        "Defend_R": 4,
+        "Entrench": 1,
+        "Exhume": 1,
+        "Feed+1": 1,
+        "Feel No Pain+1": 1,
+        "Fire Breathing": 1,
+        "Inflame+1": 1,
+        "Iron Wave": 1,
+        "Offering": 2,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Second Wind": 1,
+        "Seeing Red": 1,
+        "Shrug It Off+1": 1,
+        "Warcry": 1,
+        "Whirlwind+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:25ae8d6866aa7b966c09:final-master-deck",
+          "origin": "final",
+          "run": "run-group:25ae8d6866aa7b966c09"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 27,
+      "base_count": 5,
+      "base_fraction": 0.18518518518518517,
+      "extra_count": 22,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Fire Breathing"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Barricade",
+            "Entrench",
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Whirlwind"
+          ]
+        }
+      },
+      "engines": [
+        "block_retention_scaling"
+      ],
+      "draw_copies": 8,
+      "energy_copies": 3,
+      "resource_dense": true
+    },
+    {
+      "content_id": "dad6fa591c9b07ab0246e1fdfbd78bb1b587c2dba02edb0e3fe18180d54d95d4",
+      "split": "train_candidate",
+      "component_id": "3ee956bf96c147eb65ff3dc4d200638c769b34e4abf981d6d1115898485dfc5c",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Blood for Blood+1",
+        "Bloodletting",
+        "Brutality+1",
+        "Burning Pact",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Dropkick",
+        "Dual Wield",
+        "Feed",
+        "Fiend Fire",
+        "Headbutt",
+        "Immolate+1",
+        "Inflame+1",
+        "Intimidate",
+        "Limit Break",
+        "Power Through+1",
+        "Rupture",
+        "Seeing Red",
+        "Shockwave",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike+1",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Blood for Blood+1": 1,
+        "Bloodletting": 1,
+        "Brutality+1": 1,
+        "Burning Pact": 1,
+        "Defend_R": 3,
+        "Dropkick": 1,
+        "Dual Wield": 1,
+        "Feed": 1,
+        "Fiend Fire": 1,
+        "Headbutt": 1,
+        "Immolate+1": 1,
+        "Inflame+1": 1,
+        "Intimidate": 1,
+        "Limit Break": 1,
+        "Power Through+1": 1,
+        "Rupture": 1,
+        "Seeing Red": 1,
+        "Shockwave": 1,
+        "Shrug It Off": 3,
+        "Shrug It Off+1": 1,
+        "Strike_R": 4,
+        "Twin Strike+1": 1,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:e3aa52d15557129c9fcf:final-master-deck",
+          "origin": "final",
+          "run": "run-group:e3aa52d15557129c9fcf"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 33,
+      "base_count": 9,
+      "base_fraction": 0.2727272727272727,
+      "extra_count": 24,
+      "families": {
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Limit Break",
+            "Twin Strike"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Brutality"
+          ],
+          "payoff": [
+            "Blood for Blood",
+            "Rupture"
+          ]
+        },
+        "vulnerable_draw_energy": {
+          "source": [
+            "Bash",
+            "Shockwave",
+            "Uppercut"
+          ],
+          "payoff": [
+            "Dropkick"
+          ]
+        }
+      },
+      "engines": [
+        "strength_scaling_payoff"
+      ],
+      "draw_copies": 6,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "ee1892bfba12dd8e5c25edf4c047142f415346a90c356edbb13d81d9e9ad5b49",
+      "split": "train_candidate",
+      "component_id": "45999ffdcbea5878821412d75aaaa3922a36472f49775941e630a5e0d5d815d0",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Blood for Blood+1",
+        "Bloodletting",
+        "Dark Embrace",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Disarm",
+        "Dropkick+1",
+        "Evolve",
+        "Exhume",
+        "Exhume",
+        "Flex+1",
+        "Headbutt",
+        "Hemokinesis+1",
+        "Offering+1",
+        "Perfected Strike+1",
+        "Pummel",
+        "Shockwave",
+        "Shockwave",
+        "Shockwave",
+        "Shrug It Off",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Twin Strike"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Blood for Blood+1": 1,
+        "Bloodletting": 1,
+        "Dark Embrace": 1,
+        "Defend_R+1": 4,
+        "Disarm": 1,
+        "Dropkick+1": 1,
+        "Evolve": 1,
+        "Exhume": 2,
+        "Flex+1": 1,
+        "Headbutt": 1,
+        "Hemokinesis+1": 1,
+        "Offering+1": 1,
+        "Perfected Strike+1": 1,
+        "Pummel": 1,
+        "Shockwave": 3,
+        "Shrug It Off": 1,
+        "Strike_R+1": 5,
+        "Twin Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:eda5fd687b76d6a027f4:final-master-deck",
+          "origin": "final",
+          "run": "run-group:eda5fd687b76d6a027f4"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 32,
+      "base_count": 11,
+      "base_fraction": 0.34375,
+      "extra_count": 21,
+      "families": {
+        "strength": {
+          "source": [
+            "Flex"
+          ],
+          "payoff": [
+            "Pummel",
+            "Twin Strike"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Bloodletting",
+            "Hemokinesis",
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        },
+        "vulnerable_draw_energy": {
+          "source": [
+            "Bash",
+            "Shockwave"
+          ],
+          "payoff": [
+            "Dropkick"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 3,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "ee39775ac730a80fb7010f734938f1d1a6008802930adae3d522276aa435ac1f",
+      "split": "train_candidate",
+      "component_id": "fa7780fba0cc1808c1042b3a1ee024fc651cfe70e2f8dc228dab22ceaeb5aba8",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Berserk",
+        "Bloodletting",
+        "Burning Pact+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form",
+        "Disarm",
+        "Disarm",
+        "Feel No Pain",
+        "Fiend Fire",
+        "Iron Wave+1",
+        "Offering",
+        "Offering",
+        "Pommel Strike+1",
+        "Power Through",
+        "Reaper",
+        "Shockwave",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Berserk": 1,
+        "Bloodletting": 1,
+        "Burning Pact+1": 1,
+        "Defend_R": 4,
+        "Demon Form": 1,
+        "Disarm": 2,
+        "Feel No Pain": 1,
+        "Fiend Fire": 1,
+        "Iron Wave+1": 1,
+        "Offering": 2,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Reaper": 1,
+        "Shockwave": 1,
+        "Shrug It Off": 1,
+        "Shrug It Off+1": 1,
+        "Strike_R": 2,
+        "Uppercut": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:c8a98c2e70a279c45609:final-master-deck",
+          "origin": "final",
+          "run": "run-group:c8a98c2e70a279c45609"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 27,
+      "base_count": 8,
+      "base_fraction": 0.2962962962962963,
+      "extra_count": 19,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Fiend Fire"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Demon Form"
+          ],
+          "payoff": [
+            "Fiend Fire",
+            "Reaper"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 7,
+      "energy_copies": 4,
+      "resource_dense": true
+    },
+    {
+      "content_id": "f36749e5034be558514a694f6f1cc276a6084551684f50dcfbae4b7ec75b80f0",
+      "split": "train_candidate",
+      "component_id": "437d42889456d75322203fa66138c5202cd4ff182bf1b43865037282d7e2da33",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Barricade",
+        "Bash+1",
+        "Battle Trance",
+        "Bloodletting",
+        "Burning Pact",
+        "Burning Pact+1",
+        "Clothesline+1",
+        "Dark Embrace",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Disarm",
+        "Evolve",
+        "Feel No Pain",
+        "Fiend Fire",
+        "Headbutt",
+        "Immolate+1",
+        "Impervious",
+        "Offering",
+        "Pommel Strike",
+        "Pommel Strike+1",
+        "Power Through",
+        "Second Wind",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Spot Weakness",
+        "Strike_R+1",
+        "Strike_R+1",
+        "Strike_R+1"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash+1": 1,
+        "Battle Trance": 1,
+        "Bloodletting": 1,
+        "Burning Pact": 1,
+        "Burning Pact+1": 1,
+        "Clothesline+1": 1,
+        "Dark Embrace": 1,
+        "Defend_R+1": 4,
+        "Disarm": 1,
+        "Evolve": 1,
+        "Feel No Pain": 1,
+        "Fiend Fire": 1,
+        "Headbutt": 1,
+        "Immolate+1": 1,
+        "Impervious": 1,
+        "Offering": 1,
+        "Pommel Strike": 1,
+        "Pommel Strike+1": 1,
+        "Power Through": 1,
+        "Second Wind": 1,
+        "Shrug It Off": 2,
+        "Shrug It Off+1": 1,
+        "Spot Weakness": 1,
+        "Strike_R+1": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:bb9729c2b5a44461e261:final-master-deck",
+          "origin": "final",
+          "run": "run-group:bb9729c2b5a44461e261"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 33,
+      "base_count": 9,
+      "base_fraction": 0.2727272727272727,
+      "extra_count": 24,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Fiend Fire",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Immolate",
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Spot Weakness"
+          ],
+          "payoff": [
+            "Fiend Fire"
+          ]
+        }
+      },
+      "engines": [
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 9,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "f7e4e2329478451d7344729abc09e4a61b118124f4ae871d2528f0ac81c891bc",
+      "split": "train_candidate",
+      "component_id": "3b9f38b8dd499d8bc9bed04a5b8b5f2f0c0c1f9d03f045471e57b8b43f5d62e6",
+      "cards": [
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Carnage+1",
+        "Clothesline+1",
+        "Combust",
+        "Corruption",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Evolve",
+        "Feel No Pain+1",
+        "Juggernaut+1",
+        "Metallicize",
+        "Offering",
+        "Offering+1",
+        "Pommel Strike",
+        "Power Through",
+        "Power Through+1",
+        "Shockwave",
+        "Shockwave+1",
+        "Shrug It Off",
+        "Spot Weakness"
+      ],
+      "composition": {
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Carnage+1": 1,
+        "Clothesline+1": 1,
+        "Combust": 1,
+        "Corruption": 1,
+        "Defend_R": 4,
+        "Evolve": 1,
+        "Feel No Pain+1": 1,
+        "Juggernaut+1": 1,
+        "Metallicize": 1,
+        "Offering": 1,
+        "Offering+1": 1,
+        "Pommel Strike": 1,
+        "Power Through": 1,
+        "Power Through+1": 1,
+        "Shockwave": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off": 1,
+        "Spot Weakness": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:57dbdc67bcff3478908e:final-master-deck",
+          "origin": "final",
+          "run": "run-group:57dbdc67bcff3478908e"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 24,
+      "base_count": 6,
+      "base_fraction": 0.25,
+      "extra_count": 18,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Feel No Pain",
+            "Metallicize"
+          ],
+          "payoff": [
+            "Juggernaut"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 4,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "f993ecf8a58015a71220da2cde30b4b4b60a0b4cafe4311ef9228ae698575fd6",
+      "split": "train_candidate",
+      "component_id": "cd6e69e27ce9a95bcb99244dbe39983e2bf78ff90df70d6ee8d527bea6037b49",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Barricade+1",
+        "Bash+1",
+        "Battle Trance+1",
+        "Body Slam+1",
+        "Clothesline+1",
+        "Corruption",
+        "Dark Embrace",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Disarm",
+        "Evolve+1",
+        "Exhume+1",
+        "Feel No Pain+1",
+        "Headbutt+1",
+        "Impervious+1",
+        "Impervious+1",
+        "Inflame+1",
+        "Pommel Strike+1",
+        "Power Through+1",
+        "Second Wind+1",
+        "Second Wind+1",
+        "Seeing Red+1",
+        "Shrug It Off",
+        "Shrug It Off+1",
+        "Shrug It Off+1",
+        "Spot Weakness+1",
+        "Strike_R+1",
+        "Strike_R+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Barricade+1": 1,
+        "Bash+1": 1,
+        "Battle Trance+1": 1,
+        "Body Slam+1": 1,
+        "Clothesline+1": 1,
+        "Corruption": 1,
+        "Dark Embrace": 1,
+        "Defend_R+1": 3,
+        "Disarm": 1,
+        "Evolve+1": 1,
+        "Exhume+1": 1,
+        "Feel No Pain+1": 1,
+        "Headbutt+1": 1,
+        "Impervious+1": 2,
+        "Inflame+1": 1,
+        "Pommel Strike+1": 1,
+        "Power Through+1": 1,
+        "Second Wind+1": 2,
+        "Seeing Red+1": 1,
+        "Shrug It Off": 1,
+        "Shrug It Off+1": 2,
+        "Spot Weakness+1": 1,
+        "Strike_R+1": 2
+      },
+      "sources": [
+        {
+          "id": "run-group:c141c78420544b641568:final-master-deck",
+          "origin": "final",
+          "run": "run-group:c141c78420544b641568"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 31,
+      "base_count": 7,
+      "base_fraction": 0.22580645161290322,
+      "extra_count": 24,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Corruption",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Dark Embrace",
+            "Feel No Pain"
+          ]
+        },
+        "status": {
+          "source": [
+            "Power Through"
+          ],
+          "payoff": [
+            "Evolve"
+          ]
+        },
+        "block_to_damage": {
+          "source": [
+            "Barricade",
+            "Impervious",
+            "Power Through"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain",
+        "exhaust_draw_block_chain"
+      ],
+      "draw_copies": 5,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "f9e4daa90d1778259039bd41bf316471cd1ace954a926381a520021af7594b4a",
+      "split": "train_candidate",
+      "component_id": "bb7a54f79e748d34bd146a2a8ae7a6410373a26d3e713330185d576a151c8a85",
+      "cards": [
+        "AscendersBane",
+        "Blood for Blood",
+        "Burning Pact+1",
+        "Clothesline+1",
+        "Corruption+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Defend_R+1",
+        "Exhume+1",
+        "Feel No Pain+1",
+        "Feel No Pain+1",
+        "Headbutt+1",
+        "Inflame+1",
+        "Offering+1",
+        "Offering+1",
+        "Pommel Strike+1",
+        "Pommel Strike+1",
+        "Power Through",
+        "Reaper+1",
+        "Reaper+1",
+        "Second Wind",
+        "Shockwave",
+        "Shockwave+1",
+        "Shrug It Off"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Blood for Blood": 1,
+        "Burning Pact+1": 1,
+        "Clothesline+1": 1,
+        "Corruption+1": 1,
+        "Defend_R+1": 4,
+        "Exhume+1": 1,
+        "Feel No Pain+1": 2,
+        "Headbutt+1": 1,
+        "Inflame+1": 1,
+        "Offering+1": 2,
+        "Pommel Strike+1": 2,
+        "Power Through": 1,
+        "Reaper+1": 2,
+        "Second Wind": 1,
+        "Shockwave": 1,
+        "Shockwave+1": 1,
+        "Shrug It Off": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:36a9b5a4b31676c6e7bd:final-master-deck",
+          "origin": "final",
+          "run": "run-group:36a9b5a4b31676c6e7bd"
+        }
+      ],
+      "group": "combo",
+      "group_label": "多机制组合",
+      "reason": "至少两类明确配合，或登记的三要素组合链，或抽牌能量密集且至少一类配合",
+      "card_count": 25,
+      "base_count": 5,
+      "base_fraction": 0.2,
+      "extra_count": 20,
+      "families": {
+        "exhaust": {
+          "source": [
+            "Burning Pact",
+            "Corruption",
+            "Second Wind"
+          ],
+          "payoff": [
+            "Feel No Pain"
+          ]
+        },
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Reaper"
+          ]
+        },
+        "self_damage": {
+          "source": [
+            "Offering"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [
+        "corruption_exhaust_chain"
+      ],
+      "draw_copies": 6,
+      "energy_copies": 2,
+      "resource_dense": true
+    },
+    {
+      "content_id": "16327de1abde0f8f3ea71a080dceaea3164c5710d0ce83a3ea1cc7576ac6ae00",
+      "split": "train_candidate",
+      "component_id": "4be10ddab4989902d2efc2ac2af5b612bfe77817b95832cbda3f257b4e460aeb",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 3,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:0b6b50af8aca36367e6f:deck:16327de1abde0f8f",
+          "origin": "intermediate",
+          "run": "run-group:0b6b50af8aca36367e6f"
+        },
+        {
+          "id": "run-group:2d059afe66dca09002f6:deck:16327de1abde0f8f",
+          "origin": "intermediate",
+          "run": "run-group:2d059afe66dca09002f6"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 9,
+      "base_count": 9,
+      "base_fraction": 1.0,
+      "extra_count": 0,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "42cba4c4a75951dd0b39691542350e30766177f1f35229c74cfd0e2202c3d889",
+      "split": "train_candidate",
+      "component_id": "cd224655b1cfd55127e8f7555672ea4276727733567ceb8c9c2b07f7e09016be",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Bludgeon",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Flame Barrier",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Bludgeon": 1,
+        "Defend_R": 4,
+        "Flame Barrier": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:f2672b82929351d73ae6:deck:42cba4c4a75951dd",
+          "origin": "intermediate",
+          "run": "run-group:f2672b82929351d73ae6"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 13,
+      "base_count": 11,
+      "base_fraction": 0.8461538461538461,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "7ec18d0cbba5b97f19b52846e7d2fee4701630ba713f28f1f003c592c972049d",
+      "split": "train_candidate",
+      "component_id": "cd224655b1cfd55127e8f7555672ea4276727733567ceb8c9c2b07f7e09016be",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Bludgeon",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Bludgeon": 1,
+        "Defend_R": 4,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:f2672b82929351d73ae6:deck:7ec18d0cbba5b97f",
+          "origin": "intermediate",
+          "run": "run-group:f2672b82929351d73ae6"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "8c993ae65dec2b48f20c2347cb5c7ceaa61b8837ea64b7b055a7955b820b96d9",
+      "split": "train_candidate",
+      "component_id": "279292c9030fbaa0f1620f8a4783e95e5d34096a5e59025014b80aec31d8888a",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Wild Strike"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Strike_R": 4,
+        "Wild Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:2dc85ff71ba6d9a28b62:deck:8c993ae65dec2b48",
+          "origin": "intermediate",
+          "run": "run-group:2dc85ff71ba6d9a28b62"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 10,
+      "base_fraction": 0.9090909090909091,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "a2a165827e62dfc1b7d422c11c7735331572d3b0b30f7221b78f29c3b3ebcdcc",
+      "split": "train_candidate",
+      "component_id": "437d42889456d75322203fa66138c5202cd4ff182bf1b43865037282d7e2da33",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Immolate",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Immolate": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:bb9729c2b5a44461e261:deck:a2a165827e62dfc1",
+          "origin": "intermediate",
+          "run": "run-group:bb9729c2b5a44461e261"
+        },
+        {
+          "id": "run-group:eccf864a7be944653ec4:deck:a2a165827e62dfc1",
+          "origin": "intermediate",
+          "run": "run-group:eccf864a7be944653ec4"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "b3188781c0e50b9aca90266fb637f206969257c7b9dc5a88b4d200b603d63ae2",
+      "split": "train_candidate",
+      "component_id": "cd6e69e27ce9a95bcb99244dbe39983e2bf78ff90df70d6ee8d527bea6037b49",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:c141c78420544b641568:deck:b3188781c0e50b9a",
+          "origin": "intermediate",
+          "run": "run-group:c141c78420544b641568"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 10,
+      "base_count": 10,
+      "base_fraction": 1.0,
+      "extra_count": 0,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "b8c5f623801e72c50cc15c5a4208f5978b8f6d16a56b3320d530995a5269223c",
+      "split": "train_candidate",
+      "component_id": "020dccc90af195949ff833786bfc6958b3ccfb67a2b4035f12d7e624dad50b9e",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Body Slam",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Body Slam": 1,
+        "Defend_R": 4,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:546440614bb2f5effa8f:deck:b8c5f623801e72c5",
+          "origin": "intermediate",
+          "run": "run-group:546440614bb2f5effa8f"
+        },
+        {
+          "id": "run-group:b9056fc50a3ea89b1392:deck:b8c5f623801e72c5",
+          "origin": "intermediate",
+          "run": "run-group:b9056fc50a3ea89b1392"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 10,
+      "base_fraction": 0.9090909090909091,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "c05b0c4d2ad771712cdec521f86dcb9cf88f57e7a54cd46f47e3af8b4598f135",
+      "split": "train_candidate",
+      "component_id": "fec830bc6065fb09bee1ff001fffe2bf1f3aee030c2e2cfcd42eb93cef88c3ae",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Battle Trance",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Seeing Red",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Battle Trance": 1,
+        "Defend_R": 4,
+        "Seeing Red": 1,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:f0e194bbfab4422cd282:deck:c05b0c4d2ad77171",
+          "origin": "intermediate",
+          "run": "run-group:f0e194bbfab4422cd282"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 9,
+      "base_fraction": 0.8181818181818182,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "db5512893d240afa373bdfacfd737aa0052ab9324204fd6123fa47faec7c0f83",
+      "split": "train_candidate",
+      "component_id": "34a2786c123421dea829ba46fa721642eb4b7f812f5132b34831aabf281cdc7f",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Twin Strike"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave": 1,
+        "Defend_R": 4,
+        "Strike_R": 3,
+        "Twin Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:bebeecd213a33f1fe8e4:deck:db5512893d240afa",
+          "origin": "intermediate",
+          "run": "run-group:bebeecd213a33f1fe8e4"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 11,
+      "base_count": 9,
+      "base_fraction": 0.8181818181818182,
+      "extra_count": 2,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "f4e1c8c4cb64108166ecb46eda28224964321069fdb48091c781acfd6e14892d",
+      "split": "train_candidate",
+      "component_id": "9719ce05984ef6975c155d6aa4b6f49b81cf5110fa9e2179de65b7d18677ef29",
+      "cards": [
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Demon Form",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Demon Form": 1,
+        "Strike_R": 5
+      },
+      "sources": [
+        {
+          "id": "run-group:884462f149c7fb11dc6c:deck:f4e1c8c4cb641081",
+          "origin": "intermediate",
+          "run": "run-group:884462f149c7fb11dc6c"
+        }
+      ],
+      "group": "simple",
+      "group_label": "基础与单牌主导",
+      "reason": "起始骨架至少60%、额外牌至多3张、没有登记的成对组合",
+      "card_count": 12,
+      "base_count": 11,
+      "base_fraction": 0.9166666666666666,
+      "extra_count": 1,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "017fd2e62f7e9ab62cfce7f92b35c26d6b6d21f38d9f266f7698c6d96dbe4fc9",
+      "split": "train_candidate",
+      "component_id": "aca2988ec0e15f52671d0816ededdd3eec1a4c1a0094b8d7989766dece03427a",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Evolve",
+        "Headbutt",
+        "Impervious",
+        "Infernal Blade",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Whirlwind"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Evolve": 1,
+        "Headbutt": 1,
+        "Impervious": 1,
+        "Infernal Blade": 1,
+        "Strike_R": 4,
+        "Whirlwind": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:5c24132ec9d7e216e0fa:final-master-deck",
+          "origin": "final",
+          "run": "run-group:5c24132ec9d7e216e0fa"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 16,
+      "base_count": 10,
+      "base_fraction": 0.625,
+      "extra_count": 6,
+      "families": {},
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "370f21f570c3b5e4878464138f9bb92d5ad18accf0b42f10746001bb46828089",
+      "split": "train_candidate",
+      "component_id": "c420a50c1a5241537042fb53339dda905db5b6ca5a4a72a4f7f9cba72e1ff9b6",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Barricade",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Feed+1",
+        "Flame Barrier",
+        "Pommel Strike",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Barricade": 1,
+        "Bash": 1,
+        "Defend_R": 3,
+        "Feed+1": 1,
+        "Flame Barrier": 1,
+        "Pommel Strike": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 3
+      },
+      "sources": [
+        {
+          "id": "run-group:826de8daa44721880ff1:final-master-deck",
+          "origin": "final",
+          "run": "run-group:826de8daa44721880ff1"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 14,
+      "base_count": 8,
+      "base_fraction": 0.5714285714285714,
+      "extra_count": 6,
+      "families": {},
+      "engines": [],
+      "draw_copies": 2,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "466ac35f759d2f6c9cac97c71f1ea3655b85c96458d849f50dcf452780da2f86",
+      "split": "train_candidate",
+      "component_id": "054c5d33d7fddf89125d21dd4d0b8ce44c84802713f89523600671959fc69086",
+      "cards": [
+        "Anger+1",
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Metallicize",
+        "Perfected Strike+1",
+        "Reaper",
+        "Second Wind",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Metallicize": 1,
+        "Perfected Strike+1": 1,
+        "Reaper": 1,
+        "Second Wind": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 5,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:701bf3e021652881d620:final-master-deck",
+          "origin": "final",
+          "run": "run-group:701bf3e021652881d620"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 18,
+      "base_count": 11,
+      "base_fraction": 0.6111111111111112,
+      "extra_count": 7,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "49633e210a7f69b1dcc6a35cb2d24ad5adbce8f26171a3bc3f63e96cb33e1042",
+      "split": "train_candidate",
+      "component_id": "8d260d7bae781e37050a7ecea8157446b37d03361b845d9d2c5ac831e6d95c5e",
+      "cards": [
+        "Anger",
+        "Armaments+1",
+        "AscendersBane",
+        "Bash",
+        "Combust",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Disarm",
+        "Fiend Fire+1",
+        "Havoc",
+        "Headbutt",
+        "Inflame",
+        "Offering+1",
+        "Second Wind",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R+1",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "Armaments+1": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Combust": 1,
+        "Defend_R": 4,
+        "Disarm": 1,
+        "Fiend Fire+1": 1,
+        "Havoc": 1,
+        "Headbutt": 1,
+        "Inflame": 1,
+        "Offering+1": 1,
+        "Second Wind": 1,
+        "Strike_R": 3,
+        "Strike_R+1": 1,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:49e4cc1cf19e9a0d2d16:final-master-deck",
+          "origin": "final",
+          "run": "run-group:49e4cc1cf19e9a0d2d16"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 21,
+      "base_count": 10,
+      "base_fraction": 0.47619047619047616,
+      "extra_count": 11,
+      "families": {
+        "strength": {
+          "source": [
+            "Inflame"
+          ],
+          "payoff": [
+            "Fiend Fire"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 1,
+      "resource_dense": false
+    },
+    {
+      "content_id": "4f57edbb739509d8f2eeddf3f403b81d6db4c604baa6cd3209212ea346400d29",
+      "split": "train_candidate",
+      "component_id": "279292c9030fbaa0f1620f8a4783e95e5d34096a5e59025014b80aec31d8888a",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Blood for Blood+1",
+        "Burning Pact",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Disarm",
+        "Dual Wield+1",
+        "Exhume",
+        "Hemokinesis+1",
+        "Immolate+1",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Whirlwind+1",
+        "Wild Strike"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Blood for Blood+1": 1,
+        "Burning Pact": 1,
+        "Defend_R": 4,
+        "Disarm": 1,
+        "Dual Wield+1": 1,
+        "Exhume": 1,
+        "Hemokinesis+1": 1,
+        "Immolate+1": 1,
+        "Shrug It Off": 1,
+        "Strike_R": 2,
+        "Whirlwind+1": 1,
+        "Wild Strike": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:2dc85ff71ba6d9a28b62:final-master-deck",
+          "origin": "final",
+          "run": "run-group:2dc85ff71ba6d9a28b62"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 19,
+      "base_count": 8,
+      "base_fraction": 0.42105263157894735,
+      "extra_count": 11,
+      "families": {
+        "self_damage": {
+          "source": [
+            "Hemokinesis"
+          ],
+          "payoff": [
+            "Blood for Blood"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 2,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "66326d94f4c8ae60fe3b27334cfeb57f378025eb68fee1befbb0d0cc0a0472f7",
+      "split": "train_candidate",
+      "component_id": "98bdd7be3c18d3a8494cdb2a4ce1ecc21a7f73aedb07d064748f125034d502e7",
+      "cards": [
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Disarm",
+        "Hemokinesis+1",
+        "Pommel Strike",
+        "Rampage",
+        "Spot Weakness",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger": 1,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Defend_R": 4,
+        "Disarm": 1,
+        "Hemokinesis+1": 1,
+        "Pommel Strike": 1,
+        "Rampage": 1,
+        "Spot Weakness": 1,
+        "Strike_R": 4,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:3a1fe3727cb20398c152:final-master-deck",
+          "origin": "final",
+          "run": "run-group:3a1fe3727cb20398c152"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 17,
+      "base_count": 10,
+      "base_fraction": 0.5882352941176471,
+      "extra_count": 7,
+      "families": {},
+      "engines": [],
+      "draw_copies": 1,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "a3a51144f29ae08f9dbcea09d3763f2cd51607ee1c56ec6aeeb866fe27cad806",
+      "split": "train_candidate",
+      "component_id": "e3cb3f2b36b37ba80fc91185d698973fa991e5b01bad3b2968cfdfe206214202",
+      "cards": [
+        "Anger",
+        "Anger",
+        "AscendersBane",
+        "Bash",
+        "Cleave",
+        "Clothesline",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Feed",
+        "Feed",
+        "Inflame+1",
+        "Pommel Strike+1",
+        "Rage",
+        "Reckless Charge",
+        "Shrug It Off",
+        "Shrug It Off",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Uppercut+1"
+      ],
+      "composition": {
+        "Anger": 2,
+        "AscendersBane": 1,
+        "Bash": 1,
+        "Cleave": 1,
+        "Clothesline": 1,
+        "Defend_R": 4,
+        "Feed": 2,
+        "Inflame+1": 1,
+        "Pommel Strike+1": 1,
+        "Rage": 1,
+        "Reckless Charge": 1,
+        "Shrug It Off": 2,
+        "Strike_R": 5,
+        "Uppercut+1": 1
+      },
+      "sources": [
+        {
+          "id": "run-group:c307dfd44a34bb5e6d64:final-master-deck",
+          "origin": "final",
+          "run": "run-group:c307dfd44a34bb5e6d64"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 24,
+      "base_count": 11,
+      "base_fraction": 0.4583333333333333,
+      "extra_count": 13,
+      "families": {},
+      "engines": [],
+      "draw_copies": 3,
+      "energy_copies": 0,
+      "resource_dense": false
+    },
+    {
+      "content_id": "e374e9816fa20028ce8dc417fab1a14bc6460d2553b0affbdbcb763699a741f4",
+      "split": "train_candidate",
+      "component_id": "020dccc90af195949ff833786bfc6958b3ccfb67a2b4035f12d7e624dad50b9e",
+      "cards": [
+        "AscendersBane",
+        "Bash+1",
+        "Body Slam",
+        "Carnage+1",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Defend_R",
+        "Double Tap",
+        "Flame Barrier",
+        "Headbutt",
+        "Immolate+1",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R",
+        "Strike_R"
+      ],
+      "composition": {
+        "AscendersBane": 1,
+        "Bash+1": 1,
+        "Body Slam": 1,
+        "Carnage+1": 1,
+        "Defend_R": 4,
+        "Double Tap": 1,
+        "Flame Barrier": 1,
+        "Headbutt": 1,
+        "Immolate+1": 1,
+        "Strike_R": 4
+      },
+      "sources": [
+        {
+          "id": "run-group:b9056fc50a3ea89b1392:final-master-deck",
+          "origin": "final",
+          "run": "run-group:b9056fc50a3ea89b1392"
+        }
+      ],
+      "group": "transition",
+      "group_label": "过渡与局部配合",
+      "reason": "不满足简单组，且尚未达到多机制组合规则",
+      "card_count": 16,
+      "base_count": 10,
+      "base_fraction": 0.625,
+      "extra_count": 6,
+      "families": {
+        "block_to_damage": {
+          "source": [
+            "Flame Barrier"
+          ],
+          "payoff": [
+            "Body Slam"
+          ]
+        }
+      },
+      "engines": [],
+      "draw_copies": 0,
+      "energy_copies": 0,
+      "resource_dense": false
+    }
+  ]
+}
