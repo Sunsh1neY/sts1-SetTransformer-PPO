@@ -54,3 +54,13 @@
 词表与后端源文件SHA记录见enemy-intent-vocabulary.json。共享任务需要接收观测v3/实体v2、三个有位置区别的类别embedding、历史有效性mask及状态词表；不能直接用旧checkpoint宣称兼容。
 
 更新时点注意：邪教徒等固定行动使用NoOpRollMove时不移动数组，不能将三个位置解释成连续三个回合。当前专项及相关回归317通过；新版真实样例见enemy-intent-example-v3.json。
+
+2026-09-13续批：批准的Flight/Thorns/Slow/Intangible/Fading/Shifting/Reactive/Time Warp已加入独立导出；此前“Flight尚未导出”的说明为历史状态。敌人遭遇本身和共享编码器仍待集成验收，phase尚未实现，铜球关系暂停。
+
+## 全卡A20最终接口v2
+
+本段优先于前述历史进度。每个有效ENEMY包括身份、present/targetable、HP/maxHP/block、当前意图类型与伤害/次数、公开状态、公开行动/蓄力/睡眠计数、三位置后端意图类别及各自有效性、phase（NONE/PHASE_1/PHASE_2）。原始语义774维，投影到64宽；实例引用与snapshot仅路由，不作为语义。
+
+stasis卡独立CARD仅身份已知；区域类别表达其它属性未知，普通CARD因新增区域为116维。holds_card关系单向把原始卡投影与关系存在标志一次融合进对应敌人投影；随后仍用原自注意力与两头。无重复Stasis/Minion/Painful Stabs输出。可独立读取的真实公开样例见act2-stasis-observation-example.json。
+
+完成证据与审批继承见act2-completion-report.md；旧独立enemy_potion接口未自动升级至此版本。

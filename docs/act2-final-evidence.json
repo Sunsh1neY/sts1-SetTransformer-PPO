@@ -1,0 +1,51 @@
+{
+  "Byrd": {
+    "class": "com/megacrit/cardcrawl/monsters/city/Byrd.class",
+    "sha256": "7b55ad3a100417dd4ac44cc23231350dec328ebbde5c1ad1a22730fba11ecba5"
+  },
+  "Mugger": {
+    "class": "com/megacrit/cardcrawl/monsters/city/Mugger.class",
+    "sha256": "da89eb55eefff691fde960a74beb3c49df06ebaa9a89262e8a832f53e603617f"
+  },
+  "BanditBear": {
+    "class": "com/megacrit/cardcrawl/monsters/city/BanditBear.class",
+    "sha256": "7bb995cdb8758c9a7fa75b7f3a344ac81c5c0c336570679e36cf729a86d0a7c9"
+  },
+  "BanditLeader": {
+    "class": "com/megacrit/cardcrawl/monsters/city/BanditLeader.class",
+    "sha256": "9287fb67f305cdd4f10550fe8d124700d27fc1900f97745937af0971eaad0c12"
+  },
+  "BanditPointy": {
+    "class": "com/megacrit/cardcrawl/monsters/city/BanditPointy.class",
+    "sha256": "c6826fd61022f98b58e1122ef02babea84a717f14007e70c66ff2d002b14bf02"
+  },
+  "GremlinLeader": {
+    "class": "com/megacrit/cardcrawl/monsters/city/GremlinLeader.class",
+    "sha256": "f322a65b0a9ea23aa49e50e27f5b20f42a32f57eaad916b2c2e0adf7f217d1fd"
+  },
+  "TheCollector": {
+    "class": "com/megacrit/cardcrawl/monsters/city/TheCollector.class",
+    "sha256": "955c4799fb5ba11724226339820a060f2d5cb76eddddf6890dbf1eaff157fe15"
+  },
+  "Champ": {
+    "class": "com/megacrit/cardcrawl/monsters/city/Champ.class",
+    "sha256": "c87c5a25e2c3da220c2a4557e49e768d3423689621099e00d2833b81e92ee3e8"
+  },
+  "BronzeAutomaton": {
+    "class": "com/megacrit/cardcrawl/monsters/city/BronzeAutomaton.class",
+    "sha256": "6b726a9aa4557af414e03eecf68d8269103fb17c1571995681df8ac5544f1a2a"
+  },
+  "BronzeOrb": {
+    "class": "com/megacrit/cardcrawl/monsters/city/BronzeOrb.class",
+    "sha256": "92cc3c117351725acf5863d45f2aa553bda7c7dc3567f3372cafc045f76b91a2"
+  },
+  "FlightPower": {
+    "class": "com/megacrit/cardcrawl/powers/FlightPower.class",
+    "sha256": "851a4852ebf87e0407447e223ed66c182b681f8cf3ad31f6cceccfbe9fb09993"
+  },
+  "StasisPower": {
+    "class": "com/megacrit/cardcrawl/powers/StasisPower.class",
+    "sha256": "cc503875c541370163069fa0b3bd639b421103fe62fc7e00bddcbb453e09e937"
+  },
+  "jar_sha256": "cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673"
+}

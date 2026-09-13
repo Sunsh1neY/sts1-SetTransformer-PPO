@@ -1,0 +1,81 @@
+{
+  "schema": "ironclad-enemy-integration-v2",
+  "status": "development",
+  "reward_version": "battle_reward_v1",
+  "gamma": 1.0,
+  "alpha_hp": 0.5,
+  "beta": 0.0,
+  "task_type": "battle",
+  "model_family": "unified-entity-set",
+  "observation_schema": "ironclad-enemy-observation-v2",
+  "action_schema": "ironclad-normal-66-and-single-select-v2",
+  "normal_action_count": 66,
+  "supported_phases": [
+    "NORMAL",
+    "SELECT_CARD"
+  ],
+  "selection_status": "six-single-selection-kinds",
+  "resolution_context_schema": "resolution-context-v1",
+  "resolution_context_fields": [
+    "source_mode",
+    "source_will_exhaust",
+    "pending_replay_count"
+  ],
+  "capacity_status": "full-card-runtime-resource-guards",
+  "training_admitted": false,
+  "baseline_commit": "50b756e",
+  "comparison_freeze_status": "pending",
+  "scope": {
+    "ascension": 20,
+    "encounters": [
+      "JAW_WORM",
+      "EXORDIUM_THUGS",
+      "GREMLIN_NOB",
+      "LAGAVULIN",
+      "THREE_SENTRIES",
+      "MAW",
+      "TRANSIENT",
+      "SNECKO",
+      "SPHERIC_GUARDIAN",
+      "CHOSEN",
+      "SHELL_PARASITE",
+      "SENTRY_AND_SPHERE",
+      "SNAKE_PLANT",
+      "CENTURION_AND_HEALER",
+      "CULTIST_AND_CHOSEN",
+      "THREE_CULTIST",
+      "SHELLED_PARASITE_AND_FUNGI",
+      "SLAVERS",
+      "COLOSSEUM_EVENT_SLAVERS",
+      "COLOSSEUM_EVENT_NOBS",
+      "BOOK_OF_STABBING",
+      "THREE_BYRDS",
+      "CHOSEN_AND_BYRDS",
+      "TWO_THIEVES",
+      "GREMLIN_LEADER",
+      "AUTOMATON",
+      "COLLECTOR",
+      "CHAMP",
+      "MASKED_BANDITS_EVENT"
+    ],
+    "relics": "legacy-public-8",
+    "potions": "legacy-public-15",
+    "acts": [
+      1,
+      2,
+      3
+    ]
+  },
+  "frozen_sha256": {
+    "sts/env/public-battle-contract.json": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
+    "sts/env/comparison-contract.json": "6d0dcf25ba2a603c4edc7c32c28484eb419255a7cf79bb7bae10245aa1cf6497",
+    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
+    "sts/models/comparison.py": "7184acd18ae807bceb7e59ee8ec5b48a437e738c8c0d6d997468cbd05e0962de",
+    "sts/train/comparison.py": "951f49137f1e7b62b8723b6204097ee768f56669525f3bfb923882d7286f0b2c",
+    "patches/lightspeed-battle-env.patch": "fe8168a3cbfa5595fefa7e9bf205ea9db0dc017096ac4809120feb8d8896c9aa",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  },
+  "registry": "ironclad-registry-v1",
+  "integration_source": "2325d550bee2e3ffb28474af8652e7c852b756b4",
+  "integration_revision": 3
+}

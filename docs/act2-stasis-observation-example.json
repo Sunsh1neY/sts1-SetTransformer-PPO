@@ -1,0 +1,579 @@
+{
+  "action_mask": [
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "decision": {
+    "phase": "NORMAL",
+    "selection": null
+  },
+  "discard_pile": [],
+  "draw_pile": [
+    {
+      "all_enemies": false,
+      "base_block": 0,
+      "base_cost": 1,
+      "block": 0,
+      "card_id": 62,
+      "card_type": "ATTACK",
+      "combat_damage_bonus": 0,
+      "cost": 0,
+      "cost_kind": "ENERGY",
+      "cost_known": false,
+      "cost_scope": "UNKNOWN",
+      "damage": 9,
+      "damage_by_target": [
+        9,
+        9,
+        9,
+        0,
+        0
+      ],
+      "effective_cost": 0,
+      "effective_cost_known": false,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Headbutt",
+      "printed_cost": 1,
+      "retain": false,
+      "target_kind": "ENEMY",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 0,
+      "base_cost": 3,
+      "block": 0,
+      "card_id": 5,
+      "card_type": "ATTACK",
+      "combat_damage_bonus": 0,
+      "cost": 0,
+      "cost_kind": "ENERGY",
+      "cost_known": false,
+      "cost_scope": "UNKNOWN",
+      "damage": 32,
+      "damage_by_target": [
+        32,
+        32,
+        32,
+        0,
+        0
+      ],
+      "effective_cost": 0,
+      "effective_cost_known": false,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Bludgeon",
+      "printed_cost": 3,
+      "retain": false,
+      "target_kind": "ENEMY",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 30,
+      "base_cost": 2,
+      "block": 30,
+      "card_id": 19,
+      "card_type": "SKILL",
+      "combat_damage_bonus": 0,
+      "cost": 0,
+      "cost_kind": "ENERGY",
+      "cost_known": false,
+      "cost_scope": "UNKNOWN",
+      "damage": 0,
+      "damage_by_target": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effective_cost": 0,
+      "effective_cost_known": false,
+      "effective_exhaust": true,
+      "ethereal": false,
+      "exhaust": true,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Impervious",
+      "printed_cost": 2,
+      "retain": false,
+      "target_kind": "NO_TARGET",
+      "upgrade_count": 0
+    }
+  ],
+  "enemies": [
+    {
+      "block": 0,
+      "hp": 57,
+      "intent_damage": 8,
+      "intent_history": [
+        29,
+        30,
+        0
+      ],
+      "intent_history_valid": [
+        true,
+        true,
+        false
+      ],
+      "intent_hits": 1,
+      "intent_kind": "ATTACK",
+      "max_hp": 57,
+      "name": "BRONZE_ORB",
+      "phase": "NONE",
+      "present": true,
+      "public_history": {
+        "charge_turns_observed": 0,
+        "completed_enemy_turns": 1,
+        "sleep_turns_observed": 0
+      },
+      "statuses": {},
+      "targetable": true
+    },
+    {
+      "block": 0,
+      "hp": 320,
+      "intent_damage": 0,
+      "intent_history": [
+        24,
+        25,
+        27
+      ],
+      "intent_history_valid": [
+        true,
+        true,
+        true
+      ],
+      "intent_hits": 0,
+      "intent_kind": "DEFEND_BUFF",
+      "max_hp": 320,
+      "name": "BRONZE_AUTOMATON",
+      "phase": "NONE",
+      "present": true,
+      "public_history": {
+        "charge_turns_observed": 0,
+        "completed_enemy_turns": 2,
+        "sleep_turns_observed": 0
+      },
+      "statuses": {
+        "Artifact": 3
+      },
+      "targetable": true
+    },
+    {
+      "block": 0,
+      "hp": 59,
+      "intent_damage": 0,
+      "intent_history": [
+        31,
+        30,
+        0
+      ],
+      "intent_history_valid": [
+        true,
+        true,
+        false
+      ],
+      "intent_hits": 0,
+      "intent_kind": "DEFEND",
+      "max_hp": 59,
+      "name": "BRONZE_ORB",
+      "phase": "NONE",
+      "present": true,
+      "public_history": {
+        "charge_turns_observed": 0,
+        "completed_enemy_turns": 1,
+        "sleep_turns_observed": 0
+      },
+      "statuses": {},
+      "targetable": true
+    },
+    {
+      "block": 0,
+      "hp": 0,
+      "intent_damage": 0,
+      "intent_history": [
+        0,
+        0,
+        0
+      ],
+      "intent_history_valid": [
+        false,
+        false,
+        false
+      ],
+      "intent_hits": 0,
+      "intent_kind": "NONE",
+      "max_hp": 0,
+      "name": "",
+      "phase": "NONE",
+      "present": false,
+      "public_history": {
+        "charge_turns_observed": 0,
+        "completed_enemy_turns": 0,
+        "sleep_turns_observed": 0
+      },
+      "statuses": {},
+      "targetable": false
+    },
+    {
+      "block": 0,
+      "hp": 0,
+      "intent_damage": 0,
+      "intent_history": [
+        0,
+        0,
+        0
+      ],
+      "intent_history_valid": [
+        false,
+        false,
+        false
+      ],
+      "intent_hits": 0,
+      "intent_kind": "NONE",
+      "max_hp": 0,
+      "name": "",
+      "phase": "NONE",
+      "present": false,
+      "public_history": {
+        "charge_turns_observed": 0,
+        "completed_enemy_turns": 0,
+        "sleep_turns_observed": 0
+      },
+      "statuses": {},
+      "targetable": false
+    }
+  ],
+  "exhaust_pile": [],
+  "hand": [
+    {
+      "all_enemies": false,
+      "base_block": 0,
+      "base_cost": 3,
+      "block": 0,
+      "card_id": 5,
+      "card_type": "ATTACK",
+      "combat_damage_bonus": 0,
+      "cost": 3,
+      "cost_kind": "ENERGY",
+      "cost_known": true,
+      "cost_scope": "COMBAT",
+      "damage": 32,
+      "damage_by_target": [
+        32,
+        32,
+        32,
+        0,
+        0
+      ],
+      "effective_cost": 3,
+      "effective_cost_known": true,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Bludgeon",
+      "printed_cost": 3,
+      "retain": false,
+      "target_kind": "ENEMY",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 0,
+      "base_cost": 2,
+      "block": 0,
+      "card_id": 1,
+      "card_type": "ATTACK",
+      "combat_damage_bonus": 0,
+      "cost": 2,
+      "cost_kind": "ENERGY",
+      "cost_known": true,
+      "cost_scope": "COMBAT",
+      "damage": 8,
+      "damage_by_target": [
+        8,
+        8,
+        8,
+        0,
+        0
+      ],
+      "effective_cost": 2,
+      "effective_cost_known": true,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 2,
+      "name": "Bash",
+      "printed_cost": 2,
+      "retain": false,
+      "target_kind": "ENEMY",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 5,
+      "base_cost": 1,
+      "block": 5,
+      "card_id": 2,
+      "card_type": "SKILL",
+      "combat_damage_bonus": 0,
+      "cost": 1,
+      "cost_kind": "ENERGY",
+      "cost_known": true,
+      "cost_scope": "COMBAT",
+      "damage": 0,
+      "damage_by_target": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effective_cost": 1,
+      "effective_cost_known": true,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Defend_R",
+      "printed_cost": 1,
+      "retain": false,
+      "target_kind": "NO_TARGET",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 0,
+      "base_cost": 1,
+      "block": 0,
+      "card_id": 3,
+      "card_type": "ATTACK",
+      "combat_damage_bonus": 0,
+      "cost": 1,
+      "cost_kind": "ENERGY",
+      "cost_known": true,
+      "cost_scope": "COMBAT",
+      "damage": 6,
+      "damage_by_target": [
+        6,
+        6,
+        6,
+        0,
+        0
+      ],
+      "effective_cost": 1,
+      "effective_cost_known": true,
+      "effective_exhaust": false,
+      "ethereal": false,
+      "exhaust": false,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": true,
+      "magic": 0,
+      "name": "Strike_R",
+      "printed_cost": 1,
+      "retain": false,
+      "target_kind": "ENEMY",
+      "upgrade_count": 0
+    },
+    {
+      "all_enemies": false,
+      "base_block": 30,
+      "base_cost": 2,
+      "block": 30,
+      "card_id": 19,
+      "card_type": "SKILL",
+      "combat_damage_bonus": 0,
+      "cost": 2,
+      "cost_kind": "ENERGY",
+      "cost_known": true,
+      "cost_scope": "COMBAT",
+      "damage": 0,
+      "damage_by_target": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "effective_cost": 2,
+      "effective_cost_known": true,
+      "effective_exhaust": true,
+      "ethereal": false,
+      "exhaust": true,
+      "free_to_play_once": false,
+      "hits": 1,
+      "is_strike": false,
+      "magic": 0,
+      "name": "Impervious",
+      "printed_cost": 2,
+      "retain": false,
+      "target_kind": "NO_TARGET",
+      "upgrade_count": 0
+    }
+  ],
+  "player": {
+    "ascension": 20,
+    "attacks_played_this_turn": 0,
+    "block": 0,
+    "cards_played_this_turn": 0,
+    "combust_hp_loss": 0,
+    "energy": 3,
+    "energy_per_turn": 3,
+    "hp": 484,
+    "max_hp": 500,
+    "skills_played_this_turn": 0,
+    "statuses": {},
+    "turn": 2
+  },
+  "potion_capacity": 2,
+  "potions": [
+    {
+      "name": "",
+      "potency": 0,
+      "present": false,
+      "target_kind": "NO_TARGET",
+      "potion_id": 0
+    },
+    {
+      "name": "",
+      "potency": 0,
+      "present": false,
+      "target_kind": "NO_TARGET",
+      "potion_id": 0
+    },
+    {
+      "name": "",
+      "potency": 0,
+      "present": false,
+      "target_kind": "NO_TARGET",
+      "potion_id": 0
+    }
+  ],
+  "relations": [
+    {
+      "card_ref": "card:3",
+      "enemy_ref": "enemy:2",
+      "kind": "holds_card"
+    },
+    {
+      "card_ref": "card:2",
+      "enemy_ref": "enemy:3",
+      "kind": "holds_card"
+    }
+  ],
+  "relics": [],
+  "resolving": [],
+  "routing": {
+    "enemy_refs": [
+      "enemy:2",
+      "enemy:1",
+      "enemy:3",
+      null,
+      null
+    ],
+    "stasis_refs": [
+      "card:3",
+      "card:2"
+    ],
+    "snapshot": "example-current-snapshot"
+  },
+  "schema": "ironclad-enemy-observation-v2",
+  "stasis": [
+    {
+      "name": "Impervious"
+    },
+    {
+      "name": "Bludgeon"
+    }
+  ]
+}

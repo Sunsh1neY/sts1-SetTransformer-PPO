@@ -20,6 +20,8 @@ if (-not $installed) {
 }
 & $Python (Join-Path $PSScriptRoot 'generate-enemy-potion-contract.py')
 if ($LASTEXITCODE -ne 0) { throw '扩展契约生成失败。' }
+& $Python (Join-Path $PSScriptRoot 'generate-ironclad-contract.py')
+if ($LASTEXITCODE -ne 0) { throw '全卡集成契约生成失败。' }
 $oldPath=$env:PATH
 try {
     $env:PATH='C:/msys64/mingw64/bin;'+$oldPath

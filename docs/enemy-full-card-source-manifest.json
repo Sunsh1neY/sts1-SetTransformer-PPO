@@ -1,0 +1,17 @@
+{
+  "source_commit": "2325d550bee2e3ffb28474af8652e7c852b756b4",
+  "files": {
+    "sts/env/ironclad.py": "53b320f955c33c83d3a3ef832f87c0a74a475c3d14935fd3504a1f1b402a7b7f",
+    "sts/env/selection.py": "6929026f37336483962a31c7c5b6fe62f82121d3e4b08e98211d97aab8f02e95",
+    "sts/env/entities.py": "39b02cbe5bed2f8820632bd10295d01c592cacfff8d604944ca5373293723597",
+    "sts/env/public_battle.py": "a6cd6bfbbad838bfd9edc17780c946f1168b9496d2b7142628e3f8a5e5471892",
+    "sts/env/ironclad-registry.json": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+    "sts/env/ironclad-expansion-contract.json": "c92d3bdf5ea47438e8b178c2079c5605c013fc68b91ec8033275bcfa4f0d3399",
+    "sts/models/entities.py": "c10fafaf1701e7474d93b48682c756b1a66f5063a6d8fec31628eb694dd3adb8",
+    "sts/models/unified-entity-contract.json": "12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843",
+    "patches/lightspeed-ironclad-expansion.patch": "5edaf7df0d4be5421206e9699e913ea435410d052a01a7557d0496fcf32955b1"
+  },
+  "binding": "integrated-card-env.cpp; frozen public binding preserved",
+  "status": "integration-in-progress",
+  "relation_edges": "zero-width; stasis deferred"
+}

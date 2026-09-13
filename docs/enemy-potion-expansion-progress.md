@@ -93,3 +93,25 @@ EP2b最终验证：桌面新路径重新编译并实际加载本目录slaythespi
 - public_history中的完成回合/睡眠/蓄力计数继续保留；仅删除被三位置编号替代的last_intent_kind/previous_intent_kind。通用phase、Flight及特殊22遭遇未准入。
 - 药水未扩审，无PPO训练；尚未接入全卡共享编码器。该任务需要接收v3/v2、分类词表与三个位置的embedding/mask，不允许把旧checkpoint当成兼容。
 - 文件：docs/enemy-token-fields.md、docs/enemy-intent-vocabulary.json、docs/enemy-intent-example-v3.json。
+
+### 已批准状态接入，铜球关系暂缓（2026-09-13）
+
+- 已在独立后端导出Flight、Thorns、Slow、Intangible、Fading、Shifting、Reactive、Time Warp；Slow存在且计数0保留，Shifting按布尔值1。契约状态修订1改变SHA，旧模块仍被指纹校验拒绝。共享编码器尚未集成八状态，phase尚未落地；本轮没有新增遭遇白名单。
+- 新增test_enemy_status_export.py直接编译生产导出函数，验证八状态值与空状态，属于导出层夹具，不冒充完整敌人机制对拍。相关测试共318通过、0失败/跳过，8.47秒；后端实际构建导入通过、基础冻结四哈希未变、增量补丁反向校验通过。不做极端容量测试或PPO。
+- 铜球关系/区域/模型未实施。咨询材料docs/stasis-relation-design-review.md包含实际模型结构、关系事实与公开性待核项、A注意力偏置/B一次融合/C候选上下文/D关系token比较和验收问题，等待用户外部审阅意见。
+
+### 非铜球首批全卡集成更新（2026-09-13）
+
+MAW/TRANSIENT独立公开入口已接；MAW/TRANSIENT/SNECKO全卡A20集成通过，345相关回归及新增padding后的8项专项通过，450局7225步0异常（1次预算截断）。旧表保留历史身份，当前范围以docs/enemy-full-card-integration-report.md为准。时间吞噬者按用户最新选择暂缓，铜球仍暂停。
+
+收尾实际核验：冻结四文件及共享来源文件SHA未变，全卡工作树干净；新后端契约指纹匹配；增量补丁正向/反向检查通过，spec检查PASS。改动尚未提交，未推送或合并。
+
+## 第二幕首批执行结果（2026-09-13）
+
+本批新增13个全卡A20遭遇，第二幕14/22；修复Hex布尔导出和扎人的书高进阶单刺计数。相关回归389通过，唯一编译内存失败项单独重跑1通过。剩余8遭遇及铜球B/阶段/终局出口仍待实施，不等于全部完成。完整证据见[本批报告](act2-full-card-batch-report.md)。Minion不额外导出，审批已收口；旧待决描述仅为历史。
+
+## 第二幕22遭遇收口（2026-09-13）
+
+剩余8遭遇已完成A20全卡开发接入，第二幕现22/22（含三项事件战斗部分）。B一次关联融合、stasis身份限定观测、三类公开phase、实例引用和终局battle_exit已落实。CARD116、ENEMY774，模型unified-enemy-entity-set-v2；旧模型不可精确续训。
+
+本批434相关回归通过，状态编译夹具另1通过；3300局全卡短程交互53906步、316次选牌、3256自然终止、44外部截断、0异常。未正式训练、未推送/合并。完整范围与证据边界见[第二幕完成报告](act2-completion-report.md)。本文更早的“8遭遇待完成”“铜球暂停”等只保留历史意义。

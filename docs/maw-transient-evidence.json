@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-13",
+  "jar_sha256": "cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673",
+  "classes": [
+    {
+      "class": "com/megacrit/cardcrawl/monsters/beyond/Maw.class",
+      "sha256": "1cfd22a9bc9e3b0cb5d6ec5795a34e7f1b761fa195a63d4fc523954556a1ff8d"
+    },
+    {
+      "class": "com/megacrit/cardcrawl/monsters/beyond/Transient.class",
+      "sha256": "134e378db51135045754323e00d4b5840aa1a84d38569106d8b2f75e9f3d78c5"
+    },
+    {
+      "class": "com/megacrit/cardcrawl/monsters/city/Snecko.class",
+      "sha256": "8c993b13d8b9b6a221393a286a8ad814c09344767ac3b891255f825cbdb11a1d",
+      "use": "准入意图核验"
+    },
+    {
+      "class": "com/megacrit/cardcrawl/monsters/beyond/TimeEater.class",
+      "sha256": "9cb8975671f6aa31ce9ad1a24b6116276d716275a9ca3063d4c18b61f9e576ce",
+      "use": "用于识别缺失DEFEND_DEBUFF；用户暂缓"
+    }
+  ]
+}

@@ -319,17 +319,23 @@
     {
       "name": "THREE_BYRDS",
       "status": "pending-user-review",
-      "dependency": "飞行减伤、按攻击次数坠落、眩晕和恢复飞行，需要完整公开阶段及多段攻击对拍"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "TWO_THIEVES",
       "status": "pending-user-review",
-      "dependency": "偷取金币和敌人逃跑，需确认战斗胜利与金币返还/持久化边界"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "CHOSEN_AND_BYRDS",
       "status": "pending-user-review",
-      "dependency": "天选者本体已在首批，组合等待飞鸟坠落/恢复验收"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "SENTRY_AND_SPHERE",
@@ -344,7 +350,9 @@
     {
       "name": "SNECKO",
       "status": "pending-user-review",
-      "dependency": "混乱与逐卡随机费用有效期；依赖全卡实例费用观测集成"
+      "dependency": "通过IroncladEnv集成入口；旧独立35牌入口仍拒绝",
+      "full_card_status": "a20-integrated-tested",
+      "evidence": "docs/enemy-full-card-integration-report.md"
     },
     {
       "name": "CENTURION_AND_HEALER",
@@ -369,7 +377,9 @@
     {
       "name": "GREMLIN_LEADER",
       "status": "pending-user-review",
-      "dependency": "召唤与同槽同种实例替换，首领死亡后的随从结算"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "SLAVERS",
@@ -379,22 +389,30 @@
     {
       "name": "BOOK_OF_STABBING",
       "status": "pending-user-review",
-      "dependency": "多段次数逐回合增加且未格挡伤害可生成Wound；不能沿用固定15单步生成上界"
+      "dependency": "全卡入口已验收本批范围；旧独立入口仍未开放",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
     },
     {
       "name": "AUTOMATON",
       "status": "pending-user-review",
-      "dependency": "召唤铜球、Stasis捕获/归还具体卡牌、首领与随从生命期"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "COLLECTOR",
       "status": "pending-user-review",
-      "dependency": "召唤火炬头、替换实例、群体强化和首领死亡语义"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "CHAMP",
       "status": "pending-user-review",
-      "dependency": "半血触发强化/清除减益与后续行动阶段，需要独立实战对拍"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "THREE_DARKLINGS",
@@ -418,8 +436,12 @@
     },
     {
       "name": "TRANSIENT",
-      "status": "pending-user-review",
-      "dependency": "伤害转临时力量下降、Fading倒计时和自然消失的战斗结果"
+      "status": "implemented-targeted-verified",
+      "dependency": "独立A0..20接口与全卡A20集成已完成本批验证",
+      "review_required": false,
+      "recommendation": "已开发准入；正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "evidence": "docs/enemy-full-card-integration-report.md"
     },
     {
       "name": "FOUR_SHAPES",
@@ -428,8 +450,13 @@
     },
     {
       "name": "MAW",
-      "status": "pending-user-review",
-      "dependency": "攻击段数随回合增加，需要重新证明50项结算队列与极端长战斗预算"
+      "status": "implemented-targeted-verified",
+      "dependency": "独立A0..20接口与全卡A20集成已完成本批验证",
+      "review_required": false,
+      "recommendation": "已开发准入；正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "evidence": "docs/enemy-full-card-integration-report.md",
+      "reason": "复用全局回合数，正常回合多段与实际结算已测；不做极端容量工程"
     },
     {
       "name": "SPHERE_AND_TWO_SHAPES",
@@ -469,7 +496,7 @@
     {
       "name": "TIME_EATER",
       "status": "pending-user-review",
-      "dependency": "累计12张牌强制结束回合、半血治疗/清除减益，涉及动作结算边界"
+      "dependency": "用户明确暂缓接入（2026-09-13），不新增DEFEND_DEBUFF"
     },
     {
       "name": "DONU_AND_DECA",
@@ -494,17 +521,23 @@
     {
       "name": "COLOSSEUM_EVENT_SLAVERS",
       "status": "out-of-batch",
-      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+      "dependency": "全卡入口已验收本批范围；旧独立入口仍未开放",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
     },
     {
       "name": "COLOSSEUM_EVENT_NOBS",
       "status": "out-of-batch",
-      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+      "dependency": "全卡入口已验收本批范围；旧独立入口仍未开放",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
     },
     {
       "name": "MASKED_BANDITS_EVENT",
       "status": "out-of-batch",
-      "dependency": "幕/楼层初态、公开状态、召唤/复活/多阶段与生成容量逐项审计；未开放"
+      "dependency": "全卡A20已准入；旧独立入口不改变",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md"
     },
     {
       "name": "MUSHROOMS_EVENT",
