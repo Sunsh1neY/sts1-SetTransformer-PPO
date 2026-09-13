@@ -3,13 +3,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import uuid
 from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
 
 from sts.env.lightspeed import _load_backend
-from sts.env.public_battle import PUBLIC_CONTRACT, PublicBattleEnv, _integer, normalize_observation
+from sts.env.full_card_public import PUBLIC_CONTRACT, PublicBattleEnv, _integer, normalize_observation
 from sts.env.selection import SelectionRouter, ZONES
 
 PATH = Path(__file__).with_name("ironclad-expansion-contract.json")
@@ -73,6 +74,8 @@ class IroncladEnv(PublicBattleEnv):
 
     def _normalize_observation(self, raw):
         obs = normalize_ironclad(raw)
+        if not hasattr(self,"_snapshot"): self._snapshot=uuid.uuid4().hex
+        obs["routing"]["snapshot"]=self._snapshot
         if obs["decision"]["phase"] == "SELECT_CARD":
             try:
                 view = self._selection.snapshot()
@@ -104,6 +107,7 @@ class IroncladEnv(PublicBattleEnv):
 
     def reset(self, scene, seed, *, diagnostic=False, purpose="development"):
         self._selection.invalidate()
+        self._snapshot=uuid.uuid4().hex
         self._finished = True
         if not diagnostic or purpose != "development":
             raise ValueError("当前扩展仅批准development机制夹具，正式采集尚未开放")
@@ -123,6 +127,11 @@ class IroncladEnv(PublicBattleEnv):
         if self._finished:
             raise RuntimeError("场景已结束，必须reset")
         try:
+            if isinstance(action,dict) and action.get("kind")=="NORMAL":
+                if set(action)!={"kind","snapshot","action"} or action["snapshot"]!=self._snapshot:
+                    raise ValueError("过期或无效动作引用")
+                action=action["action"]
+            self._snapshot=uuid.uuid4().hex
             if isinstance(action, dict):
                 target = self._selection.take(action)
                 return self._decode_result(json.loads(self._env.select_card(target.backend_index)))

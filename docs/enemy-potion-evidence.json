@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-12",
+  "level": "一手本机正版字节码定点仲裁",
+  "jar_sha256": "cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673",
+  "classes": [
+    {
+      "path": "BloodPotion.class",
+      "sha256": "254e7823a1f4b3b08d4f275a186cd22b490795fed999cc89eb4eb169c3ae24cb",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "BurnIncreaseAction.class",
+      "sha256": "21dfb7a622f08ef6c2e6216495f4e306573d542749cd7bbf1a7103e5dfdfc9e4",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "CultistPotion.class",
+      "sha256": "83ee803a4605c185c312baaed0a7740d13cb9a962a19ca16c3e321a108ad70e7",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "FairyPotion.class",
+      "sha256": "4cb43c9fcf14832e42199b8803e6f3b8052d8b9a893cc2c98842cf79868e3f4b",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "FirePotion.class",
+      "sha256": "0391a17323526250a23da24553b135b2f9a785feaa0ce168b9155c33f2bbd0f6",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "Hexaghost.class",
+      "sha256": "53603d38d9df1cf4c3660f031c9c0e2c2b982f078cced66f0e87d69c0ce7a8e7",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "SlimeBoss.class",
+      "sha256": "44e9795d4e1f0f750a9084118cf12bea491b21a8956012c9df99310fd95a5a9d",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "SteroidPotion.class",
+      "sha256": "e38fef9d819149ef0cacc5dd5429e3886f29ce9e52f194d95363418be5483b98",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    },
+    {
+      "path": "TheGuardian.class",
+      "sha256": "c015e0a3f9e46808a6a654b155b5c327d5e708c51f1039aafa9581b28cf2f85b",
+      "source": "正版desktop-1.0.jar内对应com/megacrit/cardcrawl类"
+    }
+  ]
+}

@@ -96,7 +96,7 @@ def card_features(card, region):
 
 FEATURE_DIMS = {
     "CARD": len(CARD_NUMERIC) + len(CARD_BOOL) + 81 + len(CONTRACT["card_types"]) + 2 + 3 + len(REGIONS),
-    "ENEMY": 2 + 5 + len(CONTRACT["enemy_names"]) + 3 * len(CONTRACT["intent_kinds"]) + 2 * len(CONTRACT["enemy_statuses"]) + 3,
+    "ENEMY": len(CONTRACT["enemy_phases"]) + 2 + 5 + len(CONTRACT["enemy_names"]) + len(CONTRACT["intent_kinds"]) + 3 * (len(CONTRACT["enemy_move_ids"]) + 1) + 2 * len(CONTRACT["enemy_statuses"]) + 3,
     "POTION": len(CONTRACT["potions"]) + 1 + 1 + 2 + len(CONTRACT["potion_regions"]),
     "RELIC": len(CONTRACT["relics"]) + 2,
     "PLAYER_GLOBAL": len(PLAYER_NUMERIC) + 2 * len(CONTRACT["player_statuses"]) + 1 + 2 + len(CONTRACT["selection_kinds"]) + 2,
@@ -128,6 +128,7 @@ class EntitySample:
     edges: np.ndarray
     candidates: list[Candidate]
     routes: list
+    held_card_index: np.ndarray | None = None
 
     def permuted(self, order):
         order = list(order)
@@ -137,7 +138,7 @@ class EntitySample:
         remap = lambda i: -1 if i == -1 else inverse[i]
         return EntitySample([self.tokens[i] for i in order], self.edges[order][:, order].copy(),
                             [Candidate(c.kind, remap(c.source), remap(c.target), c.legal, c.context) for c in self.candidates],
-                            copy.deepcopy(self.routes))
+                            copy.deepcopy(self.routes), np.array([remap(int(self.held_card_index[i])) for i in order], dtype=np.int64) if self.held_card_index is not None else None)
 
 
 def encode_observation(obs):
@@ -145,7 +146,7 @@ def encode_observation(obs):
     from sts.env.ironclad import CONTRACT as RUNTIME
     _reject_hidden_fields(obs)
     expected = {"schema", "hand", "draw_pile", "discard_pile", "exhaust_pile", "resolving",
-                "player", "enemies", "potions", "potion_capacity", "relics", "action_mask", "decision"}
+                "player", "enemies", "potions", "potion_capacity", "relics", "action_mask", "decision", "stasis", "relations", "routing"}
     exact(obs, expected | ({"offers", "resolving_potions"} & set(obs)))
     if obs["schema"] != RUNTIME["observation_schema"]:
         raise ValueError("统一实体适配器的观测版本不匹配")
@@ -173,6 +174,14 @@ def encode_observation(obs):
         if region == "hand" and len(rows) > 10:
             raise ValueError("手牌超过后端路由容量")
         for i, card in enumerate(rows):
+            if region == "stasis":
+                exact(card, {"name"})
+                if card["name"] not in CARD_IDS: raise ValueError("未知扣牌身份")
+                # stasis区域是统一未知掩码：只激活公开身份与区域，其余非真实零值。
+                feature = [0.] * (len(CARD_NUMERIC) + len(CARD_BOOL)) + onehot(CARD_IDS[card["name"]], range(81))
+                feature += [0.] * (len(CONTRACT["card_types"]) + 2 + 3) + onehot(region, REGIONS)
+                refs[(region, i)] = add("CARD", feature)
+                continue
             refs[(region, i)] = add("CARD", card_features(card, region))
             if len(card["damage_by_target"]) != 5:
                 raise ValueError("目标预览缺行")
@@ -180,20 +189,25 @@ def encode_observation(obs):
     if len(obs["enemies"]) != 5 or len(obs["potions"]) != 3:
         raise ValueError("当前后端槽位容量已变化，需要新适配器")
     for i, enemy in enumerate(obs["enemies"]):
-        exact(enemy, {"name", "present", "targetable", "hp", "max_hp", "block", "intent_damage", "intent_hits", "intent_kind", "public_history", "statuses"})
+        exact(enemy, {"name", "present", "targetable", "hp", "max_hp", "block", "intent_damage", "intent_hits", "intent_kind", "public_history", "statuses", "intent_history", "intent_history_valid", "phase"})
         if not boolean(enemy["present"]):
             if enemy["targetable"]:
                 raise ValueError("不存在的敌人不能成为目标")
             continue
         history = enemy["public_history"]
-        exact(history, set(HISTORY_NUMERIC) | {"last_intent_kind", "previous_intent_kind"})
-        features = [boolean(enemy[k]) for k in ("present", "targetable")]
+        exact(history, set(HISTORY_NUMERIC))
+        features = onehot(enemy["phase"], CONTRACT["enemy_phases"]) + [boolean(enemy[k]) for k in ("present", "targetable")]
         features += [number(enemy[k], 5 if k == "intent_hits" else 100) for k in ("hp", "max_hp", "block", "intent_damage", "intent_hits")]
         features += onehot(enemy["name"], CONTRACT["enemy_names"]) + onehot(enemy["intent_kind"], CONTRACT["intent_kinds"])
         features += status_features(enemy["statuses"], CONTRACT["enemy_statuses"])
         features += [number(history[k], 50) for k in HISTORY_NUMERIC]
-        for key in ("last_intent_kind", "previous_intent_kind"):
-            features += onehot(history[key], CONTRACT["intent_kinds"])
+        if len(enemy["intent_history"]) != 3 or len(enemy["intent_history_valid"]) != 3:
+            raise ValueError("意图历史必须有三个位置")
+        for move, valid in zip(enemy["intent_history"], enemy["intent_history_valid"]):
+            move = _integer(move, "意图类别")
+            if boolean(valid) != float(move != 0):
+                raise ValueError("历史编号与有效性不一致")
+            features += onehot(move, CONTRACT["enemy_move_ids"]) + [boolean(valid)]
         refs[("enemy", i)] = add("ENEMY", features)
     potion_names = [r["name"] for r in CONTRACT["potions"]]
     potion_rows = [("potion", "inventory", i, potion) for i, potion in enumerate(obs["potions"])]
@@ -304,7 +318,26 @@ def encode_observation(obs):
             candidate("SELECT_CARD", source, origin, mask[i],
                       {"kind": "SELECT_CARD", "decision_id": decision["routing"]["decision_id"], "candidate_index": i},
                       candidate_context)
-    return EntitySample(tokens, edges, candidates, routes)
+    routing = obs["routing"]
+    exact(routing, {"enemy_refs", "stasis_refs", "snapshot"})
+    if len(routing["enemy_refs"]) != 5 or len(routing["stasis_refs"]) != len(obs["stasis"]):
+        raise ValueError("关系路由长度错误")
+    enemy_refs = {r: refs[("enemy", i)] for i,r in enumerate(routing["enemy_refs"]) if r is not None and ("enemy",i) in refs}
+    card_refs = {r: refs[("stasis", i)] for i,r in enumerate(routing["stasis_refs"])}
+    if len(enemy_refs) != sum(e["present"] for e in obs["enemies"]) or len(card_refs) != len(obs["stasis"]):
+        raise ValueError("实体引用重复或缺失")
+    held = np.full(len(tokens), -1, dtype=np.int64)
+    used_cards=set()
+    for rel in obs["relations"]:
+        exact(rel, {"kind", "enemy_ref", "card_ref"})
+        if rel["kind"] != "holds_card" or rel["enemy_ref"] not in enemy_refs or rel["card_ref"] not in card_refs:
+            raise ValueError("关系端点无效")
+        e,c=enemy_refs[rel["enemy_ref"]],card_refs[rel["card_ref"]]
+        if held[e] != -1 or c in used_cards: raise ValueError("持牌关系冲突")
+        held[e]=c;used_cards.add(c)
+    if len(used_cards)!=len(card_refs): raise ValueError("扣牌实体没有持有关系")
+    routes=[{"kind":"NORMAL", "snapshot":routing["snapshot"], "action":int(r)} if isinstance(r,(int,np.integer)) else r for r in routes]
+    return EntitySample(tokens, edges, candidates, routes, held)
 
 
 def collate(samples, *, heads=4, resources=None):
@@ -317,7 +350,7 @@ def collate(samples, *, heads=4, resources=None):
         raise ValueError("统一实体批次超出资源边界；必须拆分或重设资源契约，不能丢弃实体")
     batch = {"types": torch.zeros(b, n, dtype=torch.long), "entity_valid": torch.zeros(b, n, dtype=torch.bool),
              "features": {t: torch.zeros(b, n, dim) for t, dim in FEATURE_DIMS.items()},
-             "edges": torch.zeros(b, n, n, 0), "kinds": torch.zeros(b, a, dtype=torch.long),
+             "held_card_index": torch.full((b,n), -1, dtype=torch.long), "edges": torch.zeros(b, n, n, 0), "kinds": torch.zeros(b, a, dtype=torch.long),
              "source": torch.full((b, a), -1, dtype=torch.long), "target": torch.full((b, a), -1, dtype=torch.long),
              "candidate_context": torch.zeros(b, a, CANDIDATE_CONTEXT_DIM),
              "candidate_valid": torch.zeros(b, a, dtype=torch.bool), "legal": torch.zeros(b, a, dtype=torch.bool)}
@@ -325,6 +358,12 @@ def collate(samples, *, heads=4, resources=None):
         length = len(sample.tokens)
         if sample.edges.shape != (length, length, 0) or not np.isfinite(sample.edges).all() or len(sample.routes) != len(sample.candidates):
             raise ValueError("实体关系或路由长度错误")
+        held=sample.held_card_index
+        if held is None or held.shape!=(length,) or held.dtype.kind not in "iu": raise ValueError("缺少关系路由")
+        for source,target in enumerate(held):
+            if target != -1 and (not 0<=target<length or sample.tokens[source].entity_type!="ENEMY" or sample.tokens[target].entity_type!="CARD"):
+                raise ValueError("关系源/目标类型错误")
+        batch["held_card_index"][i,:length]=torch.from_numpy(held.copy())
         for j, token in enumerate(sample.tokens):
             if token.entity_type not in TYPES or token.features.shape != (FEATURE_DIMS[token.entity_type],) or not np.isfinite(token.features).all():
                 raise ValueError("实体类型或语义向量错误")

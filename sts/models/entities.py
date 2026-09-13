@@ -48,7 +48,7 @@ class EntityBlock(nn.Module):
 
 
 class UnifiedEntityActorCritic(nn.Module):
-    model_version = "unified-entity-set-v4"
+    model_version = "unified-enemy-entity-set-v2"
 
     def __init__(self, architecture=None):
         super().__init__()
@@ -56,6 +56,8 @@ class UnifiedEntityActorCritic(nn.Module):
         self.architecture.validate()
         w = self.architecture.width
         self.projections = nn.ModuleDict({kind: nn.Linear(dim, w) for kind, dim in FEATURE_DIMS.items()})
+        self.holds_fusion = nn.Linear(w + 1, w, bias=False)
+        nn.init.zeros_(self.holds_fusion.weight)
         self.type_embedding = nn.Embedding(len(TYPES), w)
         self.blocks = nn.ModuleList([EntityBlock(self.architecture) for _ in range(self.architecture.layers)])
         self.final_norm = nn.LayerNorm(w)
@@ -78,6 +80,16 @@ class UnifiedEntityActorCritic(nn.Module):
             # 先清除非本类型及padding输入，避免无效位置数值影响投影。
             features = batch["features"][kind].masked_fill(~selected[..., None], 0)
             x = x + self.projections[kind](features).masked_fill(~selected[..., None], 0)
+        held=batch["held_card_index"]
+        mask=(held>=0) & valid
+        if ((held < -1) | (held >= n)).any(): raise ValueError("关系索引越界")
+        source=x.gather(1,held.clamp_min(0)[...,None].expand(-1,-1,self.architecture.width))
+        target_valid=valid.gather(1,held.clamp_min(0))
+        target_type=types.gather(1,held.clamp_min(0))
+        if (mask & (~target_valid | (target_type!=TYPES.index("CARD")) | (types!=TYPES.index("ENEMY")))).any():
+            raise ValueError("关系引用无效实体")
+        u=torch.cat([source.masked_fill(~mask[...,None],0),mask.float()[...,None]],-1)
+        x=x+self.holds_fusion(u)
         for block in self.blocks:
             x = block(x, valid)
         x = self.final_norm(x).masked_fill(~valid[..., None], 0)

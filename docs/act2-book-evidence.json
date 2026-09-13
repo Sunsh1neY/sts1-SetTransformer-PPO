@@ -1,0 +1,7 @@
+{
+  "source": "本机正版JAR，反编译仅用于规则仲裁",
+  "jar_sha256": "cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673",
+  "class": "com/megacrit/cardcrawl/monsters/city/BookOfStabbing.class",
+  "class_sha256": "64f08a6a152228d06cde6bcd2987203f32362abde72f2a39038d474b527f1320",
+  "finding": "getMove两条单刺分支在A18以上递增stabCount；后端原递增位于return后不可达。扩展开关内修复，未复制反编译源码。"
+}

@@ -1,0 +1,370 @@
+{
+  "schema": "act23-enemy-audit-v1",
+  "entries": [
+    {
+      "encounter": "SPHERIC_GUARDIAN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "CHOSEN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "SHELL_PARASITE",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "THREE_BYRDS",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "三只异鸟",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "TWO_THIEVES",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "双盗贼",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "CHOSEN_AND_BYRDS",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "被拣选者＋异鸟",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "SENTRY_AND_SPHERE",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "SNAKE_PLANT",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "SNECKO",
+      "act": 2,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "异蛇",
+      "reason": "混乱与逐卡随机费用有效期；依赖全卡实例费用观测集成",
+      "recommendation": "单独验收后再加入，当前拒绝reset",
+      "full_card_status": "a20-integrated-tested",
+      "dependency": "通过IroncladEnv集成入口；旧独立35牌入口仍拒绝",
+      "evidence": "docs/enemy-full-card-integration-report.md",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "CENTURION_AND_HEALER",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "CULTIST_AND_CHOSEN",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "THREE_CULTIST",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "SHELLED_PARASITE_AND_FUNGI",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "GREMLIN_LEADER",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "地精首领",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "SLAVERS",
+      "act": 2,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "BOOK_OF_STABBING",
+      "act": 2,
+      "status": "full-card-a20-targeted-verified",
+      "review_required": false,
+      "label": "扎人的书",
+      "reason": "高进阶单刺计数已修复；未格挡伤害逐段生成伤口及完全格挡已验收",
+      "recommendation": "全卡A20开发准入；旧独立入口仍未开放",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-full-card-batch-report.md"
+    },
+    {
+      "encounter": "AUTOMATON",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "铜制机械人偶",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "COLLECTOR",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "收藏家",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "CHAMP",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "label": "第一勇士",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "full_card_status": "a20-integrated-tested",
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展"
+    },
+    {
+      "encounter": "THREE_DARKLINGS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "三只小黑",
+      "reason": "倒地并非死亡；复活、三只同时倒地才终局，当前省略不可选实体规则不适用",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "ORB_WALKER",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "THREE_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "三个几何体",
+      "reason": "随机包含爆炸体/反冲机/尖刺机；自爆、自毁终局、荆棘和状态牌组合",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "SPIRE_GROWTH",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "TRANSIENT",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "label": "倏忽魔",
+      "reason": "伤害转临时力量下降、Fading倒计时和自然消失的战斗结果",
+      "recommendation": "已开发准入；正式训练未准入",
+      "dependency": "独立A0..20接口与全卡A20集成已完成本批验证",
+      "evidence": "docs/enemy-full-card-integration-report.md",
+      "full_card_status": "a20-integrated-tested"
+    },
+    {
+      "encounter": "FOUR_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "四个几何体",
+      "reason": "同上，四目标组合及自爆中途终局检查",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "MAW",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false,
+      "label": "巨口",
+      "reason": "复用全局回合数，正常回合多段与实际结算已测；不做极端容量工程",
+      "recommendation": "已开发准入；正式训练未准入",
+      "dependency": "独立A0..20接口与全卡A20集成已完成本批验证",
+      "evidence": "docs/enemy-full-card-integration-report.md",
+      "full_card_status": "a20-integrated-tested"
+    },
+    {
+      "encounter": "SPHERE_AND_TWO_SHAPES",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "球形守护者＋两个几何体",
+      "reason": "守护者本体已在首批；组合等待几何体的自爆与终局验收",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "JAW_WORM_HORDE",
+      "act": 3,
+      "status": "implemented-targeted-verified",
+      "review_required": false
+    },
+    {
+      "encounter": "WRITHING_MASS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "扭曲团块",
+      "reason": "受攻击后反应换意图、永久寄生诅咒和可见状态/卡组持续化",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "GIANT_HEAD",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "大脑袋",
+      "reason": "正版count初值5且A18开战减1；后端固定回合阈值/伤害公式不同，需复核修复并补Slow递增语义",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "NEMESIS",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "天罚",
+      "reason": "无实体回合交替及持续时点；后端注释提示与游戏递减时机差异，需定点对拍",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "REPTOMANCER",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "拜蛇术士",
+      "reason": "召唤匕首、同槽替换、匕首自毁与首领死亡后的随从结算",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "AWAKENED_ONE",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "觉醒者",
+      "reason": "两阶段死亡/复活、能力牌触发、随从仍存活时不得提前终局",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "TIME_EATER",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "时间吞噬者",
+      "reason": "累计12张牌强制结束回合、半血治疗/清除减益，涉及动作结算边界",
+      "recommendation": "单独验收后再加入，当前拒绝reset",
+      "dependency": "用户明确暂缓接入（2026-09-13），不新增DEFEND_DEBUFF"
+    },
+    {
+      "encounter": "DONU_AND_DECA",
+      "act": 3,
+      "status": "pending-user-review",
+      "review_required": true,
+      "label": "甜圈与八体",
+      "reason": "双Boss互相强化/格挡、单体死亡后援助目标与A19护甲；本轮Boss统一保留审核",
+      "recommendation": "单独验收后再加入，当前拒绝reset"
+    },
+    {
+      "encounter": "COLOSSEUM_EVENT_SLAVERS",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "full_card_evidence": "docs/act2-full-card-batch-report.md",
+      "boundary": "仅战斗部分，不包含事件支付与两战衔接"
+    },
+    {
+      "encounter": "COLOSSEUM_EVENT_NOBS",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "review_required": false,
+      "full_card_evidence": "docs/act2-full-card-batch-report.md",
+      "boundary": "仅战斗部分，不包含事件支付与两战衔接"
+    },
+    {
+      "encounter": "MASKED_BANDITS_EVENT",
+      "act": 2,
+      "status": "full-card-a20-integrated-tested",
+      "full_card_status": "a20-integrated-tested",
+      "review_required": false,
+      "full_card_evidence": "docs/act2-completion-report.md",
+      "dependency": "全卡A20入口已准入；旧独立入口未扩展",
+      "recommendation": "开发机制与接口准入，正式训练未准入",
+      "reason": "本批真实机制与全卡交互验证完成，详细边界见最终报告"
+    }
+  ],
+  "potion_audit": "paused-by-user",
+  "full_run": false,
+  "act2_full_card_summary": {
+    "ascension": 20,
+    "encounters": 22,
+    "status": "development-integrated-tested",
+    "evidence": "docs/act2-completion-report.md"
+  }
+}

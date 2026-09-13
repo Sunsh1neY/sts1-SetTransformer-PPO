@@ -1,0 +1,63 @@
+{
+  "schema": "enemy-potion-shared-handoff-v1",
+  "audit_kind": "static-read-only",
+  "shared_contract_schema": "unified-entity-interface-v4",
+  "shared_contract_sha256": "12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843",
+  "shared_encoder_sha256": "39b02cbe5bed2f8820632bd10295d01c592cacfff8d604944ca5373293723597",
+  "append_potions": [
+    {
+      "id": 16,
+      "name": "Fire Potion"
+    },
+    {
+      "id": 17,
+      "name": "SteroidPotion"
+    },
+    {
+      "id": 18,
+      "name": "CultistPotion"
+    },
+    {
+      "id": 19,
+      "name": "Blood Potion"
+    },
+    {
+      "id": 20,
+      "name": "FairyPotion"
+    }
+  ],
+  "potion_id_conflicts": [],
+  "boss_name_gaps": [],
+  "boss_status_gaps": [],
+  "required_potion_feature_extension": {
+    "activation": [
+      "active",
+      "passive_on_lethal_damage"
+    ],
+    "potency_unit": [
+      "effect_amount",
+      "percent_max_hp"
+    ]
+  },
+  "selection_kinds_seen": [
+    "NONE",
+    "ARMAMENTS",
+    "DUAL_WIELD",
+    "EXHAUST_ONE",
+    "EXHUME",
+    "HEADBUTT",
+    "WARCRY",
+    "DISCOVERY"
+  ],
+  "integration_requirements": [
+    "以共享EntitySample/Candidate/routes为统一输出，本分支视图是机制交接材料，不另建编码器",
+    "新增5药水词表及activation/potency_unit后同步共享feature_dimensions和checkpoint契约",
+    "共享编码器保留present的不可选敌人；本分支视图省略非targetable实体，需统一公开生命周期规则",
+    "本分支旧卡牌字段不能补零伪装ironclad-observation-v4；在全卡后端入口合入敌人药水增量后再编码",
+    "EXHAUST_ONE单选不代表Elixir/Gamblers多选与确认已实现；继续拒绝这些药水",
+    "resolve后选择来源若药水已经消耗，必须提供公开resolving来源，不输出内部队列",
+    "按同一真实观测验证实体/候选置换、合法mask、目标路由和全部特征进入共享模型"
+  ],
+  "tensor_integration_verified": false,
+  "training_admitted": false
+}

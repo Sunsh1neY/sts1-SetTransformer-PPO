@@ -1,5 +1,5 @@
 {
-  "schema": "ironclad-expansion-contract-v2",
+  "schema": "ironclad-enemy-integration-v2",
   "status": "development",
   "reward_version": "battle_reward_v1",
   "gamma": 1.0,
@@ -7,7 +7,7 @@
   "beta": 0.0,
   "task_type": "battle",
   "model_family": "unified-entity-set",
-  "observation_schema": "ironclad-observation-v5",
+  "observation_schema": "ironclad-enemy-observation-v2",
   "action_schema": "ironclad-normal-66-and-single-select-v2",
   "normal_action_count": 66,
   "supported_phases": [
@@ -26,17 +26,45 @@
   "baseline_commit": "50b756e",
   "comparison_freeze_status": "pending",
   "scope": {
-    "act": 1,
     "ascension": 20,
     "encounters": [
       "JAW_WORM",
       "EXORDIUM_THUGS",
       "GREMLIN_NOB",
       "LAGAVULIN",
-      "THREE_SENTRIES"
+      "THREE_SENTRIES",
+      "MAW",
+      "TRANSIENT",
+      "SNECKO",
+      "SPHERIC_GUARDIAN",
+      "CHOSEN",
+      "SHELL_PARASITE",
+      "SENTRY_AND_SPHERE",
+      "SNAKE_PLANT",
+      "CENTURION_AND_HEALER",
+      "CULTIST_AND_CHOSEN",
+      "THREE_CULTIST",
+      "SHELLED_PARASITE_AND_FUNGI",
+      "SLAVERS",
+      "COLOSSEUM_EVENT_SLAVERS",
+      "COLOSSEUM_EVENT_NOBS",
+      "BOOK_OF_STABBING",
+      "THREE_BYRDS",
+      "CHOSEN_AND_BYRDS",
+      "TWO_THIEVES",
+      "GREMLIN_LEADER",
+      "AUTOMATON",
+      "COLLECTOR",
+      "CHAMP",
+      "MASKED_BANDITS_EVENT"
     ],
     "relics": "legacy-public-8",
-    "potions": "legacy-public-15"
+    "potions": "legacy-public-15",
+    "acts": [
+      1,
+      2,
+      3
+    ]
   },
   "frozen_sha256": {
     "sts/env/public-battle-contract.json": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
@@ -47,5 +75,7 @@
     "patches/lightspeed-battle-env.patch": "fe8168a3cbfa5595fefa7e9bf205ea9db0dc017096ac4809120feb8d8896c9aa",
     "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
   },
-  "registry": "ironclad-registry-v1"
+  "registry": "ironclad-registry-v1",
+  "integration_source": "2325d550bee2e3ffb28474af8652e7c852b756b4",
+  "integration_revision": 3
 }

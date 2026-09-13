@@ -1,0 +1,13 @@
+{
+  "contract_hash": "b3b4d9415284709c2e685d50b6b1432d19f9b0d346bacd37616cf3d80755e613",
+  "model_contract_hash": "e6a110d64a9697f735c4a8e1162e8f4fa56a6a42f7f9da63053bddc30afdab60",
+  "feature_dimensions": {
+    "CARD": 116,
+    "ENEMY": 774,
+    "POTION": 21,
+    "RELIC": 10,
+    "PLAYER_GLOBAL": 198
+  },
+  "diagnostic_path": "reference/act2-all-cards-20260913-v2.json",
+  "diagnostic_sha256": "23a4b177fbcca55135e06e285fd3a1fb7beff8b5b767104ac6b9928e4d55e968"
+}

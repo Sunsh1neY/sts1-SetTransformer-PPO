@@ -17,6 +17,8 @@ def generate():
              f'inline constexpr const char* IRONCLAD_CONTRACT_SHA256 = "{hashlib.sha256((ROOT / "sts/env/ironclad-expansion-contract.json").read_bytes()).hexdigest()}";',
              f"inline constexpr std::array<const char*, {len(names)}> IRONCLAD_CARD_NAMES = {{"]
     lines += [json.dumps(name) + "," for name in names]
+    lines += ["};", f"inline constexpr std::array<const char*, {len(contract['scope']['encounters'])}> IRONCLAD_ENCOUNTER_NAMES = {{"]
+    lines += [json.dumps(name) + "," for name in contract["scope"]["encounters"]]
     lines += ["};", "}"]
     path = ROOT / "third_party/sts_lightspeed/bindings/ironclad-contract-config.h"
     content = "\n".join(lines) + "\n"

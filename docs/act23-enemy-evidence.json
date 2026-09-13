@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-12",
+  "level": "一手正版定点仲裁与锁定后端静态调用链",
+  "jar_sha256": "cfad868ac8d65a88e71a0bf096fb09f78811e553effe0787c5309a655e081673",
+  "classes": [
+    {
+      "file": "Centurion.class",
+      "sha256": "518af5908855e86b530623c8f5c13c5e3f53eeb3c74ff69a7acd2b406e23efd4"
+    },
+    {
+      "file": "Chosen.class",
+      "sha256": "30a1f2ea85ec81b24f75013e664164ec141e52e21c66b49f9b89deff755c27e0"
+    },
+    {
+      "file": "GiantHead.class",
+      "sha256": "4a5349ca0db689cafb622753e52046f5073eb573439ec22d38fd45ccd711104e"
+    },
+    {
+      "file": "Healer.class",
+      "sha256": "04d11eb43426f1ebc9ae0c25d3e10f4f5faa814894f368749dfd8323b6581fbc"
+    },
+    {
+      "file": "OrbWalker.class",
+      "sha256": "ffa401f378f882170726efccacae7d0e3fc04e96fbcc8ecdbedf3e5623bfe6f0"
+    },
+    {
+      "file": "ShelledParasite.class",
+      "sha256": "e3c804b4c4371facc0df9ee876afcb13eb4de19ba0f8bb962872c3e025803e42"
+    },
+    {
+      "file": "SnakePlant.class",
+      "sha256": "b7352bfefe5340eca8b486ae339c69e0a30a4fd665eb8230d4ec3e80cfd4f6bc"
+    },
+    {
+      "file": "SphericGuardian.class",
+      "sha256": "ad4cc5b611d9da67eaeec0949b4d77e216325fa906a6b90640ddfb2798ea02c4"
+    },
+    {
+      "file": "SpireGrowth.class",
+      "sha256": "13577b012c4dca9e3aa3d07006e85df1a00c09624ed02da7ff755681fc3797e1"
+    },
+    {
+      "file": "Taskmaster.class",
+      "sha256": "92a4ffd745b1c9d1eec9ce2879fd56ea63b152c1f092b6af878555aba4f3f40e"
+    }
+  ]
+}
