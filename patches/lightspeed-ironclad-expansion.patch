@@ -1,0 +1,767 @@
+diff --git a/bindings/ironclad-contract-config.h b/bindings/ironclad-contract-config.h
+new file mode 100644
+index 0000000..e195543
+--- /dev/null
++++ b/bindings/ironclad-contract-config.h
+@@ -0,0 +1,90 @@
++// 自动生成：独立全卡扩展契约。
++#pragma once
++#include <array>
++namespace sts {
++inline constexpr const char* IRONCLAD_OBSERVATION_SCHEMA = "ironclad-observation-v5";
++inline constexpr const char* IRONCLAD_REGISTRY_SHA256 = "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6";
++inline constexpr const char* IRONCLAD_CONTRACT_SHA256 = "c92d3bdf5ea47438e8b178c2079c5605c013fc68b91ec8033275bcfa4f0d3399";
++inline constexpr std::array<const char*, 80> IRONCLAD_CARD_NAMES = {
++"Bash",
++"Defend_R",
++"Strike_R",
++"Battle Trance",
++"Bludgeon",
++"Body Slam",
++"Carnage",
++"Cleave",
++"Clothesline",
++"Demon Form",
++"Dropkick",
++"Entrench",
++"Feel No Pain",
++"Flame Barrier",
++"Flex",
++"Ghostly Armor",
++"Heavy Blade",
++"Immolate",
++"Impervious",
++"Inflame",
++"Metallicize",
++"Pommel Strike",
++"Power Through",
++"Pummel",
++"Rage",
++"Reckless Charge",
++"Seeing Red",
++"Sentinel",
++"Shrug It Off",
++"Spot Weakness",
++"Thunderclap",
++"True Grit",
++"Twin Strike",
++"Uppercut",
++"Wild Strike",
++"AscendersBane",
++"Wound",
++"Dazed",
++"Burn",
++"Slimed",
++"Anger",
++"Armaments",
++"Barricade",
++"Berserk",
++"Blood for Blood",
++"Bloodletting",
++"Brutality",
++"Burning Pact",
++"Clash",
++"Combust",
++"Corruption",
++"Dark Embrace",
++"Disarm",
++"Double Tap",
++"Dual Wield",
++"Evolve",
++"Exhume",
++"Feed",
++"Fiend Fire",
++"Fire Breathing",
++"Havoc",
++"Headbutt",
++"Hemokinesis",
++"Infernal Blade",
++"Intimidate",
++"Iron Wave",
++"Juggernaut",
++"Limit Break",
++"Offering",
++"Perfected Strike",
++"Rampage",
++"Reaper",
++"Rupture",
++"Searing Blow",
++"Second Wind",
++"Sever Soul",
++"Shockwave",
++"Sword Boomerang",
++"Warcry",
++"Whirlwind",
++};
++}
+diff --git a/bindings/public-battle-env.cpp b/bindings/public-battle-env.cpp
+--- a/bindings/public-battle-env.cpp
++++ b/bindings/public-battle-env.cpp
+@@ -1,5 +1,6 @@
+ #include "public-battle-env.h"
+ #include "public-contract-config.h"
++#include "ironclad-contract-config.h"
+ #include <pybind11/stl.h>
+ #include <nlohmann/json.hpp>
+ #include <algorithm>
+@@ -149,6 +150,7 @@
+     std::unique_ptr<GameContext> gc_;
+     BattleContext bc_;
+     int maxActions_;
++    bool expanded_ = false;
+     int actionCount_ = 0;
+     int initialCards_ = 0;
+     bool hasReset_ = false;
+@@ -163,6 +165,42 @@
+         int damage = 0, block = 0, magic = 0, hits = 1;
+         bool all = false;
+         switch (c.id) {
++            case CardId::CLASH: damage = up ? 18 : 14; break;
++            case CardId::HEMOKINESIS: damage = up ? 20 : 15; magic = 2; break;
++            case CardId::BLOODLETTING: magic = up ? 3 : 2; break;
++            case CardId::INTIMIDATE: magic = up ? 2 : 1; all = true; break;
++            case CardId::LIMIT_BREAK: magic = 2; break;
++            case CardId::OFFERING: magic = up ? 5 : 3; break;
++            case CardId::SHOCKWAVE: magic = up ? 5 : 3; all = true; break;
++            case CardId::FEED: damage = up ? 12 : 10; magic = up ? 4 : 3; break;
++            case CardId::REAPER: damage = up ? 5 : 4; all = true; break;
++            case CardId::SWORD_BOOMERANG: damage = 3; hits = up ? 4 : 3; break;
++            case CardId::SECOND_WIND: block = up ? 7 : 5; break;
++            case CardId::SEVER_SOUL: damage = up ? 22 : 16; break;
++            case CardId::BERSERK: magic = up ? 1 : 2; break;
++            case CardId::BRUTALITY: case CardId::DARK_EMBRACE: magic = 1; break;
++            case CardId::EVOLVE: case CardId::RUPTURE: magic = up ? 2 : 1; break;
++            case CardId::FIRE_BREATHING: magic = up ? 10 : 6; break;
++            case CardId::JUGGERNAUT: magic = up ? 7 : 5; break;
++            case CardId::ARMAMENTS: block = 5; break;
++            case CardId::BURNING_PACT: magic = up ? 3 : 2; break;
++            case CardId::DUAL_WIELD: magic = up ? 2 : 1; break;
++            case CardId::EXHUME: magic = 1; break;
++            case CardId::HEADBUTT: damage = up ? 12 : 9; break;
++            case CardId::WARCRY: magic = up ? 2 : 1; break;
++            case CardId::ANGER: damage = up ? 8 : 6; magic = 1; break;
++            case CardId::PERFECTED_STRIKE: damage = 6 + bc_.cards.strikeCount * (up ? 3 : 2); magic = up ? 3 : 2; break;
++            case CardId::SEARING_BLOW: damage = c.getUpgradeCount() * (c.getUpgradeCount()+7) / 2 + 12; break;
++            case CardId::WHIRLWIND: damage = up ? 8 : 5; all = true; break;
++            case CardId::DISARM: magic = up ? 3 : 2; break;
++            case CardId::IRON_WAVE: damage = block = up ? 7 : 5; break;
++            case CardId::FIEND_FIRE: damage = up ? 10 : 7; break;
++            case CardId::DOUBLE_TAP: magic = up ? 2 : 1; break;
++            case CardId::HAVOC: case CardId::INFERNAL_BLADE: magic = 1; break;
++            case CardId::RAMPAGE: damage = 8 + c.specialData; magic = up ? 8 : 5; break;
++            case CardId::BLOOD_FOR_BLOOD: damage = up ? 22 : 18; break;
++            case CardId::BARRICADE: case CardId::CORRUPTION: magic = 1; break;
++            case CardId::COMBUST: magic = up ? 7 : 5; break;
+             case CardId::STRIKE_RED: damage = up ? 9 : 6; break;
+             case CardId::DEFEND_RED: block = up ? 8 : 5; break;
+             case CardId::BASH: damage = up ? 10 : 8; magic = up ? 3 : 2; break;
+@@ -186,7 +224,7 @@
+             case CardId::PUMMEL: damage = 2; hits = up ? 5 : 4; break;
+             case CardId::SEEING_RED: magic = 2; break;
+             case CardId::SENTINEL: block = up ? 8 : 5; magic = up ? 3 : 2; break;
+-            case CardId::TRUE_GRIT: block = 7; magic = 1; break;
++            case CardId::TRUE_GRIT: block = up ? 9 : 7; magic = 1; break;
+             case CardId::BATTLE_TRANCE: magic = up ? 4 : 3; break;
+             case CardId::FLEX: magic = up ? 4 : 2; break;
+             case CardId::METALLICIZE: magic = up ? 4 : 3; break;
+@@ -214,7 +252,7 @@
+         }
+         const int resolvedBlock = c.id == CardId::ENTRENCH ? block : (block > 0 ? bc_.calculateCardBlock(block) : 0);
+         // 非手牌费用保留缺失标记；牌序只按下面公开字段排序。
+-        return {{"name", sourceCardName(c.id)}, {"card_id", static_cast<int>(c.id)},
++        Json row = {{"name", sourceCardName(c.id)}, {"card_id", static_cast<int>(c.id)},
+             {"upgrade_count", c.getUpgradeCount()}, {"cost", inHand ? c.costForTurn : 0}, {"cost_known", inHand},
+             {"base_cost", c.cost}, {"target_kind", c.requiresTarget() ? "ENEMY" : "NO_TARGET"},
+             {"damage", damage}, {"block", resolvedBlock}, {"base_block", block}, {"magic", magic},
+@@ -222,6 +260,23 @@
+             {"card_type", cardTypeStrings[static_cast<int>(c.getType())]},
+             {"exhaust", c.doesExhaust()}, {"ethereal", c.isEthereal()},
+             {"free_to_play_once", c.freeToPlayOnce}, {"retain", c.retain}};
++        if (expanded_) {
++            // 只输出具名公开属性，不输出specialData或实例ID。
++            const bool corruption = c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>();
++            if (c.uniqueId == bc_.cards.knownTopId && !inHand) row["known_top"] = true;
++            if (!inHand && c.costForTurn != c.cost) row["recovery_cost"] = c.costForTurn;
++            row["printed_cost"] = getEnergyCost(c.id, up);
++            row["effective_cost_known"] = inHand;
++            row["effective_cost"] = inHand ? (corruption || c.isFreeToPlay(bc_) ? 0 : std::max(0, static_cast<int>(c.costForTurn))) : 0;
++            row["cost_scope"] = !inHand ? "UNKNOWN" : corruption ? "POWER" : c.freeToPlayOnce ? "ONCE" :
++                c.costForTurn != c.cost ? "TURN" : "COMBAT";
++            row["combat_damage_bonus"] = c.id == CardId::RAMPAGE ? c.specialData : 0;
++            row["is_strike"] = c.isStrikeCard();
++            row["cost_kind"] = c.isXCost() ? "X" : c.cost < 0 ? "UNPLAYABLE" : "ENERGY";
++            row["effective_exhaust"] = c.doesExhaust() ||
++                (c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>());
++        }
++        return row;
+     }
+ 
+     template <typename C> Json pileRows(const C &pile) const {
+@@ -231,14 +286,38 @@
+         return rows;
+     }
+ 
++    bool supportedSelection() const {
++        switch (bc_.cardSelectInfo.cardSelectTask) {
++            case CardSelectTask::ARMAMENTS: case CardSelectTask::DUAL_WIELD:
++            case CardSelectTask::EXHAUST_ONE: case CardSelectTask::EXHUME:
++            case CardSelectTask::HEADBUTT: case CardSelectTask::WARCRY: return true;
++            default: return false;
++        }
++    }
++
++    Json resolutionContext() const {
++        if (bc_.inputState != InputState::CARD_SELECT) return Json::object();
++        const auto &item = bc_.curCardQueueItem;
++        int pendingReplayCount = 0;
++        for (int i = 0; i < bc_.cardQueue.size; ++i) {
++            const int index = (bc_.cardQueue.frontIdx + i) % CardQueue::capacity;
++            if (bc_.cardQueue.arr[index].purgeOnUse) ++pendingReplayCount;
++        }
++        const char *sourceMode = item.purgeOnUse ? "REPLAY" : item.autoplay ? "AUTOPLAY" : "MANUAL";
++        return {{"source_mode", sourceMode},
++                {"source_will_exhaust", item.exhaustOnUse || item.card.doesExhaust()},
++                {"pending_replay_count", pendingReplayCount}};
++    }
++
+     void verifyDecision() const {
+         if (bc_.undefinedBehaviorEvoked) throw std::runtime_error("后端标记未定义行为");
+-        if (!terminal() && bc_.inputState != InputState::PLAYER_NORMAL)
++        if (!terminal() && bc_.inputState != InputState::PLAYER_NORMAL &&
++            !(expanded_ && bc_.inputState == InputState::CARD_SELECT && supportedSelection()))
+             throw std::runtime_error("出现未支持的二次选择或未结算队列");
+         if (bc_.monsters.monsterCount > PUBLIC_TARGET_CAPACITY || bc_.cards.cardsInHand > PUBLIC_HAND_CAPACITY)
+             throw std::runtime_error("后端实体数超出动作容量");
+         // 白名单中每个玩家动作最多生成2张；一次结束回合5敌各至多3张。
+-        if (bc_.cards.nextUniqueCardId > initialCards_ + PUBLIC_GENERATED_PER_ACTION * actionCount_)
++        if (!expanded_ && bc_.cards.nextUniqueCardId > initialCards_ + PUBLIC_GENERATED_PER_ACTION * actionCount_)
+             throw std::runtime_error("生成量超出已证明边界");
+     }
+ 
+@@ -252,7 +331,8 @@
+             const auto id = static_cast<PS>(i);
+             if (!bc_.player.hasStatusRuntime(id)) continue;
+             // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
+-            if (id == PS::NO_DRAW || id == PS::ENTANGLED) statuses[playerStatusStrings[i]] = 1;
++            if (id == PS::NO_DRAW || id == PS::ENTANGLED ||
++                (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION))) statuses[playerStatusStrings[i]] = 1;
+             else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
+         }
+         Json player = {{"hp", bc_.player.curHp}, {"max_hp", bc_.player.maxHp}, {"block", bc_.player.block},
+@@ -286,14 +366,28 @@
+                 {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
+         }
+         for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
+-        return {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
++        Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
+             {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
+             {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
+             {"relics", relics}, {"action_mask", actionMask()}};
++        if (expanded_) {
++            result["schema"] = IRONCLAD_OBSERVATION_SCHEMA;
++            result["resolving"] = Json::array();
++            if (!terminal() && bc_.inputState == InputState::CARD_SELECT) {
++                // 仅当前已公开的来源卡；不导出整个动作队列或隐藏实例ID。
++                result["resolving"].push_back(cardRow(bc_.curCardQueueItem.card, false));
++            }
++            result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
++            result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
++            if (!terminal() && bc_.inputState == InputState::CARD_SELECT)
++                result["decision"] = {{"phase", "SELECT_CARD"}, {"selection", {{"kind", cardSelectTaskStrings[static_cast<int>(bc_.cardSelectInfo.cardSelectTask)]}}},
++                    {"resolution_context", resolutionContext()}};
++        }
++        return result;
+     }
+ 
+ public:
+-    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS) : maxActions_(maxActions) {
++    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS, bool expanded = false) : maxActions_(maxActions), expanded_(expanded) {
+         if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
+         static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
+                       "生成牌ID必须保持int16范围");
+@@ -338,14 +432,24 @@
+             const auto plus = name.find('+');
+             if (plus != std::string::npos) {
+                 const auto suffix = name.substr(plus + 1);
+-                if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
+-                upgrade = 1; name.resize(plus);
++                if (expanded_ && name.substr(0, plus) == "Searing Blow") {
++                    if (suffix.empty() || suffix.size() > 3 || suffix.find_first_not_of("0123456789") != std::string::npos)
++                        throw std::invalid_argument("非法升级次数");
++                    upgrade = std::stoi(suffix);
++                    if (upgrade < 1 || upgrade > 100 || std::to_string(upgrade) != suffix) throw std::invalid_argument("Searing Blow支持+1至+100");
++                } else {
++                    if (suffix != "1") throw std::invalid_argument("未支持重复升级或模糊升级");
++                    upgrade = 1;
++                }
++                name.resize(plus);
+             }
+-            if (!listed(PUBLIC_CARD_NAMES, name)) throw std::invalid_argument("卡牌不在完整闭包: " + name);
++            if (!(expanded_ ? listed(IRONCLAD_CARD_NAMES, name) : listed(PUBLIC_CARD_NAMES, name))) throw std::invalid_argument("卡牌不在完整闭包: " + name);
+             const auto id = parseCard(name);
+-            if (upgrade && (id == CardId::TRUE_GRIT || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
++            if (upgrade && ((id == CardId::TRUE_GRIT && !expanded_) || id == CardId::ASCENDERS_BANE || id == CardId::WOUND || id == CardId::DAZED || id == CardId::BURN || id == CardId::SLIMED))
+                 throw std::invalid_argument("该卡升级路径不支持");
+-            gc_->deck.obtainRaw(Card(id, upgrade));
++            Card entry(id, upgrade);
++            if (id == CardId::SEARING_BLOW) entry.misc = upgrade;
++            gc_->deck.obtainRaw(entry);
+         }
+         initialCards_ = gc_->deck.size();
+         relicNames_.clear();
+@@ -391,6 +495,11 @@
+         return mask;
+     }
+ 
++    // 仅供采集资源计数与info，不进入模型公开观测。
++    int allocationCount() const {
++        if (!hasReset_) throw std::runtime_error("必须先reset_scene");
++        return bc_.cards.nextUniqueCardId;
++    }
+     std::string observation() const { return observeJson().dump(); }
+ 
+     std::string step(int action) {
+@@ -400,6 +509,40 @@
+         if (action < PUBLIC_END_TURN) selected = search::Action(search::ActionType::CARD, action / PUBLIC_TARGET_CAPACITY, action % PUBLIC_TARGET_CAPACITY);
+         else if (action == PUBLIC_END_TURN) selected = search::Action(search::ActionType::END_TURN);
+         else { const int a = action - PUBLIC_END_TURN - 1; selected = search::Action(search::ActionType::POTION, a / PUBLIC_TARGET_CAPACITY, a % PUBLIC_TARGET_CAPACITY); }
++        return executeDecision(selected, action);
++    }
++
++    std::vector<int> selectionIndices() const {
++        if (!expanded_ || terminal() || bc_.inputState != InputState::CARD_SELECT ||
++            !supportedSelection())
++            throw std::runtime_error("不是受支持的选牌暂停点");
++        std::vector<int> indices;
++        const auto task = bc_.cardSelectInfo.cardSelectTask;
++        const int size = task == CardSelectTask::HEADBUTT ? bc_.cards.discardPile.size() :
++            task == CardSelectTask::EXHUME ? bc_.cards.exhaustPile.size() : bc_.cards.cardsInHand;
++        for (int i = 0; i < size; ++i)
++            if (search::Action(search::ActionType::SINGLE_CARD_SELECT, i).isValidAction(bc_)) indices.push_back(i);
++        return indices;
++    }
++
++    std::string selectionCard(int index) const {
++        const auto indices = selectionIndices();
++        if (std::find(indices.begin(), indices.end(), index) == indices.end()) throw std::invalid_argument("非法候选");
++        const auto task = bc_.cardSelectInfo.cardSelectTask;
++        if (task == CardSelectTask::HEADBUTT) return cardRow(bc_.cards.discardPile[index], false).dump();
++        if (task == CardSelectTask::EXHUME) return cardRow(bc_.cards.exhaustPile[index], false).dump();
++        return cardRow(bc_.cards.hand[index], true).dump();
++    }
++
++    std::string selectCard(int index) {
++        if (!hasReset_ || terminal() || truncated_) throw std::runtime_error("不允许继续已结束场景");
++        const auto indices = selectionIndices();
++        if (std::find(indices.begin(), indices.end(), index) == indices.end()) throw std::invalid_argument("非法选牌对象");
++        return executeDecision(search::Action(search::ActionType::SINGLE_CARD_SELECT, index), -1);
++    }
++
++private:
++    std::string executeDecision(const search::Action &selected, int action) {
+         // 只从动作执行前已经公开的敌人名字与意图构造历史，不读miscInfo/未来随机值。
+         std::array<std::string, PUBLIC_TARGET_CAPACITY> oldNames{}, oldIntents{};
+         const int oldTurn = bc_.turn;
+@@ -439,9 +582,27 @@
+             {"truncated", truncated_}, {"info", info}}.dump();
+     }
+ };
++
++// 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
++class IroncladBattleEnv : public PublicBattleEnv {
++public:
++    explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
++};
+ }
+ 
+ void registerPublicBattleEnv(pybind11::module_ &module) {
++    module.attr("IRONCLAD_REGISTRY_SHA256") = IRONCLAD_REGISTRY_SHA256;
++    module.attr("IRONCLAD_CONTRACT_SHA256") = IRONCLAD_CONTRACT_SHA256;
++    pybind11::class_<IroncladBattleEnv>(module, "IroncladExpandedBattleEnv")
++        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
++        .def("reset_scene", &IroncladBattleEnv::resetScene)
++        .def("step", &IroncladBattleEnv::step)
++        .def("observation", &IroncladBattleEnv::observation)
++        .def("action_mask", &IroncladBattleEnv::actionMask)
++        .def("allocated_card_count", &IroncladBattleEnv::allocationCount)
++        .def("selection_indices", &IroncladBattleEnv::selectionIndices)
++        .def("selection_card", &IroncladBattleEnv::selectionCard)
++        .def("select_card", &IroncladBattleEnv::selectCard);
+     pybind11::class_<PublicBattleEnv>(module, "PublicBattleEnv")
+         .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
+         .def("reset_scene", &PublicBattleEnv::resetScene, pybind11::arg("scene_json"), pybind11::arg("seed"))
+diff --git a/include/combat/ActionQueue.h b/include/combat/ActionQueue.h
+index 86d91d3..620947c 100644
+--- a/include/combat/ActionQueue.h
++++ b/include/combat/ActionQueue.h
+@@ -10,6 +10,7 @@
+ #include <bitset>
+ #include <functional>
+ #include <cassert>
++#include <stdexcept>
+ 
+ 
+ namespace sts {
+@@ -69,6 +70,7 @@ namespace sts {
+ 
+     template <int capacity>
+     void ActionQueue<capacity>::pushFront(Action a) {
++        if (size >= capacity) throw std::runtime_error("动作队列资源超限");
+ #ifdef sts_asserts
+         assert(size != capacity);
+ #endif
+@@ -83,6 +85,7 @@ namespace sts {
+ 
+     template<int capacity>
+     void ActionQueue<capacity>::pushBack(Action a) {
++        if (size >= capacity) throw std::runtime_error("动作队列资源超限");
+ #ifdef sts_asserts
+         if (size >= capacity) {
+             assert(false);
+diff --git a/include/combat/CardManager.h b/include/combat/CardManager.h
+index 4b76b31..10d4179 100644
+--- a/include/combat/CardManager.h
++++ b/include/combat/CardManager.h
+@@ -6,6 +6,7 @@
+ #define STS_LIGHTSPEED_CARDMANAGER_H
+ 
+ #include <vector>
++#include <stdexcept>
+ #include <array>
+ 
+ #include "sts_common.h"
+@@ -26,6 +27,11 @@ namespace sts {
+ 
+         int nextUniqueCardId = 0; // unique card ids that are less than the masterDeckSize are non-temporary
+ 
++        int allocateCardId() {
++            if (nextUniqueCardId >= 32766) throw std::runtime_error("卡牌实例编号资源超限");
++            return nextUniqueCardId++;
++        }
++        int knownTopId = -1; // 只记公开置顶的第一张，隐藏编号不导出
+         int cardsInHand = 0;
+         std::array<CardInstance, MAX_HAND_SIZE> hand;
+         std::array<CardInstance, MAX_HAND_SIZE> limbo; // used only for end of turn during discard, for retained cards
+diff --git a/include/combat/Player.h b/include/combat/Player.h
+index fda6fb6..30d91a0 100644
+--- a/include/combat/Player.h
++++ b/include/combat/Player.h
+@@ -1,3 +1,4 @@
++#include <stdexcept>
+ //
+ // Created by gamerpuppy on 7/4/2021.
+ //
+@@ -320,6 +321,8 @@ namespace sts {
+                 return;
+ 
+             case PS::STRENGTH:
++                if (static_cast<long long>(strength) + amount > 1000000 || static_cast<long long>(strength) + amount < -1000000)
++                    throw std::runtime_error("力量数值资源边界超限");
+                 strength += amount;
+                 return;
+ 
+@@ -391,6 +394,8 @@ namespace sts {
+         }
+ 
+         if (s == PlayerStatus::STRENGTH) {
++            if (static_cast<long long>(strength) + amount > 1000000 || static_cast<long long>(strength) + amount < -1000000)
++                throw std::runtime_error("力量数值资源边界超限");
+             strength += amount;
+             return;
+         }
+diff --git a/src/combat/Actions.cpp b/src/combat/Actions.cpp
+index 93db96f..b8a07c9 100644
+--- a/src/combat/Actions.cpp
++++ b/src/combat/Actions.cpp
+@@ -229,7 +229,7 @@ Action Actions::MakeTempCardInHand(CardInstance card, int amount) {
+     return {[=](BattleContext &bc) {
+         for (int i = 0; i < amount; ++i) {
+             CardInstance c(card);
+-            c.uniqueId = bc.cards.nextUniqueCardId++;
++            c.uniqueId = bc.cards.allocateCardId();
+             bc.cards.notifyAddCardToCombat(c);
+             bc.moveToHandHelper(c);
+         }
+@@ -261,7 +261,7 @@ Action Actions::MakeTempCardInDiscard(const CardInstance &c, int amount) {
+ Action Actions::MakeTempCardsInHand(std::vector<CardInstance> cards) {
+     return {[=](BattleContext &bc) {
+         for (auto c : cards) {
+-            c.uniqueId = bc.cards.nextUniqueCardId++;
++            c.uniqueId = bc.cards.allocateCardId();
+             bc.cards.notifyAddCardToCombat(c);
+             bc.moveToHandHelper(c);
+         }
+@@ -901,7 +901,8 @@ Action Actions::TimeEaterPlayCardQueueItem(const CardQueueItem &x) {
+ Action Actions::UpgradeAllCardsInHand() {
+     return {[=] (BattleContext &bc) {
+         for (int i = 0; i < bc.cards.cardsInHand; ++i) {
+-            bc.cards.hand[i].upgrade();
++            // 全手牌升级也必须排除状态牌、诅咒和已达升级上限的牌。
++            if (bc.cards.hand[i].canUpgrade()) bc.cards.hand[i].upgrade();
+         }
+     }};
+ }
+@@ -1090,13 +1091,11 @@ Action Actions::FeedAction(int idx, int damage, bool upgraded) {
+ 
+ Action Actions::FiendFireAction(int targetIdx, int calculatedDamage) {
+     return {[=] (BattleContext &bc) {
+-        for (int i = 0; i < bc.cards.cardsInHand; ++i) {
+-            bc.addToTop(Actions::AttackEnemy(targetIdx, calculatedDamage));
+-        }
+-
+-        for (int i = 0; i < bc.cards.cardsInHand; ++i) {
+-            bc.addToTop( Actions::ExhaustRandomCardInHand(1) );
+-        }
++        const int count = bc.cards.cardsInHand;
++        for (int i = 0; i < count; ++i) bc.addToTop(Actions::AttackEnemy(targetIdx, calculatedDamage));
++        // 固定原手牌实例，耗尽触发抽到的新牌不能被继续误耗尽。
++        for (int i = count - 1; i >= 0; --i)
++            bc.addToTop(Actions::ExhaustSpecificCardInHand(i, bc.cards.hand[i].uniqueId));
+     }};
+ }
+ 
+diff --git a/src/combat/BattleContext.cpp b/src/combat/BattleContext.cpp
+index 965faef..57159b0 100644
+--- a/src/combat/BattleContext.cpp
++++ b/src/combat/BattleContext.cpp
+@@ -725,17 +725,8 @@ void BattleContext::executeActions() {
+ 
+     while (true)
+     {
+-        if (++loopCount > 1000000 || monsters.monstersAlive < 0 || turn > 500) {
+-            // something went wrong
+-            if (turn > 500) {
+-                outcome = Outcome::PLAYER_LOSS;
+-                break;
+-            }
+-
+-            std::cerr << seed << std::endl;
+-            std::cout << *this << '\n';
+-            assert(false);
+-        }
++        if (++loopCount > 1000000 || monsters.monstersAlive < 0 || turn > 500)
++            throw std::runtime_error("后端结算资源或状态边界超限");
+ 
+         if (inputState != InputState::EXECUTING_ACTIONS) {
+             break;
+@@ -765,7 +756,9 @@ void BattleContext::executeActions() {
+ 
+         // can't win check
+         if (cards.cardsInHand + cards.discardPile.size() + cards.drawPile.size() == 0) {
+-            bool hasDamageWithoutCards = player.hasStatus<PS::OMEGA>() ||
++            bool hasDamageWithoutCards = player.hasStatus<PS::OMEGA>() || player.hasStatus<PS::COMBUST>() ||
++                    (player.hasStatus<PS::JUGGERNAUT>() && (player.hasStatus<PS::METALLICIZE>() || player.hasStatus<PS::PLATED_ARMOR>())) ||
++                    std::any_of(potions.begin(), potions.end(), [](Potion p) { return p != Potion::EMPTY_POTION_SLOT && p != Potion::INVALID; }) ||
+                     player.hasStatus<PS::THORNS>() ||
+                     player.bomb1 ||
+                     player.bomb2 ||
+@@ -863,6 +856,12 @@ void BattleContext::playCardQueueItem(CardQueueItem playItem) {
+ 
+     }
+ 
++    // Havoc等自动牌先从牌堆移出，再以exhaustOnUse结算。即使顶牌本身不可主动打出，
++    // 也必须完成公开的耗尽生命周期和耗尽触发，不能让实例从所有牌区静默消失。
++    if (!canUseCard && item.exhaustOnUse) {
++        triggerAndMoveToExhaustPile(c);
++    }
++
+     if (!item.triggerOnUse) {
+         useNoTriggerCard(); // for burn, decay, doubt, regret and shame,
+     }
+@@ -1073,7 +1072,7 @@ void BattleContext::useAttackCard() {
+         }
+ 
+         case CardId::IRON_WAVE: {
+-            addToBot( Actions::GainBlock(calculateCardBlock(calculateCardBlock(up  ? 7 : 5))) );
++            addToBot( Actions::GainBlock(calculateCardBlock(up ? 7 : 5)) );
+             addToBot( Actions::AttackEnemy(t, calculateCardDamage(c, t, up ? 7 : 5)) );
+             break;
+         }
+@@ -1279,7 +1278,7 @@ void BattleContext::useSkillCard() {
+             break;
+ 
+         case CardId::DISARM:
+-            addToBot( Actions::DebuffEnemy<MS::STRENGTH>(t, -2, false) );
++            addToBot( Actions::DebuffEnemy<MS::STRENGTH>(t, up ? -3 : -2, false) );
+             break;
+ 
+         case CardId::DISCOVERY:
+@@ -2547,7 +2546,7 @@ void BattleContext::exhaustSpecificCardInHand(int idx, std::int16_t uniqueId) {
+         foundIdx = idx;
+     } else {
+         for (int i = 0; i < cards.cardsInHand; ++i) {
+-            if (cards.hand[idx].uniqueId == uniqueId) {
++            if (cards.hand[i].uniqueId == uniqueId) {
+                foundIdx = i;
+                break;
+             }
+@@ -2928,7 +2927,7 @@ void BattleContext::chooseArmamentsCard(int handIdx) {
+ 
+ void BattleContext::chooseCodexCard(CardId id) {
+     CardInstance c(id);
+-    c.uniqueId = static_cast<std::int16_t>(cards.nextUniqueCardId++);
++    c.uniqueId = static_cast<std::int16_t>(cards.allocateCardId());
+     cards.notifyAddCardToCombat(c);
+     cards.shuffleIntoDrawPile(cardRandomRng, c);
+ }
+@@ -2968,7 +2967,7 @@ void BattleContext::chooseDualWieldCard(int handIdx) {
+         cards.hand[i++] = c;
+     }
+ 
+-    dualWieldCard.uniqueId = static_cast<std::int16_t>(cards.nextUniqueCardId++); // dual wield buggy
++    dualWieldCard.uniqueId = static_cast<std::int16_t>(cards.allocateCardId()); // dual wield buggy
+     cards.hand[i++] = dualWieldCard;
+ 
+     for (int x = 0; x < copyCount; ++x) {
+@@ -3039,6 +3038,7 @@ void BattleContext::chooseHeadbuttCard(int discardIdx) {
+ #ifdef sts_asserts
+     assert(discardIdx >= 0 && discardIdx < cards.discardPile.size());
+ #endif
++    cards.knownTopId = cards.discardPile[discardIdx].uniqueId;
+     cards.moveToDrawPileTop(cards.discardPile[discardIdx]);
+     cards.removeFromDiscard(discardIdx);
+ }
+@@ -3051,6 +3051,7 @@ void BattleContext::chooseWarcryCard(int handIdx) {
+ #ifdef sts_asserts
+     assert(handIdx >= 0 && handIdx < cards.cardsInHand);
+ #endif
++    cards.knownTopId = cards.hand[handIdx].uniqueId;
+     cards.moveToDrawPileTop(cards.hand[handIdx]);
+     cards.removeFromHandAtIdx(handIdx);
+ }
+diff --git a/src/combat/CardInstance.cpp b/src/combat/CardInstance.cpp
+index 2bd9c9d..be152fc 100644
+--- a/src/combat/CardInstance.cpp
++++ b/src/combat/CardInstance.cpp
+@@ -3,6 +3,7 @@
+ //
+ 
+ #include "combat/CardInstance.h"
++#include <stdexcept>
+ 
+ #include "combat/BattleContext.h"
+ 
+@@ -142,6 +143,7 @@ void CardInstance::upgrade() {
+ 
+     switch (id) {
+         case CardId::SEARING_BLOW:
++            if (specialData >= 100) throw std::runtime_error("Searing Blow升级资源边界100");
+             ++specialData;
+             break;
+ 
+diff --git a/src/combat/CardManager.cpp b/src/combat/CardManager.cpp
+index e46d0cc..f7553b3 100644
+--- a/src/combat/CardManager.cpp
++++ b/src/combat/CardManager.cpp
+@@ -94,14 +94,15 @@ void CardManager::createTempCardInDrawPile(int idx, CardInstance c) {
+     }
+ #endif
+ 
+-    c.uniqueId = static_cast<std::int16_t>(nextUniqueCardId++);
++    c.uniqueId = static_cast<std::int16_t>(allocateCardId());
+     notifyAddCardToCombat(c);
+     notifyAddToDrawPile(c);
++    knownTopId = -1;
+     drawPile.insert(drawPile.begin()+idx, c);
+ }
+ 
+ void CardManager::createTempCardInDiscard(CardInstance c) {
+-    c.uniqueId = static_cast<std::int16_t>(nextUniqueCardId++);
++    c.uniqueId = static_cast<std::int16_t>(allocateCardId());
+ #ifdef sts_asserts
+     if (c.getId() == CardId::INVALID) {
+         std::cerr << *g_debug_bc << '\n';
+@@ -116,7 +117,7 @@ void CardManager::createTempCardInDiscard(CardInstance c) {
+ }
+ 
+ void CardManager::createTempCardInHand(CardInstance c) {
+-    c.uniqueId = static_cast<std::int16_t>(nextUniqueCardId++);
++    c.uniqueId = static_cast<std::int16_t>(allocateCardId());
+ #ifdef sts_asserts
+     if (c.getId() == CardId::INVALID) {
+         std::cerr << *g_debug_bc << '\n';
+@@ -213,6 +214,7 @@ void CardManager::moveToDrawPileTop(const CardInstance &c) {
+ }
+ 
+ void CardManager::shuffleIntoDrawPile(Random &cardRandomRng, const CardInstance &c) {
++    knownTopId = -1;
+     if (drawPile.empty()) {
+         moveToDrawPileTop(c);
+     } else {
+@@ -236,6 +238,7 @@ void CardManager::moveToDiscardPile(const CardInstance &c) {
+ }
+ 
+ void CardManager::moveDiscardPileIntoToDrawPile() {
++    knownTopId = -1;
+     if (drawPile.empty()) {
+         drawPileBloodCardCount = discardPileBloodCardCount;
+         drawPile = discardPile;
+@@ -331,6 +334,7 @@ void CardManager::notifyAddToDrawPile(const CardInstance &c) {
+ }
+ 
+ void CardManager::notifyRemoveFromDrawPile(const CardInstance &c) {
++    if (c.uniqueId == knownTopId) knownTopId = -1;
+     if (c.isBloodCard()) {
+         --drawPileBloodCardCount;
+     }
+@@ -389,6 +393,12 @@ void CardManager::resetAttributesAtEndOfTurn() {
+     for (auto &c : drawPile) {
+         c.setCostForTurn(c.cost);
+     }
++
++    // 消耗堆中的实例仍可能被Exhume取回；本回合临时费用不能跨回合泄漏。
++    // setCostForTurn会保留X费用等负哨兵值，只恢复已有costForTurn语义的实例。
++    for (auto &c : exhaustPile) {
++        c.setCostForTurn(c.cost);
++    }
+ }
+ 
+ // **************** BEGIN SPECIAL HELPERS ****************
+diff --git a/src/combat/CardQueue.cpp b/src/combat/CardQueue.cpp
+index 045cf4a..905f82f 100644
+--- a/src/combat/CardQueue.cpp
++++ b/src/combat/CardQueue.cpp
+@@ -1,3 +1,4 @@
++#include <stdexcept>
+ //
+ // Created by gamerpuppy on 8/24/2021.
+ //
+@@ -31,6 +32,7 @@ void CardQueue::clear() {
+ }
+ 
+ void CardQueue::pushFront(CardQueueItem item) {
++    if (size >= capacity) throw std::runtime_error("卡牌队列资源超限");
+     assert(size != arr.size());
+     --frontIdx;
+     ++size;
+@@ -41,6 +43,7 @@ void CardQueue::pushFront(CardQueueItem item) {
+ }
+ 
+ void CardQueue::pushBack(CardQueueItem item) {
++    if (size >= capacity) throw std::runtime_error("卡牌队列资源超限");
+     assert(size != capacity);
+     arr.at(backIdx) = std::move(item);
+     ++backIdx;
+diff --git a/src/combat/Player.cpp b/src/combat/Player.cpp
+index d5f935d..85f9551 100644
+--- a/src/combat/Player.cpp
++++ b/src/combat/Player.cpp
+@@ -70,6 +70,8 @@ void Player::gainBlock(BattleContext &bc, int amount) {
+         return;
+     }
+ 
++    if (static_cast<long long>(block) + amount > 1000000)
++        throw std::runtime_error("格挡数值资源边界超限");
+     block += amount;
+ 
+     if (hasStatus<PS::JUGGERNAUT>()) {
+@@ -680,7 +682,8 @@ void Player::applyStartOfTurnPostDrawPowers(BattleContext &bc) {
+ 
+         switch (pair.first) {
+             case PS::BRUTALITY:
+-                bc.addToBot( Actions::PlayerLoseHp(pair.second) );
++                // 能力造成的自身失血必须触发Rupture，不能当成敌方来源。
++                bc.addToBot( Actions::PlayerLoseHp(pair.second, true) );
+                 bc.addToBot( Actions::DrawCards(pair.second) );
+                 break;
+ 

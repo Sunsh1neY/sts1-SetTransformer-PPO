@@ -1,0 +1,758 @@
+{
+  "schema": "unified-entity-interface-v4",
+  "model": "unified-entity-set-v4",
+  "architecture": {
+    "width": 64,
+    "heads": 4,
+    "layers": 2,
+    "ff_width": 128,
+    "dropout": 0.0
+  },
+  "resources": {
+    "max_entities": 512,
+    "max_candidates": 4096,
+    "max_attention_elements": 8388608
+  },
+  "types": [
+    "CARD",
+    "ENEMY",
+    "POTION",
+    "RELIC",
+    "PLAYER_GLOBAL"
+  ],
+  "action_kinds": [
+    "PLAY_TARGET",
+    "PLAY_SELF",
+    "END_TURN",
+    "POTION_TARGET",
+    "POTION_SELF",
+    "SELECT_CARD"
+  ],
+  "candidate_context": {
+    "schema": "resolution-context-v1",
+    "source_modes": [
+      "MANUAL",
+      "AUTOPLAY",
+      "REPLAY"
+    ],
+    "fields": [
+      "source_mode",
+      "source_will_exhaust",
+      "pending_replay_count"
+    ],
+    "dimension": 5,
+    "pending_replay_count_scale": 4
+  },
+  "regions": [
+    "hand",
+    "draw_pile",
+    "discard_pile",
+    "exhaust_pile",
+    "resolving",
+    "offer"
+  ],
+  "selection_kinds": [
+    "NONE",
+    "ARMAMENTS",
+    "DUAL_WIELD",
+    "EXHAUST_ONE",
+    "EXHUME",
+    "HEADBUTT",
+    "WARCRY",
+    "DISCOVERY"
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "name": "Bash"
+    },
+    {
+      "id": 2,
+      "name": "Defend_R"
+    },
+    {
+      "id": 3,
+      "name": "Strike_R"
+    },
+    {
+      "id": 4,
+      "name": "Battle Trance"
+    },
+    {
+      "id": 5,
+      "name": "Bludgeon"
+    },
+    {
+      "id": 6,
+      "name": "Body Slam"
+    },
+    {
+      "id": 7,
+      "name": "Carnage"
+    },
+    {
+      "id": 8,
+      "name": "Cleave"
+    },
+    {
+      "id": 9,
+      "name": "Clothesline"
+    },
+    {
+      "id": 10,
+      "name": "Demon Form"
+    },
+    {
+      "id": 11,
+      "name": "Dropkick"
+    },
+    {
+      "id": 12,
+      "name": "Entrench"
+    },
+    {
+      "id": 13,
+      "name": "Feel No Pain"
+    },
+    {
+      "id": 14,
+      "name": "Flame Barrier"
+    },
+    {
+      "id": 15,
+      "name": "Flex"
+    },
+    {
+      "id": 16,
+      "name": "Ghostly Armor"
+    },
+    {
+      "id": 17,
+      "name": "Heavy Blade"
+    },
+    {
+      "id": 18,
+      "name": "Immolate"
+    },
+    {
+      "id": 19,
+      "name": "Impervious"
+    },
+    {
+      "id": 20,
+      "name": "Inflame"
+    },
+    {
+      "id": 21,
+      "name": "Metallicize"
+    },
+    {
+      "id": 22,
+      "name": "Pommel Strike"
+    },
+    {
+      "id": 23,
+      "name": "Power Through"
+    },
+    {
+      "id": 24,
+      "name": "Pummel"
+    },
+    {
+      "id": 25,
+      "name": "Rage"
+    },
+    {
+      "id": 26,
+      "name": "Reckless Charge"
+    },
+    {
+      "id": 27,
+      "name": "Seeing Red"
+    },
+    {
+      "id": 28,
+      "name": "Sentinel"
+    },
+    {
+      "id": 29,
+      "name": "Shrug It Off"
+    },
+    {
+      "id": 30,
+      "name": "Spot Weakness"
+    },
+    {
+      "id": 31,
+      "name": "Thunderclap"
+    },
+    {
+      "id": 32,
+      "name": "True Grit"
+    },
+    {
+      "id": 33,
+      "name": "Twin Strike"
+    },
+    {
+      "id": 34,
+      "name": "Uppercut"
+    },
+    {
+      "id": 35,
+      "name": "Wild Strike"
+    },
+    {
+      "id": 36,
+      "name": "AscendersBane"
+    },
+    {
+      "id": 37,
+      "name": "Wound"
+    },
+    {
+      "id": 38,
+      "name": "Dazed"
+    },
+    {
+      "id": 39,
+      "name": "Burn"
+    },
+    {
+      "id": 40,
+      "name": "Slimed"
+    },
+    {
+      "id": 41,
+      "name": "Anger"
+    },
+    {
+      "id": 42,
+      "name": "Armaments"
+    },
+    {
+      "id": 43,
+      "name": "Barricade"
+    },
+    {
+      "id": 44,
+      "name": "Berserk"
+    },
+    {
+      "id": 45,
+      "name": "Blood for Blood"
+    },
+    {
+      "id": 46,
+      "name": "Bloodletting"
+    },
+    {
+      "id": 47,
+      "name": "Brutality"
+    },
+    {
+      "id": 48,
+      "name": "Burning Pact"
+    },
+    {
+      "id": 49,
+      "name": "Clash"
+    },
+    {
+      "id": 50,
+      "name": "Combust"
+    },
+    {
+      "id": 51,
+      "name": "Corruption"
+    },
+    {
+      "id": 52,
+      "name": "Dark Embrace"
+    },
+    {
+      "id": 53,
+      "name": "Disarm"
+    },
+    {
+      "id": 54,
+      "name": "Double Tap"
+    },
+    {
+      "id": 55,
+      "name": "Dual Wield"
+    },
+    {
+      "id": 56,
+      "name": "Evolve"
+    },
+    {
+      "id": 57,
+      "name": "Exhume"
+    },
+    {
+      "id": 58,
+      "name": "Feed"
+    },
+    {
+      "id": 59,
+      "name": "Fiend Fire"
+    },
+    {
+      "id": 60,
+      "name": "Fire Breathing"
+    },
+    {
+      "id": 61,
+      "name": "Havoc"
+    },
+    {
+      "id": 62,
+      "name": "Headbutt"
+    },
+    {
+      "id": 63,
+      "name": "Hemokinesis"
+    },
+    {
+      "id": 64,
+      "name": "Infernal Blade"
+    },
+    {
+      "id": 65,
+      "name": "Intimidate"
+    },
+    {
+      "id": 66,
+      "name": "Iron Wave"
+    },
+    {
+      "id": 67,
+      "name": "Juggernaut"
+    },
+    {
+      "id": 68,
+      "name": "Limit Break"
+    },
+    {
+      "id": 69,
+      "name": "Offering"
+    },
+    {
+      "id": 70,
+      "name": "Perfected Strike"
+    },
+    {
+      "id": 71,
+      "name": "Rampage"
+    },
+    {
+      "id": 72,
+      "name": "Reaper"
+    },
+    {
+      "id": 73,
+      "name": "Rupture"
+    },
+    {
+      "id": 74,
+      "name": "Searing Blow"
+    },
+    {
+      "id": 75,
+      "name": "Second Wind"
+    },
+    {
+      "id": 76,
+      "name": "Sever Soul"
+    },
+    {
+      "id": 77,
+      "name": "Shockwave"
+    },
+    {
+      "id": 78,
+      "name": "Sword Boomerang"
+    },
+    {
+      "id": 79,
+      "name": "Warcry"
+    },
+    {
+      "id": 80,
+      "name": "Whirlwind"
+    }
+  ],
+  "enemy_names": [
+    "",
+    "INVALID = 0",
+    "ACID_SLIME_L",
+    "ACID_SLIME_M",
+    "ACID_SLIME_S",
+    "AWAKENED_ONE",
+    "BEAR",
+    "BLUE_SLAVER",
+    "BOOK_OF_STABBING",
+    "BRONZE_AUTOMATON",
+    "BRONZE_ORB",
+    "BYRD",
+    "CENTURION",
+    "CHOSEN",
+    "CORRUPT_HEART",
+    "CULTIST",
+    "DAGGER",
+    "DARKLING",
+    "DECA",
+    "DONU",
+    "EXPLODER",
+    "FAT_GREMLIN",
+    "FUNGI_BEAST",
+    "GIANT_HEAD",
+    "GREEN_LOUSE",
+    "GREMLIN_LEADER",
+    "GREMLIN_NOB",
+    "GREMLIN_WIZARD",
+    "HEXAGHOST",
+    "JAW_WORM",
+    "LAGAVULIN",
+    "LOOTER",
+    "MAD_GREMLIN",
+    "MUGGER",
+    "MYSTIC",
+    "NEMESIS",
+    "ORB_WALKER",
+    "POINTY",
+    "RED_LOUSE",
+    "RED_SLAVER",
+    "REPTOMANCER",
+    "REPULSOR",
+    "ROMEO",
+    "SENTRY",
+    "SHELLED_PARASITE",
+    "SHIELD_GREMLIN",
+    "SLIME_BOSS",
+    "SNAKE_PLANT",
+    "SNEAKY_GREMLIN",
+    "SNECKO",
+    "SPHERIC_GUARDIAN",
+    "SPIKER",
+    "SPIKE_SLIME_L",
+    "SPIKE_SLIME_M",
+    "SPIKE_SLIME_S",
+    "SPIRE_GROWTH",
+    "SPIRE_SHIELD",
+    "SPIRE_SPEAR",
+    "TASKMASTER",
+    "THE_CHAMP",
+    "THE_COLLECTOR",
+    "THE_GUARDIAN",
+    "THE_MAW",
+    "TIME_EATER",
+    "TORCH_HEAD",
+    "TRANSIENT",
+    "WRITHING_MASS"
+  ],
+  "intent_kinds": [
+    "NONE",
+    "ATTACK",
+    "ATTACK_DEFEND",
+    "ATTACK_DEBUFF",
+    "DEFEND",
+    "DEFEND_BUFF",
+    "BUFF",
+    "DEBUFF",
+    "SLEEP",
+    "UNKNOWN",
+    "ESCAPE"
+  ],
+  "card_types": [
+    "ATTACK",
+    "SKILL",
+    "POWER",
+    "STATUS",
+    "CURSE"
+  ],
+  "player_statuses": [
+    "INVALID",
+    "Double Damage",
+    "Draw Reduction",
+    "Frail",
+    "Intangible",
+    "Vulnerable",
+    "Weak",
+    "Bias",
+    "Confused",
+    "Constricted",
+    "Entangled",
+    "Fasting",
+    "Hex",
+    "Lose Dexterity",
+    "Lose Strength",
+    "No Block",
+    "No Draw",
+    "Wraith Form",
+    "Barricade",
+    "Blasphemer",
+    "Corruption",
+    "Electro",
+    "Surrounded",
+    "Master Reality",
+    "Pen Nib",
+    "Wrath Next Turn",
+    "Amplify",
+    "Blur",
+    "Buffer",
+    "Collect",
+    "Double Tap",
+    "Duplication",
+    "Echo Form",
+    "Free Attack Power",
+    "Rebound",
+    "Mantra",
+    "Accuracy",
+    "After Image",
+    "Battle Hymn",
+    "Brutality",
+    "Burst",
+    "Combust",
+    "Creative Ai",
+    "Dark Embrace",
+    "Demon Form",
+    "Deva",
+    "Devotion",
+    "Draw Card Next Turn",
+    "Energized",
+    "Envenom",
+    "Establishment",
+    "Evolve",
+    "Feel No Pain",
+    "Fire Breathing",
+    "Flame Barrier",
+    "Focus",
+    "Foresight",
+    "Hello World",
+    "Infinite Blades",
+    "Juggernaut",
+    "Like Water",
+    "Loop",
+    "Magnetism",
+    "Mayhem",
+    "Metallicize",
+    "Next Turn Block",
+    "Noxious Fumes",
+    "Omega",
+    "Panache",
+    "Phantasmal",
+    "Plated Armor",
+    "Rage",
+    "Regen",
+    "Ritual",
+    "Rupture",
+    "Sadistic",
+    "Static Discharge",
+    "Thorns",
+    "Thousand Cuts",
+    "Tools Of The Trade",
+    "Vigor",
+    "Wave Of The Hand",
+    "Equilibrium",
+    "Artifact",
+    "Dexterity",
+    "Strength",
+    "The Bomb"
+  ],
+  "enemy_statuses": [
+    "Artifact",
+    "Block Return",
+    "Choked",
+    "Corpse Explosion",
+    "Lock On",
+    "Mark",
+    "Metallicize",
+    "Plated Armor",
+    "Poison",
+    "Regen",
+    "Shackled",
+    "Strength",
+    "Vulnerable",
+    "Weak",
+    "Angry",
+    "Beat Of Death",
+    "Curiosity",
+    "Curl Up",
+    "Enrage",
+    "Fading",
+    "Flight",
+    "Generic Strength Up",
+    "Intangible",
+    "Malleable",
+    "Mode Shift",
+    "Ritual",
+    "Slow",
+    "Spore Cloud",
+    "Thievery",
+    "Thorns",
+    "Time Warp",
+    "Invincible",
+    "Reactive",
+    "Sharp Hide",
+    "Asleep",
+    "Barricade",
+    "Minion",
+    "Minion Leader",
+    "Painful Stabs",
+    "Regrow",
+    "Shifting",
+    "Stasis",
+    "INVALID"
+  ],
+  "potions": [
+    {
+      "id": 1,
+      "name": "Weak Potion"
+    },
+    {
+      "id": 2,
+      "name": "Regen Potion"
+    },
+    {
+      "id": 3,
+      "name": "EssenceOfSteel"
+    },
+    {
+      "id": 4,
+      "name": "Explosive Potion"
+    },
+    {
+      "id": 5,
+      "name": "Ancient Potion"
+    },
+    {
+      "id": 6,
+      "name": "FearPotion"
+    },
+    {
+      "id": 7,
+      "name": "LiquidBronze"
+    },
+    {
+      "id": 8,
+      "name": "Energy Potion"
+    },
+    {
+      "id": 9,
+      "name": "SpeedPotion"
+    },
+    {
+      "id": 10,
+      "name": "Dexterity Potion"
+    },
+    {
+      "id": 11,
+      "name": "HeartOfIron"
+    },
+    {
+      "id": 12,
+      "name": "Fruit Juice"
+    },
+    {
+      "id": 13,
+      "name": "Block Potion"
+    },
+    {
+      "id": 14,
+      "name": "Strength Potion"
+    },
+    {
+      "id": 15,
+      "name": "Swift Potion"
+    }
+  ],
+  "relics": [
+    {
+      "id": 1,
+      "name": "Burning Blood"
+    },
+    {
+      "id": 2,
+      "name": "Lantern"
+    },
+    {
+      "id": 3,
+      "name": "Anchor"
+    },
+    {
+      "id": 4,
+      "name": "Bag of Preparation"
+    },
+    {
+      "id": 5,
+      "name": "Vajra"
+    },
+    {
+      "id": 6,
+      "name": "Oddly Smooth Stone"
+    },
+    {
+      "id": 7,
+      "name": "Blood Vial"
+    },
+    {
+      "id": 8,
+      "name": "Bronze Scales"
+    }
+  ],
+  "edge_features": [],
+  "normal_action_count": 66,
+  "card_numeric_scales": {
+    "upgrade_count": 5,
+    "base_cost": 4,
+    "damage": 50,
+    "block": 50,
+    "base_block": 50,
+    "magic": 10,
+    "hits": 5,
+    "combat_damage_bonus": 50,
+    "pay_cost": 4,
+    "recovery_cost": 4
+  },
+  "card_boolean_fields": [
+    "all_enemies",
+    "ethereal",
+    "exhaust",
+    "free_to_play_once",
+    "retain",
+    "is_strike",
+    "effective_exhaust",
+    "known_top"
+  ],
+  "player_numeric_scales": {
+    "hp": 100,
+    "max_hp": 100,
+    "block": 100,
+    "energy": 3,
+    "energy_per_turn": 3,
+    "turn": 50,
+    "ascension": 20,
+    "cards_played_this_turn": 10,
+    "attacks_played_this_turn": 10,
+    "skills_played_this_turn": 10,
+    "combust_hp_loss": 10
+  },
+  "history_numeric_fields": [
+    "completed_enemy_turns",
+    "charge_turns_observed",
+    "sleep_turns_observed"
+  ],
+  "feature_dimensions": {
+    "CARD": 115,
+    "ENEMY": 196,
+    "POTION": 21,
+    "RELIC": 10,
+    "PLAYER_GLOBAL": 198
+  },
+  "potion_regions": [
+    "inventory",
+    "resolving"
+  ]
+}

@@ -1,0 +1,1807 @@
+{
+  "schema": "ironclad-expansion-coverage-v1",
+  "target_classes": 75,
+  "target_versions": 150,
+  "versions": [
+    {
+      "name": "Anger",
+      "backend_enum": "ANGER",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Anger",
+      "backend_enum": "ANGER",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Bash",
+      "backend_enum": "BASH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Bash",
+      "backend_enum": "BASH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Blood for Blood",
+      "backend_enum": "BLOOD_FOR_BLOOD",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Blood for Blood",
+      "backend_enum": "BLOOD_FOR_BLOOD",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Bludgeon",
+      "backend_enum": "BLUDGEON",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Bludgeon",
+      "backend_enum": "BLUDGEON",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Body Slam",
+      "backend_enum": "BODY_SLAM",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Body Slam",
+      "backend_enum": "BODY_SLAM",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Carnage",
+      "backend_enum": "CARNAGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Carnage",
+      "backend_enum": "CARNAGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Clash",
+      "backend_enum": "CLASH",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Clash",
+      "backend_enum": "CLASH",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Cleave",
+      "backend_enum": "CLEAVE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Cleave",
+      "backend_enum": "CLEAVE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Clothesline",
+      "backend_enum": "CLOTHESLINE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Clothesline",
+      "backend_enum": "CLOTHESLINE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Dropkick",
+      "backend_enum": "DROPKICK",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Dropkick",
+      "backend_enum": "DROPKICK",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Feed",
+      "backend_enum": "FEED",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Feed",
+      "backend_enum": "FEED",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Fiend Fire",
+      "backend_enum": "FIEND_FIRE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Fiend Fire",
+      "backend_enum": "FIEND_FIRE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Headbutt",
+      "backend_enum": "HEADBUTT",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Headbutt",
+      "backend_enum": "HEADBUTT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Heavy Blade",
+      "backend_enum": "HEAVY_BLADE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Heavy Blade",
+      "backend_enum": "HEAVY_BLADE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Hemokinesis",
+      "backend_enum": "HEMOKINESIS",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Hemokinesis",
+      "backend_enum": "HEMOKINESIS",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Immolate",
+      "backend_enum": "IMMOLATE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Immolate",
+      "backend_enum": "IMMOLATE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Iron Wave",
+      "backend_enum": "IRON_WAVE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Iron Wave",
+      "backend_enum": "IRON_WAVE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Perfected Strike",
+      "backend_enum": "PERFECTED_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Perfected Strike",
+      "backend_enum": "PERFECTED_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Pommel Strike",
+      "backend_enum": "POMMEL_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Pommel Strike",
+      "backend_enum": "POMMEL_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Pummel",
+      "backend_enum": "PUMMEL",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Pummel",
+      "backend_enum": "PUMMEL",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Rampage",
+      "backend_enum": "RAMPAGE",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Rampage",
+      "backend_enum": "RAMPAGE",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Reaper",
+      "backend_enum": "REAPER",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Reaper",
+      "backend_enum": "REAPER",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Reckless Charge",
+      "backend_enum": "RECKLESS_CHARGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Reckless Charge",
+      "backend_enum": "RECKLESS_CHARGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Searing Blow",
+      "backend_enum": "SEARING_BLOW",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Searing Blow",
+      "backend_enum": "SEARING_BLOW",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sever Soul",
+      "backend_enum": "SEVER_SOUL",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sever Soul",
+      "backend_enum": "SEVER_SOUL",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Strike_R",
+      "backend_enum": "STRIKE_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Strike_R",
+      "backend_enum": "STRIKE_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sword Boomerang",
+      "backend_enum": "SWORD_BOOMERANG",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sword Boomerang",
+      "backend_enum": "SWORD_BOOMERANG",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Thunderclap",
+      "backend_enum": "THUNDERCLAP",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Thunderclap",
+      "backend_enum": "THUNDERCLAP",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Twin Strike",
+      "backend_enum": "TWIN_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Twin Strike",
+      "backend_enum": "TWIN_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Uppercut",
+      "backend_enum": "UPPERCUT",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Uppercut",
+      "backend_enum": "UPPERCUT",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Whirlwind",
+      "backend_enum": "WHIRLWIND",
+      "upgrade_count": 0,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Whirlwind",
+      "backend_enum": "WHIRLWIND",
+      "upgrade_count": 1,
+      "milestone": "E5",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Wild Strike",
+      "backend_enum": "WILD_STRIKE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Wild Strike",
+      "backend_enum": "WILD_STRIKE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Armaments",
+      "backend_enum": "ARMAMENTS",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Armaments",
+      "backend_enum": "ARMAMENTS",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Battle Trance",
+      "backend_enum": "BATTLE_TRANCE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Battle Trance",
+      "backend_enum": "BATTLE_TRANCE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Bloodletting",
+      "backend_enum": "BLOODLETTING",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Bloodletting",
+      "backend_enum": "BLOODLETTING",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Burning Pact",
+      "backend_enum": "BURNING_PACT",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Burning Pact",
+      "backend_enum": "BURNING_PACT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Defend_R",
+      "backend_enum": "DEFEND_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Defend_R",
+      "backend_enum": "DEFEND_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Disarm",
+      "backend_enum": "DISARM",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Disarm",
+      "backend_enum": "DISARM",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Double Tap",
+      "backend_enum": "DOUBLE_TAP",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Double Tap",
+      "backend_enum": "DOUBLE_TAP",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Dual Wield",
+      "backend_enum": "DUAL_WIELD",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Dual Wield",
+      "backend_enum": "DUAL_WIELD",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Entrench",
+      "backend_enum": "ENTRENCH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Entrench",
+      "backend_enum": "ENTRENCH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Exhume",
+      "backend_enum": "EXHUME",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Exhume",
+      "backend_enum": "EXHUME",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Flame Barrier",
+      "backend_enum": "FLAME_BARRIER",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Flame Barrier",
+      "backend_enum": "FLAME_BARRIER",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Flex",
+      "backend_enum": "FLEX",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Flex",
+      "backend_enum": "FLEX",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Ghostly Armor",
+      "backend_enum": "GHOSTLY_ARMOR",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Ghostly Armor",
+      "backend_enum": "GHOSTLY_ARMOR",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Havoc",
+      "backend_enum": "HAVOC",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Havoc",
+      "backend_enum": "HAVOC",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Impervious",
+      "backend_enum": "IMPERVIOUS",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Impervious",
+      "backend_enum": "IMPERVIOUS",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Infernal Blade",
+      "backend_enum": "INFERNAL_BLADE",
+      "upgrade_count": 0,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Infernal Blade",
+      "backend_enum": "INFERNAL_BLADE",
+      "upgrade_count": 1,
+      "milestone": "E6",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_final_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Intimidate",
+      "backend_enum": "INTIMIDATE",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Intimidate",
+      "backend_enum": "INTIMIDATE",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Limit Break",
+      "backend_enum": "LIMIT_BREAK",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Limit Break",
+      "backend_enum": "LIMIT_BREAK",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Offering",
+      "backend_enum": "OFFERING",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Offering",
+      "backend_enum": "OFFERING",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Power Through",
+      "backend_enum": "POWER_THROUGH",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Power Through",
+      "backend_enum": "POWER_THROUGH",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Rage",
+      "backend_enum": "RAGE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Rage",
+      "backend_enum": "RAGE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Second Wind",
+      "backend_enum": "SECOND_WIND",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Second Wind",
+      "backend_enum": "SECOND_WIND",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct_chain.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Seeing Red",
+      "backend_enum": "SEEING_RED",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Seeing Red",
+      "backend_enum": "SEEING_RED",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sentinel",
+      "backend_enum": "SENTINEL",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Sentinel",
+      "backend_enum": "SENTINEL",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Shockwave",
+      "backend_enum": "SHOCKWAVE",
+      "upgrade_count": 0,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Shockwave",
+      "backend_enum": "SHOCKWAVE",
+      "upgrade_count": 1,
+      "milestone": "E2",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_direct.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Shrug It Off",
+      "backend_enum": "SHRUG_IT_OFF",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Shrug It Off",
+      "backend_enum": "SHRUG_IT_OFF",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Spot Weakness",
+      "backend_enum": "SPOT_WEAKNESS",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Spot Weakness",
+      "backend_enum": "SPOT_WEAKNESS",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "True Grit",
+      "backend_enum": "TRUE_GRIT",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "True Grit",
+      "backend_enum": "TRUE_GRIT",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_true_grit_selection.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Warcry",
+      "backend_enum": "WARCRY",
+      "upgrade_count": 0,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Warcry",
+      "backend_enum": "WARCRY",
+      "upgrade_count": 1,
+      "milestone": "E3",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_selection_cards.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Barricade",
+      "backend_enum": "BARRICADE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Barricade",
+      "backend_enum": "BARRICADE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Berserk",
+      "backend_enum": "BERSERK",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Berserk",
+      "backend_enum": "BERSERK",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Brutality",
+      "backend_enum": "BRUTALITY",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Brutality",
+      "backend_enum": "BRUTALITY",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Combust",
+      "backend_enum": "COMBUST",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Combust",
+      "backend_enum": "COMBUST",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Corruption",
+      "backend_enum": "CORRUPTION",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Corruption",
+      "backend_enum": "CORRUPTION",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_dynamics.py",
+        "docs/ironclad-dynamic-probes.md"
+      ]
+    },
+    {
+      "name": "Dark Embrace",
+      "backend_enum": "DARK_EMBRACE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Dark Embrace",
+      "backend_enum": "DARK_EMBRACE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Demon Form",
+      "backend_enum": "DEMON_FORM",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Demon Form",
+      "backend_enum": "DEMON_FORM",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Evolve",
+      "backend_enum": "EVOLVE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Evolve",
+      "backend_enum": "EVOLVE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Feel No Pain",
+      "backend_enum": "FEEL_NO_PAIN",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Feel No Pain",
+      "backend_enum": "FEEL_NO_PAIN",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Fire Breathing",
+      "backend_enum": "FIRE_BREATHING",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Fire Breathing",
+      "backend_enum": "FIRE_BREATHING",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Inflame",
+      "backend_enum": "INFLAME",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Inflame",
+      "backend_enum": "INFLAME",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Juggernaut",
+      "backend_enum": "JUGGERNAUT",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Juggernaut",
+      "backend_enum": "JUGGERNAUT",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Metallicize",
+      "backend_enum": "METALLICIZE",
+      "upgrade_count": 0,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Metallicize",
+      "backend_enum": "METALLICIZE",
+      "upgrade_count": 1,
+      "milestone": "baseline",
+      "legacy_admitted": true,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_expansion.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Rupture",
+      "backend_enum": "RUPTURE",
+      "upgrade_count": 0,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    },
+    {
+      "name": "Rupture",
+      "backend_enum": "RUPTURE",
+      "upgrade_count": 1,
+      "milestone": "E4",
+      "legacy_admitted": false,
+      "expanded_admitted": true,
+      "evidence": [
+        "tests/test_ironclad_powers.py",
+        "docs/ironclad-expansion-progress.md"
+      ]
+    }
+  ]
+}

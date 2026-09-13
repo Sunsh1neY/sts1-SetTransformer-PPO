@@ -1,0 +1,16 @@
+{
+  "schema": "unified-entity-capacity-v2",
+  "scope": "150-versions-reviewed-content",
+  "registry_sha256": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+  "runtime_contract_sha256": "c92d3bdf5ea47438e8b178c2079c5605c013fc68b91ec8033275bcfa4f0d3399",
+  "card_entities": 512,
+  "initial_cards": 96,
+  "truncate_at": null,
+  "generated_per_decision": null,
+  "max_actions": 512,
+  "max_allocated_entities": 32766,
+  "termination_rule_version": "unified-entity-runtime-guards-v3",
+  "training_admitted": false,
+  "entity_contract_sha256": "12cd3f67b7563699dba801079b21a2729799349f1043210330ffbec99d11e843",
+  "backend_sha256": "0953711a5b37a38d00a788ce6220e8848950290c6e372534a485325f0212dc55"
+}
