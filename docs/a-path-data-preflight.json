@@ -1,0 +1,1882 @@
+{
+  "schema": "a-path-data-preflight-v1",
+  "formal_admission": false,
+  "source_sha256": {
+    "sts/env/real-deck-batch.json": "59c837a108ae7275c61a187dd3bc19e190953a15ac8fe2d7f5bbb37c5fc0acfe",
+    "docs/real-deck-manifest.json": "aa121e0a269752be284b21d25d2272184ecd07dbbcbc5dbcbd3b00d773b1e924",
+    "sts/env/ironclad-registry.json": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c"
+  },
+  "policy": "同run、来源身份token（含seed）、完整卡组多重集连通；历史开发身份向关联组传播；不创建未见保留集",
+  "old_batch": {
+    "components": [
+      {
+        "group_id": "102a217e0eeebba32479d6469e0cfcc0cecced6451632aeefa39570e46deb640",
+        "disposition": "development_anchor",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "development": 1
+        },
+        "row_ids": [
+          "run-group:658739f7ab9d60659b6e:deck:64876a75b49ca26d"
+        ]
+      },
+      {
+        "group_id": "26babeed9f75202b75e0b8a8207d7deb1319ff650fb9644c0890e1c8d8e682d9",
+        "disposition": "development_anchor",
+        "rows": 7,
+        "runs": 6,
+        "contents": 2,
+        "origins": {
+          "intermediate": 7
+        },
+        "old_splits": {
+          "train": 6,
+          "development": 1
+        },
+        "row_ids": [
+          "run-group:79cc161b4b335483b55e:deck:bf2a91174bc6db65",
+          "run-group:884bbe22ef7bae5bdcba:deck:bf2a91174bc6db65",
+          "run-group:93875aa00e713b9f1072:deck:bf2a91174bc6db65",
+          "run-group:a066308a795dedf381b5:deck:23fd977ba744d598",
+          "run-group:a066308a795dedf381b5:deck:bf2a91174bc6db65",
+          "run-group:b6175e52933ee15aff70:deck:bf2a91174bc6db65",
+          "run-group:cf94e4dc395d4e6004e0:deck:bf2a91174bc6db65"
+        ]
+      },
+      {
+        "group_id": "2900daf235d282a80a489b8fb0dfcfab09f082b22a7e771e9d153b1e14986b85",
+        "disposition": "development_anchor",
+        "rows": 5,
+        "runs": 4,
+        "contents": 2,
+        "origins": {
+          "intermediate": 5
+        },
+        "old_splits": {
+          "train": 3,
+          "development": 2
+        },
+        "row_ids": [
+          "run-group:58037a37ca7acdbb1388:deck:29f48a2fbb11b9a0",
+          "run-group:857303c9b035c095e9d4:deck:29f48a2fbb11b9a0",
+          "run-group:99171439576ecb8a16ea:deck:0e5365956076b98d",
+          "run-group:99171439576ecb8a16ea:deck:29f48a2fbb11b9a0",
+          "run-group:b8045ef282f29cd71ab4:deck:29f48a2fbb11b9a0"
+        ]
+      },
+      {
+        "group_id": "34a2786c123421dea829ba46fa721642eb4b7f812f5132b34831aabf281cdc7f",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:bebeecd213a33f1fe8e4:deck:db5512893d240afa"
+        ]
+      },
+      {
+        "group_id": "6521739608d5075037b23cb999428428507fe542385cb74b93cbd12b20a9c231",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:c141c78420544b641568:deck:b3188781c0e50b9a"
+        ]
+      },
+      {
+        "group_id": "6a9724a6b906ccff12de5ad711ec28248572f2da117a1ab369b380b4c484495d",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 2,
+        "contents": 1,
+        "origins": {
+          "intermediate": 2
+        },
+        "old_splits": {
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:546440614bb2f5effa8f:deck:b8c5f623801e72c5",
+          "run-group:b9056fc50a3ea89b1392:deck:b8c5f623801e72c5"
+        ]
+      },
+      {
+        "group_id": "84bdac9ea43c5d7a7b4bd973e41ab2f13db66741b49549ade3a18bf9138139c5",
+        "disposition": "development_anchor",
+        "rows": 4,
+        "runs": 2,
+        "contents": 3,
+        "origins": {
+          "intermediate": 4
+        },
+        "old_splits": {
+          "development": 2,
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:32d1ec29c2ee30b98050:deck:37a4102b7f0187e2",
+          "run-group:32d1ec29c2ee30b98050:deck:52a4994934eb7ae4",
+          "run-group:bcb873ad5d194f1967a8:deck:20c2cc46bd8883ae",
+          "run-group:bcb873ad5d194f1967a8:deck:37a4102b7f0187e2"
+        ]
+      },
+      {
+        "group_id": "9719ce05984ef6975c155d6aa4b6f49b81cf5110fa9e2179de65b7d18677ef29",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:884462f149c7fb11dc6c:deck:f4e1c8c4cb641081"
+        ]
+      },
+      {
+        "group_id": "ab067dde58f7fc23661ff2d4c2b3c524932ff24461750ae4ef4fa5cb0d6fa6cd",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:2dc85ff71ba6d9a28b62:deck:8c993ae65dec2b48"
+        ]
+      },
+      {
+        "group_id": "cd224655b1cfd55127e8f7555672ea4276727733567ceb8c9c2b07f7e09016be",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 1,
+        "contents": 2,
+        "origins": {
+          "intermediate": 2
+        },
+        "old_splits": {
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:f2672b82929351d73ae6:deck:42cba4c4a75951dd",
+          "run-group:f2672b82929351d73ae6:deck:7ec18d0cbba5b97f"
+        ]
+      },
+      {
+        "group_id": "d95766aa7caf7f8819a0bdc1388e9b6e86afabc8e79acce3f19f854821519fd0",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 2,
+        "contents": 1,
+        "origins": {
+          "intermediate": 2
+        },
+        "old_splits": {
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:0b6b50af8aca36367e6f:deck:16327de1abde0f8f",
+          "run-group:2d059afe66dca09002f6:deck:16327de1abde0f8f"
+        ]
+      },
+      {
+        "group_id": "f72520c5ce27935333ee11875f8d1b17ed6868dfdeee658aa07c0bacafc0f095",
+        "disposition": "development_anchor",
+        "rows": 62,
+        "runs": 50,
+        "contents": 9,
+        "origins": {
+          "intermediate": 62
+        },
+        "old_splits": {
+          "train": 56,
+          "development": 6
+        },
+        "row_ids": [
+          "run-group:016044a031542a7a95ad:deck:ba26b6f4ded94524",
+          "run-group:03869ca33f76f9685375:deck:ba26b6f4ded94524",
+          "run-group:04bee3c6f71d06011a06:deck:ba26b6f4ded94524",
+          "run-group:080240f5747d395efc6f:deck:ba26b6f4ded94524",
+          "run-group:0fcf5d9688a4c657cc87:deck:ba26b6f4ded94524",
+          "run-group:1471c7fe3e6c265b23b2:deck:ba26b6f4ded94524",
+          "run-group:1ec24dd4ecb402f82c36:deck:b6313a31fb958dcb",
+          "run-group:1ec24dd4ecb402f82c36:deck:ba26b6f4ded94524",
+          "run-group:25205448091f30b1b558:deck:3776c95e9deddf08",
+          "run-group:25205448091f30b1b558:deck:ba26b6f4ded94524",
+          "run-group:25e2d8e7d27e8b874d1e:deck:ba26b6f4ded94524",
+          "run-group:274691e9f61e82281a1f:deck:ba26b6f4ded94524",
+          "run-group:2a23a97ee1fa599d0039:deck:ba26b6f4ded94524",
+          "run-group:2ab4de78551223c9e3f1:deck:ba26b6f4ded94524",
+          "run-group:33c70f66905a836d5918:deck:ba26b6f4ded94524",
+          "run-group:3e0285dc659ea66751e3:deck:3776c95e9deddf08",
+          "run-group:3e0285dc659ea66751e3:deck:ba26b6f4ded94524",
+          "run-group:3f59e5d32006abf5ab88:deck:ba26b6f4ded94524",
+          "run-group:48ee6344d274a5f75a07:deck:ba26b6f4ded94524",
+          "run-group:4a50927b4670b528f773:deck:ba26b6f4ded94524",
+          "run-group:4cba167963d81b179ac7:deck:ba26b6f4ded94524",
+          "run-group:51eec4e1ba47369fe5e2:deck:ba26b6f4ded94524",
+          "run-group:53c16194b16286bd892d:deck:ba26b6f4ded94524",
+          "run-group:59e3e0bbe251993a438e:deck:ba26b6f4ded94524",
+          "run-group:5ba42d6055d2ced8f960:deck:ba26b6f4ded94524",
+          "run-group:5bade670577f01ea1632:deck:ba26b6f4ded94524",
+          "run-group:63fd5a205e4d8b9434f5:deck:017001274412900d",
+          "run-group:63fd5a205e4d8b9434f5:deck:88d725dbb8aa97e9",
+          "run-group:63fd5a205e4d8b9434f5:deck:b6313a31fb958dcb",
+          "run-group:63fd5a205e4d8b9434f5:deck:ba26b6f4ded94524",
+          "run-group:6ab5ecf45b0a88a64df0:deck:ba26b6f4ded94524",
+          "run-group:6c219a536f2fd8bc7d30:deck:ba26b6f4ded94524",
+          "run-group:6d8e7bcd740481cd0a56:deck:ba26b6f4ded94524",
+          "run-group:741b7c85f80e1ca362aa:deck:ba26b6f4ded94524",
+          "run-group:791d67b4daf01a7e67cf:deck:ba26b6f4ded94524",
+          "run-group:7c812ca46500fb5f6a41:deck:ba26b6f4ded94524",
+          "run-group:7c812ca46500fb5f6a41:deck:e32324675dfa65d1",
+          "run-group:7fed54b57ab672194647:deck:ba26b6f4ded94524",
+          "run-group:88d7120f540a2eaa5da6:deck:ba26b6f4ded94524",
+          "run-group:8db27ce2ad907224365f:deck:ba26b6f4ded94524",
+          "run-group:91c83dc1897accd34a9d:deck:ba26b6f4ded94524",
+          "run-group:b0d25cc2fe2535349b58:deck:ba26b6f4ded94524",
+          "run-group:b2369c6719096d2afc57:deck:8b171db3518cb25a",
+          "run-group:b2369c6719096d2afc57:deck:ba26b6f4ded94524",
+          "run-group:b5ff805d7227cfc1b35d:deck:ba26b6f4ded94524",
+          "run-group:ba4a36f016779b09dcb2:deck:ba26b6f4ded94524",
+          "run-group:bf54bf22df13ddda78bc:deck:ba26b6f4ded94524",
+          "run-group:c57eab02bae3ed55c8d7:deck:ba26b6f4ded94524",
+          "run-group:cd57eed0acce0ee4a937:deck:ba26b6f4ded94524",
+          "run-group:da554fe39e95811ffbdb:deck:ba26b6f4ded94524",
+          "run-group:da554fe39e95811ffbdb:deck:e32324675dfa65d1",
+          "run-group:dcbee8daed7563720dae:deck:ba26b6f4ded94524",
+          "run-group:df4e3889ce44dca3031d:deck:ba26b6f4ded94524",
+          "run-group:df4e3889ce44dca3031d:deck:e32324675dfa65d1",
+          "run-group:e3911a0e8861134f5d07:deck:ba26b6f4ded94524",
+          "run-group:e6accfdebe74c83edfc9:deck:ba26b6f4ded94524",
+          "run-group:e6accfdebe74c83edfc9:deck:bbb1392b9880d6fc",
+          "run-group:ec7667df669ed05ced93:deck:ba26b6f4ded94524",
+          "run-group:f1f4b8e45aa959f263ae:deck:ba26b6f4ded94524",
+          "run-group:f931ab7c9ab54689a052:deck:ba26b6f4ded94524",
+          "run-group:f9a6cc34066c9e8290f9:deck:10a6b73ca094300a",
+          "run-group:f9a6cc34066c9e8290f9:deck:ba26b6f4ded94524"
+        ]
+      },
+      {
+        "group_id": "f7e03a3cefedbebbd868c2322425bde12102e306a677bc81330ebff0cbd01992",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 2,
+        "contents": 1,
+        "origins": {
+          "intermediate": 2
+        },
+        "old_splits": {
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:bb9729c2b5a44461e261:deck:a2a165827e62dfc1",
+          "run-group:eccf864a7be944653ec4:deck:a2a165827e62dfc1"
+        ]
+      },
+      {
+        "group_id": "fec830bc6065fb09bee1ff001fffe2bf1f3aee030c2e2cfcd42eb93cef88c3ae",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:f0e194bbfab4422cd282:deck:c05b0c4d2ad77171"
+        ]
+      }
+    ],
+    "totals": {
+      "development_anchor": {
+        "rows": 79,
+        "runs": 63,
+        "contents": 17,
+        "origins": {
+          "intermediate": 79
+        },
+        "card_versions": 17,
+        "card_names": 16
+      },
+      "train_eligible_pending_admission": {
+        "rows": 13,
+        "runs": 12,
+        "contents": 10,
+        "origins": {
+          "intermediate": 13
+        },
+        "card_versions": 14,
+        "card_names": 14
+      }
+    }
+  },
+  "with_final_candidates": {
+    "components": [
+      {
+        "group_id": "020dccc90af195949ff833786bfc6958b3ccfb67a2b4035f12d7e624dad50b9e",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 3,
+        "runs": 2,
+        "contents": 2,
+        "origins": {
+          "intermediate": 2,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 2,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:546440614bb2f5effa8f:deck:b8c5f623801e72c5",
+          "run-group:b9056fc50a3ea89b1392:deck:b8c5f623801e72c5",
+          "run-group:b9056fc50a3ea89b1392:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "054c5d33d7fddf89125d21dd4d0b8ce44c84802713f89523600671959fc69086",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:701bf3e021652881d620:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "102a217e0eeebba32479d6469e0cfcc0cecced6451632aeefa39570e46deb640",
+        "disposition": "development_anchor",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "development": 1
+        },
+        "row_ids": [
+          "run-group:658739f7ab9d60659b6e:deck:64876a75b49ca26d"
+        ]
+      },
+      {
+        "group_id": "12435e31df0e598eaddd1c40d7626ce3e64072595173df2920ae7cfe09bf3dcf",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:c85cec4102609d94c531:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "1f83d07017c4e10dbae41bf530d6c4d916113859f4b7fb08b3f215265ce379be",
+        "disposition": "development_anchor",
+        "rows": 8,
+        "runs": 6,
+        "contents": 3,
+        "origins": {
+          "intermediate": 7,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 6,
+          "development": 1,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:79cc161b4b335483b55e:deck:bf2a91174bc6db65",
+          "run-group:884bbe22ef7bae5bdcba:deck:bf2a91174bc6db65",
+          "run-group:93875aa00e713b9f1072:deck:bf2a91174bc6db65",
+          "run-group:93875aa00e713b9f1072:final-master-deck",
+          "run-group:a066308a795dedf381b5:deck:23fd977ba744d598",
+          "run-group:a066308a795dedf381b5:deck:bf2a91174bc6db65",
+          "run-group:b6175e52933ee15aff70:deck:bf2a91174bc6db65",
+          "run-group:cf94e4dc395d4e6004e0:deck:bf2a91174bc6db65"
+        ]
+      },
+      {
+        "group_id": "279292c9030fbaa0f1620f8a4783e95e5d34096a5e59025014b80aec31d8888a",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 1,
+        "contents": 2,
+        "origins": {
+          "intermediate": 1,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 1,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:2dc85ff71ba6d9a28b62:deck:8c993ae65dec2b48",
+          "run-group:2dc85ff71ba6d9a28b62:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "33cc643ad2490557af9f9efc3136de27f95cd6080614b9a2202f8f1dcd25f60a",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:72e766c3ad2370c4d929:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "34a2786c123421dea829ba46fa721642eb4b7f812f5132b34831aabf281cdc7f",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:bebeecd213a33f1fe8e4:deck:db5512893d240afa"
+        ]
+      },
+      {
+        "group_id": "3b9f38b8dd499d8bc9bed04a5b8b5f2f0c0c1f9d03f045471e57b8b43f5d62e6",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:57dbdc67bcff3478908e:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "3c65bf45205a681d01e02f74e46c7c07a59599120271ba59d7d670106df39222",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:4905777f17e06ee65bba:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "3ee956bf96c147eb65ff3dc4d200638c769b34e4abf981d6d1115898485dfc5c",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:e3aa52d15557129c9fcf:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "3f165c23470d4970fe373b6e4b8b1549f14294977a654df0c769819642d9fe74",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:e80e0d17f00296e57f81:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "437d42889456d75322203fa66138c5202cd4ff182bf1b43865037282d7e2da33",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 3,
+        "runs": 2,
+        "contents": 2,
+        "origins": {
+          "intermediate": 2,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 2,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:bb9729c2b5a44461e261:deck:a2a165827e62dfc1",
+          "run-group:bb9729c2b5a44461e261:final-master-deck",
+          "run-group:eccf864a7be944653ec4:deck:a2a165827e62dfc1"
+        ]
+      },
+      {
+        "group_id": "45999ffdcbea5878821412d75aaaa3922a36472f49775941e630a5e0d5d815d0",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:eda5fd687b76d6a027f4:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "48706d137131d6acabc38a85947c86ffc53b4115338e153dfffd587d5ec6c959",
+        "disposition": "development_anchor",
+        "rows": 77,
+        "runs": 50,
+        "contents": 24,
+        "origins": {
+          "intermediate": 62,
+          "final-configured-candidate": 15
+        },
+        "old_splits": {
+          "train": 56,
+          "development": 6,
+          "unassigned": 15
+        },
+        "row_ids": [
+          "run-group:016044a031542a7a95ad:deck:ba26b6f4ded94524",
+          "run-group:03869ca33f76f9685375:deck:ba26b6f4ded94524",
+          "run-group:04bee3c6f71d06011a06:deck:ba26b6f4ded94524",
+          "run-group:04bee3c6f71d06011a06:final-master-deck",
+          "run-group:080240f5747d395efc6f:deck:ba26b6f4ded94524",
+          "run-group:0fcf5d9688a4c657cc87:deck:ba26b6f4ded94524",
+          "run-group:1471c7fe3e6c265b23b2:deck:ba26b6f4ded94524",
+          "run-group:1ec24dd4ecb402f82c36:deck:b6313a31fb958dcb",
+          "run-group:1ec24dd4ecb402f82c36:deck:ba26b6f4ded94524",
+          "run-group:25205448091f30b1b558:deck:3776c95e9deddf08",
+          "run-group:25205448091f30b1b558:deck:ba26b6f4ded94524",
+          "run-group:25e2d8e7d27e8b874d1e:deck:ba26b6f4ded94524",
+          "run-group:25e2d8e7d27e8b874d1e:final-master-deck",
+          "run-group:274691e9f61e82281a1f:deck:ba26b6f4ded94524",
+          "run-group:2a23a97ee1fa599d0039:deck:ba26b6f4ded94524",
+          "run-group:2ab4de78551223c9e3f1:deck:ba26b6f4ded94524",
+          "run-group:2ab4de78551223c9e3f1:final-master-deck",
+          "run-group:33c70f66905a836d5918:deck:ba26b6f4ded94524",
+          "run-group:3e0285dc659ea66751e3:deck:3776c95e9deddf08",
+          "run-group:3e0285dc659ea66751e3:deck:ba26b6f4ded94524",
+          "run-group:3e0285dc659ea66751e3:final-master-deck",
+          "run-group:3f59e5d32006abf5ab88:deck:ba26b6f4ded94524",
+          "run-group:48ee6344d274a5f75a07:deck:ba26b6f4ded94524",
+          "run-group:48ee6344d274a5f75a07:final-master-deck",
+          "run-group:4a50927b4670b528f773:deck:ba26b6f4ded94524",
+          "run-group:4cba167963d81b179ac7:deck:ba26b6f4ded94524",
+          "run-group:4cba167963d81b179ac7:final-master-deck",
+          "run-group:51eec4e1ba47369fe5e2:deck:ba26b6f4ded94524",
+          "run-group:53c16194b16286bd892d:deck:ba26b6f4ded94524",
+          "run-group:59e3e0bbe251993a438e:deck:ba26b6f4ded94524",
+          "run-group:59e3e0bbe251993a438e:final-master-deck",
+          "run-group:5ba42d6055d2ced8f960:deck:ba26b6f4ded94524",
+          "run-group:5bade670577f01ea1632:deck:ba26b6f4ded94524",
+          "run-group:63fd5a205e4d8b9434f5:deck:017001274412900d",
+          "run-group:63fd5a205e4d8b9434f5:deck:88d725dbb8aa97e9",
+          "run-group:63fd5a205e4d8b9434f5:deck:b6313a31fb958dcb",
+          "run-group:63fd5a205e4d8b9434f5:deck:ba26b6f4ded94524",
+          "run-group:6ab5ecf45b0a88a64df0:deck:ba26b6f4ded94524",
+          "run-group:6c219a536f2fd8bc7d30:deck:ba26b6f4ded94524",
+          "run-group:6d8e7bcd740481cd0a56:deck:ba26b6f4ded94524",
+          "run-group:6d8e7bcd740481cd0a56:final-master-deck",
+          "run-group:741b7c85f80e1ca362aa:deck:ba26b6f4ded94524",
+          "run-group:791d67b4daf01a7e67cf:deck:ba26b6f4ded94524",
+          "run-group:7c812ca46500fb5f6a41:deck:ba26b6f4ded94524",
+          "run-group:7c812ca46500fb5f6a41:deck:e32324675dfa65d1",
+          "run-group:7fed54b57ab672194647:deck:ba26b6f4ded94524",
+          "run-group:88d7120f540a2eaa5da6:deck:ba26b6f4ded94524",
+          "run-group:88d7120f540a2eaa5da6:final-master-deck",
+          "run-group:8db27ce2ad907224365f:deck:ba26b6f4ded94524",
+          "run-group:91c83dc1897accd34a9d:deck:ba26b6f4ded94524",
+          "run-group:b0d25cc2fe2535349b58:deck:ba26b6f4ded94524",
+          "run-group:b0d25cc2fe2535349b58:final-master-deck",
+          "run-group:b2369c6719096d2afc57:deck:8b171db3518cb25a",
+          "run-group:b2369c6719096d2afc57:deck:ba26b6f4ded94524",
+          "run-group:b5ff805d7227cfc1b35d:deck:ba26b6f4ded94524",
+          "run-group:b5ff805d7227cfc1b35d:final-master-deck",
+          "run-group:ba4a36f016779b09dcb2:deck:ba26b6f4ded94524",
+          "run-group:ba4a36f016779b09dcb2:final-master-deck",
+          "run-group:bf54bf22df13ddda78bc:deck:ba26b6f4ded94524",
+          "run-group:c57eab02bae3ed55c8d7:deck:ba26b6f4ded94524",
+          "run-group:cd57eed0acce0ee4a937:deck:ba26b6f4ded94524",
+          "run-group:cd57eed0acce0ee4a937:final-master-deck",
+          "run-group:da554fe39e95811ffbdb:deck:ba26b6f4ded94524",
+          "run-group:da554fe39e95811ffbdb:deck:e32324675dfa65d1",
+          "run-group:dcbee8daed7563720dae:deck:ba26b6f4ded94524",
+          "run-group:df4e3889ce44dca3031d:deck:ba26b6f4ded94524",
+          "run-group:df4e3889ce44dca3031d:deck:e32324675dfa65d1",
+          "run-group:e3911a0e8861134f5d07:deck:ba26b6f4ded94524",
+          "run-group:e3911a0e8861134f5d07:final-master-deck",
+          "run-group:e6accfdebe74c83edfc9:deck:ba26b6f4ded94524",
+          "run-group:e6accfdebe74c83edfc9:deck:bbb1392b9880d6fc",
+          "run-group:ec7667df669ed05ced93:deck:ba26b6f4ded94524",
+          "run-group:f1f4b8e45aa959f263ae:deck:ba26b6f4ded94524",
+          "run-group:f931ab7c9ab54689a052:deck:ba26b6f4ded94524",
+          "run-group:f931ab7c9ab54689a052:final-master-deck",
+          "run-group:f9a6cc34066c9e8290f9:deck:10a6b73ca094300a",
+          "run-group:f9a6cc34066c9e8290f9:deck:ba26b6f4ded94524"
+        ]
+      },
+      {
+        "group_id": "4be10ddab4989902d2efc2ac2af5b612bfe77817b95832cbda3f257b4e460aeb",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 3,
+        "runs": 2,
+        "contents": 2,
+        "origins": {
+          "intermediate": 2,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 2,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:0b6b50af8aca36367e6f:deck:16327de1abde0f8f",
+          "run-group:2d059afe66dca09002f6:deck:16327de1abde0f8f",
+          "run-group:2d059afe66dca09002f6:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "5336d2da2511ff3d973098f645c11ead31bad1bec3c67425daf317319d35ec6f",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:52a931e93c54074bcdeb:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "7665a2e2ba6114081ddd1223ce6cb47e7b231a2e6a081615685d8cc7f4f347cc",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:eed21c6334d7d9c16f13:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "778a78ea890112046c0a19f01c71077b95a48154f9e5adece354059f322a3f5a",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:9b629d3fde613cc6d2af:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "7948f8e13afd6382c84d69c4e844939319d4482d8b882958ad456ba61a9b69e9",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:03420f7d707f7af9dc35:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "84bdac9ea43c5d7a7b4bd973e41ab2f13db66741b49549ade3a18bf9138139c5",
+        "disposition": "development_anchor",
+        "rows": 4,
+        "runs": 2,
+        "contents": 3,
+        "origins": {
+          "intermediate": 4
+        },
+        "old_splits": {
+          "development": 2,
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:32d1ec29c2ee30b98050:deck:37a4102b7f0187e2",
+          "run-group:32d1ec29c2ee30b98050:deck:52a4994934eb7ae4",
+          "run-group:bcb873ad5d194f1967a8:deck:20c2cc46bd8883ae",
+          "run-group:bcb873ad5d194f1967a8:deck:37a4102b7f0187e2"
+        ]
+      },
+      {
+        "group_id": "8d260d7bae781e37050a7ecea8157446b37d03361b845d9d2c5ac831e6d95c5e",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:49e4cc1cf19e9a0d2d16:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "9719ce05984ef6975c155d6aa4b6f49b81cf5110fa9e2179de65b7d18677ef29",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:884462f149c7fb11dc6c:deck:f4e1c8c4cb641081"
+        ]
+      },
+      {
+        "group_id": "98bdd7be3c18d3a8494cdb2a4ce1ecc21a7f73aedb07d064748f125034d502e7",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:3a1fe3727cb20398c152:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "a1b996f7c9eb8c977c85f7a4c3b25f5fc52c4f68d25b67487fa7d54d15510ecb",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:025f28159bea0c8655d5:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "a294084db0d22cde3df337ca9fd10b9590784f2ce7fab5279c02e060f442b477",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:25ae8d6866aa7b966c09:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "a9aa2a0f74c5c0234a514166756e852f17eb2fd3b1896e835c00f1024ce377b6",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:14ab5992e54a220f12ac:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "aca2988ec0e15f52671d0816ededdd3eec1a4c1a0094b8d7989766dece03427a",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:5c24132ec9d7e216e0fa:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "bb7a54f79e748d34bd146a2a8ae7a6410373a26d3e713330185d576a151c8a85",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:36a9b5a4b31676c6e7bd:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "c420a50c1a5241537042fb53339dda905db5b6ca5a4a72a4f7f9cba72e1ff9b6",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:826de8daa44721880ff1:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "cd224655b1cfd55127e8f7555672ea4276727733567ceb8c9c2b07f7e09016be",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 1,
+        "contents": 2,
+        "origins": {
+          "intermediate": 2
+        },
+        "old_splits": {
+          "train": 2
+        },
+        "row_ids": [
+          "run-group:f2672b82929351d73ae6:deck:42cba4c4a75951dd",
+          "run-group:f2672b82929351d73ae6:deck:7ec18d0cbba5b97f"
+        ]
+      },
+      {
+        "group_id": "cd6e69e27ce9a95bcb99244dbe39983e2bf78ff90df70d6ee8d527bea6037b49",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 2,
+        "runs": 1,
+        "contents": 2,
+        "origins": {
+          "intermediate": 1,
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "train": 1,
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:c141c78420544b641568:deck:b3188781c0e50b9a",
+          "run-group:c141c78420544b641568:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "dbc00d0dec4bd967d4f7cab5ed23ccfcf019187dfde406dcde01eec40247e5b2",
+        "disposition": "development_anchor",
+        "rows": 7,
+        "runs": 4,
+        "contents": 4,
+        "origins": {
+          "intermediate": 5,
+          "final-configured-candidate": 2
+        },
+        "old_splits": {
+          "train": 3,
+          "development": 2,
+          "unassigned": 2
+        },
+        "row_ids": [
+          "run-group:58037a37ca7acdbb1388:deck:29f48a2fbb11b9a0",
+          "run-group:58037a37ca7acdbb1388:final-master-deck",
+          "run-group:857303c9b035c095e9d4:deck:29f48a2fbb11b9a0",
+          "run-group:857303c9b035c095e9d4:final-master-deck",
+          "run-group:99171439576ecb8a16ea:deck:0e5365956076b98d",
+          "run-group:99171439576ecb8a16ea:deck:29f48a2fbb11b9a0",
+          "run-group:b8045ef282f29cd71ab4:deck:29f48a2fbb11b9a0"
+        ]
+      },
+      {
+        "group_id": "e1fb07a453c701b4895d50d29ae53d4ec9db13375d89c30635a0304c27468c6f",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:97618dcbc0858eef3629:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "e3cb3f2b36b37ba80fc91185d698973fa991e5b01bad3b2968cfdfe206214202",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:c307dfd44a34bb5e6d64:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "f449cb559ef6b2b13eab2c287ab95da528625b4398186641debcbc8f9da01c05",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:e88a6dca46d18b6c8657:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "fa7780fba0cc1808c1042b3a1ee024fc651cfe70e2f8dc228dab22ceaeb5aba8",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "final-configured-candidate": 1
+        },
+        "old_splits": {
+          "unassigned": 1
+        },
+        "row_ids": [
+          "run-group:c8a98c2e70a279c45609:final-master-deck"
+        ]
+      },
+      {
+        "group_id": "fec830bc6065fb09bee1ff001fffe2bf1f3aee030c2e2cfcd42eb93cef88c3ae",
+        "disposition": "train_eligible_pending_admission",
+        "rows": 1,
+        "runs": 1,
+        "contents": 1,
+        "origins": {
+          "intermediate": 1
+        },
+        "old_splits": {
+          "train": 1
+        },
+        "row_ids": [
+          "run-group:f0e194bbfab4422cd282:deck:c05b0c4d2ad77171"
+        ]
+      }
+    ],
+    "totals": {
+      "development_anchor": {
+        "rows": 97,
+        "runs": 63,
+        "contents": 35,
+        "origins": {
+          "intermediate": 79,
+          "final-configured-candidate": 18
+        },
+        "card_versions": 112,
+        "card_names": 69
+      },
+      "train_eligible_pending_admission": {
+        "rows": 42,
+        "runs": 36,
+        "contents": 39,
+        "origins": {
+          "intermediate": 13,
+          "final-configured-candidate": 29
+        },
+        "card_versions": 130,
+        "card_names": 72
+      }
+    }
+  },
+  "final_registry_eligible_count": 47,
+  "final_registry_rejected_count": 110,
+  "final_rejected": [
+    {
+      "id": "run-group:016044a031542a7a95ad:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Flash of Steel",
+        "UNSUPPORTED_CARD:HandOfGreed",
+        "UNSUPPORTED_CARD:PanicButton",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:03869ca33f76f9685375:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:Madness"
+      ]
+    },
+    {
+      "id": "run-group:080240f5747d395efc6f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:0b6b50af8aca36367e6f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:0fcf5d9688a4c657cc87:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    },
+    {
+      "id": "run-group:140ccbe924ab77acbebd:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Discovery"
+      ]
+    },
+    {
+      "id": "run-group:1471c7fe3e6c265b23b2:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:HandOfGreed"
+      ]
+    },
+    {
+      "id": "run-group:1482c6b110e535fb874c:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Discovery"
+      ]
+    },
+    {
+      "id": "run-group:16b38517e4242938ae88:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Madness"
+      ]
+    },
+    {
+      "id": "run-group:1e700e323f866cc26cd0:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Blind",
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:Madness",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:1ec24dd4ecb402f82c36:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Good Instincts",
+        "UNSUPPORTED_CARD:Violence"
+      ]
+    },
+    {
+      "id": "run-group:25205448091f30b1b558:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:PanicButton",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:274691e9f61e82281a1f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly",
+        "UNSUPPORTED_CARD:HandOfGreed",
+        "UNSUPPORTED_CARD:Magnetism",
+        "UNSUPPORTED_CARD:Mayhem"
+      ]
+    },
+    {
+      "id": "run-group:285d8bea7c6acdbf11b0:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Finesse"
+      ]
+    },
+    {
+      "id": "run-group:2a23a97ee1fa599d0039:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:2ad9a29adc946c652f52:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:2bc39fa137f49bd29ced:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Master of Strategy"
+      ]
+    },
+    {
+      "id": "run-group:2d98b1e08810f50b867b:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    },
+    {
+      "id": "run-group:2f68963a6982c2c806a7:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Pain",
+        "UNSUPPORTED_CARD:Parasite"
+      ]
+    },
+    {
+      "id": "run-group:30289ccf78fa2a81a8e3:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:J.A.X.",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:318f71585e18ff4cbaae:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:323ccc7cca158869a2ee:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Chrysalis",
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:Purity",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:32d1ec29c2ee30b98050:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Pain",
+        "UNSUPPORTED_CARD:Regret"
+      ]
+    },
+    {
+      "id": "run-group:332ecf8345e8659d4b2f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Discovery"
+      ]
+    },
+    {
+      "id": "run-group:33c70f66905a836d5918:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:349c55a39e526dbe8a7b:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell"
+      ]
+    },
+    {
+      "id": "run-group:35d5da0652c915c845d5:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:363c6cf60ff7b9e4b76b:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Trip"
+      ]
+    },
+    {
+      "id": "run-group:3a4d5f7cd5778f7c3b36:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:3f59e5d32006abf5ab88:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Trip"
+      ]
+    },
+    {
+      "id": "run-group:43d60a9dabf569cb9740:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:4a50927b4670b528f773:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Madness"
+      ]
+    },
+    {
+      "id": "run-group:4c6b349f1f374a42ec12:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite"
+      ]
+    },
+    {
+      "id": "run-group:4fd2323defbd9bf11443:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly",
+        "UNSUPPORTED_CARD:Mayhem"
+      ]
+    },
+    {
+      "id": "run-group:51eec4e1ba47369fe5e2:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Flash of Steel",
+        "UNSUPPORTED_CARD:Trip"
+      ]
+    },
+    {
+      "id": "run-group:5281122ea7160badfc05:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger",
+        "UNSUPPORTED_CARD:Trip"
+      ]
+    },
+    {
+      "id": "run-group:53c16194b16286bd892d:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:546440614bb2f5effa8f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell",
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Doubt",
+        "UNSUPPORTED_CARD:Shame",
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:552220a47ed28b8b8df7:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:56dabfeab38bafd85fea:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger",
+        "UNSUPPORTED_CARD:Secret Weapon"
+      ]
+    },
+    {
+      "id": "run-group:570d806d8b5cacd96a56:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Necronomicurse"
+      ]
+    },
+    {
+      "id": "run-group:59e6ade594f5ff999e8e:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Flash of Steel"
+      ]
+    },
+    {
+      "id": "run-group:5a118e8b89a99483b130:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Discovery"
+      ]
+    },
+    {
+      "id": "run-group:5ba42d6055d2ced8f960:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:5bade670577f01ea1632:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:63413f18719e98f2800a:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:63fd5a205e4d8b9434f5:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell",
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Doubt"
+      ]
+    },
+    {
+      "id": "run-group:658739f7ab9d60659b6e:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Clumsy",
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Flash of Steel",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:659a84776e1266e86c5d:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Flash of Steel",
+        "UNSUPPORTED_CARD:Good Instincts",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:6ab5ecf45b0a88a64df0:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Panache"
+      ]
+    },
+    {
+      "id": "run-group:6b0f44da8001dd663719:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Mayhem"
+      ]
+    },
+    {
+      "id": "run-group:6be7ca3c379bdb6019d2:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Regret",
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:6c219a536f2fd8bc7d30:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Deep Breath",
+        "UNSUPPORTED_CARD:Enlightenment",
+        "UNSUPPORTED_CARD:Master of Strategy",
+        "UNSUPPORTED_CARD:Secret Weapon"
+      ]
+    },
+    {
+      "id": "run-group:741b7c85f80e1ca362aa:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:791d67b4daf01a7e67cf:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:79cc161b4b335483b55e:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Flash of Steel"
+      ]
+    },
+    {
+      "id": "run-group:7c812ca46500fb5f6a41:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Parasite"
+      ]
+    },
+    {
+      "id": "run-group:7fed54b57ab672194647:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    },
+    {
+      "id": "run-group:80ee737329f042f572b5:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell"
+      ]
+    },
+    {
+      "id": "run-group:81e225f6963bf9d4de2e:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Panache",
+        "UNSUPPORTED_CARD:Purity",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:884462f149c7fb11dc6c:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell",
+        "UNSUPPORTED_CARD:PanicButton",
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:884bbe22ef7bae5bdcba:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Master of Strategy",
+        "UNSUPPORTED_CARD:Necronomicurse",
+        "UNSUPPORTED_CARD:Pain"
+      ]
+    },
+    {
+      "id": "run-group:8976b8dffb6ca02677d8:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:PanicButton",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:8c0643b808dff3ad2177:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Finesse",
+        "UNSUPPORTED_CARD:Purity",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:8db27ce2ad907224365f:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Pain",
+        "UNSUPPORTED_CARD:Violence"
+      ]
+    },
+    {
+      "id": "run-group:90231be7e61c0b398ecc:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell",
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Flash of Steel",
+        "UNSUPPORTED_CARD:Violence"
+      ]
+    },
+    {
+      "id": "run-group:90fa8af9e9f978aff937:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:HandOfGreed"
+      ]
+    },
+    {
+      "id": "run-group:91c83dc1897accd34a9d:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Clumsy"
+      ]
+    },
+    {
+      "id": "run-group:94fa3391031bf24d38e9:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Secret Weapon"
+      ]
+    },
+    {
+      "id": "run-group:99171439576ecb8a16ea:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Deep Breath",
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:9a4e818296cadde2c405:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Doubt",
+        "UNSUPPORTED_CARD:HandOfGreed"
+      ]
+    },
+    {
+      "id": "run-group:9aa1910fcbcdd4d38816:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bandage Up"
+      ]
+    },
+    {
+      "id": "run-group:9f433452d1a6e39eb36e:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:HandOfGreed",
+        "UNSUPPORTED_CARD:Necronomicurse",
+        "UNSUPPORTED_CARD:RitualDagger",
+        "UNSUPPORTED_CARD:Trip"
+      ]
+    },
+    {
+      "id": "run-group:a066308a795dedf381b5:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:a0b6191c6daf48fa8cb9:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:PanicButton",
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:a39dfae5334ba6097320:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Flash of Steel"
+      ]
+    },
+    {
+      "id": "run-group:a54366757119e0fb09ac:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Blind"
+      ]
+    },
+    {
+      "id": "run-group:a75a8cb44b6d07d2d160:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Injury",
+        "UNSUPPORTED_CARD:Shame",
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:afbd752735961454a0d5:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Panache"
+      ]
+    },
+    {
+      "id": "run-group:b2369c6719096d2afc57:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bite",
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:b3735c3670dd4d5e5d93:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Necronomicurse"
+      ]
+    },
+    {
+      "id": "run-group:b6175e52933ee15aff70:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:b8045ef282f29cd71ab4:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Dramatic Entrance",
+        "UNSUPPORTED_CARD:Flash of Steel"
+      ]
+    },
+    {
+      "id": "run-group:bc808a84b4989749af9b:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Panacea"
+      ]
+    },
+    {
+      "id": "run-group:bcb873ad5d194f1967a8:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Bandage Up"
+      ]
+    },
+    {
+      "id": "run-group:bd1499bdb2cf2a2ac81e:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:bebeecd213a33f1fe8e4:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:bf54bf22df13ddda78bc:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:c00c87a0e4e3d5396813:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles"
+      ]
+    },
+    {
+      "id": "run-group:c3b53d2230664169d80a:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    },
+    {
+      "id": "run-group:c57eab02bae3ed55c8d7:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis",
+        "UNSUPPORTED_CARD:Blind",
+        "UNSUPPORTED_CARD:CurseOfTheBell",
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Master of Strategy"
+      ]
+    },
+    {
+      "id": "run-group:c5e6088df0d91ef6cd14:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:PanicButton"
+      ]
+    },
+    {
+      "id": "run-group:ce58dcfb07ed7a09d435:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Panacea"
+      ]
+    },
+    {
+      "id": "run-group:cf94e4dc395d4e6004e0:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dramatic Entrance"
+      ]
+    },
+    {
+      "id": "run-group:d3f297926f31c2a351d5:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:da554fe39e95811ffbdb:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Dramatic Entrance",
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:dcbee8daed7563720dae:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:CurseOfTheBell"
+      ]
+    },
+    {
+      "id": "run-group:dea456b7df78ca1866db:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    },
+    {
+      "id": "run-group:df4e3889ce44dca3031d:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Clumsy"
+      ]
+    },
+    {
+      "id": "run-group:e6accfdebe74c83edfc9:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Madness"
+      ]
+    },
+    {
+      "id": "run-group:ec7667df669ed05ced93:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:eccf864a7be944653ec4:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Chrysalis"
+      ]
+    },
+    {
+      "id": "run-group:f0e194bbfab4422cd282:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Secret Technique"
+      ]
+    },
+    {
+      "id": "run-group:f180098ce551953fa215:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Dark Shackles",
+        "UNSUPPORTED_CARD:Flash of Steel"
+      ]
+    },
+    {
+      "id": "run-group:f1f4b8e45aa959f263ae:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Madness",
+        "UNSUPPORTED_CARD:Writhe"
+      ]
+    },
+    {
+      "id": "run-group:f2672b82929351d73ae6:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:Decay",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:f44fc7a8f3f0d2e83b73:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Clumsy",
+        "UNSUPPORTED_CARD:Discovery",
+        "UNSUPPORTED_CARD:Ghostly"
+      ]
+    },
+    {
+      "id": "run-group:f9a6cc34066c9e8290f9:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Decay"
+      ]
+    },
+    {
+      "id": "run-group:fcee9759ac5a5810427f:final-master-deck",
+      "blockers": [
+        "PERMANENT_CARD_VALUE_UNRECORDED:RitualDagger",
+        "UNSUPPORTED_CARD:RitualDagger"
+      ]
+    },
+    {
+      "id": "run-group:fd15e02a7af672ecabac:final-master-deck",
+      "blockers": [
+        "UNSUPPORTED_CARD:Apotheosis"
+      ]
+    }
+  ],
+  "limitations": [
+    "最终卡组只是新配置战斗候选，不是历史战斗入口；尚未reset/资源验收",
+    "未删牌、未补造永久实例值；未修改旧数据或eval_seeds；未进行训练"
+  ]
+}
