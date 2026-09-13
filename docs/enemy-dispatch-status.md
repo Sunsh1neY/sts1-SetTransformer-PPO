@@ -6,10 +6,10 @@
 
 | 检查点 | 状态 | 证据或限制 |
 |---|---|---|
-| 共同源码基线 | 已整理，待基线提交 SHA 写回 | EP3 成果源 `8f3d3c7...`；主工作树 dirty 成果已单独记录 |
+| 共同源码基线 | 已整理 | EP3 成果源 `8f3d3c7...`；共同代码/文档基线为 `29013d334c8ad6adeceea00dc29d442067bb982b`，主工作树 dirty 成果已单独记录 |
 | 后端补丁链 | 已验证 | 锁定后端 → 基础补丁 → 敌人增量补丁正向、逆向均可复现 |
 | 独立干净构建 | 已验证 | `sts2-enemy-baseline-backend` / `sts2-enemy-baseline-build`，契约指纹导入通过 |
-| A/B/C/D worktree | 已创建 | 四个目录均为干净 worktree，当前共同基线 `29013d334c...`；路径和后端指纹见下表 |
+| A/B/C/D worktree | 已创建 | 四个目录均从 `29013d334c...` 创建，随后快进到 R 的文档交接提交；路径和后端指纹见下表 |
 | 全卡共享接口 | 已只读核对 | 当前为 `unified-entity-interface-v4`；旧 handoff v1 哈希已刷新，尚未接入敌人生产入口 |
 | 字段审批 | 待用户批准 | 具体包见 `docs/enemy-field-approval.md`；等待不视为批准 |
 | 奖励 | 冻结 | 继续使用 `battle_reward_v1`，不增加金币、诅咒、掉落或辅助奖励 |
@@ -18,7 +18,7 @@
 
 ## 已创建的隔离目录
 
-| 组 | 顶层 HEAD | 分支 | 后端 HEAD | `json` | `pybind11` | build 目录 | build 状态 |
+| 组 | 创建时顶层 HEAD | 分支 | 后端 HEAD | `json` | `pybind11` | build 目录 | build 状态 |
 |---|---|---|---|---|---|---|---|
 | A | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-a` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-a/third_party/sts_lightspeed/build` | 已建立，未编译 |
 | B | `29013d334c8ad6adeceea00dc29d442067bb982b` | `codex/enemy-b` | `7476a81954020087da31d41d16fddf475746ec2d` | `0b345b20c888f7dc8888485768e4bf9a6be29de0` | `a2e59f0e7065404b44dfe92a28aca47ba1378dc4` | `C:/Users/19091/Desktop/sts2-enemy-b/third_party/sts_lightspeed/build` | 已建立，未编译 |
