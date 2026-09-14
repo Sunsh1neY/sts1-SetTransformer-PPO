@@ -51,7 +51,13 @@
 
 ## main 本地构建核验
 
-隔离工作区的源码、完整回归与逐卡诊断已通过。main 本地后端切换、原目录保留及实际加载核验另行补记，未完成时不作为已通过证据。
+环境代码提交 `65248a2` 已快进合入本地 main。随后在 main 的 `third_party/sts_lightspeed` 从锁定上游与两层补丁完成独立编译，实际导入 `IroncladExpandedBattleEnv` 和 `EnemyPotionBattleEnv` 成功；三个后端内容指纹全部匹配。main 的 26 个编译输入文件与隔离验收版本的换行归一化内容相同。
+
+main 实际运行的最终复验为 **1,345 项 CPU 回归通过**（61.32 秒，0 失败、0 跳过），另行执行的 **C++ 夹具 1 项通过**（2.13 秒）。本机后端 SHA-256 为 `2c3256c28c5e3701e2705ec297f07017ce2f36a5230b7da682cdf78f061ea28c`；原五遭遇采集器的后端指纹已绑定到这个实际构建，范围未扩大。日志为 `reference/act12-main-build.log`、`reference/act12-main-cpu-regression.log`、`reference/act12-main-cpp-status.log`，运行定位与保留检查为 `reference/act12-main-runtime.json`。
+
+旧后端完整保存在 `third_party/sts-lightspeed-before-act12-20260914`，原 1,414 个非 Git 元数据文件的 SHA 全部一致。原交接说明仍为未提交文件、内容未修改；A 路径工作区的所有已跟踪文件和后端二进制哈希与本轮开始时一致。诊断原始记录和相关日志已复制到 main 的 ignored reference 目录。
+
+主目录构建准备曾失败一次：旧集成副本的子模块借用了原 main 的 Git 对象位置，旧目录移动后引用暂时失效。已在原路径恢复借用的对象存储，新 main 子模块另建独立对象副本，两个锁定子模块 HEAD 再次核对通过。此问题属于依赖位置，未改写旁支代码或旧构建；现已解除。当前无未解决阻塞，尚未 push。
 
 ## 一手机制仲裁
 

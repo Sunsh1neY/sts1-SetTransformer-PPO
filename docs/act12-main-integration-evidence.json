@@ -2116,5 +2116,40 @@
     "normalized_content_matched": true,
     "log": "reference/act12-patch-replay.json",
     "log_sha256": "38992fb5616beafa36ebea279724d2463a3077a0b79daf95f1142e95b29c6320"
+  },
+  "main_validation": {
+    "source_commit": "65248a2a103ffea1f957cf9a4007290bf8555e18",
+    "backend_path": "C:\\Users\\19091\\Desktop\\sts2\\third_party\\sts_lightspeed\\build\\slaythespire.cp313-win_amd64.pyd",
+    "backend_sha256": "2c3256c28c5e3701e2705ec297f07017ce2f36a5230b7da682cdf78f061ea28c",
+    "runtime_contract_sha256": "a6886979761454030fcc10f0c5059b5e6d26f8e4992f5dedda7d1cdae1e8fe74",
+    "registry_sha256": "da0e5801316135ed798b17fe8b9bc94ab99bc53206f53ad0a83f0f3e46fb22da",
+    "entity_contract_sha256": "50baba6d7ee0e8ed0b00f2612d29ab5a111238c30adab9680efd543c8307e0e7",
+    "encounters": 46,
+    "old_backend_backup": "C:\\Users\\19091\\Desktop\\sts2\\third_party\\sts-lightspeed-before-act12-20260914",
+    "old_backend_verified_files": 1414,
+    "isolated_source_files_matched": 26,
+    "handoff_preserved": true,
+    "a_path_tracked_files_and_backend_preserved": true,
+    "cpu_regression": {
+      "passed": 1345,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 61.32,
+      "log": "reference/act12-main-cpu-regression.log",
+      "log_sha256": "ba464fcf261a3c87f37c9cd58e92bb61aabc637d3dc99a8eca4fee8396b5a903"
+    },
+    "cpp_fixture": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 2.13,
+      "log": "reference/act12-main-cpp-status.log",
+      "log_sha256": "29f88714abdcada79d768ae5bc5658004c9f9e2788440078c73dd65cbbf81949"
+    },
+    "build_log": "reference/act12-main-build.log",
+    "build_log_sha256": "133a1fbb7170505605de85fe28cbccda5e3b39341a1c31582e72bc4ef4cb6caa",
+    "old_backend_had_full_card_entry": false,
+    "old_backend_had_enemy_entry": false,
+    "borrowed_dependency_path_issue": "resolved-preserving-existing-workspaces"
   }
 }

@@ -12,7 +12,7 @@
   "termination_rule_version": "unified-entity-runtime-guards-v3",
   "training_admitted": false,
   "entity_contract_sha256": "50baba6d7ee0e8ed0b00f2612d29ab5a111238c30adab9680efd543c8307e0e7",
-  "backend_sha256": "6c61b577a8c9757a59c9794d8dd799843073417dd9452031ccad21493ec0b8ff",
+  "backend_sha256": "2c3256c28c5e3701e2705ec297f07017ce2f36a5230b7da682cdf78f061ea28c",
   "encounters": [
     "JAW_WORM",
     "EXORDIUM_THUGS",
