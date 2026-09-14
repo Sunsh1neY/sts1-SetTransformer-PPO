@@ -9,6 +9,8 @@
 
 ## 当前进度（2026-09-14：第一、二幕统一全卡环境）
 
+- 用户随后授权桌面仓库清理：当前仅保留 main 工作树及本地分支；辅助目录、A 路径训练产物与全部旧分支历史已归档至 reference/desktop-repo-archive-20260914。恢复方法见 docs/desktop-repo-cleanup-2026-09-14.md；A 路径并未因此合入 main，旧桌面路径不再有效。
+
 - 按决策 E12，IroncladEnv 全卡入口已补齐第一幕 20 个常规遭遇及 2 个事件变体，第二幕 19 个常规遭遇及 3 个事件战斗；另保留第三幕 MAW/TRANSIENT。75 类/150 版本，CARD116/ENEMY774 和既有动作、奖励语义不变。
 - 修复第一幕 Boss 房间分类、六火亡魂 Burn+ 注册缺口、构建头文件顺序及工作区换行指纹漂移。隔离工作区 CPU 回归 1345 项与独立 C++ 夹具 1 项通过；6600 局逐卡遭遇诊断零异常，203 局明确预算截断。证据见 docs/act12-main-integration-report.md。
 - 已本地合入 main 并独立重建后端；main CPU 1345 项、独立 C++ 夹具 1 项复验通过。旧构建完整保留于 third_party/sts-lightspeed-before-act12-20260914，未 push。正式训练准入仍关闭，原五遭遇采集器、A 路径分支与旧实验维持各自边界。
