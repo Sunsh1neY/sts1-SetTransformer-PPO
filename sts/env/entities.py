@@ -340,12 +340,14 @@ def encode_observation(obs):
     return EntitySample(tokens, edges, candidates, routes, held)
 
 
-def collate(samples, *, heads=4, resources=None):
+def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False):
     """只按本批实际最大长度补齐，资源越界整批拒绝，路由信息不进入tensor。"""
     limits = CONTRACT["resources"] if resources is None else resources
     if not samples:
         raise ValueError("不能编码空批次")
     b, n, a = len(samples), max(len(s.tokens) for s in samples), max(len(s.candidates) for s in samples)
+    if allow_empty_candidates:
+        a = max(1, a)
     if n < 1 or a < 1 or n > limits["max_entities"] or a > limits["max_candidates"] or b * heads * n * n > limits["max_attention_elements"]:
         raise ValueError("统一实体批次超出资源边界；必须拆分或重设资源契约，不能丢弃实体")
     batch = {"types": torch.zeros(b, n, dtype=torch.long), "entity_valid": torch.zeros(b, n, dtype=torch.bool),

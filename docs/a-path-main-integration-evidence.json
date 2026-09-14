@@ -1,0 +1,38 @@
+{
+  "schema": "a-path-main-integration-v1",
+  "archived_parent": "2f3beb94433a159106934a6459eebdc4bcf5c421",
+  "pool_changed_keys": [
+    "runtime_contract_hash",
+    "registry_hash",
+    "source_hashes",
+    "payload_sha256"
+  ],
+  "training_contents": 39,
+  "source_groups": 33,
+  "registered_training_configurations_real_step": 390,
+  "pool_sha256": "d782408108eed630dfbd8152423be57bcfed86b78069962793a4ea9ad93225b6",
+  "parameters": 261506,
+  "sab_blocks": 4,
+  "new_training_run_started": false,
+  "verification": {
+    "cpu": {
+      "passed": 1379,
+      "deselected": 1,
+      "seconds": 69.56
+    },
+    "cpp": {
+      "passed": 1,
+      "seconds": 2.14
+    },
+    "cuda": {
+      "passed": 1,
+      "deselected": 4,
+      "seconds": 18.8
+    },
+    "final_pool_cpu": {
+      "passed": 4,
+      "deselected": 1,
+      "seconds": 4.98
+    }
+  }
+}

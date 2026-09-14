@@ -7,13 +7,13 @@
 - 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 **STS1**。
 - 排期与止损以 `spec-v6.md` §9/§10 为准；学习目标与方法见 `docs/learning-path-v2.md`，`学习路径.md` 为旧版历史存档。
 
-## 当前进度（2026-09-14：第一、二幕统一全卡环境）
+## 当前进度（2026-09-14：A 路径成为 main 主线）
 
-- 用户随后授权桌面仓库清理：当前仅保留 main 工作树及本地分支；辅助目录、A 路径训练产物与全部旧分支历史已归档至 reference/desktop-repo-archive-20260914。恢复方法见 docs/desktop-repo-cleanup-2026-09-14.md；A 路径并未因此合入 main，旧桌面路径不再有效。
-
-- 按决策 E12，IroncladEnv 全卡入口已补齐第一幕 20 个常规遭遇及 2 个事件变体，第二幕 19 个常规遭遇及 3 个事件战斗；另保留第三幕 MAW/TRANSIENT。75 类/150 版本，CARD116/ENEMY774 和既有动作、奖励语义不变。
-- 修复第一幕 Boss 房间分类、六火亡魂 Burn+ 注册缺口、构建头文件顺序及工作区换行指纹漂移。隔离工作区 CPU 回归 1345 项与独立 C++ 夹具 1 项通过；6600 局逐卡遭遇诊断零异常，203 局明确预算截断。证据见 docs/act12-main-integration-report.md。
-- 已本地合入 main 并独立重建后端；main CPU 1345 项、独立 C++ 夹具 1 项复验通过。旧构建完整保留于 third_party/sts-lightspeed-before-act12-20260914，未 push。正式训练准入仍关闭，原五遭遇采集器、A 路径分支与旧实验维持各自边界。
+- 用户依 I5 明确 A 路径是后续主要方向，已合入归档的模型、Agent、独立采集池和联合 PPO。默认链路为 scripts/run-a-path-ppo.py → sts/train/apath.py → sts/env/apath.py → 全卡 C++ 后端；模型为 sts/models/apath.py。后续功能与学习文档沿此链路推进，旧 Unified 66 动作及 Comparison/MLP 保留历史身份。
+- 维持四层 SAB、64 维、4 头、FF128、单 seed PMA、来源与条件目标两阶段分布、联合 log-prob/PPO 和精确熵。来源组均匀采样，完整 rollout 全局 shuffle，内容分组只用于诊断。
+- 全卡 A20 环境支持 75 类/150 版本、第一二幕 44 遭遇及已有第三幕 MAW/TRANSIENT；训练仍限独立注册池的 39 卡组、两条件、五遭遇。训练池已绑定 main 新环境指纹，未扩大来源或改奖励。
+- 主线整合与实际验证见 docs/a-path-main-integration-report.md。旧检查点、辅助目录和旧分支历史保存在 reference/desktop-repo-archive-20260914；恢复说明见 docs/desktop-repo-cleanup-2026-09-14.md。旧桌面路径不再有效，旧检查点不可跳过指纹校验续训。
+- 本次合并只进行短工程验证，不自动重启四小时训练或扩池；eval_seeds、历史实验和原交接说明保持不变。
 
 ## 2026-09-13进度（环境集成历史）
 
