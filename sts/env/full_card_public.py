@@ -182,7 +182,7 @@ class PublicBattleEnv:
         if any(key not in candidate for key in runtime_keys[:-1]):
             raise ValueError("场景缺少必填入场字段")
         if _integer(candidate["act"], "act") not in (1, 2, 3) or candidate["character"] != "IRONCLAD":
-            raise ValueError("只支持Ironclad第一幕入口")
+            raise ValueError("只支持Ironclad第一至第三幕入口")
         payload = {key: candidate[key] for key in runtime_keys if key in candidate}
         self._finished = True
         observation = self._normalize_observation(json.loads(self._env.reset_scene(json.dumps(payload, allow_nan=False), environment_seed)))

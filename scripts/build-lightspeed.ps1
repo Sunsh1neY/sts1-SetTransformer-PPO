@@ -97,13 +97,16 @@ if ($ExtraPatch -and -not $extraAlreadyApplied) {
 if ($ExtraPatch) {
     Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-ironclad-contract.py'))
 }
+if (Test-Path -LiteralPath (Join-Path $sourceDir 'bindings/enemy-potion-env.cpp')) {
+    Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-enemy-potion-contract.py'))
+}
 # 新公开环境的动作/容量与Python共用单一JSON契约。
 Invoke-Checked $pythonPath @((Join-Path $PSScriptRoot 'generate-public-contract.py'))
 
 $previousPath = $env:PATH
 try {
     $env:PATH = "$Toolchain;$previousPath"
-    $launcher = 'cmd;/c;' + ((Join-Path $PSScriptRoot 'lightspeed-gxx-wrap.bat') -replace '\\', '/')
+    $launcher = 'cmd;/c;' + (Join-Path $PSScriptRoot 'lightspeed-gxx-wrap.bat').Replace('\', '/')
     Invoke-Checked $cmake @('-S', $sourceDir, '-B', $buildDir, '-G', 'Ninja',
         '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5',
         "-DCMAKE_MAKE_PROGRAM=$ninja", "-DCMAKE_CXX_COMPILER=$configuredCompiler",

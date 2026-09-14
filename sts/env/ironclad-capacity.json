@@ -1,8 +1,8 @@
 {
   "schema": "ironclad-capacity-v1-integrated-v1",
   "scope": "historical-five-encounters-on-integrated-backend",
-  "registry_sha256": "5e24cf264ee72cdfe4226df8e077e9b93e0e34fd2293edc4efb0f178573020e6",
-  "runtime_contract_sha256": "91ee4851930e21854d51bc66872295302260716c70bfc42dc2ee38c2252d43ae",
+  "registry_sha256": "da0e5801316135ed798b17fe8b9bc94ab99bc53206f53ad0a83f0f3e46fb22da",
+  "runtime_contract_sha256": "a6886979761454030fcc10f0c5059b5e6d26f8e4992f5dedda7d1cdae1e8fe74",
   "card_entities": 64,
   "initial_cards": 49,
   "truncate_at": 50,

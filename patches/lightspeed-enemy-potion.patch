@@ -1096,10 +1096,10 @@ index 0000000..557f685
 +namespace sts { void registerEnemyPotionBattleEnv(pybind11::module_ &module); }
 diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
 new file mode 100644
-index 0000000..c89aeaf
+index 0000000..d0e9ca4
 --- /dev/null
 +++ b/bindings/integrated-card-env.cpp
-@@ -0,0 +1,700 @@
+@@ -0,0 +1,701 @@
 +#include "integrated-card-env.h"
 +#include "integrated-public-config.h"
 +#include "ironclad-contract-config.h"
@@ -1587,12 +1587,13 @@ index 0000000..c89aeaf
 +        const int hp = strictInt(p, "hp", 1, maxHp);
 +        const int gold = strictInt(p, "gold", 0, 32767);
 +        gc_ = std::make_unique<GameContext>(CharacterClass::IRONCLAD, seed, ascension);
-+        const int expectedAct = (encounter == ME::MAW || encounter == ME::TRANSIENT) ? 3 : ((encounter >= ME::SPHERIC_GUARDIAN && encounter <= ME::CHAMP) || encounter == ME::COLOSSEUM_EVENT_SLAVERS || encounter == ME::COLOSSEUM_EVENT_NOBS || encounter == ME::MASKED_BANDITS_EVENT) ? 2 : 1;
++        const auto encounterIndex = std::find(IRONCLAD_ENCOUNTER_NAMES.begin(), IRONCLAD_ENCOUNTER_NAMES.end(), encounterName) - IRONCLAD_ENCOUNTER_NAMES.begin();
++        const int expectedAct = IRONCLAD_ENCOUNTER_ACTS[encounterIndex];
 +        if (strictInt(scene, "act", 1, 3) != expectedAct || floor < 1 + (expectedAct-1)*17 || floor > expectedAct*17)
 +            throw std::invalid_argument("幕、楼层与集成遭遇不一致");
 +        gc_->act = expectedAct;
 +        gc_->floorNum = floor;
-+        gc_->curRoom = (encounter == ME::AUTOMATON || encounter == ME::COLLECTOR || encounter == ME::CHAMP) ? Room::BOSS : elite ? Room::ELITE : Room::MONSTER;
++        gc_->curRoom = isBossEncounter(encounter) ? Room::BOSS : elite ? Room::ELITE : Room::MONSTER;
 +        gc_->info.encounter = encounter;
 +        gc_->regainControlAction = [](GameContext &) {}; // 单场出口，不进入地图或下一场
 +        // 不使用随机地图上的燃烧坐标假装真实入口条件。

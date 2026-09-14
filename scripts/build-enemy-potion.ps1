@@ -11,12 +11,8 @@ if (Test-Path (Join-Path $source 'bindings/enemy-potion-env.cpp')) {
     $installed=$true
 }
 if (-not $installed) {
-    & (Join-Path $PSScriptRoot 'build-lightspeed.ps1') -Python $Python -Jobs $Jobs
+    & (Join-Path $PSScriptRoot 'build-lightspeed.ps1') -Python $Python -Jobs $Jobs -ExtraPatch $patch
     if ($LASTEXITCODE -ne 0) { throw '基础构建失败。' }
-    git -C $source apply --check $patch
-    if ($LASTEXITCODE -ne 0) { throw '增量补丁不适用；不覆盖已有改动。' }
-    git -C $source apply $patch
-    if ($LASTEXITCODE -ne 0) { throw '应用增量补丁失败。' }
 }
 & $Python (Join-Path $PSScriptRoot 'generate-public-contract.py')
 if ($LASTEXITCODE -ne 0) { throw '基础契约生成失败。' }
@@ -42,7 +38,7 @@ try {
     if (-not (Test-Path -LiteralPath $cachePath)) {
         $pythonPath=(& $Python -c 'import sys; print(sys.executable)').Trim()
         if ($LASTEXITCODE -ne 0) { throw 'Python路径读取失败' }
-        $launcher='cmd;/c;' + ((Join-Path $PSScriptRoot 'lightspeed-gxx-wrap.bat') -replace '\\','/')
+        $launcher='cmd;/c;' + (Join-Path $PSScriptRoot 'lightspeed-gxx-wrap.bat').Replace('\','/')
         & C:/msys64/mingw64/bin/cmake.exe -S $source -B $buildDir -G Ninja '-DCMAKE_BUILD_TYPE=Release' '-DCMAKE_POLICY_VERSION_MINIMUM=3.5' '-DCMAKE_MAKE_PROGRAM=C:/msys64/mingw64/bin/ninja.exe' '-DCMAKE_CXX_COMPILER=C:/msys64/mingw64/bin/g++.exe' "-DCMAKE_CXX_COMPILER_LAUNCHER=$launcher" "-DPYTHON_EXECUTABLE=$pythonPath"
         if ($LASTEXITCODE -ne 0) { throw '新路径CMake配置失败' }
     }
@@ -51,6 +47,6 @@ try {
     foreach ($dll in @('libstdc++-6.dll','libgcc_s_seh-1.dll','libwinpthread-1.dll')) {
         Copy-Item -LiteralPath (Join-Path 'C:/msys64/mingw64/bin' $dll) -Destination $buildDir -Force
     }
-    & $Python -c 'import sys; sys.path.insert(0,sys.argv[1]); import slaythespire as s; assert hasattr(s,"EnemyPotionBattleEnv"); print("enemy/potion import OK")' (Join-Path $source 'build')
+    & $Python -c 'import hashlib,json,pathlib,sys; sys.path.insert(0,sys.argv[1]); import slaythespire as s; root=pathlib.Path(sys.argv[2]); assert hasattr(s,"EnemyPotionBattleEnv") and hasattr(s,"IroncladExpandedBattleEnv"); checks={"enemy_potion_contract_sha256":"enemy-potion-contract.json","IRONCLAD_CONTRACT_SHA256":"ironclad-expansion-contract.json","IRONCLAD_REGISTRY_SHA256":"ironclad-registry.json"}; assert all(getattr(s,key,None)==hashlib.sha256((root/"sts/env"/name).read_bytes()).hexdigest() for key,name in checks.items()); print(json.dumps({"backend":s.__file__,"fingerprints":"matched"}))' (Join-Path $source 'build') $root
     if ($LASTEXITCODE -ne 0) { throw '独立入口导入失败。' }
 } finally { $env:PATH=$oldPath }

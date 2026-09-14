@@ -124,6 +124,6 @@ def test_training_and_other_encounters_remain_rejected():
     with pytest.raises(ValueError, match="正式采集"):
         env.reset(scene(), 982001, diagnostic=True, purpose="train")
     candidate = scene()
-    candidate["encounter"] = "CULTIST"
+    candidate["encounter"] = "TIME_EATER"
     with pytest.raises(ValueError, match="遭遇"):
         env.reset(candidate, 982001, diagnostic=True)

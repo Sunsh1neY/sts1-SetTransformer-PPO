@@ -6,3 +6,12 @@ eval_seeds.json -text
 
 # 历史审计清单绑定实际原始字节，保留已核验的混合换行。
 scripts/audit-public-corpus.py -text whitespace=cr-at-eol
+
+# 统一扩展运行指纹必须在不同工作区保持相同换行。
+sts/env/ironclad-expansion-contract.json text eol=lf
+sts/env/ironclad-registry.json text eol=lf
+sts/env/ironclad-capacity.json text eol=lf
+sts/env/unified-entity-capacity.json text eol=lf
+sts/models/unified-entity-contract.json text eol=lf
+sts/models/comparison.py text eol=lf
+sts/train/comparison.py text eol=lf

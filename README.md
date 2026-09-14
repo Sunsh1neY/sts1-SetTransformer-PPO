@@ -8,7 +8,13 @@ Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set
 
 > 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 STS1。
 
-## 当前状态（最小切片基础环境）
+## 当前统一扩展环境（2026-09-14）
+
+全卡开发入口 `sts.env.ironclad.IroncladEnv` 已覆盖 Ironclad 75 类/150 版本、第一幕 20 个常规遭遇与 2 个事件变体、第二幕 19 个常规遭遇与 3 个事件战斗，均为 A20 单场战斗。第一、二幕共 44 个遭遇；另保留已有第三幕 MAW/TRANSIENT。接口与实测边界见 [第一、二幕整合报告](docs/act12-main-integration-report.md)，逐遭遇和逐版本结果见 [证据索引](docs/act12-main-integration-evidence.json)。
+
+统一扩展用 `scripts/build-enemy-potion.ps1 -Python python -Jobs 1` 构建，以 `IroncladEnv.reset(scene, seed, diagnostic=True)` 进入。构建会核对运行指纹；旧后端不能只靠合并 Python 文件获得全卡支持。本次是环境工程验收，正式训练准入仍关闭；原五遭遇采集器和 A 路径训练范围保持各自版本。
+
+## 冻结的最小切片基础环境
 
 - 正式后端：`sts_lightspeed` C++，当前只开放 A0 的 Jaw Worm、Cultist、双虱遭遇。Python 模拟器保留教学及局部回归用途。
 - 运行接口：项目包入口 `LightspeedBattleEnv.reset/step/action_mask/observation`，内部复用 C++ `IroncladBattleEnv`。动作编号为 `slot * 3 + target`，30 为结束回合，无目标卡只使用目标 0。

@@ -1,4 +1,4 @@
-"""全卡扩展的独立开发入口；按里程碑验收，当前仅继承旧内容。"""
+"""Ironclad 全卡与已验收遭遇的统一战斗开发入口。"""
 from __future__ import annotations
 
 import hashlib
