@@ -1,154 +1,133 @@
 # STS RL Agent
 
-Headless《杀戮尖塔 1》Ironclad 战斗环境 + A/B 两族模型对照（Set Transformer + PPO vs Decision Transformer）。正式训练后端为 lightspeed C++，Python 模拟器保留教学与验证用途。真实目标：通过工程实践理解 Transformer 原理，游戏是载体。
+基于《杀戮尖塔 1》Ironclad 的强化学习项目：用无界面的 C++ 战斗环境，研究 Set Transformer + PPO，并按计划推进 Decision Transformer 对照。真实目标是通过工程实践理解 Transformer 原理，游戏是载体。Python 模拟器保留教学与局部验证用途。
 
-**唯一执行依据：[`spec-v6.md`](spec-v6.md)**（2026-09-08 双任务奖励修订，D27）。`spec-v5.md` 及更早版本已冻结为历史方案，仅供对照。
+**执行依据：[spec-v6.md](spec-v6.md)**；决策变更见 [决策日志](docs/decisions.md)。学习目标与理解验收见 [学习路径 v2](docs/learning-path-v2.md)。`sts2` 是历史目录名，实际项目规格为 **STS1**；v5 及更早方案只作历史参考。
 
-**学习入口：[《STS RL 学习路径 v2》](docs/learning-path-v2.md)**：这个项目应学到什么、各阶段怎样验证理解，以及现在从哪里开始。
+## 当前状态（2026-09-14）
 
-> 目录名 `sts2` 是 v3 时代（STS2 方案研究）的历史遗留，不改名；实际规格来源是 STS1。
+主分支已完成第一、二幕统一全卡环境整合，并在主目录独立重建、验收实际 C++ 后端。
 
-## 当前统一扩展环境（2026-09-14）
+| 范围 | 已完成与边界 |
+|---|---|
+| Ironclad 卡牌 | 75 类、150 个基础/升级版本 |
+| 第一幕 | 20 个常规遭遇 + 2 个事件变体 |
+| 第二幕 | 19 个常规遭遇 + 3 个事件战斗 |
+| 统一全卡入口 | `sts.env.ironclad.IroncladEnv`；第一、二幕合计 44 个遭遇，另保留第三幕 MAW/TRANSIENT，共 46 个 |
+| 环境协议 | A20 单场战斗；逐实体观测、合法动作路由和二次选牌；CARD116 / ENEMY774 |
+| 最新本机回归 | 清理辅助仓库后，CPU 1,345 项通过，独立 C++ 夹具 1 项通过；均无失败、无跳过 |
+| 逐卡遭遇诊断 | 6,600 局、零异常；6,397 局自然终止，203 局动作预算截断 |
+| 正式训练范围 | 全卡入口仍为 `training_admitted=false`，须显式 `diagnostic=True`；原五遭遇采集器范围未扩大 |
 
-全卡开发入口 `sts.env.ironclad.IroncladEnv` 已覆盖 Ironclad 75 类/150 版本、第一幕 20 个常规遭遇与 2 个事件变体、第二幕 19 个常规遭遇与 3 个事件战斗，均为 A20 单场战斗。第一、二幕共 44 个遭遇；另保留已有第三幕 MAW/TRANSIENT。接口与实测边界见 [第一、二幕整合报告](docs/act12-main-integration-report.md)，逐遭遇和逐版本结果见 [证据索引](docs/act12-main-integration-evidence.json)。
+本轮修复了第一幕 Boss 房间分类、六火亡魂产生 Burn+ 的注册缺口，以及构建顺序和换行导致的指纹漂移。详见 [整合报告](docs/act12-main-integration-report.md)及 [逐遭遇/逐版本证据](docs/act12-main-integration-evidence.json)。6,600 局中有 5,934 局实际打出了待测卡版本；这些结果不代表所有卡牌组合与全部机制均已验证。
 
-统一扩展用 `scripts/build-enemy-potion.ps1 -Python python -Jobs 1` 构建，以 `IroncladEnv.reset(scene, seed, diagnostic=True)` 进入。构建会核对运行指纹；旧后端不能只靠合并 Python 文件获得全卡支持。本次是环境工程验收，正式训练准入仍关闭；原五遭遇采集器和 A 路径训练范围保持各自版本。
+### 模型与训练进度
 
-## 冻结的最小切片基础环境
+- **最小切片 S1–S5 已完成并冻结。** 三初始化训练、开发评估和精确恢复已有证据，见 [S4 报告](docs/ppo-s4-report.md)和 [S5 冻结](docs/ppo-s5-freeze.md)。
+- **固定环境 MLP/Set PPO 对照已完成。** 27 种中途卡组、5 个遭遇、两条件；MLP/Set 各两组，每组 70,656 个 transition。四组相对初始策略的开发回报均有改善证据，但 Set−MLP 区间包含 0，不能宣称 Set 架构占优。见 [训练与对照报告](docs/comparison-ppo-report.md)。这组结果不推广到当前全部遭遇。
+- **A 路径后续工程与训练产物已归档，尚未合入 main。** 选定设计为四层 64 维 SAB + PMA、两阶段来源/目标 Pointer 与联合 PPO；不能把 main 中已有的历史模型入口当作这一版本。恢复位置见下方归档说明。
+- **尚未完成：** A 路径在当前 main 上的整合验收、扩大训练范围的准入与验证、正式 Gate、完整 RunEnv，以及 Decision Transformer 对照。环境测试通过不等于策略学习或泛化验收通过。
 
-- 正式后端：`sts_lightspeed` C++，当前只开放 A0 的 Jaw Worm、Cultist、双虱遭遇。Python 模拟器保留教学及局部回归用途。
-- 运行接口：项目包入口 `LightspeedBattleEnv.reset/step/action_mask/observation`，内部复用 C++ `IroncladBattleEnv`。动作编号为 `slot * 3 + target`，30 为结束回合，无目标卡只使用目标 0。
-- 当前是独立战斗任务 `battle/minimal-v1/battle_reward_v1`：非终局 0；首次胜利 `1 + 0.5 * 退出HP / 最大HP`；失败及硬超时 0，γ=1、β=0。未来完整爬塔使用独立的 `run_reward_v1`，只在首次最终通关时得1；普通战斗胜利不能标成 run 通关（D27）。
-- 硬超时是任务内失败：返回 `terminated=true`、`truncated=false`、`info.timeout=1`，训练时不继续自举。
-- PPO 采样显式区分真终止与外部截断；外部截断用 reset 前最终观测自举但 GAE 不跨 reset。完整 RunEnv 尚未实现，当前只完成 run 奖励和版本契约，不能启动正式 run 训练。
-- 已确认模型设计：Set/DT选牌保留实体与动作的对应关系（D17）；状态只使用玩家可见信息（D19）。当前已实现D25最小切片MLP。
-- 当前输入协议已迁移为 D24 逐牌实体 V2：四区卡牌记录使用稳定注册 ID、location、升级与费用 known/valid 语义；Flatten/Token 共用同一准备路径，MLP内类别embedding与固定数值缩放已接入。
-- 现有真实游戏日志用于有限字段校准。当前不扩日志工具，缺少的字段明确记为未验证；后续更大范围测试发现差异后再处理（D20）。此状态不代表所有游戏机制已被证明正确。
-- `eval_seeds.json` 已固定；环境主 RNG 为 xorshift128+，洗牌临时使用 Java LCG，详见 [机制规格](docs/mechanics.md)。
+## 快速开始：统一全卡环境
 
-裁定与边界见 [决策日志](docs/decisions.md)；冻结的旧研究文档不作为实现依据。
+当前构建流程以 **Windows + MSYS2 mingw64 + Python** 为已验证环境；本机使用 Python 3.13。构建与运行必须使用同一个 Python 解释器。
 
-当前进度：Week 4 与 D24 实体迁移已收口；依 D25，Week 5–6 先在锁定的最小切片完成
-PPO+MLP 冒烟，再按机制批次扩中等档。S1/S2/S3工程已完成：首轮PPO训练262144步，
-300局开发诊断中平均回报1.4396对随机1.1775，配对差值CI为正；详见
-[PPO首轮报告](docs/ppo-minimal-report.md)。下一步是S4多初始化验证，再做S5冻结。
-M1 卡表来源审计已有初步记录，扩容实现暂不启动。
-任务拆解见 [MLP 冒烟计划](docs/mlp-smoke-plan.md)与
-[Week 5–6 计划](docs/week-5-6-plan.md)。
-
-2026-09-06 D24 实体版本机验收：**146 项测试全部通过**；四条路径各以 10000 个唯一训练配置重复三轮，异常、非法动作、硬超时与奖励契约错误均为 0，60 场完整轨迹重放一致。raw / dict / Flatten / Token 完整路径单核中位数约为 14702 / 5882 / 3841 / 3790 steps/s，均超过 Gate 1 的 2000 门槛。D25 S1 接入 MLP 模型契约后，完整回归为 **150 项通过，0 失败，0 跳过**。详见 [实体基础验收报告](docs/entity-foundation-report.md)。这些结果验证当前切片与模型基础接口，不代表策略已经学会或与真实游戏全部机制等价。
-
-2026-09-08 的 v5 历史完整回归为 **259通过，0失败，0跳过**；PPO已有单初始化学习证据，尚未验证跨初始化稳健性。v6 奖励迁移的最新验证见 [v6 奖励报告](docs/reward-v6-report.md)；环境扩建、完整 RunEnv、Set和DT仍在后续阶段。
-
-2026-09-08 的进度核验、边界修复与后续架构建议见
-[项目审核记录](docs/project-audit-2026-09-08.md)，其中区分完整回归、小规模冒烟和历史正式验收。
-
-## 评估种子
-
-- 评估 seed ∈ [0, 1000)，训练 seed ≥ 100000，`eval_seeds.json` 提交后**不可变**。
-- `eval_seeds.json` sha256：`38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c`
-- 重新生成（应字节级一致，哈希不变）：`python scripts/make_eval_seeds.py`
-
-## 快速开始
-
-```bash
-pip install -e ".[dev]"
-python -m pytest
-```
-
-完整测试需要先构建 C++ 扩展。只有 `test_cpp_env.py` 会在缺少扩展时主动跳过；适配器、
-wrapper 与模型集成测试仍要求真实后端，不能把跳过当作后端通过验收。尚未构建时，
-可以先运行独立的教学与验证工具测试：
-
-```bash
-python -m pytest tests/test_ordering.py tests/test_rng.py tests/test_replay.py tests/test_random_agent.py
-```
-
-`sts_lightspeed` 构建复现（Windows + MSYS2 mingw64 + Python）：先在 MSYS2 安装工具链。
+先在 MSYS2 安装工具链（默认位置 `C:/msys64/mingw64/bin`）：
 
 ```bash
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja
 ```
 
-然后在项目根目录的 PowerShell 中运行：
+然后在项目根目录的 PowerShell 中执行：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-lightspeed.ps1
-python -m pytest tests/test_cpp_env.py -q
+python -m pip install -e ".[dev]"
+./scripts/build-enemy-potion.ps1 -Python python -Jobs 1
 ```
 
-脚本按 [版本锁文件](scripts/lightspeed-lock.json) 拉取上游及 pybind11，应用 [本项目适配器补丁](patches/lightspeed-battle-env.patch)，构建扩展并复制运行时 DLL。重复运行会识别已应用补丁；遇到版本不符或补丁冲突会停止，保留本地改动。可用 `-Python`、`-Toolchain`、`-Jobs` 指定解释器、MSYS2 mingw64 的 bin 目录和并行编译数。本机验证使用 Python 3.13；扩展须用运行测试的同一 Python 构建。
+统一构建入口按 [版本锁](scripts/lightspeed-lock.json) 准备后端，应用基础及敌人集成补丁、生成契约并核对运行指纹。只有拉取 Python 源码或执行基础构建脚本，不能保证获得当前全卡后端。遇到已有源码冲突时脚本会停止并保留现场。
 
-原始 C++ 观测按固定容量导出，Python 规范层转成 `hand/draw_pile/discard_pile/exhaust_pile` 四个逐牌列表；非手牌区域只提供允许公开的无序多重集，不泄露抽牌顺序。手牌槽位行保留动作对应，但槽位号不作为卡牌语义特征。seed 和 RNG 计数只留在复现信息中。
-
-正式 Python 入口：
+以下示例创建一个第一幕 A20 战斗，并使用合法路由完成一次决策；同一路由接口也用于二次选牌：
 
 ```python
-from sts import (
-    Encounter,
-    FlattenWrapper,
-    LightspeedBattleEnv,
-    MaskedRandomAgent,
-    TokenWrapper,
-    run_episode,
-)
+from sts.env.ironclad import IroncladEnv
+from sts.env.entities import encode_observation
 
-env = LightspeedBattleEnv()
-observation = env.reset(100000, Encounter.TWO_LOUSE)
-action = int(observation["action_mask"].nonzero()[0][0])
+scene = dict(
+    entry_timing="pre_combat_initialization",
+    initialization_phase="before_destination_room_entry",
+    act=1, floor=8, character="IRONCLAD", ascension=20,
+    player=dict(hp=80, max_hp=80, gold=100),
+    deck=["Strike_R"] * 3 + ["Defend_R"] * 3
+         + ["Bash", "Headbutt", "True Grit+1", "Seeing Red"],
+    relics=[], potions=[None, None],
+    encounter="CULTIST", burning_elite=False,
+)
+env = IroncladEnv(128)
+observation = env.reset(scene, seed=100000, diagnostic=True)
+sample = encode_observation(observation)
+action = next(route for route, candidate in zip(sample.routes, sample.candidates)
+              if candidate.legal)
 observation, reward, terminated, truncated, info = env.step(action)
-# info 会记录 task_type/task_spec_id/reward_version、task_outcome、
-# termination_reason 与 reward_base/reward_train；这些字段不进入模型观测。
-
-flat_env = FlattenWrapper(LightspeedBattleEnv())
-flat_observation = flat_env.reset(100000, Encounter.TWO_LOUSE)
-
-token_env = TokenWrapper(LightspeedBattleEnv())
-token_observation = token_env.reset(100000, Encounter.TWO_LOUSE)
-
-# Agent 内部完成概率计算和抽样；接入层不持有 RNG 或游戏规则。
-agent = MaskedRandomAgent(seed=20260905)
-trace = run_episode(
-    token_env,
-    agent,
-    token_observation,
-)
 ```
 
-规范观测仅含 `hand/enemies/draw_pile/discard_pile/exhaust_pile/global/hand_mask/enemy_mask/action_mask`；字段、shape、dtype 与信息边界见 [观测接口契约](docs/observation-contract.md)。`info` 只供复现和调试，不进入模型。
+共享实体与动作接口见 [统一实体接口](docs/unified-entity-interface.md)。全卡场景准入以 [环境契约](sts/env/ironclad-expansion-contract.json) 和 [卡牌注册表](sts/env/ironclad-registry.json) 为准；`diagnostic=True` 不授予正式训练准入。
 
-现有校准工具：
+### 验证
+
+构建完成并准备好本地测试资料后，分别运行 CPU 回归和直接编译的 C++ 状态夹具：
 
 ```powershell
-python scripts/runlogger_replay.py
-python scripts/diff_harness.py 100000 12
+python -m pytest -q --ignore=tests/test_enemy_status_export.py
+python -m pytest -q tests/test_enemy_status_export.py
 ```
 
-回放工具读取本机游戏的现有日志；差分工具额外依赖开发用 `build/lightspeed_probe.exe`。这些工具会区分不一致、缺少证据和范围外跳过；不得以“没有可比样本”宣称机制验证通过。正式训练入口使用 C++ 适配器，不依赖此开发探针。
+全量测试部分依赖被 Git 忽略的本地资料；新 clone 不自带历史实验、原始语料或仲裁资料。缺少资料、后端或指纹不一致需要补齐对应依赖，不能把失败或跳过当作验收通过。尚未准备后端时，可先运行教学层测试：
 
-## 约定
-
-- 每个训练 run 必须落盘：commit 与实际源码快照/逐文件哈希、完整配置、任务/奖励/终止版本、环境及各 RNG seed、后端/扩展/数据指纹、`eval_seeds.json` 哈希、曲线和 checkpoint；PPO 另须保存优化器/计数/RNG/进行中任务恢复依据并验证续训一致性（[v6 §8.1](spec-v6.md)）。
-- 每个 run 记录 `eval_seeds.json` 的 sha256，保证跨周结论可比。
-- 决策变更先登记 `docs/decisions.md`；结算规格修订先登记 `docs/mechanics.md` 文末变更记录。
-
-
-## 公开派生战斗与规则基线
-
-新接口独立于旧31动作环境。先运行 `./scripts/build-lightspeed.ps1 -Jobs 3`；构建使用中央JSON契约与完整后端补丁。
-
-```python
-from sts.env.public_battle import PublicBattleEnv, load_scene_manifest
-from sts.agents.rule_agent import RuleAgent
-from sts.agents.public_runner import run_public_episode
-
-_, scenes = load_scene_manifest()
-env = PublicBattleEnv(max_actions=512)
-observation = env.reset(scenes[0], 100000)
-trace = run_public_episode(env, RuleAgent(), observation)
-print(trace["total_reward"], trace["terminated"], trace["truncated"])
+```powershell
+python -m pytest tests/test_ordering.py tests/test_rng.py tests/test_replay.py tests/test_random_agent.py
 ```
 
-`python scripts/diagnose-public-scenes.py`复核99场完整派生场景的随机/规则集成；
-`python scripts/diagnose-public-encounters.py`执行显式机制诊断。它们不替代正式Gate评估。
-当前工程验收与未完成的新MLP/Set训练迁移见 [公开环境实施报告](docs/public-battle-implementation.md)。
+重新执行第一、二幕逐卡诊断可使用以下命令；输出路径必须尚不存在：
+
+```powershell
+python scripts/diagnose-enemy-full-card.py --act12 --output reference/act12-local-diagnostic.json
+```
+
+## 保留的历史入口
+
+这些入口各有版本和证据范围，旧检查点须配合原源码、依赖和运行指纹使用。
+
+| 入口或阶段 | 用途与文档 |
+|---|---|
+| `LightspeedBattleEnv`、`FlattenWrapper`、`TokenWrapper` | A0 Jaw Worm、Cultist、双虱的冻结最小切片；31 动作协议，见 [观测契约](docs/observation-contract.md) |
+| `PublicBattleEnv`、`RuleAgent` | 公开派生场景与规则基线，见 [公开环境实施报告](docs/public-battle-implementation.md) |
+| 固定五遭遇 MLP/Set 对照 | 相同信息与 66 动作的历史对照，见 [M3 训练范围](docs/comparison-m3-training.md) |
+| 统一实体扩展 | 全卡环境的实体表示和动作路由，见 [实体工程报告](docs/unified-entity-report.md) |
+
+早期报告中的“下一步 S4/S5”“Set 尚未实现”以及旧测试数量属于当时快照；当前状态以上方进度为准。
+
+## 主目录与归档
+
+桌面 STS 项目已整理为一个 `sts2` 主目录，本地仅登记 `main` 工作树和分支。辅助目录、A 路径训练检查点、未提交后端修改及旧分支历史完整保留在本机：
+
+```text
+reference/desktop-repo-archive-20260914/
+├── all-refs.bundle          # 清理前的完整 Git 历史
+├── manifest.json            # 原路径、提交和逐文件哈希
+├── original-directories/    # 六个原目录，含旧实验与后端
+└── *.zip                   # 已校验的目录压缩副本
+```
+
+详见 [清理与恢复说明](docs/desktop-repo-cleanup-2026-09-14.md)。归档属于本地文件快照，旧工作树指针和构建缓存不能直接当作当前可运行环境；继续旧实验前须按说明恢复并验证。
+
+`reference/`、`runs/`、`third_party/` 及检查点等被 Git 忽略，**普通 push 不会上传这些本地产物**。备份实验时需要额外保存它们。
+
+## 固定约定
+
+- 评估 seed ∈ [0, 1000)，训练 seed ≥ 100000；`eval_seeds.json` 提交后不可变，SHA-256 为 `38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c`。seed 不进入模型状态。
+- `battle_reward_v1`：非终局 0，首次胜利 `1 + 0.5 * 退出HP / 最大HP`，失败 0；γ=1、β=0。未来完整 run 使用独立奖励版本，普通战斗胜利不能记作全局通关。
+- 真终止不自举；外部截断使用 reset 前最终观测自举，GAE 不跨 reset。容量或诊断预算截断不能伪造成失败 0。
+- 合法动作由环境给出，掩码在 softmax 前应用；卡牌槽位仅用于动作对应，不作为卡牌语义特征。观测只使用允许公开的信息。
+- 每个训练 run 保存源码及后端指纹、配置、版本、seed、曲线与检查点；PPO 还须保存优化器、计数、RNG 和活动环境恢复依据，并验证续训一致性。
+- 规格变更先登记 [决策日志](docs/decisions.md)，机制结算以 [机制规格](docs/mechanics.md) 为准。历史测试、诊断和学习结果分别报告，不互相替代。
