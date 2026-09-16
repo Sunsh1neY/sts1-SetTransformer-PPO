@@ -1,5 +1,8 @@
 # STS RL Agent 项目方案 v6
 
+> **Current reading note (2026-09-16, I6):** This remains the active specification, read with its dated amendments and [decision log](docs/decisions.md). Early scope/status sections are historical where superseded by later decisions. The current A path is integrated; the immediate question is initial-versus-trained learning on its existing admitted pool. Mentor readability is now an accepted presentation goal. Relics and Act 1/2 combat fidelity are pending next-stage work, not permanently excluded or currently admitted. Older specifications are in [archive/](archive/README.md). English entry documents do not reset reward versions, budgets, schedules, or Gates.
+
+
 修订日期：2026-09-08。变更登记：[决策日志 D27](docs/decisions.md)。
 
 > **文档状态：当前唯一执行依据。** 以 v5 为底稿合并 D27 的双任务奖励、终止、自举、数据和版本契约；v5 冻结为历史方案。
@@ -783,3 +786,8 @@ v5 的历史方案条款不等于对应代码已经实现。除 §0.4 列明的�
 2026-09-14 环境范围补记：依决策日志 E12，将 Ironclad 全卡开发入口补齐第一幕 20 个常规遭遇及两个事件战斗变体，并复核第二幕 22 个遭遇后本地合入 main。仅单场战斗，模型输入与奖励语义不变；不据此扩大正式训练或原五遭遇采集容量证明。验收见 docs/act12-main-integration-report.md。
 
 2026-09-14 最新主线依 I5：A 路径模型、独立数据入口及联合 PPO 合入 main，成为后续开发默认方向。保留当前全卡/一二幕环境；训练仍限已批准的来源组均匀、两条件、五遭遇池。本次只做合并与工程验证，不自动扩池或重启历史训练预算。
+
+
+## 2026-09-16 research starting point (I6)
+
+See decision I6 for the owner-approved framing, English migration and documentation cleanup. This updates the earlier mentor-presentation exclusion and the permanent relic non-goal only as described there. Existing technical contracts and stop rules remain in force. The broader relic/Act 1–2 goal requires a separately verified implementation/admission scope; no new training or expansion is authorized by this cleanup.

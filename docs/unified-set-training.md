@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # 统一实体 Set 首轮训练
 
 2026-09-12 用户逐项确认，最终授权实现并训练。原比较版保留，不能改称符合原统一实体规格。

@@ -1,7 +1,10 @@
 """S3正式C++采样、原mask更新和精确恢复的整合回归。"""
 
 import json
+import hashlib
+import zipfile
 from dataclasses import replace
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -107,6 +110,13 @@ def test_拒绝错误预算奖励或seed配置(kwargs):
 
 def test_cli恢复核对python源码清单(tmp_path):
     metadata = record_metadata(tmp_path)
+    root = Path(__file__).resolve().parents[1]
+    with zipfile.ZipFile(tmp_path / "source.zip") as archive:
+        for name in ("spec-v6.md", "archive/spec-v4.md", "archive/spec-v5.md"):
+            assert archive.read(name) == (root / name).read_bytes()
+            assert hashlib.sha256(archive.read(name)).hexdigest() == metadata["source_manifest"][name]
+        assert "spec-v4.md" not in archive.namelist()
+        assert "spec-v5.md" not in archive.namelist()
     trainer = PPOTrainer(config())
     path = tmp_path / "checkpoint-0000.pt"
     trainer.save(path, metadata={"source_archive_sha256": metadata["source_archive_sha256"]})

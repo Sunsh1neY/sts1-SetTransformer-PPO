@@ -15,3 +15,7 @@ sts/env/unified-entity-capacity.json text eol=lf
 sts/models/unified-entity-contract.json text eol=lf
 sts/models/comparison.py text eol=lf
 sts/train/comparison.py text eol=lf
+
+# Preserve audited document-source bytes and migration hashes across checkouts.
+archive/** -text whitespace=cr-at-eol,-trailing-space,-blank-at-eof
+docs/plans/sts-relic-audit-and-import-plan-v1.md -text whitespace=cr-at-eol,-trailing-space,-blank-at-eof

@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # Week 4：把战斗状态变成可信的模型输入
 
 制定日期：2026-09-05。起点：Week 3 收官提交 `d2ff442`。

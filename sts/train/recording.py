@@ -77,10 +77,10 @@ def record_metadata(
 ) -> dict:
     """纯本地只读采集；产物写入本次新建run目录。"""
 
-    paths = [ROOT / name for name in ("pyproject.toml", "spec-v4.md", "eval_seeds.json", "AGENTS.md")]
-    for version in ("spec-v5.md", "spec-v6.md"):
-        if (ROOT / version).is_file():
-            paths.append(ROOT / version)
+    paths = [ROOT / name for name in (
+        "pyproject.toml", "spec-v6.md", "eval_seeds.json", "AGENTS.md",
+        "archive/spec-v4.md", "archive/spec-v5.md",
+    )]
     suffixes = {".py", ".json", ".patch", ".ps1", ".bat", ".yaml", ".txt"}
     for folder in ("sts", "scripts", "tests", "patches", "configs", "licenses"):
         paths.extend(path for path in (ROOT / folder).rglob("*") if path.suffix in suffixes)

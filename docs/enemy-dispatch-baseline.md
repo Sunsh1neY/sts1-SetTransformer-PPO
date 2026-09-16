@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # 敌人扩展共同基线
 
 日期：2026-09-13。负责人：R。状态：共同基线准备中，字段审批待用户裁决，未启动其它 agent，未运行正式训练。

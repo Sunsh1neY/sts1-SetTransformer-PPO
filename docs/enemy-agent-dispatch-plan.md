@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # 敌人续批多agent分发与验收计划
 
 日期：2026-09-13。状态：可分发的任务说明，尚未启动agent。唯一主交付目录：C:/Users/19091/Desktop/sts2-enemy-potion；分支codex/enemy-potion-expansion。本计划不代表新增敌人已经准入。

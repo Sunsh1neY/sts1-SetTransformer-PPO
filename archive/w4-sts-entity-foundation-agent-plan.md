@@ -4,7 +4,7 @@
 
 **你现在要学会的是：把一局战斗中能看到的信息，准确地整理成数字；再把 Agent 选出的数字，准确地送回游戏。** 本计划在此基础上保留“逐张卡牌 + 所在区域”的改造方向，帮助以后扩卡时少改输入代码。
 
-当前状态（2026-09-08 核对）：D24/P2–P5 工程迁移已完成，验收见 [实体基础报告](docs/entity-foundation-report.md)。本文保留最初的教学步骤和阶段记录；第 1 节表格是迁移前快照，不代表当前输入仍为计数版。工程完成不自动代表学习复盘完成。当前执行依据为 [spec-v6.md](spec-v6.md) 和 [决策日志](docs/decisions.md)；涉及现行接口的变更须先登记，再同步规格，最后改代码。
+当前状态（2026-09-08 核对）：D24/P2–P5 工程迁移已完成，验收见 [实体基础报告](../docs/entity-foundation-report.md)。本文保留最初的教学步骤和阶段记录；第 1 节表格是迁移前快照，不代表当前输入仍为计数版。工程完成不自动代表学习复盘完成。当前执行依据为 [spec-v6.md](../spec-v6.md) 和 [决策日志](../docs/decisions.md)；涉及现行接口的变更须先登记，再同步规格，最后改代码。
 
 ## 1. 先知道自己站在哪里
 
@@ -304,16 +304,16 @@ Gate 1 仍按现行规格 §5.1/§10：有限日志校准记录、关键结算�
 
 | 文件 | 用途 |
 |---|---|
-| [spec-v6.md](spec-v6.md) | 当前范围、周次、Gate 与止损规则 |
-| [docs/decisions.md](docs/decisions.md) | D5、D16–D23；先登记表示迁移，不能覆盖旧证据 |
-| [docs/observation-contract.md](docs/observation-contract.md) | 现有字段、shape、可见性与动作约定 |
-| [sts/env/lightspeed.py](sts/env/lightspeed.py) | 正式 C++ 到 Python 的观测入口 |
-| [sts/env/wrappers.py](sts/env/wrappers.py) | 当前双 wrapper 与共用编码 |
-| [sts/agents/masked_policy.py](sts/agents/masked_policy.py) | 掩码概率与决策接口 |
-| [sts/agents/episode_runner.py](sts/agents/episode_runner.py) | 环境闭环 |
-| [docs/week-4-plan.md](docs/week-4-plan.md) | 既有 Week 4 教学拆解和进度 |
-| [docs/gate-1.md](docs/gate-1.md) | 旧输入版本验收记录，不能代表新版本 |
-| [docs/week-4-t5-results.md](docs/week-4-t5-results.md) | 既有压力测试与性能口径 |
+| [spec-v6.md](../spec-v6.md) | 当前范围、周次、Gate 与止损规则 |
+| [docs/decisions.md](../docs/decisions.md) | D5、D16–D23；先登记表示迁移，不能覆盖旧证据 |
+| [docs/observation-contract.md](../docs/observation-contract.md) | 现有字段、shape、可见性与动作约定 |
+| [sts/env/lightspeed.py](../sts/env/lightspeed.py) | 正式 C++ 到 Python 的观测入口 |
+| [sts/env/wrappers.py](../sts/env/wrappers.py) | 当前双 wrapper 与共用编码 |
+| [sts/agents/masked_policy.py](../sts/agents/masked_policy.py) | 掩码概率与决策接口 |
+| [sts/agents/episode_runner.py](../sts/agents/episode_runner.py) | 环境闭环 |
+| [docs/week-4-plan.md](../docs/week-4-plan.md) | 既有 Week 4 教学拆解和进度 |
+| [docs/gate-1.md](../docs/gate-1.md) | 旧输入版本验收记录，不能代表新版本 |
+| [docs/week-4-t5-results.md](../docs/week-4-t5-results.md) | 既有压力测试与性能口径 |
 
 实施同步范围：先 decisions，再 spec §3/§4.2 的实体输入及 §9 的阶段说明，再 observation contract；构建补丁、依赖调用处、测试与结果报告随后更新。动作语义和 DT 说明中的歧义按阶段登记，不趁机改奖励或全部排期。尊重已有未提交文件；不自动 push、发布或升级依赖。
 

@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # S3 PPO来源与实现对照
 
 核验日期：2026-09-08。PPO计算从CleanRL的`cleanrl/ppo.py`改编，保留MIT声明

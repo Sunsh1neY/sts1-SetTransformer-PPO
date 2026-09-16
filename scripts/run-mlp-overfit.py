@@ -40,8 +40,8 @@ def snapshot_sources(directory: Path) -> dict:
         ROOT / name
         for name in (
             "pyproject.toml",
-            "spec-v4.md",
-            "spec-v5.md",
+            "archive/spec-v4.md",
+            "archive/spec-v5.md",
             "spec-v6.md",
             "eval_seeds.json",
             "AGENTS.md",

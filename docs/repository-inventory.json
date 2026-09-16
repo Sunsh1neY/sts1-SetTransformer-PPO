@@ -1,0 +1,85 @@
+{
+  "date": "2026-09-16",
+  "baseline_commit": "de951cdde082d9d1dd3aae6c8b4da6255f1401db",
+  "branch": "main",
+  "pre_existing_untracked": {
+    "docs/current-architecture-dataflow-audit.md": "a21121e01fe8ce69e6274427a116fca5589f23e5288a069a02ed62a0223002b3",
+    "docs/handoff-2026-09-14.md": "4a8c8cdc033485e80560f9eb89ed62a7df3a721b515a63d121ed4a037b50269d"
+  },
+  "artifacts": [
+    {
+      "path": "runs/comparison-ppo-20260912-gpu-v1/summary.json",
+      "exists": true,
+      "sha256": "e0709d53ac965b089867917b6209b141dbaedd792103540d77ab875e11e73799",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "runs/comparison-ppo-20260912-gpu-v1/plan.json",
+      "exists": true,
+      "sha256": "bfe85878706d46a7a2e73c25570ddae521731f2f7173b1859cd1cd59caa574db",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "runs/comparison-ppo-20260912-gpu-v1/source.zip",
+      "exists": true,
+      "sha256": "c05039d3f403f46cfc597dc2fc185fa1a080618ad6681e9396d610a018d44307",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/manifest.json",
+      "exists": true,
+      "sha256": "890a6121ee4810a9678d1d60d12ef126eb58cc7fca44d6a8c754de75f212cb5c",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/all-refs.bundle",
+      "exists": true,
+      "sha256": "d541c4fd644caa9b28e5258782f952cd395718a98ec59065699cfbd101ee9167",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/original-directories/sts2-integration/runs/a-path-ppo-20260914-v1/status.json",
+      "exists": true,
+      "sha256": "347c7ff9a68fef3619e21708850a76cd6721a2722adbb9a6b9151184c1189274",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/original-directories/sts2-integration/runs/a-path-ppo-20260914-v1/run-report.json",
+      "exists": true,
+      "sha256": "347c7ff9a68fef3619e21708850a76cd6721a2722adbb9a6b9151184c1189274",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/original-directories/sts2-integration/runs/a-path-ppo-20260914-v1/source-snapshot.zip",
+      "exists": true,
+      "sha256": "7257a25ef5f8c97aa197fbcac4e9abf336563b08db6b9be3b58bd7c36936f57d",
+      "verification": "located and hashed; not rerun or restored"
+    },
+    {
+      "path": "reference/desktop-repo-archive-20260914/original-directories/sts2-integration/runs/a-path-ppo-20260914-v1/evaluation-cases.json",
+      "exists": true,
+      "sha256": "0ef108d86092eee0e52aa016d81c22bc67b5824c67b3a15891aef14502322c90",
+      "verification": "located and hashed; not rerun or restored"
+    }
+  ],
+  "historical_a_path_status": {
+    "status": "completed_within_limits",
+    "initializations": [
+      {
+        "group": 0,
+        "env_steps": 79872,
+        "status": "allocated_time_limit"
+      },
+      {
+        "group": 1,
+        "env_steps": 69632,
+        "status": "allocated_time_limit"
+      },
+      {
+        "group": 2,
+        "env_steps": 59392,
+        "status": "allocated_time_limit"
+      }
+    ]
+  }
+}

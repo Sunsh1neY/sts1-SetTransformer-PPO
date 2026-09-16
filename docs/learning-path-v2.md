@@ -409,8 +409,8 @@ Gate 4 对照跑完即有产出，允许无差异。单一问题三天无进展�
 - [L4] ✅ Schulman et al., [High-Dimensional Continuous Control Using Generalized Advantage Estimation](https://arxiv.org/pdf/1506.02438)，ICLR 2016；核对 TD 残差与多步优势估计 — 高（一手，原论文）— 2026-09-08。
 - [L5] ✅ Schulman et al., [Proximal Policy Optimization Algorithms](https://arxiv.org/pdf/1707.06347)，2017；核对概率比、裁剪目标与 actor-critic 损失 — 高（一手，原论文）— 2026-09-08。
 - [L6] ✅ Huang & Ontañón, [A Closer Look at Invalid Action Masking in Policy Gradient Algorithms](https://arxiv.org/pdf/2006.14171)，FLAIRS 2022；核对 mask 后策略的梯度定义 — 高（一手，原论文）— 2026-09-08。
-- [P1] ✅ 本项目 [spec-v4.md](../spec-v4.md)、[决策日志](decisions.md)、[V2 观测契约](observation-contract.md) — 项目权威设定 — 2026-09-08 核对。
-- [P2] ✅ 本项目 [实体验收](entity-foundation-report.md)、[S2 报告](mlp-overfit-report.md)、[项目审核](project-audit-2026-09-08.md) 与本文链接的代码 — 本地工程证据；不是本次重新训练或对用户理解程度的验证 — 2026-09-08 核对。
+- [P1] ✅ 本项目 [spec-v4.md](../archive/spec-v4.md)、[决策日志](decisions.md)、[V2 观测契约](observation-contract.md) — 项目权威设定 — 2026-09-08 核对。
+- [P2] ✅ 本项目 [实体验收](entity-foundation-report.md)、[S2 报告](mlp-overfit-report.md)、[项目审核](../archive/docs/project-audit-2026-09-08.md) 与本文链接的代码 — 本地工程证据；不是本次重新训练或对用户理解程度的验证 — 2026-09-08 核对。
 
 检索说明：使用 SearXNG 与 Tavily；当前会话未提供 Doubao 工具。SearXNG 原文读取失败后，
 由 Tavily 成功提取上述六篇原文；论文方法按各自一手来源登记，不把两个搜索入口当成两份独立研究证据。

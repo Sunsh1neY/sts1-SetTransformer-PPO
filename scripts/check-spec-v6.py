@@ -11,8 +11,12 @@ SPEC = ROOT / "spec-v6.md"
 CURRENT_DOCUMENTS = (
     "AGENTS.md",
     "README.md",
-    "W4-sts-entity-foundation-agent-plan.md",
-    "学习路径.md",
+    "docs/README.md",
+    "docs/research-overview.md",
+    "docs/setup.md",
+    "docs/repository-inventory.md",
+    "docs/document-catalog.md",
+    "docs/plans/README.md",
     "docs/decisions.md",
     "docs/learning-path-v2.md",
     "docs/mechanics.md",
@@ -59,7 +63,7 @@ def main() -> int:
         errors.append("spec-v6 代码围栏未闭合")
     if "按需一次校准并锁定血量系数" in text:
         errors.append("v6 仍含旧的默认 HP 系数校准授权")
-    if "已冻结为历史方案" not in (ROOT / "spec-v5.md").read_text(encoding="utf-8")[:500]:
+    if "已冻结为历史方案" not in (ROOT / "archive/spec-v5.md").read_text(encoding="utf-8")[:500]:
         errors.append("spec-v5 未标记冻结")
     for name in CURRENT_DOCUMENTS:
         content = (ROOT / name).read_text(encoding="utf-8")

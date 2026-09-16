@@ -1,0 +1,197 @@
+{
+  "date": "2026-09-16",
+  "source_commit": "de951cdde082d9d1dd3aae6c8b4da6255f1401db",
+  "entries": [
+    {
+      "old_path": "README.md",
+      "new_path": "archive/snapshots/2026-09-16/README.md",
+      "kind": "pre-edit snapshot",
+      "original_sha256": "c25caf00587507cfd29bf9f9042197067e298135c1c381bdd4895edd2250f685",
+      "result_sha256": "c25caf00587507cfd29bf9f9042197067e298135c1c381bdd4895edd2250f685",
+      "source_git_blob_sha256": "78ef7ba82b1b34b11e227607ea73a33fb9388d98c410a71e10342b6df101a435",
+      "original_worktree_encoding": "Git text expanded to CRLF by original checkout"
+    },
+    {
+      "old_path": "AGENTS.md",
+      "new_path": "archive/snapshots/2026-09-16/agents-before-cleanup.md",
+      "kind": "pre-edit snapshot",
+      "original_sha256": "7125b8bbe2190b2bc6772788cd8f26d90faecced065f7f3b779d24eb40a09fcf",
+      "result_sha256": "7125b8bbe2190b2bc6772788cd8f26d90faecced065f7f3b779d24eb40a09fcf",
+      "source_git_blob_sha256": "45884553dedde9a5189a5da34c719be437523ae51ccedf2b8fb63cae30df7faa",
+      "original_worktree_encoding": "Git text expanded to CRLF by original checkout"
+    },
+    {
+      "old_path": "spec-v2.md",
+      "new_path": "archive/spec-v2.md",
+      "kind": "historical document",
+      "original_sha256": "a4a4be51eedc03036750a7e9ca288a01472a0fdf8cbe9da87cd9a11826d53611",
+      "result_sha256": "a4a4be51eedc03036750a7e9ca288a01472a0fdf8cbe9da87cd9a11826d53611",
+      "source_git_blob_sha256": "a4a4be51eedc03036750a7e9ca288a01472a0fdf8cbe9da87cd9a11826d53611",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "spec-v3.md",
+      "new_path": "archive/spec-v3.md",
+      "kind": "historical document",
+      "original_sha256": "0479b38a4bee4c261825dbcedd64974d2daa3a579a39cdacdd388ea34b1cb490",
+      "result_sha256": "0479b38a4bee4c261825dbcedd64974d2daa3a579a39cdacdd388ea34b1cb490",
+      "source_git_blob_sha256": "0479b38a4bee4c261825dbcedd64974d2daa3a579a39cdacdd388ea34b1cb490",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "spec.txt",
+      "new_path": "archive/spec.txt",
+      "kind": "historical document",
+      "original_sha256": "762dc7b50497933f8c2ddb80a0227b08af7ea247657aad65f4b04852569cec3c",
+      "result_sha256": "762dc7b50497933f8c2ddb80a0227b08af7ea247657aad65f4b04852569cec3c",
+      "source_git_blob_sha256": "762dc7b50497933f8c2ddb80a0227b08af7ea247657aad65f4b04852569cec3c",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "STS_Reward_Strategy_v5_to_v6_Agent.md",
+      "new_path": "archive/STS_Reward_Strategy_v5_to_v6_Agent.md",
+      "kind": "historical document",
+      "original_sha256": "1ce58db39a0fdcfb20f143fda537bad3d18482413baf1fdbf928d4256bca8068",
+      "result_sha256": "1ce58db39a0fdcfb20f143fda537bad3d18482413baf1fdbf928d4256bca8068",
+      "source_git_blob_sha256": "1ce58db39a0fdcfb20f143fda537bad3d18482413baf1fdbf928d4256bca8068",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "docs/project-audit-2026-09-08.md",
+      "new_path": "archive/docs/project-audit-2026-09-08.md",
+      "kind": "historical document",
+      "original_sha256": "1bf22dab3554bcfd72a74da5c67f3403685f1891ab08cfe3d51ba11e236419a4",
+      "result_sha256": "1bf22dab3554bcfd72a74da5c67f3403685f1891ab08cfe3d51ba11e236419a4",
+      "source_git_blob_sha256": "1bf22dab3554bcfd72a74da5c67f3403685f1891ab08cfe3d51ba11e236419a4",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "docs/parallel-encounter-prompt.md",
+      "new_path": "archive/docs/parallel-encounter-prompt.md",
+      "kind": "historical document",
+      "original_sha256": "b4e9b9072ba3535a527607250db3ab3eaa67fa73e3d2c90160b271ecee3ce2f2",
+      "result_sha256": "b4e9b9072ba3535a527607250db3ab3eaa67fa73e3d2c90160b271ecee3ce2f2",
+      "source_git_blob_sha256": "b4e9b9072ba3535a527607250db3ab3eaa67fa73e3d2c90160b271ecee3ce2f2",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "docs/parallel-relic-potion-prompt.md",
+      "new_path": "archive/docs/parallel-relic-potion-prompt.md",
+      "kind": "historical document",
+      "original_sha256": "401dc8ae040663f0bad8b889e9442d70bf587ce99a4e4c30c70876ee6c3be3b6",
+      "result_sha256": "401dc8ae040663f0bad8b889e9442d70bf587ce99a4e4c30c70876ee6c3be3b6",
+      "source_git_blob_sha256": "401dc8ae040663f0bad8b889e9442d70bf587ce99a4e4c30c70876ee6c3be3b6",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "docs/parallel-reset-interface-prompt.md",
+      "new_path": "archive/docs/parallel-reset-interface-prompt.md",
+      "kind": "historical document",
+      "original_sha256": "9e024e0d558f7b41bd820ce698b60d28459c9779d36168c34a49eb8cafbee126",
+      "result_sha256": "9e024e0d558f7b41bd820ce698b60d28459c9779d36168c34a49eb8cafbee126",
+      "source_git_blob_sha256": "9e024e0d558f7b41bd820ce698b60d28459c9779d36168c34a49eb8cafbee126",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "docs/m2-agent-prompt.md",
+      "new_path": "archive/docs/m2-agent-prompt.md",
+      "kind": "historical document",
+      "original_sha256": "17f637e7f7f0378bb4aa8d3f8689de5f7d6709e69ac69a98650c61a31c1ef650",
+      "result_sha256": "17f637e7f7f0378bb4aa8d3f8689de5f7d6709e69ac69a98650c61a31c1ef650",
+      "source_git_blob_sha256": "17f637e7f7f0378bb4aa8d3f8689de5f7d6709e69ac69a98650c61a31c1ef650",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "research/sts2-a20-decision-model-sources.md",
+      "new_path": "archive/research/sts2-a20-decision-model-sources.md",
+      "kind": "historical document",
+      "original_sha256": "452e998c83c2f3d1d5e7212c2feebf020d6bba207c421482d3da316fa4dc6e4c",
+      "result_sha256": "452e998c83c2f3d1d5e7212c2feebf020d6bba207c421482d3da316fa4dc6e4c",
+      "source_git_blob_sha256": "452e998c83c2f3d1d5e7212c2feebf020d6bba207c421482d3da316fa4dc6e4c",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "research/sts2-a20-decision-model.md",
+      "new_path": "archive/research/sts2-a20-decision-model.md",
+      "kind": "historical document",
+      "original_sha256": "1dff7be7460596fba8a6a71249d0882fcfe7df2bb21f9ebaee5c42fc6f638f58",
+      "result_sha256": "1dff7be7460596fba8a6a71249d0882fcfe7df2bb21f9ebaee5c42fc6f638f58",
+      "source_git_blob_sha256": "1dff7be7460596fba8a6a71249d0882fcfe7df2bb21f9ebaee5c42fc6f638f58",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "research/sts2-related-projects-survey-sources.md",
+      "new_path": "archive/research/sts2-related-projects-survey-sources.md",
+      "kind": "historical document",
+      "original_sha256": "faab2a199221c15dda4b3235bfe010dae585d82b6d18e1278487edb185e661cd",
+      "result_sha256": "faab2a199221c15dda4b3235bfe010dae585d82b6d18e1278487edb185e661cd",
+      "source_git_blob_sha256": "faab2a199221c15dda4b3235bfe010dae585d82b6d18e1278487edb185e661cd",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "research/sts2-related-projects-survey.md",
+      "new_path": "archive/research/sts2-related-projects-survey.md",
+      "kind": "historical document",
+      "original_sha256": "2ccc2b0196c62a3f7dd35015c0b1462027c4221785ce59a482898def3ca25469",
+      "result_sha256": "2ccc2b0196c62a3f7dd35015c0b1462027c4221785ce59a482898def3ca25469",
+      "source_git_blob_sha256": "2ccc2b0196c62a3f7dd35015c0b1462027c4221785ce59a482898def3ca25469",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "research/sts2-synthesis-vs-gemini.md",
+      "new_path": "archive/research/sts2-synthesis-vs-gemini.md",
+      "kind": "historical document",
+      "original_sha256": "f5e90471183c354536102d1cb19ef0209cac3d940c4077840db119ea021e1878",
+      "result_sha256": "f5e90471183c354536102d1cb19ef0209cac3d940c4077840db119ea021e1878",
+      "source_git_blob_sha256": "f5e90471183c354536102d1cb19ef0209cac3d940c4077840db119ea021e1878",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "C:\\Users\\19091\\Downloads\\sts-relic-audit-and-import-plan-v1.md",
+      "new_path": "docs/plans/sts-relic-audit-and-import-plan-v1.md",
+      "kind": "pending-plan source; not execution authorization",
+      "original_sha256": "b58c5fd46edab6f21702f3648735f20944c7ff60c38b7a9ac6fc01bb646e6319",
+      "result_sha256": "b58c5fd46edab6f21702f3648735f20944c7ff60c38b7a9ac6fc01bb646e6319"
+    },
+    {
+      "old_path": "spec-v4.md",
+      "new_path": "archive/spec-v4.md",
+      "kind": "historical document",
+      "original_sha256": "7b899f4f52ba7b6b396e2c8726bf38eec58da119e5bf73d24f48bc2df5f3a728",
+      "result_sha256": "63995e448139af93555e209b8211cf6b5a18d36a0c4d540c57bdb4b121bdb3f3",
+      "transformation": "Markdown link rebasing where applicable and/or CRLF-to-LF normalization; substantive text unchanged. Original source and checkout encoding recorded.",
+      "source_git_blob_sha256": "7b899f4f52ba7b6b396e2c8726bf38eec58da119e5bf73d24f48bc2df5f3a728",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "spec-v5.md",
+      "new_path": "archive/spec-v5.md",
+      "kind": "historical document",
+      "original_sha256": "e945bea9545594efbadfb79d91268187f14c4f82c192aaba1f1d02033cb8f2c5",
+      "result_sha256": "59551ea300bf20314d7936541b9524b39abb422a048734007dadbf6924ab4894",
+      "transformation": "Markdown link rebasing where applicable and/or CRLF-to-LF normalization; substantive text unchanged. Original source and checkout encoding recorded.",
+      "source_git_blob_sha256": "e945bea9545594efbadfb79d91268187f14c4f82c192aaba1f1d02033cb8f2c5",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "W4-sts-entity-foundation-agent-plan.md",
+      "new_path": "archive/w4-sts-entity-foundation-agent-plan.md",
+      "kind": "historical document",
+      "original_sha256": "8f928980fb1c7ef4385cd33a44f6f009e01c0aaf53707e3bb6a24148e8b50988",
+      "result_sha256": "3275cee80b86ce8dfd36cb43d15c074854aecc47a9256c9323edba619289b857",
+      "transformation": "Markdown link rebasing where applicable and/or CRLF-to-LF normalization; substantive text unchanged. Original source and checkout encoding recorded.",
+      "source_git_blob_sha256": "8f928980fb1c7ef4385cd33a44f6f009e01c0aaf53707e3bb6a24148e8b50988",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    },
+    {
+      "old_path": "学习路径.md",
+      "new_path": "archive/learning-path-v1.md",
+      "kind": "historical document",
+      "original_sha256": "c4fd6c9ed914f393d55707078124f5fb7b8eb45619572605deb21c7cac45d5a5",
+      "result_sha256": "0f2c86d94140878787752f2b5d7715ed7f272d30fbff33e3e683b5f2d176cd8e",
+      "transformation": "Markdown link rebasing where applicable and/or CRLF-to-LF normalization; substantive text unchanged. Original source and checkout encoding recorded.",
+      "source_git_blob_sha256": "c4fd6c9ed914f393d55707078124f5fb7b8eb45619572605deb21c7cac45d5a5",
+      "original_worktree_encoding": "Git blob bytes unchanged"
+    }
+  ]
+}

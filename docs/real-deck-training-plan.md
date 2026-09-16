@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # 真实卡组驱动的战斗训练计划
 
 日期：2026-09-12。状态：P1最终卡组提取、P2开发批次、P3接口集成和本轮P4模型/轨迹迁移已完成；MLP/Set各两组GPU训练及冻结开发对照已完成。P5正式Gate与更大分布泛化仍未完成。实测见[训练报告](comparison-ppo-report.md)。

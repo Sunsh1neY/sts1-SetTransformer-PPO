@@ -750,3 +750,18 @@ E12 验收补记：环境代码 `65248a2` 已本地合入 main，main 已独立�
 用户明确 A 路径是当前及后续项目主要方向，授权将归档分支 2f3beb9 合入 main。此裁定替代 E12 本轮不合入 A 路径的任务边界；保留全卡、一二幕环境修复和历史对照，不以旧 66 动作训练器替代 A 路径。当前主模型为四层 SAB、64 维、4 头、FF128、单 seed PMA 与来源/条件目标两阶段联合 PPO。
 
 本次将独立 A 路径池的运行契约及注册表指纹绑定到 main 已验收后端，并重算池哈希；原 39 个训练内容、来源组、两条件、五遭遇、抽样概率、容量与奖励保持不变。全卡诊断入口的 44 个一二幕遭遇不自动进入训练池。旧检查点保留原指纹，禁止放宽恢复校验；本次运行短工程闭环和回归，不重新启动四小时训练。后续模型、采集、训练与学习文档默认沿 A 路径推进；历史入口只作回归及对照。
+
+
+## I6: Clear research starting point and bounded documentation cleanup (2026-09-16)
+
+**Decision.** The owner selected a mentor-readable research snapshot that also serves as a clear working starting point. The current research question is whether the existing A-path Set Transformer + PPO policy improves over its own initialization within the fixed admitted combat distribution. Set-over-MLP superiority is not a completion requirement. Keep the frozen comparison as a short earlier-experiment summary, with inconclusive differences and its limitations intact. DT remains later work, not a prerequisite for this snapshot.
+
+**Language and organization.** New/revised public entry documents are English; the owner does not need a parallel Chinese guide. Gradually migrate supported content without making full translation of existing technical documents, comments, tests or CLI text a first-stage gate. This supersedes the blanket Chinese-only AGENTS rule. Keep one active specification at spec-v6.md and retain historical evidence. Distinguish current references, pending valid plans, and obsolete material under archive/. Prioritize documentation and navigation; keep legacy code in place unless a verified dependency fix is needed.
+
+**Scope.** The owner explicitly authorized work in the current Git checkout and a local commit after checks; no push. Preserve the two pre-existing untracked documents and all ignored artifacts. Directly fix stale facts, links and rule conflicts. Record substantive implementation or reproduction gaps for later; wait for owner verification on new decisions or critical issues. No new training, reward/model changes, pool expansion, or relic implementation in this pass.
+
+**Next priority.** Relics and faithful Act 1/2 combat remain near-term development goals, with preparation retained as pending work. This supersedes treating relic development as permanently out of scope; it does not admit unverified scenes or authorize implementation now. The original learning objective remains central, while mentor readability is now an accepted presentation goal, updating the older exclusion in spec-v6 section 0.1. Existing schedules, Gate rules and compute budgets are not reset.
+
+**Minimal dependency repair.** After inspection showed that legacy source-snapshot utilities hard-coded root-level v4/v5 files, the owner authorized archiving those originals and correcting the explicit paths. Current A-path algorithm/fingerprints stay unchanged; archived experiments and checkpoint validation are not rewritten or weakened.
+
+**Reason and reconsideration.** A first project needs a bounded question and an unambiguous entry route. Revisit the scope only after the owner accepts a concrete next-stage plan or a verified dependency/evidence conflict requires a decision. The first cleanup ends when the entry route explains the question, current path, evidence and next work; it does not claim clean-clone reproduction or new experimental success.

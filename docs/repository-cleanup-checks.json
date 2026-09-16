@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-16",
+  "baseline_commit": "de951cdde082d9d1dd3aae6c8b4da6255f1401db",
+  "errors": [],
+  "local_markdown_links_checked": 315,
+  "documents_checked": 44,
+  "migration_entries_verified": 21,
+  "protected_files_verified": 80,
+  "pre_existing_untracked_verified": 2,
+  "existing_artifact_hashes_verified": 9,
+  "tests": {
+    "command": "python -m pytest -q tests/test_ppo_training.py tests/test_apath.py tests/test_apath_training.py -k \"not cuda\"",
+    "passed": 41,
+    "deselected": 1,
+    "seconds": 22.25
+  },
+  "spec_check": "passed",
+  "mlp_snapshot_zip": "passed real ZIP content and hashes",
+  "s5_archive": "static path list passed; full bundle not rebuilt",
+  "excluded_from_link_check": [
+    "Exact pre-cleanup README/AGENTS snapshots retain original-root relative links",
+    "Unmodified specialist documents and the exact copied pending relic plan were not globally link-audited"
+  ],
+  "staged_archive_hashes": "all 21 match manifest",
+  "final_archive_recheck": "legacy PPO CLI metadata/recovery test passed (1 passed, 15 deselected); MLP ZIP verified again after final line-ending normalization",
+  "staged_diff_check": "passed"
+}

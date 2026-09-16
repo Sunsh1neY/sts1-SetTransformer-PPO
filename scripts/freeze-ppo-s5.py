@@ -22,7 +22,7 @@ def main():
         files.update(p for p in (root / f'runs/ppo-s4-{group}-20260911').rglob('*') if p.is_file())
     for folder in ('sts', 'configs', 'scripts', 'tests', 'docs', 'patches', 'licenses'):
         files.update(p for p in (root / folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
-    for name in ('pyproject.toml', 'README.md', 'AGENTS.md', 'eval_seeds.json', 'spec-v6.md', 'spec-v5.md', 'spec-v4.md'):
+    for name in ('pyproject.toml', 'README.md', 'AGENTS.md', 'eval_seeds.json', 'spec-v6.md', 'archive/spec-v5.md', 'archive/spec-v4.md'):
         files.add(root / name)
     files.add(evidence)
     files.add(root / 'runs/ppo-s4-20260911-launch.json')

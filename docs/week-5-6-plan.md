@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # Week 5–6：中等档、规则基线与配对评估
 
 > 2026-09-12最新收口：固定comparison-battle-v2范围的M3编码/模型头/采集轨迹/恢复已完成，MLP/Set各两组GPU训练及开发对照通过学习改善标准，总训练评估18分17秒。见[本轮训练报告](comparison-ppo-report.md)。旧“模型迁移尚未完成”条目为早期状态；全卡扩展、正式Gate与学习理解不自动勾选。后续扩展只推进Set。

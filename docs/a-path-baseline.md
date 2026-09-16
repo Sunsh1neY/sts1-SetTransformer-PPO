@@ -1,3 +1,5 @@
+> **Historical navigation notice (2026-09-16):** This is a dated phase record or instruction set, not a current work order. Use the [documentation map](README.md), [spec-v6](../spec-v6.md), and registered amendments for current work. Original commands, paths, budgets and evidence below retain their historical scope.
+
 # A路径起点基准
 
 > 历史阶段记录：A 路径现已依 I5 合入 main；本文中的旧工作区路径、待实现状态和当时启动记录保留历史身份。当前入口与验收见 [主线整合报告](a-path-main-integration-report.md)。
