@@ -792,3 +792,8 @@ Implementation and focused runtime/recovery tests are authorized in an isolated 
 ## I9 — Relic state implementation with one-hot identity (2026-09-19)
 
 The owner authorized relic import implementation after I8, explicitly retaining one-hot identity (no relic ID embedding). Use an isolated worktree based on reward v2. Preserve the shared four-SAB/64-width/PMA/source-conditional-target PPO backbone and the fixed admitted pool. Implement a versioned relic registry, strict public state, actual backend mechanisms and recovery tests, beginning with the existing eight relics and six counter representatives. Special relics affecting selection, binding, visibility, capacity or unresolved semantics require a concrete owner review before implementation of that part. Continue independent ordinary work. No substantial training, pool expansion, merge or push is authorized. Mechanism diagnostics are not training admission or proof of learning.
+
+
+## I10 — Full Act 1/2 relic scope audit before batch two (2026-09-19)
+
+The owner requests an audit of all relics encountered in Act 1/2 before importing the second batch. Audit the original-game catalog against the locked backend, classify standard Ironclad acquisition/carry-in scope, required public and internal state, backend paths, adapter gaps and special review items. Other-character, later-act and special-mode entries remain explicit exclusions or conditional entries, not silently omitted. Complete the audit artifact first; then import the ordinary second batch supported by the findings. Retain I9 one-hot identity, I8 reward v2, strict fingerprints, fixed pool/seeds and the owner review requirement for special relics. No new training or pool admission is authorized.

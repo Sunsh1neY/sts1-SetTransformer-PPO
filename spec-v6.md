@@ -806,3 +806,8 @@ I8 supersedes the v1 reward requirement for the A-path entry only. Use terminal 
 ### 2026-09-19 amendment — I9 relic state implementation
 
 Per decision I9, relic identity remains one-hot with fixed versioned columns. Add only necessary verified public state; maintain a 64-dimensional projected token and the existing A-path backbone. Reward v2 from I8 supersedes the historical relic plan's v1 reference for this work. Special relics require owner review. The initial-state pool and evaluation seeds remain unchanged.
+
+
+### 2026-09-19 amendment — I10 Act 1/2 relic audit and second batch
+
+Decision I10 authorizes the complete relic scope audit followed by the ordinary second import batch. Scope and implementation evidence must be reported separately. Special relic semantics remain subject to owner review. I8 reward v2 and I9 one-hot identity remain applicable; the admitted pool is unchanged.
