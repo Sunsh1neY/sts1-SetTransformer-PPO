@@ -801,3 +801,8 @@ Per [decision I7](docs/decisions.md), finish and validate the agreed reward/poti
 ## 2026-09-18 amendment: A-path battle_reward_v2 (I8)
 
 I8 supersedes the v1 reward requirement for the A-path entry only. Use terminal R=2*I(victory)+(HP_end-HP_start)/max_HP_start-0.05*potion_uses, gamma=1, with zero intermediate reward. Keep actual final HP on defeat, supported victory-exit healing, and external-truncation bootstrap. Historical and legacy v1 paths remain unchanged. Version the contract and preserve raw inputs, potion events and strict checkpoint identity. This amendment authorizes implementation and tests, not training or distribution expansion.
+
+
+### 2026-09-19 amendment — I9 relic state implementation
+
+Per decision I9, relic identity remains one-hot with fixed versioned columns. Add only necessary verified public state; maintain a 64-dimensional projected token and the existing A-path backbone. Reward v2 from I8 supersedes the historical relic plan's v1 reference for this work. Special relics require owner review. The initial-state pool and evaluation seeds remain unchanged.

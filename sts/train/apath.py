@@ -21,7 +21,7 @@ from sts.train.ppo import compute_gae, ppo_loss
 
 def fingerprint():
     root=Path(__file__).parents[2]
-    paths=['sts/battle_reward_v2.py','sts/train/apath.py','sts/models/apath.py','sts/models/entities.py','sts/env/apath.py',
+    paths=['sts/env/relic_state.py','sts/env/relic-state-registry.json','sts/env/relics.py','patches/lightspeed-relic-state.patch','sts/battle_reward_v2.py','sts/train/apath.py','sts/models/apath.py','sts/models/entities.py','sts/env/apath.py',
            'sts/env/a-path-training-pool.json','sts/env/entities.py','sts/env/ironclad.py',
            'sts/env/full_card_public.py','sts/env/selection.py','sts/train/ppo.py',
            'sts/env/ironclad-expansion-contract.json','sts/env/ironclad-registry.json',

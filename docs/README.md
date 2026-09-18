@@ -39,3 +39,5 @@ The files above can contain historical sections. Read their dated amendments and
 `docs/mlp-smoke-plan.md` and `docs/ppo-source.md` are still read by legacy source archivers. The week-4/week-5-6 plans are historical navigation/validation references. They stay at stable paths and are not current execution instructions. Older root specifications and the first learning guide are now under `archive/`.
 
 Other specialist audits, JSON evidence files and older stage reports remain at stable paths for traceability. Use the [document catalog](document-catalog.md) to distinguish their role; do not execute an old prompt just because it is still present. Untracked local drafts are excluded from this curated route and commit.
+
+- [Relic integration report](relic-integration-report.md): I9 one-hot implementation, diagnostic evidence and pending special-relic reviews.

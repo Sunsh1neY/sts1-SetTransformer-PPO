@@ -11,7 +11,8 @@ from sts.battle_reward_v2 import BattleRewardV2, contract as reward_contract
 
 from sts.env.ironclad import IroncladEnv, CONTRACT_HASH, REGISTRY_HASH, CONTRACT as IRONCLAD_CONTRACT, REGISTRY
 from sts.env.full_card_public import PublicBattleEnv
-from sts.env.entities import encode_observation, CONTRACT as ENTITY_CONTRACT
+from sts.env.entities import encode_observation, FEATURE_DIMS, CONTRACT as ENTITY_CONTRACT
+from sts.env.relic_state import relic_features, DIMENSION as RELIC_DIM, REGISTRY_HASH as RELIC_HASH
 
 PATH = Path(__file__).with_name('a-path-training-pool.json')
 POLICY = 'a-path-source-group-uniform-v1'
@@ -80,7 +81,7 @@ class APathEnv(IroncladEnv):
         # 通过新入口的注册核验后使用正式公开reset，绝不将train包装为diagnostic。
         obs = PublicBattleEnv.reset(self, envelope, seed, diagnostic=False, purpose=purpose)
         limits = load_pool()['resources']
-        if len(encode_observation(obs).tokens) >= limits['truncate_at_entities']:
+        if len(encode_observation(obs, relic_encoder=relic_features, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM}).tokens) >= limits['truncate_at_entities']:
             self._finished=True
             raise ValueError('登记初态已越资源启动边界')
         self._allocated = self._env.allocated_card_count()
@@ -94,7 +95,7 @@ class APathEnv(IroncladEnv):
             group_id=registered['component_id'], condition=registered['condition'], encounter=registered['encounter'],
             termination_rule_version='a-path-complete-decision-resource-v1')
         self._reward_v2 = BattleRewardV2(registered['candidate']['player'], obs['potions'])
-        self._context.update(reward_contract=reward_contract(),
+        self._context.update(relic_state_schema="relic-state-v1", relic_registry_hash=RELIC_HASH, reward_contract=reward_contract(),
             reward_version=reward_contract()['reward_version'], alpha_hp=1.0,
             victory_bonus=2.0, potion_use_cost=0.05)
         return obs
@@ -118,7 +119,7 @@ class APathEnv(IroncladEnv):
             if not term and not 0 <= allocated-self._allocated <= limits['max_generated_per_decision']:
                 raise RuntimeError('完整动作卡牌分配增长超出原五遭遇容量契约')
             self._allocated=allocated
-            count=len(encode_observation(obs).tokens)
+            count=len(encode_observation(obs, relic_encoder=relic_features, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM}).tokens)
             if count>ENTITY_CONTRACT['resources']['max_entities']:
                 raise RuntimeError('完整观测超过实体硬边界；不能裁掉实体继续训练')
             if not term and count>=limits['truncate_at_entities']:

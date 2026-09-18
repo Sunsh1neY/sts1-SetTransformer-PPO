@@ -1,0 +1,140 @@
+diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
+--- a/bindings/integrated-card-env.cpp
++++ b/bindings/integrated-card-env.cpp
+@@ -55,7 +55,14 @@
+     throw std::invalid_argument("未识别药水: " + name);
+ }
+ 
+-RelicId parseRelic(const std::string &name) {
++RelicId parseRelic(const std::string &name, bool counters = false) {
++    if (counters && name == "Pen Nib") return R::PEN_NIB;
++    if (counters && name == "Nunchaku") return R::NUNCHAKU;
++    if (counters && name == "Happy Flower") return R::HAPPY_FLOWER;
++    if (counters && name == "Incense Burner") return R::INCENSE_BURNER;
++    if (counters && name == "Ink Bottle") return R::INK_BOTTLE;
++    if (counters && name == "Sundial") return R::SUNDIAL;
++
+     if (!listed(PUBLIC_RELIC_NAMES, name)) throw std::invalid_argument("遗物不在入口闭包内: " + name);
+     if (name == "Burning Blood") return R::BURNING_BLOOD;
+     if (name == "Lantern") return R::LANTERN;
+@@ -204,6 +211,7 @@
+     int initialCards_ = 0;
+     bool hasReset_ = false;
+     bool truncated_ = false;
++    bool relicState_ = false;
+     std::vector<std::string> relicNames_;
+     std::array<PublicEnemyHistory, PUBLIC_TARGET_CAPACITY> publicHistory_{};
+ 
+@@ -380,7 +388,7 @@
+             const auto id = static_cast<PS>(i);
+             if (!bc_.player.hasStatusRuntime(id)) continue;
+             // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
+-            if (id == PS::NO_DRAW || id == PS::ENTANGLED || id == PS::HEX ||
++            if ((relicState_ && id == PS::PEN_NIB) || id == PS::NO_DRAW || id == PS::ENTANGLED || id == PS::HEX ||
+                 (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION || id == PS::CONFUSED))) statuses[playerStatusStrings[i]] = 1;
+             else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
+         }
+@@ -415,7 +423,18 @@
+             potions.push_back({{"present", present}, {"name", present ? sourcePotionName(p) : ""},
+                 {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
+         }
+-        for (const auto &r : relicNames_) relics.push_back({{"name", r}, {"counter", nullptr}});
++        for (const auto &r : relicNames_) {
++            Json counter = nullptr;
++            if (relicState_) {
++                if (r == "Pen Nib") counter = (bc_.player.penNibCounter == -1 ? 9 : static_cast<int>(bc_.player.penNibCounter));
++                if (r == "Nunchaku") counter = static_cast<int>(bc_.player.nunchakuCounter);
++                if (r == "Happy Flower") counter = static_cast<int>(bc_.player.happyFlowerCounter);
++                if (r == "Incense Burner") counter = static_cast<int>(bc_.player.incenseBurnerCounter);
++                if (r == "Ink Bottle") counter = static_cast<int>(bc_.player.inkBottleCounter);
++                if (r == "Sundial") counter = static_cast<int>(bc_.player.sundialCounter);
++            }
++            relics.push_back({{"name", r}, {"counter", counter}});
++        }
+         Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
+             {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
+             {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
+@@ -456,7 +475,7 @@
+     }
+ 
+ public:
+-    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS, bool expanded = false) : maxActions_(maxActions), expanded_(expanded) {
++    explicit PublicBattleEnv(int maxActions = PUBLIC_MAX_ACTIONS, bool expanded = false, bool relicState = false) : maxActions_(maxActions), expanded_(expanded), relicState_(relicState) {
+         if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
+         static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
+                       "生成牌ID必须保持int16范围");
+@@ -531,9 +550,24 @@
+         gc_->relics = RelicContainer{};
+         if (!scene.at("relics").is_array()) throw std::invalid_argument("遗物必须为完整列表");
+         for (const auto &value : scene.at("relics")) {
+-            auto name = value.get<std::string>();
++            auto name = (relicState_ && value.is_object()) ? value.at("name").get<std::string>() : value.get<std::string>();
++            int counter = 0;
++            int period = 0;
++            if (name == "Pen Nib") period = 10;
++            if (name == "Nunchaku") period = 10;
++            if (name == "Happy Flower") period = 3;
++            if (name == "Incense Burner") period = 6;
++            if (name == "Ink Bottle") period = 10;
++            if (name == "Sundial") period = 3;
++            if (relicState_ && period) {
++                if (!value.is_object() || value.size() != 2 || !value.contains("counter"))
++                    throw std::invalid_argument("Counter relic requires explicit name and counter");
++                counter = strictInt(value, "counter", 0, period - 1);
++            } else if (value.is_object()) {
++                throw std::invalid_argument("Stateless relic must be a name string");
++            }
+             if (std::find(relicNames_.begin(), relicNames_.end(), name) != relicNames_.end()) throw std::invalid_argument("重复遗物");
+-            gc_->relics.add({parseRelic(name), 0}); relicNames_.push_back(name);
++            gc_->relics.add({parseRelic(name, relicState_), counter}); relicNames_.push_back(name);
+         }
+         gc_->potionCapacity = ascension >= 11 ? 2 : 3;
+         gc_->potionCount = 0;
+@@ -670,6 +704,16 @@
+             info["battle_exit"] = {{"gold_delta", gc_->gold - originalGold}, {"deck_changes", Json::array()}};
+             for (const auto &entry : deckDelta) if (entry.second != 0)
+                 info["battle_exit"]["deck_changes"].push_back({{"name", sourceCardName(static_cast<CardId>(entry.first.first))}, {"upgrade_count", entry.first.second}, {"count_delta", entry.second}});
++            if (relicState_) {
++                info["battle_exit"]["relics"] = Json::array();
++                for (const auto &name : relicNames_) {
++                    const auto id = parseRelic(name, true);
++                    const bool counted = id == R::PEN_NIB || id == R::NUNCHAKU || id == R::HAPPY_FLOWER ||
++                        id == R::INCENSE_BURNER || id == R::INK_BOTTLE || id == R::SUNDIAL;
++                    info["battle_exit"]["relics"].push_back({{"name", name},
++                        {"counter", counted ? Json(gc_->relics.getRelicValue(id)) : Json(nullptr)}});
++                }
++            }
+             for (auto &card : bc_.cards.stasisCards) card = CardInstance(CardId::INVALID);
+         }
+         return Json{{"observation", observeJson()}, {"reward", reward}, {"terminated", terminal()},
+@@ -678,6 +722,11 @@
+ };
+ 
+ // 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
++class RelicBattleEnv : public PublicBattleEnv {
++public:
++    explicit RelicBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true, true) {}
++};
++
+ class IroncladBattleEnv : public PublicBattleEnv {
+ public:
+     explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
+@@ -697,5 +746,16 @@
+         .def("selection_indices", &IroncladBattleEnv::selectionIndices)
+         .def("selection_card", &IroncladBattleEnv::selectionCard)
+         .def("select_card", &IroncladBattleEnv::selectCard);
+-}
+-}
++    module.attr("RELIC_STATE_REGISTRY_SHA256") = "305dc5f56c252110e7b5f043ec9c9b3827ba8c01b55b3382d731de55e20d3f66";
++    pybind11::class_<RelicBattleEnv>(module, "RelicStateBattleEnv")
++        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
++        .def("reset_scene", &RelicBattleEnv::resetScene)
++        .def("step", &RelicBattleEnv::step)
++        .def("observation", &RelicBattleEnv::observation)
++        .def("action_mask", &RelicBattleEnv::actionMask)
++        .def("allocated_card_count", &RelicBattleEnv::allocationCount)
++        .def("selection_indices", &RelicBattleEnv::selectionIndices)
++        .def("selection_card", &RelicBattleEnv::selectionCard)
++        .def("select_card", &RelicBattleEnv::selectCard);
++}
++}

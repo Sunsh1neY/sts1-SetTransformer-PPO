@@ -1,0 +1,6736 @@
+{
+  "schema": "relic-audit-ledger-v1",
+  "upstream_commit": "7476a81954020087da31d41d16fddf475746ec2d",
+  "catalog_sha256": "092473d34e953ec4e9328d602250b67cb2d12c6df0be9b7bbaf435de47aa88d0",
+  "evidence_boundary": "Static upstream occurrences plus scoped simulator tests; not original-game parity or a complete mechanism audit.",
+  "original_game_catalog_comparison": "pending",
+  "relics": [
+    {
+      "upstream_enum": "AKABEKO",
+      "upstream_name": "Akabeko",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            122
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            798
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            24
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ART_OF_WAR",
+      "upstream_name": "Art Of War",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            494
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            27
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BIRD_FACED_URN",
+      "upstream_name": "Bird Faced Urn",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1853
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            31
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BLOODY_IDOL",
+      "upstream_name": "Bloody Idol",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            94
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1233,
+            2789
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            34
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BLUE_CANDLE",
+      "upstream_name": "Blue Candle",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1915
+          ]
+        },
+        {
+          "path": "src/combat/CardInstance.cpp",
+          "lines": [
+            325
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            36
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BRIMSTONE",
+      "upstream_name": "Brimstone",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            126
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            500
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            40
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CALIPERS",
+      "upstream_name": "Calipers",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2182
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            44
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CAPTAINS_WHEEL",
+      "upstream_name": "Captains Wheel",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            509
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            46
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CENTENNIAL_PUZZLE",
+      "upstream_name": "Centennial Puzzle",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            296,
+            297
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            48
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CERAMIC_FISH",
+      "upstream_name": "Ceramic Fish",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Deck.cpp",
+          "lines": [
+            183
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            343
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            49
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CHAMPION_BELT",
+      "upstream_name": "Champion Belt",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/combat/BattleContext.h",
+          "lines": [
+            296
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            50
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CHARONS_ASHES",
+      "upstream_name": "Charons Ashes",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2818
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            51
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CHEMICAL_X",
+      "upstream_name": "Chemical X",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Actions.cpp",
+          "lines": [
+            593,
+            1254
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            52
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CLOAK_CLASP",
+      "upstream_name": "Cloak Clasp",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2035
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            53
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DARKSTONE_PERIAPT",
+      "upstream_name": "Darkstone Periapt",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/MonsterSpecific.cpp",
+          "lines": [
+            1532
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            344
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            60
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DEAD_BRANCH",
+      "upstream_name": "Dead Branch",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2822
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            62
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DUALITY",
+      "upstream_name": "Duality",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1704
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            65
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ECTOPLASM",
+      "upstream_name": "Ectoplasm",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            136
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            89
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1228
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            208
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1073
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            67
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "EMOTION_CHIP",
+      "upstream_name": "Emotion Chip",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            301,
+            520
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            68
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FROZEN_CORE",
+      "upstream_name": "Frozen Core",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2039
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            313
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            74
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FROZEN_EYE",
+      "upstream_name": "Frozen Eye",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "visibility",
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            76
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GAMBLING_CHIP",
+      "upstream_name": "Gambling Chip",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "selection",
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            117,
+            442
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            78
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GINGER",
+      "upstream_name": "Ginger",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/combat/Player.h",
+          "lines": [
+            370
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            79
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GOLDEN_EYE",
+      "upstream_name": "Golden Eye",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            81
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GREMLIN_HORN",
+      "upstream_name": "Gremlin Horn",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            319
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            84
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "HAND_DRILL",
+      "upstream_name": "Hand Drill",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            444,
+            499
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            86
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "HAPPY_FLOWER",
+      "upstream_name": "Happy Flower",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 2,
+        "scale": 3,
+        "event": "turn_start",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            148,
+            524
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            524
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            87
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "HORN_CLEAT",
+      "upstream_name": "Horn Cleat",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            531
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            89
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "HOVERING_KITE",
+      "upstream_name": "Hovering Kite",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            90
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ICE_CREAM",
+      "upstream_name": "Ice Cream",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            719
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            91
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "INCENSE_BURNER",
+      "upstream_name": "Incense Burner",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 5,
+        "scale": 6,
+        "event": "turn_start",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            156,
+            528
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            537
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            92
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "INK_BOTTLE",
+      "upstream_name": "Ink Bottle",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "card_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            164,
+            532,
+            1662,
+            1779,
+            1857,
+            1926
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            756
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            93
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "INSERTER",
+      "upstream_name": "Inserter",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            168,
+            536
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            544,
+            760
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            94
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "KUNAI",
+      "upstream_name": "Kunai",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1670
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            96
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "LETTER_OPENER",
+      "upstream_name": "Letter Opener",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1795
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            768
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            99
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "LIZARD_TAIL",
+      "upstream_name": "Lizard Tail",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            177,
+            178,
+            563,
+            564
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            341,
+            342
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2146,
+            2147
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1079
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            100
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MAGIC_FLOWER",
+      "upstream_name": "Magic Flower",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            163
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            30
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            101
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MARK_OF_THE_BLOOM",
+      "upstream_name": "Mark Of The Bloom",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            159,
+            328
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2132,
+            2160,
+            3047,
+            3350
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            104
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MEDICAL_KIT",
+      "upstream_name": "Medical Kit",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1921
+          ]
+        },
+        {
+          "path": "src/combat/CardInstance.cpp",
+          "lines": [
+            331
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            109
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MELANGE",
+      "upstream_name": "Melange",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2799
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            110
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MERCURY_HOURGLASS",
+      "upstream_name": "Mercury Hourglass",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            432
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            553
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            112
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MUMMIFIED_HAND",
+      "upstream_name": "Mummified Hand",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1801,
+            1873
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            114
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NECRONOMICON",
+      "upstream_name": "Necronomicon",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1690
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            557
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2579
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            118
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NILRYS_CODEX",
+      "upstream_name": "Nilrys Codex",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "selection_and_generation",
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2045
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2580
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            120
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NUNCHAKU",
+      "upstream_name": "Nunchaku",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "attack_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            181,
+            546,
+            1708
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            764
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            123
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "ODD_MUSHROOM",
+      "upstream_name": "Odd Mushroom",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            592
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            3075
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            125
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "OMAMORI",
+      "upstream_name": "Omamori",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            185,
+            186,
+            463,
+            464
+          ]
+        },
+        {
+          "path": "src/combat/MonsterSpecific.cpp",
+          "lines": [
+            1531
+          ]
+        },
+        {
+          "path": "src/game/Deck.cpp",
+          "lines": [
+            157,
+            158
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            351,
+            1388
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            127
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ORANGE_PELLETS",
+      "upstream_name": "Orange Pellets",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1674,
+            1787,
+            1865
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            561
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            128
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ORICHALCUM",
+      "upstream_name": "Orichalcum",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2049
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            129
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ORNAMENTAL_FAN",
+      "upstream_name": "Ornamental Fan",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1682
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            130
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PAPER_KRANE",
+      "upstream_name": "Paper Krane",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            584
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            37
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            134
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PAPER_PHROG",
+      "upstream_name": "Paper Phrog",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2721
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            135
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PEN_NIB",
+      "upstream_name": "Pen Nib",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "attack_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            189,
+            550,
+            1696
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            138
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "PHILOSOPHERS_STONE",
+      "upstream_name": "Philosophers Stone",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Actions.cpp",
+          "lines": [
+            488,
+            517
+          ]
+        },
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            198
+          ]
+        },
+        {
+          "path": "src/combat/MonsterSpecific.cpp",
+          "lines": [
+            1483,
+            3370,
+            3397,
+            3418,
+            3565
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            234
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1068
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            139
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "POCKETWATCH",
+      "upstream_name": "Pocketwatch",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            665
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            140
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RED_SKULL",
+      "upstream_name": "Red Skull",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            436
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            171,
+            313
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            148
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RUNIC_CUBE",
+      "upstream_name": "Runic Cube",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            309
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            233
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1086
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            153
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RUNIC_DOME",
+      "upstream_name": "Runic Dome",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "visibility",
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            206
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            205
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            157,
+            1069
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            154
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RUNIC_PYRAMID",
+      "upstream_name": "Runic Pyramid",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2487
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            238
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1078
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            155
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SACRED_BARK",
+      "upstream_name": "Sacred Bark",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2239
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            334
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2137,
+            2186,
+            2202
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            237
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            156
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SELF_FORMING_CLAY",
+      "upstream_name": "Self Forming Clay",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            305
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            157
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SHURIKEN",
+      "upstream_name": "Shuriken",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1686
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            159
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SNECKO_EYE",
+      "upstream_name": "Snecko Eye",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            63,
+            210
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            220
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1067
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            164
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SNECKO_SKULL",
+      "upstream_name": "Snecko Skull",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            165
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SOZU",
+      "upstream_name": "Sozu",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            214,
+            2217
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1239
+          ]
+        },
+        {
+          "path": "src/game/Shop.cpp",
+          "lines": [
+            143
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            216
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1066
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            166
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "STONE_CALENDAR",
+      "upstream_name": "Stone Calendar",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2055
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            169
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "STRANGE_SPOON",
+      "upstream_name": "Strange Spoon",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            1985
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            170
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "STRIKE_DUMMY",
+      "upstream_name": "Strike Dummy",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2676
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            172
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SUNDIAL",
+      "upstream_name": "Sundial",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 2,
+        "scale": 3,
+        "event": "shuffle",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            218,
+            559,
+            2803
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            173
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "THE_ABACUS",
+      "upstream_name": "The Abacus",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2795
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            176
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "THE_BOOT",
+      "upstream_name": "The Boot",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            342
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            177
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "THE_SPECIMEN",
+      "upstream_name": "The Specimen",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Monster.cpp",
+          "lines": [
+            324
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            179
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TINGSHA",
+      "upstream_name": "Tingsha",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            181
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TOOLBOX",
+      "upstream_name": "Toolbox",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            98,
+            382
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            184
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TORII",
+      "upstream_name": "Torii",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            237
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2109
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            185
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TOUGH_BANDAGES",
+      "upstream_name": "Tough Bandages",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            186
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TOY_ORNITHOPTER",
+      "upstream_name": "Toy Ornithopter",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            188
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TUNGSTEN_ROD",
+      "upstream_name": "Tungsten Rod",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            203,
+            241,
+            268
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2120
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            189
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TURNIP",
+      "upstream_name": "Turnip",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/combat/Player.h",
+          "lines": [
+            374
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            190
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TWISTED_FUNNEL",
+      "upstream_name": "Twisted Funnel",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            108,
+            423
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            40
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            191
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "UNCEASING_TOP",
+      "upstream_name": "Unceasing Top",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            802
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            192
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "VELVET_CHOKER",
+      "upstream_name": "Velvet Choker",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            222,
+            710
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            219
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1072
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            194
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "VIOLET_LOTUS",
+      "upstream_name": "Violet Lotus",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            195
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WARPED_TONGS",
+      "upstream_name": "Warped Tongs",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            118,
+            446
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            671
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2456
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            196
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WRIST_BLADE",
+      "upstream_name": "Wrist Blade",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2680
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            799
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            201
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BLACK_BLOOD",
+      "upstream_name": "Black Blood",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            575
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            310,
+            1318
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            225
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1082
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            32
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BURNING_BLOOD",
+      "upstream_name": "Burning Blood",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": true,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            569
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            311,
+            316,
+            317,
+            486,
+            1319,
+            1320
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            42
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "MEAT_ON_THE_BONE",
+      "upstream_name": "Meat On The Bone",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            581
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            349
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            108
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FACE_OF_CLERIC",
+      "upstream_name": "Face Of Cleric",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            336,
+            337
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1124
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            72
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ANCHOR",
+      "upstream_name": "Anchor",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": true,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            226
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            25
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "ANCIENT_TEA_SET",
+      "upstream_name": "Ancient Tea Set",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            230
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            342
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            26
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BAG_OF_MARBLES",
+      "upstream_name": "Bag Of Marbles",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            102,
+            395
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            29
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BAG_OF_PREPARATION",
+      "upstream_name": "Bag Of Preparation",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            103,
+            399
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            30
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "BLOOD_VIAL",
+      "upstream_name": "Blood Vial",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            236
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            3462
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            1069
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            871
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            35
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "BOTTLED_FLAME",
+      "upstream_name": "Bottled Flame",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "card_binding",
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            295,
+            1325,
+            1550
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            37
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BOTTLED_LIGHTNING",
+      "upstream_name": "Bottled Lightning",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "card_binding",
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            300,
+            1330,
+            1551
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            38
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BOTTLED_TORNADO",
+      "upstream_name": "Bottled Tornado",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "card_binding",
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            305,
+            1335,
+            1552
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            39
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BRONZE_SCALES",
+      "upstream_name": "Bronze Scales",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            240
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            41
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "BUSTED_CROWN",
+      "upstream_name": "Busted Crown",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            244
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1782,
+            1845
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            214
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1075
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            43
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CLOCKWORK_SOUVENIR",
+      "upstream_name": "Clockwork Souvenir",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            104,
+            403
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            54
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "COFFEE_DRIPPER",
+      "upstream_name": "Coffee Dripper",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            248
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            320
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            209
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            112,
+            534
+          ]
+        },
+        {
+          "path": "src/sim/search/ScumSearchAgent2.cpp",
+          "lines": [
+            207
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            658,
+            1081
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            55
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CRACKED_CORE",
+      "upstream_name": "Cracked Core",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            252
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            314,
+            503
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            56
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CURSED_KEY",
+      "upstream_name": "Cursed Key",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            256
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1895
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            215
+          ]
+        },
+        {
+          "path": "src/sim/search/ScumSearchAgent2.cpp",
+          "lines": [
+            161
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1070
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            58
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DAMARU",
+      "upstream_name": "Damaru",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            260
+          ]
+        },
+        {
+          "path": "src/combat/Player.cpp",
+          "lines": [
+            515
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            59
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DATA_DISK",
+      "upstream_name": "Data Disk",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            264
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            61
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DU_VU_DOLL",
+      "upstream_name": "Du Vu Doll",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            268
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            66
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ENCHIRIDION",
+      "upstream_name": "Enchiridion",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            140
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2580
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            70
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FOSSILIZED_HELIX",
+      "upstream_name": "Fossilized Helix",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            272
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            73
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FUSION_HAMMER",
+      "upstream_name": "Fusion Hammer",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            276
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            325
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            210
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            116,
+            538
+          ]
+        },
+        {
+          "path": "src/sim/search/ScumSearchAgent2.cpp",
+          "lines": [
+            205
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            659,
+            1071
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            77
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GIRYA",
+      "upstream_name": "Girya",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            280
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            28,
+            280,
+            332,
+            3728
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            335
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            124,
+            546
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            660
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            80
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GOLD_PLATED_CABLES",
+      "upstream_name": "Goldplated Cables",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            46
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            83
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GREMLIN_VISAGE",
+      "upstream_name": "Gremlin Visage",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            105,
+            407
+          ]
+        },
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            340,
+            341
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            85
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "HOLY_WATER",
+      "upstream_name": "Holy Water",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            95,
+            370
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            322
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            88
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "LANTERN",
+      "upstream_name": "Lantern",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            284
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            97
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "MARK_OF_PAIN",
+      "upstream_name": "Mark Of Pain",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            112,
+            411
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            222
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1074
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            31
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            103
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MUTAGENIC_STRENGTH",
+      "upstream_name": "Mutagenic Strength",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            288
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2711
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            115
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NEOWS_LAMENT",
+      "upstream_name": "Neows Lament",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            293,
+            540
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1373,
+            2326
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1179
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            119
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NINJA_SCROLL",
+      "upstream_name": "Ninja Scroll",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            96,
+            374
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            37
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            121
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NUCLEAR_BATTERY",
+      "upstream_name": "Nuclear Battery",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            302
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            122
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ODDLY_SMOOTH_STONE",
+      "upstream_name": "Oddly Smooth Stone",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            306
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            124
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "PANTOGRAPH",
+      "upstream_name": "Pantograph",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            310
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            133
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PRESERVED_INSECT",
+      "upstream_name": "Preserved Insect",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            316
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            361
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            143
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PURE_WATER",
+      "upstream_name": "Pure Water",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            97,
+            378
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            323,
+            512
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            145
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RED_MASK",
+      "upstream_name": "Red Mask",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            106,
+            415
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            2997,
+            3418
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            1045
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            857
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            147
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RING_OF_THE_SERPENT",
+      "upstream_name": "Ring Of The Serpent",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            66,
+            325
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            319
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            39
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            150
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RING_OF_THE_SNAKE",
+      "upstream_name": "Ring Of The Snake",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            107,
+            419
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            320,
+            494
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            151
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RUNIC_CAPACITOR",
+      "upstream_name": "Runic Capacitor",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            330
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            152
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SLAVERS_COLLAR",
+      "upstream_name": "Slavers Collar",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            334
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            221
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            161
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SLING_OF_COURAGE",
+      "upstream_name": "Sling Of Courage",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            340
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            162
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SYMBIOTIC_VIRUS",
+      "upstream_name": "Symbiotic Virus",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            346
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            46
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            174
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TEARDROP_LOCKET",
+      "upstream_name": "Teardrop Locket",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            350
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            175
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "THREAD_AND_NEEDLE",
+      "upstream_name": "Thread And Needle",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            354
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            180
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "VAJRA",
+      "upstream_name": "Vajra",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
+      "training_admitted": true,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            358
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            193
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": "tests/test_relic_state.py"
+    },
+    {
+      "upstream_enum": "ASTROLABE",
+      "upstream_name": "Astrolabe",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1305
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            229
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1077
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            28
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "BLACK_STAR",
+      "upstream_name": "Black Star",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1944
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            239
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1084
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            33
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CALLING_BELL",
+      "upstream_name": "Calling Bell",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1350
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            230
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1089
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            45
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CAULDRON",
+      "upstream_name": "Cauldron",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1340
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            47
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CULTIST_HEADPIECE",
+      "upstream_name": "Cultist Headpiece",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            332,
+            333
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            57
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DOLLYS_MIRROR",
+      "upstream_name": "Dollys Mirror",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            63
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "DREAM_CATCHER",
+      "upstream_name": "Dream Catcher",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            345,
+            3708
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            64
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "EMPTY_CAGE",
+      "upstream_name": "Empty Cage",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1361
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1076
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            69
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ETERNAL_FEATHER",
+      "upstream_name": "Eternal Feather",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1591
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1080
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            71
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "FROZEN_EGG",
+      "upstream_name": "Frozen Egg",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Deck.cpp",
+          "lines": [
+            149
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            346,
+            1573
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            75
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "GOLDEN_IDOL",
+      "upstream_name": "Golden Idol",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            412,
+            1922,
+            1938,
+            1960,
+            2789,
+            2847,
+            3360
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            820,
+            841,
+            1025
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            800,
+            807,
+            850
+          ]
+        },
+        {
+          "path": "src/sim/search/ScumSearchAgent2.cpp",
+          "lines": [
+            380
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            82
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "JUZU_BRACELET",
+      "upstream_name": "Juzu Bracelet",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            347,
+            2082
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            95
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "LEES_WAFFLE",
+      "upstream_name": "Lees Waffle",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1367
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            98
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MANGO",
+      "upstream_name": "Mango",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1378
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            102
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MATRYOSHKA",
+      "upstream_name": "Matryoshka",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            329,
+            1888,
+            1892
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            105
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MAW_BANK",
+      "upstream_name": "Maw Bank",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            337,
+            1383,
+            1585,
+            2172,
+            2173
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            106
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MEAL_TICKET",
+      "upstream_name": "Meal Ticket",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            348,
+            831
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            107
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MEMBERSHIP_CARD",
+      "upstream_name": "Membership Card",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Shop.cpp",
+          "lines": [
+            23,
+            123,
+            212,
+            226,
+            232
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            111
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "MOLTEN_EGG",
+      "upstream_name": "Molten Egg",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Deck.cpp",
+          "lines": [
+            129
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            350,
+            1561
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            113
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NLOTHS_GIFT",
+      "upstream_name": "Nloths Gift",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1617,
+            3135,
+            3141
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            116
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "NLOTHS_HUNGRY_FACE",
+      "upstream_name": "Nloths Hungry Face",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            344,
+            345
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1906,
+            1907
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            117
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "OLD_COIN",
+      "upstream_name": "Old Coin",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            338
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            126
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "ORRERY",
+      "upstream_name": "Orrery",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1085
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            131
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PANDORAS_BOX",
+      "upstream_name": "Pandoras Box",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1393
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            213
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1087
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            132
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PEACE_PIPE",
+      "upstream_name": "Peace Pipe",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            28,
+            283,
+            333
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            340
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            128,
+            550
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            662
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            136
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PEAR",
+      "upstream_name": "Pear",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1414
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            137
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "POTION_BELT",
+      "upstream_name": "Potion Belt",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": "capacity",
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            204,
+            352,
+            1423
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            141
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PRAYER_WHEEL",
+      "upstream_name": "Prayer Wheel",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            353,
+            1928
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            142
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "PRISMATIC_SHARD",
+      "upstream_name": "Prismatic Shard",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1418,
+            1810
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            18,
+            32,
+            40,
+            49,
+            57
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            144
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "QUESTION_CARD",
+      "upstream_name": "Question Card",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            354,
+            1779,
+            1842
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            146
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "REGAL_PILLOW",
+      "upstream_name": "Regal Pillow",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            355,
+            3706
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            149
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SSSERPENT_HEAD",
+      "upstream_name": "Ssserpent Head",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            348,
+            349
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1597
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            168
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SHOVEL",
+      "upstream_name": "Shovel",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            28,
+            286,
+            334
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            345
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            132,
+            554
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            661
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            158
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SINGING_BOWL",
+      "upstream_name": "Singing Bowl",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            356
+          ]
+        },
+        {
+          "path": "src/sim/ConsoleSimulator.cpp",
+          "lines": [
+            473
+          ]
+        },
+        {
+          "path": "src/sim/search/GameAction.cpp",
+          "lines": [
+            333
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            160
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SMILING_MASK",
+      "upstream_name": "Smiling Mask",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            339
+          ]
+        },
+        {
+          "path": "src/game/Shop.cpp",
+          "lines": [
+            220
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            163
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "SPIRIT_POOP",
+      "upstream_name": "Spirit Poop",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            3665
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            167
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "STRAWBERRY",
+      "upstream_name": "Strawberry",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1430
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            171
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "THE_COURIER",
+      "upstream_name": "The Courier",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            357
+          ]
+        },
+        {
+          "path": "src/game/Shop.cpp",
+          "lines": [
+            20,
+            90,
+            128,
+            148,
+            198,
+            201,
+            209,
+            226,
+            229
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            178
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TINY_CHEST",
+      "upstream_name": "Tiny Chest",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            325,
+            2053,
+            2054
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            182
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TINY_HOUSE",
+      "upstream_name": "Tiny House",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1435
+          ]
+        },
+        {
+          "path": "src/sim/search/ExpertKnowledge.cpp",
+          "lines": [
+            228
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1083
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            17,
+            31,
+            39,
+            48,
+            56
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            183
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "TOXIC_EGG",
+      "upstream_name": "Toxic Egg",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Deck.cpp",
+          "lines": [
+            139
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            358,
+            1567
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            187
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WAR_PAINT",
+      "upstream_name": "War Paint",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1453
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            197
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WHETSTONE",
+      "upstream_name": "Whetstone",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1457,
+            1553
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            14,
+            28,
+            36,
+            45,
+            53
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            198
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WHITE_BEAST_STATUE",
+      "upstream_name": "White Beast Statue",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1759
+          ]
+        },
+        {
+          "path": "src/sim/search/SimpleAgent.cpp",
+          "lines": [
+            1088
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            15,
+            29,
+            37,
+            46,
+            54
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            199
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "WING_BOOTS",
+      "upstream_name": "Wing Boots",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            328
+          ]
+        },
+        {
+          "path": "include/constants/RelicPools.h",
+          "lines": [
+            16,
+            30,
+            38,
+            47,
+            55
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            200
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "CIRCLET",
+      "upstream_name": "Circlet",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/Game.cpp",
+          "lines": [
+            353
+          ]
+        },
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1495
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            202
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    },
+    {
+      "upstream_enum": "RED_CIRCLET",
+      "upstream_name": "Red Circlet",
+      "implementation_status": "not_imported",
+      "public_state": "pending",
+      "training_admitted": false,
+      "owner_review": null,
+      "source_occurrences": [
+        {
+          "path": "src/game/GameContext.cpp",
+          "lines": [
+            1511
+          ]
+        },
+        {
+          "path": "include/constants/SaveFileMappings.h",
+          "lines": [
+            203
+          ]
+        }
+      ],
+      "original_game_behavior_verification": "pending",
+      "behavior_test": null
+    }
+  ]
+}

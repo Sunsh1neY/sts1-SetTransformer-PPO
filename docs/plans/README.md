@@ -1,6 +1,6 @@
 # Pending work
 
-Status: current roadmap, updated 2026-09-18. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
+Status: current roadmap, updated 2026-09-19. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
 
 ## 1. Clear starting point — completed
 
@@ -8,11 +8,11 @@ The first-pass cleanup was completed in local commit `3a56708`; see the [complet
 
 ## 2. Prerequisites: reward, potions and required relic state
 
-This prerequisite block comes before new initial-state dataset work. Retain the previously agreed reward/potion -> required relic sequence. Complete and validate the reward revision, required potion handling/use-cost behavior, and required relic state/mechanisms before advancing. I8 approves A-path `battle_reward_v2` with B=2, alpha=1 and lambda=0.05, paid once at true termination. The [implementation report](../reward-potion-v2-report.md) records current validation. Required relic work remains pending; reward implementation alone does not close the prerequisite block. Preserve the current A-path backbone and source/conditional-target policy. The aim is faithful independent Act 1/2 combat, with required owned relic instances and public state represented, rather than silently dropping unsupported scene components.
+This prerequisite block comes before new initial-state dataset work. Retain the previously agreed reward/potion -> required relic sequence. Complete and validate the reward revision, required potion handling/use-cost behavior, and required relic state/mechanisms before advancing. I8 approves A-path `battle_reward_v2` with B=2, alpha=1 and lambda=0.05, paid once at true termination. The [implementation report](../reward-potion-v2-report.md) records current validation. The first relic implementation slice is recorded in the I9 progress section below; remaining relic work is still required before closing this prerequisite block. Preserve the current A-path backbone and source/conditional-target policy. The aim is faithful independent Act 1/2 combat, with required owned relic instances and public state represented, rather than silently dropping unsupported scene components.
 
 Prepared material:
 
-- [Relic audit/import plan v1](sts-relic-audit-and-import-plan-v1.md): exact copy of the owner's prepared 2026-09-14 document; source hash recorded in the migration manifest. It remains a pending input. Its older remote/local baseline must be refreshed before execution; A-path is already integrated into local main.
+- [Relic audit/import plan v1](sts-relic-audit-and-import-plan-v1.md): exact copy of the owner's prepared 2026-09-14 document; source hash recorded in the migration manifest. Its baseline was refreshed against reward-v2 commit `1e95005` for the first I9 slice. Unimplemented batches remain pending; its identity-embedding suggestion is superseded by the owner's one-hot decision.
 - [Existing static relic/potion audit](../relic-potion-backend-audit.md): implementation references, not per-relic behavior certification.
 - [Act 1/2 integration evidence](../act12-main-integration-report.md): existing environment boundary, not proof of all combinations.
 - [Current A-path integration](../a-path-main-integration-report.md) and [relation design](../stasis-relation-design-review.md): preserve accepted mechanisms and distinguish their evidence levels.
@@ -38,3 +38,7 @@ Decision Transformer, broader generalization studies and any focused ablation re
 ## External refactor proposal
 
 The 2026-09-15 downloaded research-refactor plan and reading guide informed discussion, but their embedded M0–M6 prompts are not the adopted execution scope. The owner-approved scope is I6. In particular, full English migration, new training and clean-clone reproduction are not first-pass completion gates. No second competing specification is introduced.
+
+## I9 implementation progress
+
+The first relic implementation slice is available in [the integration report](../relic-integration-report.md): one-hot identity, existing eight relics and six counter representatives. It is scoped diagnostic evidence, not full R0 completion or new pool admission. Special relics require owner review. The historical plan remains a planning input; I8 reward v2 and I9 one-hot identity supersede its corresponding older suggestions.

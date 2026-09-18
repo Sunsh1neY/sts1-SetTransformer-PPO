@@ -102,7 +102,7 @@ def test_actual_codec_duplicates_and_act_evaluate_one_encoding():
 
 def test_permutation_padding_batch_isolation_and_snapshot_immutability():
     _, obs = observation()
-    raw = encode_observation(obs)
+    raw = encode(obs).entities
     sample = adapt(raw)
     other = adapt(raw.permuted(np.random.default_rng(4).permutation(len(raw.tokens))))
     _, large = observation(80)
@@ -184,7 +184,7 @@ def test_public_context_changes_source_representation_and_value_without_changing
 
 def test_terminal_empty_candidate_value_and_finite_backward():
     _, obs = observation()
-    raw = encode_observation(obs); raw.candidates = []; raw.routes = []
+    raw = encode(obs).entities; raw.candidates = []; raw.routes = []
     sample = adapt(raw)
     batch = batch_samples([sample]); model = APathActorCritic()
     value = model.value_only(batch)
@@ -207,7 +207,7 @@ def test_extreme_logits_masks_and_invalid_routes_fail_explicitly():
     with pytest.raises(ValueError, match='合法条件'):
         JointDistribution(s, t, torch.ones_like(s, dtype=torch.bool), mask)
     _, obs = observation()
-    raw = encode_observation(obs)
+    raw = encode(obs).entities
     raw.routes.pop()
     with pytest.raises(ValueError, match='等长'):
         adapt(raw)

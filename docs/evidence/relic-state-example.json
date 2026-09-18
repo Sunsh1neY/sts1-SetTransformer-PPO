@@ -1,0 +1,735 @@
+{
+  "purpose": "Engineering evidence only; untrained model; no learning claim",
+  "registry": "relic-state-v1",
+  "registry_sha256": "305dc5f56c252110e7b5f043ec9c9b3827ba8c01b55b3382d731de55e20d3f66",
+  "fingerprint": {
+    "sts/env/relic_state.py": "c1b5af81ac2d6d37eb3b72900e72771e61dad70cdfabb900e6ff013981f6a4a6",
+    "sts/env/relic-state-registry.json": "305dc5f56c252110e7b5f043ec9c9b3827ba8c01b55b3382d731de55e20d3f66",
+    "sts/env/relics.py": "0c7b3c5a4d7ebf59e96cdd535170a5b09cf361a2dfe23dd7888a0436701c7e94",
+    "patches/lightspeed-relic-state.patch": "89f96c336b5d94f2394739811b082c68105554a85694c282a5ecc6f8ee7e15a6",
+    "sts/battle_reward_v2.py": "5b45b2fc3b2dc57179d9d6adca9b73d69fb7f7b9e4ef00dd5226e46d9a9b8227",
+    "sts/train/apath.py": "a1b8addfc681da05c9fdc490e77d540cd144eee24489ed7d70efd063ec0abd1b",
+    "sts/models/apath.py": "86a7dc141737fd1792f861da4ecabaaceacb256417472177e2fb5b450947a3d0",
+    "sts/models/entities.py": "5ad56e63a0506e6ce9ae5d38e5c52e8f7c6c3107baf891529acda3f01dbc0421",
+    "sts/env/apath.py": "8c19bfbeb13892841c32a6fc22bd1106c842c8d50590f3ea4e9f7a534bea873e",
+    "sts/env/a-path-training-pool.json": "1ef88b8b38a576d2a26e50f3c70d6dc7ae3b7971d6856490af4e5f60d8d2e7bc",
+    "sts/env/entities.py": "948a19978502f09bb13647f95bf908970f93158e0e106d9bb1dc6728e5fd4008",
+    "sts/env/ironclad.py": "e3ec10b76071c8be48102ec1c54553ff4682396571a8b45ac03c1f21f0800c38",
+    "sts/env/full_card_public.py": "d98e612840e423a7e3926d1d6a16b024f0a5bd6053dae2a6866e5da90a678f39",
+    "sts/env/selection.py": "6929026f37336483962a31c7c5b6fe62f82121d3e4b08e98211d97aab8f02e95",
+    "sts/train/ppo.py": "56f67958eb567794e9511c445b34e1ac6a458d4065531fc5cb03c5f58822629f",
+    "sts/env/ironclad-expansion-contract.json": "a6886979761454030fcc10f0c5059b5e6d26f8e4992f5dedda7d1cdae1e8fe74",
+    "sts/env/ironclad-registry.json": "da0e5801316135ed798b17fe8b9bc94ab99bc53206f53ad0a83f0f3e46fb22da",
+    "sts/models/unified-entity-contract.json": "50baba6d7ee0e8ed0b00f2612d29ab5a111238c30adab9680efd543c8307e0e7",
+    "scripts/run-a-path-ppo.py": "6760ca08bf1edc36beef8ca2b2a85bce28792ec730fa0ac2ac39382dcfa7cefb",
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c",
+    "backend": "8cad5008928172ad43f008590664db8d5453061df33d5ed1df9576bf117bf275"
+  },
+  "initial_scene": {
+    "entry_timing": "pre_combat_initialization",
+    "initialization_phase": "before_destination_room_entry",
+    "act": 1,
+    "floor": 1,
+    "character": "IRONCLAD",
+    "ascension": 20,
+    "player": {
+      "hp": 70,
+      "max_hp": 80,
+      "gold": 99
+    },
+    "deck": [
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R",
+      "Strike_R"
+    ],
+    "relics": [
+      "Vajra",
+      {
+        "name": "Pen Nib",
+        "counter": 8
+      },
+      {
+        "name": "Nunchaku",
+        "counter": 9
+      },
+      {
+        "name": "Ink Bottle",
+        "counter": 9
+      }
+    ],
+    "potions": [
+      null,
+      null
+    ],
+    "encounter": "JAW_WORM",
+    "burning_elite": false
+  },
+  "environment_seed": 100123,
+  "model_seed": 0,
+  "before": {
+    "relics": [
+      {
+        "name": "Vajra",
+        "relic_id": 5,
+        "state": {
+          "counter": {
+            "applicable": false,
+            "known": false,
+            "value": null
+          }
+        }
+      },
+      {
+        "name": "Pen Nib",
+        "relic_id": 9,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 8
+          }
+        }
+      },
+      {
+        "name": "Nunchaku",
+        "relic_id": 10,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      },
+      {
+        "name": "Ink Bottle",
+        "relic_id": 13,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      }
+    ],
+    "player": {
+      "ascension": 20,
+      "attacks_played_this_turn": 0,
+      "block": 0,
+      "cards_played_this_turn": 0,
+      "combust_hp_loss": 0,
+      "energy": 3,
+      "energy_per_turn": 3,
+      "hp": 70,
+      "max_hp": 80,
+      "skills_played_this_turn": 0,
+      "statuses": {
+        "Strength": 1
+      },
+      "turn": 0
+    },
+    "relic_tokens": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.800000011920929
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.8999999761581421
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        0.8999999761581421
+      ]
+    ],
+    "entity_valid": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "source_probabilities": [
+      0.17117178440093994,
+      0.17117178440093994,
+      0.17117178440093994,
+      0.17117178440093994,
+      0.17117178440093994,
+      0.1441410481929779
+    ],
+    "joint_probabilities": [
+      [
+        0.17117178440093994
+      ],
+      [
+        0.17117178440093994
+      ],
+      [
+        0.17117178440093994
+      ],
+      [
+        0.17117178440093994
+      ],
+      [
+        0.17117178440093994
+      ],
+      [
+        0.1441410481929779
+      ]
+    ],
+    "action_routes": [
+      [
+        {
+          "kind": "NORMAL",
+          "action": 0
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 5
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 10
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 15
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 20
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 50
+        }
+      ]
+    ],
+    "value": 0.01708626002073288
+  },
+  "action": 0,
+  "after": {
+    "relics": [
+      {
+        "name": "Vajra",
+        "relic_id": 5,
+        "state": {
+          "counter": {
+            "applicable": false,
+            "known": false,
+            "value": null
+          }
+        }
+      },
+      {
+        "name": "Pen Nib",
+        "relic_id": 9,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      },
+      {
+        "name": "Nunchaku",
+        "relic_id": 10,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 0
+          }
+        }
+      },
+      {
+        "name": "Ink Bottle",
+        "relic_id": 13,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 0
+          }
+        }
+      }
+    ],
+    "player": {
+      "ascension": 20,
+      "attacks_played_this_turn": 1,
+      "block": 0,
+      "cards_played_this_turn": 1,
+      "combust_hp_loss": 0,
+      "energy": 3,
+      "energy_per_turn": 3,
+      "hp": 70,
+      "max_hp": 80,
+      "skills_played_this_turn": 0,
+      "statuses": {
+        "Pen Nib": 1,
+        "Strength": 1
+      },
+      "turn": 0
+    },
+    "relic_tokens": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.8999999761581421
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "entity_valid": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "source_probabilities": [
+      0.17092297971248627,
+      0.17092297971248627,
+      0.17092297971248627,
+      0.17092297971248627,
+      0.17092297971248627,
+      0.14538511633872986
+    ],
+    "joint_probabilities": [
+      [
+        0.17092297971248627
+      ],
+      [
+        0.17092297971248627
+      ],
+      [
+        0.17092297971248627
+      ],
+      [
+        0.17092297971248627
+      ],
+      [
+        0.17092297971248627
+      ],
+      [
+        0.14538511633872986
+      ]
+    ],
+    "action_routes": [
+      [
+        {
+          "kind": "NORMAL",
+          "action": 0
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 5
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 10
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 15
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 20
+        }
+      ],
+      [
+        {
+          "kind": "NORMAL",
+          "action": 50
+        }
+      ]
+    ],
+    "value": 0.016329362988471985
+  },
+  "reward": 0.0,
+  "terminated": false,
+  "truncated": false,
+  "transition_info": {
+    "action_count": 1,
+    "exit_effects_applied": false,
+    "outcome": 0,
+    "player_hp": 70,
+    "player_max_hp": 80,
+    "reward_version": "battle_reward_v2",
+    "truncation_reason": "",
+    "scene_kind": "mechanism-diagnostic",
+    "historical_exact": false,
+    "environment_seed": 100123,
+    "seed_purpose": "development",
+    "contract_id": "ironclad-enemy-integration-v2",
+    "contract_hash": "a6886979761454030fcc10f0c5059b5e6d26f8e4992f5dedda7d1cdae1e8fe74",
+    "gamma": 1.0,
+    "task_type": "battle",
+    "task_spec_id": "ironclad-enemy-integration-v2",
+    "environment_version": "ironclad-enemy-integration-v2",
+    "alpha_hp": 1.0,
+    "beta": 0.0,
+    "observation_schema": "ironclad-enemy-observation-v2",
+    "registry_version": "ironclad-registry-v1",
+    "action_schema_version": 2,
+    "termination_rule_version": "battle-natural-with-external-action-budget-v1",
+    "max_actions": 512,
+    "action_schema": "ironclad-normal-66-and-single-select-v2",
+    "registry_hash": "da0e5801316135ed798b17fe8b9bc94ab99bc53206f53ad0a83f0f3e46fb22da",
+    "training_admitted": false,
+    "reward_contract": {
+      "reward_version": "battle_reward_v2",
+      "victory_bonus": 2.0,
+      "alpha_hp": 1.0,
+      "potion_use_cost": 0.05,
+      "gamma": 1.0,
+      "settlement": "true_terminal_only",
+      "hp_start_timing": "registered_pre_combat",
+      "hp_end_timing": "after_supported_exit_effects"
+    },
+    "victory_bonus": 2.0,
+    "potion_use_cost": 0.05,
+    "relic_state_schema": "relic-state-v1",
+    "relic_registry_hash": "305dc5f56c252110e7b5f043ec9c9b3827ba8c01b55b3382d731de55e20d3f66",
+    "reward_base": 0.0,
+    "reward_train": 0.0,
+    "task_outcome": "ongoing",
+    "termination_reason": "ongoing",
+    "entity_count": 16,
+    "allocated_card_count": 10,
+    "battle_won": false,
+    "reward_accounting": {
+      "hp_start": 70,
+      "max_hp_start": 80,
+      "hp_end": 70,
+      "max_hp_end": 80,
+      "net_hp_fraction": 0.0,
+      "potion_uses": 0,
+      "initial_potions": [
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        },
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        },
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        }
+      ],
+      "final_potions": [
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        },
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        },
+        {
+          "name": "",
+          "potency": 0,
+          "present": false,
+          "target_kind": "NO_TARGET",
+          "potion_id": 0
+        }
+      ],
+      "potion_events": [],
+      "reward_components": null,
+      "complete": false
+    },
+    "backend_reward_v1": 0.0,
+    "relic_state_before": [
+      {
+        "name": "Vajra",
+        "relic_id": 5,
+        "state": {
+          "counter": {
+            "applicable": false,
+            "known": false,
+            "value": null
+          }
+        }
+      },
+      {
+        "name": "Pen Nib",
+        "relic_id": 9,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 8
+          }
+        }
+      },
+      {
+        "name": "Nunchaku",
+        "relic_id": 10,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      },
+      {
+        "name": "Ink Bottle",
+        "relic_id": 13,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      }
+    ],
+    "relic_state_after": [
+      {
+        "name": "Vajra",
+        "relic_id": 5,
+        "state": {
+          "counter": {
+            "applicable": false,
+            "known": false,
+            "value": null
+          }
+        }
+      },
+      {
+        "name": "Pen Nib",
+        "relic_id": 9,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 9
+          }
+        }
+      },
+      {
+        "name": "Nunchaku",
+        "relic_id": 10,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 0
+          }
+        }
+      },
+      {
+        "name": "Ink Bottle",
+        "relic_id": 13,
+        "state": {
+          "counter": {
+            "applicable": true,
+            "known": true,
+            "value": 0
+          }
+        }
+      }
+    ]
+  }
+}

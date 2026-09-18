@@ -1,0 +1,154 @@
+{
+  "schema": "relic-state-v1",
+  "identity_encoding": "one_hot",
+  "identity_columns": [
+    "Burning Blood",
+    "Lantern",
+    "Anchor",
+    "Bag of Preparation",
+    "Vajra",
+    "Oddly Smooth Stone",
+    "Blood Vial",
+    "Bronze Scales",
+    "Pen Nib",
+    "Nunchaku",
+    "Happy Flower",
+    "Incense Burner",
+    "Ink Bottle",
+    "Sundial"
+  ],
+  "state_columns": [
+    "counter_applicable",
+    "counter_known",
+    "counter_value_scaled"
+  ],
+  "feature_dimension": 17,
+  "relics": [
+    {
+      "id": 1,
+      "name": "Burning Blood",
+      "counter": null,
+      "training_admitted": true
+    },
+    {
+      "id": 2,
+      "name": "Lantern",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 3,
+      "name": "Anchor",
+      "counter": null,
+      "training_admitted": true
+    },
+    {
+      "id": 4,
+      "name": "Bag of Preparation",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 5,
+      "name": "Vajra",
+      "counter": null,
+      "training_admitted": true
+    },
+    {
+      "id": 6,
+      "name": "Oddly Smooth Stone",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 7,
+      "name": "Blood Vial",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 8,
+      "name": "Bronze Scales",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 9,
+      "name": "Pen Nib",
+      "counter": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "attack_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 10,
+      "name": "Nunchaku",
+      "counter": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "attack_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 11,
+      "name": "Happy Flower",
+      "counter": {
+        "min": 0,
+        "max": 2,
+        "scale": 3,
+        "event": "turn_start",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 12,
+      "name": "Incense Burner",
+      "counter": {
+        "min": 0,
+        "max": 5,
+        "scale": 6,
+        "event": "turn_start",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 13,
+      "name": "Ink Bottle",
+      "counter": {
+        "min": 0,
+        "max": 9,
+        "scale": 10,
+        "event": "card_played",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 14,
+      "name": "Sundial",
+      "counter": {
+        "min": 0,
+        "max": 2,
+        "scale": 3,
+        "event": "shuffle",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    }
+  ]
+}

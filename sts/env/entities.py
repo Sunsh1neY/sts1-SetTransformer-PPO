@@ -141,8 +141,9 @@ class EntitySample:
                             copy.deepcopy(self.routes), np.array([remap(int(self.held_card_index[i])) for i in order], dtype=np.int64) if self.held_card_index is not None else None)
 
 
-def encode_observation(obs):
+def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
     """适配当前具名战斗观测；新增机制必须显式提供合法性和完整字段。"""
+    dimensions = FEATURE_DIMS if feature_dims is None else feature_dims
     from sts.env.ironclad import CONTRACT as RUNTIME
     _reject_hidden_fields(obs)
     expected = {"schema", "hand", "draw_pile", "discard_pile", "exhaust_pile", "resolving",
@@ -164,7 +165,7 @@ def encode_observation(obs):
 
     def add(entity_type, features):
         row = np.asarray(features, dtype=np.float32)
-        if row.shape != (FEATURE_DIMS[entity_type],) or not np.isfinite(row).all():
+        if row.shape != (dimensions[entity_type],) or not np.isfinite(row).all():
             raise ValueError(f"{entity_type}字段布局或数值错误：{row.shape}")
         tokens.append(EntityToken(entity_type, row))
         return len(tokens) - 1
@@ -223,7 +224,14 @@ def encode_observation(obs):
                                   [1.0, number(potion["potency"], 20)] + onehot(potion["target_kind"], ["NO_TARGET", "ENEMY"]) +
                                   onehot(lifecycle, CONTRACT["potion_regions"]))
     relic_names = [r["name"] for r in CONTRACT["relics"]]
+    seen_relics = set()
     for relic in obs["relics"]:
+        if relic["name"] in seen_relics:
+            raise ValueError("Duplicate relic instance")
+        seen_relics.add(relic["name"])
+        if relic_encoder is not None:
+            add("RELIC", relic_encoder(relic))
+            continue
         exact(relic, {"name", "relic_id", "counter"})
         definition = next((r for r in CONTRACT["relics"] if r["name"] == relic["name"]), None)
         if definition is None or definition["id"] != relic["relic_id"]:
@@ -340,8 +348,9 @@ def encode_observation(obs):
     return EntitySample(tokens, edges, candidates, routes, held)
 
 
-def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False):
+def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False, feature_dims=None):
     """只按本批实际最大长度补齐，资源越界整批拒绝，路由信息不进入tensor。"""
+    dimensions = FEATURE_DIMS if feature_dims is None else feature_dims
     limits = CONTRACT["resources"] if resources is None else resources
     if not samples:
         raise ValueError("不能编码空批次")
@@ -351,7 +360,7 @@ def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False):
     if n < 1 or a < 1 or n > limits["max_entities"] or a > limits["max_candidates"] or b * heads * n * n > limits["max_attention_elements"]:
         raise ValueError("统一实体批次超出资源边界；必须拆分或重设资源契约，不能丢弃实体")
     batch = {"types": torch.zeros(b, n, dtype=torch.long), "entity_valid": torch.zeros(b, n, dtype=torch.bool),
-             "features": {t: torch.zeros(b, n, dim) for t, dim in FEATURE_DIMS.items()},
+             "features": {t: torch.zeros(b, n, dim) for t, dim in dimensions.items()},
              "held_card_index": torch.full((b,n), -1, dtype=torch.long), "edges": torch.zeros(b, n, n, 0), "kinds": torch.zeros(b, a, dtype=torch.long),
              "source": torch.full((b, a), -1, dtype=torch.long), "target": torch.full((b, a), -1, dtype=torch.long),
              "candidate_context": torch.zeros(b, a, CANDIDATE_CONTEXT_DIM),
@@ -367,7 +376,7 @@ def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False):
                 raise ValueError("关系源/目标类型错误")
         batch["held_card_index"][i,:length]=torch.from_numpy(held.copy())
         for j, token in enumerate(sample.tokens):
-            if token.entity_type not in TYPES or token.features.shape != (FEATURE_DIMS[token.entity_type],) or not np.isfinite(token.features).all():
+            if token.entity_type not in TYPES or token.features.shape != (dimensions[token.entity_type],) or not np.isfinite(token.features).all():
                 raise ValueError("实体类型或语义向量错误")
             batch["types"][i, j] = TYPES.index(token.entity_type)
             batch["features"][token.entity_type][i, j] = torch.from_numpy(token.features)

@@ -37,3 +37,5 @@ Report implementation, tests, real runtime closure, learning improvement, genera
 Use [docs/README.md](docs/README.md) for current navigation and [archive/README.md](archive/README.md) for history. Archived instructions do not authorize new work. Existing source bundles/checkpoints retain their original identities; do not loosen fingerprint checks to make them load. Report what changed, what was checked, and what remains unfinished.
 
 A-path reward amendment I8: battle_reward_v2 uses B=2, alpha=1, lambda=0.05, initial-max-HP-normalized net HP and potion-use cost, paid once at true termination. Preserve legacy v1, external-truncation bootstrap and strict reward fingerprinting.
+
+I9 authorizes scoped relic implementation with one-hot identity, based on I8. Special relic selection/binding/visibility/capacity semantics require owner review; ordinary verified state work may proceed. No new pool admission or substantial training.

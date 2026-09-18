@@ -10,7 +10,10 @@ from sts.env.entities import (CONTRACT, TYPES, FEATURE_DIMS, CANDIDATE_CONTEXT_D
                               EntitySample, collate, encode_observation)
 from sts.models.entities import EntityArchitecture, EntityBlock
 
-VERSION = "a-path-four-sab-pma-pointer-v1"
+from sts.env.relic_state import DIMENSION as RELIC_DIM, relic_features
+
+FEATURE_DIMS = {**FEATURE_DIMS, "RELIC": RELIC_DIM}
+VERSION = "a-path-four-sab-pma-pointer-relic-v1"
 TASKS = ("PLAY", "POTION", "ARMAMENTS", "DUAL_WIELD", "EXHAUST_ONE", "EXHUME", "HEADBUTT", "WARCRY", "DISCOVERY", "END_TURN")
 
 
@@ -68,13 +71,13 @@ def adapt(sample):
 
 
 def encode(obs):
-    return adapt(encode_observation(obs))
+    return adapt(encode_observation(obs, relic_encoder=relic_features, feature_dims=FEATURE_DIMS))
 
 
 def batch_samples(samples, device="cpu"):
     # 终局也有玩家实体；空候选保留独立Value-only路径。
     entities = [s.entities for s in samples]
-    batch = collate(entities, allow_empty_candidates=True)
+    batch = collate(entities, allow_empty_candidates=True, feature_dims=FEATURE_DIMS)
     b = len(samples); u = max(1, max(len(s.sources) for s in samples))
     j = max(1, max((len(t) for s in samples for t in s.targets), default=1))
     batch.update(source_index=torch.zeros(b, u, dtype=torch.long), task=torch.zeros(b, u, dtype=torch.long),
