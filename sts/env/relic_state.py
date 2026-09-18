@@ -46,7 +46,7 @@ def relic_features(row):
     # Explicit compatibility conversion for the original eight stateless relics.
     if set(row) == {'name', 'relic_id', 'counter'}:
         definition = BY_NAME.get(row['name'])
-        if definition is None or definition['counter'] is not None:
+        if definition is None or definition['id'] > 8 or definition['counter'] is not None:
             raise ValueError('Legacy relic observation cannot introduce counter relics')
         if type(row['relic_id']) is not int or row['relic_id'] != definition['id']:
             raise ValueError('Relic identity mismatch')
@@ -85,4 +85,7 @@ def validate_initial_relics(rows):
             raw.append(row)
         else:
             raise ValueError('Invalid initial relic record')
-    normalize_relics(raw)
+    normalized = normalize_relics(raw)
+    owned = {row['name'] for row in normalized}
+    if {'Burning Blood', 'Black Blood'} <= owned:
+        raise ValueError('Black Blood replaces Burning Blood')

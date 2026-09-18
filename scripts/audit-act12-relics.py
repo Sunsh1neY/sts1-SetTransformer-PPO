@@ -93,7 +93,7 @@ RUN_ONLY = set('Astrolabe BlackStar CallingBell Cauldron CeramicFish Courier Dar
 def main():
     lib = (REF / 'helpers/RelicLibrary.java').read_text(encoding='utf-8')
     pools = {cls: pool or 'Shared' for pool, cls in re.findall(r'RelicLibrary.add(Red|Green|Blue|Purple)?\(new (\w+)\(\)\)', lib)}
-    upstream = json.loads((ROOT/'docs/evidence/relic-audit-ledger.json').read_bytes())['relics']
+    upstream = json.loads((ROOT/'docs/evidence/relic-audit-ledger-first-batch.json').read_bytes())['relics']
     norm = lambda name: re.sub('[^a-z0-9]', '', name.lower())
     lookup = {norm(r[k]): r for r in upstream for k in ('upstream_enum', 'upstream_name')}
     by_enum = {r['upstream_enum']: r for r in upstream}

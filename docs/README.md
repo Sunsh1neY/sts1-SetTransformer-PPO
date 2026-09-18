@@ -41,3 +41,5 @@ The files above can contain historical sections. Read their dated amendments and
 Other specialist audits, JSON evidence files and older stage reports remain at stable paths for traceability. Use the [document catalog](document-catalog.md) to distinguish their role; do not execute an old prompt just because it is still present. Untracked local drafts are excluded from this curated route and commit.
 
 - [Relic integration report](relic-integration-report.md): I9 one-hot implementation, diagnostic evidence and pending special-relic reviews.
+
+- [Full Act 1/2 relic audit](act12-relic-audit.md), [special review queue](relic-special-review.md), and [second batch integration](relic-second-batch-report.md): I10 scope, original-reference findings, 22 diagnostic imports and remaining work.

@@ -90,7 +90,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1858
+            1853
           ]
         },
         {
@@ -155,7 +155,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1920
+            1915
           ]
         },
         {
@@ -231,7 +231,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2187
+            2182
           ]
         },
         {
@@ -374,7 +374,7 @@
         {
           "path": "include/combat/BattleContext.h",
           "lines": [
-            297
+            296
           ]
         },
         {
@@ -404,7 +404,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2823
+            2818
           ]
         },
         {
@@ -469,7 +469,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2040
+            2035
           ]
         },
         {
@@ -539,7 +539,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2827
+            2822
           ]
         },
         {
@@ -573,7 +573,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1709
+            1704
           ]
         },
         {
@@ -692,7 +692,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2044
+            2039
           ]
         },
         {
@@ -926,7 +926,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             148,
-            529
+            524
           ]
         },
         {
@@ -1066,7 +1066,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             156,
-            533
+            528
           ]
         },
         {
@@ -1114,11 +1114,11 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             164,
-            537,
-            1667,
-            1784,
-            1862,
-            1931
+            532,
+            1662,
+            1779,
+            1857,
+            1926
           ]
         },
         {
@@ -1159,7 +1159,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             168,
-            541
+            536
           ]
         },
         {
@@ -1196,7 +1196,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1675
+            1670
           ]
         },
         {
@@ -1230,7 +1230,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1800
+            1795
           ]
         },
         {
@@ -1272,8 +1272,8 @@
           "lines": [
             177,
             178,
-            568,
-            569
+            563,
+            564
           ]
         },
         {
@@ -1391,7 +1391,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1926
+            1921
           ]
         },
         {
@@ -1431,7 +1431,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2804
+            2799
           ]
         },
         {
@@ -1501,8 +1501,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1806,
-            1878
+            1801,
+            1873
           ]
         },
         {
@@ -1536,7 +1536,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1695
+            1690
           ]
         },
         {
@@ -1572,7 +1572,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2050
+            2045
           ]
         },
         {
@@ -1610,8 +1610,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             181,
-            551,
-            1713
+            546,
+            1708
           ]
         },
         {
@@ -1738,9 +1738,9 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1679,
-            1792,
-            1870
+            1674,
+            1787,
+            1865
           ]
         },
         {
@@ -1772,15 +1772,15 @@
     {
       "upstream_enum": "ORICHALCUM",
       "upstream_name": "Orichalcum",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2054
+            2049
           ]
         },
         {
@@ -1801,7 +1801,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "ORNAMENTAL_FAN",
@@ -1814,7 +1814,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1687
+            1682
           ]
         },
         {
@@ -1878,7 +1878,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2726
+            2721
           ]
         },
         {
@@ -1916,8 +1916,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             189,
-            555,
-            1701
+            550,
+            1696
           ]
         },
         {
@@ -2174,7 +2174,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2492
+            2487
           ]
         },
         {
@@ -2220,7 +2220,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2244
+            2239
           ]
         },
         {
@@ -2304,7 +2304,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1691
+            1686
           ]
         },
         {
@@ -2410,7 +2410,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             214,
-            2222
+            2217
           ]
         },
         {
@@ -2468,7 +2468,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2060
+            2055
           ]
         },
         {
@@ -2502,7 +2502,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1990
+            1985
           ]
         },
         {
@@ -2536,7 +2536,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2681
+            2676
           ]
         },
         {
@@ -2578,8 +2578,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             218,
-            564,
-            2808
+            559,
+            2803
           ]
         },
         {
@@ -2613,7 +2613,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2800
+            2795
           ]
         },
         {
@@ -2969,7 +2969,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            807
+            802
           ]
         },
         {
@@ -3004,7 +3004,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             222,
-            715
+            710
           ]
         },
         {
@@ -3111,7 +3111,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2685
+            2680
           ]
         },
         {
@@ -3139,15 +3139,15 @@
     {
       "upstream_enum": "BLACK_BLOOD",
       "upstream_name": "Black Blood",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            580
+            575
           ]
         },
         {
@@ -3183,7 +3183,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "BURNING_BLOOD",
@@ -3196,7 +3196,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            574
+            569
           ]
         },
         {
@@ -3229,16 +3229,15 @@
     {
       "upstream_enum": "MEAT_ON_THE_BONE",
       "upstream_name": "Meat On The Bone",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            524,
-            586
+            581
           ]
         },
         {
@@ -3265,7 +3264,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "FACE_OF_CLERIC",
@@ -3375,8 +3374,8 @@
     {
       "upstream_enum": "BAG_OF_MARBLES",
       "upstream_name": "Bag Of Marbles",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -3405,7 +3404,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "BAG_OF_PREPARATION",
@@ -3692,8 +3691,8 @@
     {
       "upstream_enum": "CLOCKWORK_SOUVENIR",
       "upstream_name": "Clockwork Souvenir",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -3722,7 +3721,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "COFFEE_DRIPPER",
@@ -4389,7 +4388,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             293,
-            545
+            540
           ]
         },
         {
@@ -4547,8 +4546,8 @@
     {
       "upstream_enum": "PRESERVED_INSECT",
       "upstream_name": "Preserved Insect",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -4582,7 +4581,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "PURE_WATER",
@@ -4625,8 +4624,8 @@
     {
       "upstream_enum": "RED_MASK",
       "upstream_name": "Red Mask",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -4664,7 +4663,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "RING_OF_THE_SERPENT",
@@ -4774,8 +4773,8 @@
     {
       "upstream_enum": "SLAVERS_COLLAR",
       "upstream_name": "Slavers Collar",
-      "implementation_status": "diagnostic_tested",
-      "public_state": null,
+      "implementation_status": "not_imported",
+      "public_state": "pending",
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -4809,7 +4808,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": null
     },
     {
       "upstream_enum": "SLING_OF_COURAGE",

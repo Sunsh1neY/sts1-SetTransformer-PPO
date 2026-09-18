@@ -42,3 +42,7 @@ The 2026-09-15 downloaded research-refactor plan and reading guide informed disc
 ## I9 implementation progress
 
 The first relic implementation slice is available in [the integration report](../relic-integration-report.md): one-hot identity, existing eight relics and six counter representatives. It is scoped diagnostic evidence, not full R0 completion or new pool admission. Special relics require owner review. The historical plan remains a planning input; I8 reward v2 and I9 one-hot identity supersede its corresponding older suggestions.
+
+## I10 full audit and second batch
+
+The [Act 1/2 scope audit](../act12-relic-audit.md) is complete as a static catalog/state-risk review, with 148 standard Ironclad candidates and explicit exclusions. The [second batch](../relic-second-batch-report.md) adds eight ordinary diagnostic imports, bringing the registry to 22; its 25-dimensional one-hot-plus-state input retains the 64-dimensional backbone. Special review and later batches remain pending. No new training admission or dataset preparation is authorized by these results.

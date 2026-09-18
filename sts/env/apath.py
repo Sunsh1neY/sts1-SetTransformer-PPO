@@ -12,7 +12,7 @@ from sts.battle_reward_v2 import BattleRewardV2, contract as reward_contract
 from sts.env.ironclad import IroncladEnv, CONTRACT_HASH, REGISTRY_HASH, CONTRACT as IRONCLAD_CONTRACT, REGISTRY
 from sts.env.full_card_public import PublicBattleEnv
 from sts.env.entities import encode_observation, FEATURE_DIMS, CONTRACT as ENTITY_CONTRACT
-from sts.env.relic_state import relic_features, DIMENSION as RELIC_DIM, REGISTRY_HASH as RELIC_HASH
+from sts.env.relic_state import relic_features, DIMENSION as RELIC_DIM, REGISTRY_HASH as RELIC_HASH, REGISTRY as RELIC_REGISTRY
 
 PATH = Path(__file__).with_name('a-path-training-pool.json')
 POLICY = 'a-path-source-group-uniform-v1'
@@ -95,7 +95,7 @@ class APathEnv(IroncladEnv):
             group_id=registered['component_id'], condition=registered['condition'], encounter=registered['encounter'],
             termination_rule_version='a-path-complete-decision-resource-v1')
         self._reward_v2 = BattleRewardV2(registered['candidate']['player'], obs['potions'])
-        self._context.update(relic_state_schema="relic-state-v1", relic_registry_hash=RELIC_HASH, reward_contract=reward_contract(),
+        self._context.update(relic_state_schema=RELIC_REGISTRY["schema"], relic_registry_hash=RELIC_HASH, reward_contract=reward_contract(),
             reward_version=reward_contract()['reward_version'], alpha_hp=1.0,
             victory_bonus=2.0, potion_use_cost=0.05)
         return obs

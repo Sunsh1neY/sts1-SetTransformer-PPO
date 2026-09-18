@@ -39,3 +39,5 @@ Use [docs/README.md](docs/README.md) for current navigation and [archive/README.
 A-path reward amendment I8: battle_reward_v2 uses B=2, alpha=1, lambda=0.05, initial-max-HP-normalized net HP and potion-use cost, paid once at true termination. Preserve legacy v1, external-truncation bootstrap and strict reward fingerprinting.
 
 I9 authorizes scoped relic implementation with one-hot identity, based on I8. Special relic selection/binding/visibility/capacity semantics require owner review; ordinary verified state work may proceed. No new pool admission or substantial training.
+
+I10 records the completed static Act 1/2 relic scope audit and ordinary second batch. The development relic registry is relic-state-v2 (22 one-hot identities plus 3 counter fields). The formal pool remains unchanged; special relic reviews and broader runtime certification are pending.

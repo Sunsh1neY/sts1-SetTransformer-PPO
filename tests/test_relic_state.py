@@ -6,7 +6,7 @@ import pytest
 import torch
 
 from sts.env.relics import RelicEnv
-from sts.env.relic_state import BY_NAME, normalize_relics, relic_features
+from sts.env.relic_state import BY_NAME, DIMENSION, normalize_relics, relic_features
 from sts.models.apath import APathActorCritic, adapt, batch_samples, encode
 from sts.train.ppo import ppo_loss
 from sts.train.apath import sample_digest, bind_route, plain_route
@@ -42,10 +42,10 @@ def test_existing_eight_real_effects_and_one_hot(name):
     base, b = start(deck=deck)
     env, o = start([name], deck=deck)
     token = next(t for t in encode(o).entities.tokens if t.entity_type == 'RELIC')
-    assert token.features.shape == (17,)
-    assert token.features[:14].sum() == 1
+    assert token.features.shape == (DIMENSION,)
+    assert token.features[:-3].sum() == 1
     assert token.features[BY_NAME[name]['id'] - 1] == 1
-    assert not token.features[14:].any()
+    assert not token.features[-3:].any()
     if name == 'Lantern':
         assert o['player']['energy'] == b['player']['energy'] + 1
         assert env.step(50)[0]['player']['energy'] == base.step(50)[0]['player']['energy']
@@ -192,7 +192,7 @@ def test_multi_relic_interaction_and_no_relic_padding():
     sample, other = encode(o), encode(empty)
     batch = batch_samples([sample, other])
     assert not any(t.entity_type == 'RELIC' for t in other.entities.tokens)
-    assert batch['features']['RELIC'].shape[-1] == 17
+    assert batch['features']['RELIC'].shape[-1] == DIMENSION
     assert not batch['features']['RELIC'][1].any()
 
 
@@ -224,7 +224,7 @@ def test_actor_critic_gradients_permutation_and_real_ppo_step():
     assert not torch.equal(before, model.projections['RELIC'].weight)
 
 
-@pytest.mark.parametrize('name', list(BY_NAME)[8:])
+@pytest.mark.parametrize('name', [n for n, r in BY_NAME.items() if r['counter'] is not None])
 def test_serialized_action_replay_and_exit_counter_carry(name):
     definition = BY_NAME[name]['counter']
     initial = scene([dict(name=name, counter=definition['max'])], deck=['Bludgeon'] * 10)

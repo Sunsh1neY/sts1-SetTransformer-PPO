@@ -1,5 +1,5 @@
 {
-  "schema": "relic-state-v1",
+  "schema": "relic-state-v2",
   "identity_encoding": "one_hot",
   "identity_columns": [
     "Burning Blood",
@@ -15,14 +15,22 @@
     "Happy Flower",
     "Incense Burner",
     "Ink Bottle",
-    "Sundial"
+    "Sundial",
+    "Bag of Marbles",
+    "Red Mask",
+    "Clockwork Souvenir",
+    "Preserved Insect",
+    "Slaver's Collar",
+    "Black Blood",
+    "Meat on the Bone",
+    "Orichalcum"
   ],
   "state_columns": [
     "counter_applicable",
     "counter_known",
     "counter_value_scaled"
   ],
-  "feature_dimension": 17,
+  "feature_dimension": 25,
   "relics": [
     {
       "id": 1,
@@ -148,6 +156,54 @@
         "scope": "across_combats",
         "entry_timing": "before_combat_initialization"
       },
+      "training_admitted": false
+    },
+    {
+      "id": 15,
+      "name": "Bag of Marbles",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 16,
+      "name": "Red Mask",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 17,
+      "name": "Clockwork Souvenir",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 18,
+      "name": "Preserved Insect",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 19,
+      "name": "Slaver's Collar",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 20,
+      "name": "Black Blood",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 21,
+      "name": "Meat on the Bone",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 22,
+      "name": "Orichalcum",
+      "counter": null,
       "training_admitted": false
     }
   ]

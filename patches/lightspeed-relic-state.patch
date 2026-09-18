@@ -1,7 +1,8 @@
 diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
+index d0e9ca4..66d3f57 100644
 --- a/bindings/integrated-card-env.cpp
 +++ b/bindings/integrated-card-env.cpp
-@@ -55,7 +55,14 @@
+@@ -55,7 +55,22 @@ Potion parsePotion(const std::string &name) {
      throw std::invalid_argument("未识别药水: " + name);
  }
  
@@ -14,10 +15,18 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
 +    if (counters && name == "Ink Bottle") return R::INK_BOTTLE;
 +    if (counters && name == "Sundial") return R::SUNDIAL;
 +
++    if (counters && name == "Bag of Marbles") return R::BAG_OF_MARBLES;
++    if (counters && name == "Red Mask") return R::RED_MASK;
++    if (counters && name == "Clockwork Souvenir") return R::CLOCKWORK_SOUVENIR;
++    if (counters && name == "Preserved Insect") return R::PRESERVED_INSECT;
++    if (counters && name == "Slaver's Collar") return R::SLAVERS_COLLAR;
++    if (counters && name == "Black Blood") return R::BLACK_BLOOD;
++    if (counters && name == "Meat on the Bone") return R::MEAT_ON_THE_BONE;
++    if (counters && name == "Orichalcum") return R::ORICHALCUM;
      if (!listed(PUBLIC_RELIC_NAMES, name)) throw std::invalid_argument("遗物不在入口闭包内: " + name);
      if (name == "Burning Blood") return R::BURNING_BLOOD;
      if (name == "Lantern") return R::LANTERN;
-@@ -204,6 +211,7 @@
+@@ -204,6 +219,7 @@ class PublicBattleEnv {
      int initialCards_ = 0;
      bool hasReset_ = false;
      bool truncated_ = false;
@@ -25,7 +34,7 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
      std::vector<std::string> relicNames_;
      std::array<PublicEnemyHistory, PUBLIC_TARGET_CAPACITY> publicHistory_{};
  
-@@ -380,7 +388,7 @@
+@@ -380,7 +396,7 @@ class PublicBattleEnv {
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -34,7 +43,7 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
                  (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION || id == PS::CONFUSED))) statuses[playerStatusStrings[i]] = 1;
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
-@@ -415,7 +423,18 @@
+@@ -415,7 +431,18 @@ class PublicBattleEnv {
              potions.push_back({{"present", present}, {"name", present ? sourcePotionName(p) : ""},
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
@@ -54,7 +63,7 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
          Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
              {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
              {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
-@@ -456,7 +475,7 @@
+@@ -456,7 +483,7 @@ class PublicBattleEnv {
      }
  
  public:
@@ -63,7 +72,7 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -531,9 +550,24 @@
+@@ -531,10 +558,27 @@ public:
          gc_->relics = RelicContainer{};
          if (!scene.at("relics").is_array()) throw std::invalid_argument("遗物必须为完整列表");
          for (const auto &value : scene.at("relics")) {
@@ -88,9 +97,49 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
 -            gc_->relics.add({parseRelic(name), 0}); relicNames_.push_back(name);
 +            gc_->relics.add({parseRelic(name, relicState_), counter}); relicNames_.push_back(name);
          }
++        if (relicState_ && gc_->relics.has(R::BLACK_BLOOD) && gc_->relics.has(R::BURNING_BLOOD))
++            throw std::invalid_argument("Black Blood replaces Burning Blood");
          gc_->potionCapacity = ascension >= 11 ? 2 : 3;
          gc_->potionCount = 0;
-@@ -670,6 +704,16 @@
+         std::fill(gc_->potions.begin(), gc_->potions.end(), Potion::EMPTY_POTION_SLOT);
+@@ -546,6 +590,7 @@ public:
+         // 这8种遗物无目的普通/精英房间独立入口效果；BattleContext执行其开战效果一次。
+         bc_ = BattleContext{};
+         bc_.enemyPotionExpansion = true;
++        bc_.relicStateExpansion = relicState_;
+         bc_.actionQueue.checkedCapacity = true;
+         bc_.cardQueue.checkedCapacity = true;
+         bc_.init(*gc_, encounter);
+@@ -653,9 +698,9 @@ private:
+         }
+         for (int i=0;i<PUBLIC_TARGET_CAPACITY;++i) if (oldSerials[i]!=bc_.monsters.arr[i].entitySerial) publicHistory_[i]={};
+         const bool won = terminal() && bc_.outcome == Outcome::PLAYER_VICTORY;
+-        if (won && gc_->relics.has(R::BURNING_BLOOD)) bc_.player.heal(6);
++        if (won && !relicState_ && gc_->relics.has(R::BURNING_BLOOD)) bc_.player.heal(6);
+         truncated_ = !terminal() && actionCount_ >= maxActions_;
+-        const double reward = won ? 1.0 + 0.5 * bc_.player.curHp / bc_.player.maxHp : 0.0;
++        double reward = won ? 1.0 + 0.5 * bc_.player.curHp / bc_.player.maxHp : 0.0;
+         Json info = {{"action_count", actionCount_}, {"outcome", static_cast<int>(bc_.outcome)},
+             {"truncation_reason", truncated_ ? "external_action_budget" : ""}, {"reward_version", "battle_reward_v1"},
+             {"exit_effects_applied", won}, {"player_hp", bc_.player.curHp}, {"player_max_hp", bc_.player.maxHp}};
+@@ -663,13 +708,33 @@ private:
+             const int originalGold = gc_->gold;
+             std::map<std::pair<int,int>,int> deckDelta;
+             for (const auto &card : gc_->deck.cards) --deckDelta[{static_cast<int>(card.id),card.getUpgraded()}];
++            const int preExitHp = bc_.player.curHp;
+             bc_.exitBattle(*gc_);
++            if (relicState_) {
++                bc_.player.curHp = gc_->curHp;
++                bc_.player.maxHp = gc_->maxHp;
++                reward = won ? 1.0 + 0.5 * bc_.player.curHp / bc_.player.maxHp : 0.0;
++                info["player_hp"] = bc_.player.curHp;
++                info["player_max_hp"] = bc_.player.maxHp;
++                info["pre_exit_hp"] = preExitHp;
++                info["post_exit_hp"] = gc_->curHp;
++            }
+             for (const auto &card : gc_->deck.cards) ++deckDelta[{static_cast<int>(card.id),card.getUpgraded()}];
+             // 被击杀盗贼留下的已偷金币在本战出口收回，逃跑金币不收回。
+             if (won) gc_->gold += gc_->info.stolenGold;
              info["battle_exit"] = {{"gold_delta", gc_->gold - originalGold}, {"deck_changes", Json::array()}};
              for (const auto &entry : deckDelta) if (entry.second != 0)
                  info["battle_exit"]["deck_changes"].push_back({{"name", sourceCardName(static_cast<CardId>(entry.first.first))}, {"upgrade_count", entry.first.second}, {"count_delta", entry.second}});
@@ -107,7 +156,7 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
              for (auto &card : bc_.cards.stasisCards) card = CardInstance(CardId::INVALID);
          }
          return Json{{"observation", observeJson()}, {"reward", reward}, {"terminated", terminal()},
-@@ -678,6 +722,11 @@
+@@ -678,6 +743,11 @@ private:
  };
  
  // 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
@@ -119,13 +168,11 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
  class IroncladBattleEnv : public PublicBattleEnv {
  public:
      explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
-@@ -697,5 +746,16 @@
+@@ -697,5 +767,16 @@ void registerIntegratedCardEnv(pybind11::module_ &module) {
          .def("selection_indices", &IroncladBattleEnv::selectionIndices)
          .def("selection_card", &IroncladBattleEnv::selectionCard)
          .def("select_card", &IroncladBattleEnv::selectCard);
--}
--}
-+    module.attr("RELIC_STATE_REGISTRY_SHA256") = "305dc5f56c252110e7b5f043ec9c9b3827ba8c01b55b3382d731de55e20d3f66";
++    module.attr("RELIC_STATE_REGISTRY_SHA256") = "c44d7ae301747ecc083753cf755527199ad2ac8756cc60719cc24b27b6b57b05";
 +    pybind11::class_<RelicBattleEnv>(module, "RelicStateBattleEnv")
 +        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
 +        .def("reset_scene", &RelicBattleEnv::resetScene)
@@ -136,5 +183,60 @@ diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
 +        .def("selection_indices", &RelicBattleEnv::selectionIndices)
 +        .def("selection_card", &RelicBattleEnv::selectionCard)
 +        .def("select_card", &RelicBattleEnv::selectCard);
-+}
-+}
+ }
+ }
+diff --git a/include/combat/BattleContext.h b/include/combat/BattleContext.h
+index 4d84e0b..6db0fcd 100644
+--- a/include/combat/BattleContext.h
++++ b/include/combat/BattleContext.h
+@@ -49,6 +49,7 @@ namespace sts {
+         // begin for debugging purposes
+         inline static int sum = 0; // for preventing optimization in benchmarks
+         int nextEnemySerial = 0; // 仅实例路由，不进入语义
++        bool relicStateExpansion = false; // Versioned diagnostic relic entry only.
+         bool enemyPotionExpansion = false; // 独立扩展机制开关，旧入口保持原行为
+         bool haveUsedDiscoveryAction = false; // for tracking undefined behavior resulting from using the action
+         bool undefinedBehaviorEvoked = false; // some cards cause inconsistent outcomes in games
+diff --git a/src/combat/BattleContext.cpp b/src/combat/BattleContext.cpp
+index 57159b0..00aa356 100644
+--- a/src/combat/BattleContext.cpp
++++ b/src/combat/BattleContext.cpp
+@@ -317,7 +317,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 if (room == Room::ELITE) {
+                     for (int i = 0; i < monsters.monsterCount; ++i) {
+                         Monster &m = monsters.arr[i];
+-                        m.curHp = static_cast<int>(m.maxHp * .75);
++                        m.curHp = relicStateExpansion ? std::min(m.curHp, static_cast<int>(m.maxHp * .75)) : static_cast<int>(m.maxHp * .75);
+                     }
+                 }
+                 break;
+@@ -413,7 +413,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 break;
+ 
+             case R::RED_MASK:
+-                addToBot( Actions::DebuffAllEnemy<MS::WEAK>(1) );
++                addToBot( Actions::DebuffAllEnemy<MS::WEAK>(1, !relicStateExpansion) );
+                 break;
+ 
+             case R::RING_OF_THE_SNAKE:
+@@ -519,6 +519,11 @@ void BattleContext::exitBattle(GameContext &g) const {
+ }
+ 
+ void BattleContext::updateRelicsOnExit(GameContext &g) const {
++    // The threshold is evaluated before victory-relic healing in the new entry.
++    if (relicStateExpansion && outcome == Outcome::PLAYER_VICTORY &&
++        g.relics.has(R::MEAT_ON_THE_BONE) && g.curHp > 0 && g.curHp <= g.maxHp / 2) {
++        g.playerHeal(12);
++    }
+     for (auto &r : g.relics.relics) {
+         switch (r.id) {
+             case RelicId::HAPPY_FLOWER:
+@@ -579,7 +584,7 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
+                 break;
+ 
+             case RelicId::MEAT_ON_THE_BONE:
+-                if (outcome == Outcome::PLAYER_VICTORY && g.curHp <= g.maxHp / 2) {
++                if (!relicStateExpansion && outcome == Outcome::PLAYER_VICTORY && g.curHp <= g.maxHp / 2) {
+                     g.playerHeal(12);
+                 }
+                 break;

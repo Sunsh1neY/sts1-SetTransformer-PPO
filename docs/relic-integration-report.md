@@ -4,6 +4,8 @@ Date: 2026-09-19. Decision: I9. Base: reward-v2 commit `1e95005`.
 Worktree: `C:/Users/19091/Desktop/sts2-relic-state-v1`.
 Branch: `codex/relic-state-v1`. Not merged or pushed.
 
+Historical snapshot: implementation/test claims below refer to `9d95526`. See [the second-batch report](relic-second-batch-report.md) for the current 22-relic registry and subsequent corrections.
+
 ## Result
 
 The existing eight relics and six counter representatives now have a strict diagnostic path through backend initialization, public observation, one-hot encoding, the unchanged A-path backbone, real transitions and deterministic action replay. This is the first implementation slice, not certification of every Act 1/2 relic or original-game parity. The fixed training pool remains unchanged.
@@ -36,7 +38,7 @@ All tokens use the existing four SAB layers, width 64, four heads, FF128 and sin
 - [Shared entity adapter](../sts/env/entities.py): explicit encoder/dimension parameters, with original defaults retained.
 - [A-path model](../sts/models/apath.py): 17-to-64 relic projection; existing attention/action/value design retained.
 - [Trainer fingerprints](../sts/train/apath.py): includes the new registry, adapter, encoder and backend patch.
-- [Example generator](../scripts/show-relic-state.py) and [actual example](evidence/relic-state-example.json): raw relic states, token rows, entity mask, source/joint probabilities, value and next state from an untrained model.
+- [Example generator](../scripts/show-relic-state.py) and [actual example](evidence/relic-state-example-first-batch.json): raw relic states, token rows, entity mask, source/joint probabilities, value and next state from an untrained model.
 
 ## Verification
 
@@ -59,7 +61,7 @@ Evaluation seeds and the admitted pool are byte-identical to main. Main's dirty 
 
 ## Remaining work and owner review
 
-[Audit ledger](evidence/relic-audit-ledger.json) inventories 180 non-sentinel upstream entries and source occurrences. Fourteen have this scoped implementation evidence. Other entries remain explicitly unimported; source occurrence does not prove correct behavior. Full original-game catalog comparison, per-relic reference arbitration and exhaustive combinations remain pending. Therefore the original plan's full R0 audit gate is not declared complete.
+[Audit ledger](evidence/relic-audit-ledger-first-batch.json) inventories 180 non-sentinel upstream entries and source occurrences. Fourteen have this scoped implementation evidence. Other entries remain explicitly unimported; source occurrence does not prove correct behavior. Full original-game catalog comparison, per-relic reference arbitration and exhaustive combinations remain pending. Therefore the original plan's full R0 audit gate is not declared complete.
 
 Next ordinary candidates from the plan are Bag of Marbles, Red Mask, Clockwork Souvenir, Preserved Insect, Slaver's Collar, Black Blood, Meat on the Bone and Orichalcum. Their required public state and triggers must be audited before adding columns or opening diagnostics.
 
