@@ -1,14 +1,14 @@
 # Pending work
 
-Status: current roadmap, 2026-09-16. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). Plans describe intended work, not completed support or blanket execution authorization.
+Status: current roadmap, updated 2026-09-18. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
 
-## 1. Finish the clear starting point
+## 1. Clear starting point — completed
 
-Make the current question, implementation, evidence and next steps easy to find. Archive obsolete instructions, preserve source identity, and repair verified document-path dependencies. Existing technical Chinese material can remain; no parallel Chinese entry guide or full-tree translation is required. Do not expand the model, reward or training pool while organizing it.
+The first-pass cleanup was completed in local commit `3a56708`; see the [completion report](../repository-cleanup-report.md). Its scope was to make the current question, implementation, evidence and next steps easy to find. Archive obsolete instructions, preserve source identity, and repair verified document-path dependencies. Existing technical Chinese material can remain; no parallel Chinese entry guide or full-tree translation is required. Do not expand the model, reward or training pool while organizing it.
 
-## 2. Relics and Act 1/2 combat fidelity
+## 2. Prerequisites: reward, potions and required relic state
 
-This is the owner's next development priority after cleanup. Preserve the current A-path backbone and source/conditional-target policy. The aim is faithful independent Act 1/2 combat, with required owned relic instances and public state represented, rather than silently dropping unsupported scene components.
+This prerequisite block comes before new initial-state dataset work. Retain the previously agreed reward/potion -> required relic sequence. Complete and validate the reward revision, required potion handling/use-cost behavior, and required relic state/mechanisms before advancing. I8 approves A-path `battle_reward_v2` with B=2, alpha=1 and lambda=0.05, paid once at true termination. The [implementation report](../reward-potion-v2-report.md) records current validation. Required relic work remains pending; reward implementation alone does not close the prerequisite block. Preserve the current A-path backbone and source/conditional-target policy. The aim is faithful independent Act 1/2 combat, with required owned relic instances and public state represented, rather than silently dropping unsupported scene components.
 
 Prepared material:
 
@@ -19,11 +19,17 @@ Prepared material:
 
 At the start of that work, agree on an exact scene/mechanism coverage matrix, initialization and public dynamic-state requirements, recovery behavior, and admission criteria. Inventory prior preparation before implementing replacements. Full original-game equivalence is not established by the current coverage counts. This cleanup does not start this stage.
 
-## 3. Audit evidence and reproduce one supported result
+## 3. Deferred A+B initial-state preparation
+
+After section 2 is complete and validated, investigate `SlayTheData.7z` using the [initial-state source work item](initial-state-source-plan.md). The owner chose A (verified real-record reconstruction) plus B (explicitly constructed scenes based on reliable source material). First establish what fields and scenes can actually be recovered; current metadata is not proof of a usable large training corpus. Do not start this investigation alongside the prerequisite work.
+
+Candidate preparation does not authorize admission. Obtain owner verification for new scope/distribution decisions; then validate and freeze the environment, reward, pool, evaluation protocol and explicit budget before training. Further mechanism gaps discovered during this stage return to the owner rather than silently changing scope.
+
+## 4. Evidence, training evaluation and reproduction
 
 Recover the original configuration/source/backend of the located A-path run. Verify checkpoints and raw evaluation records, then determine which result is reproducible and what remains missing. Keep its historical identity separate from the current main fingerprint. Establish an accessible clean-clone evaluation/report route before claiming public reproducibility. New experiments require a frozen protocol and a new explicit budget; do not train merely to obtain a favorable comparison.
 
-The ordering of detailed evidence recovery and mechanism work can be revisited with the owner; neither blocks finishing the navigation cleanup.
+Historical evidence may support the later comparison, but it cannot be relabeled under the revised reward. The new source-preparation stage must remain after the prerequisite block unless the owner explicitly changes that ordering.
 
 ## Later
 

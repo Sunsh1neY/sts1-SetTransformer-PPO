@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
+from sts.battle_reward_v2 import contract as reward_contract
 from sts.env.apath import APathEnv, load_pool, sample_scene, canonical
 from sts.env.entities import CONTRACT
 from sts.env.lightspeed import _load_backend
@@ -20,7 +21,7 @@ from sts.train.ppo import compute_gae, ppo_loss
 
 def fingerprint():
     root=Path(__file__).parents[2]
-    paths=['sts/train/apath.py','sts/models/apath.py','sts/models/entities.py','sts/env/apath.py',
+    paths=['sts/battle_reward_v2.py','sts/train/apath.py','sts/models/apath.py','sts/models/entities.py','sts/env/apath.py',
            'sts/env/a-path-training-pool.json','sts/env/entities.py','sts/env/ironclad.py',
            'sts/env/full_card_public.py','sts/env/selection.py','sts/train/ppo.py',
            'sts/env/ironclad-expansion-contract.json','sts/env/ironclad-registry.json',
@@ -115,8 +116,7 @@ class APathTrainer:
                 obs,reward,term,trunc,info=self.envs[i].step(route)
                 self.env_steps+=1
                 active['actions'].append(plain_route(route));active['steps']+=1;active['return_observed']+=reward
-                if route.get('kind')=='NORMAL' and route['action']>=51:
-                    active['potion_uses']+=1
+                active['potion_uses']=info['reward_accounting']['potion_uses']
                 nxt=encode(obs)
                 rewards[step,i],terms[step,i],truncs[step,i]=reward,term,trunc
                 if trunc:
@@ -128,7 +128,8 @@ class APathTrainer:
                         encounter=active['scene']['encounter'],seed=active['seed'],steps=active['steps'],
                         return_observed=active['return_observed'],return_complete=active['return_observed'] if term else None,
                         terminated=term,truncated=trunc,outcome=info['task_outcome'],hp=obs['player']['hp'],
-                        max_hp=obs['player']['max_hp'],potion_uses=active['potion_uses'],reason=info['termination_reason']))
+                        max_hp=obs['player']['max_hp'],potion_uses=active['potion_uses'],reason=info['termination_reason'],
+                        reward_contract=info['reward_contract'],reward_accounting=info['reward_accounting']))
                     self.observations[i]=self.reset(i)
                 else:
                     self.observations[i]=nxt
@@ -231,7 +232,7 @@ class APathTrainer:
             active=copy.deepcopy(self.active),observations=[sample_digest(s) for s in self.observations],
             last_rollout=self.last_rollout,pending_rollout=self.pending_rollout,
             last_rollout_sha256=hashlib.sha256(self.last_rollout).hexdigest() if self.last_rollout else None,
-            fingerprint=fingerprint())
+            reward_contract=reward_contract(),fingerprint=fingerprint())
         temporary=path.with_suffix(path.suffix+'.tmp');torch.save(state,temporary);temporary.replace(path)
 
     @classmethod
@@ -239,6 +240,8 @@ class APathTrainer:
         state=torch.load(path,map_location='cpu',weights_only=False)
         if state.get('schema')!='a-path-ppo-checkpoint-v1' or state['fingerprint']!=fingerprint():
             raise ValueError('策略checkpoint版本/代码/后端/数据指纹不兼容')
+        if state.get('reward_contract') != reward_contract():
+            raise ValueError('Checkpoint reward contract is incompatible')
         if not state['resume_allowed']:
             raise ValueError('非更新边界快照仅供故障诊断，不能伪装精确续训')
         if state['last_rollout'] and hashlib.sha256(state['last_rollout']).hexdigest()!=state['last_rollout_sha256']:
@@ -249,10 +252,16 @@ class APathTrainer:
         trainer.observations=[]
         for env,active,expected in zip(trainer.envs,trainer.active,state['observations']):
             obs=env.reset(active['scene'],active['seed'],purpose='train')
+            replay_return = 0.0
+            replay_uses = 0
             for action in active['actions']:
-                obs,_,term,trunc,_=env.step(bind_route(action,obs))
+                obs,reward,term,trunc,info=env.step(bind_route(action,obs))
+                replay_return += reward
+                replay_uses = info['reward_accounting']['potion_uses']
                 if term or trunc:
                     raise ValueError('活动环境重放提前结束')
+            if replay_return != active['return_observed'] or replay_uses != active['potion_uses']:
+                raise ValueError('Replayed reward accounting disagrees with checkpoint')
             sample=encode(obs)
             if sample_digest(sample)!=expected:
                 raise ValueError('重放后的公开观测或候选与checkpoint不一致')

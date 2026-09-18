@@ -25,7 +25,7 @@ The actor selects a source/special action and then its conditional legal target.
 
 For a later authorized evaluation, compare initial and trained policies on the same predefined cases using the same action-sampling semantics and task contract. Report all available initializations, mean combat return, win rate, conditional exit HP, and unresolved episodes. Distinguish case variation from training-initialization uncertainty; new random seeds alone do not prove unseen-deck generalization. Recover usable historical evidence before deciding whether new training is necessary.
 
-The current reward is `P(win) * (1 + 0.5 * E[exit_hp/max_hp | win])` in expectation. It balances victory probability and surviving HP, rather than strictly prioritizing win rate. Reward changes are outside this cleanup.
+The A-path reward is now `battle_reward_v2`: `2 * I(victory) + (HP_end - HP_start) / max_HP_start - 0.05 * potion_uses`, paid once at true termination (I8). It balances victory, net HP and potion conservation; it does not strictly prioritize win rate. Legacy paths and historical results retain `battle_reward_v1`. See the [v2 implementation report](reward-potion-v2-report.md).
 
 ## Next boundary
 

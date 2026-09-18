@@ -17,6 +17,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import numpy as np
 import torch
+from sts.battle_reward_v2 import contract as reward_contract
 from sts.env.apath import APathEnv,load_pool,scene
 from sts.models.apath import APathActorCritic,encode,batch_samples
 from sts.train.apath import APathTrainer,check_deadline,fingerprint
@@ -86,8 +87,9 @@ def evaluate(model,policy,cases,device,deadline):
                 if route is None:continue
                 if entropy[i] is not None:
                     record['entropies'].append(entropy[i]);record['values'].append(value_list[i])
-                if route.get('kind')=='NORMAL' and route['action']>=51:record['potion_uses']+=1
                 nxt,reward,term,trunc,info=env.step(route)
+                record.update(potion_uses=info['reward_accounting']['potion_uses'],
+                    reward_contract=info['reward_contract'],reward_accounting=info['reward_accounting'])
                 record['steps']+=1;record['reward_observed']+=reward
                 if term or trunc:
                     record.update(status='terminated' if term else 'truncated',
@@ -111,6 +113,7 @@ def summarize(results):
             win_rate_natural=float(np.mean([r['victory'] for r in complete])) if complete else None,
             return_natural=float(np.mean([r['reward_complete'] for r in complete])) if complete else None,
             exit_hp_natural=float(np.mean([r['exit_hp'] for r in complete])) if complete else None,
+            net_hp_natural=float(np.mean([r['reward_accounting']['net_hp_fraction'] for r in complete])) if complete else None,
             potion_uses_natural=float(np.mean([r['potion_uses'] for r in complete])) if complete else None,
             truncation_rate=sum(r['status']=='truncated' for r in rows)/len(rows) if rows else None,
             entropy=float(np.mean(entropies)) if entropies else None,value_mean=float(np.mean(values)) if values else None,
@@ -144,7 +147,7 @@ def main():
     if not torch.cuda.is_available():raise RuntimeError('已批准本地CUDA入口不可用')
     device='cuda';started=time.monotonic();deadline=started+args.seconds
     state=dict(status='starting',pid=os.getpid(),started_at=datetime.now(timezone.utc).isoformat(),
-        budget_seconds=args.seconds,max_transitions_per_initialization=262144,initializations=[],fingerprint=fingerprint(),
+        reward_contract=reward_contract(),budget_seconds=args.seconds,max_transitions_per_initialization=262144,initializations=[],fingerprint=fingerprint(),
         device=torch.cuda.get_device_name(0),torch_version=torch.__version__)
     write(output/'status.json',state)
     all_cases=cases();write(output/'evaluation-cases.json',all_cases)

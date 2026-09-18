@@ -16,7 +16,7 @@ Preserve four SAB layers, width 64, four heads, FF128, single-seed PMA, source-t
 
 The registered pool has 39 deck contents, 33 source groups, two conditions and five encounters (390 configurations). Broader environment support is not training admission. Legacy Unified/Comparison/MLP code remains for compatibility and historical experiments; MLP is frozen to its original comparison scope. Do not compare expanded Set scores directly with frozen MLP scores as an architecture conclusion.
 
-Relic mechanisms and faithful Act 1/2 combat are the next development priority, retained in [pending plans](docs/plans/README.md). A pending plan is not authorization to implement, expand admission, or train. Every required owned relic instance in an admitted scene must be represented with its necessary public state; do not remove unsupported relics merely to admit a scene.
+Relic mechanisms and faithful Act 1/2 combat are the next development priority, retained in [pending plans](docs/plans/README.md). I7 requires completion and validation of the agreed reward, potion and required relic-state work before investigating SlayTheData.7z or preparing the new A+B initial-state pool; freeze the resulting contracts and budget before training. A pending plan is not authorization to implement, expand admission, or train. Every required owned relic instance in an admitted scene must be represented with its necessary public state; do not remove unsupported relics merely to admit a scene.
 
 ## Execution boundaries
 
@@ -24,7 +24,7 @@ Relic mechanisms and faithful Act 1/2 combat are the next development priority, 
 - `eval_seeds.json` is immutable. Evaluation seeds are in `[0,1000)`; training environment seeds are at least `100000`. Record its hash per run. Seeds and hidden randomness are not model features.
 - Routing slots identify action instances, not semantic token features. Legal actions come from the environment; apply masks before softmax and use the masked distribution for gradients.
 - Within a comparison, preserve information, action semantics, task/split versions, reward, gamma and full real RTG. `battle_reward_v1` and `run_reward_v1` must never be mixed. Reward changes need a new version and recomputation from verifiable fields.
-- Current battle reward: zero nonterminal reward, first victory `1 + 0.5 * exit_hp/max_hp`, zero genuine defeat; gamma=1, beta=0. Future run reward applies only to the first final run victory; battle victory cannot terminate a global run. Reject formal run training until RunEnv exists.
+- Legacy battle_reward_v1: zero nonterminal reward, first victory `1 + 0.5 * exit_hp/max_hp`, zero genuine defeat; gamma=1, beta=0. Future run reward applies only to the first final run victory; battle victory cannot terminate a global run. Reject formal run training until RunEnv exists.
 - True termination does not bootstrap. External truncation uses the final pre-reset observation for bootstrap; GAE does not cross reset. Exceptions/truncations are not fabricated defeats. Reject unknown required fields rather than inventing zeros.
 - Do not expand pools, alter model-facing fields/rewards, launch substantial training, renew a past budget, or push without applicable user authorization. Raise new decisions or critical unresolved questions for the owner to verify; continue independent safe work.
 - Keep spec-v6 sections 9/10 schedules and stop rules. Execute the predefined Gate fallback; after three days without progress on one issue, stop and change direction under section 10.3. No new features in weeks 17–18.
@@ -35,3 +35,5 @@ Relic mechanisms and faithful Act 1/2 combat are the next development priority, 
 Report implementation, tests, real runtime closure, learning improvement, generalization, and owner understanding separately. Link historical results with their original scope and date. Primary sources are required for game-mechanic and paper claims; label unverified claims explicitly. Preserve the source-log convention (confidence and verification date) illustrated in [the historical source register](archive/research/sts2-a20-decision-model-sources.md).
 
 Use [docs/README.md](docs/README.md) for current navigation and [archive/README.md](archive/README.md) for history. Archived instructions do not authorize new work. Existing source bundles/checkpoints retain their original identities; do not loosen fingerprint checks to make them load. Report what changed, what was checked, and what remains unfinished.
+
+A-path reward amendment I8: battle_reward_v2 uses B=2, alpha=1, lambda=0.05, initial-max-HP-normalized net HP and potion-use cost, paid once at true termination. Preserve legacy v1, external-truncation bootstrap and strict reward fingerprinting.

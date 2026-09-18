@@ -5,6 +5,9 @@ import hashlib
 import json
 from pathlib import Path
 import uuid
+import numpy as np
+
+from sts.battle_reward_v2 import BattleRewardV2, contract as reward_contract
 
 from sts.env.ironclad import IroncladEnv, CONTRACT_HASH, REGISTRY_HASH, CONTRACT as IRONCLAD_CONTRACT, REGISTRY
 from sts.env.full_card_public import PublicBattleEnv
@@ -90,9 +93,23 @@ class APathEnv(IroncladEnv):
             content_group=registered['content_group'], content_id=registered['content_id'],
             group_id=registered['component_id'], condition=registered['condition'], encounter=registered['encounter'],
             termination_rule_version='a-path-complete-decision-resource-v1')
+        self._reward_v2 = BattleRewardV2(registered['candidate']['player'], obs['potions'])
+        self._context.update(reward_contract=reward_contract(),
+            reward_version=reward_contract()['reward_version'], alpha_hp=1.0,
+            victory_bonus=2.0, potion_use_cost=0.05)
         return obs
 
     def step(self, action):
+        # Capture the public potion identity before the backend consumes it.
+        selected = action.get('action') if isinstance(action, dict) and action.get('kind') == 'NORMAL' else action
+        event = None
+        if isinstance(selected, (int, np.integer)) and not isinstance(selected, bool) and 51 <= selected <= 65:
+            slot = (int(selected)-51)//5
+            before = self.observation()
+            potion = before['potions'][slot]
+            if not potion['present'] or not before['action_mask'][int(selected)]:
+                raise ValueError('Cannot charge an absent or illegal potion action')
+            event = dict(slot=slot, name=potion['name'], action=int(selected))
         obs,reward,term,trunc,info=super().step(action)
         try:
             allocated=self._env.allocated_card_count()
@@ -108,6 +125,12 @@ class APathEnv(IroncladEnv):
                 trunc=True; self._finished=True
                 info.update(termination_reason='external_entity_capacity', truncation_reason='external_entity_capacity')
             info.update(entity_count=count,allocated_card_count=allocated)
+            backend_reward = reward
+            reward, reward_info = self._reward_v2.transition(observation=obs,
+                terminated=term, truncated=trunc, outcome=info['outcome'], potion_event=event)
+            info.update(reward_info, backend_reward_v1=backend_reward)
+            if term:
+                info['termination_reason'] = info['task_outcome']
             return obs,reward,term,trunc,info
         except Exception:
             self._finished=True

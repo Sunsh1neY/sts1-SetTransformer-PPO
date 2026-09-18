@@ -791,3 +791,13 @@ v5 的历史方案条款不等于对应代码已经实现。除 §0.4 列明的�
 ## 2026-09-16 research starting point (I6)
 
 See decision I6 for the owner-approved framing, English migration and documentation cleanup. This updates the earlier mentor-presentation exclusion and the permanent relic non-goal only as described there. Existing technical contracts and stop rules remain in force. The broader relic/Act 1–2 goal requires a separately verified implementation/admission scope; no new training or expansion is authorized by this cleanup.
+
+
+## 2026-09-18 initial-state preparation ordering (I7)
+
+Per [decision I7](docs/decisions.md), finish and validate the agreed reward/potion and required relic-state work before investigating SlayTheData.7z or preparing a new A+B initial-state pool. Then validate the proposed scene scope, obtain admission/distribution decisions, and freeze the environment, reward, pool, evaluation protocol and budget before training. The source strategy combines verified real-record reconstruction with explicitly declared constructed scenes. This amendment records future ordering only: it does not change the runtime reward, admit new scenes, authorize acquisition/implementation/training, or renew any past budget.
+
+
+## 2026-09-18 amendment: A-path battle_reward_v2 (I8)
+
+I8 supersedes the v1 reward requirement for the A-path entry only. Use terminal R=2*I(victory)+(HP_end-HP_start)/max_HP_start-0.05*potion_uses, gamma=1, with zero intermediate reward. Keep actual final HP on defeat, supported victory-exit healing, and external-truncation bootstrap. Historical and legacy v1 paths remain unchanged. Version the contract and preserve raw inputs, potion events and strict checkpoint identity. This amendment authorizes implementation and tests, not training or distribution expansion.
