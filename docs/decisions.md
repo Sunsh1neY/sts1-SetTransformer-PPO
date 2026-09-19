@@ -797,3 +797,25 @@ The owner authorized relic import implementation after I8, explicitly retaining 
 ## I10 — Full Act 1/2 relic scope audit before batch two (2026-09-19)
 
 The owner requests an audit of all relics encountered in Act 1/2 before importing the second batch. Audit the original-game catalog against the locked backend, classify standard Ironclad acquisition/carry-in scope, required public and internal state, backend paths, adapter gaps and special review items. Other-character, later-act and special-mode entries remain explicit exclusions or conditional entries, not silently omitted. Complete the audit artifact first; then import the ordinary second batch supported by the findings. Retain I9 one-hot identity, I8 reward v2, strict fingerprints, fixed pool/seeds and the owner review requirement for special relics. No new training or pool admission is authorized.
+
+
+## I11 — Owner refinement of special relic scope and public state (2026-09-19)
+
+The owner accepts deriving omitted state only from the current policy-facing observation, not unprovided history or backend access. Required simulator initial/recovery state must still be supplied. Runic Dome must hide all direct current-intent encodings; history contains only actually observed public events, never previously hidden planned moves.
+
+The owner excludes Lizard Tail and Necronomicon, reverses the prior Nilry's Codex approval to exclusion, and retains the nine earlier exclusions. Unceasing Top, Runic Pyramid and Mutagenic Strength are approved without additional relic fields, relying on existing public state and backend resolution; verify sufficiency at policy decision boundaries and report any counterexample before adding fields. Mutagenic Strength still requires correct Artifact interaction/order; ownership alone does not prove that ordering.
+
+Gambling Chip is conditional on an existing complete multi-selection/deselection/finish interface; current public SelectionRouter is single-choice, so import is deferred without silently designing a replacement. Snecko Eye is conditional on retaining unknown non-hand effective costs while revealing actual hand costs; verify backend draw/randomization behavior. Velvet Choker and complex counters should read authoritative backend state. Existing cards_played_this_turn is already exported and is used by the backend Choker legality check; verify event semantics before reuse.
+
+Frozen Eye replaces known_top with draw_position_known/draw_position in the new observation version, including known-top effects outside Frozen Eye; frozen historical versions are not rewritten. Bottled relics reuse the general Stasis entity-relation concept with concrete original card-instance binding. The owner conditionally permits same-name fallback if exact binding is complex, but current backend bottleIdxs/card uniqueId infrastructure makes exact binding the preferred implementation; do not choose an ambiguous name fallback without a concrete blocker. Relic identity remains one-hot.
+
+See relic-import-decisions-2026-09-19.md for the consolidated scope. This refinement does not admit scenes, authorize substantial training, merge or push.
+
+
+## I12 — Execute owner-approved special relic imports (2026-09-19)
+
+The owner authorizes sequential import of I11 relics with a progress report after each completed relic and continuation to the next. Import Runic Pyramid, Unceasing Top, Snecko Eye, Velvet Choker, Mutagenic Strength, Orange Pellets, Runic Dome, Frozen Eye and the three bottled relics. Gambling Chip remains deferred because the existing public selection interface does not satisfy the approved condition. Excluded relics remain excluded.
+
+The resulting development registry is relic-state-v3: 33 fixed one-hot identities, three Orange Pellets progress bits, and three existing counter fields (39 raw dimensions). Card encoding replaces the known-top bit with draw-position-known and position/512 (one extra raw dimension). The fixed 64-wide A-path backbone and joint policy are unchanged. Exact bottle input is {name, card_index}, where the index refers to the supplied master-deck array and never becomes a semantic feature; a relic-to-card entity relation follows the original instance. Array order for relic initialization is acquisition order. Current public resolved powers express Mutagenic Strength/Artifact ordering without an extra model field.
+
+These are diagnostic imports with scoped runtime tests. Preserve strict checkpoint fingerprints, reward v2, existing training admission and immutable evaluation seeds. No substantial training, main merge or push is authorized. See relic-third-batch-report.md for evidence and remaining limits.

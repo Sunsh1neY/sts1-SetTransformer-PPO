@@ -1,4 +1,5 @@
 """A路径：共享实体编码、PMA和显式来源/条件敌人分布。"""
+from sts.env.relic_card_state import card_features_v3, DIMENSION as CARD_V3_DIM
 from dataclasses import dataclass
 import copy
 
@@ -12,8 +13,8 @@ from sts.models.entities import EntityArchitecture, EntityBlock
 
 from sts.env.relic_state import DIMENSION as RELIC_DIM, relic_features
 
-FEATURE_DIMS = {**FEATURE_DIMS, "RELIC": RELIC_DIM}
-VERSION = "a-path-four-sab-pma-pointer-relic-v2"
+FEATURE_DIMS = {**FEATURE_DIMS, "RELIC": RELIC_DIM, "CARD": CARD_V3_DIM}
+VERSION = "a-path-four-sab-pma-pointer-relic-v3"
 TASKS = ("PLAY", "POTION", "ARMAMENTS", "DUAL_WIELD", "EXHAUST_ONE", "EXHUME", "HEADBUTT", "WARCRY", "DISCOVERY", "END_TURN")
 
 
@@ -71,7 +72,7 @@ def adapt(sample):
 
 
 def encode(obs):
-    return adapt(encode_observation(obs, relic_encoder=relic_features, feature_dims=FEATURE_DIMS))
+    return adapt(encode_observation(obs, relic_encoder=relic_features, card_encoder=card_features_v3, feature_dims=FEATURE_DIMS))
 
 
 def batch_samples(samples, device="cpu"):
@@ -200,7 +201,7 @@ class APathActorCritic(nn.Module):
         linked_valid = valid.gather(1, held.clamp_min(0))
         linked_type = types.gather(1, held.clamp_min(0))
         if (mask & (~linked_valid | (linked_type != TYPES.index('CARD'))
-                    | (types != TYPES.index('ENEMY')))).any():
+                    | ((types != TYPES.index('ENEMY')) & (types != TYPES.index('RELIC'))))).any():
             raise ValueError("关系必须从敌人指向有效扣牌实体")
         linked=x.gather(1,held.clamp_min(0)[...,None].expand(-1,-1,64)).masked_fill(~mask[...,None],0)
         x=x+self.holds_fusion(torch.cat([linked,mask.float()[...,None]],-1))

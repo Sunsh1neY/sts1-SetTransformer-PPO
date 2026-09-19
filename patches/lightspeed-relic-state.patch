@@ -1,8 +1,8 @@
 diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
-index d0e9ca4..66d3f57 100644
+index d0e9ca4..d1c24f7 100644
 --- a/bindings/integrated-card-env.cpp
 +++ b/bindings/integrated-card-env.cpp
-@@ -55,7 +55,22 @@ Potion parsePotion(const std::string &name) {
+@@ -55,7 +55,33 @@ Potion parsePotion(const std::string &name) {
      throw std::invalid_argument("未识别药水: " + name);
  }
  
@@ -23,10 +23,21 @@ index d0e9ca4..66d3f57 100644
 +    if (counters && name == "Black Blood") return R::BLACK_BLOOD;
 +    if (counters && name == "Meat on the Bone") return R::MEAT_ON_THE_BONE;
 +    if (counters && name == "Orichalcum") return R::ORICHALCUM;
++    if (counters && name == "Runic Pyramid") return R::RUNIC_PYRAMID;
++    if (counters && name == "Unceasing Top") return R::UNCEASING_TOP;
++    if (counters && name == "Snecko Eye") return R::SNECKO_EYE;
++    if (counters && name == "Velvet Choker") return R::VELVET_CHOKER;
++    if (counters && name == "Mutagenic Strength") return R::MUTAGENIC_STRENGTH;
++    if (counters && name == "Orange Pellets") return R::ORANGE_PELLETS;
++    if (counters && name == "Runic Dome") return R::RUNIC_DOME;
++    if (counters && name == "Frozen Eye") return R::FROZEN_EYE;
++    if (counters && name == "Bottled Flame") return R::BOTTLED_FLAME;
++    if (counters && name == "Bottled Lightning") return R::BOTTLED_LIGHTNING;
++    if (counters && name == "Bottled Tornado") return R::BOTTLED_TORNADO;
      if (!listed(PUBLIC_RELIC_NAMES, name)) throw std::invalid_argument("遗物不在入口闭包内: " + name);
      if (name == "Burning Blood") return R::BURNING_BLOOD;
      if (name == "Lantern") return R::LANTERN;
-@@ -204,6 +219,7 @@ class PublicBattleEnv {
+@@ -204,12 +230,13 @@ class PublicBattleEnv {
      int initialCards_ = 0;
      bool hasReset_ = false;
      bool truncated_ = false;
@@ -34,7 +45,58 @@ index d0e9ca4..66d3f57 100644
      std::vector<std::string> relicNames_;
      std::array<PublicEnemyHistory, PUBLIC_TARGET_CAPACITY> publicHistory_{};
  
-@@ -380,7 +396,7 @@ class PublicBattleEnv {
+     bool terminal() const { return hasReset_ && bc_.outcome != Outcome::UNDECIDED; }
+ 
+-    Json cardRow(const CardInstance &c, bool inHand) const {
++    Json cardRow(const CardInstance &c, bool inHand, bool includeBinding = false) const {
+         const bool up = c.isUpgraded();
+         int damage = 0, block = 0, magic = 0, hits = 1;
+         bool all = false;
+@@ -312,7 +339,17 @@ class PublicBattleEnv {
+         if (expanded_) {
+             // 只输出具名公开属性，不输出specialData或实例ID。
+             const bool corruption = c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>();
+-            if (c.uniqueId == bc_.cards.knownTopId && !inHand) row["known_top"] = true;
++            if (relicState_) {
++                row["draw_position_known"] = false; row["draw_position"] = nullptr;
++                int position = 0;
++                for (auto it = bc_.cards.drawPile.rbegin(); it != bc_.cards.drawPile.rend(); ++it, ++position) {
++                    if (it->uniqueId == c.uniqueId && !inHand &&
++                        (bc_.player.hasRelic<R::FROZEN_EYE>() || c.uniqueId == bc_.cards.knownTopId)) {
++                        row["draw_position_known"] = true; row["draw_position"] = position;
++                        break;
++                    }
++                }
++            } else if (c.uniqueId == bc_.cards.knownTopId && !inHand) row["known_top"] = true;
+             if (!inHand && c.costForTurn != c.cost) row["recovery_cost"] = c.costForTurn;
+             row["printed_cost"] = getEnergyCost(c.id, up);
+             row["effective_cost_known"] = inHand;
+@@ -325,12 +362,16 @@ class PublicBattleEnv {
+             row["effective_exhaust"] = c.doesExhaust() ||
+                 (c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>());
+         }
++        if (relicState_ && includeBinding) {
++            static const char *names[] = {"Bottled Flame", "Bottled Lightning", "Bottled Tornado"};
++            for (int i=0; i<3; ++i) if (std::find(relicNames_.begin(), relicNames_.end(), names[i]) != relicNames_.end() && gc_->deck.bottleIdxs[i] >= 0 && c.uniqueId == gc_->deck.bottleIdxs[i]) row["bottled_by"] = names[i];
++        }
+         return row;
+     }
+ 
+     template <typename C> Json pileRows(const C &pile) const {
+         std::vector<Json> rows;
+-        for (const auto &card : pile) rows.push_back(cardRow(card, false));
++        for (const auto &card : pile) rows.push_back(cardRow(card, false, true));
+         std::sort(rows.begin(), rows.end(), [](const Json &a, const Json &b) { return a.dump() < b.dump(); });
+         return rows;
+     }
+@@ -374,13 +415,13 @@ class PublicBattleEnv {
+         if (!hasReset_) throw std::runtime_error("必须先reset_scene");
+         verifyDecision();
+         Json hand = Json::array(), enemies = Json::array(), potions = Json::array(), relics = Json::array();
+-        for (int i = 0; i < bc_.cards.cardsInHand; ++i) hand.push_back(cardRow(bc_.cards.hand[i], true));
++        for (int i = 0; i < bc_.cards.cardsInHand; ++i) hand.push_back(cardRow(bc_.cards.hand[i], true, true));
+         Json statuses = Json::object();
+         for (int i = 1; i < static_cast<int>(PS::THE_BOMB); ++i) {
              const auto id = static_cast<PS>(i);
              if (!bc_.player.hasStatusRuntime(id)) continue;
              // 当前白名单的布尔状态NoDraw/Entangled不依赖statusMap。
@@ -43,7 +105,26 @@ index d0e9ca4..66d3f57 100644
                  (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION || id == PS::CONFUSED))) statuses[playerStatusStrings[i]] = 1;
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
-@@ -415,7 +431,18 @@ class PublicBattleEnv {
+@@ -409,13 +450,43 @@ class PublicBattleEnv {
+                 {"intent_history", Json::array({present ? static_cast<int>(m.moveHistory[0]) : 0, present ? static_cast<int>(m.moveHistory[1]) : 0, present ? static_cast<int>(m.moveHistory[2]) : 0})},
+                 {"intent_history_valid", Json::array({present && m.moveHistory[0] != MMID::INVALID, present && m.moveHistory[1] != MMID::INVALID, present && m.moveHistory[2] != MMID::INVALID})}});
+         }
++        if (relicState_ && bc_.player.hasRelic<R::RUNIC_DOME>()) {
++            for (int i = 0; i < PUBLIC_TARGET_CAPACITY; ++i) {
++                auto &row = enemies[i];
++                const auto &stored = bc_.observedEnemyActions[i];
++                const auto seen = stored.serial == bc_.monsters.arr[i].entitySerial ? stored : BattleContext::ObservedEnemyActions{};
++                row["intent_kind"] = row["targetable"].get<bool>() ? "UNKNOWN" : "NONE";
++                row["intent_damage"] = 0; row["intent_hits"] = 0;
++                row["intent_history"] = seen.moves;
++                row["intent_history_valid"] = Json::array({seen.moves[0] != 0, seen.moves[1] != 0, seen.moves[2] != 0});
++                row["public_history"] = {{"completed_enemy_turns", seen.completed},
++                    {"charge_turns_observed", seen.charge}, {"sleep_turns_observed", seen.sleep}};
++            }
++        }
+         for (int i = 0; i < PUBLIC_POTION_CAPACITY; ++i) {
+             const auto p = bc_.potions[i];
+             const bool present = i < bc_.potionCapacity && p != Potion::EMPTY_POTION_SLOT && p != Potion::INVALID;
              potions.push_back({{"present", present}, {"name", present ? sourcePotionName(p) : ""},
                  {"potency", present ? potionPotency(p) : 0}, {"target_kind", present && potionRequiresTarget(p) ? "ENEMY" : "NO_TARGET"}});
          }
@@ -58,12 +139,38 @@ index d0e9ca4..66d3f57 100644
 +                if (r == "Ink Bottle") counter = static_cast<int>(bc_.player.inkBottleCounter);
 +                if (r == "Sundial") counter = static_cast<int>(bc_.player.sundialCounter);
 +            }
-+            relics.push_back({{"name", r}, {"counter", counter}});
++            Json relic = {{"name", r}, {"counter", counter}};
++            if (relicState_ && r == "Orange Pellets") {
++                const auto &bits = bc_.player.orangePelletsCardTypesPlayed;
++                relic["played_types"] = {{"attack_played", bits.test(0)},
++                    {"skill_played", bits.test(1)}, {"power_played", bits.test(2)}};
++            }
++            relics.push_back(relic);
 +        }
          Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
              {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
              {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
-@@ -456,7 +483,7 @@ class PublicBattleEnv {
+@@ -436,6 +507,10 @@ class PublicBattleEnv {
+                     const auto cardRef = std::string("card:") + std::to_string(card.uniqueId);
+                     // 仅公开牌名；升级与实例动态属性不从后端真值泄露。
+                     result["stasis"].push_back({{"name", sourceCardName(card.id)}});
++                    if (relicState_) {
++                        static const char *names[] = {"Bottled Flame", "Bottled Lightning", "Bottled Tornado"};
++                        for (int b=0;b<3;++b) if (std::find(relicNames_.begin(), relicNames_.end(), names[b]) != relicNames_.end() && gc_->deck.bottleIdxs[b] >= 0 && card.uniqueId == gc_->deck.bottleIdxs[b]) result["stasis"].back()["bottled_by"] = names[b];
++                    }
+                     cardRefs.push_back(cardRef);
+                     result["relations"].push_back({{"kind", "holds_card"}, {"enemy_ref", ref}, {"card_ref", cardRef}});
+                 }
+@@ -444,7 +519,7 @@ class PublicBattleEnv {
+             result["resolving"] = Json::array();
+             if (!terminal() && bc_.inputState == InputState::CARD_SELECT) {
+                 // 仅当前已公开的来源卡；不导出整个动作队列或隐藏实例ID。
+-                result["resolving"].push_back(cardRow(bc_.curCardQueueItem.card, false));
++                result["resolving"].push_back(cardRow(bc_.curCardQueueItem.card, false, true));
+             }
+             result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
+             result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
+@@ -456,7 +531,7 @@ class PublicBattleEnv {
      }
  
  public:
@@ -72,7 +179,17 @@ index d0e9ca4..66d3f57 100644
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -531,10 +558,27 @@ public:
+@@ -524,17 +599,42 @@ public:
+                 throw std::invalid_argument("该卡升级路径不支持");
+             Card entry(id, upgrade);
+             if (id == CardId::SEARING_BLOW) entry.misc = upgrade;
+-            gc_->deck.obtainRaw(entry);
++            // Diagnostic status cards have no slot in the four-type master-deck counters.
++            if (relicState_ && entry.getType() == CardType::STATUS) gc_->deck.cards.push_back(entry);
++            else gc_->deck.obtainRaw(entry);
+         }
+         initialCards_ = gc_->deck.size();
+         relicNames_.clear();
          gc_->relics = RelicContainer{};
          if (!scene.at("relics").is_array()) throw std::invalid_argument("遗物必须为完整列表");
          for (const auto &value : scene.at("relics")) {
@@ -86,7 +203,13 @@ index d0e9ca4..66d3f57 100644
 +            if (name == "Incense Burner") period = 6;
 +            if (name == "Ink Bottle") period = 10;
 +            if (name == "Sundial") period = 3;
-+            if (relicState_ && period) {
++            const int bottle = name == "Bottled Flame" ? 0 : name == "Bottled Lightning" ? 1 : name == "Bottled Tornado" ? 2 : -1;
++            if (relicState_ && bottle >= 0) {
++                if (!value.is_object() || value.size() != 2 || !value.contains("card_index")) throw std::invalid_argument("Bottle requires name and card_index");
++                const int index = strictInt(value, "card_index", 0, gc_->deck.size()-1);
++                if (static_cast<int>(gc_->deck.cards[index].getType()) != bottle) throw std::invalid_argument("Bottled card type mismatch");
++                gc_->deck.bottleIdxs[bottle] = index;
++            } else if (relicState_ && period) {
 +                if (!value.is_object() || value.size() != 2 || !value.contains("counter"))
 +                    throw std::invalid_argument("Counter relic requires explicit name and counter");
 +                counter = strictInt(value, "counter", 0, period - 1);
@@ -102,7 +225,7 @@ index d0e9ca4..66d3f57 100644
          gc_->potionCapacity = ascension >= 11 ? 2 : 3;
          gc_->potionCount = 0;
          std::fill(gc_->potions.begin(), gc_->potions.end(), Potion::EMPTY_POTION_SLOT);
-@@ -546,6 +590,7 @@ public:
+@@ -546,6 +646,7 @@ public:
          // 这8种遗物无目的普通/精英房间独立入口效果；BattleContext执行其开战效果一次。
          bc_ = BattleContext{};
          bc_.enemyPotionExpansion = true;
@@ -110,7 +233,7 @@ index d0e9ca4..66d3f57 100644
          bc_.actionQueue.checkedCapacity = true;
          bc_.cardQueue.checkedCapacity = true;
          bc_.init(*gc_, encounter);
-@@ -653,9 +698,9 @@ private:
+@@ -653,9 +754,9 @@ private:
          }
          for (int i=0;i<PUBLIC_TARGET_CAPACITY;++i) if (oldSerials[i]!=bc_.monsters.arr[i].entitySerial) publicHistory_[i]={};
          const bool won = terminal() && bc_.outcome == Outcome::PLAYER_VICTORY;
@@ -122,7 +245,7 @@ index d0e9ca4..66d3f57 100644
          Json info = {{"action_count", actionCount_}, {"outcome", static_cast<int>(bc_.outcome)},
              {"truncation_reason", truncated_ ? "external_action_budget" : ""}, {"reward_version", "battle_reward_v1"},
              {"exit_effects_applied", won}, {"player_hp", bc_.player.curHp}, {"player_max_hp", bc_.player.maxHp}};
-@@ -663,13 +708,33 @@ private:
+@@ -663,13 +764,33 @@ private:
              const int originalGold = gc_->gold;
              std::map<std::pair<int,int>,int> deckDelta;
              for (const auto &card : gc_->deck.cards) --deckDelta[{static_cast<int>(card.id),card.getUpgraded()}];
@@ -156,7 +279,7 @@ index d0e9ca4..66d3f57 100644
              for (auto &card : bc_.cards.stasisCards) card = CardInstance(CardId::INVALID);
          }
          return Json{{"observation", observeJson()}, {"reward", reward}, {"terminated", terminal()},
-@@ -678,6 +743,11 @@ private:
+@@ -678,6 +799,11 @@ private:
  };
  
  // 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
@@ -168,11 +291,11 @@ index d0e9ca4..66d3f57 100644
  class IroncladBattleEnv : public PublicBattleEnv {
  public:
      explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
-@@ -697,5 +767,16 @@ void registerIntegratedCardEnv(pybind11::module_ &module) {
+@@ -697,5 +823,16 @@ void registerIntegratedCardEnv(pybind11::module_ &module) {
          .def("selection_indices", &IroncladBattleEnv::selectionIndices)
          .def("selection_card", &IroncladBattleEnv::selectionCard)
          .def("select_card", &IroncladBattleEnv::selectCard);
-+    module.attr("RELIC_STATE_REGISTRY_SHA256") = "c44d7ae301747ecc083753cf755527199ad2ac8756cc60719cc24b27b6b57b05";
++    module.attr("RELIC_STATE_REGISTRY_SHA256") = "395d6dccad7dcae0b07d25df026fb297872c1273a6b033b1c26843f23ae40122";
 +    pybind11::class_<RelicBattleEnv>(module, "RelicStateBattleEnv")
 +        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
 +        .def("reset_scene", &RelicBattleEnv::resetScene)
@@ -186,22 +309,40 @@ index d0e9ca4..66d3f57 100644
  }
  }
 diff --git a/include/combat/BattleContext.h b/include/combat/BattleContext.h
-index 4d84e0b..6db0fcd 100644
+index 4d84e0b..d9bbb80 100644
 --- a/include/combat/BattleContext.h
 +++ b/include/combat/BattleContext.h
-@@ -49,6 +49,7 @@ namespace sts {
+@@ -49,6 +49,12 @@ namespace sts {
          // begin for debugging purposes
          inline static int sum = 0; // for preventing optimization in benchmarks
          int nextEnemySerial = 0; // 仅实例路由，不进入语义
++        struct ObservedEnemyActions {
++            int serial = 0, completed = 0, sleep = 0, charge = 0;
++            std::array<int, 3> moves{};
++        };
++        std::array<ObservedEnemyActions, 5> observedEnemyActions{};
 +        bool relicStateExpansion = false; // Versioned diagnostic relic entry only.
          bool enemyPotionExpansion = false; // 独立扩展机制开关，旧入口保持原行为
          bool haveUsedDiscoveryAction = false; // for tracking undefined behavior resulting from using the action
          bool undefinedBehaviorEvoked = false; // some cards cause inconsistent outcomes in games
 diff --git a/src/combat/BattleContext.cpp b/src/combat/BattleContext.cpp
-index 57159b0..00aa356 100644
+index 57159b0..f6ff4ed 100644
 --- a/src/combat/BattleContext.cpp
 +++ b/src/combat/BattleContext.cpp
-@@ -317,7 +317,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+@@ -285,7 +285,11 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 p.gainEnergy(1);
+                 break;
+ 
+-            case R::MUTAGENIC_STRENGTH: // this appears to be applied before clockwork if it was acquired first
++            case R::MUTAGENIC_STRENGTH:
++                if (relicStateExpansion) {
++                    atBattleStart.push_back(r.id);
++                    break;
++                }
+                 p.buff<PS::STRENGTH>(3);
+                 p.debuff<PS::LOSE_STRENGTH>(3);
+                 break;
+@@ -317,7 +321,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                  if (room == Room::ELITE) {
                      for (int i = 0; i < monsters.monsterCount; ++i) {
                          Monster &m = monsters.arr[i];
@@ -210,7 +351,23 @@ index 57159b0..00aa356 100644
                      }
                  }
                  break;
-@@ -413,7 +413,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+@@ -401,7 +405,14 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 break;
+ 
+             case R::CLOCKWORK_SOUVENIR:
+-                addToBot( Actions::BuffPlayer<PS::ARTIFACT>(1) );
++                if (relicStateExpansion) addToTop(Actions::BuffPlayer<PS::ARTIFACT>(1));
++                else addToBot(Actions::BuffPlayer<PS::ARTIFACT>(1));
++                break;
++
++            case R::MUTAGENIC_STRENGTH:
++                // Original battle-start hooks prepend actions in acquisition order.
++                addToTop(Actions::BuffPlayer<PS::STRENGTH>(3));
++                addToTop(Actions::DebuffPlayer<PS::LOSE_STRENGTH>(3));
+                 break;
+ 
+             case R::GREMLIN_VISAGE:
+@@ -413,7 +424,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                  break;
  
              case R::RED_MASK:
@@ -219,7 +376,7 @@ index 57159b0..00aa356 100644
                  break;
  
              case R::RING_OF_THE_SNAKE:
-@@ -519,6 +519,11 @@ void BattleContext::exitBattle(GameContext &g) const {
+@@ -519,6 +530,11 @@ void BattleContext::exitBattle(GameContext &g) const {
  }
  
  void BattleContext::updateRelicsOnExit(GameContext &g) const {
@@ -231,7 +388,7 @@ index 57159b0..00aa356 100644
      for (auto &r : g.relics.relics) {
          switch (r.id) {
              case RelicId::HAPPY_FLOWER:
-@@ -579,7 +584,7 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
+@@ -579,7 +595,7 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
                  break;
  
              case RelicId::MEAT_ON_THE_BONE:
@@ -240,3 +397,42 @@ index 57159b0..00aa356 100644
                      g.playerHeal(12);
                  }
                  break;
+@@ -776,6 +792,18 @@ void BattleContext::executeActions() {
+ 
+         if (monsterTurnIdx < monsters.monsterCount) {
+             // do a monster turn
++            if (relicStateExpansion && player.hasRelic<R::RUNIC_DOME>()) {
++                const auto &m = monsters.arr[monsterTurnIdx];
++                if ((!m.isDeadOrEscaped() || m.isHalfDead()) && !monsters.skipTurn[monsterTurnIdx]) {
++                    auto &seen = observedEnemyActions[monsterTurnIdx];
++                    if (seen.serial != m.entitySerial) { seen = {}; seen.serial = m.entitySerial; }
++                    seen.moves[2] = seen.moves[1]; seen.moves[1] = seen.moves[0];
++                    seen.moves[0] = static_cast<int>(m.moveHistory[0]);
++                    ++seen.completed;
++                    if (m.moveHistory[0] == MMID::LAGAVULIN_SLEEP) ++seen.sleep;
++                    if (m.moveHistory[0] == MMID::GREMLIN_WIZARD_CHARGING) ++seen.charge;
++                }
++            }
+             monsters.doMonsterTurn(*this);
+             continue;
+         }
+@@ -809,6 +837,10 @@ void BattleContext::executeActions() {
+ 
+             if (cards.cardsInHand == 0) {
+                 drawCards(1);
++                // Finish queued shuffle/draw effects before exposing a decision.
++                if (relicStateExpansion && !actionQueue.isEmpty()) {
++                    continue;
++                }
+             }
+         }
+ 
+@@ -838,7 +870,7 @@ void BattleContext::playCardQueueItem(CardQueueItem playItem) {
+     }
+ 
+ //    bool canPlayCard = false; // not really sure what this is used for
+-    const bool canUseCard = item.purgeOnUse || (item.triggerOnUse && c.canUse(*this, item.target, item.autoplay) && (!c.requiresTarget() || monsters.arr[item.target].isTargetable()));
++    const bool canUseCard = item.purgeOnUse || (item.triggerOnUse && (!relicStateExpansion || !player.hasRelic<R::VELVET_CHOKER>() || player.cardsPlayedThisTurn < 6) && c.canUse(*this, item.target, item.autoplay) && (!c.requiresTarget() || monsters.arr[item.target].isTargetable()));
+     if (canUseCard) { // not sure if this is correct,
+ //        canPlayCard = true; // what is this for......
+ 

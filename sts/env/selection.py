@@ -66,7 +66,7 @@ class SelectionRouter:
             if ZONES[kind] == "hand" and index >= 10:
                 raise ValueError("后端手牌索引越界")
             indices.add(index)
-            if not isinstance(card, dict) or set(card) != CARD_FIELDS | ({"known_top", "recovery_cost"} & set(card)):
+            if not isinstance(card, dict) or set(card) != CARD_FIELDS | ({"known_top", "recovery_cost", "draw_position_known", "draw_position"} & set(card)):
                 raise ValueError("候选必须使用完整规范语义，不能包含路由或隐藏字段")
             # JSON复制还会拒绝NaN与不可序列化内部对象。
             row = json.loads(json.dumps(card, ensure_ascii=False, allow_nan=False))

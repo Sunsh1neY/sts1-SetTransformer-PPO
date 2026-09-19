@@ -144,7 +144,7 @@ def test_each_second_batch_relic_real_model_forward_and_replay(relic):
     env, o, initial = start([relic])
     sample = encode(o)
     row = next(t.features for t in sample.entities.tokens if t.entity_type=='RELIC')
-    assert len(row)==DIMENSION==25 and row[:-3].sum()==1 and not row[-3:].any()
+    assert len(row)==DIMENSION and row[:-3].sum()==1 and not row[-3:].any()
     assert row[BY_NAME[relic]['id']-1]==1
     model=APathActorCritic().eval()
     with torch.no_grad():

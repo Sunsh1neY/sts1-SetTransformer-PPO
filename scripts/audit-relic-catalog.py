@@ -39,11 +39,11 @@ def main():
                 refs.append(dict(path=path, lines=lines))
         rows.append(dict(upstream_enum=enum, upstream_name=name,
             implementation_status='diagnostic_tested' if definition else 'not_imported',
-            public_state=definition['counter'] if definition else 'pending',
+            public_state=({'counter': definition['counter'], 'played_types': ['attack_played','skill_played','power_played']} if enum == 'ORANGE_PELLETS' else definition['counter']) if definition else 'pending',
             training_admitted=bool(definition and definition['training_admitted']),
             owner_review=review.get(enum), source_occurrences=refs,
             original_game_behavior_verification='pending',
-            behavior_test='tests/test_relic_state.py' if definition else None))
+            behavior_test=('tests/test_relic_batch_three.py' if definition['id']>22 else 'tests/test_relic_batch_two.py' if definition['id']>14 else 'tests/test_relic_state.py') if definition else None))
     result = dict(schema='relic-audit-ledger-v1', upstream_commit=json.loads(
         (ROOT / 'scripts/lightspeed-lock.json').read_bytes())['commit'],
         catalog_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),

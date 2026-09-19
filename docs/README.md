@@ -43,3 +43,5 @@ Other specialist audits, JSON evidence files and older stage reports remain at s
 - [Relic integration report](relic-integration-report.md): I9 one-hot implementation, diagnostic evidence and pending special-relic reviews.
 
 - [Full Act 1/2 relic audit](act12-relic-audit.md), [special review queue](relic-special-review.md), and [second batch integration](relic-second-batch-report.md): I10 scope, original-reference findings, 22 diagnostic imports and remaining work.
+
+- [Third relic batch](relic-third-batch-report.md): I11/I12 approved special imports, v3 fields, exact bottle relations, scoped tests and remaining limits.

@@ -1,4 +1,5 @@
 """Explicit relic mechanism diagnostics; no new training-pool admission."""
+from sts.env.relic_card_state import card_features_v3, DIMENSION as CARD_V3_DIM
 import copy
 from types import SimpleNamespace
 
@@ -33,6 +34,15 @@ class RelicEnv(APathEnv):
         value['relics'] = []
         obs = IroncladEnv._normalize_observation(self, value)
         obs['relics'] = relics
+        obs['routing']['bound_card_refs'] = {}
+        for region in ('hand','draw_pile','discard_pile','exhaust_pile','resolving','stasis'):
+            for index, card in enumerate(obs[region]):
+                name = card.pop('bottled_by', None)
+                if name is None: continue
+                if name not in {r['name'] for r in relics}: raise ValueError('Binding refers to an unowned relic')
+                ref = f'bound:{region}:{index}'
+                obs['routing']['bound_card_refs'][ref] = dict(region=region, index=index)
+                obs['relations'].append(dict(kind='bottled_card', relic_name=name, card_ref=ref))
         return obs
 
     def reset(self, scene, seed, *, diagnostic=False, purpose='development'):
@@ -41,8 +51,8 @@ class RelicEnv(APathEnv):
         if scene.get('act') not in (1, 2):
             raise ValueError('Relic diagnostics are limited to Act 1/2')
         obs = IroncladEnv.reset(self, scene, seed, diagnostic=diagnostic, purpose=purpose)
-        if len(encode_observation(obs, relic_encoder=relic_features,
-                feature_dims={**FEATURE_DIMS, 'RELIC': DIMENSION}).tokens) >= load_pool()['resources']['truncate_at_entities']:
+        if len(encode_observation(obs, relic_encoder=relic_features, card_encoder=card_features_v3,
+                feature_dims={**FEATURE_DIMS, 'RELIC': DIMENSION, 'CARD': CARD_V3_DIM}).tokens) >= load_pool()['resources']['truncate_at_entities']:
             self._finished = True
             raise ValueError('Initial relic scene exceeds the entity startup limit')
         self._allocated = self._env.allocated_card_count()

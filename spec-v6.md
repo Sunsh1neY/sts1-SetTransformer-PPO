@@ -811,3 +811,13 @@ Per decision I9, relic identity remains one-hot with fixed versioned columns. Ad
 ### 2026-09-19 amendment — I10 Act 1/2 relic audit and second batch
 
 Decision I10 authorizes the complete relic scope audit followed by the ordinary second import batch. Scope and implementation evidence must be reported separately. Special relic semantics remain subject to owner review. I8 reward v2 and I9 one-hot identity remain applicable; the admitted pool is unchanged.
+
+
+### 2026-09-19 amendment — I11 special relic scope refinement
+
+I11 records the owner's revised special-relic scope: exclude Lizard Tail, Necronomicon and Nilry's Codex; retain prior exclusions; condition Gambling Chip and Snecko Eye on verified existing interfaces; prefer backend-derived counters and exact bottled-card relations. Current-observation sufficiency, Runic Dome public-history filtering and replacement of known_top apply to the new version. Preserve one-hot identity, reward v2 and existing pool/training boundaries.
+
+
+### 2026-09-19 amendment — I12 approved special relic implementation
+
+I12 executes I11 with per-relic progress reporting. Development relic-state-v3 uses 33 one-hot identities plus three Orange Pellets bits and three counter fields. A-path card encoding replaces known_top with draw_position_known and draw_position/512; legacy encoding remains available. Bottle bindings target exact master-deck instances through entity relations. Runic Dome hides current planned moves and records executed enemy actions. Retain the existing 64-wide four-SAB/single-PMA architecture, joint PPO, reward v2, frozen pool and training boundaries. See docs/relic-third-batch-report.md for scoped implementation evidence.

@@ -1,6 +1,6 @@
 # Special relic review queue
 
-Date: 2026-09-19. Status: proposals only; owner approval pending. None of these proposals grants training admission.
+Date: 2026-09-19. Historical proposal queue. Owner decisions in [the consolidated decision record](relic-import-decisions-2026-09-19.md) and I11 supersede the pending statuses below. None of these proposals grants training admission.
 
 The full audit identified 24 Act 1/2 candidates requiring review before their implementation. Ordinary second-batch work proceeds independently. Each proposal still needs a concrete per-relic schema/test patch plan when selected; approval of a category must not be interpreted as approval of arbitrary hidden fields or fallback actions.
 

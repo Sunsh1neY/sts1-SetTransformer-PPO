@@ -141,7 +141,7 @@ class EntitySample:
                             copy.deepcopy(self.routes), np.array([remap(int(self.held_card_index[i])) for i in order], dtype=np.int64) if self.held_card_index is not None else None)
 
 
-def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
+def encode_observation(obs, *, relic_encoder=None, card_encoder=None, feature_dims=None):
     """适配当前具名战斗观测；新增机制必须显式提供合法性和完整字段。"""
     dimensions = FEATURE_DIMS if feature_dims is None else feature_dims
     from sts.env.ironclad import CONTRACT as RUNTIME
@@ -181,9 +181,11 @@ def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
                 # stasis区域是统一未知掩码：只激活公开身份与区域，其余非真实零值。
                 feature = [0.] * (len(CARD_NUMERIC) + len(CARD_BOOL)) + onehot(CARD_IDS[card["name"]], range(81))
                 feature += [0.] * (len(CONTRACT["card_types"]) + 2 + 3) + onehot(region, REGIONS)
+                if card_encoder is not None:
+                    feature.insert(len(CARD_NUMERIC) + CARD_BOOL.index("known_top") + 1, 0.0)
                 refs[(region, i)] = add("CARD", feature)
                 continue
-            refs[(region, i)] = add("CARD", card_features(card, region))
+            refs[(region, i)] = add("CARD", (card_encoder or card_features)(card, region))
             if len(card["damage_by_target"]) != 5:
                 raise ValueError("目标预览缺行")
             cards.append((refs[(region, i)], card))
@@ -230,7 +232,7 @@ def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
             raise ValueError("Duplicate relic instance")
         seen_relics.add(relic["name"])
         if relic_encoder is not None:
-            add("RELIC", relic_encoder(relic))
+            refs[("relic", relic["name"])] = add("RELIC", relic_encoder(relic))
             continue
         exact(relic, {"name", "relic_id", "counter"})
         definition = next((r for r in CONTRACT["relics"] if r["name"] == relic["name"]), None)
@@ -327,7 +329,7 @@ def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
                       {"kind": "SELECT_CARD", "decision_id": decision["routing"]["decision_id"], "candidate_index": i},
                       candidate_context)
     routing = obs["routing"]
-    exact(routing, {"enemy_refs", "stasis_refs", "snapshot"})
+    exact(routing, {"enemy_refs", "stasis_refs", "snapshot"} | ({"bound_card_refs"} & set(routing)))
     if len(routing["enemy_refs"]) != 5 or len(routing["stasis_refs"]) != len(obs["stasis"]):
         raise ValueError("关系路由长度错误")
     enemy_refs = {r: refs[("enemy", i)] for i,r in enumerate(routing["enemy_refs"]) if r is not None and ("enemy",i) in refs}
@@ -337,6 +339,17 @@ def encode_observation(obs, *, relic_encoder=None, feature_dims=None):
     held = np.full(len(tokens), -1, dtype=np.int64)
     used_cards=set()
     for rel in obs["relations"]:
+        if rel.get("kind") == "bottled_card":
+            exact(rel, {"kind", "relic_name", "card_ref"})
+            location = routing.get("bound_card_refs", {}).get(rel["card_ref"])
+            if not isinstance(location, dict): raise ValueError("Missing bottled card endpoint")
+            exact(location, {"region", "index"})
+            source = refs.get(("relic", rel["relic_name"]))
+            target = refs.get((location["region"], _integer(location["index"], "bound index")))
+            if source is None or target is None or tokens[target].entity_type != "CARD" or held[source] != -1:
+                raise ValueError("Invalid or duplicate bottled relation")
+            held[source] = target
+            continue
         exact(rel, {"kind", "enemy_ref", "card_ref"})
         if rel["kind"] != "holds_card" or rel["enemy_ref"] not in enemy_refs or rel["card_ref"] not in card_refs:
             raise ValueError("关系端点无效")
@@ -372,7 +385,7 @@ def collate(samples, *, heads=4, resources=None, allow_empty_candidates=False, f
         held=sample.held_card_index
         if held is None or held.shape!=(length,) or held.dtype.kind not in "iu": raise ValueError("缺少关系路由")
         for source,target in enumerate(held):
-            if target != -1 and (not 0<=target<length or sample.tokens[source].entity_type!="ENEMY" or sample.tokens[target].entity_type!="CARD"):
+            if target != -1 and (not 0<=target<length or sample.tokens[source].entity_type not in {"ENEMY", "RELIC"} or sample.tokens[target].entity_type!="CARD"):
                 raise ValueError("关系源/目标类型错误")
         batch["held_card_index"][i,:length]=torch.from_numpy(held.copy())
         for j, token in enumerate(sample.tokens):

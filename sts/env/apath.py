@@ -1,4 +1,5 @@
 """版本化真实卡组配置入口；独立于旧comparison和机制诊断入口。"""
+from sts.env.relic_card_state import card_features_v3, DIMENSION as CARD_V3_DIM
 import copy
 from functools import lru_cache
 import hashlib
@@ -81,7 +82,7 @@ class APathEnv(IroncladEnv):
         # 通过新入口的注册核验后使用正式公开reset，绝不将train包装为diagnostic。
         obs = PublicBattleEnv.reset(self, envelope, seed, diagnostic=False, purpose=purpose)
         limits = load_pool()['resources']
-        if len(encode_observation(obs, relic_encoder=relic_features, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM}).tokens) >= limits['truncate_at_entities']:
+        if len(encode_observation(obs, relic_encoder=relic_features, card_encoder=card_features_v3, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM, "CARD": CARD_V3_DIM}).tokens) >= limits['truncate_at_entities']:
             self._finished=True
             raise ValueError('登记初态已越资源启动边界')
         self._allocated = self._env.allocated_card_count()
@@ -119,7 +120,7 @@ class APathEnv(IroncladEnv):
             if not term and not 0 <= allocated-self._allocated <= limits['max_generated_per_decision']:
                 raise RuntimeError('完整动作卡牌分配增长超出原五遭遇容量契约')
             self._allocated=allocated
-            count=len(encode_observation(obs, relic_encoder=relic_features, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM}).tokens)
+            count=len(encode_observation(obs, relic_encoder=relic_features, card_encoder=card_features_v3, feature_dims={**FEATURE_DIMS, "RELIC": RELIC_DIM, "CARD": CARD_V3_DIM}).tokens)
             if count>ENTITY_CONTRACT['resources']['max_entities']:
                 raise RuntimeError('完整观测超过实体硬边界；不能裁掉实体继续训练')
             if not term and count>=limits['truncate_at_entities']:

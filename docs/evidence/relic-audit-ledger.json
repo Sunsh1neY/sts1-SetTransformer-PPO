@@ -90,7 +90,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1858
+            1885
           ]
         },
         {
@@ -155,7 +155,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1920
+            1947
           ]
         },
         {
@@ -231,7 +231,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2187
+            2214
           ]
         },
         {
@@ -374,7 +374,7 @@
         {
           "path": "include/combat/BattleContext.h",
           "lines": [
-            297
+            302
           ]
         },
         {
@@ -404,7 +404,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2823
+            2850
           ]
         },
         {
@@ -469,7 +469,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2040
+            2067
           ]
         },
         {
@@ -539,7 +539,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2827
+            2854
           ]
         },
         {
@@ -573,7 +573,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1709
+            1736
           ]
         },
         {
@@ -692,7 +692,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2044
+            2071
           ]
         },
         {
@@ -720,8 +720,8 @@
     {
       "upstream_enum": "FROZEN_EYE",
       "upstream_name": "Frozen Eye",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": "visibility",
       "source_occurrences": [
@@ -743,7 +743,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "GAMBLING_CHIP",
@@ -757,7 +757,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             117,
-            442
+            453
           ]
         },
         {
@@ -926,7 +926,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             148,
-            529
+            540
           ]
         },
         {
@@ -1066,7 +1066,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             156,
-            533
+            544
           ]
         },
         {
@@ -1114,11 +1114,11 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             164,
-            537,
-            1667,
-            1784,
-            1862,
-            1931
+            548,
+            1694,
+            1811,
+            1889,
+            1958
           ]
         },
         {
@@ -1159,7 +1159,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             168,
-            541
+            552
           ]
         },
         {
@@ -1196,7 +1196,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1675
+            1702
           ]
         },
         {
@@ -1230,7 +1230,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1800
+            1827
           ]
         },
         {
@@ -1272,8 +1272,8 @@
           "lines": [
             177,
             178,
-            568,
-            569
+            579,
+            580
           ]
         },
         {
@@ -1391,7 +1391,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1926
+            1953
           ]
         },
         {
@@ -1431,7 +1431,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2804
+            2831
           ]
         },
         {
@@ -1461,7 +1461,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            432
+            443
           ]
         },
         {
@@ -1501,8 +1501,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1806,
-            1878
+            1833,
+            1905
           ]
         },
         {
@@ -1536,7 +1536,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1695
+            1722
           ]
         },
         {
@@ -1572,7 +1572,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2050
+            2077
           ]
         },
         {
@@ -1610,8 +1610,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             181,
-            551,
-            1713
+            562,
+            1740
           ]
         },
         {
@@ -1683,8 +1683,8 @@
           "lines": [
             185,
             186,
-            463,
-            464
+            474,
+            475
           ]
         },
         {
@@ -1730,17 +1730,24 @@
     {
       "upstream_enum": "ORANGE_PELLETS",
       "upstream_name": "Orange Pellets",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "counter": null,
+        "played_types": [
+          "attack_played",
+          "skill_played",
+          "power_played"
+        ]
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1679,
-            1792,
-            1870
+            1706,
+            1819,
+            1897
           ]
         },
         {
@@ -1767,7 +1774,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "ORICHALCUM",
@@ -1780,7 +1787,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2054
+            2081
           ]
         },
         {
@@ -1801,7 +1808,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "ORNAMENTAL_FAN",
@@ -1814,7 +1821,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1687
+            1714
           ]
         },
         {
@@ -1878,7 +1885,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2726
+            2753
           ]
         },
         {
@@ -1916,8 +1923,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             189,
-            555,
-            1701
+            566,
+            1728
           ]
         },
         {
@@ -2048,7 +2055,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            436
+            447
           ]
         },
         {
@@ -2119,15 +2126,16 @@
     {
       "upstream_enum": "RUNIC_DOME",
       "upstream_name": "Runic Dome",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": "visibility",
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            206
+            206,
+            795
           ]
         },
         {
@@ -2161,20 +2169,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "RUNIC_PYRAMID",
       "upstream_name": "Runic Pyramid",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2492
+            2519
           ]
         },
         {
@@ -2207,7 +2215,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "SACRED_BARK",
@@ -2220,7 +2228,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2244
+            2271
           ]
         },
         {
@@ -2304,7 +2312,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1691
+            1718
           ]
         },
         {
@@ -2330,8 +2338,8 @@
     {
       "upstream_enum": "SNECKO_EYE",
       "upstream_name": "Snecko Eye",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -2372,7 +2380,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "SNECKO_SKULL",
@@ -2410,7 +2418,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             214,
-            2222
+            2249
           ]
         },
         {
@@ -2468,7 +2476,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2060
+            2087
           ]
         },
         {
@@ -2502,7 +2510,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1990
+            2017
           ]
         },
         {
@@ -2536,7 +2544,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2681
+            2708
           ]
         },
         {
@@ -2578,8 +2586,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             218,
-            564,
-            2808
+            575,
+            2835
           ]
         },
         {
@@ -2613,7 +2621,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2800
+            2827
           ]
         },
         {
@@ -2736,7 +2744,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             98,
-            382
+            386
           ]
         },
         {
@@ -2939,7 +2947,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             108,
-            423
+            434
           ]
         },
         {
@@ -2961,15 +2969,15 @@
     {
       "upstream_enum": "UNCEASING_TOP",
       "upstream_name": "Unceasing Top",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            807
+            830
           ]
         },
         {
@@ -2990,13 +2998,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "VELVET_CHOKER",
       "upstream_name": "Velvet Choker",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -3004,7 +3012,8 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             222,
-            715
+            726,
+            873
           ]
         },
         {
@@ -3037,7 +3046,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "VIOLET_LOTUS",
@@ -3075,7 +3084,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             118,
-            446
+            457
           ]
         },
         {
@@ -3111,7 +3120,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2685
+            2712
           ]
         },
         {
@@ -3147,7 +3156,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            580
+            591
           ]
         },
         {
@@ -3183,7 +3192,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "BURNING_BLOOD",
@@ -3196,7 +3205,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            574
+            585
           ]
         },
         {
@@ -3237,8 +3246,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            524,
-            586
+            535,
+            597
           ]
         },
         {
@@ -3265,7 +3274,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "FACE_OF_CLERIC",
@@ -3384,7 +3393,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             102,
-            395
+            399
           ]
         },
         {
@@ -3405,7 +3414,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "BAG_OF_PREPARATION",
@@ -3419,7 +3428,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             103,
-            399
+            403
           ]
         },
         {
@@ -3497,8 +3506,8 @@
     {
       "upstream_enum": "BOTTLED_FLAME",
       "upstream_name": "Bottled Flame",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": "card_binding",
       "source_occurrences": [
@@ -3528,13 +3537,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "BOTTLED_LIGHTNING",
       "upstream_name": "Bottled Lightning",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": "card_binding",
       "source_occurrences": [
@@ -3564,13 +3573,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "BOTTLED_TORNADO",
       "upstream_name": "Bottled Tornado",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": "card_binding",
       "source_occurrences": [
@@ -3600,7 +3609,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "BRONZE_SCALES",
@@ -3701,7 +3710,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             104,
-            403
+            407
           ]
         },
         {
@@ -3722,7 +3731,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "COFFEE_DRIPPER",
@@ -4213,7 +4222,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             105,
-            407
+            418
           ]
         },
         {
@@ -4245,7 +4254,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             95,
-            370
+            374
           ]
         },
         {
@@ -4316,7 +4325,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             112,
-            411
+            422
           ]
         },
         {
@@ -4350,15 +4359,16 @@
     {
       "upstream_enum": "MUTAGENIC_STRENGTH",
       "upstream_name": "Mutagenic Strength",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            288
+            288,
+            412
           ]
         },
         {
@@ -4375,7 +4385,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_batch_three.py"
     },
     {
       "upstream_enum": "NEOWS_LAMENT",
@@ -4388,8 +4398,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            293,
-            545
+            297,
+            556
           ]
         },
         {
@@ -4427,7 +4437,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             96,
-            374
+            378
           ]
         },
         {
@@ -4457,7 +4467,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            302
+            306
           ]
         },
         {
@@ -4487,7 +4497,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            306
+            310
           ]
         },
         {
@@ -4521,7 +4531,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            310
+            314
           ]
         },
         {
@@ -4555,7 +4565,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            316
+            320
           ]
         },
         {
@@ -4582,7 +4592,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "PURE_WATER",
@@ -4596,7 +4606,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             97,
-            378
+            382
           ]
         },
         {
@@ -4634,7 +4644,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             106,
-            415
+            426
           ]
         },
         {
@@ -4664,7 +4674,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "RING_OF_THE_SERPENT",
@@ -4678,7 +4688,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             66,
-            325
+            329
           ]
         },
         {
@@ -4715,7 +4725,7 @@
           "path": "src/combat/BattleContext.cpp",
           "lines": [
             107,
-            419
+            430
           ]
         },
         {
@@ -4752,7 +4762,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            330
+            334
           ]
         },
         {
@@ -4782,7 +4792,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            334
+            338
           ]
         },
         {
@@ -4809,7 +4819,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": "tests/test_relic_state.py"
+      "behavior_test": "tests/test_relic_batch_two.py"
     },
     {
       "upstream_enum": "SLING_OF_COURAGE",
@@ -4822,7 +4832,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            340
+            344
           ]
         },
         {
@@ -4856,7 +4866,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            346
+            350
           ]
         },
         {
@@ -4886,7 +4896,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            350
+            354
           ]
         },
         {
@@ -4916,7 +4926,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            354
+            358
           ]
         },
         {
@@ -4950,7 +4960,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            358
+            362
           ]
         },
         {
