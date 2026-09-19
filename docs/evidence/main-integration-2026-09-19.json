@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-19",
+  "tested_commit": "f626844881a122f619f76e68bab9d415ffdea4ce",
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "5865",
+    "time": "101.263",
+    "timestamp": "2026-09-19T12:09:01.956020+08:00",
+    "hostname": "LAPTOP-RPBCCMCU"
+  },
+  "deselected": 1,
+  "cuda_executed": false,
+  "hashes": {
+    "eval_seeds.json": "38a093486535aa529d54ebfcfd535e67fe043daff8286b5740b5766a6131af9c",
+    "sts/env/a-path-training-pool.json": "1ef88b8b38a576d2a26e50f3c70d6dc7ae3b7971d6856490af4e5f60d8d2e7bc",
+    "patches/lightspeed-relic-state.patch": "300c9634e727a9ee3e1d3bbc61a2260d1973b697548c638711f7585205606f8d",
+    "sts/env/relic-state-registry.json": "0eba890eaf43f2b86c8f238cbced245c6f82f9910dbc6d7dd2b540dc1e194994",
+    "docs/current-architecture-dataflow-audit.md": "3730cc97802b312b35cb981a6b971f125287c6ed3e8e000d8255421a273f69d2",
+    "docs/handoff-2026-09-14.md": "b2d9c175da6bf5a7d13e636c988d378fe3737aadf50b43293fe9e6080c2dda0d"
+  },
+  "local_backend_binary_sha256": "70f3d9e128c71deec13b30faf8128189635203da8261e7d937b279cba2c93924",
+  "junit_sha256": "e962c3d45f0f8292a8a1730fc77df6fbe7ab824d3510df3f33c137594390b261"
+}
