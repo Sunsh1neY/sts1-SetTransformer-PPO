@@ -41,3 +41,5 @@ A-path reward amendment I8: battle_reward_v2 uses B=2, alpha=1, lambda=0.05, ini
 I9 authorizes scoped relic implementation with one-hot identity, based on I8. Special relic selection/binding/visibility/capacity semantics require owner review; ordinary verified state work may proceed. No new pool admission or substantial training.
 
 I10 records the completed static Act 1/2 relic scope audit and ordinary second batch. The development relic registry is relic-state-v2 (22 one-hot identities plus 3 counter fields). The formal pool remains unchanged; special relic reviews and broader runtime certification are pending.
+
+I13 authorizes the remaining combat-scope imports. The diagnostic registry is now relic-state-v4 (135 one-hot identities plus 6 state fields, raw RELIC width 141). See docs/relic-remaining-report.md; ownership-only run effects do not imply RunEnv support. Formal training admission remains unchanged.

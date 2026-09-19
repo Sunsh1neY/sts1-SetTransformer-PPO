@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BACKEND = ROOT / 'third_party/sts_lightspeed'
 FILES = ['bindings/integrated-card-env.cpp', 'include/combat/BattleContext.h',
-         'src/combat/BattleContext.cpp']
+         'src/combat/BattleContext.cpp', 'src/combat/Player.cpp', 'include/combat/Player.h']
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
         git('apply','--cached',str(patch))
         git('diff','--exit-code','--',*FILES)
         git('apply','--reverse','--check',str(patch))
-    print('Relic patch reproduces all three modified backend files from the locked base')
+    print('Relic patch reproduces all registered modified backend files from the locked base')
 
 
 if __name__ == '__main__':

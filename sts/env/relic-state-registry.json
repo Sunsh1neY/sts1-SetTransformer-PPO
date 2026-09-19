@@ -1,5 +1,5 @@
 {
-  "schema": "relic-state-v3",
+  "schema": "relic-state-v4",
   "identity_encoding": "one_hot",
   "identity_columns": [
     "Burning Blood",
@@ -34,7 +34,109 @@
     "Frozen Eye",
     "Bottled Flame",
     "Bottled Lightning",
-    "Bottled Tornado"
+    "Bottled Tornado",
+    "The Abacus",
+    "Akabeko",
+    "Strike Dummy",
+    "Brimstone",
+    "Captain's Wheel",
+    "Horn Cleat",
+    "Mercury Hourglass",
+    "Sling of Courage",
+    "Thread and Needle",
+    "Pantograph",
+    "Busted Crown",
+    "Coffee Dripper",
+    "Cursed Key",
+    "Fusion Hammer",
+    "Philosopher's Stone",
+    "Mark of Pain",
+    "The Boot",
+    "Paper Phrog",
+    "Calipers",
+    "Ice Cream",
+    "Bird-Faced Urn",
+    "Charon's Ashes",
+    "Chemical X",
+    "Tungsten Rod",
+    "Torii",
+    "Fossilized Helix",
+    "Art of War",
+    "Self-Forming Clay",
+    "Runic Cube",
+    "Red Skull",
+    "Kunai",
+    "Shuriken",
+    "Ornamental Fan",
+    "Letter Opener",
+    "Pocketwatch",
+    "Stone Calendar",
+    "Gremlin Horn",
+    "Magic Flower",
+    "Toy Ornithopter",
+    "Ginger",
+    "Turnip",
+    "Odd Mushroom",
+    "Champion's Belt",
+    "Hand Drill",
+    "Mummified Hand",
+    "Warped Tongs",
+    "Sozu",
+    "Ectoplasm",
+    "Gremlin Visage",
+    "Face of Cleric",
+    "Bloody Idol",
+    "Neow's Lament",
+    "Girya",
+    "Ancient Tea Set",
+    "Centennial Puzzle",
+    "Du-Vu Doll",
+    "Astrolabe",
+    "Black Star",
+    "Calling Bell",
+    "Cauldron",
+    "Ceramic Fish",
+    "The Courier",
+    "Cultist Headpiece",
+    "Darkstone Periapt",
+    "Dollys Mirror",
+    "Dream Catcher",
+    "Empty Cage",
+    "Eternal Feather",
+    "Frozen Egg",
+    "Golden Idol",
+    "Juzu Bracelet",
+    "Mango",
+    "Matryoshka",
+    "Maw Bank",
+    "Meal Ticket",
+    "Membership Card",
+    "Molten Egg",
+    "Nloths Gift",
+    "Nloths Hungry Face",
+    "Old Coin",
+    "Omamori",
+    "Orrery",
+    "Pandoras Box",
+    "Peace Pipe",
+    "Pear",
+    "Prayer Wheel",
+    "Question Card",
+    "Regal Pillow",
+    "Shovel",
+    "Singing Bowl",
+    "Smiling Mask",
+    "Spirit Poop",
+    "Ssserpent Head",
+    "Strawberry",
+    "Tiny Chest",
+    "Tiny House",
+    "Toxic Egg",
+    "Lees Waffle",
+    "War Paint",
+    "Whetstone",
+    "White Beast Statue",
+    "Wing Boots"
   ],
   "state_columns": [
     "attack_played",
@@ -44,7 +146,7 @@
     "counter_known",
     "counter_value_scaled"
   ],
-  "feature_dimension": 39,
+  "feature_dimension": 141,
   "relics": [
     {
       "id": 1,
@@ -285,6 +387,707 @@
       "name": "Bottled Tornado",
       "counter": null,
       "training_admitted": false
+    },
+    {
+      "id": 34,
+      "name": "The Abacus",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 35,
+      "name": "Akabeko",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 36,
+      "name": "Strike Dummy",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 37,
+      "name": "Brimstone",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 38,
+      "name": "Captain's Wheel",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 39,
+      "name": "Horn Cleat",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 40,
+      "name": "Mercury Hourglass",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 41,
+      "name": "Sling of Courage",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 42,
+      "name": "Thread and Needle",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 43,
+      "name": "Pantograph",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 44,
+      "name": "Busted Crown",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 45,
+      "name": "Coffee Dripper",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 46,
+      "name": "Cursed Key",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 47,
+      "name": "Fusion Hammer",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 48,
+      "name": "Philosopher's Stone",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 49,
+      "name": "Mark of Pain",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 50,
+      "name": "The Boot",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 51,
+      "name": "Paper Phrog",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 52,
+      "name": "Calipers",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 53,
+      "name": "Ice Cream",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 54,
+      "name": "Bird-Faced Urn",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 55,
+      "name": "Charon's Ashes",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 56,
+      "name": "Chemical X",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 57,
+      "name": "Tungsten Rod",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 58,
+      "name": "Torii",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 59,
+      "name": "Fossilized Helix",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 60,
+      "name": "Art of War",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 61,
+      "name": "Self-Forming Clay",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 62,
+      "name": "Runic Cube",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 63,
+      "name": "Red Skull",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 64,
+      "name": "Kunai",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 65,
+      "name": "Shuriken",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 66,
+      "name": "Ornamental Fan",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 67,
+      "name": "Letter Opener",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 68,
+      "name": "Pocketwatch",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 69,
+      "name": "Stone Calendar",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 70,
+      "name": "Gremlin Horn",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 71,
+      "name": "Magic Flower",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 72,
+      "name": "Toy Ornithopter",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 73,
+      "name": "Ginger",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 74,
+      "name": "Turnip",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 75,
+      "name": "Odd Mushroom",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 76,
+      "name": "Champion's Belt",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 77,
+      "name": "Hand Drill",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 78,
+      "name": "Mummified Hand",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 79,
+      "name": "Warped Tongs",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 80,
+      "name": "Sozu",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 81,
+      "name": "Ectoplasm",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 82,
+      "name": "Gremlin Visage",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 83,
+      "name": "Face of Cleric",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 84,
+      "name": "Bloody Idol",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 85,
+      "name": "Neow's Lament",
+      "counter": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "remaining_combats",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 86,
+      "name": "Girya",
+      "counter": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "lifts",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 87,
+      "name": "Ancient Tea Set",
+      "counter": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "ready_after_rest",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 88,
+      "name": "Centennial Puzzle",
+      "counter": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "used_this_combat",
+        "scope": "combat",
+        "entry_timing": "before_combat_initialization",
+        "reset_on_battle_start": 0
+      },
+      "training_admitted": false
+    },
+    {
+      "id": 89,
+      "name": "Du-Vu Doll",
+      "counter": null,
+      "training_admitted": false
+    },
+    {
+      "id": 90,
+      "name": "Astrolabe",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 91,
+      "name": "Black Star",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 92,
+      "name": "Calling Bell",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 93,
+      "name": "Cauldron",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 94,
+      "name": "Ceramic Fish",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 95,
+      "name": "The Courier",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 96,
+      "name": "Cultist Headpiece",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 97,
+      "name": "Darkstone Periapt",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 98,
+      "name": "Dollys Mirror",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 99,
+      "name": "Dream Catcher",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 100,
+      "name": "Empty Cage",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 101,
+      "name": "Eternal Feather",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 102,
+      "name": "Frozen Egg",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 103,
+      "name": "Golden Idol",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 104,
+      "name": "Juzu Bracelet",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 105,
+      "name": "Mango",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 106,
+      "name": "Matryoshka",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 107,
+      "name": "Maw Bank",
+      "counter": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "active",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 108,
+      "name": "Meal Ticket",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 109,
+      "name": "Membership Card",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 110,
+      "name": "Molten Egg",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 111,
+      "name": "Nloths Gift",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 112,
+      "name": "Nloths Hungry Face",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 113,
+      "name": "Old Coin",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 114,
+      "name": "Omamori",
+      "counter": {
+        "min": 0,
+        "max": 2,
+        "scale": 2,
+        "event": "remaining_charges",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 115,
+      "name": "Orrery",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 116,
+      "name": "Pandoras Box",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 117,
+      "name": "Peace Pipe",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 118,
+      "name": "Pear",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 119,
+      "name": "Prayer Wheel",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 120,
+      "name": "Question Card",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 121,
+      "name": "Regal Pillow",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 122,
+      "name": "Shovel",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 123,
+      "name": "Singing Bowl",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 124,
+      "name": "Smiling Mask",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 125,
+      "name": "Spirit Poop",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 126,
+      "name": "Ssserpent Head",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 127,
+      "name": "Strawberry",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 128,
+      "name": "Tiny Chest",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 129,
+      "name": "Tiny House",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 130,
+      "name": "Toxic Egg",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 131,
+      "name": "Lees Waffle",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 132,
+      "name": "War Paint",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 133,
+      "name": "Whetstone",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 134,
+      "name": "White Beast Statue",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
+    },
+    {
+      "id": 135,
+      "name": "Wing Boots",
+      "counter": null,
+      "training_admitted": false,
+      "import_scope": "battle_ownership_and_hooks"
     }
   ]
 }

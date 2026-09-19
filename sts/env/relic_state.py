@@ -89,13 +89,15 @@ def validate_initial_relics(rows):
     for row in rows:
         if isinstance(row, str):
             if row in BOTTLES: raise ValueError('Bottled relic requires an exact master-deck card_index')
-            raw.append(dict(name=row, counter=None, **({'played_types': dict.fromkeys(PLAYED_TYPES, False)} if row == 'Orange Pellets' else {})))
+            raw.append(dict(name=row, counter=(BY_NAME.get(row, {}).get("counter") or {}).get("reset_on_battle_start"), **({'played_types': dict.fromkeys(PLAYED_TYPES, False)} if row == 'Orange Pellets' else {})))
         elif isinstance(row, dict) and row.get('name') in BOTTLES and set(row) == {'name', 'card_index'}:
             if _integer(row['card_index'], 'card_index') < 0: raise ValueError('Negative bottled card index')
             raw.append(dict(name=row['name'],counter=None))
         elif isinstance(row, dict) and set(row) == {'name', 'counter'}:
             if row['name'] not in BY_NAME or BY_NAME[row['name']]['counter'] is None:
                 raise ValueError('Stateless relics use name strings')
+            if 'reset_on_battle_start' in BY_NAME[row['name']]['counter']:
+                raise ValueError('Combat-reset state uses a name string')
             raw.append(row)
         else:
             raise ValueError('Invalid initial relic record')

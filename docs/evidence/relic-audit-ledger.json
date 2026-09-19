@@ -8,21 +8,21 @@
     {
       "upstream_enum": "AKABEKO",
       "upstream_name": "Akabeko",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            122
+            123
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            798
+            804
           ]
         },
         {
@@ -43,20 +43,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ART_OF_WAR",
       "upstream_name": "Art Of War",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            494
+            500
           ]
         },
         {
@@ -77,20 +77,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "BIRD_FACED_URN",
       "upstream_name": "Bird Faced Urn",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1885
+            1894
           ]
         },
         {
@@ -111,13 +111,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "BLOODY_IDOL",
       "upstream_name": "Bloody Idol",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -142,7 +142,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "BLUE_CANDLE",
@@ -155,7 +155,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1947
+            1956
           ]
         },
         {
@@ -187,21 +187,21 @@
     {
       "upstream_enum": "BRIMSTONE",
       "upstream_name": "Brimstone",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            126
+            127
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            500
+            506
           ]
         },
         {
@@ -218,20 +218,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CALIPERS",
       "upstream_name": "Calipers",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2214
+            2223
           ]
         },
         {
@@ -252,20 +252,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CAPTAINS_WHEEL",
       "upstream_name": "Captains Wheel",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            509
+            515
           ]
         },
         {
@@ -286,21 +286,29 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CENTENNIAL_PUZZLE",
       "upstream_name": "Centennial Puzzle",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "used_this_combat",
+        "scope": "combat",
+        "entry_timing": "before_combat_initialization",
+        "reset_on_battle_start": 0
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            296,
-            297
+            302,
+            303
           ]
         },
         {
@@ -321,13 +329,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CERAMIC_FISH",
       "upstream_name": "Ceramic Fish",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -361,13 +369,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CHAMPION_BELT",
       "upstream_name": "Champion Belt",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -391,20 +399,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CHARONS_ASHES",
       "upstream_name": "Charons Ashes",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2850
+            2862
           ]
         },
         {
@@ -421,13 +429,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CHEMICAL_X",
       "upstream_name": "Chemical X",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -456,7 +464,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CLOAK_CLASP",
@@ -469,7 +477,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2067
+            2076
           ]
         },
         {
@@ -491,8 +499,8 @@
     {
       "upstream_enum": "DARKSTONE_PERIAPT",
       "upstream_name": "Darkstone Periapt",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -526,7 +534,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "DEAD_BRANCH",
@@ -539,7 +547,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2854
+            2866
           ]
         },
         {
@@ -573,7 +581,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1736
+            1745
           ]
         },
         {
@@ -595,15 +603,15 @@
     {
       "upstream_enum": "ECTOPLASM",
       "upstream_name": "Ectoplasm",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            136
+            137
           ]
         },
         {
@@ -648,7 +656,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "EMOTION_CHIP",
@@ -661,8 +669,8 @@
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            301,
-            520
+            307,
+            526
           ]
         },
         {
@@ -692,7 +700,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2071
+            2080
           ]
         },
         {
@@ -756,8 +764,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            117,
-            453
+            118,
+            455
           ]
         },
         {
@@ -783,15 +791,15 @@
     {
       "upstream_enum": "GINGER",
       "upstream_name": "Ginger",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "include/combat/Player.h",
           "lines": [
-            370
+            371
           ]
         },
         {
@@ -812,7 +820,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "GOLDEN_EYE",
@@ -841,8 +849,8 @@
     {
       "upstream_enum": "GREMLIN_HORN",
       "upstream_name": "Gremlin Horn",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -870,13 +878,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "HAND_DRILL",
       "upstream_name": "Hand Drill",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -905,7 +913,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "HAPPY_FLOWER",
@@ -925,14 +933,14 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            148,
-            540
+            149,
+            542
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            524
+            530
           ]
         },
         {
@@ -958,15 +966,15 @@
     {
       "upstream_enum": "HORN_CLEAT",
       "upstream_name": "Horn Cleat",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            531
+            537
           ]
         },
         {
@@ -987,7 +995,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "HOVERING_KITE",
@@ -1016,15 +1024,15 @@
     {
       "upstream_enum": "ICE_CREAM",
       "upstream_name": "Ice Cream",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            719
+            725
           ]
         },
         {
@@ -1045,7 +1053,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "INCENSE_BURNER",
@@ -1065,14 +1073,14 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            156,
-            544
+            157,
+            546
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            537
+            543
           ]
         },
         {
@@ -1113,18 +1121,18 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            164,
-            548,
-            1694,
-            1811,
-            1889,
-            1958
+            165,
+            550,
+            1703,
+            1820,
+            1898,
+            1967
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            756
+            762
           ]
         },
         {
@@ -1158,15 +1166,15 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            168,
-            552
+            169,
+            554
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            544,
-            760
+            550,
+            766
           ]
         },
         {
@@ -1188,15 +1196,15 @@
     {
       "upstream_enum": "KUNAI",
       "upstream_name": "Kunai",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1702
+            1711
           ]
         },
         {
@@ -1217,26 +1225,26 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "LETTER_OPENER",
       "upstream_name": "Letter Opener",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1827
+            1836
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            768
+            774
           ]
         },
         {
@@ -1257,7 +1265,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "LIZARD_TAIL",
@@ -1270,17 +1278,17 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            177,
             178,
-            579,
-            580
+            179,
+            581,
+            582
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            341,
-            342
+            347,
+            348
           ]
         },
         {
@@ -1319,8 +1327,8 @@
     {
       "upstream_enum": "MAGIC_FLOWER",
       "upstream_name": "Magic Flower",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -1344,7 +1352,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MARK_OF_THE_BLOOM",
@@ -1358,7 +1366,7 @@
           "path": "src/combat/Player.cpp",
           "lines": [
             159,
-            328
+            334
           ]
         },
         {
@@ -1391,7 +1399,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1953
+            1962
           ]
         },
         {
@@ -1431,7 +1439,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2831
+            2843
           ]
         },
         {
@@ -1453,21 +1461,21 @@
     {
       "upstream_enum": "MERCURY_HOURGLASS",
       "upstream_name": "Mercury Hourglass",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            443
+            445
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            553
+            559
           ]
         },
         {
@@ -1488,21 +1496,21 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MUMMIFIED_HAND",
       "upstream_name": "Mummified Hand",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1833,
-            1905
+            1842,
+            1914
           ]
         },
         {
@@ -1523,7 +1531,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "NECRONOMICON",
@@ -1536,13 +1544,13 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1722
+            1731
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            557
+            563
           ]
         },
         {
@@ -1572,7 +1580,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2077
+            2086
           ]
         },
         {
@@ -1609,15 +1617,15 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            181,
-            562,
-            1740
+            182,
+            564,
+            1749
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            764
+            770
           ]
         },
         {
@@ -1643,8 +1651,8 @@
     {
       "upstream_enum": "ODD_MUSHROOM",
       "upstream_name": "Odd Mushroom",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -1668,23 +1676,30 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "OMAMORI",
       "upstream_name": "Omamori",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 2,
+        "scale": 2,
+        "event": "remaining_charges",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            185,
             186,
-            474,
-            475
+            187,
+            476,
+            477
           ]
         },
         {
@@ -1725,7 +1740,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ORANGE_PELLETS",
@@ -1745,15 +1760,15 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1706,
-            1819,
-            1897
+            1715,
+            1828,
+            1906
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            561
+            567
           ]
         },
         {
@@ -1787,7 +1802,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2081
+            2090
           ]
         },
         {
@@ -1813,15 +1828,15 @@
     {
       "upstream_enum": "ORNAMENTAL_FAN",
       "upstream_name": "Ornamental Fan",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1714
+            1723
           ]
         },
         {
@@ -1842,7 +1857,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PAPER_KRANE",
@@ -1877,15 +1892,15 @@
     {
       "upstream_enum": "PAPER_PHROG",
       "upstream_name": "Paper Phrog",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2753
+            2765
           ]
         },
         {
@@ -1902,7 +1917,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PEN_NIB",
@@ -1922,9 +1937,9 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            189,
-            566,
-            1728
+            190,
+            568,
+            1737
           ]
         },
         {
@@ -1950,8 +1965,8 @@
     {
       "upstream_enum": "PHILOSOPHERS_STONE",
       "upstream_name": "Philosophers Stone",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -1965,7 +1980,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            198
+            199
           ]
         },
         {
@@ -2008,20 +2023,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "POCKETWATCH",
       "upstream_name": "Pocketwatch",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            665
+            671
           ]
         },
         {
@@ -2042,27 +2057,27 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "RED_SKULL",
       "upstream_name": "Red Skull",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            447
+            449
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
             171,
-            313
+            319
           ]
         },
         {
@@ -2079,20 +2094,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "RUNIC_CUBE",
       "upstream_name": "Runic Cube",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            309
+            315
           ]
         },
         {
@@ -2121,7 +2136,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "RUNIC_DOME",
@@ -2134,8 +2149,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            206,
-            795
+            207,
+            804
           ]
         },
         {
@@ -2182,7 +2197,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2519
+            2531
           ]
         },
         {
@@ -2228,13 +2243,13 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2271
+            2280
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            334
+            340
           ]
         },
         {
@@ -2274,15 +2289,15 @@
     {
       "upstream_enum": "SELF_FORMING_CLAY",
       "upstream_name": "Self Forming Clay",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            305
+            311
           ]
         },
         {
@@ -2299,20 +2314,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SHURIKEN",
       "upstream_name": "Shuriken",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            1718
+            1727
           ]
         },
         {
@@ -2333,7 +2348,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SNECKO_EYE",
@@ -2346,8 +2361,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            63,
-            210
+            64,
+            211
           ]
         },
         {
@@ -2409,16 +2424,16 @@
     {
       "upstream_enum": "SOZU",
       "upstream_name": "Sozu",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            214,
-            2249
+            215,
+            2258
           ]
         },
         {
@@ -2463,20 +2478,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "STONE_CALENDAR",
       "upstream_name": "Stone Calendar",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2087
+            2096
           ]
         },
         {
@@ -2497,7 +2512,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "STRANGE_SPOON",
@@ -2510,7 +2525,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2017
+            2026
           ]
         },
         {
@@ -2536,15 +2551,15 @@
     {
       "upstream_enum": "STRIKE_DUMMY",
       "upstream_name": "Strike Dummy",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2708
+            2720
           ]
         },
         {
@@ -2565,7 +2580,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SUNDIAL",
@@ -2585,9 +2600,9 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            218,
-            575,
-            2835
+            219,
+            577,
+            2847
           ]
         },
         {
@@ -2613,15 +2628,15 @@
     {
       "upstream_enum": "THE_ABACUS",
       "upstream_name": "The Abacus",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2827
+            2839
           ]
         },
         {
@@ -2642,13 +2657,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "THE_BOOT",
       "upstream_name": "The Boot",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -2676,7 +2691,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "THE_SPECIMEN",
@@ -2743,8 +2758,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            98,
-            386
+            99,
+            387
           ]
         },
         {
@@ -2770,8 +2785,8 @@
     {
       "upstream_enum": "TORII",
       "upstream_name": "Torii",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -2805,7 +2820,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TOUGH_BANDAGES",
@@ -2834,11 +2849,17 @@
     {
       "upstream_enum": "TOY_ORNITHOPTER",
       "upstream_name": "Toy Ornithopter",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            2283
+          ]
+        },
         {
           "path": "include/constants/RelicPools.h",
           "lines": [
@@ -2857,13 +2878,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TUNGSTEN_ROD",
       "upstream_name": "Tungsten Rod",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -2872,7 +2893,7 @@
           "lines": [
             203,
             241,
-            268
+            274
           ]
         },
         {
@@ -2899,20 +2920,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TURNIP",
       "upstream_name": "Turnip",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "include/combat/Player.h",
           "lines": [
-            374
+            375
           ]
         },
         {
@@ -2933,7 +2954,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TWISTED_FUNNEL",
@@ -2946,8 +2967,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            108,
-            434
+            109,
+            436
           ]
         },
         {
@@ -2977,7 +2998,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            830
+            839
           ]
         },
         {
@@ -3011,9 +3032,9 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            222,
-            726,
-            873
+            223,
+            735,
+            882
           ]
         },
         {
@@ -3075,22 +3096,22 @@
     {
       "upstream_enum": "WARPED_TONGS",
       "upstream_name": "Warped Tongs",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            118,
-            457
+            119,
+            459
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            671
+            677
           ]
         },
         {
@@ -3107,7 +3128,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "WRIST_BLADE",
@@ -3120,13 +3141,13 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            2712
+            2724
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            799
+            805
           ]
         },
         {
@@ -3156,7 +3177,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            591
+            593
           ]
         },
         {
@@ -3205,7 +3226,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            585
+            587
           ]
         },
         {
@@ -3246,8 +3267,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            535,
-            597
+            537,
+            606
           ]
         },
         {
@@ -3279,11 +3300,17 @@
     {
       "upstream_enum": "FACE_OF_CLERIC",
       "upstream_name": "Face Of Cleric",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
+        {
+          "path": "src/combat/BattleContext.cpp",
+          "lines": [
+            599
+          ]
+        },
         {
           "path": "src/game/Game.cpp",
           "lines": [
@@ -3305,7 +3332,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ANCHOR",
@@ -3318,7 +3345,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            226
+            227
           ]
         },
         {
@@ -3344,15 +3371,22 @@
     {
       "upstream_enum": "ANCIENT_TEA_SET",
       "upstream_name": "Ancient Tea Set",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "ready_after_rest",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            230
+            231
           ]
         },
         {
@@ -3379,7 +3413,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "BAG_OF_MARBLES",
@@ -3392,8 +3426,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            102,
-            399
+            103,
+            400
           ]
         },
         {
@@ -3427,8 +3461,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            103,
-            403
+            104,
+            404
           ]
         },
         {
@@ -3462,7 +3496,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            236
+            237
           ]
         },
         {
@@ -3622,7 +3656,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            240
+            241
           ]
         },
         {
@@ -3648,15 +3682,15 @@
     {
       "upstream_enum": "BUSTED_CROWN",
       "upstream_name": "Busted Crown",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            244
+            245
           ]
         },
         {
@@ -3696,7 +3730,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CLOCKWORK_SOUVENIR",
@@ -3709,8 +3743,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            104,
-            407
+            105,
+            408
           ]
         },
         {
@@ -3736,15 +3770,15 @@
     {
       "upstream_enum": "COFFEE_DRIPPER",
       "upstream_name": "Coffee Dripper",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            248
+            249
           ]
         },
         {
@@ -3797,7 +3831,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CRACKED_CORE",
@@ -3810,7 +3844,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            252
+            253
           ]
         },
         {
@@ -3839,15 +3873,15 @@
     {
       "upstream_enum": "CURSED_KEY",
       "upstream_name": "Cursed Key",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            256
+            257
           ]
         },
         {
@@ -3892,7 +3926,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "DAMARU",
@@ -3905,13 +3939,13 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            260
+            261
           ]
         },
         {
           "path": "src/combat/Player.cpp",
           "lines": [
-            515
+            521
           ]
         },
         {
@@ -3941,7 +3975,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            264
+            265
           ]
         },
         {
@@ -3963,15 +3997,15 @@
     {
       "upstream_enum": "DU_VU_DOLL",
       "upstream_name": "Du Vu Doll",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            268
+            269
           ]
         },
         {
@@ -3992,7 +4026,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ENCHIRIDION",
@@ -4005,7 +4039,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            140
+            141
           ]
         },
         {
@@ -4027,15 +4061,15 @@
     {
       "upstream_enum": "FOSSILIZED_HELIX",
       "upstream_name": "Fossilized Helix",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            272
+            273
           ]
         },
         {
@@ -4056,20 +4090,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "FUSION_HAMMER",
       "upstream_name": "Fusion Hammer",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            276
+            277
           ]
         },
         {
@@ -4122,20 +4156,27 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "GIRYA",
       "upstream_name": "Girya",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "lifts",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            280
+            281
           ]
         },
         {
@@ -4184,7 +4225,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "GOLD_PLATED_CABLES",
@@ -4213,16 +4254,16 @@
     {
       "upstream_enum": "GREMLIN_VISAGE",
       "upstream_name": "Gremlin Visage",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            105,
-            418
+            106,
+            419
           ]
         },
         {
@@ -4240,7 +4281,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "HOLY_WATER",
@@ -4253,8 +4294,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            95,
-            374
+            96,
+            375
           ]
         },
         {
@@ -4290,7 +4331,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            284
+            285
           ]
         },
         {
@@ -4316,16 +4357,16 @@
     {
       "upstream_enum": "MARK_OF_PAIN",
       "upstream_name": "Mark Of Pain",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            112,
-            422
+            113,
+            424
           ]
         },
         {
@@ -4354,7 +4395,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MUTAGENIC_STRENGTH",
@@ -4367,8 +4408,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            288,
-            412
+            289,
+            413
           ]
         },
         {
@@ -4390,16 +4431,23 @@
     {
       "upstream_enum": "NEOWS_LAMENT",
       "upstream_name": "Neows Lament",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "remaining_combats",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            297,
-            556
+            298,
+            558
           ]
         },
         {
@@ -4423,7 +4471,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "NINJA_SCROLL",
@@ -4436,8 +4484,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            96,
-            378
+            97,
+            379
           ]
         },
         {
@@ -4467,7 +4515,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            306
+            307
           ]
         },
         {
@@ -4497,7 +4545,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            310
+            311
           ]
         },
         {
@@ -4523,15 +4571,15 @@
     {
       "upstream_enum": "PANTOGRAPH",
       "upstream_name": "Pantograph",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            314
+            315
           ]
         },
         {
@@ -4552,7 +4600,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PRESERVED_INSECT",
@@ -4565,7 +4613,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            320
+            321
           ]
         },
         {
@@ -4605,8 +4653,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            97,
-            382
+            98,
+            383
           ]
         },
         {
@@ -4643,8 +4691,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            106,
-            426
+            107,
+            428
           ]
         },
         {
@@ -4687,8 +4735,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            66,
-            329
+            67,
+            330
           ]
         },
         {
@@ -4724,8 +4772,8 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            107,
-            430
+            108,
+            432
           ]
         },
         {
@@ -4762,7 +4810,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            334
+            335
           ]
         },
         {
@@ -4792,7 +4840,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            338
+            339
           ]
         },
         {
@@ -4824,15 +4872,15 @@
     {
       "upstream_enum": "SLING_OF_COURAGE",
       "upstream_name": "Sling Of Courage",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            344
+            345
           ]
         },
         {
@@ -4853,7 +4901,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SYMBIOTIC_VIRUS",
@@ -4866,7 +4914,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            350
+            351
           ]
         },
         {
@@ -4896,7 +4944,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            354
+            355
           ]
         },
         {
@@ -4918,15 +4966,15 @@
     {
       "upstream_enum": "THREAD_AND_NEEDLE",
       "upstream_name": "Thread And Needle",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            358
+            359
           ]
         },
         {
@@ -4947,7 +4995,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "VAJRA",
@@ -4960,7 +5008,7 @@
         {
           "path": "src/combat/BattleContext.cpp",
           "lines": [
-            362
+            363
           ]
         },
         {
@@ -4986,8 +5034,8 @@
     {
       "upstream_enum": "ASTROLABE",
       "upstream_name": "Astrolabe",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5027,13 +5075,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "BLACK_STAR",
       "upstream_name": "Black Star",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5073,13 +5121,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CALLING_BELL",
       "upstream_name": "Calling Bell",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5119,13 +5167,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CAULDRON",
       "upstream_name": "Cauldron",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5153,13 +5201,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CULTIST_HEADPIECE",
       "upstream_name": "Cultist Headpiece",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5178,13 +5226,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "DOLLYS_MIRROR",
       "upstream_name": "Dollys Mirror",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5206,13 +5254,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "DREAM_CATCHER",
       "upstream_name": "Dream Catcher",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5241,13 +5289,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "EMPTY_CAGE",
       "upstream_name": "Empty Cage",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5281,13 +5329,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ETERNAL_FEATHER",
       "upstream_name": "Eternal Feather",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5321,13 +5369,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "FROZEN_EGG",
       "upstream_name": "Frozen Egg",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5362,13 +5410,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "GOLDEN_IDOL",
       "upstream_name": "Golden Idol",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5414,13 +5462,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "JUZU_BRACELET",
       "upstream_name": "Juzu Bracelet",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5449,13 +5497,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "LEES_WAFFLE",
       "upstream_name": "Lees Waffle",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5483,13 +5531,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MANGO",
       "upstream_name": "Mango",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5517,13 +5565,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MATRYOSHKA",
       "upstream_name": "Matryoshka",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5553,13 +5601,20 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MAW_BANK",
       "upstream_name": "Maw Bank",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "active",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5591,13 +5646,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MEAL_TICKET",
       "upstream_name": "Meal Ticket",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5626,13 +5681,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MEMBERSHIP_CARD",
       "upstream_name": "Membership Card",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5664,13 +5719,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "MOLTEN_EGG",
       "upstream_name": "Molten Egg",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5705,13 +5760,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "NLOTHS_GIFT",
       "upstream_name": "Nloths Gift",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5731,13 +5786,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "NLOTHS_HUNGRY_FACE",
       "upstream_name": "Nloths Hungry Face",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5763,13 +5818,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "OLD_COIN",
       "upstream_name": "Old Coin",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5797,13 +5852,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "ORRERY",
       "upstream_name": "Orrery",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5831,13 +5886,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PANDORAS_BOX",
       "upstream_name": "Pandoras Box",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5877,13 +5932,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PEACE_PIPE",
       "upstream_name": "Peace Pipe",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5932,13 +5987,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PEAR",
       "upstream_name": "Pear",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -5966,7 +6021,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "POTION_BELT",
@@ -6007,8 +6062,8 @@
     {
       "upstream_enum": "PRAYER_WHEEL",
       "upstream_name": "Prayer Wheel",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6037,7 +6092,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "PRISMATIC_SHARD",
@@ -6077,8 +6132,8 @@
     {
       "upstream_enum": "QUESTION_CARD",
       "upstream_name": "Question Card",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6108,13 +6163,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "REGAL_PILLOW",
       "upstream_name": "Regal Pillow",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6143,13 +6198,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SSSERPENT_HEAD",
       "upstream_name": "Ssserpent Head",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6174,13 +6229,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SHOVEL",
       "upstream_name": "Shovel",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6229,13 +6284,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SINGING_BOWL",
       "upstream_name": "Singing Bowl",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6275,13 +6330,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SMILING_MASK",
       "upstream_name": "Smiling Mask",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6315,13 +6370,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "SPIRIT_POOP",
       "upstream_name": "Spirit Poop",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6339,13 +6394,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "STRAWBERRY",
       "upstream_name": "Strawberry",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6373,13 +6428,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "THE_COURIER",
       "upstream_name": "The Courier",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6421,13 +6476,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TINY_CHEST",
       "upstream_name": "Tiny Chest",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6457,13 +6512,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TINY_HOUSE",
       "upstream_name": "Tiny House",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6503,13 +6558,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "TOXIC_EGG",
       "upstream_name": "Toxic Egg",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6544,13 +6599,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "WAR_PAINT",
       "upstream_name": "War Paint",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6578,13 +6633,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "WHETSTONE",
       "upstream_name": "Whetstone",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6613,13 +6668,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "WHITE_BEAST_STATUE",
       "upstream_name": "White Beast Statue",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6653,13 +6708,13 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "WING_BOOTS",
       "upstream_name": "Wing Boots",
-      "implementation_status": "not_imported",
-      "public_state": "pending",
+      "implementation_status": "diagnostic_tested",
+      "public_state": null,
       "training_admitted": false,
       "owner_review": null,
       "source_occurrences": [
@@ -6687,7 +6742,7 @@
         }
       ],
       "original_game_behavior_verification": "pending",
-      "behavior_test": null
+      "behavior_test": "tests/test_relic_remaining.py"
     },
     {
       "upstream_enum": "CIRCLET",

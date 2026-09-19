@@ -821,3 +821,10 @@ I11 records the owner's revised special-relic scope: exclude Lizard Tail, Necron
 ### 2026-09-19 amendment — I12 approved special relic implementation
 
 I12 executes I11 with per-relic progress reporting. Development relic-state-v3 uses 33 one-hot identities plus three Orange Pellets bits and three counter fields. A-path card encoding replaces known_top with draw_position_known and draw_position/512; legacy encoding remains available. Bottle bindings target exact master-deck instances through entity relations. Runic Dome hides current planned moves and records executed enemy actions. Retain the existing 64-wide four-SAB/single-PMA architecture, joint PPO, reward v2, frozen pool and training boundaries. See docs/relic-third-batch-report.md for scoped implementation evidence.
+
+
+### I13: Remaining relic imports (2026-09-19)
+
+The owner authorizes the combat-only scope in docs/relic-remaining-scope-2026-09-19.md. New eligible identities remain one-hot and diagnostic-only. Required public state must be verified; acquisition effects are already reflected in explicitly supplied initial state. Existing exclusions, model backbone, reward v2 and formal training pool remain unchanged.
+
+The I13 implementation uses `relic-state-v4`: 135 one-hot identities + 3 Orange Pellets progress bits + 3 counter fields = 141 raw RELIC features. CARD remains 117. A-path fingerprint is `a-path-four-sab-pma-pointer-relic-v4`. Ancient Tea Set uses explicit ready state 0/1, Girya lifts 0..3, Neow remaining combats 0..3, Omamori charges 0..2, and Maw Bank active state 0/1. Centennial Puzzle resets its used flag to 0 at combat initialization and reports backend consumption. Existing per-turn player counts and powers represent all other verified combat progress. Old checkpoints must not bypass fingerprint checks.

@@ -45,3 +45,5 @@ Other specialist audits, JSON evidence files and older stage reports remain at s
 - [Full Act 1/2 relic audit](act12-relic-audit.md), [special review queue](relic-special-review.md), and [second batch integration](relic-second-batch-report.md): I10 scope, original-reference findings, 22 diagnostic imports and remaining work.
 
 - [Third relic batch](relic-third-batch-report.md): I11/I12 approved special imports, v3 fields, exact bottle relations, scoped tests and remaining limits.
+
+- [Remaining Act 1/2 relic imports](relic-remaining-report.md): I13 scope, state contract, repairs and per-entry evidence.

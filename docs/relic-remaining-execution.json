@@ -1,0 +1,915 @@
+{
+  "schema": "relic-import-execution-v1",
+  "owner_decision": "I13",
+  "run_ownership": {
+    "Astrolabe": "ASTROLABE",
+    "Black Star": "BLACK_STAR",
+    "Calling Bell": "CALLING_BELL",
+    "Cauldron": "CAULDRON",
+    "Ceramic Fish": "CERAMIC_FISH",
+    "The Courier": "THE_COURIER",
+    "Cultist Headpiece": "CULTIST_HEADPIECE",
+    "Darkstone Periapt": "DARKSTONE_PERIAPT",
+    "Dollys Mirror": "DOLLYS_MIRROR",
+    "Dream Catcher": "DREAM_CATCHER",
+    "Empty Cage": "EMPTY_CAGE",
+    "Eternal Feather": "ETERNAL_FEATHER",
+    "Frozen Egg": "FROZEN_EGG",
+    "Golden Idol": "GOLDEN_IDOL",
+    "Juzu Bracelet": "JUZU_BRACELET",
+    "Mango": "MANGO",
+    "Matryoshka": "MATRYOSHKA",
+    "Maw Bank": "MAW_BANK",
+    "Meal Ticket": "MEAL_TICKET",
+    "Membership Card": "MEMBERSHIP_CARD",
+    "Molten Egg": "MOLTEN_EGG",
+    "Nloths Gift": "NLOTHS_GIFT",
+    "Nloths Hungry Face": "NLOTHS_HUNGRY_FACE",
+    "Old Coin": "OLD_COIN",
+    "Omamori": "OMAMORI",
+    "Orrery": "ORRERY",
+    "Pandoras Box": "PANDORAS_BOX",
+    "Peace Pipe": "PEACE_PIPE",
+    "Pear": "PEAR",
+    "Prayer Wheel": "PRAYER_WHEEL",
+    "Question Card": "QUESTION_CARD",
+    "Regal Pillow": "REGAL_PILLOW",
+    "Shovel": "SHOVEL",
+    "Singing Bowl": "SINGING_BOWL",
+    "Smiling Mask": "SMILING_MASK",
+    "Spirit Poop": "SPIRIT_POOP",
+    "Ssserpent Head": "SSSERPENT_HEAD",
+    "Strawberry": "STRAWBERRY",
+    "Tiny Chest": "TINY_CHEST",
+    "Tiny House": "TINY_HOUSE",
+    "Toxic Egg": "TOXIC_EGG",
+    "Lees Waffle": "LEES_WAFFLE",
+    "War Paint": "WAR_PAINT",
+    "Whetstone": "WHETSTONE",
+    "White Beast Statue": "WHITE_BEAST_STATUE",
+    "Wing Boots": "WING_BOOTS"
+  },
+  "validation": "complete_within_I13_scope",
+  "entries": [
+    {
+      "name": "The Abacus",
+      "backend_identity": "THE_ABACUS",
+      "original_class": "Abacus",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Akabeko",
+      "backend_identity": "AKABEKO",
+      "original_class": "Akabeko",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Strike Dummy",
+      "backend_identity": "STRIKE_DUMMY",
+      "original_class": "StrikeDummy",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Brimstone",
+      "backend_identity": "BRIMSTONE",
+      "original_class": "Brimstone",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Captain's Wheel",
+      "backend_identity": "CAPTAINS_WHEEL",
+      "original_class": "CaptainsWheel",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Horn Cleat",
+      "backend_identity": "HORN_CLEAT",
+      "original_class": "HornCleat",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Mercury Hourglass",
+      "backend_identity": "MERCURY_HOURGLASS",
+      "original_class": "MercuryHourglass",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Sling of Courage",
+      "backend_identity": "SLING_OF_COURAGE",
+      "original_class": "Sling",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Thread and Needle",
+      "backend_identity": "THREAD_AND_NEEDLE",
+      "original_class": "ThreadAndNeedle",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Pantograph",
+      "backend_identity": "PANTOGRAPH",
+      "original_class": "Pantograph",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Busted Crown",
+      "backend_identity": "BUSTED_CROWN",
+      "original_class": "BustedCrown",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Coffee Dripper",
+      "backend_identity": "COFFEE_DRIPPER",
+      "original_class": "CoffeeDripper",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Cursed Key",
+      "backend_identity": "CURSED_KEY",
+      "original_class": "CursedKey",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Fusion Hammer",
+      "backend_identity": "FUSION_HAMMER",
+      "original_class": "FusionHammer",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Philosopher's Stone",
+      "backend_identity": "PHILOSOPHERS_STONE",
+      "original_class": "PhilosopherStone",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Mark of Pain",
+      "backend_identity": "MARK_OF_PAIN",
+      "original_class": "MarkOfPain",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "The Boot",
+      "backend_identity": "THE_BOOT",
+      "original_class": "Boot",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Paper Phrog",
+      "backend_identity": "PAPER_PHROG",
+      "original_class": "PaperFrog",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Calipers",
+      "backend_identity": "CALIPERS",
+      "original_class": "Calipers",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ice Cream",
+      "backend_identity": "ICE_CREAM",
+      "original_class": "IceCream",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Bird-Faced Urn",
+      "backend_identity": "BIRD_FACED_URN",
+      "original_class": "BirdFacedUrn",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Charon's Ashes",
+      "backend_identity": "CHARONS_ASHES",
+      "original_class": "CharonsAshes",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Chemical X",
+      "backend_identity": "CHEMICAL_X",
+      "original_class": "ChemicalX",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Tungsten Rod",
+      "backend_identity": "TUNGSTEN_ROD",
+      "original_class": "TungstenRod",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Torii",
+      "backend_identity": "TORII",
+      "original_class": "Torii",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Fossilized Helix",
+      "backend_identity": "FOSSILIZED_HELIX",
+      "original_class": "FossilizedHelix",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Art of War",
+      "backend_identity": "ART_OF_WAR",
+      "original_class": "ArtOfWar",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Self-Forming Clay",
+      "backend_identity": "SELF_FORMING_CLAY",
+      "original_class": "SelfFormingClay",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Runic Cube",
+      "backend_identity": "RUNIC_CUBE",
+      "original_class": "RunicCube",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Red Skull",
+      "backend_identity": "RED_SKULL",
+      "original_class": "RedSkull",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Kunai",
+      "backend_identity": "KUNAI",
+      "original_class": "Kunai",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Shuriken",
+      "backend_identity": "SHURIKEN",
+      "original_class": "Shuriken",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ornamental Fan",
+      "backend_identity": "ORNAMENTAL_FAN",
+      "original_class": "OrnamentalFan",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Letter Opener",
+      "backend_identity": "LETTER_OPENER",
+      "original_class": "LetterOpener",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Pocketwatch",
+      "backend_identity": "POCKETWATCH",
+      "original_class": "Pocketwatch",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Stone Calendar",
+      "backend_identity": "STONE_CALENDAR",
+      "original_class": "StoneCalendar",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Gremlin Horn",
+      "backend_identity": "GREMLIN_HORN",
+      "original_class": "GremlinHorn",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Magic Flower",
+      "backend_identity": "MAGIC_FLOWER",
+      "original_class": "MagicFlower",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Toy Ornithopter",
+      "backend_identity": "TOY_ORNITHOPTER",
+      "original_class": "ToyOrnithopter",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ginger",
+      "backend_identity": "GINGER",
+      "original_class": "Ginger",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Turnip",
+      "backend_identity": "TURNIP",
+      "original_class": "Turnip",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Odd Mushroom",
+      "backend_identity": "ODD_MUSHROOM",
+      "original_class": "OddMushroom",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Champion's Belt",
+      "backend_identity": "CHAMPION_BELT",
+      "original_class": "ChampionsBelt",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Hand Drill",
+      "backend_identity": "HAND_DRILL",
+      "original_class": "HandDrill",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Mummified Hand",
+      "backend_identity": "MUMMIFIED_HAND",
+      "original_class": "MummifiedHand",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Warped Tongs",
+      "backend_identity": "WARPED_TONGS",
+      "original_class": "WarpedTongs",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Sozu",
+      "backend_identity": "SOZU",
+      "original_class": "Sozu",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ectoplasm",
+      "backend_identity": "ECTOPLASM",
+      "original_class": "Ectoplasm",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Gremlin Visage",
+      "backend_identity": "GREMLIN_VISAGE",
+      "original_class": "GremlinMask",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Face of Cleric",
+      "backend_identity": "FACE_OF_CLERIC",
+      "original_class": "FaceOfCleric",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Bloody Idol",
+      "backend_identity": "BLOODY_IDOL",
+      "original_class": "BloodyIdol",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Neow's Lament",
+      "backend_identity": "NEOWS_LAMENT",
+      "original_class": "NeowsLament",
+      "scope": "combat_mechanism",
+      "state": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "remaining_combats",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Girya",
+      "backend_identity": "GIRYA",
+      "original_class": "Girya",
+      "scope": "combat_mechanism",
+      "state": {
+        "min": 0,
+        "max": 3,
+        "scale": 3,
+        "event": "lifts",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Ancient Tea Set",
+      "backend_identity": "ANCIENT_TEA_SET",
+      "original_class": "AncientTeaSet",
+      "scope": "combat_mechanism",
+      "state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "ready_after_rest",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Centennial Puzzle",
+      "backend_identity": "CENTENNIAL_PUZZLE",
+      "original_class": "CentennialPuzzle",
+      "scope": "combat_mechanism",
+      "state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "used_this_combat",
+        "scope": "combat",
+        "entry_timing": "before_combat_initialization",
+        "reset_on_battle_start": 0
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Du-Vu Doll",
+      "backend_identity": "DU_VU_DOLL",
+      "original_class": "DuVuDoll",
+      "scope": "combat_mechanism",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Astrolabe",
+      "backend_identity": "ASTROLABE",
+      "original_class": "Astrolabe",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Black Star",
+      "backend_identity": "BLACK_STAR",
+      "original_class": "BlackStar",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Calling Bell",
+      "backend_identity": "CALLING_BELL",
+      "original_class": "CallingBell",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Cauldron",
+      "backend_identity": "CAULDRON",
+      "original_class": "Cauldron",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ceramic Fish",
+      "backend_identity": "CERAMIC_FISH",
+      "original_class": "CeramicFish",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "The Courier",
+      "backend_identity": "THE_COURIER",
+      "original_class": "Courier",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Cultist Headpiece",
+      "backend_identity": "CULTIST_HEADPIECE",
+      "original_class": "CultistMask",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Darkstone Periapt",
+      "backend_identity": "DARKSTONE_PERIAPT",
+      "original_class": "DarkstonePeriapt",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Dollys Mirror",
+      "backend_identity": "DOLLYS_MIRROR",
+      "original_class": "DollysMirror",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Dream Catcher",
+      "backend_identity": "DREAM_CATCHER",
+      "original_class": "DreamCatcher",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Empty Cage",
+      "backend_identity": "EMPTY_CAGE",
+      "original_class": "EmptyCage",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Eternal Feather",
+      "backend_identity": "ETERNAL_FEATHER",
+      "original_class": "EternalFeather",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Frozen Egg",
+      "backend_identity": "FROZEN_EGG",
+      "original_class": "FrozenEgg2",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Golden Idol",
+      "backend_identity": "GOLDEN_IDOL",
+      "original_class": "GoldenIdol",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Juzu Bracelet",
+      "backend_identity": "JUZU_BRACELET",
+      "original_class": "JuzuBracelet",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Mango",
+      "backend_identity": "MANGO",
+      "original_class": "Mango",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Matryoshka",
+      "backend_identity": "MATRYOSHKA",
+      "original_class": "Matryoshka",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Maw Bank",
+      "backend_identity": "MAW_BANK",
+      "original_class": "MawBank",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": {
+        "min": 0,
+        "max": 1,
+        "scale": 1,
+        "event": "active",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Meal Ticket",
+      "backend_identity": "MEAL_TICKET",
+      "original_class": "MealTicket",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Membership Card",
+      "backend_identity": "MEMBERSHIP_CARD",
+      "original_class": "MembershipCard",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Molten Egg",
+      "backend_identity": "MOLTEN_EGG",
+      "original_class": "MoltenEgg2",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Nloths Gift",
+      "backend_identity": "NLOTHS_GIFT",
+      "original_class": "NlothsGift",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Nloths Hungry Face",
+      "backend_identity": "NLOTHS_HUNGRY_FACE",
+      "original_class": "NlothsMask",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Old Coin",
+      "backend_identity": "OLD_COIN",
+      "original_class": "OldCoin",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Omamori",
+      "backend_identity": "OMAMORI",
+      "original_class": "Omamori",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": {
+        "min": 0,
+        "max": 2,
+        "scale": 2,
+        "event": "remaining_charges",
+        "scope": "across_combats",
+        "entry_timing": "before_combat_initialization"
+      },
+      "training_admitted": false
+    },
+    {
+      "name": "Orrery",
+      "backend_identity": "ORRERY",
+      "original_class": "Orrery",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Pandoras Box",
+      "backend_identity": "PANDORAS_BOX",
+      "original_class": "PandorasBox",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Peace Pipe",
+      "backend_identity": "PEACE_PIPE",
+      "original_class": "PeacePipe",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Pear",
+      "backend_identity": "PEAR",
+      "original_class": "Pear",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Prayer Wheel",
+      "backend_identity": "PRAYER_WHEEL",
+      "original_class": "PrayerWheel",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Question Card",
+      "backend_identity": "QUESTION_CARD",
+      "original_class": "QuestionCard",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Regal Pillow",
+      "backend_identity": "REGAL_PILLOW",
+      "original_class": "RegalPillow",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Shovel",
+      "backend_identity": "SHOVEL",
+      "original_class": "Shovel",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Singing Bowl",
+      "backend_identity": "SINGING_BOWL",
+      "original_class": "SingingBowl",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Smiling Mask",
+      "backend_identity": "SMILING_MASK",
+      "original_class": "SmilingMask",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Spirit Poop",
+      "backend_identity": "SPIRIT_POOP",
+      "original_class": "SpiritPoop",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Ssserpent Head",
+      "backend_identity": "SSSERPENT_HEAD",
+      "original_class": "SsserpentHead",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Strawberry",
+      "backend_identity": "STRAWBERRY",
+      "original_class": "Strawberry",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Tiny Chest",
+      "backend_identity": "TINY_CHEST",
+      "original_class": "TinyChest",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Tiny House",
+      "backend_identity": "TINY_HOUSE",
+      "original_class": "TinyHouse",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Toxic Egg",
+      "backend_identity": "TOXIC_EGG",
+      "original_class": "ToxicEgg2",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Lees Waffle",
+      "backend_identity": "LEES_WAFFLE",
+      "original_class": "Waffle",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "War Paint",
+      "backend_identity": "WAR_PAINT",
+      "original_class": "WarPaint",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Whetstone",
+      "backend_identity": "WHETSTONE",
+      "original_class": "Whetstone",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "White Beast Statue",
+      "backend_identity": "WHITE_BEAST_STATUE",
+      "original_class": "WhiteBeast",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    },
+    {
+      "name": "Wing Boots",
+      "backend_identity": "WING_BOOTS",
+      "original_class": "WingBoots",
+      "scope": "ownership_and_applicable_room_entry_hook",
+      "state": null,
+      "training_admitted": false
+    }
+  ],
+  "evidence": "docs/evidence/relic-remaining-checks.json"
+}

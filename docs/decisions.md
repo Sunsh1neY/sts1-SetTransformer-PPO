@@ -819,3 +819,8 @@ The owner authorizes sequential import of I11 relics with a progress report afte
 The resulting development registry is relic-state-v3: 33 fixed one-hot identities, three Orange Pellets progress bits, and three existing counter fields (39 raw dimensions). Card encoding replaces the known-top bit with draw-position-known and position/512 (one extra raw dimension). The fixed 64-wide A-path backbone and joint policy are unchanged. Exact bottle input is {name, card_index}, where the index refers to the supplied master-deck array and never becomes a semantic feature; a relic-to-card entity relation follows the original instance. Array order for relic initialization is acquisition order. Current public resolved powers express Mutagenic Strength/Artifact ordering without an extra model field.
 
 These are diagnostic imports with scoped runtime tests. Preserve strict checkpoint fingerprints, reward v2, existing training admission and immutable evaluation seeds. No substantial training, main merge or push is authorized. See relic-third-batch-report.md for evidence and remaining limits.
+
+
+## I13 — Remaining combat-scope relic imports (2026-09-19)
+
+Owner approved all remaining 102 eligible Act 1/2 entries within the existing Battle Agent boundary: verify 56 combat entries; represent ownership for 46 run/acquisition entries using explicitly supplied post-acquisition initial state, validating any actual combat/exit hooks. Do not replay acquisition, add RunEnv, reopen the 12 exclusions or deferred Gambling Chip, expand training admission, or train. Report each completed relic and continue automatically. Version changed model-facing contracts and preserve strict fingerprints.

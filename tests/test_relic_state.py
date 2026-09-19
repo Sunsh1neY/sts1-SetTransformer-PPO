@@ -224,7 +224,7 @@ def test_actor_critic_gradients_permutation_and_real_ppo_step():
     assert not torch.equal(before, model.projections['RELIC'].weight)
 
 
-@pytest.mark.parametrize('name', [n for n, r in BY_NAME.items() if r['counter'] is not None])
+@pytest.mark.parametrize('name', [n for n, r in BY_NAME.items() if r['counter'] is not None and 'reset_on_battle_start' not in r['counter']])
 def test_serialized_action_replay_and_exit_counter_carry(name):
     definition = BY_NAME[name]['counter']
     initial = scene([dict(name=name, counter=definition['max'])], deck=['Bludgeon'] * 10)
@@ -249,6 +249,8 @@ def test_serialized_action_replay_and_exit_counter_carry(name):
             next_scene = scene(exported)
             next_obs = restored.reset(next_scene, 100124, diagnostic=True)
             expected = (exported[0]['counter'] + 1) % (definition['max'] + 1) if name in ('Happy Flower', 'Incense Burner') else exported[0]['counter']
+            if name == "Neow's Lament":
+                expected = max(0, expected - 1)
             assert counter(next_obs, name) == expected
             break
     else:

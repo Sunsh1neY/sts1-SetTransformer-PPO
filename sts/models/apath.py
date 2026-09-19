@@ -14,7 +14,7 @@ from sts.models.entities import EntityArchitecture, EntityBlock
 from sts.env.relic_state import DIMENSION as RELIC_DIM, relic_features
 
 FEATURE_DIMS = {**FEATURE_DIMS, "RELIC": RELIC_DIM, "CARD": CARD_V3_DIM}
-VERSION = "a-path-four-sab-pma-pointer-relic-v3"
+VERSION = "a-path-four-sab-pma-pointer-relic-v4"
 TASKS = ("PLAY", "POTION", "ARMAMENTS", "DUAL_WIELD", "EXHAUST_ONE", "EXHUME", "HEADBUTT", "WARCRY", "DISCOVERY", "END_TURN")
 
 

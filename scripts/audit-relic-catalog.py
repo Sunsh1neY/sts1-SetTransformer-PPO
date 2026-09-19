@@ -19,6 +19,11 @@ def main():
     registry = json.loads((ROOT / 'sts/env/relic-state-registry.json').read_bytes())
     normalize = lambda name: re.sub('[^a-z0-9]', '', name.lower())
     registered = {normalize(r['name']): r for r in registry['relics']}
+    # Resolve adapter spelling aliases without changing stable public identities.
+    adapter = (BACKEND / 'bindings/integrated-card-env.cpp').read_text(encoding='utf-8')
+    for public_name, enum in re.findall(r'if \(counters && name == "([^"]+)"\) return R::(\w+);', adapter):
+        if normalize(public_name) in registered:
+            registered[normalize(enum)] = registered[normalize(public_name)]
     review = {'FROZEN_EYE': 'visibility', 'RUNIC_DOME': 'visibility',
               'GAMBLING_CHIP': 'selection', 'NILRYS_CODEX': 'selection_and_generation',
               'POTION_BELT': 'capacity', 'BOTTLED_FLAME': 'card_binding',
@@ -43,7 +48,7 @@ def main():
             training_admitted=bool(definition and definition['training_admitted']),
             owner_review=review.get(enum), source_occurrences=refs,
             original_game_behavior_verification='pending',
-            behavior_test=('tests/test_relic_batch_three.py' if definition['id']>22 else 'tests/test_relic_batch_two.py' if definition['id']>14 else 'tests/test_relic_state.py') if definition else None))
+            behavior_test=('tests/test_relic_remaining.py' if definition['id']>33 else 'tests/test_relic_batch_three.py' if definition['id']>22 else 'tests/test_relic_batch_two.py' if definition['id']>14 else 'tests/test_relic_state.py') if definition else None))
     result = dict(schema='relic-audit-ledger-v1', upstream_commit=json.loads(
         (ROOT / 'scripts/lightspeed-lock.json').read_bytes())['commit'],
         catalog_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),

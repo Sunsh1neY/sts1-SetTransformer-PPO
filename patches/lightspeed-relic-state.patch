@@ -1,8 +1,8 @@
 diff --git a/bindings/integrated-card-env.cpp b/bindings/integrated-card-env.cpp
-index d0e9ca4..d1c24f7 100644
+index d0e9ca4..7ace361 100644
 --- a/bindings/integrated-card-env.cpp
 +++ b/bindings/integrated-card-env.cpp
-@@ -55,7 +55,33 @@ Potion parsePotion(const std::string &name) {
+@@ -55,7 +55,135 @@ Potion parsePotion(const std::string &name) {
      throw std::invalid_argument("未识别药水: " + name);
  }
  
@@ -34,10 +34,112 @@ index d0e9ca4..d1c24f7 100644
 +    if (counters && name == "Bottled Flame") return R::BOTTLED_FLAME;
 +    if (counters && name == "Bottled Lightning") return R::BOTTLED_LIGHTNING;
 +    if (counters && name == "Bottled Tornado") return R::BOTTLED_TORNADO;
++    if (counters && name == "The Abacus") return R::THE_ABACUS;
++    if (counters && name == "Akabeko") return R::AKABEKO;
++    if (counters && name == "Strike Dummy") return R::STRIKE_DUMMY;
++    if (counters && name == "Brimstone") return R::BRIMSTONE;
++    if (counters && name == "Captain's Wheel") return R::CAPTAINS_WHEEL;
++    if (counters && name == "Horn Cleat") return R::HORN_CLEAT;
++    if (counters && name == "Mercury Hourglass") return R::MERCURY_HOURGLASS;
++    if (counters && name == "Sling of Courage") return R::SLING_OF_COURAGE;
++    if (counters && name == "Thread and Needle") return R::THREAD_AND_NEEDLE;
++    if (counters && name == "Pantograph") return R::PANTOGRAPH;
++    if (counters && name == "Busted Crown") return R::BUSTED_CROWN;
++    if (counters && name == "Coffee Dripper") return R::COFFEE_DRIPPER;
++    if (counters && name == "Cursed Key") return R::CURSED_KEY;
++    if (counters && name == "Fusion Hammer") return R::FUSION_HAMMER;
++    if (counters && name == "Philosopher's Stone") return R::PHILOSOPHERS_STONE;
++    if (counters && name == "Mark of Pain") return R::MARK_OF_PAIN;
++    if (counters && name == "The Boot") return R::THE_BOOT;
++    if (counters && name == "Paper Phrog") return R::PAPER_PHROG;
++    if (counters && name == "Calipers") return R::CALIPERS;
++    if (counters && name == "Ice Cream") return R::ICE_CREAM;
++    if (counters && name == "Bird-Faced Urn") return R::BIRD_FACED_URN;
++    if (counters && name == "Charon's Ashes") return R::CHARONS_ASHES;
++    if (counters && name == "Chemical X") return R::CHEMICAL_X;
++    if (counters && name == "Tungsten Rod") return R::TUNGSTEN_ROD;
++    if (counters && name == "Torii") return R::TORII;
++    if (counters && name == "Fossilized Helix") return R::FOSSILIZED_HELIX;
++    if (counters && name == "Art of War") return R::ART_OF_WAR;
++    if (counters && name == "Self-Forming Clay") return R::SELF_FORMING_CLAY;
++    if (counters && name == "Runic Cube") return R::RUNIC_CUBE;
++    if (counters && name == "Red Skull") return R::RED_SKULL;
++    if (counters && name == "Kunai") return R::KUNAI;
++    if (counters && name == "Shuriken") return R::SHURIKEN;
++    if (counters && name == "Ornamental Fan") return R::ORNAMENTAL_FAN;
++    if (counters && name == "Letter Opener") return R::LETTER_OPENER;
++    if (counters && name == "Pocketwatch") return R::POCKETWATCH;
++    if (counters && name == "Stone Calendar") return R::STONE_CALENDAR;
++    if (counters && name == "Gremlin Horn") return R::GREMLIN_HORN;
++    if (counters && name == "Magic Flower") return R::MAGIC_FLOWER;
++    if (counters && name == "Toy Ornithopter") return R::TOY_ORNITHOPTER;
++    if (counters && name == "Ginger") return R::GINGER;
++    if (counters && name == "Turnip") return R::TURNIP;
++    if (counters && name == "Odd Mushroom") return R::ODD_MUSHROOM;
++    if (counters && name == "Champion's Belt") return R::CHAMPION_BELT;
++    if (counters && name == "Hand Drill") return R::HAND_DRILL;
++    if (counters && name == "Mummified Hand") return R::MUMMIFIED_HAND;
++    if (counters && name == "Warped Tongs") return R::WARPED_TONGS;
++    if (counters && name == "Sozu") return R::SOZU;
++    if (counters && name == "Ectoplasm") return R::ECTOPLASM;
++    if (counters && name == "Gremlin Visage") return R::GREMLIN_VISAGE;
++    if (counters && name == "Face of Cleric") return R::FACE_OF_CLERIC;
++    if (counters && name == "Bloody Idol") return R::BLOODY_IDOL;
++    if (counters && name == "Neow's Lament") return R::NEOWS_LAMENT;
++    if (counters && name == "Girya") return R::GIRYA;
++    if (counters && name == "Ancient Tea Set") return R::ANCIENT_TEA_SET;
++    if (counters && name == "Centennial Puzzle") return R::CENTENNIAL_PUZZLE;
++    if (counters && name == "Du-Vu Doll") return R::DU_VU_DOLL;
++    if (counters && name == "Astrolabe") return R::ASTROLABE;
++    if (counters && name == "Black Star") return R::BLACK_STAR;
++    if (counters && name == "Calling Bell") return R::CALLING_BELL;
++    if (counters && name == "Cauldron") return R::CAULDRON;
++    if (counters && name == "Ceramic Fish") return R::CERAMIC_FISH;
++    if (counters && name == "The Courier") return R::THE_COURIER;
++    if (counters && name == "Cultist Headpiece") return R::CULTIST_HEADPIECE;
++    if (counters && name == "Darkstone Periapt") return R::DARKSTONE_PERIAPT;
++    if (counters && name == "Dollys Mirror") return R::DOLLYS_MIRROR;
++    if (counters && name == "Dream Catcher") return R::DREAM_CATCHER;
++    if (counters && name == "Empty Cage") return R::EMPTY_CAGE;
++    if (counters && name == "Eternal Feather") return R::ETERNAL_FEATHER;
++    if (counters && name == "Frozen Egg") return R::FROZEN_EGG;
++    if (counters && name == "Golden Idol") return R::GOLDEN_IDOL;
++    if (counters && name == "Juzu Bracelet") return R::JUZU_BRACELET;
++    if (counters && name == "Mango") return R::MANGO;
++    if (counters && name == "Matryoshka") return R::MATRYOSHKA;
++    if (counters && name == "Maw Bank") return R::MAW_BANK;
++    if (counters && name == "Meal Ticket") return R::MEAL_TICKET;
++    if (counters && name == "Membership Card") return R::MEMBERSHIP_CARD;
++    if (counters && name == "Molten Egg") return R::MOLTEN_EGG;
++    if (counters && name == "Nloths Gift") return R::NLOTHS_GIFT;
++    if (counters && name == "Nloths Hungry Face") return R::NLOTHS_HUNGRY_FACE;
++    if (counters && name == "Old Coin") return R::OLD_COIN;
++    if (counters && name == "Omamori") return R::OMAMORI;
++    if (counters && name == "Orrery") return R::ORRERY;
++    if (counters && name == "Pandoras Box") return R::PANDORAS_BOX;
++    if (counters && name == "Peace Pipe") return R::PEACE_PIPE;
++    if (counters && name == "Pear") return R::PEAR;
++    if (counters && name == "Prayer Wheel") return R::PRAYER_WHEEL;
++    if (counters && name == "Question Card") return R::QUESTION_CARD;
++    if (counters && name == "Regal Pillow") return R::REGAL_PILLOW;
++    if (counters && name == "Shovel") return R::SHOVEL;
++    if (counters && name == "Singing Bowl") return R::SINGING_BOWL;
++    if (counters && name == "Smiling Mask") return R::SMILING_MASK;
++    if (counters && name == "Spirit Poop") return R::SPIRIT_POOP;
++    if (counters && name == "Ssserpent Head") return R::SSSERPENT_HEAD;
++    if (counters && name == "Strawberry") return R::STRAWBERRY;
++    if (counters && name == "Tiny Chest") return R::TINY_CHEST;
++    if (counters && name == "Tiny House") return R::TINY_HOUSE;
++    if (counters && name == "Toxic Egg") return R::TOXIC_EGG;
++    if (counters && name == "Lees Waffle") return R::LEES_WAFFLE;
++    if (counters && name == "War Paint") return R::WAR_PAINT;
++    if (counters && name == "Whetstone") return R::WHETSTONE;
++    if (counters && name == "White Beast Statue") return R::WHITE_BEAST_STATUE;
++    if (counters && name == "Wing Boots") return R::WING_BOOTS;
      if (!listed(PUBLIC_RELIC_NAMES, name)) throw std::invalid_argument("遗物不在入口闭包内: " + name);
      if (name == "Burning Blood") return R::BURNING_BLOOD;
      if (name == "Lantern") return R::LANTERN;
-@@ -204,12 +230,13 @@ class PublicBattleEnv {
+@@ -204,12 +332,13 @@ class PublicBattleEnv {
      int initialCards_ = 0;
      bool hasReset_ = false;
      bool truncated_ = false;
@@ -52,7 +154,7 @@ index d0e9ca4..d1c24f7 100644
          const bool up = c.isUpgraded();
          int damage = 0, block = 0, magic = 0, hits = 1;
          bool all = false;
-@@ -312,7 +339,17 @@ class PublicBattleEnv {
+@@ -312,7 +441,17 @@ class PublicBattleEnv {
          if (expanded_) {
              // 只输出具名公开属性，不输出specialData或实例ID。
              const bool corruption = c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>();
@@ -71,7 +173,7 @@ index d0e9ca4..d1c24f7 100644
              if (!inHand && c.costForTurn != c.cost) row["recovery_cost"] = c.costForTurn;
              row["printed_cost"] = getEnergyCost(c.id, up);
              row["effective_cost_known"] = inHand;
-@@ -325,12 +362,16 @@ class PublicBattleEnv {
+@@ -325,12 +464,16 @@ class PublicBattleEnv {
              row["effective_exhaust"] = c.doesExhaust() ||
                  (c.getType() == CardType::SKILL && bc_.player.hasStatus<PS::CORRUPTION>());
          }
@@ -89,7 +191,7 @@ index d0e9ca4..d1c24f7 100644
          std::sort(rows.begin(), rows.end(), [](const Json &a, const Json &b) { return a.dump() < b.dump(); });
          return rows;
      }
-@@ -374,13 +415,13 @@ class PublicBattleEnv {
+@@ -374,13 +517,13 @@ class PublicBattleEnv {
          if (!hasReset_) throw std::runtime_error("必须先reset_scene");
          verifyDecision();
          Json hand = Json::array(), enemies = Json::array(), potions = Json::array(), relics = Json::array();
@@ -105,7 +207,7 @@ index d0e9ca4..d1c24f7 100644
                  (expanded_ && (id == PS::BARRICADE || id == PS::CORRUPTION || id == PS::CONFUSED))) statuses[playerStatusStrings[i]] = 1;
              else statuses[playerStatusStrings[i]] = bc_.player.getStatusRuntime(id);
          }
-@@ -409,13 +450,43 @@ class PublicBattleEnv {
+@@ -409,13 +552,45 @@ class PublicBattleEnv {
                  {"intent_history", Json::array({present ? static_cast<int>(m.moveHistory[0]) : 0, present ? static_cast<int>(m.moveHistory[1]) : 0, present ? static_cast<int>(m.moveHistory[2]) : 0})},
                  {"intent_history_valid", Json::array({present && m.moveHistory[0] != MMID::INVALID, present && m.moveHistory[1] != MMID::INVALID, present && m.moveHistory[2] != MMID::INVALID})}});
          }
@@ -138,6 +240,8 @@ index d0e9ca4..d1c24f7 100644
 +                if (r == "Incense Burner") counter = static_cast<int>(bc_.player.incenseBurnerCounter);
 +                if (r == "Ink Bottle") counter = static_cast<int>(bc_.player.inkBottleCounter);
 +                if (r == "Sundial") counter = static_cast<int>(bc_.player.sundialCounter);
++                if (r == "Girya" || r == "Ancient Tea Set" || r == "Neow's Lament" || r == "Omamori" || r == "Maw Bank") counter = gc_->relics.getRelicValue(parseRelic(r,true));
++                if (r == "Centennial Puzzle") counter = bc_.player.hasRelic<R::CENTENNIAL_PUZZLE>() ? 0 : 1;
 +            }
 +            Json relic = {{"name", r}, {"counter", counter}};
 +            if (relicState_ && r == "Orange Pellets") {
@@ -150,7 +254,7 @@ index d0e9ca4..d1c24f7 100644
          Json result = {{"schema", "public-observation-v1"}, {"hand", hand}, {"draw_pile", pileRows(bc_.cards.drawPile)},
              {"discard_pile", pileRows(bc_.cards.discardPile)}, {"exhaust_pile", pileRows(bc_.cards.exhaustPile)},
              {"player", player}, {"enemies", enemies}, {"potions", potions}, {"potion_capacity", bc_.potionCapacity},
-@@ -436,6 +507,10 @@ class PublicBattleEnv {
+@@ -436,6 +611,10 @@ class PublicBattleEnv {
                      const auto cardRef = std::string("card:") + std::to_string(card.uniqueId);
                      // 仅公开牌名；升级与实例动态属性不从后端真值泄露。
                      result["stasis"].push_back({{"name", sourceCardName(card.id)}});
@@ -161,7 +265,7 @@ index d0e9ca4..d1c24f7 100644
                      cardRefs.push_back(cardRef);
                      result["relations"].push_back({{"kind", "holds_card"}, {"enemy_ref", ref}, {"card_ref", cardRef}});
                  }
-@@ -444,7 +519,7 @@ class PublicBattleEnv {
+@@ -444,7 +623,7 @@ class PublicBattleEnv {
              result["resolving"] = Json::array();
              if (!terminal() && bc_.inputState == InputState::CARD_SELECT) {
                  // 仅当前已公开的来源卡；不导出整个动作队列或隐藏实例ID。
@@ -170,7 +274,7 @@ index d0e9ca4..d1c24f7 100644
              }
              result["player"]["combust_hp_loss"] = bc_.player.combustHpLoss;
              result["decision"] = {{"phase", "NORMAL"}, {"selection", nullptr}};
-@@ -456,7 +531,7 @@ class PublicBattleEnv {
+@@ -456,7 +635,7 @@ class PublicBattleEnv {
      }
  
  public:
@@ -179,7 +283,7 @@ index d0e9ca4..d1c24f7 100644
          if (maxActions < 1 || maxActions > PUBLIC_MAX_ACTIONS) throw std::invalid_argument("max_actions必须在1..512");
          static_assert(PUBLIC_MAX_INITIAL_CARDS + PUBLIC_MAX_ACTIONS * PUBLIC_GENERATED_PER_ACTION < 32767,
                        "生成牌ID必须保持int16范围");
-@@ -524,17 +599,42 @@ public:
+@@ -524,17 +703,48 @@ public:
                  throw std::invalid_argument("该卡升级路径不支持");
              Card entry(id, upgrade);
              if (id == CardId::SEARING_BLOW) entry.misc = upgrade;
@@ -203,6 +307,9 @@ index d0e9ca4..d1c24f7 100644
 +            if (name == "Incense Burner") period = 6;
 +            if (name == "Ink Bottle") period = 10;
 +            if (name == "Sundial") period = 3;
++            if (name == "Girya" || name == "Neow's Lament") period = 4;
++            if (name == "Ancient Tea Set" || name == "Maw Bank") period = 2;
++            if (name == "Omamori") period = 3;
 +            const int bottle = name == "Bottled Flame" ? 0 : name == "Bottled Lightning" ? 1 : name == "Bottled Tornado" ? 2 : -1;
 +            if (relicState_ && bottle >= 0) {
 +                if (!value.is_object() || value.size() != 2 || !value.contains("card_index")) throw std::invalid_argument("Bottle requires name and card_index");
@@ -218,6 +325,9 @@ index d0e9ca4..d1c24f7 100644
 +            }
              if (std::find(relicNames_.begin(), relicNames_.end(), name) != relicNames_.end()) throw std::invalid_argument("重复遗物");
 -            gc_->relics.add({parseRelic(name), 0}); relicNames_.push_back(name);
++            if (relicState_ && name == "Du-Vu Doll") {
++                for (const auto &card : gc_->deck.cards) if (card.getType() == CardType::CURSE) ++counter;
++            }
 +            gc_->relics.add({parseRelic(name, relicState_), counter}); relicNames_.push_back(name);
          }
 +        if (relicState_ && gc_->relics.has(R::BLACK_BLOOD) && gc_->relics.has(R::BURNING_BLOOD))
@@ -225,15 +335,26 @@ index d0e9ca4..d1c24f7 100644
          gc_->potionCapacity = ascension >= 11 ? 2 : 3;
          gc_->potionCount = 0;
          std::fill(gc_->potions.begin(), gc_->potions.end(), Potion::EMPTY_POTION_SLOT);
-@@ -546,6 +646,7 @@ public:
+@@ -546,9 +756,18 @@ public:
          // 这8种遗物无目的普通/精英房间独立入口效果；BattleContext执行其开战效果一次。
          bc_ = BattleContext{};
          bc_.enemyPotionExpansion = true;
 +        bc_.relicStateExpansion = relicState_;
          bc_.actionQueue.checkedCapacity = true;
          bc_.cardQueue.checkedCapacity = true;
++        if (relicState_ && gc_->relics.has(R::MAW_BANK) && gc_->relics.getRelicValue(R::MAW_BANK) == 1) gc_->obtainGold(12);
          bc_.init(*gc_, encounter);
-@@ -653,9 +754,9 @@ private:
++        if (relicState_) {
++            if (gc_->relics.has(R::ANCIENT_TEA_SET)) gc_->relics.getRelicValueRef(R::ANCIENT_TEA_SET) = 0;
++            if (gc_->relics.has(R::NEOWS_LAMENT)) {
++                auto &remaining = gc_->relics.getRelicValueRef(R::NEOWS_LAMENT);
++                if (remaining > 0) --remaining;
++            }
++        }
+         bc_.player.cc = CharacterClass::IRONCLAD;
+         publicHistory_ = {};
+         for (int i = 0; i < bc_.monsters.monsterCount; ++i)
+@@ -653,9 +872,9 @@ private:
          }
          for (int i=0;i<PUBLIC_TARGET_CAPACITY;++i) if (oldSerials[i]!=bc_.monsters.arr[i].entitySerial) publicHistory_[i]={};
          const bool won = terminal() && bc_.outcome == Outcome::PLAYER_VICTORY;
@@ -245,7 +366,7 @@ index d0e9ca4..d1c24f7 100644
          Json info = {{"action_count", actionCount_}, {"outcome", static_cast<int>(bc_.outcome)},
              {"truncation_reason", truncated_ ? "external_action_budget" : ""}, {"reward_version", "battle_reward_v1"},
              {"exit_effects_applied", won}, {"player_hp", bc_.player.curHp}, {"player_max_hp", bc_.player.maxHp}};
-@@ -663,13 +764,33 @@ private:
+@@ -663,13 +882,34 @@ private:
              const int originalGold = gc_->gold;
              std::map<std::pair<int,int>,int> deckDelta;
              for (const auto &card : gc_->deck.cards) --deckDelta[{static_cast<int>(card.id),card.getUpgraded()}];
@@ -271,7 +392,8 @@ index d0e9ca4..d1c24f7 100644
 +                for (const auto &name : relicNames_) {
 +                    const auto id = parseRelic(name, true);
 +                    const bool counted = id == R::PEN_NIB || id == R::NUNCHAKU || id == R::HAPPY_FLOWER ||
-+                        id == R::INCENSE_BURNER || id == R::INK_BOTTLE || id == R::SUNDIAL;
++                        id == R::INCENSE_BURNER || id == R::INK_BOTTLE || id == R::SUNDIAL ||
++                        id == R::GIRYA || id == R::ANCIENT_TEA_SET || id == R::NEOWS_LAMENT || id == R::OMAMORI || id == R::MAW_BANK;
 +                    info["battle_exit"]["relics"].push_back({{"name", name},
 +                        {"counter", counted ? Json(gc_->relics.getRelicValue(id)) : Json(nullptr)}});
 +                }
@@ -279,7 +401,7 @@ index d0e9ca4..d1c24f7 100644
              for (auto &card : bc_.cards.stasisCards) card = CardInstance(CardId::INVALID);
          }
          return Json{{"observation", observeJson()}, {"reward", reward}, {"terminated", terminal()},
-@@ -678,6 +799,11 @@ private:
+@@ -678,6 +918,11 @@ private:
  };
  
  // 独立注册入口；旧PublicBattleEnv仍保持原观测字段。
@@ -291,11 +413,11 @@ index d0e9ca4..d1c24f7 100644
  class IroncladBattleEnv : public PublicBattleEnv {
  public:
      explicit IroncladBattleEnv(int maxActions) : PublicBattleEnv(maxActions, true) {}
-@@ -697,5 +823,16 @@ void registerIntegratedCardEnv(pybind11::module_ &module) {
+@@ -697,5 +942,16 @@ void registerIntegratedCardEnv(pybind11::module_ &module) {
          .def("selection_indices", &IroncladBattleEnv::selectionIndices)
          .def("selection_card", &IroncladBattleEnv::selectionCard)
          .def("select_card", &IroncladBattleEnv::selectCard);
-+    module.attr("RELIC_STATE_REGISTRY_SHA256") = "395d6dccad7dcae0b07d25df026fb297872c1273a6b033b1c26843f23ae40122";
++    module.attr("RELIC_STATE_REGISTRY_SHA256") = "0eba890eaf43f2b86c8f238cbced245c6f82f9910dbc6d7dd2b540dc1e194994";
 +    pybind11::class_<RelicBattleEnv>(module, "RelicStateBattleEnv")
 +        .def(pybind11::init<int>(), pybind11::arg("max_actions") = PUBLIC_MAX_ACTIONS)
 +        .def("reset_scene", &RelicBattleEnv::resetScene)
@@ -325,11 +447,40 @@ index 4d84e0b..d9bbb80 100644
          bool enemyPotionExpansion = false; // 独立扩展机制开关，旧入口保持原行为
          bool haveUsedDiscoveryAction = false; // for tracking undefined behavior resulting from using the action
          bool undefinedBehaviorEvoked = false; // some cards cause inconsistent outcomes in games
+diff --git a/include/combat/Player.h b/include/combat/Player.h
+index 30d91a0..fd06520 100644
+--- a/include/combat/Player.h
++++ b/include/combat/Player.h
+@@ -38,6 +38,7 @@ namespace sts {
+         int curHp = 80;
+         int maxHp = 80;
+         int energy = 0;
++        bool relicStateExpansion = false;
+         int8_t energyPerTurn = 3;
+         int8_t cardDrawPerTurn = 5; // AbstractPlayer gameHandSize
+ 
 diff --git a/src/combat/BattleContext.cpp b/src/combat/BattleContext.cpp
-index 57159b0..f6ff4ed 100644
+index 57159b0..de4d924 100644
 --- a/src/combat/BattleContext.cpp
 +++ b/src/combat/BattleContext.cpp
-@@ -285,7 +285,11 @@ void BattleContext::initRelics(const GameContext &gc) {
+@@ -50,6 +50,7 @@ void BattleContext::init(const GameContext &gc, MonsterEncounter encounterToInit
+     potionCapacity = gc.potionCapacity;
+     potions = gc.potions;
+ 
++    player.relicStateExpansion = relicStateExpansion;
+     player.curHp = gc.curHp;
+     player.maxHp = gc.maxHp;
+     player.gold = gc.gold;
+@@ -228,7 +229,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 break;
+ 
+             case R::ANCIENT_TEA_SET:
+-                if (gc.lastRoom == Room::REST) {
++                if (relicStateExpansion ? r.data == 1 : gc.lastRoom == Room::REST) {
+                     p.gainEnergy(2);
+                 }
+                 break;
+@@ -285,7 +286,11 @@ void BattleContext::initRelics(const GameContext &gc) {
                  p.gainEnergy(1);
                  break;
  
@@ -342,7 +493,16 @@ index 57159b0..f6ff4ed 100644
                  p.buff<PS::STRENGTH>(3);
                  p.debuff<PS::LOSE_STRENGTH>(3);
                  break;
-@@ -317,7 +321,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+@@ -294,7 +299,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+                 if (r.data > 0) {
+                     for (int i = 0; i < monsters.monsterCount; ++i) {
+                         Monster &m = monsters.arr[i];
+-                        m.curHp = 1;
++                        if (!relicStateExpansion || m.isTargetable()) m.curHp = 1;
+                     }
+                 }
+                 break;
+@@ -317,7 +322,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                  if (room == Room::ELITE) {
                      for (int i = 0; i < monsters.monsterCount; ++i) {
                          Monster &m = monsters.arr[i];
@@ -351,7 +511,7 @@ index 57159b0..f6ff4ed 100644
                      }
                  }
                  break;
-@@ -401,7 +405,14 @@ void BattleContext::initRelics(const GameContext &gc) {
+@@ -401,11 +406,19 @@ void BattleContext::initRelics(const GameContext &gc) {
                  break;
  
              case R::CLOCKWORK_SOUVENIR:
@@ -367,7 +527,13 @@ index 57159b0..f6ff4ed 100644
                  break;
  
              case R::GREMLIN_VISAGE:
-@@ -413,7 +424,7 @@ void BattleContext::initRelics(const GameContext &gc) {
+-                p.debuff<PS::WEAK>(1);
++                if (relicStateExpansion) addToBot(Actions::DebuffPlayer<PS::WEAK>(1, false));
++                else p.debuff<PS::WEAK>(1);
+                 break;
+ 
+             case R::MARK_OF_PAIN:
+@@ -413,7 +426,7 @@ void BattleContext::initRelics(const GameContext &gc) {
                  break;
  
              case R::RED_MASK:
@@ -376,7 +542,7 @@ index 57159b0..f6ff4ed 100644
                  break;
  
              case R::RING_OF_THE_SNAKE:
-@@ -519,6 +530,11 @@ void BattleContext::exitBattle(GameContext &g) const {
+@@ -519,6 +532,11 @@ void BattleContext::exitBattle(GameContext &g) const {
  }
  
  void BattleContext::updateRelicsOnExit(GameContext &g) const {
@@ -388,16 +554,33 @@ index 57159b0..f6ff4ed 100644
      for (auto &r : g.relics.relics) {
          switch (r.id) {
              case RelicId::HAPPY_FLOWER:
-@@ -579,7 +595,7 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
+@@ -538,7 +556,7 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
                  break;
  
+             case RelicId::NEOWS_LAMENT:
+-                if (r.data > 0) {
++                if (!relicStateExpansion && r.data > 0) {
+                     --r.data;
+                 }
+                 break;
+@@ -578,8 +596,15 @@ void BattleContext::updateRelicsOnExit(GameContext &g) const {
+                 }
+                 break;
+ 
++            case RelicId::FACE_OF_CLERIC:
++                if (relicStateExpansion && outcome == Outcome::PLAYER_VICTORY) {
++                    ++g.maxHp;
++                    g.playerHeal(1);
++                }
++                break;
++
              case RelicId::MEAT_ON_THE_BONE:
 -                if (outcome == Outcome::PLAYER_VICTORY && g.curHp <= g.maxHp / 2) {
 +                if (!relicStateExpansion && outcome == Outcome::PLAYER_VICTORY && g.curHp <= g.maxHp / 2) {
                      g.playerHeal(12);
                  }
                  break;
-@@ -776,6 +792,18 @@ void BattleContext::executeActions() {
+@@ -776,6 +801,18 @@ void BattleContext::executeActions() {
  
          if (monsterTurnIdx < monsters.monsterCount) {
              // do a monster turn
@@ -416,7 +599,7 @@ index 57159b0..f6ff4ed 100644
              monsters.doMonsterTurn(*this);
              continue;
          }
-@@ -809,6 +837,10 @@ void BattleContext::executeActions() {
+@@ -809,6 +846,10 @@ void BattleContext::executeActions() {
  
              if (cards.cardsInHand == 0) {
                  drawCards(1);
@@ -427,7 +610,7 @@ index 57159b0..f6ff4ed 100644
              }
          }
  
-@@ -838,7 +870,7 @@ void BattleContext::playCardQueueItem(CardQueueItem playItem) {
+@@ -838,7 +879,7 @@ void BattleContext::playCardQueueItem(CardQueueItem playItem) {
      }
  
  //    bool canPlayCard = false; // not really sure what this is used for
@@ -436,3 +619,48 @@ index 57159b0..f6ff4ed 100644
      if (canUseCard) { // not sure if this is correct,
  //        canPlayCard = true; // what is this for......
  
+@@ -2239,6 +2280,9 @@ void BattleContext::drinkPotion(int idx, int target) {
+     const bool hasBark = player.hasRelic<R::SACRED_BARK>();
+     const Potion p = potions[idx];
+     discardPotion(idx);
++    if (relicStateExpansion && player.hasRelic<R::TOY_ORNITHOPTER>()) {
++        addToBot(Actions::HealPlayer(5));
++    }
+ 
+     // todo - dont need to add to bot because always will have nothing in actionQueue?
+ 
+diff --git a/src/combat/Player.cpp b/src/combat/Player.cpp
+index 85f9551..7f5894d 100644
+--- a/src/combat/Player.cpp
++++ b/src/combat/Player.cpp
+@@ -161,7 +161,7 @@ void Player::heal(int amount) {
+     }
+ 
+     if (hasRelic<RelicId::MAGIC_FLOWER>()) {
+-        amount = amount * 3 / 2;
++        amount = (amount * 3 + (relicStateExpansion ? 1 : 0)) / 2;
+     }
+ 
+     bool wasBloodied = curHp <= maxHp/2;
+@@ -169,7 +169,7 @@ void Player::heal(int amount) {
+     curHp = std::min(static_cast<int>(maxHp), curHp + amount);
+ 
+     if (wasBloodied && curHp > maxHp/2 && hasRelic<RelicId::RED_SKULL>()) {
+-        debuff<PS::STRENGTH>(3);
++        debuff<PS::STRENGTH>(relicStateExpansion ? -3 : 3);
+     }
+ }
+ 
+@@ -261,6 +261,12 @@ void Player::attacked(BattleContext &bc, int enemyIdx, int calculatedDamage) {
+ }
+ 
+ void Player::loseHp(BattleContext &bc, int amount, bool selfDamage) {
++    // Buffer intercepts positive HP loss before the final Tungsten Rod reduction.
++    if (bc.relicStateExpansion && amount > 0 && hasStatus<PS::BUFFER>()) {
++        decrementStatus<PS::BUFFER>();
++        return;
++    }
++
+     if (hasStatus<PS::INTANGIBLE>()) {
+         amount = 1;
+     }
