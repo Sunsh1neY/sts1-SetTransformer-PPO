@@ -163,7 +163,10 @@ def test_source_condition_and_all_parameter_groups_receive_gradients():
     loss.backward()
     for name in ('task_query.weight', 'source_key.weight', 'target_query.weight', 'target_key.weight',
                  'projections.CARD.weight', 'projections.ENEMY.weight', 'projections.PLAYER_GLOBAL.weight',
-                 'blocks.0.qkv.weight', 'blocks.3.qkv.weight', 'pool_seed', 'pool.in_proj_weight',
+                 'shared_blocks.0.qkv.weight', 'shared_blocks.1.qkv.weight',
+                 'actor_blocks.0.qkv.weight', 'actor_blocks.1.qkv.weight',
+                 'critic_blocks.0.qkv.weight', 'critic_blocks.1.qkv.weight',
+                 'pool_seed', 'pool.in_proj_weight', 'critic_pool_seed', 'critic_pool.in_proj_weight',
                  'special.weight', 'value_head.2.weight'):
         grad = dict(model.named_parameters())[name].grad
         assert grad is not None and torch.isfinite(grad).all() and grad.abs().sum() > 0, name

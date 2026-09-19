@@ -1,0 +1,54 @@
+{
+  "canonical_state_schema": "battle-initial-state-v2",
+  "corpus_version": "a-v1",
+  "files": {
+    "admission.json": {
+      "sha256": "7a5df10e718def83e5d6cf8ecf5fd448fcd5dd512367a08711bab881e8f47234",
+      "source": "a-corpus-admission.json"
+    },
+    "analyze-a-coverage.py": {
+      "sha256": "7786ee3012ad9878cbf4e9b8f50f381830ae4ad3ed923b525034a443a67eaa10",
+      "source": "analyze-a-coverage.py"
+    },
+    "coverage.json": {
+      "sha256": "b9b01b45c6c16dfa3a12d0587ddd5e1a21cab97822cf4f34fd89d62f928e7b2a",
+      "source": "a-corpus-coverage.json"
+    },
+    "coverage.md": {
+      "sha256": "b2b5181de1896282edf964b76334e1f339e049a99a0efb399a84a94009a52b61",
+      "source": "a-corpus-coverage.md"
+    },
+    "initial_state.py": {
+      "sha256": "493ae4783c48ea9f6ea9baa6bc448381fb0d0d26294b5ff97aa28e086ad1f3c0",
+      "source": "initial_state.py"
+    },
+    "legacy-admitted-a-corpus.jsonl": {
+      "sha256": "0d484e0c9e54b94d7ba2a47da4a5a732738aed766575261dbdbbcec9365dc636",
+      "source": "admitted-a-corpus.jsonl"
+    },
+    "runtime-manifest.json": {
+      "sha256": "cbda694358dd26b581e27a70365dbae4ce54eaa220e019f21ed575debe4c2f0d",
+      "source": "runtime-manifest.json"
+    },
+    "runtime-report.json": {
+      "sha256": "583849e89caa3940848e83141e106b6b1539fb186de48fb1349afc74240ed8a2",
+      "source": "runtime-report.json"
+    },
+    "source-inventory.json": {
+      "sha256": "68cd06404c230e96bc7266a1d63d348e9dd23264193143fb7418633ec67b00a7",
+      "source": "source-inventory.json"
+    },
+    "states.jsonl": {
+      "sha256": "7caa4c51d09fc5e962c1fbdb611d3b0abbb671149907e37bee3a660fe7a87364",
+      "source": "pilot-states.jsonl"
+    },
+    "validate-runtime.py": {
+      "sha256": "90af0b5d8f53f06fc9e9e256c9dd67b6c07992f6d969f600de993a3c294fdf95",
+      "source": "validate-runtime.py"
+    }
+  },
+  "legacy_wrapper_note": "Original v1-labeled wrapper retained verbatim as historical evidence; consume states.jsonl with v2 schema.",
+  "state_count": 1377,
+  "status": "frozen",
+  "training_admitted": false
+}

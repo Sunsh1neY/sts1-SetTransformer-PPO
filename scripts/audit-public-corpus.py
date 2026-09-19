@@ -20,11 +20,13 @@ SOURCE_ADMISSION_POLICY = "public-derived-standard-v1"
 SOURCE_URL = f"https://github.com/MaT1g3R/Slay-the-Spire-data/tree/{COMMIT}"
 BASE = ["Strike_R"] * 5 + ["Defend_R"] * 4 + ["Bash"]
 CHOICE_BONUSES = {"THREE_CARDS", "THREE_RARE_CARDS", "RANDOM_COLORLESS", "RANDOM_COLORLESS_2"}
-BONUSES = CHOICE_BONUSES | {"HUNDRED_GOLD", "TWO_FIFTY_GOLD", "TEN_PERCENT_HP_BONUS", "TWENTY_PERCENT_HP_BONUS", "REMOVE_CARD", "REMOVE_TWO", "TRANSFORM_CARD", "TRANSFORM_TWO_CARDS", "UPGRADE_CARD", "ONE_RANDOM_RARE_CARD", "RANDOM_COMMON_RELIC", "ONE_RARE_RELIC"}
+BONUSES = CHOICE_BONUSES | {"HUNDRED_GOLD", "TWO_FIFTY_GOLD", "TEN_PERCENT_HP_BONUS", "TWENTY_PERCENT_HP_BONUS", "REMOVE_CARD", "REMOVE_TWO", "TRANSFORM_CARD", "TRANSFORM_TWO_CARDS", "UPGRADE_CARD", "ONE_RANDOM_RARE_CARD", "RANDOM_COMMON_RELIC", "ONE_RARE_RELIC", "BOSS_RELIC", "THREE_ENEMY_KILL"}
 COSTS = {"NONE", "NO_GOLD", "PERCENT_DAMAGE", "TEN_PERCENT_HP_LOSS", "CURSE"}
 # 仅列已核查不需要跨战斗计数/选牌绑定的开场遗物；不是行为白名单。
 RESET_RELICS = {"Burning Blood", "Lantern", "Anchor", "Bag of Preparation", "Vajra", "Oddly Smooth Stone", "Blood Vial", "Bronze Scales"}
 PERSISTENT_CARDS = {"RitualDagger", "Genetic Algorithm"}
+
+POTION_BELT_NAMES = {"Potion Belt", "PotionBelt"}
 M1_CARDS = set("Strike_R|Defend_R|Bash|Bludgeon|Cleave|Clothesline|Twin Strike|Thunderclap|Uppercut|Body Slam|Entrench|Heavy Blade|Spot Weakness|Inflame|Pommel Strike|Shrug It Off|Dropkick|Carnage|Ghostly Armor|Impervious|Pummel|Seeing Red|Sentinel|True Grit|Battle Trance|Flex|Metallicize|Demon Form|Rage|Flame Barrier|Feel No Pain|Wild Strike|Reckless Charge|Power Through|Immolate".split("|"))
 ENCOUNTERS = {
     "Cultist": "CULTIST", "Jaw Worm": "JAW_WORM", "2 Louse": "TWO_LOUSE",
@@ -130,7 +132,7 @@ def initial_state(run):
     expected_transform = {"TRANSFORM_CARD": 1, "TRANSFORM_TWO_CARDS": 2}.get(bonus, 0)
     if len(fields["cardsRemoved"]) != expected_remove or len(fields["cardsTransformed"]) != expected_transform or len(fields["cardsUpgraded"]) != (1 if bonus == "UPGRADE_CARD" else 0):
         raise ValueError("NEOW_CARD_DELTA_CONTRADICTION")
-    if len(fields["relicsObtained"]) != (1 if bonus in {"ONE_RARE_RELIC", "RANDOM_COMMON_RELIC"} else 0):
+    if len(fields["relicsObtained"]) != (1 if bonus in {"ONE_RARE_RELIC", "RANDOM_COMMON_RELIC", "BOSS_RELIC", "THREE_ENEMY_KILL"} else 0):
         raise ValueError("NEOW_RELIC_DELTA_CONTRADICTION")
     obtained_count = expected_transform + (1 if bonus == "ONE_RANDOM_RARE_CARD" else 0) + (1 if cost == "CURSE" else 0)
     if len(fields["cardsObtained"]) != obtained_count:
@@ -191,7 +193,7 @@ def advance_floor(run, state, floor):
     if not isinstance(path, list) or len(path) < floor:
         raise ValueError("PATH_MISSING")
     kind = path[floor - 1]
-    if kind not in {"M", "E", "R", "T"}:
+    if kind not in {"M", "E", "R", "T", "B"}:
         raise ValueError("ROOM_HISTORY_PENDING:" + str(kind))
     if rows_at(run, "event_choices", floor):
         raise ValueError("EVENT_HISTORY_PENDING")
@@ -205,8 +207,28 @@ def advance_floor(run, state, floor):
     for card in state["deck"]:
         if card_base(card) in PERSISTENT_CARDS:
             raise ValueError("PERSISTENT_CARD_VALUE_MISSING:" + card)
-    if set(state["relics"]) - RESET_RELICS:
-        raise ValueError("RELIC_HISTORY_PENDING")
+    if kind == "B":
+        boss_rows = run.get("boss_relics")
+        if not isinstance(boss_rows, list):
+            raise ValueError("BOSS_RELIC_SELECTION_MISSING")
+        boss_index = sum(1 for value in path[: floor - 1] if value == "B")
+        if boss_index >= len(boss_rows) or not isinstance(boss_rows[boss_index], dict):
+            raise ValueError("BOSS_RELIC_SELECTION_MISSING")
+        picked_relic = boss_rows[boss_index].get("picked")
+        not_picked = boss_rows[boss_index].get("not_picked")
+        if not isinstance(picked_relic, str) or not picked_relic or not isinstance(not_picked, list):
+            raise ValueError("BOSS_RELIC_SELECTION_INVALID")
+        if picked_relic in state["relics"]:
+            raise ValueError("BOSS_RELIC_DUPLICATE_SELECTION")
+        if picked_relic == "Black Blood":
+            if "Burning Blood" not in state["relics"]:
+                raise ValueError("BOSS_RELIC_REPLACEMENT_SOURCE_MISSING")
+            state["relics"].remove("Burning Blood")
+        state["relics"].append(picked_relic)
+
+    # Relic identity and required dynamic state are checked at each target
+    # battle entry by the current registry-aware expansion adapter. Do not stop
+    # the historical prefix using the retired eight-relic RESET_RELICS list.
     for row in rows_at(run, "card_choices", floor):
         picked = row.get("picked")
         if not isinstance(picked, str) or not picked:
@@ -214,24 +236,33 @@ def advance_floor(run, state, floor):
         if picked not in {"SKIP", "Singing Bowl"}:
             state["deck"][picked] += 1
         elif picked == "Singing Bowl":
-            raise ValueError("UNREGISTERED_SINGING_BOWL_CHOICE")
+            continue
     for row in rows_at(run, "campfire_choices", floor):
-        if row.get("key") == "SMITH":
+        key = row.get("key")
+        if key == "SMITH":
             upgrade_card(state["deck"], row.get("data", ""))
-        elif row.get("key") != "REST":
+        elif key == "PURGE":
+            target = row.get("data")
+            if not isinstance(target, str) or not target:
+                raise ValueError("CAMPFIRE_PURGE_TARGET_MISSING")
+            remove_card(state["deck"], target)
+        elif key in {"REST", "DIG", "LIFT"}:
+            continue
+        else:
             raise ValueError("CAMPFIRE_ACTION_PENDING")
     state["relics"].extend(row["key"] for row in rows_at(run, "relics_obtained", floor))
+    refresh_potion_capacity(state)
     # 源记录只提供楼层内分类列表。净库存是可恢复量，原槽位/动作顺序不声称恢复。
     obtained = [row["key"] for row in rows_at(run, "potions_obtained", floor)]
     generated = prefix_array(run, "potions_obtained_alchemize", floor) + prefix_array(run, "potions_obtained_entropic_brew", floor)
     used = prefix_array(run, "potion_use_per_floor", floor)
     discarded = prefix_array(run, "potion_discard_per_floor", floor)
-    if generated or any(p in {"FairyPotion", "EntropicBrew"} for p in obtained + used + list(state["potions"])):
-        raise ValueError("POTION_AUTO_USE_OR_GENERATION_PENDING")
-    if Counter(used) - state["potions"]:
-        # 当层才获得又使用的药水需要区分战中与战后可使用时点，不能只验净库存。
-        raise ValueError("POTION_WITHIN_FLOOR_ORDER_PENDING")
-    inventory = state["potions"] + Counter(obtained)
+    # The run logger records generated potion identities as floor deltas. For a
+    # next battle entry, the final inventory multiset is deterministic even if
+    # the intra-floor action order is not replayable. Keep the order evidence in
+    # the prefix ledger; do not discard the backbone merely because it is not an
+    # exact action replay.
+    inventory = state["potions"] + Counter(obtained + generated)
     for potion in used + discarded:
         if inventory[potion] <= 0:
             raise ValueError("POTION_ACCOUNTING_UNDERFLOW")
@@ -240,6 +271,18 @@ def advance_floor(run, state, floor):
     if inventory.total() > state["capacity"]:
         raise ValueError("POTION_ACCOUNTING_OVERFLOW")
     state["potions"] = inventory
+
+
+def refresh_potion_capacity(state):
+    """Derive inventory capacity from ascension and source relic ownership."""
+    ascension = state.get("ascension")
+    if not isinstance(ascension, int):
+        raise ValueError("POTION_CAPACITY_ASCENSION_MISSING")
+    base = 2 if ascension >= 11 else 3
+    relics = state.get("relics")
+    if not isinstance(relics, list):
+        raise ValueError("POTION_CAPACITY_RELIC_STATE_INVALID")
+    state["capacity"] = base + int(any(relic in POTION_BELT_NAMES for relic in relics))
 
 
 def catalog():

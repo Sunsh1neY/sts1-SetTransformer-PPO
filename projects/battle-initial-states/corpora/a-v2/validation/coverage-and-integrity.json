@@ -1,0 +1,231 @@
+{
+  "augmented": {
+    "act2": 630,
+    "act2_low_hp": 142,
+    "combo_support": {
+      "block-retention": {
+        "audit-dev": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-holdout": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-train": {
+          "components": 3,
+          "states": 3
+        }
+      },
+      "dropkick": {
+        "audit-dev": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-holdout": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-train": {
+          "components": 3,
+          "states": 3
+        }
+      },
+      "self-damage": {
+        "audit-dev": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-holdout": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-train": {
+          "components": 3,
+          "states": 3
+        }
+      },
+      "strength-payoff": {
+        "audit-dev": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-holdout": {
+          "components": 3,
+          "states": 3
+        },
+        "audit-train": {
+          "components": 3,
+          "states": 3
+        }
+      }
+    },
+    "counter_values": {
+      "Happy Flower": [
+        0,
+        1,
+        2
+      ],
+      "Incense Burner": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "Ink Bottle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "Nunchaku": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "Pen Nib": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "Sundial": [
+        0,
+        1,
+        2
+      ]
+    },
+    "partitions": {
+      "audit-dev": 288,
+      "audit-holdout": 187,
+      "audit-train": 1240
+    },
+    "states": 1715
+  },
+  "baseline": {
+    "act2": 373,
+    "act2_low_hp": 4,
+    "combo_support": {
+      "block-retention": {
+        "audit-dev": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-holdout": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-train": {
+          "components": 0,
+          "states": 0
+        }
+      },
+      "dropkick": {
+        "audit-dev": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-holdout": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-train": {
+          "components": 0,
+          "states": 0
+        }
+      },
+      "self-damage": {
+        "audit-dev": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-holdout": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-train": {
+          "components": 0,
+          "states": 0
+        }
+      },
+      "strength-payoff": {
+        "audit-dev": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-holdout": {
+          "components": 0,
+          "states": 0
+        },
+        "audit-train": {
+          "components": 0,
+          "states": 0
+        }
+      }
+    },
+    "counter_values": {
+      "Happy Flower": [
+        0
+      ],
+      "Incense Burner": [
+        0
+      ],
+      "Ink Bottle": [
+        0
+      ],
+      "Nunchaku": [
+        0
+      ],
+      "Pen Nib": [
+        0
+      ],
+      "Sundial": [
+        0
+      ]
+    },
+    "partitions": {
+      "audit-dev": 199,
+      "audit-holdout": 134,
+      "audit-train": 1044
+    },
+    "states": 1377
+  },
+  "baseline_unchanged": true,
+  "cross_partition_components": 0,
+  "interpretation": "Synthetic variants add conditional coverage, not independent historical sources or SAB generalization evidence.",
+  "lineage_checks": "passed",
+  "runtime_new_states": {
+    "episode_status": {
+      "terminated": 64
+    },
+    "episodes": 64,
+    "failures": 0,
+    "outcomes": {
+      "defeat": 53,
+      "victory": 11
+    },
+    "states_checked": 338
+  },
+  "training_admitted": false
+}

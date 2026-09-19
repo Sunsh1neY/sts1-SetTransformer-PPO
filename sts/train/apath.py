@@ -5,7 +5,7 @@ import json
 import pickle
 import random
 import time
-from collections import defaultdict
+from collections import defaultdict, Counter
 from pathlib import Path
 
 import numpy as np
@@ -19,15 +19,23 @@ from sts.models.apath import APathActorCritic, batch_samples, encode
 from sts.train.ppo import compute_gae, ppo_loss
 
 
-def fingerprint():
+def fingerprint(corpus_dir=None):
     root=Path(__file__).parents[2]
     paths=['sts/env/relic_card_state.py','sts/env/relic_state.py','sts/env/relic-state-registry.json','sts/env/relics.py','patches/lightspeed-relic-state.patch','sts/battle_reward_v2.py','sts/train/apath.py','sts/models/apath.py','sts/models/entities.py','sts/env/apath.py',
            'sts/env/a-path-training-pool.json','sts/env/entities.py','sts/env/ironclad.py',
            'sts/env/full_card_public.py','sts/env/selection.py','sts/train/ppo.py',
            'sts/env/ironclad-expansion-contract.json','sts/env/ironclad-registry.json',
            'sts/models/unified-entity-contract.json','scripts/run-a-path-ppo.py','eval_seeds.json']
-    return {**{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths},
+    if corpus_dir is not None:
+        from sts.env.acorpus import ACorpus
+        ACorpus(corpus_dir)
+        paths += ['sts/env/acorpus.py','scripts/run-a-corpus-ppo.py','sts/train/corpus_evaluation.py']
+    result = {**{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths},
             'backend':hashlib.sha256(Path(_load_backend().__file__).read_bytes()).hexdigest()}
+    if corpus_dir is not None:
+        result.update({'corpus/'+name:hashlib.sha256((Path(corpus_dir)/name).read_bytes()).hexdigest()
+                       for name in ('manifest.json','states.jsonl','lineage.jsonl','generation-policy.json')})
+    return result
 
 
 def plain_route(route):
@@ -54,10 +62,21 @@ def check_deadline(deadline):
 
 
 class APathTrainer:
-    def __init__(self, group=0, device='cpu', num_envs=8, num_steps=128, total_transitions=262144):
+    def __init__(self, group=0, device='cpu', num_envs=8, num_steps=128, total_transitions=262144, corpus_dir=None, corpus_scope='smoke-only'):
         if num_envs*num_steps<2 or total_transitions%(num_envs*num_steps):
             raise ValueError('预算必须整除完整rollout且至少两个样本')
         self.config=dict(group=group,device=device,num_envs=num_envs,num_steps=num_steps,total_transitions=total_transitions)
+        self.corpus = None
+        if corpus_dir is not None:
+            if corpus_scope not in ('smoke-only','experiment-protocol-v1'):
+                raise ValueError('Unknown corpus scope')
+            if corpus_scope=='experiment-protocol-v1' and (group,num_envs,num_steps,total_transitions)!=(0,8,128,262144):
+                raise ValueError('Formal corpus configuration differs from approved protocol')
+            from sts.env.acorpus import ACorpus
+            self.config['corpus_dir'] = str(Path(corpus_dir).resolve())
+            self.config['corpus_scope'] = corpus_scope
+            self.corpus = ACorpus(corpus_dir)
+        self.reset_counts = Counter()
         self.device=torch.device(device)
         self.scene_rng=np.random.default_rng(831000+group)
         self.environment_rng=np.random.default_rng(832000+group)
@@ -68,14 +87,19 @@ class APathTrainer:
         self.action_rng=torch.Generator(device=self.device).manual_seed(835000+group)
         self.optimizer=torch.optim.Adam(self.model.parameters(),lr=2.5e-4,eps=1e-5)
         self.iteration,self.env_steps,self.phase=0,0,'idle'
-        self.envs=[APathEnv() for _ in range(num_envs)]
+        if self.corpus is None:
+            self.envs=[APathEnv() for _ in range(num_envs)]
+        else:
+            from sts.env.acorpus import ACorpusSmokeEnv
+            self.envs=[ACorpusSmokeEnv(self.corpus,scope=corpus_scope) for _ in range(num_envs)]
         self.active=[None]*num_envs
         self.observations=[self.reset(i) for i in range(num_envs)]
         self.last_rollout=None
         self.pending_rollout=None
 
     def reset(self,i):
-        registered=sample_scene(self.scene_rng)
+        registered=sample_scene(self.scene_rng) if self.corpus is None else self.corpus.sample(self.scene_rng)
+        self.reset_counts[registered['content_group']] += 1
         while True:
             seed=int(self.environment_rng.integers(10**12,2**63-1))
             if seed not in self.used_seeds:
@@ -209,6 +233,8 @@ class APathTrainer:
 
     def iteration_step(self,deadline=None):
         size=self.config['num_envs']*self.config['num_steps']
+        if self.corpus is not None and self.config['corpus_scope']=='smoke-only' and self.env_steps+size>3072:
+            raise ValueError('A-v2 authorization is limited to 3072 logical smoke transitions per branch')
         if self.env_steps+size>self.config['total_transitions']:
             raise ValueError('已达到固定transition预算')
         rollout,episodes,groups,seconds=self.collect(deadline)
@@ -232,13 +258,13 @@ class APathTrainer:
             active=copy.deepcopy(self.active),observations=[sample_digest(s) for s in self.observations],
             last_rollout=self.last_rollout,pending_rollout=self.pending_rollout,
             last_rollout_sha256=hashlib.sha256(self.last_rollout).hexdigest() if self.last_rollout else None,
-            reward_contract=reward_contract(),fingerprint=fingerprint())
+            reset_counts=dict(self.reset_counts), reward_contract=reward_contract(),fingerprint=fingerprint(self.config.get('corpus_dir')))
         temporary=path.with_suffix(path.suffix+'.tmp');torch.save(state,temporary);temporary.replace(path)
 
     @classmethod
     def load(cls,path):
         state=torch.load(path,map_location='cpu',weights_only=False)
-        if state.get('schema')!='a-path-ppo-checkpoint-v1' or state['fingerprint']!=fingerprint():
+        if state.get('schema')!='a-path-ppo-checkpoint-v1' or state['fingerprint']!=fingerprint(state.get('config',{}).get('corpus_dir')):
             raise ValueError('策略checkpoint版本/代码/后端/数据指纹不兼容')
         if state.get('reward_contract') != reward_contract():
             raise ValueError('Checkpoint reward contract is incompatible')
@@ -249,6 +275,7 @@ class APathTrainer:
         trainer=cls(**state['config']);trainer.model.load_state_dict(state['model']);trainer.optimizer.load_state_dict(state['optimizer'])
         trainer.iteration,trainer.env_steps=state['iteration'],state['env_steps']
         trainer.active=state['active'];trainer.used_seeds=state['used_seeds'];trainer.last_rollout=state['last_rollout']
+        trainer.reset_counts=Counter(state.get('reset_counts',{}))
         trainer.observations=[]
         for env,active,expected in zip(trainer.envs,trainer.active,state['observations']):
             obs=env.reset(active['scene'],active['seed'],purpose='train')

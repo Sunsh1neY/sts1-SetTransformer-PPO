@@ -1,5 +1,8 @@
 # Documentation map
 
+Latest consolidation: [initial-state corpora, experiment code and active-run preservation](worktree-consolidation-20260919.md).
+Use the [battle initial-state project](../projects/battle-initial-states/README.md) for I14/I15 and the A-v2 experiment; earlier pool and architecture descriptions retain their original scope.
+
 Start with the [research overview](research-overview.md). This map separates authority, current implementation references, pending work and historical evidence. A file's existence or recent date is not evidence of validation.
 
 ## Current authority and working route

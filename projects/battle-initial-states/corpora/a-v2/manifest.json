@@ -1,0 +1,48 @@
+{
+  "additional_states": 338,
+  "baseline_states": 1377,
+  "canonical_state_schema": "battle-initial-state-v2",
+  "categories": {
+    "act2-low-hp": 138,
+    "entry-counter": 164,
+    "rare-combination": 36
+  },
+  "corpus_version": "a-v2",
+  "duplicates_skipped": {
+    "entry-counter": 27
+  },
+  "files": {
+    "additions.jsonl": {
+      "sha256": "e20d97e3bbbd394fdb4ab1f71db80dea8460b2317d349381ba60a77f18f2ec54"
+    },
+    "generation-policy.json": {
+      "sha256": "d55d15e5ac94dd9ddb46080d5dfaa34f0223a92953b93a0920563f14dfe63f78"
+    },
+    "lineage.jsonl": {
+      "sha256": "276ae6b1882533f4e65800709227998795aaf26b93d04295eec81984d05f1887"
+    },
+    "states.jsonl": {
+      "sha256": "a0f82337269a4458fb8a79ff622d62b7993950a4c2bc32c4d73de49d46c7c2ce"
+    },
+    "validation/coverage-and-integrity.json": {
+      "sha256": "ff51c801e52d463f33f3862e590abfb8a268e3a4cb6726c373936263e8e7f687"
+    },
+    "validation/runtime-manifest.json": {
+      "sha256": "8a2434078dce935147699d374dc004d3f32a7a24f56a5435cfc787ada6a2d1a1"
+    },
+    "validation/runtime-report.json": {
+      "sha256": "04713ccb42c1ea7477b4335b100619b1f5b4fac58127a94b048f41beaf1f09bc"
+    }
+  },
+  "generator_sha256": "33b9c38e0ad657c104d1ba40b3b1e5b8c2b6098f2bf26be9c65b4757d922e985",
+  "parent_manifest_sha256": "619a3a842c5fe81acc05ff4cea05d00f7a261aef1c729cc65ad55ab9839177ad",
+  "parent_version": "a-v1",
+  "runtime_evidence": {
+    "baseline": "../a-v1/runtime-report.json",
+    "delta": "validation/runtime-report.json",
+    "scope": "All delta states reset/forward/step; representative full episodes only."
+  },
+  "state_count": 1715,
+  "status": "frozen-diagnostic",
+  "training_admitted": false
+}

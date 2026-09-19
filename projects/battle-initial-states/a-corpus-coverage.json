@@ -1,0 +1,5148 @@
+{
+  "cards": {
+    "Anger": {
+      "acts": {
+        "1": 274,
+        "2": 207
+      },
+      "components": 50,
+      "copies": 484,
+      "encounters": 39,
+      "equal_group_pct": 27.05,
+      "pct": 34.93,
+      "source_groups": 58,
+      "states": 481,
+      "upgraded_states": 39
+    },
+    "Armaments": {
+      "acts": {
+        "1": 159,
+        "2": 124
+      },
+      "components": 30,
+      "copies": 283,
+      "encounters": 38,
+      "equal_group_pct": 15.41,
+      "pct": 20.55,
+      "source_groups": 33,
+      "states": 283,
+      "upgraded_states": 203
+    },
+    "AscendersBane": {
+      "acts": {
+        "1": 1004,
+        "2": 373
+      },
+      "components": 104,
+      "copies": 1377,
+      "encounters": 39,
+      "equal_group_pct": 100.0,
+      "pct": 100.0,
+      "source_groups": 141,
+      "states": 1377,
+      "upgraded_states": 0
+    },
+    "Barricade": {
+      "acts": {
+        "1": 11,
+        "2": 16
+      },
+      "components": 7,
+      "copies": 27,
+      "encounters": 23,
+      "equal_group_pct": 1.85,
+      "pct": 1.96,
+      "source_groups": 7,
+      "states": 27,
+      "upgraded_states": 0
+    },
+    "Bash": {
+      "acts": {
+        "1": 1004,
+        "2": 373
+      },
+      "components": 104,
+      "copies": 1377,
+      "encounters": 39,
+      "equal_group_pct": 100.0,
+      "pct": 100.0,
+      "source_groups": 141,
+      "states": 1377,
+      "upgraded_states": 170
+    },
+    "Battle Trance": {
+      "acts": {
+        "1": 98,
+        "2": 83
+      },
+      "components": 25,
+      "copies": 193,
+      "encounters": 38,
+      "equal_group_pct": 10.45,
+      "pct": 13.14,
+      "source_groups": 27,
+      "states": 181,
+      "upgraded_states": 46
+    },
+    "Berserk": {
+      "acts": {
+        "1": 13,
+        "2": 15
+      },
+      "components": 5,
+      "copies": 28,
+      "encounters": 21,
+      "equal_group_pct": 1.66,
+      "pct": 2.03,
+      "source_groups": 5,
+      "states": 28,
+      "upgraded_states": 18
+    },
+    "Blood for Blood": {
+      "acts": {
+        "1": 92,
+        "2": 85
+      },
+      "components": 23,
+      "copies": 177,
+      "encounters": 39,
+      "equal_group_pct": 9.3,
+      "pct": 12.85,
+      "source_groups": 24,
+      "states": 177,
+      "upgraded_states": 111
+    },
+    "Bloodletting": {
+      "acts": {
+        "1": 84,
+        "2": 101
+      },
+      "components": 24,
+      "copies": 191,
+      "encounters": 37,
+      "equal_group_pct": 9.22,
+      "pct": 13.44,
+      "source_groups": 24,
+      "states": 185,
+      "upgraded_states": 18
+    },
+    "Bludgeon": {
+      "acts": {
+        "1": 48,
+        "2": 25
+      },
+      "components": 8,
+      "copies": 73,
+      "encounters": 30,
+      "equal_group_pct": 4.08,
+      "pct": 5.3,
+      "source_groups": 8,
+      "states": 73,
+      "upgraded_states": 56
+    },
+    "Body Slam": {
+      "acts": {
+        "1": 36,
+        "2": 20
+      },
+      "components": 10,
+      "copies": 56,
+      "encounters": 28,
+      "equal_group_pct": 4.23,
+      "pct": 4.07,
+      "source_groups": 12,
+      "states": 56,
+      "upgraded_states": 19
+    },
+    "Brutality": {
+      "acts": {
+        "1": 10,
+        "2": 29
+      },
+      "components": 7,
+      "copies": 39,
+      "encounters": 22,
+      "equal_group_pct": 2.08,
+      "pct": 2.83,
+      "source_groups": 7,
+      "states": 39,
+      "upgraded_states": 2
+    },
+    "Burn": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    },
+    "Burning Pact": {
+      "acts": {
+        "1": 51,
+        "2": 73
+      },
+      "components": 19,
+      "copies": 136,
+      "encounters": 38,
+      "equal_group_pct": 6.54,
+      "pct": 9.01,
+      "source_groups": 21,
+      "states": 124,
+      "upgraded_states": 30
+    },
+    "Carnage": {
+      "acts": {
+        "1": 107,
+        "2": 59
+      },
+      "components": 19,
+      "copies": 166,
+      "encounters": 37,
+      "equal_group_pct": 10.25,
+      "pct": 12.06,
+      "source_groups": 21,
+      "states": 166,
+      "upgraded_states": 108
+    },
+    "Clash": {
+      "acts": {
+        "1": 17,
+        "2": 3
+      },
+      "components": 3,
+      "copies": 20,
+      "encounters": 16,
+      "equal_group_pct": 1.27,
+      "pct": 1.45,
+      "source_groups": 3,
+      "states": 20,
+      "upgraded_states": 0
+    },
+    "Cleave": {
+      "acts": {
+        "1": 87,
+        "2": 55
+      },
+      "components": 13,
+      "copies": 150,
+      "encounters": 33,
+      "equal_group_pct": 7.5,
+      "pct": 10.31,
+      "source_groups": 13,
+      "states": 142,
+      "upgraded_states": 36
+    },
+    "Clothesline": {
+      "acts": {
+        "1": 82,
+        "2": 40
+      },
+      "components": 15,
+      "copies": 122,
+      "encounters": 35,
+      "equal_group_pct": 7.22,
+      "pct": 8.86,
+      "source_groups": 15,
+      "states": 122,
+      "upgraded_states": 20
+    },
+    "Combust": {
+      "acts": {
+        "1": 36,
+        "2": 36
+      },
+      "components": 8,
+      "copies": 72,
+      "encounters": 29,
+      "equal_group_pct": 3.84,
+      "pct": 5.23,
+      "source_groups": 8,
+      "states": 72,
+      "upgraded_states": 16
+    },
+    "Corruption": {
+      "acts": {
+        "1": 38,
+        "2": 107
+      },
+      "components": 25,
+      "copies": 145,
+      "encounters": 36,
+      "equal_group_pct": 8.28,
+      "pct": 10.53,
+      "source_groups": 27,
+      "states": 145,
+      "upgraded_states": 59
+    },
+    "Dark Embrace": {
+      "acts": {
+        "1": 27,
+        "2": 71
+      },
+      "components": 17,
+      "copies": 102,
+      "encounters": 31,
+      "equal_group_pct": 4.75,
+      "pct": 7.12,
+      "source_groups": 17,
+      "states": 98,
+      "upgraded_states": 37
+    },
+    "Dazed": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    },
+    "Defend_R": {
+      "acts": {
+        "1": 1004,
+        "2": 373
+      },
+      "components": 104,
+      "copies": 5390,
+      "encounters": 39,
+      "equal_group_pct": 100.0,
+      "pct": 100.0,
+      "source_groups": 141,
+      "states": 1377,
+      "upgraded_states": 88
+    },
+    "Demon Form": {
+      "acts": {
+        "1": 37,
+        "2": 40
+      },
+      "components": 10,
+      "copies": 77,
+      "encounters": 33,
+      "equal_group_pct": 4.09,
+      "pct": 5.59,
+      "source_groups": 11,
+      "states": 77,
+      "upgraded_states": 2
+    },
+    "Disarm": {
+      "acts": {
+        "1": 49,
+        "2": 79
+      },
+      "components": 24,
+      "copies": 139,
+      "encounters": 34,
+      "equal_group_pct": 7.01,
+      "pct": 9.3,
+      "source_groups": 24,
+      "states": 128,
+      "upgraded_states": 6
+    },
+    "Double Tap": {
+      "acts": {
+        "1": 50,
+        "2": 44
+      },
+      "components": 11,
+      "copies": 94,
+      "encounters": 33,
+      "equal_group_pct": 4.91,
+      "pct": 6.83,
+      "source_groups": 11,
+      "states": 94,
+      "upgraded_states": 21
+    },
+    "Dropkick": {
+      "acts": {
+        "1": 1,
+        "2": 13
+      },
+      "components": 3,
+      "copies": 14,
+      "encounters": 11,
+      "equal_group_pct": 0.61,
+      "pct": 1.02,
+      "source_groups": 3,
+      "states": 14,
+      "upgraded_states": 0
+    },
+    "Dual Wield": {
+      "acts": {
+        "1": 1,
+        "2": 12
+      },
+      "components": 5,
+      "copies": 13,
+      "encounters": 10,
+      "equal_group_pct": 0.63,
+      "pct": 0.94,
+      "source_groups": 5,
+      "states": 13,
+      "upgraded_states": 6
+    },
+    "Entrench": {
+      "acts": {
+        "2": 9
+      },
+      "components": 2,
+      "copies": 9,
+      "encounters": 7,
+      "equal_group_pct": 0.39,
+      "pct": 0.65,
+      "source_groups": 2,
+      "states": 9,
+      "upgraded_states": 4
+    },
+    "Evolve": {
+      "acts": {
+        "1": 57,
+        "2": 77
+      },
+      "components": 16,
+      "copies": 134,
+      "encounters": 35,
+      "equal_group_pct": 6.48,
+      "pct": 9.73,
+      "source_groups": 17,
+      "states": 134,
+      "upgraded_states": 3
+    },
+    "Exhume": {
+      "acts": {
+        "1": 10,
+        "2": 28
+      },
+      "components": 11,
+      "copies": 38,
+      "encounters": 24,
+      "equal_group_pct": 2.12,
+      "pct": 2.76,
+      "source_groups": 13,
+      "states": 38,
+      "upgraded_states": 5
+    },
+    "Feed": {
+      "acts": {
+        "1": 64,
+        "2": 77
+      },
+      "components": 23,
+      "copies": 146,
+      "encounters": 37,
+      "equal_group_pct": 8.75,
+      "pct": 10.24,
+      "source_groups": 26,
+      "states": 141,
+      "upgraded_states": 23
+    },
+    "Feel No Pain": {
+      "acts": {
+        "1": 59,
+        "2": 109
+      },
+      "components": 26,
+      "copies": 177,
+      "encounters": 37,
+      "equal_group_pct": 8.61,
+      "pct": 12.2,
+      "source_groups": 28,
+      "states": 168,
+      "upgraded_states": 22
+    },
+    "Fiend Fire": {
+      "acts": {
+        "1": 49,
+        "2": 110
+      },
+      "components": 23,
+      "copies": 176,
+      "encounters": 37,
+      "equal_group_pct": 8.3,
+      "pct": 11.55,
+      "source_groups": 24,
+      "states": 159,
+      "upgraded_states": 90
+    },
+    "Fire Breathing": {
+      "acts": {
+        "1": 14,
+        "2": 12
+      },
+      "components": 4,
+      "copies": 26,
+      "encounters": 20,
+      "equal_group_pct": 1.58,
+      "pct": 1.89,
+      "source_groups": 4,
+      "states": 26,
+      "upgraded_states": 0
+    },
+    "Flame Barrier": {
+      "acts": {
+        "1": 71,
+        "2": 55
+      },
+      "components": 21,
+      "copies": 126,
+      "encounters": 36,
+      "equal_group_pct": 7.61,
+      "pct": 9.15,
+      "source_groups": 22,
+      "states": 126,
+      "upgraded_states": 24
+    },
+    "Flex": {
+      "acts": {
+        "1": 11,
+        "2": 21
+      },
+      "components": 5,
+      "copies": 32,
+      "encounters": 22,
+      "equal_group_pct": 1.53,
+      "pct": 2.32,
+      "source_groups": 5,
+      "states": 32,
+      "upgraded_states": 21
+    },
+    "Ghostly Armor": {
+      "acts": {
+        "1": 26,
+        "2": 35
+      },
+      "components": 9,
+      "copies": 61,
+      "encounters": 29,
+      "equal_group_pct": 2.95,
+      "pct": 4.43,
+      "source_groups": 9,
+      "states": 61,
+      "upgraded_states": 12
+    },
+    "Havoc": {
+      "acts": {
+        "1": 13,
+        "2": 32
+      },
+      "components": 9,
+      "copies": 45,
+      "encounters": 26,
+      "equal_group_pct": 2.56,
+      "pct": 3.27,
+      "source_groups": 9,
+      "states": 45,
+      "upgraded_states": 21
+    },
+    "Headbutt": {
+      "acts": {
+        "1": 184,
+        "2": 153
+      },
+      "components": 38,
+      "copies": 347,
+      "encounters": 39,
+      "equal_group_pct": 18.83,
+      "pct": 24.47,
+      "source_groups": 41,
+      "states": 337,
+      "upgraded_states": 0
+    },
+    "Heavy Blade": {
+      "acts": {
+        "1": 10,
+        "2": 12
+      },
+      "components": 3,
+      "copies": 22,
+      "encounters": 22,
+      "equal_group_pct": 1.23,
+      "pct": 1.6,
+      "source_groups": 3,
+      "states": 22,
+      "upgraded_states": 10
+    },
+    "Hemokinesis": {
+      "acts": {
+        "1": 95,
+        "2": 72
+      },
+      "components": 20,
+      "copies": 167,
+      "encounters": 37,
+      "equal_group_pct": 9.97,
+      "pct": 12.13,
+      "source_groups": 21,
+      "states": 167,
+      "upgraded_states": 55
+    },
+    "Immolate": {
+      "acts": {
+        "1": 70,
+        "2": 98
+      },
+      "components": 21,
+      "copies": 168,
+      "encounters": 38,
+      "equal_group_pct": 7.81,
+      "pct": 12.2,
+      "source_groups": 22,
+      "states": 168,
+      "upgraded_states": 119
+    },
+    "Impervious": {
+      "acts": {
+        "1": 47,
+        "2": 74
+      },
+      "components": 18,
+      "copies": 126,
+      "encounters": 35,
+      "equal_group_pct": 6.24,
+      "pct": 8.79,
+      "source_groups": 19,
+      "states": 121,
+      "upgraded_states": 8
+    },
+    "Infernal Blade": {
+      "acts": {
+        "1": 54,
+        "2": 20
+      },
+      "components": 9,
+      "copies": 74,
+      "encounters": 31,
+      "equal_group_pct": 4.38,
+      "pct": 5.37,
+      "source_groups": 9,
+      "states": 74,
+      "upgraded_states": 25
+    },
+    "Inflame": {
+      "acts": {
+        "1": 118,
+        "2": 100
+      },
+      "components": 24,
+      "copies": 218,
+      "encounters": 38,
+      "equal_group_pct": 11.99,
+      "pct": 15.83,
+      "source_groups": 25,
+      "states": 218,
+      "upgraded_states": 133
+    },
+    "Intimidate": {
+      "acts": {
+        "1": 22,
+        "2": 16
+      },
+      "components": 6,
+      "copies": 38,
+      "encounters": 21,
+      "equal_group_pct": 2.76,
+      "pct": 2.76,
+      "source_groups": 6,
+      "states": 38,
+      "upgraded_states": 10
+    },
+    "Iron Wave": {
+      "acts": {
+        "1": 132,
+        "2": 68
+      },
+      "components": 23,
+      "copies": 200,
+      "encounters": 36,
+      "equal_group_pct": 11.8,
+      "pct": 14.52,
+      "source_groups": 26,
+      "states": 200,
+      "upgraded_states": 22
+    },
+    "Juggernaut": {
+      "acts": {
+        "1": 19,
+        "2": 1
+      },
+      "components": 3,
+      "copies": 20,
+      "encounters": 15,
+      "equal_group_pct": 1.84,
+      "pct": 1.45,
+      "source_groups": 3,
+      "states": 20,
+      "upgraded_states": 0
+    },
+    "Limit Break": {
+      "acts": {
+        "1": 9,
+        "2": 10
+      },
+      "components": 2,
+      "copies": 19,
+      "encounters": 18,
+      "equal_group_pct": 1.06,
+      "pct": 1.38,
+      "source_groups": 2,
+      "states": 19,
+      "upgraded_states": 0
+    },
+    "Metallicize": {
+      "acts": {
+        "1": 76,
+        "2": 47
+      },
+      "components": 17,
+      "copies": 123,
+      "encounters": 36,
+      "equal_group_pct": 7.26,
+      "pct": 8.93,
+      "source_groups": 17,
+      "states": 123,
+      "upgraded_states": 7
+    },
+    "Offering": {
+      "acts": {
+        "1": 52,
+        "2": 93
+      },
+      "components": 24,
+      "copies": 166,
+      "encounters": 35,
+      "equal_group_pct": 8.28,
+      "pct": 10.53,
+      "source_groups": 25,
+      "states": 145,
+      "upgraded_states": 38
+    },
+    "Perfected Strike": {
+      "acts": {
+        "1": 118,
+        "2": 59
+      },
+      "components": 19,
+      "copies": 200,
+      "encounters": 38,
+      "equal_group_pct": 11.52,
+      "pct": 12.85,
+      "source_groups": 22,
+      "states": 177,
+      "upgraded_states": 64
+    },
+    "Pommel Strike": {
+      "acts": {
+        "1": 250,
+        "2": 197
+      },
+      "components": 57,
+      "copies": 533,
+      "encounters": 39,
+      "equal_group_pct": 26.01,
+      "pct": 32.46,
+      "source_groups": 63,
+      "states": 447,
+      "upgraded_states": 189
+    },
+    "Power Through": {
+      "acts": {
+        "1": 72,
+        "2": 134
+      },
+      "components": 29,
+      "copies": 246,
+      "encounters": 37,
+      "equal_group_pct": 10.36,
+      "pct": 14.96,
+      "source_groups": 31,
+      "states": 206,
+      "upgraded_states": 32
+    },
+    "Pummel": {
+      "acts": {
+        "1": 30,
+        "2": 40
+      },
+      "components": 8,
+      "copies": 70,
+      "encounters": 32,
+      "equal_group_pct": 3.14,
+      "pct": 5.08,
+      "source_groups": 8,
+      "states": 70,
+      "upgraded_states": 11
+    },
+    "Rage": {
+      "acts": {
+        "1": 12,
+        "2": 16
+      },
+      "components": 6,
+      "copies": 28,
+      "encounters": 20,
+      "equal_group_pct": 1.67,
+      "pct": 2.03,
+      "source_groups": 6,
+      "states": 28,
+      "upgraded_states": 14
+    },
+    "Rampage": {
+      "acts": {
+        "1": 45,
+        "2": 7
+      },
+      "components": 6,
+      "copies": 52,
+      "encounters": 24,
+      "equal_group_pct": 3.16,
+      "pct": 3.78,
+      "source_groups": 6,
+      "states": 52,
+      "upgraded_states": 0
+    },
+    "Reaper": {
+      "acts": {
+        "1": 21,
+        "2": 84
+      },
+      "components": 17,
+      "copies": 107,
+      "encounters": 29,
+      "equal_group_pct": 5.12,
+      "pct": 7.63,
+      "source_groups": 17,
+      "states": 105,
+      "upgraded_states": 0
+    },
+    "Reckless Charge": {
+      "acts": {
+        "1": 23,
+        "2": 18
+      },
+      "components": 5,
+      "copies": 41,
+      "encounters": 26,
+      "equal_group_pct": 2.66,
+      "pct": 2.98,
+      "source_groups": 5,
+      "states": 41,
+      "upgraded_states": 0
+    },
+    "Rupture": {
+      "acts": {
+        "2": 4
+      },
+      "components": 1,
+      "copies": 4,
+      "encounters": 4,
+      "equal_group_pct": 0.18,
+      "pct": 0.29,
+      "source_groups": 1,
+      "states": 4,
+      "upgraded_states": 4
+    },
+    "Searing Blow": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    },
+    "Second Wind": {
+      "acts": {
+        "1": 69,
+        "2": 91
+      },
+      "components": 22,
+      "copies": 160,
+      "encounters": 38,
+      "equal_group_pct": 8.33,
+      "pct": 11.62,
+      "source_groups": 24,
+      "states": 160,
+      "upgraded_states": 18
+    },
+    "Seeing Red": {
+      "acts": {
+        "1": 54,
+        "2": 49
+      },
+      "components": 15,
+      "copies": 110,
+      "encounters": 35,
+      "equal_group_pct": 5.9,
+      "pct": 7.48,
+      "source_groups": 15,
+      "states": 103,
+      "upgraded_states": 12
+    },
+    "Sentinel": {
+      "acts": {
+        "2": 6
+      },
+      "components": 2,
+      "copies": 6,
+      "encounters": 6,
+      "equal_group_pct": 0.25,
+      "pct": 0.44,
+      "source_groups": 2,
+      "states": 6,
+      "upgraded_states": 0
+    },
+    "Sever Soul": {
+      "acts": {
+        "1": 35,
+        "2": 14
+      },
+      "components": 5,
+      "copies": 49,
+      "encounters": 24,
+      "equal_group_pct": 2.97,
+      "pct": 3.56,
+      "source_groups": 5,
+      "states": 49,
+      "upgraded_states": 25
+    },
+    "Shockwave": {
+      "acts": {
+        "1": 137,
+        "2": 132
+      },
+      "components": 26,
+      "copies": 331,
+      "encounters": 39,
+      "equal_group_pct": 14.2,
+      "pct": 19.54,
+      "source_groups": 30,
+      "states": 269,
+      "upgraded_states": 65
+    },
+    "Shrug It Off": {
+      "acts": {
+        "1": 171,
+        "2": 184
+      },
+      "components": 52,
+      "copies": 417,
+      "encounters": 39,
+      "equal_group_pct": 20.46,
+      "pct": 25.78,
+      "source_groups": 61,
+      "states": 355,
+      "upgraded_states": 60
+    },
+    "Slimed": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    },
+    "Spot Weakness": {
+      "acts": {
+        "1": 62,
+        "2": 112
+      },
+      "components": 23,
+      "copies": 186,
+      "encounters": 39,
+      "equal_group_pct": 8.17,
+      "pct": 12.64,
+      "source_groups": 23,
+      "states": 174,
+      "upgraded_states": 45
+    },
+    "Strike_R": {
+      "acts": {
+        "1": 1004,
+        "2": 367
+      },
+      "components": 104,
+      "copies": 5622,
+      "encounters": 39,
+      "equal_group_pct": 99.71,
+      "pct": 99.56,
+      "source_groups": 141,
+      "states": 1371,
+      "upgraded_states": 115
+    },
+    "Sword Boomerang": {
+      "acts": {
+        "1": 5,
+        "2": 5
+      },
+      "components": 2,
+      "copies": 10,
+      "encounters": 10,
+      "equal_group_pct": 0.93,
+      "pct": 0.73,
+      "source_groups": 2,
+      "states": 10,
+      "upgraded_states": 5
+    },
+    "Thunderclap": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    },
+    "True Grit": {
+      "acts": {
+        "1": 1,
+        "2": 29
+      },
+      "components": 6,
+      "copies": 30,
+      "encounters": 14,
+      "equal_group_pct": 1.27,
+      "pct": 2.18,
+      "source_groups": 6,
+      "states": 30,
+      "upgraded_states": 21
+    },
+    "Twin Strike": {
+      "acts": {
+        "1": 170,
+        "2": 73
+      },
+      "components": 30,
+      "copies": 247,
+      "encounters": 38,
+      "equal_group_pct": 16.33,
+      "pct": 17.65,
+      "source_groups": 32,
+      "states": 243,
+      "upgraded_states": 25
+    },
+    "Uppercut": {
+      "acts": {
+        "1": 92,
+        "2": 63
+      },
+      "components": 22,
+      "copies": 155,
+      "encounters": 35,
+      "equal_group_pct": 9.79,
+      "pct": 11.26,
+      "source_groups": 23,
+      "states": 155,
+      "upgraded_states": 80
+    },
+    "Warcry": {
+      "acts": {
+        "1": 10,
+        "2": 28
+      },
+      "components": 6,
+      "copies": 38,
+      "encounters": 23,
+      "equal_group_pct": 1.65,
+      "pct": 2.76,
+      "source_groups": 6,
+      "states": 38,
+      "upgraded_states": 19
+    },
+    "Whirlwind": {
+      "acts": {
+        "1": 100,
+        "2": 84
+      },
+      "components": 22,
+      "copies": 184,
+      "encounters": 38,
+      "equal_group_pct": 10.34,
+      "pct": 13.36,
+      "source_groups": 22,
+      "states": 184,
+      "upgraded_states": 148
+    },
+    "Wild Strike": {
+      "acts": {
+        "1": 30,
+        "2": 20
+      },
+      "components": 6,
+      "copies": 50,
+      "encounters": 30,
+      "equal_group_pct": 2.84,
+      "pct": 3.63,
+      "source_groups": 6,
+      "states": 50,
+      "upgraded_states": 9
+    },
+    "Wound": {
+      "acts": {},
+      "components": 0,
+      "copies": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0,
+      "upgraded_states": 0
+    }
+  },
+  "combo_partition_counts": {
+    "block-retention-payoff": {
+      "audit-train": 5
+    },
+    "dropkick-weak": {
+      "audit-dev": 3,
+      "audit-train": 11
+    },
+    "exhaust-engine": {
+      "audit-dev": 4,
+      "audit-holdout": 13,
+      "audit-train": 57
+    },
+    "self-damage-payoff": {
+      "audit-train": 4
+    },
+    "status-payoff": {
+      "audit-dev": 28,
+      "audit-holdout": 4,
+      "audit-train": 90
+    },
+    "strength-payoff": {
+      "audit-dev": 15,
+      "audit-holdout": 13,
+      "audit-train": 93
+    }
+  },
+  "combo_probe_rules": {
+    "block-retention-payoff": [
+      [
+        "Barricade"
+      ],
+      [
+        "Body Slam",
+        "Entrench"
+      ]
+    ],
+    "dropkick-weak": [
+      [
+        "Dropkick"
+      ],
+      [
+        "Bash",
+        "Thunderclap",
+        "Uppercut"
+      ]
+    ],
+    "exhaust-engine": [
+      [
+        "Corruption"
+      ],
+      [
+        "Dark Embrace",
+        "Feel No Pain"
+      ]
+    ],
+    "self-damage-payoff": [
+      [
+        "Rupture"
+      ],
+      [
+        "Bloodletting",
+        "Brutality",
+        "Combust",
+        "Hemokinesis",
+        "Offering"
+      ]
+    ],
+    "status-payoff": [
+      [
+        "Evolve",
+        "Fire Breathing"
+      ],
+      [
+        "Immolate",
+        "Power Through",
+        "Reckless Charge",
+        "Wild Strike"
+      ]
+    ],
+    "strength-payoff": [
+      [
+        "Demon Form",
+        "Inflame",
+        "Spot Weakness"
+      ],
+      [
+        "Heavy Blade",
+        "Pummel",
+        "Reaper",
+        "Sword Boomerang"
+      ]
+    ]
+  },
+  "combo_probes": {
+    "block-retention-payoff": {
+      "components": 1,
+      "equal_group_pct": 0.24,
+      "pct": 0.36,
+      "source_groups": 1,
+      "states": 5
+    },
+    "dropkick-weak": {
+      "components": 3,
+      "equal_group_pct": 0.61,
+      "pct": 1.02,
+      "source_groups": 3,
+      "states": 14
+    },
+    "exhaust-engine": {
+      "components": 14,
+      "equal_group_pct": 3.56,
+      "pct": 5.37,
+      "source_groups": 15,
+      "states": 74
+    },
+    "self-damage-payoff": {
+      "components": 1,
+      "equal_group_pct": 0.18,
+      "pct": 0.29,
+      "source_groups": 1,
+      "states": 4
+    },
+    "status-payoff": {
+      "components": 16,
+      "equal_group_pct": 5.77,
+      "pct": 8.86,
+      "source_groups": 17,
+      "states": 122
+    },
+    "strength-payoff": {
+      "components": 16,
+      "equal_group_pct": 5.65,
+      "pct": 8.79,
+      "source_groups": 17,
+      "states": 121
+    }
+  },
+  "configured_fields": {
+    "burning_elite": 395
+  },
+  "distributions": {
+    "act": {
+      "1": {
+        "components": 104,
+        "equal_group_pct": 82.55,
+        "pct": 72.91,
+        "source_groups": 141,
+        "states": 1004
+      },
+      "2": {
+        "components": 69,
+        "equal_group_pct": 17.45,
+        "pct": 27.09,
+        "source_groups": 81,
+        "states": 373
+      }
+    },
+    "act_hp": {
+      "1 / 25-50%": {
+        "components": 56,
+        "equal_group_pct": 8.88,
+        "pct": 10.82,
+        "source_groups": 65,
+        "states": 149
+      },
+      "1 / 50-75%": {
+        "components": 77,
+        "equal_group_pct": 22.06,
+        "pct": 21.86,
+        "source_groups": 100,
+        "states": 301
+      },
+      "1 / <=25%": {
+        "components": 17,
+        "equal_group_pct": 1.2,
+        "pct": 1.45,
+        "source_groups": 17,
+        "states": 20
+      },
+      "1 / >75%": {
+        "components": 102,
+        "equal_group_pct": 50.4,
+        "pct": 38.78,
+        "source_groups": 136,
+        "states": 534
+      },
+      "2 / 25-50%": {
+        "components": 17,
+        "equal_group_pct": 1.64,
+        "pct": 2.61,
+        "source_groups": 19,
+        "states": 36
+      },
+      "2 / 50-75%": {
+        "components": 35,
+        "equal_group_pct": 4.38,
+        "pct": 6.97,
+        "source_groups": 41,
+        "states": 96
+      },
+      "2 / <=25%": {
+        "components": 4,
+        "equal_group_pct": 0.17,
+        "pct": 0.29,
+        "source_groups": 4,
+        "states": 4
+      },
+      "2 / >75%": {
+        "components": 69,
+        "equal_group_pct": 11.26,
+        "pct": 17.21,
+        "source_groups": 81,
+        "states": 237
+      }
+    },
+    "act_kind": {
+      "1 / boss": {
+        "components": 74,
+        "equal_group_pct": 4.97,
+        "pct": 6.39,
+        "source_groups": 88,
+        "states": 88
+      },
+      "1 / elite": {
+        "components": 94,
+        "equal_group_pct": 20.58,
+        "pct": 21.35,
+        "source_groups": 121,
+        "states": 294
+      },
+      "1 / normal": {
+        "components": 104,
+        "equal_group_pct": 57.0,
+        "pct": 45.17,
+        "source_groups": 141,
+        "states": 622
+      },
+      "2 / boss": {
+        "components": 19,
+        "equal_group_pct": 0.81,
+        "pct": 1.45,
+        "source_groups": 20,
+        "states": 20
+      },
+      "2 / elite": {
+        "components": 38,
+        "equal_group_pct": 4.41,
+        "pct": 7.33,
+        "source_groups": 44,
+        "states": 101
+      },
+      "2 / normal": {
+        "components": 69,
+        "equal_group_pct": 12.22,
+        "pct": 18.3,
+        "source_groups": 81,
+        "states": 252
+      }
+    },
+    "ascension": {
+      "20": {
+        "components": 104,
+        "equal_group_pct": 100.0,
+        "pct": 100.0,
+        "source_groups": 141,
+        "states": 1377
+      }
+    },
+    "burning_elite": {
+      "False": {
+        "components": 104,
+        "equal_group_pct": 100.0,
+        "pct": 100.0,
+        "source_groups": 141,
+        "states": 1377
+      }
+    },
+    "encounter": {
+      "AUTOMATON": {
+        "components": 4,
+        "equal_group_pct": 0.17,
+        "pct": 0.29,
+        "source_groups": 4,
+        "states": 4
+      },
+      "BLUE_SLAVER": {
+        "components": 32,
+        "equal_group_pct": 2.66,
+        "pct": 2.69,
+        "source_groups": 37,
+        "states": 37
+      },
+      "BOOK_OF_STABBING": {
+        "components": 29,
+        "equal_group_pct": 1.53,
+        "pct": 2.54,
+        "source_groups": 32,
+        "states": 35
+      },
+      "CENTURION_AND_HEALER": {
+        "components": 21,
+        "equal_group_pct": 1.01,
+        "pct": 1.74,
+        "source_groups": 22,
+        "states": 24
+      },
+      "CHAMP": {
+        "components": 9,
+        "equal_group_pct": 0.35,
+        "pct": 0.65,
+        "source_groups": 9,
+        "states": 9
+      },
+      "CHOSEN": {
+        "components": 26,
+        "equal_group_pct": 1.36,
+        "pct": 1.96,
+        "source_groups": 27,
+        "states": 27
+      },
+      "CHOSEN_AND_BYRDS": {
+        "components": 6,
+        "equal_group_pct": 0.28,
+        "pct": 0.51,
+        "source_groups": 6,
+        "states": 7
+      },
+      "COLLECTOR": {
+        "components": 7,
+        "equal_group_pct": 0.29,
+        "pct": 0.51,
+        "source_groups": 7,
+        "states": 7
+      },
+      "CULTIST": {
+        "components": 81,
+        "equal_group_pct": 10.29,
+        "pct": 7.12,
+        "source_groups": 106,
+        "states": 98
+      },
+      "CULTIST_AND_CHOSEN": {
+        "components": 11,
+        "equal_group_pct": 0.51,
+        "pct": 0.87,
+        "source_groups": 11,
+        "states": 12
+      },
+      "EXORDIUM_THUGS": {
+        "components": 28,
+        "equal_group_pct": 1.7,
+        "pct": 2.18,
+        "source_groups": 30,
+        "states": 30
+      },
+      "EXORDIUM_WILDLIFE": {
+        "components": 20,
+        "equal_group_pct": 1.24,
+        "pct": 1.53,
+        "source_groups": 21,
+        "states": 21
+      },
+      "GREMLIN_GANG": {
+        "components": 13,
+        "equal_group_pct": 1.21,
+        "pct": 1.23,
+        "source_groups": 17,
+        "states": 17
+      },
+      "GREMLIN_LEADER": {
+        "components": 28,
+        "equal_group_pct": 1.56,
+        "pct": 2.54,
+        "source_groups": 31,
+        "states": 35
+      },
+      "GREMLIN_NOB": {
+        "components": 67,
+        "equal_group_pct": 6.23,
+        "pct": 6.75,
+        "source_groups": 83,
+        "states": 93
+      },
+      "HEXAGHOST": {
+        "components": 21,
+        "equal_group_pct": 1.36,
+        "pct": 1.74,
+        "source_groups": 24,
+        "states": 24
+      },
+      "JAW_WORM": {
+        "components": 79,
+        "equal_group_pct": 9.07,
+        "pct": 6.61,
+        "source_groups": 93,
+        "states": 91
+      },
+      "LAGAVULIN": {
+        "components": 75,
+        "equal_group_pct": 6.99,
+        "pct": 7.04,
+        "source_groups": 87,
+        "states": 97
+      },
+      "LARGE_SLIME": {
+        "components": 30,
+        "equal_group_pct": 2.06,
+        "pct": 2.4,
+        "source_groups": 32,
+        "states": 33
+      },
+      "LOOTER": {
+        "components": 29,
+        "equal_group_pct": 2.37,
+        "pct": 2.4,
+        "source_groups": 32,
+        "states": 33
+      },
+      "LOTS_OF_SLIMES": {
+        "components": 10,
+        "equal_group_pct": 0.62,
+        "pct": 0.8,
+        "source_groups": 11,
+        "states": 11
+      },
+      "RED_SLAVER": {
+        "components": 17,
+        "equal_group_pct": 1.3,
+        "pct": 1.45,
+        "source_groups": 20,
+        "states": 20
+      },
+      "SENTRY_AND_SPHERE": {
+        "components": 7,
+        "equal_group_pct": 0.28,
+        "pct": 0.51,
+        "source_groups": 7,
+        "states": 7
+      },
+      "SHELLED_PARASITE_AND_FUNGI": {
+        "components": 16,
+        "equal_group_pct": 0.73,
+        "pct": 1.23,
+        "source_groups": 17,
+        "states": 17
+      },
+      "SHELL_PARASITE": {
+        "components": 22,
+        "equal_group_pct": 1.25,
+        "pct": 1.67,
+        "source_groups": 23,
+        "states": 23
+      },
+      "SLAVERS": {
+        "components": 24,
+        "equal_group_pct": 1.33,
+        "pct": 2.25,
+        "source_groups": 28,
+        "states": 31
+      },
+      "SLIME_BOSS": {
+        "components": 36,
+        "equal_group_pct": 1.99,
+        "pct": 2.61,
+        "source_groups": 36,
+        "states": 36
+      },
+      "SMALL_SLIMES": {
+        "components": 75,
+        "equal_group_pct": 9.32,
+        "pct": 6.1,
+        "source_groups": 96,
+        "states": 84
+      },
+      "SNAKE_PLANT": {
+        "components": 19,
+        "equal_group_pct": 0.85,
+        "pct": 1.45,
+        "source_groups": 20,
+        "states": 20
+      },
+      "SNECKO": {
+        "components": 11,
+        "equal_group_pct": 0.5,
+        "pct": 0.8,
+        "source_groups": 11,
+        "states": 11
+      },
+      "SPHERIC_GUARDIAN": {
+        "components": 34,
+        "equal_group_pct": 1.93,
+        "pct": 2.61,
+        "source_groups": 36,
+        "states": 36
+      },
+      "THE_GUARDIAN": {
+        "components": 25,
+        "equal_group_pct": 1.62,
+        "pct": 2.03,
+        "source_groups": 28,
+        "states": 28
+      },
+      "THREE_BYRDS": {
+        "components": 26,
+        "equal_group_pct": 1.71,
+        "pct": 2.25,
+        "source_groups": 31,
+        "states": 31
+      },
+      "THREE_CULTIST": {
+        "components": 12,
+        "equal_group_pct": 0.61,
+        "pct": 0.94,
+        "source_groups": 13,
+        "states": 13
+      },
+      "THREE_LOUSE": {
+        "components": 28,
+        "equal_group_pct": 1.82,
+        "pct": 2.03,
+        "source_groups": 28,
+        "states": 28
+      },
+      "THREE_SENTRIES": {
+        "components": 74,
+        "equal_group_pct": 7.36,
+        "pct": 7.55,
+        "source_groups": 88,
+        "states": 104
+      },
+      "TWO_FUNGI_BEASTS": {
+        "components": 32,
+        "equal_group_pct": 1.91,
+        "pct": 2.47,
+        "source_groups": 34,
+        "states": 34
+      },
+      "TWO_LOUSE": {
+        "components": 80,
+        "equal_group_pct": 11.43,
+        "pct": 6.17,
+        "source_groups": 100,
+        "states": 85
+      },
+      "TWO_THIEVES": {
+        "components": 22,
+        "equal_group_pct": 1.19,
+        "pct": 1.74,
+        "source_groups": 24,
+        "states": 24
+      }
+    },
+    "encounter_kind": {
+      "boss": {
+        "components": 74,
+        "equal_group_pct": 5.79,
+        "pct": 7.84,
+        "source_groups": 88,
+        "states": 108
+      },
+      "elite": {
+        "components": 94,
+        "equal_group_pct": 24.99,
+        "pct": 28.69,
+        "source_groups": 121,
+        "states": 395
+      },
+      "normal": {
+        "components": 104,
+        "equal_group_pct": 69.22,
+        "pct": 63.47,
+        "source_groups": 141,
+        "states": 874
+      }
+    },
+    "floor": {
+      "1": {
+        "components": 102,
+        "equal_group_pct": 17.55,
+        "pct": 7.41,
+        "source_groups": 139,
+        "states": 102
+      },
+      "10": {
+        "components": 50,
+        "equal_group_pct": 4.03,
+        "pct": 4.43,
+        "source_groups": 61,
+        "states": 61
+      },
+      "11": {
+        "components": 47,
+        "equal_group_pct": 3.49,
+        "pct": 4.07,
+        "source_groups": 56,
+        "states": 56
+      },
+      "12": {
+        "components": 50,
+        "equal_group_pct": 3.27,
+        "pct": 4.07,
+        "source_groups": 56,
+        "states": 56
+      },
+      "13": {
+        "components": 50,
+        "equal_group_pct": 3.17,
+        "pct": 3.92,
+        "source_groups": 54,
+        "states": 54
+      },
+      "14": {
+        "components": 67,
+        "equal_group_pct": 4.61,
+        "pct": 5.81,
+        "source_groups": 80,
+        "states": 80
+      },
+      "16": {
+        "components": 74,
+        "equal_group_pct": 4.97,
+        "pct": 6.39,
+        "source_groups": 88,
+        "states": 88
+      },
+      "18": {
+        "components": 69,
+        "equal_group_pct": 4.45,
+        "pct": 5.88,
+        "source_groups": 81,
+        "states": 81
+      },
+      "19": {
+        "components": 25,
+        "equal_group_pct": 1.34,
+        "pct": 1.96,
+        "source_groups": 27,
+        "states": 27
+      },
+      "2": {
+        "components": 68,
+        "equal_group_pct": 7.93,
+        "pct": 6.1,
+        "source_groups": 84,
+        "states": 84
+      },
+      "20": {
+        "components": 27,
+        "equal_group_pct": 1.6,
+        "pct": 2.32,
+        "source_groups": 32,
+        "states": 32
+      },
+      "21": {
+        "components": 16,
+        "equal_group_pct": 0.79,
+        "pct": 1.23,
+        "source_groups": 17,
+        "states": 17
+      },
+      "22": {
+        "components": 26,
+        "equal_group_pct": 1.23,
+        "pct": 1.96,
+        "source_groups": 27,
+        "states": 27
+      },
+      "23": {
+        "components": 25,
+        "equal_group_pct": 1.35,
+        "pct": 2.11,
+        "source_groups": 29,
+        "states": 29
+      },
+      "24": {
+        "components": 18,
+        "equal_group_pct": 0.84,
+        "pct": 1.38,
+        "source_groups": 19,
+        "states": 19
+      },
+      "25": {
+        "components": 23,
+        "equal_group_pct": 1.13,
+        "pct": 1.82,
+        "source_groups": 25,
+        "states": 25
+      },
+      "27": {
+        "components": 22,
+        "equal_group_pct": 0.95,
+        "pct": 1.67,
+        "source_groups": 23,
+        "states": 23
+      },
+      "28": {
+        "components": 19,
+        "equal_group_pct": 0.83,
+        "pct": 1.45,
+        "source_groups": 20,
+        "states": 20
+      },
+      "29": {
+        "components": 20,
+        "equal_group_pct": 0.9,
+        "pct": 1.6,
+        "source_groups": 22,
+        "states": 22
+      },
+      "3": {
+        "components": 62,
+        "equal_group_pct": 6.79,
+        "pct": 5.66,
+        "source_groups": 78,
+        "states": 78
+      },
+      "30": {
+        "components": 12,
+        "equal_group_pct": 0.5,
+        "pct": 0.94,
+        "source_groups": 13,
+        "states": 13
+      },
+      "31": {
+        "components": 18,
+        "equal_group_pct": 0.73,
+        "pct": 1.31,
+        "source_groups": 18,
+        "states": 18
+      },
+      "33": {
+        "components": 19,
+        "equal_group_pct": 0.81,
+        "pct": 1.45,
+        "source_groups": 20,
+        "states": 20
+      },
+      "4": {
+        "components": 65,
+        "equal_group_pct": 6.6,
+        "pct": 5.52,
+        "source_groups": 76,
+        "states": 76
+      },
+      "5": {
+        "components": 61,
+        "equal_group_pct": 5.23,
+        "pct": 5.01,
+        "source_groups": 69,
+        "states": 69
+      },
+      "6": {
+        "components": 51,
+        "equal_group_pct": 4.55,
+        "pct": 4.43,
+        "source_groups": 61,
+        "states": 61
+      },
+      "7": {
+        "components": 58,
+        "equal_group_pct": 5.43,
+        "pct": 5.08,
+        "source_groups": 70,
+        "states": 70
+      },
+      "8": {
+        "components": 57,
+        "equal_group_pct": 4.94,
+        "pct": 5.01,
+        "source_groups": 69,
+        "states": 69
+      }
+    },
+    "hp_band": {
+      "25-50%": {
+        "components": 61,
+        "equal_group_pct": 10.52,
+        "pct": 13.44,
+        "source_groups": 71,
+        "states": 185
+      },
+      "50-75%": {
+        "components": 83,
+        "equal_group_pct": 26.44,
+        "pct": 28.83,
+        "source_groups": 107,
+        "states": 397
+      },
+      "<=25%": {
+        "components": 21,
+        "equal_group_pct": 1.37,
+        "pct": 1.74,
+        "source_groups": 21,
+        "states": 24
+      },
+      ">75%": {
+        "components": 103,
+        "equal_group_pct": 61.67,
+        "pct": 55.99,
+        "source_groups": 137,
+        "states": 771
+      }
+    },
+    "partition": {
+      "audit-dev": {
+        "components": 13,
+        "equal_group_pct": 17.73,
+        "pct": 14.45,
+        "source_groups": 25,
+        "states": 199
+      },
+      "audit-holdout": {
+        "components": 7,
+        "equal_group_pct": 10.64,
+        "pct": 9.73,
+        "source_groups": 15,
+        "states": 134
+      },
+      "audit-train": {
+        "components": 84,
+        "equal_group_pct": 71.63,
+        "pct": 75.82,
+        "source_groups": 101,
+        "states": 1044
+      }
+    },
+    "partition_act": {
+      "audit-dev / 1": {
+        "components": 13,
+        "equal_group_pct": 15.32,
+        "pct": 11.11,
+        "source_groups": 25,
+        "states": 153
+      },
+      "audit-dev / 2": {
+        "components": 8,
+        "equal_group_pct": 2.41,
+        "pct": 3.34,
+        "source_groups": 12,
+        "states": 46
+      },
+      "audit-holdout / 1": {
+        "components": 7,
+        "equal_group_pct": 9.25,
+        "pct": 7.48,
+        "source_groups": 15,
+        "states": 103
+      },
+      "audit-holdout / 2": {
+        "components": 5,
+        "equal_group_pct": 1.39,
+        "pct": 2.25,
+        "source_groups": 7,
+        "states": 31
+      },
+      "audit-train / 1": {
+        "components": 84,
+        "equal_group_pct": 57.98,
+        "pct": 54.32,
+        "source_groups": 101,
+        "states": 748
+      },
+      "audit-train / 2": {
+        "components": 56,
+        "equal_group_pct": 13.65,
+        "pct": 21.5,
+        "source_groups": 62,
+        "states": 296
+      }
+    },
+    "potion_occupancy": {
+      "0": {
+        "components": 103,
+        "equal_group_pct": 62.43,
+        "pct": 57.15,
+        "source_groups": 140,
+        "states": 787
+      },
+      "1": {
+        "components": 85,
+        "equal_group_pct": 31.16,
+        "pct": 35.8,
+        "source_groups": 112,
+        "states": 493
+      },
+      "2": {
+        "components": 34,
+        "equal_group_pct": 6.42,
+        "pct": 7.04,
+        "source_groups": 44,
+        "states": 97
+      }
+    },
+    "potion_transition": {
+      "0->0": {
+        "components": 102,
+        "equal_group_pct": 32.48,
+        "pct": 20.55,
+        "source_groups": 139,
+        "states": 283
+      },
+      "1->0": {
+        "components": 77,
+        "equal_group_pct": 16.21,
+        "pct": 17.79,
+        "source_groups": 95,
+        "states": 245
+      },
+      "1->1": {
+        "components": 66,
+        "equal_group_pct": 14.58,
+        "pct": 14.89,
+        "source_groups": 84,
+        "states": 205
+      },
+      "2->0": {
+        "components": 56,
+        "equal_group_pct": 13.74,
+        "pct": 18.81,
+        "source_groups": 63,
+        "states": 259
+      },
+      "2->1": {
+        "components": 76,
+        "equal_group_pct": 16.58,
+        "pct": 20.92,
+        "source_groups": 92,
+        "states": 288
+      },
+      "2->2": {
+        "components": 34,
+        "equal_group_pct": 6.42,
+        "pct": 7.04,
+        "source_groups": 44,
+        "states": 97
+      }
+    },
+    "source_potion_occupancy": {
+      "0": {
+        "components": 102,
+        "equal_group_pct": 32.48,
+        "pct": 20.55,
+        "source_groups": 139,
+        "states": 283
+      },
+      "1": {
+        "components": 98,
+        "equal_group_pct": 30.78,
+        "pct": 32.68,
+        "source_groups": 127,
+        "states": 450
+      },
+      "2": {
+        "components": 87,
+        "equal_group_pct": 36.74,
+        "pct": 46.77,
+        "source_groups": 112,
+        "states": 644
+      }
+    }
+  },
+  "encounter_hp_cells": {
+    "AUTOMATON / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "AUTOMATON / 50-75%": {
+      "components": 1,
+      "equal_group_pct": 0.04,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "AUTOMATON / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "AUTOMATON / >75%": {
+      "components": 3,
+      "equal_group_pct": 0.13,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "BLUE_SLAVER / 25-50%": {
+      "components": 11,
+      "equal_group_pct": 0.61,
+      "pct": 0.8,
+      "source_groups": 11,
+      "states": 11
+    },
+    "BLUE_SLAVER / 50-75%": {
+      "components": 8,
+      "equal_group_pct": 0.55,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "BLUE_SLAVER / <=25%": {
+      "components": 4,
+      "equal_group_pct": 0.29,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "BLUE_SLAVER / >75%": {
+      "components": 11,
+      "equal_group_pct": 1.21,
+      "pct": 1.02,
+      "source_groups": 14,
+      "states": 14
+    },
+    "BOOK_OF_STABBING / 25-50%": {
+      "components": 7,
+      "equal_group_pct": 0.3,
+      "pct": 0.51,
+      "source_groups": 7,
+      "states": 7
+    },
+    "BOOK_OF_STABBING / 50-75%": {
+      "components": 10,
+      "equal_group_pct": 0.45,
+      "pct": 0.73,
+      "source_groups": 10,
+      "states": 10
+    },
+    "BOOK_OF_STABBING / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "BOOK_OF_STABBING / >75%": {
+      "components": 16,
+      "equal_group_pct": 0.78,
+      "pct": 1.31,
+      "source_groups": 17,
+      "states": 18
+    },
+    "CENTURION_AND_HEALER / 25-50%": {
+      "components": 4,
+      "equal_group_pct": 0.16,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "CENTURION_AND_HEALER / 50-75%": {
+      "components": 8,
+      "equal_group_pct": 0.34,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "CENTURION_AND_HEALER / <=25%": {
+      "components": 3,
+      "equal_group_pct": 0.12,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "CENTURION_AND_HEALER / >75%": {
+      "components": 9,
+      "equal_group_pct": 0.38,
+      "pct": 0.65,
+      "source_groups": 9,
+      "states": 9
+    },
+    "CHAMP / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.07,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "CHAMP / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.16,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "CHAMP / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CHAMP / >75%": {
+      "components": 3,
+      "equal_group_pct": 0.12,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "CHOSEN / 25-50%": {
+      "components": 1,
+      "equal_group_pct": 0.05,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "CHOSEN / 50-75%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CHOSEN / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CHOSEN / >75%": {
+      "components": 25,
+      "equal_group_pct": 1.31,
+      "pct": 1.89,
+      "source_groups": 26,
+      "states": 26
+    },
+    "CHOSEN_AND_BYRDS / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CHOSEN_AND_BYRDS / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.18,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "CHOSEN_AND_BYRDS / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CHOSEN_AND_BYRDS / >75%": {
+      "components": 3,
+      "equal_group_pct": 0.11,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "COLLECTOR / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "COLLECTOR / 50-75%": {
+      "components": 3,
+      "equal_group_pct": 0.14,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "COLLECTOR / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "COLLECTOR / >75%": {
+      "components": 4,
+      "equal_group_pct": 0.15,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "CULTIST / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.14,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "CULTIST / 50-75%": {
+      "components": 11,
+      "equal_group_pct": 1.57,
+      "pct": 0.94,
+      "source_groups": 15,
+      "states": 13
+    },
+    "CULTIST / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CULTIST / >75%": {
+      "components": 71,
+      "equal_group_pct": 8.57,
+      "pct": 6.03,
+      "source_groups": 89,
+      "states": 83
+    },
+    "CULTIST_AND_CHOSEN / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CULTIST_AND_CHOSEN / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.19,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "CULTIST_AND_CHOSEN / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "CULTIST_AND_CHOSEN / >75%": {
+      "components": 7,
+      "equal_group_pct": 0.32,
+      "pct": 0.58,
+      "source_groups": 7,
+      "states": 8
+    },
+    "EXORDIUM_THUGS / 25-50%": {
+      "components": 8,
+      "equal_group_pct": 0.48,
+      "pct": 0.65,
+      "source_groups": 9,
+      "states": 9
+    },
+    "EXORDIUM_THUGS / 50-75%": {
+      "components": 8,
+      "equal_group_pct": 0.43,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "EXORDIUM_THUGS / <=25%": {
+      "components": 2,
+      "equal_group_pct": 0.08,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "EXORDIUM_THUGS / >75%": {
+      "components": 10,
+      "equal_group_pct": 0.7,
+      "pct": 0.8,
+      "source_groups": 11,
+      "states": 11
+    },
+    "EXORDIUM_WILDLIFE / 25-50%": {
+      "components": 10,
+      "equal_group_pct": 0.58,
+      "pct": 0.73,
+      "source_groups": 10,
+      "states": 10
+    },
+    "EXORDIUM_WILDLIFE / 50-75%": {
+      "components": 6,
+      "equal_group_pct": 0.47,
+      "pct": 0.51,
+      "source_groups": 7,
+      "states": 7
+    },
+    "EXORDIUM_WILDLIFE / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "EXORDIUM_WILDLIFE / >75%": {
+      "components": 4,
+      "equal_group_pct": 0.18,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "GREMLIN_GANG / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.08,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "GREMLIN_GANG / 50-75%": {
+      "components": 5,
+      "equal_group_pct": 0.35,
+      "pct": 0.36,
+      "source_groups": 5,
+      "states": 5
+    },
+    "GREMLIN_GANG / <=25%": {
+      "components": 1,
+      "equal_group_pct": 0.05,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "GREMLIN_GANG / >75%": {
+      "components": 8,
+      "equal_group_pct": 0.73,
+      "pct": 0.65,
+      "source_groups": 9,
+      "states": 9
+    },
+    "GREMLIN_LEADER / 25-50%": {
+      "components": 5,
+      "equal_group_pct": 0.3,
+      "pct": 0.44,
+      "source_groups": 5,
+      "states": 6
+    },
+    "GREMLIN_LEADER / 50-75%": {
+      "components": 13,
+      "equal_group_pct": 0.58,
+      "pct": 0.94,
+      "source_groups": 13,
+      "states": 13
+    },
+    "GREMLIN_LEADER / <=25%": {
+      "components": 1,
+      "equal_group_pct": 0.05,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "GREMLIN_LEADER / >75%": {
+      "components": 13,
+      "equal_group_pct": 0.62,
+      "pct": 1.09,
+      "source_groups": 14,
+      "states": 15
+    },
+    "GREMLIN_NOB / 25-50%": {
+      "components": 18,
+      "equal_group_pct": 1.09,
+      "pct": 1.31,
+      "source_groups": 18,
+      "states": 18
+    },
+    "GREMLIN_NOB / 50-75%": {
+      "components": 28,
+      "equal_group_pct": 2.37,
+      "pct": 2.47,
+      "source_groups": 32,
+      "states": 34
+    },
+    "GREMLIN_NOB / <=25%": {
+      "components": 1,
+      "equal_group_pct": 0.06,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "GREMLIN_NOB / >75%": {
+      "components": 33,
+      "equal_group_pct": 2.71,
+      "pct": 2.9,
+      "source_groups": 39,
+      "states": 40
+    },
+    "HEXAGHOST / 25-50%": {
+      "components": 11,
+      "equal_group_pct": 0.71,
+      "pct": 0.87,
+      "source_groups": 12,
+      "states": 12
+    },
+    "HEXAGHOST / 50-75%": {
+      "components": 6,
+      "equal_group_pct": 0.35,
+      "pct": 0.44,
+      "source_groups": 6,
+      "states": 6
+    },
+    "HEXAGHOST / <=25%": {
+      "components": 2,
+      "equal_group_pct": 0.11,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "HEXAGHOST / >75%": {
+      "components": 4,
+      "equal_group_pct": 0.19,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "JAW_WORM / 25-50%": {
+      "components": 1,
+      "equal_group_pct": 0.07,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "JAW_WORM / 50-75%": {
+      "components": 16,
+      "equal_group_pct": 1.88,
+      "pct": 1.23,
+      "source_groups": 17,
+      "states": 17
+    },
+    "JAW_WORM / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "JAW_WORM / >75%": {
+      "components": 65,
+      "equal_group_pct": 7.12,
+      "pct": 5.3,
+      "source_groups": 75,
+      "states": 73
+    },
+    "LAGAVULIN / 25-50%": {
+      "components": 6,
+      "equal_group_pct": 0.32,
+      "pct": 0.44,
+      "source_groups": 6,
+      "states": 6
+    },
+    "LAGAVULIN / 50-75%": {
+      "components": 36,
+      "equal_group_pct": 3.19,
+      "pct": 2.98,
+      "source_groups": 41,
+      "states": 41
+    },
+    "LAGAVULIN / <=25%": {
+      "components": 1,
+      "equal_group_pct": 0.04,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "LAGAVULIN / >75%": {
+      "components": 41,
+      "equal_group_pct": 3.44,
+      "pct": 3.56,
+      "source_groups": 46,
+      "states": 49
+    },
+    "LARGE_SLIME / 25-50%": {
+      "components": 9,
+      "equal_group_pct": 0.47,
+      "pct": 0.65,
+      "source_groups": 9,
+      "states": 9
+    },
+    "LARGE_SLIME / 50-75%": {
+      "components": 11,
+      "equal_group_pct": 0.91,
+      "pct": 0.94,
+      "source_groups": 12,
+      "states": 13
+    },
+    "LARGE_SLIME / <=25%": {
+      "components": 3,
+      "equal_group_pct": 0.21,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "LARGE_SLIME / >75%": {
+      "components": 8,
+      "equal_group_pct": 0.47,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "LOOTER / 25-50%": {
+      "components": 9,
+      "equal_group_pct": 0.57,
+      "pct": 0.65,
+      "source_groups": 9,
+      "states": 9
+    },
+    "LOOTER / 50-75%": {
+      "components": 11,
+      "equal_group_pct": 0.65,
+      "pct": 0.8,
+      "source_groups": 11,
+      "states": 11
+    },
+    "LOOTER / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "LOOTER / >75%": {
+      "components": 13,
+      "equal_group_pct": 1.14,
+      "pct": 0.94,
+      "source_groups": 13,
+      "states": 13
+    },
+    "LOTS_OF_SLIMES / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.11,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "LOTS_OF_SLIMES / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.23,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "LOTS_OF_SLIMES / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "LOTS_OF_SLIMES / >75%": {
+      "components": 4,
+      "equal_group_pct": 0.28,
+      "pct": 0.36,
+      "source_groups": 5,
+      "states": 5
+    },
+    "RED_SLAVER / 25-50%": {
+      "components": 3,
+      "equal_group_pct": 0.19,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "RED_SLAVER / 50-75%": {
+      "components": 9,
+      "equal_group_pct": 0.6,
+      "pct": 0.73,
+      "source_groups": 10,
+      "states": 10
+    },
+    "RED_SLAVER / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "RED_SLAVER / >75%": {
+      "components": 7,
+      "equal_group_pct": 0.51,
+      "pct": 0.51,
+      "source_groups": 7,
+      "states": 7
+    },
+    "SENTRY_AND_SPHERE / 25-50%": {
+      "components": 1,
+      "equal_group_pct": 0.04,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "SENTRY_AND_SPHERE / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.16,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "SENTRY_AND_SPHERE / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SENTRY_AND_SPHERE / >75%": {
+      "components": 2,
+      "equal_group_pct": 0.08,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "SHELLED_PARASITE_AND_FUNGI / 25-50%": {
+      "components": 4,
+      "equal_group_pct": 0.19,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "SHELLED_PARASITE_AND_FUNGI / 50-75%": {
+      "components": 5,
+      "equal_group_pct": 0.2,
+      "pct": 0.36,
+      "source_groups": 5,
+      "states": 5
+    },
+    "SHELLED_PARASITE_AND_FUNGI / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SHELLED_PARASITE_AND_FUNGI / >75%": {
+      "components": 8,
+      "equal_group_pct": 0.34,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "SHELL_PARASITE / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SHELL_PARASITE / 50-75%": {
+      "components": 6,
+      "equal_group_pct": 0.32,
+      "pct": 0.44,
+      "source_groups": 6,
+      "states": 6
+    },
+    "SHELL_PARASITE / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SHELL_PARASITE / >75%": {
+      "components": 17,
+      "equal_group_pct": 0.93,
+      "pct": 1.23,
+      "source_groups": 17,
+      "states": 17
+    },
+    "SLAVERS / 25-50%": {
+      "components": 5,
+      "equal_group_pct": 0.24,
+      "pct": 0.36,
+      "source_groups": 5,
+      "states": 5
+    },
+    "SLAVERS / 50-75%": {
+      "components": 7,
+      "equal_group_pct": 0.38,
+      "pct": 0.65,
+      "source_groups": 8,
+      "states": 9
+    },
+    "SLAVERS / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SLAVERS / >75%": {
+      "components": 16,
+      "equal_group_pct": 0.71,
+      "pct": 1.23,
+      "source_groups": 16,
+      "states": 17
+    },
+    "SLIME_BOSS / 25-50%": {
+      "components": 12,
+      "equal_group_pct": 0.63,
+      "pct": 0.87,
+      "source_groups": 12,
+      "states": 12
+    },
+    "SLIME_BOSS / 50-75%": {
+      "components": 17,
+      "equal_group_pct": 0.92,
+      "pct": 1.23,
+      "source_groups": 17,
+      "states": 17
+    },
+    "SLIME_BOSS / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SLIME_BOSS / >75%": {
+      "components": 7,
+      "equal_group_pct": 0.44,
+      "pct": 0.51,
+      "source_groups": 7,
+      "states": 7
+    },
+    "SMALL_SLIMES / 25-50%": {
+      "components": 1,
+      "equal_group_pct": 0.08,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "SMALL_SLIMES / 50-75%": {
+      "components": 13,
+      "equal_group_pct": 1.12,
+      "pct": 1.02,
+      "source_groups": 14,
+      "states": 14
+    },
+    "SMALL_SLIMES / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SMALL_SLIMES / >75%": {
+      "components": 62,
+      "equal_group_pct": 8.13,
+      "pct": 5.01,
+      "source_groups": 81,
+      "states": 69
+    },
+    "SNAKE_PLANT / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SNAKE_PLANT / 50-75%": {
+      "components": 6,
+      "equal_group_pct": 0.27,
+      "pct": 0.44,
+      "source_groups": 6,
+      "states": 6
+    },
+    "SNAKE_PLANT / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SNAKE_PLANT / >75%": {
+      "components": 14,
+      "equal_group_pct": 0.58,
+      "pct": 1.02,
+      "source_groups": 14,
+      "states": 14
+    },
+    "SNECKO / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.08,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "SNECKO / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.2,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "SNECKO / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SNECKO / >75%": {
+      "components": 5,
+      "equal_group_pct": 0.21,
+      "pct": 0.36,
+      "source_groups": 5,
+      "states": 5
+    },
+    "SPHERIC_GUARDIAN / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SPHERIC_GUARDIAN / 50-75%": {
+      "components": 2,
+      "equal_group_pct": 0.16,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "SPHERIC_GUARDIAN / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "SPHERIC_GUARDIAN / >75%": {
+      "components": 32,
+      "equal_group_pct": 1.77,
+      "pct": 2.4,
+      "source_groups": 33,
+      "states": 33
+    },
+    "THE_GUARDIAN / 25-50%": {
+      "components": 10,
+      "equal_group_pct": 0.54,
+      "pct": 0.73,
+      "source_groups": 10,
+      "states": 10
+    },
+    "THE_GUARDIAN / 50-75%": {
+      "components": 13,
+      "equal_group_pct": 0.81,
+      "pct": 1.02,
+      "source_groups": 14,
+      "states": 14
+    },
+    "THE_GUARDIAN / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "THE_GUARDIAN / >75%": {
+      "components": 4,
+      "equal_group_pct": 0.27,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "THREE_BYRDS / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.11,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "THREE_BYRDS / 50-75%": {
+      "components": 8,
+      "equal_group_pct": 0.43,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "THREE_BYRDS / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "THREE_BYRDS / >75%": {
+      "components": 19,
+      "equal_group_pct": 1.17,
+      "pct": 1.53,
+      "source_groups": 21,
+      "states": 21
+    },
+    "THREE_CULTIST / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.09,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "THREE_CULTIST / 50-75%": {
+      "components": 4,
+      "equal_group_pct": 0.18,
+      "pct": 0.29,
+      "source_groups": 4,
+      "states": 4
+    },
+    "THREE_CULTIST / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "THREE_CULTIST / >75%": {
+      "components": 7,
+      "equal_group_pct": 0.34,
+      "pct": 0.51,
+      "source_groups": 7,
+      "states": 7
+    },
+    "THREE_LOUSE / 25-50%": {
+      "components": 8,
+      "equal_group_pct": 0.49,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "THREE_LOUSE / 50-75%": {
+      "components": 8,
+      "equal_group_pct": 0.61,
+      "pct": 0.58,
+      "source_groups": 8,
+      "states": 8
+    },
+    "THREE_LOUSE / <=25%": {
+      "components": 2,
+      "equal_group_pct": 0.14,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "THREE_LOUSE / >75%": {
+      "components": 10,
+      "equal_group_pct": 0.58,
+      "pct": 0.73,
+      "source_groups": 10,
+      "states": 10
+    },
+    "THREE_SENTRIES / 25-50%": {
+      "components": 15,
+      "equal_group_pct": 0.91,
+      "pct": 1.16,
+      "source_groups": 16,
+      "states": 16
+    },
+    "THREE_SENTRIES / 50-75%": {
+      "components": 37,
+      "equal_group_pct": 2.98,
+      "pct": 3.27,
+      "source_groups": 42,
+      "states": 45
+    },
+    "THREE_SENTRIES / <=25%": {
+      "components": 1,
+      "equal_group_pct": 0.07,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "THREE_SENTRIES / >75%": {
+      "components": 35,
+      "equal_group_pct": 3.39,
+      "pct": 3.05,
+      "source_groups": 40,
+      "states": 42
+    },
+    "TWO_FUNGI_BEASTS / 25-50%": {
+      "components": 6,
+      "equal_group_pct": 0.36,
+      "pct": 0.44,
+      "source_groups": 6,
+      "states": 6
+    },
+    "TWO_FUNGI_BEASTS / 50-75%": {
+      "components": 11,
+      "equal_group_pct": 0.69,
+      "pct": 0.87,
+      "source_groups": 12,
+      "states": 12
+    },
+    "TWO_FUNGI_BEASTS / <=25%": {
+      "components": 3,
+      "equal_group_pct": 0.16,
+      "pct": 0.22,
+      "source_groups": 3,
+      "states": 3
+    },
+    "TWO_FUNGI_BEASTS / >75%": {
+      "components": 13,
+      "equal_group_pct": 0.7,
+      "pct": 0.94,
+      "source_groups": 13,
+      "states": 13
+    },
+    "TWO_LOUSE / 25-50%": {
+      "components": 2,
+      "equal_group_pct": 0.43,
+      "pct": 0.15,
+      "source_groups": 2,
+      "states": 2
+    },
+    "TWO_LOUSE / 50-75%": {
+      "components": 13,
+      "equal_group_pct": 1.38,
+      "pct": 1.02,
+      "source_groups": 15,
+      "states": 14
+    },
+    "TWO_LOUSE / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "TWO_LOUSE / >75%": {
+      "components": 66,
+      "equal_group_pct": 9.63,
+      "pct": 5.01,
+      "source_groups": 83,
+      "states": 69
+    },
+    "TWO_THIEVES / 25-50%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "TWO_THIEVES / 50-75%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "TWO_THIEVES / <=25%": {
+      "components": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "TWO_THIEVES / >75%": {
+      "components": 22,
+      "equal_group_pct": 1.19,
+      "pct": 1.74,
+      "source_groups": 24,
+      "states": 24
+    }
+  },
+  "grain": {
+    "all_origin_source_groups": 141,
+    "canonical_states": 1377,
+    "connected_components": 104,
+    "cross_source_canonical_states": 16,
+    "distinct_deck_encounter_pairs": 1307,
+    "distinct_deck_multisets_with_upgrades": 1125,
+    "largest_component_states": 73,
+    "origin_occurrences": 1414,
+    "primary_source_groups": 138,
+    "top10_component_states": 372
+  },
+  "input_sha256": {
+    "projects\\battle-initial-states\\a-corpus-admission.json": "7a5df10e718def83e5d6cf8ecf5fd448fcd5dd512367a08711bab881e8f47234",
+    "projects\\battle-initial-states\\admitted-a-corpus.jsonl": "0d484e0c9e54b94d7ba2a47da4a5a732738aed766575261dbdbbcec9365dc636",
+    "projects\\battle-initial-states\\candidate-ledger.jsonl": "8513ddc52d42d337c1c651efe2cf6a77ed58c5a3bfcb5d8aba03102dbc5ccac1",
+    "projects\\battle-initial-states\\pilot-states.jsonl": "7caa4c51d09fc5e962c1fbdb611d3b0abbb671149907e37bee3a660fe7a87364",
+    "projects\\battle-initial-states\\runtime-report.json": "583849e89caa3940848e83141e106b6b1539fb186de48fb1349afc74240ed8a2",
+    "sts\\env\\full-card-public-contract.json": "cc29dad191bd560d6b4f03d048387ba2a1a41d19bb08b1ea3891dcf618e4bea5",
+    "sts\\env\\ironclad-expansion-contract.json": "a6886979761454030fcc10f0c5059b5e6d26f8e4992f5dedda7d1cdae1e8fe74",
+    "sts\\env\\ironclad-registry.json": "da0e5801316135ed798b17fe8b9bc94ab99bc53206f53ad0a83f0f3e46fb22da",
+    "sts\\env\\relic-state-registry.json": "0eba890eaf43f2b86c8f238cbced245c6f82f9910dbc6d7dd2b540dc1e194994"
+  },
+  "missing_registered_encounters": [
+    "COLOSSEUM_EVENT_NOBS",
+    "COLOSSEUM_EVENT_SLAVERS",
+    "LAGAVULIN_EVENT",
+    "MASKED_BANDITS_EVENT",
+    "MAW",
+    "MUSHROOMS_EVENT",
+    "TRANSIENT"
+  ],
+  "numeric": {
+    "deck_size": {
+      "max": 30,
+      "median": 16,
+      "min": 9,
+      "p25": 13.0,
+      "p75": 19.0
+    },
+    "hp_ratio": {
+      "max": 1.0,
+      "median": 0.8,
+      "min": 0.10666666666666667,
+      "p25": 0.6133333333333333,
+      "p75": 0.9066666666666666
+    },
+    "states_per_source_group": {
+      "max": 20,
+      "median": 10,
+      "min": 1,
+      "p25": 5.0,
+      "p75": 14.0
+    },
+    "upgraded_copies": {
+      "max": 21,
+      "median": 1,
+      "min": 0,
+      "p25": 0.0,
+      "p75": 3.0
+    }
+  },
+  "partition_encounter_counts": {
+    "audit-dev": {
+      "AUTOMATON": 1,
+      "BLUE_SLAVER": 5,
+      "BOOK_OF_STABBING": 5,
+      "CENTURION_AND_HEALER": 2,
+      "CHAMP": 2,
+      "CHOSEN": 3,
+      "CHOSEN_AND_BYRDS": 1,
+      "CULTIST": 16,
+      "CULTIST_AND_CHOSEN": 1,
+      "EXORDIUM_THUGS": 5,
+      "EXORDIUM_WILDLIFE": 3,
+      "GREMLIN_GANG": 3,
+      "GREMLIN_LEADER": 5,
+      "GREMLIN_NOB": 12,
+      "HEXAGHOST": 3,
+      "JAW_WORM": 17,
+      "LAGAVULIN": 15,
+      "LARGE_SLIME": 8,
+      "LOOTER": 3,
+      "LOTS_OF_SLIMES": 1,
+      "RED_SLAVER": 5,
+      "SHELLED_PARASITE_AND_FUNGI": 1,
+      "SHELL_PARASITE": 3,
+      "SLAVERS": 5,
+      "SLIME_BOSS": 8,
+      "SMALL_SLIMES": 15,
+      "SNAKE_PLANT": 1,
+      "SPHERIC_GUARDIAN": 6,
+      "THE_GUARDIAN": 3,
+      "THREE_BYRDS": 3,
+      "THREE_CULTIST": 2,
+      "THREE_LOUSE": 4,
+      "THREE_SENTRIES": 15,
+      "TWO_FUNGI_BEASTS": 4,
+      "TWO_LOUSE": 8,
+      "TWO_THIEVES": 5
+    },
+    "audit-holdout": {
+      "AUTOMATON": 1,
+      "BLUE_SLAVER": 1,
+      "BOOK_OF_STABBING": 2,
+      "CHOSEN": 2,
+      "COLLECTOR": 1,
+      "CULTIST": 11,
+      "CULTIST_AND_CHOSEN": 2,
+      "EXORDIUM_THUGS": 3,
+      "EXORDIUM_WILDLIFE": 2,
+      "GREMLIN_GANG": 3,
+      "GREMLIN_LEADER": 4,
+      "GREMLIN_NOB": 10,
+      "HEXAGHOST": 4,
+      "JAW_WORM": 6,
+      "LAGAVULIN": 11,
+      "LARGE_SLIME": 4,
+      "LOOTER": 5,
+      "RED_SLAVER": 2,
+      "SENTRY_AND_SPHERE": 1,
+      "SHELLED_PARASITE_AND_FUNGI": 2,
+      "SHELL_PARASITE": 3,
+      "SLAVERS": 2,
+      "SLIME_BOSS": 1,
+      "SMALL_SLIMES": 7,
+      "SNAKE_PLANT": 1,
+      "SNECKO": 2,
+      "SPHERIC_GUARDIAN": 2,
+      "THE_GUARDIAN": 4,
+      "THREE_BYRDS": 4,
+      "THREE_CULTIST": 2,
+      "THREE_LOUSE": 1,
+      "THREE_SENTRIES": 14,
+      "TWO_FUNGI_BEASTS": 5,
+      "TWO_LOUSE": 9
+    },
+    "audit-train": {
+      "AUTOMATON": 2,
+      "BLUE_SLAVER": 31,
+      "BOOK_OF_STABBING": 28,
+      "CENTURION_AND_HEALER": 22,
+      "CHAMP": 7,
+      "CHOSEN": 22,
+      "CHOSEN_AND_BYRDS": 6,
+      "COLLECTOR": 6,
+      "CULTIST": 71,
+      "CULTIST_AND_CHOSEN": 9,
+      "EXORDIUM_THUGS": 22,
+      "EXORDIUM_WILDLIFE": 16,
+      "GREMLIN_GANG": 11,
+      "GREMLIN_LEADER": 26,
+      "GREMLIN_NOB": 71,
+      "HEXAGHOST": 17,
+      "JAW_WORM": 68,
+      "LAGAVULIN": 71,
+      "LARGE_SLIME": 21,
+      "LOOTER": 25,
+      "LOTS_OF_SLIMES": 10,
+      "RED_SLAVER": 13,
+      "SENTRY_AND_SPHERE": 6,
+      "SHELLED_PARASITE_AND_FUNGI": 14,
+      "SHELL_PARASITE": 17,
+      "SLAVERS": 24,
+      "SLIME_BOSS": 27,
+      "SMALL_SLIMES": 62,
+      "SNAKE_PLANT": 18,
+      "SNECKO": 9,
+      "SPHERIC_GUARDIAN": 28,
+      "THE_GUARDIAN": 21,
+      "THREE_BYRDS": 24,
+      "THREE_CULTIST": 9,
+      "THREE_LOUSE": 23,
+      "THREE_SENTRIES": 75,
+      "TWO_FUNGI_BEASTS": 25,
+      "TWO_LOUSE": 68,
+      "TWO_THIEVES": 19
+    }
+  },
+  "persistent_relic_values": {
+    "Ancient Tea Set": {
+      "0": 54,
+      "1": 21
+    },
+    "Girya": {
+      "0": 3,
+      "1": 8,
+      "2": 2
+    },
+    "Happy Flower": {
+      "0": 55
+    },
+    "Incense Burner": {
+      "0": 37
+    },
+    "Ink Bottle": {
+      "0": 57
+    },
+    "Maw Bank": {
+      "0": 27,
+      "1": 26
+    },
+    "Neow's Lament": {
+      "0": 21,
+      "1": 5,
+      "2": 6,
+      "3": 3
+    },
+    "Nunchaku": {
+      "0": 69
+    },
+    "Omamori": {
+      "0": 86
+    },
+    "Pen Nib": {
+      "0": 76
+    },
+    "Sundial": {
+      "0": 40
+    }
+  },
+  "potions": {
+    "Ancient Potion": {
+      "acts": {
+        "1": 10,
+        "2": 5
+      },
+      "components": 5,
+      "encounters": 13,
+      "equal_group_pct": 0.78,
+      "pct": 1.09,
+      "source_groups": 5,
+      "states": 15
+    },
+    "Block Potion": {
+      "acts": {
+        "1": 17,
+        "2": 17
+      },
+      "components": 14,
+      "encounters": 22,
+      "equal_group_pct": 2.15,
+      "pct": 2.47,
+      "source_groups": 14,
+      "states": 34
+    },
+    "Dexterity Potion": {
+      "acts": {
+        "1": 36,
+        "2": 2
+      },
+      "components": 14,
+      "encounters": 18,
+      "equal_group_pct": 2.98,
+      "pct": 2.76,
+      "source_groups": 16,
+      "states": 38
+    },
+    "Energy Potion": {
+      "acts": {
+        "1": 52,
+        "2": 22
+      },
+      "components": 20,
+      "encounters": 28,
+      "equal_group_pct": 4.48,
+      "pct": 5.37,
+      "source_groups": 21,
+      "states": 74
+    },
+    "EssenceOfSteel": {
+      "acts": {
+        "1": 23,
+        "2": 15
+      },
+      "components": 14,
+      "encounters": 22,
+      "equal_group_pct": 2.07,
+      "pct": 2.76,
+      "source_groups": 18,
+      "states": 38
+    },
+    "Explosive Potion": {
+      "acts": {
+        "1": 38,
+        "2": 21
+      },
+      "components": 16,
+      "encounters": 28,
+      "equal_group_pct": 3.78,
+      "pct": 4.28,
+      "source_groups": 18,
+      "states": 59
+    },
+    "FearPotion": {
+      "acts": {
+        "1": 59,
+        "2": 23
+      },
+      "components": 23,
+      "encounters": 32,
+      "equal_group_pct": 4.93,
+      "pct": 5.95,
+      "source_groups": 23,
+      "states": 82
+    },
+    "Fruit Juice": {
+      "acts": {
+        "1": 7,
+        "2": 3
+      },
+      "components": 7,
+      "encounters": 9,
+      "equal_group_pct": 1.15,
+      "pct": 0.73,
+      "source_groups": 7,
+      "states": 10
+    },
+    "HeartOfIron": {
+      "acts": {
+        "1": 13,
+        "2": 13
+      },
+      "components": 9,
+      "encounters": 21,
+      "equal_group_pct": 1.35,
+      "pct": 1.89,
+      "source_groups": 9,
+      "states": 26
+    },
+    "LiquidBronze": {
+      "acts": {
+        "1": 29,
+        "2": 2
+      },
+      "components": 13,
+      "encounters": 15,
+      "equal_group_pct": 2.31,
+      "pct": 2.25,
+      "source_groups": 13,
+      "states": 31
+    },
+    "Regen Potion": {
+      "acts": {
+        "1": 20,
+        "2": 20
+      },
+      "components": 13,
+      "encounters": 27,
+      "equal_group_pct": 2.58,
+      "pct": 2.9,
+      "source_groups": 16,
+      "states": 40
+    },
+    "SpeedPotion": {
+      "acts": {
+        "1": 32,
+        "2": 9
+      },
+      "components": 16,
+      "encounters": 22,
+      "equal_group_pct": 2.69,
+      "pct": 2.98,
+      "source_groups": 18,
+      "states": 41
+    },
+    "Strength Potion": {
+      "acts": {
+        "1": 45,
+        "2": 22
+      },
+      "components": 17,
+      "encounters": 31,
+      "equal_group_pct": 4.38,
+      "pct": 4.87,
+      "source_groups": 18,
+      "states": 67
+    },
+    "Swift Potion": {
+      "acts": {
+        "1": 31,
+        "2": 17
+      },
+      "components": 15,
+      "encounters": 28,
+      "equal_group_pct": 3.05,
+      "pct": 3.49,
+      "source_groups": 16,
+      "states": 48
+    },
+    "Weak Potion": {
+      "acts": {
+        "1": 63,
+        "2": 11
+      },
+      "components": 26,
+      "encounters": 30,
+      "equal_group_pct": 4.81,
+      "pct": 5.37,
+      "source_groups": 28,
+      "states": 74
+    }
+  },
+  "projected_states": 792,
+  "quality": {
+    "canonical_record_schemas": {
+      "battle-initial-state-v2": 1377
+    },
+    "components_crossing_partitions": 0,
+    "hashes_and_runtime_join_verified": true,
+    "historical_certification": {
+      "unverified": 1377
+    },
+    "source_groups_crossing_partitions": 0,
+    "wrapper_schemas": {
+      "battle-initial-state-v1": 1377
+    }
+  },
+  "registered_encounter_denominator_note": "Expansion registry includes encounters outside Act 1/2; absence is not automatically an in-scope gap.",
+  "relics": {
+    "Akabeko": {
+      "acts": {
+        "1": 39,
+        "2": 53
+      },
+      "components": 9,
+      "encounters": 34,
+      "equal_group_pct": 4.18,
+      "pct": 6.68,
+      "source_groups": 9,
+      "states": 92
+    },
+    "Anchor": {
+      "acts": {
+        "1": 28,
+        "2": 49
+      },
+      "components": 12,
+      "encounters": 32,
+      "equal_group_pct": 3.85,
+      "pct": 5.59,
+      "source_groups": 14,
+      "states": 77
+    },
+    "Ancient Tea Set": {
+      "acts": {
+        "1": 29,
+        "2": 46
+      },
+      "components": 9,
+      "encounters": 30,
+      "equal_group_pct": 3.52,
+      "pct": 5.45,
+      "source_groups": 10,
+      "states": 75
+    },
+    "Art of War": {
+      "acts": {
+        "1": 21,
+        "2": 39
+      },
+      "components": 8,
+      "encounters": 29,
+      "equal_group_pct": 3.49,
+      "pct": 4.36,
+      "source_groups": 9,
+      "states": 60
+    },
+    "Astrolabe": {
+      "acts": {
+        "1": 9,
+        "2": 26
+      },
+      "components": 5,
+      "encounters": 25,
+      "equal_group_pct": 1.82,
+      "pct": 2.54,
+      "source_groups": 5,
+      "states": 35
+    },
+    "Bag of Marbles": {
+      "acts": {
+        "1": 40,
+        "2": 35
+      },
+      "components": 11,
+      "encounters": 29,
+      "equal_group_pct": 4.17,
+      "pct": 5.45,
+      "source_groups": 11,
+      "states": 75
+    },
+    "Bag of Preparation": {
+      "acts": {
+        "1": 60,
+        "2": 66
+      },
+      "components": 16,
+      "encounters": 37,
+      "equal_group_pct": 6.28,
+      "pct": 9.15,
+      "source_groups": 17,
+      "states": 126
+    },
+    "Bird-Faced Urn": {
+      "acts": {
+        "1": 25,
+        "2": 37
+      },
+      "components": 6,
+      "encounters": 31,
+      "equal_group_pct": 3.06,
+      "pct": 4.5,
+      "source_groups": 6,
+      "states": 62
+    },
+    "Black Blood": {
+      "acts": {
+        "2": 1
+      },
+      "components": 1,
+      "encounters": 1,
+      "equal_group_pct": 0.07,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "Black Star": {
+      "acts": {
+        "2": 5
+      },
+      "components": 1,
+      "encounters": 5,
+      "equal_group_pct": 0.32,
+      "pct": 0.36,
+      "source_groups": 1,
+      "states": 5
+    },
+    "Blood Vial": {
+      "acts": {
+        "1": 20,
+        "2": 20
+      },
+      "components": 5,
+      "encounters": 24,
+      "equal_group_pct": 1.94,
+      "pct": 2.9,
+      "source_groups": 5,
+      "states": 40
+    },
+    "Bloody Idol": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Bottled Flame": {
+      "acts": {
+        "1": 5
+      },
+      "components": 1,
+      "encounters": 5,
+      "equal_group_pct": 0.35,
+      "pct": 0.36,
+      "source_groups": 1,
+      "states": 5
+    },
+    "Bottled Lightning": {
+      "acts": {
+        "1": 6,
+        "2": 13
+      },
+      "components": 3,
+      "encounters": 16,
+      "equal_group_pct": 0.85,
+      "pct": 1.38,
+      "source_groups": 4,
+      "states": 19
+    },
+    "Bottled Tornado": {
+      "acts": {
+        "2": 8
+      },
+      "components": 3,
+      "encounters": 5,
+      "equal_group_pct": 0.3,
+      "pct": 0.58,
+      "source_groups": 3,
+      "states": 8
+    },
+    "Brimstone": {
+      "acts": {
+        "1": 15,
+        "2": 10
+      },
+      "components": 2,
+      "encounters": 19,
+      "equal_group_pct": 1.28,
+      "pct": 1.82,
+      "source_groups": 3,
+      "states": 25
+    },
+    "Bronze Scales": {
+      "acts": {
+        "1": 17,
+        "2": 9
+      },
+      "components": 6,
+      "encounters": 20,
+      "equal_group_pct": 1.56,
+      "pct": 1.89,
+      "source_groups": 6,
+      "states": 26
+    },
+    "Burning Blood": {
+      "acts": {
+        "1": 1004,
+        "2": 372
+      },
+      "components": 104,
+      "encounters": 39,
+      "equal_group_pct": 99.93,
+      "pct": 99.93,
+      "source_groups": 141,
+      "states": 1376
+    },
+    "Busted Crown": {
+      "acts": {
+        "1": 9,
+        "2": 7
+      },
+      "components": 1,
+      "encounters": 15,
+      "equal_group_pct": 0.71,
+      "pct": 1.16,
+      "source_groups": 1,
+      "states": 16
+    },
+    "Calipers": {
+      "acts": {
+        "1": 15,
+        "2": 5
+      },
+      "components": 3,
+      "encounters": 14,
+      "equal_group_pct": 1.34,
+      "pct": 1.45,
+      "source_groups": 3,
+      "states": 20
+    },
+    "Calling Bell": {
+      "acts": {
+        "2": 11
+      },
+      "components": 2,
+      "encounters": 9,
+      "equal_group_pct": 0.56,
+      "pct": 0.8,
+      "source_groups": 2,
+      "states": 11
+    },
+    "Captain's Wheel": {
+      "acts": {
+        "1": 13,
+        "2": 7
+      },
+      "components": 4,
+      "encounters": 14,
+      "equal_group_pct": 1.35,
+      "pct": 1.45,
+      "source_groups": 4,
+      "states": 20
+    },
+    "Cauldron": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Centennial Puzzle": {
+      "acts": {
+        "1": 53,
+        "2": 49
+      },
+      "components": 13,
+      "encounters": 36,
+      "equal_group_pct": 5.5,
+      "pct": 7.41,
+      "source_groups": 13,
+      "states": 102
+    },
+    "Ceramic Fish": {
+      "acts": {
+        "1": 22,
+        "2": 35
+      },
+      "components": 9,
+      "encounters": 27,
+      "equal_group_pct": 2.96,
+      "pct": 4.14,
+      "source_groups": 10,
+      "states": 57
+    },
+    "Champion's Belt": {
+      "acts": {
+        "1": 14,
+        "2": 10
+      },
+      "components": 3,
+      "encounters": 17,
+      "equal_group_pct": 1.38,
+      "pct": 1.74,
+      "source_groups": 3,
+      "states": 24
+    },
+    "Charon's Ashes": {
+      "acts": {
+        "1": 3,
+        "2": 10
+      },
+      "components": 2,
+      "encounters": 11,
+      "equal_group_pct": 0.66,
+      "pct": 0.94,
+      "source_groups": 2,
+      "states": 13
+    },
+    "Chemical X": {
+      "acts": {
+        "1": 11,
+        "2": 3
+      },
+      "components": 1,
+      "encounters": 13,
+      "equal_group_pct": 0.66,
+      "pct": 1.02,
+      "source_groups": 1,
+      "states": 14
+    },
+    "Clockwork Souvenir": {
+      "acts": {
+        "1": 8,
+        "2": 19
+      },
+      "components": 5,
+      "encounters": 19,
+      "equal_group_pct": 1.43,
+      "pct": 1.96,
+      "source_groups": 5,
+      "states": 27
+    },
+    "Coffee Dripper": {
+      "acts": {
+        "2": 64
+      },
+      "components": 11,
+      "encounters": 18,
+      "equal_group_pct": 2.77,
+      "pct": 4.65,
+      "source_groups": 11,
+      "states": 64
+    },
+    "Cultist Headpiece": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Cursed Key": {
+      "acts": {
+        "2": 31
+      },
+      "components": 8,
+      "encounters": 16,
+      "equal_group_pct": 1.53,
+      "pct": 2.25,
+      "source_groups": 8,
+      "states": 31
+    },
+    "Darkstone Periapt": {
+      "acts": {
+        "1": 11,
+        "2": 26
+      },
+      "components": 5,
+      "encounters": 25,
+      "equal_group_pct": 1.74,
+      "pct": 2.69,
+      "source_groups": 5,
+      "states": 37
+    },
+    "Dollys Mirror": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Dream Catcher": {
+      "acts": {
+        "1": 18,
+        "2": 24
+      },
+      "components": 8,
+      "encounters": 27,
+      "equal_group_pct": 2.25,
+      "pct": 3.05,
+      "source_groups": 8,
+      "states": 42
+    },
+    "Du-Vu Doll": {
+      "acts": {
+        "1": 1,
+        "2": 2
+      },
+      "components": 2,
+      "encounters": 3,
+      "equal_group_pct": 0.19,
+      "pct": 0.22,
+      "source_groups": 2,
+      "states": 3
+    },
+    "Ectoplasm": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Empty Cage": {
+      "acts": {
+        "2": 8
+      },
+      "components": 1,
+      "encounters": 8,
+      "equal_group_pct": 0.41,
+      "pct": 0.58,
+      "source_groups": 1,
+      "states": 8
+    },
+    "Eternal Feather": {
+      "acts": {
+        "1": 11,
+        "2": 12
+      },
+      "components": 6,
+      "encounters": 18,
+      "equal_group_pct": 1.45,
+      "pct": 1.67,
+      "source_groups": 6,
+      "states": 23
+    },
+    "Face of Cleric": {
+      "acts": {
+        "1": 7,
+        "2": 2
+      },
+      "components": 1,
+      "encounters": 9,
+      "equal_group_pct": 0.64,
+      "pct": 0.65,
+      "source_groups": 1,
+      "states": 9
+    },
+    "Fossilized Helix": {
+      "acts": {
+        "1": 10,
+        "2": 16
+      },
+      "components": 4,
+      "encounters": 22,
+      "equal_group_pct": 1.34,
+      "pct": 1.89,
+      "source_groups": 4,
+      "states": 26
+    },
+    "Frozen Egg": {
+      "acts": {
+        "1": 10,
+        "2": 35
+      },
+      "components": 6,
+      "encounters": 26,
+      "equal_group_pct": 1.9,
+      "pct": 3.27,
+      "source_groups": 6,
+      "states": 45
+    },
+    "Frozen Eye": {
+      "acts": {
+        "1": 18,
+        "2": 15
+      },
+      "components": 6,
+      "encounters": 25,
+      "equal_group_pct": 2.23,
+      "pct": 2.4,
+      "source_groups": 7,
+      "states": 33
+    },
+    "Fusion Hammer": {
+      "acts": {
+        "2": 28
+      },
+      "components": 5,
+      "encounters": 15,
+      "equal_group_pct": 1.21,
+      "pct": 2.03,
+      "source_groups": 5,
+      "states": 28
+    },
+    "Ginger": {
+      "acts": {
+        "1": 7
+      },
+      "components": 1,
+      "encounters": 7,
+      "equal_group_pct": 0.71,
+      "pct": 0.51,
+      "source_groups": 1,
+      "states": 7
+    },
+    "Girya": {
+      "acts": {
+        "1": 5,
+        "2": 8
+      },
+      "components": 2,
+      "encounters": 9,
+      "equal_group_pct": 0.69,
+      "pct": 0.94,
+      "source_groups": 2,
+      "states": 13
+    },
+    "Golden Idol": {
+      "acts": {
+        "1": 102,
+        "2": 19
+      },
+      "components": 20,
+      "encounters": 26,
+      "equal_group_pct": 9.32,
+      "pct": 8.79,
+      "source_groups": 21,
+      "states": 121
+    },
+    "Gremlin Horn": {
+      "acts": {
+        "1": 14,
+        "2": 39
+      },
+      "components": 7,
+      "encounters": 23,
+      "equal_group_pct": 2.38,
+      "pct": 3.85,
+      "source_groups": 7,
+      "states": 53
+    },
+    "Gremlin Visage": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Hand Drill": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Happy Flower": {
+      "acts": {
+        "1": 23,
+        "2": 32
+      },
+      "components": 11,
+      "encounters": 27,
+      "equal_group_pct": 3.42,
+      "pct": 3.99,
+      "source_groups": 12,
+      "states": 55
+    },
+    "Horn Cleat": {
+      "acts": {
+        "1": 22,
+        "2": 41
+      },
+      "components": 8,
+      "encounters": 29,
+      "equal_group_pct": 2.9,
+      "pct": 4.58,
+      "source_groups": 8,
+      "states": 63
+    },
+    "Ice Cream": {
+      "acts": {
+        "1": 13,
+        "2": 10
+      },
+      "components": 3,
+      "encounters": 20,
+      "equal_group_pct": 1.3,
+      "pct": 1.67,
+      "source_groups": 3,
+      "states": 23
+    },
+    "Incense Burner": {
+      "acts": {
+        "1": 13,
+        "2": 24
+      },
+      "components": 5,
+      "encounters": 22,
+      "equal_group_pct": 1.85,
+      "pct": 2.69,
+      "source_groups": 5,
+      "states": 37
+    },
+    "Ink Bottle": {
+      "acts": {
+        "1": 19,
+        "2": 38
+      },
+      "components": 7,
+      "encounters": 27,
+      "equal_group_pct": 2.68,
+      "pct": 4.14,
+      "source_groups": 8,
+      "states": 57
+    },
+    "Juzu Bracelet": {
+      "acts": {
+        "1": 7,
+        "2": 16
+      },
+      "components": 4,
+      "encounters": 17,
+      "equal_group_pct": 1.22,
+      "pct": 1.67,
+      "source_groups": 4,
+      "states": 23
+    },
+    "Kunai": {
+      "acts": {
+        "1": 14,
+        "2": 23
+      },
+      "components": 9,
+      "encounters": 23,
+      "equal_group_pct": 2.17,
+      "pct": 2.69,
+      "source_groups": 9,
+      "states": 37
+    },
+    "Lantern": {
+      "acts": {
+        "1": 32,
+        "2": 58
+      },
+      "components": 15,
+      "encounters": 32,
+      "equal_group_pct": 4.75,
+      "pct": 6.54,
+      "source_groups": 15,
+      "states": 90
+    },
+    "Lees Waffle": {
+      "acts": {
+        "1": 4,
+        "2": 2
+      },
+      "components": 1,
+      "encounters": 6,
+      "equal_group_pct": 0.39,
+      "pct": 0.44,
+      "source_groups": 1,
+      "states": 6
+    },
+    "Letter Opener": {
+      "acts": {
+        "1": 9,
+        "2": 13
+      },
+      "components": 6,
+      "encounters": 18,
+      "equal_group_pct": 1.32,
+      "pct": 1.6,
+      "source_groups": 6,
+      "states": 22
+    },
+    "Magic Flower": {
+      "acts": {
+        "1": 12,
+        "2": 12
+      },
+      "components": 3,
+      "encounters": 18,
+      "equal_group_pct": 1.27,
+      "pct": 1.74,
+      "source_groups": 3,
+      "states": 24
+    },
+    "Mango": {
+      "acts": {
+        "1": 12,
+        "2": 4
+      },
+      "components": 3,
+      "encounters": 15,
+      "equal_group_pct": 1.02,
+      "pct": 1.16,
+      "source_groups": 3,
+      "states": 16
+    },
+    "Mark of Pain": {
+      "acts": {
+        "2": 17
+      },
+      "components": 3,
+      "encounters": 10,
+      "equal_group_pct": 0.77,
+      "pct": 1.23,
+      "source_groups": 3,
+      "states": 17
+    },
+    "Matryoshka": {
+      "acts": {
+        "1": 18,
+        "2": 16
+      },
+      "components": 6,
+      "encounters": 21,
+      "equal_group_pct": 1.86,
+      "pct": 2.47,
+      "source_groups": 6,
+      "states": 34
+    },
+    "Maw Bank": {
+      "acts": {
+        "1": 29,
+        "2": 24
+      },
+      "components": 9,
+      "encounters": 27,
+      "equal_group_pct": 3.09,
+      "pct": 3.85,
+      "source_groups": 9,
+      "states": 53
+    },
+    "Meal Ticket": {
+      "acts": {
+        "1": 26,
+        "2": 31
+      },
+      "components": 8,
+      "encounters": 26,
+      "equal_group_pct": 3.16,
+      "pct": 4.14,
+      "source_groups": 8,
+      "states": 57
+    },
+    "Meat on the Bone": {
+      "acts": {
+        "1": 18,
+        "2": 15
+      },
+      "components": 5,
+      "encounters": 24,
+      "equal_group_pct": 2.01,
+      "pct": 2.4,
+      "source_groups": 5,
+      "states": 33
+    },
+    "Membership Card": {
+      "acts": {
+        "1": 11,
+        "2": 6
+      },
+      "components": 5,
+      "encounters": 14,
+      "equal_group_pct": 1.33,
+      "pct": 1.23,
+      "source_groups": 5,
+      "states": 17
+    },
+    "Mercury Hourglass": {
+      "acts": {
+        "1": 13,
+        "2": 27
+      },
+      "components": 7,
+      "encounters": 25,
+      "equal_group_pct": 1.98,
+      "pct": 2.9,
+      "source_groups": 7,
+      "states": 40
+    },
+    "Molten Egg": {
+      "acts": {
+        "1": 22,
+        "2": 12
+      },
+      "components": 5,
+      "encounters": 26,
+      "equal_group_pct": 1.76,
+      "pct": 2.47,
+      "source_groups": 5,
+      "states": 34
+    },
+    "Mummified Hand": {
+      "acts": {
+        "1": 12,
+        "2": 13
+      },
+      "components": 4,
+      "encounters": 18,
+      "equal_group_pct": 1.22,
+      "pct": 1.82,
+      "source_groups": 4,
+      "states": 25
+    },
+    "Mutagenic Strength": {
+      "acts": {
+        "2": 1
+      },
+      "components": 1,
+      "encounters": 1,
+      "equal_group_pct": 0.07,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "Neow's Lament": {
+      "acts": {
+        "1": 30,
+        "2": 5
+      },
+      "components": 3,
+      "encounters": 17,
+      "equal_group_pct": 4.26,
+      "pct": 2.54,
+      "source_groups": 6,
+      "states": 35
+    },
+    "Nloths Gift": {
+      "acts": {
+        "2": 2
+      },
+      "components": 1,
+      "encounters": 2,
+      "equal_group_pct": 0.12,
+      "pct": 0.15,
+      "source_groups": 1,
+      "states": 2
+    },
+    "Nloths Hungry Face": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Nunchaku": {
+      "acts": {
+        "1": 25,
+        "2": 44
+      },
+      "components": 13,
+      "encounters": 27,
+      "equal_group_pct": 3.72,
+      "pct": 5.01,
+      "source_groups": 13,
+      "states": 69
+    },
+    "Odd Mushroom": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Oddly Smooth Stone": {
+      "acts": {
+        "1": 21,
+        "2": 25
+      },
+      "components": 9,
+      "encounters": 25,
+      "equal_group_pct": 2.57,
+      "pct": 3.34,
+      "source_groups": 10,
+      "states": 46
+    },
+    "Old Coin": {
+      "acts": {
+        "1": 30,
+        "2": 15
+      },
+      "components": 6,
+      "encounters": 27,
+      "equal_group_pct": 2.96,
+      "pct": 3.27,
+      "source_groups": 6,
+      "states": 45
+    },
+    "Omamori": {
+      "acts": {
+        "1": 44,
+        "2": 42
+      },
+      "components": 14,
+      "encounters": 32,
+      "equal_group_pct": 4.85,
+      "pct": 6.25,
+      "source_groups": 15,
+      "states": 86
+    },
+    "Orange Pellets": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Orichalcum": {
+      "acts": {
+        "1": 24,
+        "2": 33
+      },
+      "components": 6,
+      "encounters": 27,
+      "equal_group_pct": 2.53,
+      "pct": 4.14,
+      "source_groups": 6,
+      "states": 57
+    },
+    "Ornamental Fan": {
+      "acts": {
+        "1": 22,
+        "2": 29
+      },
+      "components": 6,
+      "encounters": 25,
+      "equal_group_pct": 2.33,
+      "pct": 3.7,
+      "source_groups": 6,
+      "states": 51
+    },
+    "Orrery": {
+      "acts": {
+        "1": 7,
+        "2": 27
+      },
+      "components": 7,
+      "encounters": 19,
+      "equal_group_pct": 1.82,
+      "pct": 2.47,
+      "source_groups": 7,
+      "states": 34
+    },
+    "Pandoras Box": {
+      "acts": {
+        "1": 3,
+        "2": 12
+      },
+      "components": 8,
+      "encounters": 9,
+      "equal_group_pct": 1.45,
+      "pct": 1.09,
+      "source_groups": 8,
+      "states": 15
+    },
+    "Pantograph": {
+      "acts": {
+        "1": 32,
+        "2": 45
+      },
+      "components": 10,
+      "encounters": 31,
+      "equal_group_pct": 3.87,
+      "pct": 5.59,
+      "source_groups": 11,
+      "states": 77
+    },
+    "Paper Phrog": {
+      "acts": {
+        "1": 36,
+        "2": 29
+      },
+      "components": 10,
+      "encounters": 26,
+      "equal_group_pct": 3.64,
+      "pct": 4.72,
+      "source_groups": 10,
+      "states": 65
+    },
+    "Peace Pipe": {
+      "acts": {
+        "1": 11,
+        "2": 7
+      },
+      "components": 2,
+      "encounters": 17,
+      "equal_group_pct": 0.84,
+      "pct": 1.31,
+      "source_groups": 2,
+      "states": 18
+    },
+    "Pear": {
+      "acts": {
+        "1": 1,
+        "2": 3
+      },
+      "components": 2,
+      "encounters": 3,
+      "equal_group_pct": 0.25,
+      "pct": 0.29,
+      "source_groups": 2,
+      "states": 4
+    },
+    "Pen Nib": {
+      "acts": {
+        "1": 34,
+        "2": 42
+      },
+      "components": 11,
+      "encounters": 32,
+      "equal_group_pct": 4.48,
+      "pct": 5.52,
+      "source_groups": 12,
+      "states": 76
+    },
+    "Philosopher's Stone": {
+      "acts": {
+        "1": 5,
+        "2": 17
+      },
+      "components": 5,
+      "encounters": 16,
+      "equal_group_pct": 1.47,
+      "pct": 1.6,
+      "source_groups": 5,
+      "states": 22
+    },
+    "Pocketwatch": {
+      "acts": {
+        "2": 1
+      },
+      "components": 1,
+      "encounters": 1,
+      "equal_group_pct": 0.05,
+      "pct": 0.07,
+      "source_groups": 1,
+      "states": 1
+    },
+    "Prayer Wheel": {
+      "acts": {
+        "1": 4,
+        "2": 1
+      },
+      "components": 1,
+      "encounters": 5,
+      "equal_group_pct": 0.35,
+      "pct": 0.36,
+      "source_groups": 1,
+      "states": 5
+    },
+    "Preserved Insect": {
+      "acts": {
+        "1": 35,
+        "2": 37
+      },
+      "components": 9,
+      "encounters": 33,
+      "equal_group_pct": 3.83,
+      "pct": 5.23,
+      "source_groups": 10,
+      "states": 72
+    },
+    "Question Card": {
+      "acts": {
+        "1": 27,
+        "2": 20
+      },
+      "components": 9,
+      "encounters": 26,
+      "equal_group_pct": 2.82,
+      "pct": 3.41,
+      "source_groups": 9,
+      "states": 47
+    },
+    "Red Mask": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Red Skull": {
+      "acts": {
+        "1": 19,
+        "2": 37
+      },
+      "components": 9,
+      "encounters": 29,
+      "equal_group_pct": 2.55,
+      "pct": 4.07,
+      "source_groups": 9,
+      "states": 56
+    },
+    "Regal Pillow": {
+      "acts": {
+        "1": 16,
+        "2": 15
+      },
+      "components": 6,
+      "encounters": 25,
+      "equal_group_pct": 2.26,
+      "pct": 2.25,
+      "source_groups": 6,
+      "states": 31
+    },
+    "Runic Cube": {
+      "acts": {
+        "2": 30
+      },
+      "components": 6,
+      "encounters": 15,
+      "equal_group_pct": 1.44,
+      "pct": 2.18,
+      "source_groups": 6,
+      "states": 30
+    },
+    "Runic Dome": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Runic Pyramid": {
+      "acts": {
+        "2": 54
+      },
+      "components": 10,
+      "encounters": 18,
+      "equal_group_pct": 2.39,
+      "pct": 3.92,
+      "source_groups": 10,
+      "states": 54
+    },
+    "Self-Forming Clay": {
+      "acts": {
+        "1": 29,
+        "2": 58
+      },
+      "components": 11,
+      "encounters": 31,
+      "equal_group_pct": 4.02,
+      "pct": 6.32,
+      "source_groups": 11,
+      "states": 87
+    },
+    "Shovel": {
+      "acts": {
+        "1": 12,
+        "2": 8
+      },
+      "components": 2,
+      "encounters": 15,
+      "equal_group_pct": 1.12,
+      "pct": 1.45,
+      "source_groups": 2,
+      "states": 20
+    },
+    "Shuriken": {
+      "acts": {
+        "1": 21,
+        "2": 25
+      },
+      "components": 9,
+      "encounters": 26,
+      "equal_group_pct": 2.52,
+      "pct": 3.34,
+      "source_groups": 9,
+      "states": 46
+    },
+    "Singing Bowl": {
+      "acts": {
+        "1": 15,
+        "2": 19
+      },
+      "components": 6,
+      "encounters": 19,
+      "equal_group_pct": 1.8,
+      "pct": 2.47,
+      "source_groups": 6,
+      "states": 34
+    },
+    "Slaver's Collar": {
+      "acts": {
+        "2": 9
+      },
+      "components": 3,
+      "encounters": 6,
+      "equal_group_pct": 0.47,
+      "pct": 0.65,
+      "source_groups": 3,
+      "states": 9
+    },
+    "Sling of Courage": {
+      "acts": {
+        "1": 6,
+        "2": 1
+      },
+      "components": 1,
+      "encounters": 5,
+      "equal_group_pct": 0.5,
+      "pct": 0.51,
+      "source_groups": 1,
+      "states": 7
+    },
+    "Smiling Mask": {
+      "acts": {
+        "1": 15,
+        "2": 18
+      },
+      "components": 6,
+      "encounters": 22,
+      "equal_group_pct": 1.95,
+      "pct": 2.4,
+      "source_groups": 6,
+      "states": 33
+    },
+    "Snecko Eye": {
+      "acts": {
+        "1": 4,
+        "2": 48
+      },
+      "components": 10,
+      "encounters": 21,
+      "equal_group_pct": 2.85,
+      "pct": 3.78,
+      "source_groups": 10,
+      "states": 52
+    },
+    "Sozu": {
+      "acts": {
+        "2": 4
+      },
+      "components": 3,
+      "encounters": 3,
+      "equal_group_pct": 0.25,
+      "pct": 0.29,
+      "source_groups": 3,
+      "states": 4
+    },
+    "Spirit Poop": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Ssserpent Head": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Stone Calendar": {
+      "acts": {
+        "1": 15,
+        "2": 19
+      },
+      "components": 5,
+      "encounters": 23,
+      "equal_group_pct": 1.78,
+      "pct": 2.47,
+      "source_groups": 5,
+      "states": 34
+    },
+    "Strawberry": {
+      "acts": {
+        "1": 31,
+        "2": 48
+      },
+      "components": 11,
+      "encounters": 30,
+      "equal_group_pct": 3.95,
+      "pct": 5.74,
+      "source_groups": 12,
+      "states": 79
+    },
+    "Strike Dummy": {
+      "acts": {
+        "1": 13,
+        "2": 28
+      },
+      "components": 4,
+      "encounters": 20,
+      "equal_group_pct": 1.81,
+      "pct": 2.98,
+      "source_groups": 4,
+      "states": 41
+    },
+    "Sundial": {
+      "acts": {
+        "1": 10,
+        "2": 30
+      },
+      "components": 7,
+      "encounters": 25,
+      "equal_group_pct": 1.84,
+      "pct": 2.9,
+      "source_groups": 7,
+      "states": 40
+    },
+    "The Abacus": {
+      "acts": {
+        "1": 2,
+        "2": 20
+      },
+      "components": 3,
+      "encounters": 12,
+      "equal_group_pct": 0.88,
+      "pct": 1.6,
+      "source_groups": 3,
+      "states": 22
+    },
+    "The Boot": {
+      "acts": {
+        "1": 23,
+        "2": 7
+      },
+      "components": 6,
+      "encounters": 20,
+      "equal_group_pct": 2.15,
+      "pct": 2.18,
+      "source_groups": 6,
+      "states": 30
+    },
+    "The Courier": {
+      "acts": {
+        "1": 16,
+        "2": 27
+      },
+      "components": 6,
+      "encounters": 25,
+      "equal_group_pct": 1.84,
+      "pct": 3.12,
+      "source_groups": 6,
+      "states": 43
+    },
+    "Thread and Needle": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Tiny Chest": {
+      "acts": {
+        "1": 23,
+        "2": 18
+      },
+      "components": 7,
+      "encounters": 27,
+      "equal_group_pct": 2.73,
+      "pct": 2.98,
+      "source_groups": 7,
+      "states": 41
+    },
+    "Tiny House": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    },
+    "Torii": {
+      "acts": {
+        "1": 13,
+        "2": 13
+      },
+      "components": 3,
+      "encounters": 19,
+      "equal_group_pct": 1.18,
+      "pct": 1.89,
+      "source_groups": 3,
+      "states": 26
+    },
+    "Toxic Egg": {
+      "acts": {
+        "1": 26,
+        "2": 30
+      },
+      "components": 7,
+      "encounters": 28,
+      "equal_group_pct": 2.74,
+      "pct": 4.07,
+      "source_groups": 7,
+      "states": 56
+    },
+    "Toy Ornithopter": {
+      "acts": {
+        "1": 26,
+        "2": 30
+      },
+      "components": 10,
+      "encounters": 28,
+      "equal_group_pct": 2.98,
+      "pct": 4.07,
+      "source_groups": 10,
+      "states": 56
+    },
+    "Tungsten Rod": {
+      "acts": {
+        "1": 3,
+        "2": 10
+      },
+      "components": 2,
+      "encounters": 12,
+      "equal_group_pct": 0.56,
+      "pct": 0.94,
+      "source_groups": 2,
+      "states": 13
+    },
+    "Turnip": {
+      "acts": {
+        "1": 6,
+        "2": 14
+      },
+      "components": 4,
+      "encounters": 16,
+      "equal_group_pct": 0.99,
+      "pct": 1.45,
+      "source_groups": 4,
+      "states": 20
+    },
+    "Unceasing Top": {
+      "acts": {
+        "1": 29,
+        "2": 28
+      },
+      "components": 5,
+      "encounters": 30,
+      "equal_group_pct": 2.63,
+      "pct": 4.14,
+      "source_groups": 5,
+      "states": 57
+    },
+    "Vajra": {
+      "acts": {
+        "1": 29,
+        "2": 39
+      },
+      "components": 12,
+      "encounters": 31,
+      "equal_group_pct": 3.77,
+      "pct": 4.94,
+      "source_groups": 12,
+      "states": 68
+    },
+    "Velvet Choker": {
+      "acts": {
+        "2": 9
+      },
+      "components": 3,
+      "encounters": 7,
+      "equal_group_pct": 0.48,
+      "pct": 0.65,
+      "source_groups": 3,
+      "states": 9
+    },
+    "War Paint": {
+      "acts": {
+        "1": 34,
+        "2": 35
+      },
+      "components": 10,
+      "encounters": 31,
+      "equal_group_pct": 3.47,
+      "pct": 5.01,
+      "source_groups": 10,
+      "states": 69
+    },
+    "Warped Tongs": {
+      "acts": {
+        "1": 9
+      },
+      "components": 2,
+      "encounters": 8,
+      "equal_group_pct": 1.07,
+      "pct": 0.65,
+      "source_groups": 2,
+      "states": 9
+    },
+    "Whetstone": {
+      "acts": {
+        "1": 10,
+        "2": 19
+      },
+      "components": 4,
+      "encounters": 21,
+      "equal_group_pct": 1.33,
+      "pct": 2.11,
+      "source_groups": 4,
+      "states": 29
+    },
+    "White Beast Statue": {
+      "acts": {
+        "1": 9,
+        "2": 32
+      },
+      "components": 5,
+      "encounters": 25,
+      "equal_group_pct": 1.65,
+      "pct": 2.98,
+      "source_groups": 5,
+      "states": 41
+    },
+    "Wing Boots": {
+      "acts": {},
+      "components": 0,
+      "encounters": 0,
+      "equal_group_pct": 0.0,
+      "pct": 0.0,
+      "source_groups": 0,
+      "states": 0
+    }
+  },
+  "retention_by_act": {
+    "1": {
+      "raw_occurrences": 1430,
+      "retention_pct": 72.8,
+      "validated_occurrences": 1041
+    },
+    "2": {
+      "raw_occurrences": 1161,
+      "retention_pct": 32.13,
+      "validated_occurrences": 373
+    }
+  },
+  "runtime_scope": {
+    "episodes": 64,
+    "full_rollout_states": 32,
+    "reset_checked_states": 1377
+  },
+  "schema": "a-corpus-coverage-analysis-v1",
+  "scope": "Frozen 1377 diagnostic states; no backend execution, pool admission, or training."
+}

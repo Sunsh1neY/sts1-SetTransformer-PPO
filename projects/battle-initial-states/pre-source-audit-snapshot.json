@@ -1,0 +1,18 @@
+{
+  "path": "C:\\Users\\19091\\Desktop\\sts2-initial-states\\reference\\battle-initial-states\\pilot-before-source-audit",
+  "reason": "Preserve original pilot evidence before repairing integral-float floor lookup",
+  "files": {
+    "candidate-ledger.jsonl": "d73b0a74c53f267dcea33754a8afa36ca806231d3ec3949e729884d3bd1d65e5",
+    "pilot-states.jsonl": "411bc8c72ed334a26ffb2511f85a33319073530899aa928f375d0dc653efe1cb",
+    "reconstruction-report.json": "8f4996532b48b518b812feb45f76a17fbc80229c297ed259ec45dad68d1282d7",
+    "runtime-report.json": "f4e09ae269c069c8bbb89a83bcc21ad463b8125cd71f0eeb64d5ed58877172f6",
+    "runtime-manifest.json": "2044ec71ea72be7084adab028964086c80f4638f62952397d6a084de8191224b",
+    "pilot-report.md": "0b2ac9a63f45719d4adb85adf0d69073edd92df388c86fc961595adae6a62529",
+    "source-inventory.json": "017d53d5ffaf4ec1b27e2b69efc7a1d3277e0cb0216e048acc3957d386e33340",
+    "reconstruct-pilot.py": "9ddc8edd8b1333ea05a2be0667648306e23bd031efd1db393170d3a986d3eeb7",
+    "initial_state.py": "21477f3a0cebc20cbf36fc7fc4541fe0430b8456a013d4813db4a10c0476029b",
+    "validate-runtime.py": "90af0b5d8f53f06fc9e9e256c9dd67b6c07992f6d969f600de993a3c294fdf95",
+    "project-tests.xml": "4b02aa3bcef979ad82bab5aa1074238d145aecb6e68e5fdaf1ace4d35dc76ef6",
+    "prerequisite-tests.xml": "a2a2b5a9b0eedcc98e07ee102eb9984f5a8f1d0418b39933817a47208d76a677"
+  }
+}

@@ -14,7 +14,7 @@ from sts.models.entities import EntityArchitecture, EntityBlock
 from sts.env.relic_state import DIMENSION as RELIC_DIM, relic_features
 
 FEATURE_DIMS = {**FEATURE_DIMS, "RELIC": RELIC_DIM, "CARD": CARD_V3_DIM}
-VERSION = "a-path-four-sab-pma-pointer-relic-v4"
+VERSION = "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
 TASKS = ("PLAY", "POTION", "ARMAMENTS", "DUAL_WIELD", "EXHAUST_ONE", "EXHUME", "HEADBUTT", "WARCRY", "DISCOVERY", "END_TURN")
 
 
@@ -166,13 +166,21 @@ class APathActorCritic(nn.Module):
         self.projections=nn.ModuleDict({k:nn.Linear(v+(CANDIDATE_CONTEXT_DIM if k=="PLAYER_GLOBAL" else 0),w) for k,v in FEATURE_DIMS.items()})
         self.type_embedding=nn.Embedding(len(TYPES),w)
         self.holds_fusion=nn.Linear(w+1,w,bias=False);nn.init.zeros_(self.holds_fusion.weight)
-        self.blocks=nn.ModuleList([EntityBlock(EntityArchitecture(layers=4)) for _ in range(4)])
+        self.shared_blocks=nn.ModuleList([EntityBlock(EntityArchitecture()) for _ in range(2)])
+        self.actor_blocks=nn.ModuleList([EntityBlock(EntityArchitecture()) for _ in range(2)])
+        self.critic_blocks=nn.ModuleList([EntityBlock(EntityArchitecture()) for _ in range(2)])
         self.final_norm=nn.LayerNorm(w)
+        self.critic_final_norm=nn.LayerNorm(w)
         self.pool_seed=nn.Parameter(torch.randn(1,1,w)*.02)
         self.pool=nn.MultiheadAttention(w,4,batch_first=True,dropout=0)
         self.pool_norm=nn.LayerNorm(w)
         self.pool_ff=nn.Sequential(nn.Linear(w,128),nn.GELU(),nn.Linear(128,w))
         self.pool_final=nn.LayerNorm(w)
+        self.critic_pool_seed=nn.Parameter(torch.randn(1,1,w)*.02)
+        self.critic_pool=nn.MultiheadAttention(w,4,batch_first=True,dropout=0)
+        self.critic_pool_norm=nn.LayerNorm(w)
+        self.critic_pool_ff=nn.Sequential(nn.Linear(w,128),nn.GELU(),nn.Linear(128,w))
+        self.critic_pool_final=nn.LayerNorm(w)
         self.task_query=nn.Embedding(len(TASKS),w)
         nn.init.normal_(self.task_query.weight,std=.02)
         self.source_key=nn.Linear(w,w,bias=False)
@@ -205,22 +213,32 @@ class APathActorCritic(nn.Module):
             raise ValueError("关系必须从敌人指向有效扣牌实体")
         linked=x.gather(1,held.clamp_min(0)[...,None].expand(-1,-1,64)).masked_fill(~mask[...,None],0)
         x=x+self.holds_fusion(torch.cat([linked,mask.float()[...,None]],-1))
-        for block in self.blocks:x=block(x,valid)
-        h=self.final_norm(x).masked_fill(~valid[...,None],0)
-        q=self.pool_seed.expand(len(x),-1,-1)
-        pooled=q+self.pool(q,h,h,key_padding_mask=~valid,need_weights=False)[0]
-        pooled=pooled+self.pool_ff(self.pool_norm(pooled))
-        return h,self.pool_final(pooled[:,0])
+        for block in self.shared_blocks:x=block(x,valid)
+        actor,critic=x,x
+        for block in self.actor_blocks:actor=block(actor,valid)
+        for block in self.critic_blocks:critic=block(critic,valid)
+        h=self.final_norm(actor).masked_fill(~valid[...,None],0)
+        critic=self.critic_final_norm(critic).masked_fill(~valid[...,None],0)
+        return h,self._pool_branch(critic,valid,critic=True)
+
+    def _pool_branch(self,h,valid,critic=False):
+        """Pool one branch without sharing actor/critic parameters."""
+        prefix='critic_' if critic else ''
+        q=getattr(self,prefix+'pool_seed').expand(len(h),-1,-1)
+        pooled=q+getattr(self,prefix+'pool')(q,h,h,key_padding_mask=~valid,need_weights=False)[0]
+        pooled=pooled+getattr(self,prefix+'pool_ff')(getattr(self,prefix+'pool_norm')(pooled))
+        return getattr(self,prefix+'pool_final')(pooled[:,0])
 
     def forward(self,batch):
-        h,g=self.encode_entities(batch);b,u,j=batch['target_index'].shape
+        h,critic_g=self.encode_entities(batch);b,u,j=batch['target_index'].shape
+        g=self._pool_branch(h,batch['entity_valid'])
         source=h.gather(1,batch['source_index'][...,None].expand(-1,-1,64))
         logits=(self.task_query(batch['task'])*self.source_key(source)).sum(-1)/8
         logits=torch.where(batch['task']==TASKS.index('END_TURN'),self.special(g).expand(-1,u),logits)
         idx=batch['target_index'];target=h.gather(1,idx.clamp_min(0).reshape(b,-1)[...,None].expand(-1,-1,64)).reshape(b,u,j,64)
         target_logits=(self.target_query(source)[:,:,None]*self.target_key(target)).sum(-1)/8
         target_logits=target_logits.masked_fill(idx<0,0)
-        return JointDistribution(logits,target_logits,batch['source_mask'],batch['target_mask']),self.value_head(g).squeeze(-1)
+        return JointDistribution(logits,target_logits,batch['source_mask'],batch['target_mask']),self.value_head(critic_g).squeeze(-1)
 
     @torch.no_grad()
     def act(self,batch,generator):

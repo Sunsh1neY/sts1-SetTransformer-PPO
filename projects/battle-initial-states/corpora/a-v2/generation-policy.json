@@ -1,0 +1,42 @@
+{
+  "counter": "Enumerate legal values of six registered independent periodic counters, at most two parent components per partition and identity; retain zero baseline, deduplicate unchanged states.",
+  "counter_identities": [
+    "Pen Nib",
+    "Nunchaku",
+    "Happy Flower",
+    "Incense Burner",
+    "Ink Bottle",
+    "Sundial"
+  ],
+  "deferred": [
+    "burning elites",
+    "SAB generalization corpus",
+    "formal training admission"
+  ],
+  "distribution_note": "No sampler weights are assigned. Uniform sampling of combined states changes family/source exposure.",
+  "low_hp": "Act 2, one parent per connected component, floor(max_hp*0.10) and floor(max_hp*0.25), minimum 1",
+  "policy": "bounded-coverage-augmentation-v1",
+  "randomness": "none; sorted hashes and explicit strata",
+  "rare_combinations": {
+    "block-retention": [
+      "Barricade",
+      "Body Slam",
+      "Entrench"
+    ],
+    "dropkick": [
+      "Dropkick",
+      "Thunderclap"
+    ],
+    "self-damage": [
+      "Rupture",
+      "Hemokinesis"
+    ],
+    "strength-payoff": [
+      "Inflame",
+      "Heavy Blade",
+      "Limit Break"
+    ]
+  },
+  "rare_parent_rule": "At most three distinct Act 2 parent components per partition and combination; append only missing base identities at upgrade zero.",
+  "split_rule": "Inherit parent partition and connected component; augmentation is not an independent source."
+}

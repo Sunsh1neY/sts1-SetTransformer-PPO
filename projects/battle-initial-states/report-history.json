@@ -1,0 +1,15 @@
+{
+  "schema": "battle-initial-state-report-history-v1",
+  "entries": [
+    {
+      "path": "reconstruction-final-report.md",
+      "snapshot": "reconstruction-final-report-pre-capacity-fix.md",
+      "sha256": "53a6802fed0296bb5c300d7b171cf4a3fbe6081dd26c053a6646c068fc0820ed"
+    },
+    {
+      "path": "act12-reconstruction-coverage.md",
+      "snapshot": "act12-reconstruction-coverage-pre-capacity-fix.md",
+      "sha256": "a9060e3c380eaee4d6791475bc78ce70384767acde0bd9420902b756119be616"
+    }
+  ]
+}

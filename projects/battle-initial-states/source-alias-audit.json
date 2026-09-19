@@ -1,0 +1,72 @@
+{
+  "conclusion": "No token-only aliases were found; all unresolved names are absent from the current registry and remain backend coverage/scope work.",
+  "current_registry": "sts/env/relic-state-registry.json",
+  "details": [
+    {
+      "blocked_rows": 128,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Blue Candle",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 94,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Dead Branch",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 6,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Gambling Chip",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 50,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Lizard Tail",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 20,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Medical Kit",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 83,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Potion Belt",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 10,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "SacredBark",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 11,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Strange Spoon",
+      "token_match": null
+    },
+    {
+      "blocked_rows": 52,
+      "classification": "backend_coverage_pending",
+      "registry_present": false,
+      "source_name": "Toolbox",
+      "token_match": null
+    }
+  ],
+  "schema": "source-relic-alias-audit-v1",
+  "training_pool_changed": false,
+  "unresolved_source_relic_rows": 454
+}

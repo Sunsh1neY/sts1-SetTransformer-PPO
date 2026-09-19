@@ -1,0 +1,502 @@
+[
+  {
+    "path": "docs/decisions.md",
+    "sha256": "cfc7d0f58126e69e2b9f1559b5e3dbd3e17e3b4ed4c78ab08032609495804def",
+    "bytes": 140097
+  },
+  {
+    "path": "scripts/audit-public-corpus.py",
+    "sha256": "513fd1442d541b45d36156702be2bf1c00a083ad99fc302ae1463c6a0b584231",
+    "bytes": 30933
+  },
+  {
+    "path": "scripts/expand-public-prefixes.py",
+    "sha256": "0b2f1fef70f4a1c75a0d88ae2d62400763b27a8101fd67bf0e288c96dbdcd1b2",
+    "bytes": 93019
+  },
+  {
+    "path": "sts/models/apath.py",
+    "sha256": "4341996676582430237059467717bffe87038af63b92e6e73807a9d8ddbe4bb4",
+    "bytes": 14043
+  },
+  {
+    "path": "sts/train/apath.py",
+    "sha256": "45861e016ee4d402755ec3df95fe8b1f4cb54edbfcc1dff7c4ef5869a2760cc9",
+    "bytes": 19182
+  },
+  {
+    "path": "tests/test_apath.py",
+    "sha256": "c10c5217583a33ca3de95a6b066d4190af8ee5539101356be84c110d6c17645c",
+    "bytes": 16345
+  },
+  {
+    "path": "projects/battle-initial-states/README.md",
+    "sha256": "56d1a748ca2820cd1874c1ae4862b08882345cdbe11e4c94030f399ffe3b3423",
+    "bytes": 5303
+  },
+  {
+    "path": "projects/battle-initial-states/a-corpus-admission.json",
+    "sha256": "7a5df10e718def83e5d6cf8ecf5fd448fcd5dd512367a08711bab881e8f47234",
+    "bytes": 813
+  },
+  {
+    "path": "projects/battle-initial-states/a-corpus-coverage.ipynb",
+    "sha256": "5f04be961d554dded16ed088dbdba4f787f0eedfe74a055976d2beb7b91c4a2b",
+    "bytes": 1476
+  },
+  {
+    "path": "projects/battle-initial-states/a-corpus-coverage.json",
+    "sha256": "b9b01b45c6c16dfa3a12d0587ddd5e1a21cab97822cf4f34fd89d62f928e7b2a",
+    "bytes": 112173
+  },
+  {
+    "path": "projects/battle-initial-states/a-corpus-coverage.md",
+    "sha256": "b2b5181de1896282edf964b76334e1f339e049a99a0efb399a84a94009a52b61",
+    "bytes": 21252
+  },
+  {
+    "path": "projects/battle-initial-states/act12-blocker-ledger.jsonl",
+    "sha256": "6b0f17b7c6b31115e19587f8d30c1d0f6810db111b0c74fd5c9b8d7ccfaa081a",
+    "bytes": 2149768
+  },
+  {
+    "path": "projects/battle-initial-states/act12-coverage-report.json",
+    "sha256": "8912832079b7b4c03a77d89b170bef7e1b9f35477dc4b9ac339ba38f079dc30a",
+    "bytes": 14029
+  },
+  {
+    "path": "projects/battle-initial-states/act12-reconstruction-coverage-pre-capacity-fix.md",
+    "sha256": "a9060e3c380eaee4d6791475bc78ce70384767acde0bd9420902b756119be616",
+    "bytes": 5598
+  },
+  {
+    "path": "projects/battle-initial-states/act12-reconstruction-coverage.md",
+    "sha256": "df492f8bd1a714cd2d1b8c9f87c1f1651d015db3e96747af16321eba9628bf0c",
+    "bytes": 3365
+  },
+  {
+    "path": "projects/battle-initial-states/admitted-a-corpus.jsonl",
+    "sha256": "0d484e0c9e54b94d7ba2a47da4a5a732738aed766575261dbdbbcec9365dc636",
+    "bytes": 13266474
+  },
+  {
+    "path": "projects/battle-initial-states/alias-audit.py",
+    "sha256": "1fddbbb6a35ba612905b7f429aabd388760f15e4b3f2f385aca31e4405b46958",
+    "bytes": 1812
+  },
+  {
+    "path": "projects/battle-initial-states/analyze-a-coverage.py",
+    "sha256": "7786ee3012ad9878cbf4e9b8f50f381830ae4ad3ed923b525034a443a67eaa10",
+    "bytes": 18530
+  },
+  {
+    "path": "projects/battle-initial-states/architecture-split-v5.md",
+    "sha256": "1eb872af2727b807eeb4efee3540c37591163467e2a21c1b7f85c06712c46c5c",
+    "bytes": 2716
+  },
+  {
+    "path": "projects/battle-initial-states/audit-source-compatibility.py",
+    "sha256": "28c9fd508abd3f716b8210032061693b53aa968267a905b38712e0aafcabee20",
+    "bytes": 10083
+  },
+  {
+    "path": "projects/battle-initial-states/backend-coverage-audit.json",
+    "sha256": "c00bedb44fe1e2c1124cbac49f5058fd7de03d19d6200356cd54a06c58198cc2",
+    "bytes": 2170
+  },
+  {
+    "path": "projects/battle-initial-states/backend-coverage-audit.py",
+    "sha256": "5564dcc3fefa5e348cd54f71a99e71d57f3f6c05ac7ca9d715527d45f364b595",
+    "bytes": 2369
+  },
+  {
+    "path": "projects/battle-initial-states/blocker-inventory.py",
+    "sha256": "7e76b2e24c8e92c1c3cf3922459b2ebccaacc0c85f6e7b5b2e4a1a908dea4ffe",
+    "bytes": 8193
+  },
+  {
+    "path": "projects/battle-initial-states/blocker-priority.json",
+    "sha256": "6a65f5303723f3a96204eeb6b9d20d75d0b459546a40af7602a3f71e9ce8b6df",
+    "bytes": 77371
+  },
+  {
+    "path": "projects/battle-initial-states/build-a-corpus.py",
+    "sha256": "d3092457816ee63e06195ad3e6def1de5b7767ce29960b6754e1e78ff9dbf619",
+    "bytes": 6188
+  },
+  {
+    "path": "projects/battle-initial-states/candidate-ledger.jsonl",
+    "sha256": "8513ddc52d42d337c1c651efe2cf6a77ed58c5a3bfcb5d8aba03102dbc5ccac1",
+    "bytes": 22257558
+  },
+  {
+    "path": "projects/battle-initial-states/certify-corpora.py",
+    "sha256": "2a0902e42604fb516a045ca52533cb2c5b8ed0da0fb5eb0156aa10fdf9d97a26",
+    "bytes": 5263
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/README.md",
+    "sha256": "4928073aaa8f5010c3352f3b77ecb2b39d4dbf3426c34ccf809eb3b7c201c8ef",
+    "bytes": 3572
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/admission.json",
+    "sha256": "7a5df10e718def83e5d6cf8ecf5fd448fcd5dd512367a08711bab881e8f47234",
+    "bytes": 813
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/analyze-a-coverage.py",
+    "sha256": "7786ee3012ad9878cbf4e9b8f50f381830ae4ad3ed923b525034a443a67eaa10",
+    "bytes": 18530
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/coverage.json",
+    "sha256": "b9b01b45c6c16dfa3a12d0587ddd5e1a21cab97822cf4f34fd89d62f928e7b2a",
+    "bytes": 112173
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/coverage.md",
+    "sha256": "b2b5181de1896282edf964b76334e1f339e049a99a0efb399a84a94009a52b61",
+    "bytes": 21252
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/initial_state.py",
+    "sha256": "493ae4783c48ea9f6ea9baa6bc448381fb0d0d26294b5ff97aa28e086ad1f3c0",
+    "bytes": 7210
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/legacy-admitted-a-corpus.jsonl",
+    "sha256": "0d484e0c9e54b94d7ba2a47da4a5a732738aed766575261dbdbbcec9365dc636",
+    "bytes": 13266474
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/manifest.json",
+    "sha256": "619a3a842c5fe81acc05ff4cea05d00f7a261aef1c729cc65ad55ab9839177ad",
+    "bytes": 2053
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/runtime-manifest.json",
+    "sha256": "cbda694358dd26b581e27a70365dbae4ce54eaa220e019f21ed575debe4c2f0d",
+    "bytes": 10761
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/runtime-report.json",
+    "sha256": "583849e89caa3940848e83141e106b6b1539fb186de48fb1349afc74240ed8a2",
+    "bytes": 2766576
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/source-inventory.json",
+    "sha256": "68cd06404c230e96bc7266a1d63d348e9dd23264193143fb7418633ec67b00a7",
+    "bytes": 781890
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/states.jsonl",
+    "sha256": "7caa4c51d09fc5e962c1fbdb611d3b0abbb671149907e37bee3a660fe7a87364",
+    "bytes": 10486588
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v1/validate-runtime.py",
+    "sha256": "90af0b5d8f53f06fc9e9e256c9dd67b6c07992f6d969f600de993a3c294fdf95",
+    "bytes": 8213
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/README.md",
+    "sha256": "f380480796edd8561d32baecea1334044784dade495bddf3f11ab673015bd763",
+    "bytes": 2651
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/additions.jsonl",
+    "sha256": "e20d97e3bbbd394fdb4ab1f71db80dea8460b2317d349381ba60a77f18f2ec54",
+    "bytes": 3917495
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/generation-policy.json",
+    "sha256": "d55d15e5ac94dd9ddb46080d5dfaa34f0223a92953b93a0920563f14dfe63f78",
+    "bytes": 1392
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/lineage.jsonl",
+    "sha256": "276ae6b1882533f4e65800709227998795aaf26b93d04295eec81984d05f1887",
+    "bytes": 126749
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/manifest.json",
+    "sha256": "c8806edb5cf6361de5673baecfb6c0650abdef81ad6165a0268a0653d2f1ea06",
+    "bytes": 1685
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/states.jsonl",
+    "sha256": "a0f82337269a4458fb8a79ff622d62b7993950a4c2bc32c4d73de49d46c7c2ce",
+    "bytes": 14404083
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/validation/coverage-and-integrity.json",
+    "sha256": "ff51c801e52d463f33f3862e590abfb8a268e3a4cb6726c373936263e8e7f687",
+    "bytes": 4149
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/validation/runtime-manifest.json",
+    "sha256": "8a2434078dce935147699d374dc004d3f32a7a24f56a5435cfc787ada6a2d1a1",
+    "bytes": 11769
+  },
+  {
+    "path": "projects/battle-initial-states/corpora/a-v2/validation/runtime-report.json",
+    "sha256": "04713ccb42c1ea7477b4335b100619b1f5b4fac58127a94b048f41beaf1f09bc",
+    "bytes": 780975
+  },
+  {
+    "path": "projects/battle-initial-states/coverage-report.py",
+    "sha256": "76e6d6151c1bd5f029fe131734dd3e39a3be5fc914ba49a267752b24365a487a",
+    "bytes": 8343
+  },
+  {
+    "path": "projects/battle-initial-states/derivable-priority.json",
+    "sha256": "3b3ae2bea6c3751ed1b71a03608f834a67e6ea6e7bb3f6ba6d712828bdcd5508",
+    "bytes": 13277
+  },
+  {
+    "path": "projects/battle-initial-states/derivable-priority.py",
+    "sha256": "bedf8e65ea0ad94653aaee03fcbc7510737354e1515212b70a21907271e65f7a",
+    "bytes": 4106
+  },
+  {
+    "path": "projects/battle-initial-states/experiment-config-review-v1.md",
+    "sha256": "d14e1d1f91974272dda7d21791c60798a3c100ff16c9b472a42a2f8fb9239e98",
+    "bytes": 11808
+  },
+  {
+    "path": "projects/battle-initial-states/experiment-protocol-v1.md",
+    "sha256": "fa22b687e39408d17c45fd8a73ad514a34b9b973f308838c8d63f287dec0a8dc",
+    "bytes": 6132
+  },
+  {
+    "path": "projects/battle-initial-states/experiments/smoke-v1/README.md",
+    "sha256": "147b737fb68af2795dc6c4c23cbc4505fae7f44ae66eb094a07b42c0cbb407ac",
+    "bytes": 3140
+  },
+  {
+    "path": "projects/battle-initial-states/experiments/smoke-v1/evaluation-cases.json",
+    "sha256": "2175e4743e0336849af2987818375e56455ef2c4772772ba9dbf2c69bfcfa95e",
+    "bytes": 107961
+  },
+  {
+    "path": "projects/battle-initial-states/experiments/smoke-v1/smoke-report.json",
+    "sha256": "43fb315891f17f8312dd808718a9fc25cb5fde3dde1cdc283c55832ad926ebce",
+    "bytes": 742665
+  },
+  {
+    "path": "projects/battle-initial-states/formal-run-v1.md",
+    "sha256": "c6d9d32ab84c9c6e430a0350b43899d4166859aa9acdbedd4809f05fb0a1c740",
+    "bytes": 2412
+  },
+  {
+    "path": "projects/battle-initial-states/initial_state.py",
+    "sha256": "493ae4783c48ea9f6ea9baa6bc448381fb0d0d26294b5ff97aa28e086ad1f3c0",
+    "bytes": 7210
+  },
+  {
+    "path": "projects/battle-initial-states/inventory-source.py",
+    "sha256": "c5820afb5cef19a272daf9a477f43d06b3a4ad10294e53d013e399bee766bdd1",
+    "bytes": 5561
+  },
+  {
+    "path": "projects/battle-initial-states/pilot-report.md",
+    "sha256": "f87c84f850d654234e19b550886287accd09c0d8d9fff593baff5d0e56d4deca",
+    "bytes": 9750
+  },
+  {
+    "path": "projects/battle-initial-states/pilot-states.jsonl",
+    "sha256": "7caa4c51d09fc5e962c1fbdb611d3b0abbb671149907e37bee3a660fe7a87364",
+    "bytes": 10486588
+  },
+  {
+    "path": "projects/battle-initial-states/potion-blocker-audit.json",
+    "sha256": "261d9e6a2c0afec1816f03a039fbeab1b366b697c4fc07451588ff1ff59467b7",
+    "bytes": 7757
+  },
+  {
+    "path": "projects/battle-initial-states/potion-blocker-audit.py",
+    "sha256": "a773213ab16068cd982e3bd10b87aa7f9f7224ad5468b51af59dcf75e7ad8fda",
+    "bytes": 2911
+  },
+  {
+    "path": "projects/battle-initial-states/potion-projection-report.json",
+    "sha256": "0ca6f912fd7b571ff34428aff839076f48725cff1b2f60445de6fe92eb23f624",
+    "bytes": 6755
+  },
+  {
+    "path": "projects/battle-initial-states/potion-projection-report.md",
+    "sha256": "8b8c74d319f8d466cca439c5cf1b658b9d9a7adefa2886bc33007b636b9fbafb",
+    "bytes": 3166
+  },
+  {
+    "path": "projects/battle-initial-states/potion-projection-report.py",
+    "sha256": "4f8d28755f8fd1f1476640d2d1367e166fd4d114bba260848a26adf24c5a09ef",
+    "bytes": 7547
+  },
+  {
+    "path": "projects/battle-initial-states/pre-source-audit-snapshot.json",
+    "sha256": "2a217280fce2c6c35b42cceab5590c34640fade2fb0f7829fee18f1e01cc6393",
+    "bytes": 1400
+  },
+  {
+    "path": "projects/battle-initial-states/prerequisite-tests.xml",
+    "sha256": "a2a2b5a9b0eedcc98e07ee102eb9984f5a8f1d0418b39933817a47208d76a677",
+    "bytes": 20838
+  },
+  {
+    "path": "projects/battle-initial-states/project-tests.xml",
+    "sha256": "bfc4aab444e9b22eb876048de340608d1e3548a2fd4e3b182c95ad9eae8d7918",
+    "bytes": 7688
+  },
+  {
+    "path": "projects/battle-initial-states/reconstruct-pilot.py",
+    "sha256": "2d518b1eafbc49f47bd56818fba5b751b8f9916a62f0c2732c226046a1abede7",
+    "bytes": 18226
+  },
+  {
+    "path": "projects/battle-initial-states/reconstruction-final-report-pre-capacity-fix.md",
+    "sha256": "53a6802fed0296bb5c300d7b171cf4a3fbe6081dd26c053a6646c068fc0820ed",
+    "bytes": 6105
+  },
+  {
+    "path": "projects/battle-initial-states/reconstruction-final-report.md",
+    "sha256": "dfd598868bd30d4cff3cd6c1d2cbb0aad805cab113cf2f572f311ded92616318",
+    "bytes": 5947
+  },
+  {
+    "path": "projects/battle-initial-states/reconstruction-report.json",
+    "sha256": "7fd5a7b74e19fd9f9c3377849f8982951808d4df07a3a1910eb1eaf771630134",
+    "bytes": 10606
+  },
+  {
+    "path": "projects/battle-initial-states/report-history.json",
+    "sha256": "c03343630ffd816a408558302d845b9563f81fe2444d7dadbbb176588aea0f96",
+    "bytes": 521
+  },
+  {
+    "path": "projects/battle-initial-states/run-corpus-smoke.py",
+    "sha256": "af6ce452e40876a8a549fb7ba2e7ffc79ebcc88ec2fdcfe4051b3a01c328c015",
+    "bytes": 6127
+  },
+  {
+    "path": "projects/battle-initial-states/runtime-manifest.json",
+    "sha256": "cbda694358dd26b581e27a70365dbae4ce54eaa220e019f21ed575debe4c2f0d",
+    "bytes": 10761
+  },
+  {
+    "path": "projects/battle-initial-states/runtime-report.json",
+    "sha256": "583849e89caa3940848e83141e106b6b1539fb186de48fb1349afc74240ed8a2",
+    "bytes": 2766576
+  },
+  {
+    "path": "projects/battle-initial-states/schema-decision.md",
+    "sha256": "eefe00dfb6aec7def5f5522f8da20d4e8a2653bc126c07e8786eee4d95cf663a",
+    "bytes": 4820
+  },
+  {
+    "path": "projects/battle-initial-states/small-corpus-pilot-audit.md",
+    "sha256": "1233a9eb4e911abd6fc350accc9a6db519a9484815bbe45d3e31cd9465c4b0a2",
+    "bytes": 14190
+  },
+  {
+    "path": "projects/battle-initial-states/source-alias-audit.json",
+    "sha256": "235560aba0b1f036dd87257053046f2fa84f799e63aa5edb95bfc8c7375673b1",
+    "bytes": 2093
+  },
+  {
+    "path": "projects/battle-initial-states/source-compatibility-report.md",
+    "sha256": "c6564addc4a0ddc3c86fa1f1c518314e17636b01227cc89a6be2df1318d3f698",
+    "bytes": 11029
+  },
+  {
+    "path": "projects/battle-initial-states/source-compatibility.json",
+    "sha256": "a1f0664c8f77844ea28a5af7373a4dbbc67fa5b3c4d11da5bf38fc44a8790be8",
+    "bytes": 253060
+  },
+  {
+    "path": "projects/battle-initial-states/source-inventory.json",
+    "sha256": "68cd06404c230e96bc7266a1d63d348e9dd23264193143fb7418633ec67b00a7",
+    "bytes": 781890
+  },
+  {
+    "path": "projects/battle-initial-states/source_fields.py",
+    "sha256": "e70b7bdfbab4c34992351813bf2e858602ead73479e15b9d33223d2464561947",
+    "bytes": 606
+  },
+  {
+    "path": "projects/battle-initial-states/tensorboard-plan-v1.md",
+    "sha256": "a30321fecacb7d426c973acb1c9be997de4d9dab0d21bc47e3a6d447baf10502",
+    "bytes": 1808
+  },
+  {
+    "path": "projects/battle-initial-states/test_corpus_versions.py",
+    "sha256": "3152d534a33795f43c16f198307d2323614ef25ae21b2cda3758d1cb75976717",
+    "bytes": 2681
+  },
+  {
+    "path": "projects/battle-initial-states/test_initial_state.py",
+    "sha256": "5ccba4290056b5bf75b90cc554f5df89ef7ec850c9bf3ecc01278789ea264bec",
+    "bytes": 3860
+  },
+  {
+    "path": "projects/battle-initial-states/test_potion_projection.py",
+    "sha256": "47f21680bf48fe75f7c6fcbaef9220947dda1db3799e62215223e49c6cdb92b6",
+    "bytes": 2399
+  },
+  {
+    "path": "projects/battle-initial-states/test_potion_reducer.py",
+    "sha256": "e0c2163b37eed2af50efc7b040661c307f31fd3959c266152ad2d060bb00af5d",
+    "bytes": 1403
+  },
+  {
+    "path": "projects/battle-initial-states/test_provenance.py",
+    "sha256": "10a38be4dcfa52dac9edd80e9abde20d7aa74ec52e2fbd8a006227beac8a1a64",
+    "bytes": 2175
+  },
+  {
+    "path": "projects/battle-initial-states/test_source_compatibility.py",
+    "sha256": "5e278bae17691801747ae13f3834b3e07327e01e5b2db18505a8958535601d10",
+    "bytes": 2140
+  },
+  {
+    "path": "projects/battle-initial-states/validate-runtime.py",
+    "sha256": "d346890ce3539dd93ff727633433c135d9f728c97ccdde4b20e04424ca8afc20",
+    "bytes": 8867
+  },
+  {
+    "path": "projects/battle-initial-states/version-corpora.py",
+    "sha256": "33b9c38e0ad657c104d1ba40b3b1e5b8c2b6098f2bf26be9c65b4757d922e985",
+    "bytes": 9753
+  },
+  {
+    "path": "scripts/run-a-corpus-ppo.py",
+    "sha256": "621bec33bfad98f01704d676cd2dcde6b6bda8ae2f86c9356cf1f792096cc26f",
+    "bytes": 12320
+  },
+  {
+    "path": "sts/env/acorpus.py",
+    "sha256": "183d1ddd7a40a45c688b3ddadb4b73b390322ffbbbda5f58e9e2666aa3ee7c02",
+    "bytes": 6355
+  },
+  {
+    "path": "sts/train/corpus_evaluation.py",
+    "sha256": "af758b983df2dec710771d1b2123064a1f5f8ab931f99d5b65a3863dc4793185",
+    "bytes": 4386
+  },
+  {
+    "path": "tests/test_acorpus_smoke.py",
+    "sha256": "c57126b6a65582408aa98b334df69f58819e373eaa43d66ddc30fa9a54b9061d",
+    "bytes": 2773
+  },
+  {
+    "path": "tests/test_apath_split_trunk.py",
+    "sha256": "614869af22ce220f9fd1737f8f8b34e9a77eb41a16c3a62e142147c74d14c449",
+    "bytes": 2836
+  },
+  {
+    "path": "tests/test_corpus_evaluation.py",
+    "sha256": "dba5384807ec73c3164dacb8faf3968548b47bdffe497c14605a38295627c109",
+    "bytes": 2408
+  }
+]

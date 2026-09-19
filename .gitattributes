@@ -19,3 +19,32 @@ sts/train/comparison.py text eol=lf
 # Preserve audited document-source bytes and migration hashes across checkouts.
 archive/** -text whitespace=cr-at-eol,-trailing-space,-blank-at-eof
 docs/plans/sts-relic-audit-and-import-plan-v1.md -text whitespace=cr-at-eol,-trailing-space,-blank-at-eof
+
+# Preserve frozen corpus artifacts and launch-time source bytes across checkouts.
+projects/battle-initial-states/** -text whitespace=cr-at-eol,-trailing-space,-blank-at-eof
+docs/a-first-initial-state-dataset-plan.md -text whitespace=cr-at-eol,-trailing-space
+sts/env/relic_card_state.py -text whitespace=cr-at-eol
+sts/env/relic_state.py -text whitespace=cr-at-eol
+sts/env/relic-state-registry.json -text whitespace=cr-at-eol
+sts/env/relics.py -text whitespace=cr-at-eol
+patches/lightspeed-relic-state.patch -text whitespace=cr-at-eol
+sts/battle_reward_v2.py -text whitespace=cr-at-eol
+sts/train/apath.py -text whitespace=cr-at-eol
+sts/models/apath.py -text whitespace=cr-at-eol
+sts/models/entities.py -text whitespace=cr-at-eol
+sts/env/apath.py -text whitespace=cr-at-eol
+sts/env/a-path-training-pool.json -text whitespace=cr-at-eol
+sts/env/entities.py -text whitespace=cr-at-eol
+sts/env/ironclad.py -text whitespace=cr-at-eol
+sts/env/full_card_public.py -text whitespace=cr-at-eol
+sts/env/selection.py -text whitespace=cr-at-eol
+sts/train/ppo.py -text whitespace=cr-at-eol
+sts/env/ironclad-expansion-contract.json -text whitespace=cr-at-eol
+sts/env/ironclad-registry.json -text whitespace=cr-at-eol
+sts/models/unified-entity-contract.json -text whitespace=cr-at-eol
+scripts/run-a-path-ppo.py -text whitespace=cr-at-eol
+eval_seeds.json -text whitespace=cr-at-eol
+sts/env/acorpus.py -text whitespace=cr-at-eol
+scripts/run-a-corpus-ppo.py -text whitespace=cr-at-eol
+sts/train/corpus_evaluation.py -text whitespace=cr-at-eol
+scripts/expand-public-prefixes.py -text whitespace=cr-at-eol

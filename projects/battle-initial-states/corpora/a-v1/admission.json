@@ -1,0 +1,21 @@
+{
+  "admission_standard": "backend-validated",
+  "artifact_sha256": "0d484e0c9e54b94d7ba2a47da4a5a732738aed766575261dbdbbcec9365dc636",
+  "canonical_source_backbone_count": 1377,
+  "configured_instance_count": 395,
+  "provenance_levels": {
+    "unverified": 1377
+  },
+  "representative_rollout_state_count": 32,
+  "runtime_report_sha256": "583849e89caa3940848e83141e106b6b1539fb186de48fb1349afc74240ed8a2",
+  "schema": "backend-validated-a-corpus-v1",
+  "scope_projected_instance_count": 792,
+  "scope_projected_occurrence_count": 1406,
+  "source_backbone_count": 1377,
+  "source_certified_required": false,
+  "source_derived_canonical_source_backbone_count": 2292,
+  "source_derived_occurrences": 2330,
+  "source_group_count": 138,
+  "state_count": 1377,
+  "training_pool_admitted": false
+}

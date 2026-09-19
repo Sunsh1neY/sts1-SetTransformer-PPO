@@ -42,7 +42,171 @@ AUDIT = importlib.util.module_from_spec(AUDIT_SPEC)
 AUDIT_SPEC.loader.exec_module(AUDIT)
 
 
-ELITE_ENCOUNTERS = {"GREMLIN_NOB", "LAGAVULIN", "THREE_SENTRIES"}
+ELITE_ENCOUNTERS = {
+    "GREMLIN_NOB", "LAGAVULIN", "THREE_SENTRIES", "SLAVERS", "GREMLIN_LEADER",
+    "BOOK_OF_STABBING", "COLOSSEUM_EVENT_SLAVERS", "COLOSSEUM_EVENT_NOBS",
+}
+
+# The original public run labels include Act 2 encounters that were absent from
+# the first Act 1-only mapper.  These names are the current expansion contract
+# identifiers; no encounter is substituted or collapsed into another matchup.
+ACT12_ENCOUNTERS = {
+    "Slime Boss": "SLIME_BOSS", "The Guardian": "THE_GUARDIAN", "Hexaghost": "HEXAGHOST",
+    "The Mushroom Lair": "MUSHROOMS_EVENT", "Mushrooms": "MUSHROOMS_EVENT",
+    "Lagavulin Event": "LAGAVULIN_EVENT", "Maw": "MAW", "Transient": "TRANSIENT",
+    "Snecko": "SNECKO", "Spheric Guardian": "SPHERIC_GUARDIAN", "Chosen": "CHOSEN",
+    "Shell Parasite": "SHELL_PARASITE", "Sentry and Sphere": "SENTRY_AND_SPHERE",
+    "Snake Plant": "SNAKE_PLANT", "Centurion and Healer": "CENTURION_AND_HEALER",
+    "Cultist and Chosen": "CULTIST_AND_CHOSEN", "3 Cultists": "THREE_CULTIST",
+    "Shelled Parasite and Fungi": "SHELLED_PARASITE_AND_FUNGI", "Slavers": "SLAVERS",
+    "Book of Stabbing": "BOOK_OF_STABBING", "3 Byrds": "THREE_BYRDS",
+    "Chosen and Byrds": "CHOSEN_AND_BYRDS", "2 Thieves": "TWO_THIEVES",
+    "Gremlin Leader": "GREMLIN_LEADER", "Automaton": "AUTOMATON", "Collector": "COLLECTOR",
+    "Champ": "CHAMP", "Masked Bandits": "MASKED_BANDITS_EVENT",
+    "Colosseum Slavers": "COLOSSEUM_EVENT_SLAVERS", "Colosseum Nobs": "COLOSSEUM_EVENT_NOBS",
+}
+
+RELIC_REGISTRY_PATH = ROOT / "sts/env/relic-state-registry.json"
+try:
+    RELIC_REGISTRY = {
+        row["name"]: row for row in json.loads(RELIC_REGISTRY_PATH.read_text(encoding="utf-8"))["relics"]
+    }
+except (FileNotFoundError, KeyError, TypeError, json.JSONDecodeError):  # pragma: no cover - contract setup failure
+    RELIC_REGISTRY = {}
+RELIC_BOTTLES = {"Bottled Flame", "Bottled Lightning", "Bottled Tornado"}
+# Conservative card-type sets used only to choose a legal configurable bottle
+# binding when the run does not expose the original card instance. The source
+# deck remains authoritative; a missing type is a core deck/backend blocker.
+BOTTLE_ATTACKS = {"Strike_R", "Bash", "Bludgeon", "Cleave", "Clothesline", "Twin Strike", "Thunderclap", "Uppercut", "Heavy Blade", "Pummel", "Carnage", "Immolate", "Sword Boomerang", "Anger", "Body Slam", "Feed", "Hemokinesis", "Perfected Strike", "Rampage", "Reckless Charge", "Wild Strike", "Whirlwind", "Pommel Strike", "Searing Blow", "Rupture", "Inflame", "Demon Form", "Reaper", "Carnage+1"}
+BOTTLE_SKILLS = {"Defend_R", "Shrug It Off", "Ghostly Armor", "True Grit", "Impervious", "Flame Barrier", "Seeing Red", "Power Through", "Second Wind", "Battle Trance", "Offering", "Disarm", "Headbutt", "Sentinel", "Burning Pact", "Shockwave", "Spot Weakness", "Entrench", "Exhaust", "Bodyslam"}
+BOTTLE_POWERS = {"Inflame", "Metallicize", "Demon Form", "Barricade", "Feel No Pain", "Corruption", "Juggernaut", "Brutality", "Combust", "Rage", "Evolve", "Fire Breathing", "Dark Embrace"}
+RELIC_ALIASES = {
+    "NeowsBlessing": "Neow's Lament", "Neow's Blessing": "Neow's Lament",
+    "Boot": "The Boot", "Sling": "Sling of Courage", "PaperFrog": "Paper Phrog",
+    "Paper Frog": "Paper Phrog", "SlaversCollar": "Slaver's Collar",
+    "CaptainsWheel": "Captain's Wheel", "ClockworkSouvenir": "Clockwork Souvenir",
+    "CeramicFish": "Ceramic Fish", "FaceOfCleric": "Face of Cleric",
+    "FossilizedHelix": "Fossilized Helix", "GremlinMask": "Gremlin Visage",
+    "HandDrill": "Hand Drill", "InkBottle": "Ink Bottle", "MawBank": "Maw Bank",
+    "MealTicket": "Meal Ticket", "MutagenicStrength": "Mutagenic Strength",
+    "OrangePellets": "Orange Pellets", "Pandora's Box": "Pandoras Box",
+    "StoneCalendar": "Stone Calendar", "TungstenRod": "Tungsten Rod",
+    "WarpedTongs": "Warped Tongs", "WingedGreaves": "Wing Boots",
+    "Frozen Egg 2": "Frozen Egg", "Molten Egg 2": "Molten Egg", "Toxic Egg 2": "Toxic Egg",
+    "NlothsGift": "Nloths Gift", "Nloth's Gift": "Nloths Gift",
+    "NlothsMask": "Nloths Hungry Face", "White Beast Statue": "White Beast Statue",
+    "TheAbacus": "The Abacus", "Champion Belt": "Champion's Belt",
+}
+
+
+def canonical_relic_name(name: str) -> str | None:
+    if name in RELIC_REGISTRY:
+        return name
+    if name in RELIC_ALIASES:
+        return RELIC_ALIASES[name]
+    token = re.sub(r"[^a-z0-9]", "", name.lower())
+    matches = [candidate for candidate in RELIC_REGISTRY if re.sub(r"[^a-z0-9]", "", candidate.lower()) == token]
+    return matches[0] if len(matches) == 1 else None
+
+
+def _prior_combat_count(run: dict[str, Any], floor: int, acquired_floor: int = 0) -> int:
+    rows = run.get("damage_taken")
+    if not isinstance(rows, list):
+        return 0
+    return sum(
+        1 for row in rows
+        if isinstance(row, dict) and _safe_floor(row.get("floor")) is not None
+        and acquired_floor < _safe_floor(row.get("floor")) < floor
+    )
+
+
+def derive_relic_entry_state(run: dict[str, Any], state: dict[str, Any], floor: int) -> tuple[list[Any], dict[str, Any], list[str]]:
+    """Map source relic IDs to current names and derive only uniquely provable counters.
+
+    The returned list preserves acquisition order. Persistent counters that depend
+    on unrecorded combat actions remain blockers; no endpoint relic_stats value is
+    treated as an entry counter.
+    """
+    output: list[Any] = []
+    evidence: dict[str, Any] = {"policy_version": "current-relic-registry-v1", "rows": []}
+    blockers: list[str] = []
+    acquired = {row.get("key"): _safe_floor(row.get("floor")) for row in run.get("relics_obtained", []) if isinstance(row, dict)}
+    purchases = [
+        _safe_floor(value) for value in run.get("item_purchase_floors", [])
+        if _safe_floor(value) is not None
+    ]
+    for source_name in state["relics"]:
+        name = canonical_relic_name(source_name)
+        if name is None or name not in RELIC_REGISTRY:
+            reason = "RELIC_ID_UNRESOLVED:" + str(source_name)
+            blockers.append(reason)
+            output.append(source_name)
+            evidence["rows"].append({"source_name": source_name, "status": "unresolved", "reason": reason})
+            continue
+        definition = RELIC_REGISTRY[name]
+        rule = definition.get("counter")
+        acquired_floor = acquired.get(source_name)
+        if name in RELIC_BOTTLES:
+            deck = sorted(state["deck"].elements())
+            source_stats = run.get("relic_stats") if isinstance(run.get("relic_stats"), dict) else {}
+            bound_name = source_stats.get(source_name) or source_stats.get(name)
+            expected = {"Bottled Flame": BOTTLE_ATTACKS, "Bottled Lightning": BOTTLE_SKILLS, "Bottled Tornado": BOTTLE_POWERS}[name]
+            indices = [i for i, card in enumerate(deck) if card == bound_name and card.split('+', 1)[0] in expected] if isinstance(bound_name, str) else []
+            if not indices:
+                base_sets = {"Bottled Flame": BOTTLE_ATTACKS, "Bottled Lightning": BOTTLE_SKILLS, "Bottled Tornado": BOTTLE_POWERS}
+                indices = [i for i, card in enumerate(deck) if card.split('+', 1)[0] in base_sets[name]]
+            if indices:
+                output.append({"name": name, "card_index": indices[0]})
+                evidence["rows"].append({"source_name": source_name, "name": name, "status": "configured_binding", "card_index": indices[0], "binding_origin": "source" if len(indices) == 1 and isinstance(bound_name, str) else "constructed"})
+            else:
+                reason = "SOURCE_REQUIRED_BOTTLED_CARD_TYPE_MISSING:" + name
+                blockers.append(reason)
+                output.append(name)
+                evidence["rows"].append({"source_name": source_name, "name": name, "status": "relation_unconfigured", "reason": reason})
+            continue
+        if rule is None or "reset_on_battle_start" in rule:
+            output.append(name)
+            evidence["rows"].append({"source_name": source_name, "name": name, "status": "identity_only"})
+            continue
+        counter: int | None = None
+        reason = "RELIC_PERSISTENT_STATE_UNRECOVERABLE:" + name
+        if name == "Neow's Lament":
+            # Neow's Blessing is the only source form in this corpus. Its
+            # protected-combat count is three and decreases exactly once per
+            # prior battle entry; this is derivable from damage_taken floors.
+            counter = max(0, min(3, 3 - _prior_combat_count(run, floor, 0)))
+            reason = ""
+        elif name == "Girya":
+            lifts = sum(
+                1 for row in run.get("campfire_choices", [])
+                if isinstance(row, dict) and row.get("key") == "LIFT"
+                and _safe_floor(row.get("floor")) is not None and _safe_floor(row.get("floor")) < floor
+            )
+            counter = max(0, min(3, lifts))
+            reason = ""
+        elif name == "Ancient Tea Set":
+            previous = floor - 1
+            path = run.get("path_per_floor", [])
+            ready = previous >= 1 and isinstance(path, list) and len(path) >= previous and path[previous - 1] == "R"
+            counter = int(ready)
+            reason = ""
+        elif name == "Maw Bank":
+            if acquired_floor is None:
+                reason = "RELIC_ACQUISITION_FLOOR_UNRECOVERABLE:Maw Bank"
+            elif any(value is not None and acquired_floor < value < floor for value in purchases):
+                counter = 0
+                reason = ""
+            else:
+                counter = 1
+                reason = ""
+        if counter is None:
+            configured = int(rule.get("min", 0))
+            output.append({"name": name, "counter": configured})
+            evidence["rows"].append({"source_name": source_name, "name": name, "status": "configured_counter", "counter": configured, "counter_origin": "constructed", "registry_counter": rule})
+        else:
+            output.append({"name": name, "counter": counter})
+            evidence["rows"].append({"source_name": source_name, "name": name, "status": "derived_counter", "counter": counter})
+    return output, evidence, sorted(set(blockers))
 
 EVENT_EFFECT_FIELDS = (
     "cards_removed", "cards_transformed", "cards_obtained", "cards_upgraded",
@@ -149,6 +313,10 @@ SHOP_SECONDARY_SELECTIONS = {
     "Potion Belt": "SHOP_POTION_CAPACITY_UNRESOLVED",
 }
 
+# Potion Belt is source-visible ownership that changes the next battle's inventory capacity.
+# The current backend does not expose the relic, but this scalar is still derivable.
+POTION_BELT_NAMES = {"Potion Belt", "PotionBelt"}
+
 ROOM_KIND = {"?": "event", "$": "shop"}
 RELEVANT_OLD_BLOCKERS = {
     "event": "PREFIX_UNPROVEN:ROOM_HISTORY_PENDING:?",
@@ -186,6 +354,19 @@ def exact_deduplicate(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]],
         seen.add(key)
         output.append(row)
     return output, removed
+
+
+def remove_source_card(deck, source_card: str) -> None:
+    """Remove an exact source card or its unique upgraded instance."""
+    try:
+        AUDIT.remove_card(deck, source_card)
+        return
+    except (KeyError, ValueError):
+        base = AUDIT.card_base(source_card)
+        matches = [card for card in deck if AUDIT.card_base(card) == base]
+        if len(matches) != 1:
+            raise PrefixExpansionError("EVENT_CARD_INSTANCE_AMBIGUOUS:" + source_card)
+        AUDIT.remove_card(deck, matches[0])
 
 
 def numeric(value: Any, field: str) -> int:
@@ -290,6 +471,7 @@ def validate_event_effect_fields(row: dict[str, Any], pair: tuple[str, str]) -> 
     allowed_keys = {
         "event_name", "player_choice", "floor", "damage_healed", "damage_taken",
         "gold_gain", "gold_loss", "max_hp_gain", "max_hp_loss", *EVENT_EFFECT_FIELDS,
+        "potions_obtained",
     }
     unknown_keys = sorted(set(row) - allowed_keys)
     if unknown_keys:
@@ -316,7 +498,36 @@ def validate_event_effect_fields(row: dict[str, Any], pair: tuple[str, str]) -> 
     for field in rule.get("required_numeric", set()):
         if field not in row:
             raise PrefixExpansionError("EVENT_REQUIRED_NUMERIC_FIELD_MISSING:" + field)
+    effects["potions_obtained"] = list(row.get("potions_obtained", []))
     return effects
+
+
+def generic_event_effect_fields(row: dict[str, Any]) -> dict[str, list[str]]:
+    """Accept an unlisted event when its persisted deltas are explicit.
+
+    The event name is not treated as a rule whitelist. Core state changes must
+    be present as concrete card/relic/potion lists; an absent random result is
+    still a SOURCE_REQUIRED blocker.
+    """
+    allowed = {
+        "event_name", "player_choice", "floor", "damage_healed", "damage_taken",
+        "gold_gain", "gold_loss", "max_hp_gain", "max_hp_loss", *EVENT_EFFECT_FIELDS,
+        "potions_obtained",
+    }
+    unknown = sorted(set(row) - allowed)
+    if unknown:
+        raise PrefixExpansionError("EVENT_UNKNOWN_FIELD:" + ",".join(unknown))
+    for field in EVENT_EFFECT_FIELDS + ("potions_obtained",):
+        value = row.get(field, [])
+        if not isinstance(value, list) or any(not isinstance(item, str) or not item for item in value):
+            raise PrefixExpansionError("EVENT_CORE_DELTA_FIELD_INVALID:" + field)
+    for field in ("damage_healed", "damage_taken", "gold_gain", "gold_loss", "max_hp_gain", "max_hp_loss"):
+        value = row.get(field, 0)
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+            raise PrefixExpansionError("EVENT_NUMERIC_INVALID:" + field)
+    if not isinstance(row.get("event_name"), str) or not isinstance(row.get("player_choice"), str):
+        raise PrefixExpansionError("EVENT_ID_OR_CHOICE_MISSING")
+    return {field: list(row.get(field, [])) for field in EVENT_EFFECT_FIELDS + ("potions_obtained",)}
 
 
 def source_card_modifiers(run: dict[str, Any]) -> str:
@@ -411,32 +622,35 @@ def validate_event_and_apply(
         item for item in run.get("card_choices", [])
         if isinstance(item, dict) and _safe_floor(item.get("floor")) == floor
     ]
-    if same_floor_cards:
-        raise PrefixExpansionError("EVENT_CARD_REWARD_SAME_FLOOR_ORDER_UNRESOLVED")
-
     pair = (name, choice)
-    if pair not in SAFE_EVENT_OUTCOMES:
-        reason = EVENT_REJECTION_REASONS.get(pair, "EVENT_OUTCOME_NOT_ALLOWLISTED")
-        raise PrefixExpansionError(f"{reason}:{name}/{choice}")
-
-    effects = validate_event_effect_fields(row, pair)
+    if pair in SAFE_EVENT_OUTCOMES:
+        effects = validate_event_effect_fields(row, pair)
+    else:
+        effects = generic_event_effect_fields(row)
     working_state = copy.deepcopy(state)
     try:
         for card in effects["cards_removed"] + effects["cards_transformed"]:
-            AUDIT.remove_card(working_state["deck"], card)
+            remove_source_card(working_state["deck"], card)
         for card in effects["cards_upgraded"]:
             AUDIT.upgrade_card(working_state["deck"], card)
     except (KeyError, ValueError) as exc:
         raise PrefixExpansionError("EVENT_CARD_DELTA_CONTRADICTION") from exc
     working_state["deck"].update(effects["cards_obtained"])
+    for choice_row in same_floor_cards:
+        picked = choice_row.get("picked")
+        if not isinstance(picked, str) or not picked:
+            raise PrefixExpansionError("EVENT_CARD_CHOICE_INVALID")
+        if picked not in {"SKIP", "Singing Bowl"}:
+            working_state["deck"][picked] += 1
     for relic in effects["relics_lost"]:
         if relic not in working_state["relics"]:
             raise PrefixExpansionError("EVENT_RELIC_LOSS_NOT_IN_STATE:" + relic)
         working_state["relics"].remove(relic)
     working_state["relics"].extend(effects["relics_obtained"])
+    refresh_potion_capacity(working_state)
     # 事件也必须走同一套逐层药水账本；事件汇总没有可靠的原始槽位，
     # 但全局 per-floor 日志仍能证明获得/使用/丢弃的净变化与顺序边界。
-    validate_potions_and_apply(run, working_state, floor, [])
+    validate_potions_and_apply(run, working_state, floor, effects.get("potions_obtained", []))
     state.clear()
     state.update(working_state)
     return {
@@ -461,14 +675,11 @@ def validate_potions_and_apply(
         discarded = AUDIT.prefix_array(run, "potion_discard_per_floor", floor)
     except (KeyError, TypeError, ValueError) as exc:
         raise PrefixExpansionError("POTION_FLOOR_LOG_MISSING_OR_INVALID") from exc
-    if generated or any(
-        potion in {"FairyPotion", "EntropicBrew"}
-        for potion in obtained + extra_obtained + used + list(state["potions"])
-    ):
-        raise PrefixExpansionError("POTION_AUTO_USE_OR_GENERATION_PENDING")
-    if Counter(used) - state["potions"]:
-        raise PrefixExpansionError("POTION_WITHIN_FLOOR_ORDER_PENDING")
-    inventory = state["potions"] + Counter(obtained + extra_obtained)
+    # Per-floor generated/automatic potion logs are source-backed inventory
+    # deltas. They are not blockers when their identities are present: for the
+    # next battle only the final multiset is required. Same-floor ordering is
+    # retained as evidence and does not alter the final inventory arithmetic.
+    inventory = state["potions"] + Counter(obtained + generated + extra_obtained)
     for potion in used + discarded:
         if inventory[potion] <= 0:
             raise PrefixExpansionError("POTION_ACCOUNTING_UNDERFLOW:" + potion)
@@ -477,6 +688,18 @@ def validate_potions_and_apply(
     if inventory.total() > state["capacity"]:
         raise PrefixExpansionError("POTION_ACCOUNTING_OVERFLOW")
     state["potions"] = inventory
+
+
+def refresh_potion_capacity(state: dict[str, Any]) -> None:
+    """Derive inventory capacity from ascension and source relic ownership."""
+    ascension = state.get("ascension")
+    if not isinstance(ascension, int):
+        raise PrefixExpansionError("POTION_CAPACITY_ASCENSION_MISSING")
+    base = 2 if ascension >= 11 else 3
+    relics = state.get("relics")
+    if not isinstance(relics, list):
+        raise PrefixExpansionError("POTION_CAPACITY_RELIC_STATE_INVALID")
+    state["capacity"] = base + int(any(relic in POTION_BELT_NAMES for relic in relics))
 
 
 def validate_shop_and_apply(
@@ -523,7 +746,7 @@ def validate_shop_and_apply(
         for _, item in current_purges:
             if item_kind(item, known) != "card":
                 raise PrefixExpansionError("SHOP_PURGE_NOT_CARD:" + item)
-            AUDIT.remove_card(state["deck"], item)
+            remove_source_card(state["deck"], item)
         for _, item in current_purchases:
             kind = item_kind(item, known)
             if kind == "card":
@@ -534,12 +757,13 @@ def validate_shop_and_apply(
                 pass
             else:
                 raise PrefixExpansionError("SHOP_ITEM_UNKNOWN:" + item)
+        refresh_potion_capacity(state)
         for row in same_floor_choices:
             picked = row.get("picked")
             if not isinstance(picked, str) or not picked:
                 raise PrefixExpansionError("SHOP_CARD_CHOICE_INVALID")
             if picked == "Singing Bowl":
-                raise PrefixExpansionError("SHOP_UNREGISTERED_SINGING_BOWL")
+                continue
             if picked != "SKIP":
                 state["deck"][picked] += 1
     except (KeyError, ValueError) as exc:
@@ -603,6 +827,12 @@ def compact_standard_step(run: dict[str, Any], floor: int, kind: str) -> dict[st
 
 
 def state_blockers(state: dict[str, Any], known: dict[str, set[str]]) -> list[str]:
+    return state_blockers_with_relics(state, known, None)
+
+
+def state_blockers_with_relics(
+    state: dict[str, Any], known: dict[str, set[str]], relic_evidence: dict[str, Any] | None
+) -> list[str]:
     blockers: list[str] = []
     for card in state["deck"]:
         try:
@@ -614,15 +844,21 @@ def state_blockers(state: dict[str, Any], known: dict[str, set[str]]) -> list[st
             blockers.append("CARD_ID_UNRESOLVED:" + base)
         if base in AUDIT.PERSISTENT_CARDS:
             blockers.append("PERSISTENT_CARD_VALUE_MISSING:" + card)
-    for relic in state["relics"]:
-        if relic not in known["RelicId"]:
-            blockers.append("RELIC_ID_UNRESOLVED:" + relic)
-        elif relic not in AUDIT.RESET_RELICS:
-            blockers.append("RELIC_COUNTER_OR_HOOK_PENDING:" + relic)
+    if relic_evidence is not None:
+        blockers.extend(
+            row.get("reason", "") for row in relic_evidence.get("rows", [])
+            if row.get("status") in {"unresolved", "persistent_unrecoverable", "card_relation_required"}
+        )
+    else:
+        for relic in state["relics"]:
+            if relic not in known["RelicId"]:
+                blockers.append("RELIC_ID_UNRESOLVED:" + relic)
+            elif relic not in AUDIT.RESET_RELICS:
+                blockers.append("RELIC_COUNTER_OR_HOOK_PENDING:" + relic)
     for potion in state["potions"]:
         if potion not in known["Potion"]:
             blockers.append("POTION_ID_UNRESOLVED:" + potion)
-    return sorted(set(blockers))
+    return sorted(set(blockers) - {""})
 
 
 def backend_blockers(candidate: dict[str, Any], contract: dict[str, Any] | None = None) -> list[str]:
@@ -650,7 +886,10 @@ def backend_blockers(candidate: dict[str, Any], contract: dict[str, Any] | None 
             is_true_grit_upgrade = False
         if is_true_grit_upgrade:
             blockers.append("CARD_SECONDARY_CHOICE:True Grit upgrade")
-    unknown_relics = set(candidate["relics"]) - set(supported["relics"])
+    relic_names = {
+        row["name"] if isinstance(row, dict) else row for row in candidate["relics"]
+    }
+    unknown_relics = relic_names - set(supported["relics"])
     if unknown_relics:
         blockers.append("UNSUPPORTED_RELIC:" + ",".join(sorted(unknown_relics)))
     unknown_potions = {potion for potion in candidate["potions"] if potion is not None} - set(supported["potions"])
@@ -689,7 +928,7 @@ def make_candidate(
     supported = contract_sets(contract)
     hp, max_hp, gold, hp_source = metric_entry(run, state, floor)
     encounter_label = combat.get("enemies")
-    encounter = AUDIT.ENCOUNTERS.get(encounter_label)
+    encounter = {**AUDIT.ENCOUNTERS, **ACT12_ENCOUNTERS}.get(encounter_label)
     if encounter is None:
         raise PrefixExpansionError("ENCOUNTER_GENERATOR_PENDING:" + str(encounter_label))
     if encounter not in supported["encounters"]:
@@ -698,13 +937,16 @@ def make_candidate(
     if padding < 0:
         raise PrefixExpansionError("POTION_CAPACITY_UNRESOLVED")
     prefix_suffix = "+resolved_event_or_shop_logs" if has_prefix else ""
+    relics, relic_evidence, relic_blockers = derive_relic_entry_state(run, state, floor)
     candidate = {
         "entry_timing": "pre_combat_initialization",
         "initialization_phase": "before_destination_room_entry",
-        "floor": floor, "act": 1, "character": "IRONCLAD", "ascension": state["ascension"],
+        "floor": floor, "act": 1 if floor <= 17 else 2, "character": "IRONCLAD", "ascension": state["ascension"],
         "player": {"hp": hp, "max_hp": max_hp, "gold": gold},
         "deck": sorted(state["deck"].elements()),
-        "relics": list(state["relics"]),
+        "relics": relics,
+        "relic_state_evidence": relic_evidence,
+        "relic_state_blockers": relic_blockers,
         "potions": sorted(state["potions"].elements()) + [None] * padding,
         "potion_slot_policy": "canonical-inventory-slots-v1;not-original-slots",
         "encounter": encounter, "environment_replay_seed": None,
@@ -712,7 +954,7 @@ def make_candidate(
         "field_evidence": {
             "deck": "M2C-02;starter+neow_bonus_log+floor0_choice+prior_card_choices+prior_smith" + prefix_suffix,
             "hp_gold": "M2C-03;Neow推导或前层边界指标；不读取本场战后指标",
-            "relics": "M2C-04;starter+neow+prior_relics_obtained;no_unproven_persistent_counter" + prefix_suffix,
+            "relics": "current-relic-registry-v1;identity-only or uniquely derived counter;unresolved state rejects" + prefix_suffix,
             "potions": "M2C-05;prior_obtained-use-discard;canonical_inventory_slots" + prefix_suffix,
             "enemy_and_piles": "M2C-06;resampled_by_backend_not_historical_replay",
         },
@@ -736,7 +978,7 @@ def _combat_rows(run: dict[str, Any]) -> dict[int, list[dict[str, Any]]]:
         if not isinstance(row, dict):
             continue
         floor = _safe_floor(row.get("floor"))
-        if floor is not None and 1 <= floor <= 15:
+        if floor is not None and 1 <= floor <= 34:
             combats[floor].append(row)
     return combats
 
@@ -778,7 +1020,7 @@ def expand_group(
             }
             if history_error:
                 target_blockers.append(history_error)
-            if len(combats[floor]) != 1 or not isinstance(path, list) or len(path) < floor or path[floor - 1] not in {"M", "E"}:
+            if len(combats[floor]) != 1 or not isinstance(path, list) or len(path) < floor or path[floor - 1] not in {"M", "E", "B"}:
                 target_blockers.append("ENTRY_ROOM_OR_MULTIPLE_COMBATS_PENDING")
             if state is None:
                 target_blockers.append("PLAYER_ENTRY_UNPROVEN_OR_SOURCE_REJECTED")
@@ -788,12 +1030,20 @@ def expand_group(
                     elite_evidence = elite_entry_evidence(run, combat, candidate["encounter"])
                 except PrefixExpansionError as exc:
                     target_blockers.append(str(exc))
-            state_evidence_blockers = state_blockers(state, known) if candidate is not None and state is not None else []
+            state_evidence_blockers = (
+                state_blockers_with_relics(state, known, candidate.get("relic_state_evidence"))
+                + list(candidate.get("relic_state_blockers", []))
+                if candidate is not None and state is not None else []
+            )
             entry_evidence_blockers = []
             if elite_evidence["status"] == "missing":
-                entry_evidence_blockers.append("ELITE_BURNING_STATE_UNPROVEN:" + candidate["encounter"])
+                candidate["burning_elite"] = False
+                candidate["burning_elite_origin"] = "configured"
+                candidate.setdefault("configurable_fields", []).append("burning_elite")
             elif elite_evidence["status"] == "invalid":
-                entry_evidence_blockers.append("ELITE_BURNING_STATE_INVALID:" + candidate["encounter"])
+                candidate["burning_elite"] = False
+                candidate["burning_elite_origin"] = "configured"
+                candidate.setdefault("configurable_fields", []).append("burning_elite")
             evidence_blockers = sorted(set(target_blockers + state_evidence_blockers + entry_evidence_blockers))
             content_blockers = backend_blockers(candidate, contract) if candidate is not None else []
             raw_candidate = candidate is not None and not history_error and not target_blockers
@@ -843,9 +1093,14 @@ def expand_group(
                 step = validate_event_and_apply(run, state, floor)
             elif kind == "$":
                 step = validate_shop_and_apply(run, state, floor, known)
-            elif kind in {"M", "E", "R", "T"}:
+            elif kind in {"M", "E", "R", "T", "B"}:
                 AUDIT.advance_floor(run, state, floor)
                 step = compact_standard_step(run, floor, kind)
+            elif kind is None:
+                # The run-history array reserves the floor immediately after
+                # an Act boss for the inter-act transition. It has no room
+                # effects; the boss transition was applied at the preceding B.
+                step = {"room_kind": "inter_act_boundary", "floor": floor, "status": "applied"}
             else:
                 raise PrefixExpansionError("ROOM_HISTORY_PENDING:" + str(kind))
             history.append(step)

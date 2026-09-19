@@ -1,0 +1,2163 @@
+{
+  "blocked_occurrences": 1969,
+  "blocked_source_groups": 154,
+  "category_distribution": {
+    "DERIVABLE": 1869,
+    "SOURCE_REQUIRED": 100
+  },
+  "first_blocker_distribution": [
+    {
+      "blocked_combat_rows": 50,
+      "blocked_source_groups": 19,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 172,
+      "examples": [
+        "run-group:03869ca33f76f9685375:floor-4:combat-0",
+        "run-group:03869ca33f76f9685375:floor-6:combat-0",
+        "run-group:14ab5992e54a220f12ac:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion"
+    },
+    {
+      "blocked_combat_rows": 38,
+      "blocked_source_groups": 17,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 153,
+      "examples": [
+        "run-group:285d8bea7c6acdbf11b0:floor-2:combat-0",
+        "run-group:2a23a97ee1fa599d0039:floor-5:combat-0",
+        "run-group:2a23a97ee1fa599d0039:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 42,
+      "blocked_source_groups": 18,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 132,
+      "examples": [
+        "run-group:2dc85ff71ba6d9a28b62:floor-14:combat-0",
+        "run-group:30289ccf78fa2a81a8e3:floor-2:combat-0",
+        "run-group:30289ccf78fa2a81a8e3:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion"
+    },
+    {
+      "blocked_combat_rows": 52,
+      "blocked_source_groups": 16,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 107,
+      "examples": [
+        "run-group:025f28159bea0c8655d5:floor-4:combat-0",
+        "run-group:025f28159bea0c8655d5:floor-6:combat-0",
+        "run-group:025f28159bea0c8655d5:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 17,
+      "blocked_source_groups": 9,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 101,
+      "examples": [
+        "run-group:323ccc7cca158869a2ee:floor-16:combat-0",
+        "run-group:349c55a39e526dbe8a7b:floor-6:combat-0",
+        "run-group:4a50927b4670b528f773:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 45,
+      "blocked_source_groups": 20,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 101,
+      "examples": [
+        "run-group:03869ca33f76f9685375:floor-14:combat-0",
+        "run-group:03869ca33f76f9685375:floor-16:combat-0",
+        "run-group:03869ca33f76f9685375:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 28,
+      "blocked_source_groups": 9,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 99,
+      "examples": [
+        "run-group:140ccbe924ab77acbebd:floor-4:combat-0",
+        "run-group:140ccbe924ab77acbebd:floor-5:combat-0",
+        "run-group:25205448091f30b1b558:floor-3:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos"
+    },
+    {
+      "blocked_combat_rows": 41,
+      "blocked_source_groups": 9,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 73,
+      "examples": [
+        "run-group:570d806d8b5cacd96a56:floor-8:combat-0",
+        "run-group:5bade670577f01ea1632:floor-4:combat-0",
+        "run-group:5bade670577f01ea1632:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 14,
+      "blocked_source_groups": 7,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 69,
+      "examples": [
+        "run-group:3a1fe3727cb20398c152:floor-14:combat-0",
+        "run-group:6d8e7bcd740481cd0a56:floor-13:combat-0",
+        "run-group:6d8e7bcd740481cd0a56:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge"
+    },
+    {
+      "blocked_combat_rows": 18,
+      "blocked_source_groups": 7,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 69,
+      "examples": [
+        "run-group:25e2d8e7d27e8b874d1e:floor-2:combat-0",
+        "run-group:323ccc7cca158869a2ee:floor-6:combat-0",
+        "run-group:323ccc7cca158869a2ee:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 26,
+      "blocked_source_groups": 7,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 68,
+      "examples": [
+        "run-group:1ec24dd4ecb402f82c36:floor-4:combat-0",
+        "run-group:1ec24dd4ecb402f82c36:floor-5:combat-0",
+        "run-group:1ec24dd4ecb402f82c36:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 21,
+      "blocked_source_groups": 14,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 67,
+      "examples": [
+        "run-group:025f28159bea0c8655d5:floor-23:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-20:combat-0",
+        "run-group:25205448091f30b1b558:floor-29:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 35,
+      "blocked_source_groups": 11,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 64,
+      "examples": [
+        "run-group:25ae8d6866aa7b966c09:floor-12:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-13:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion"
+    },
+    {
+      "blocked_combat_rows": 34,
+      "blocked_source_groups": 11,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 61,
+      "examples": [
+        "run-group:1e700e323f866cc26cd0:floor-11:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-12:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 32,
+      "blocked_source_groups": 9,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 60,
+      "examples": [
+        "run-group:04bee3c6f71d06011a06:floor-8:combat-0",
+        "run-group:04bee3c6f71d06011a06:floor-10:combat-0",
+        "run-group:04bee3c6f71d06011a06:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion"
+    },
+    {
+      "blocked_combat_rows": 10,
+      "blocked_source_groups": 5,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 57,
+      "examples": [
+        "run-group:36a9b5a4b31676c6e7bd:floor-1:combat-0",
+        "run-group:36a9b5a4b31676c6e7bd:floor-2:combat-0",
+        "run-group:3a4d5f7cd5778f7c3b36:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Doubt"
+    },
+    {
+      "blocked_combat_rows": 24,
+      "blocked_source_groups": 11,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 50,
+      "examples": [
+        "run-group:04bee3c6f71d06011a06:floor-2:combat-0",
+        "run-group:04bee3c6f71d06011a06:floor-3:combat-0",
+        "run-group:25205448091f30b1b558:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 94,
+      "blocked_source_groups": 12,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 44,
+      "examples": [
+        "run-group:2a23a97ee1fa599d0039:floor-16:combat-0",
+        "run-group:2a23a97ee1fa599d0039:floor-18:combat-0",
+        "run-group:2a23a97ee1fa599d0039:floor-21:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Dead Branch"
+    },
+    {
+      "blocked_combat_rows": 32,
+      "blocked_source_groups": 27,
+      "category": "SOURCE_REQUIRED",
+      "estimated_downstream_rows_released": 43,
+      "examples": [
+        "run-group:03420f7d707f7af9dc35:floor-13:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-21:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-11:combat-0"
+      ],
+      "implementation_risk": "high",
+      "priority": "high",
+      "reason_code": "ENTRY_ROOM_OR_MULTIPLE_COMBATS_PENDING"
+    },
+    {
+      "blocked_combat_rows": 83,
+      "blocked_source_groups": 13,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 38,
+      "examples": [
+        "run-group:274691e9f61e82281a1f:floor-24:combat-0",
+        "run-group:274691e9f61e82281a1f:floor-25:combat-0",
+        "run-group:274691e9f61e82281a1f:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Potion Belt"
+    },
+    {
+      "blocked_combat_rows": 52,
+      "blocked_source_groups": 11,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 36,
+      "examples": [
+        "run-group:016044a031542a7a95ad:floor-28:combat-0",
+        "run-group:016044a031542a7a95ad:floor-29:combat-0",
+        "run-group:016044a031542a7a95ad:floor-31:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Toolbox"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 33,
+      "examples": [
+        "run-group:5281122ea7160badfc05:floor-1:combat-0",
+        "run-group:5281122ea7160badfc05:floor-2:combat-0",
+        "run-group:5281122ea7160badfc05:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Parasite"
+    },
+    {
+      "blocked_combat_rows": 42,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 32,
+      "examples": [
+        "run-group:b8045ef282f29cd71ab4:floor-7:combat-0",
+        "run-group:b8045ef282f29cd71ab4:floor-11:combat-0",
+        "run-group:b8045ef282f29cd71ab4:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Dramatic Entrance"
+    },
+    {
+      "blocked_combat_rows": 29,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 32,
+      "examples": [
+        "run-group:363c6cf60ff7b9e4b76b:floor-1:combat-0",
+        "run-group:363c6cf60ff7b9e4b76b:floor-2:combat-0",
+        "run-group:363c6cf60ff7b9e4b76b:floor-3:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Trip"
+    },
+    {
+      "blocked_combat_rows": 28,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 31,
+      "examples": [
+        "run-group:080240f5747d395efc6f:floor-3:combat-0",
+        "run-group:080240f5747d395efc6f:floor-5:combat-0",
+        "run-group:080240f5747d395efc6f:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:PanicButton"
+    },
+    {
+      "blocked_combat_rows": 12,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 29,
+      "examples": [
+        "run-group:0b6b50af8aca36367e6f:floor-4:combat-0",
+        "run-group:0b6b50af8aca36367e6f:floor-5:combat-0",
+        "run-group:0b6b50af8aca36367e6f:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Regret"
+    },
+    {
+      "blocked_combat_rows": 18,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 29,
+      "examples": [
+        "run-group:56dabfeab38bafd85fea:floor-1:combat-0",
+        "run-group:56dabfeab38bafd85fea:floor-2:combat-0",
+        "run-group:56dabfeab38bafd85fea:floor-3:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Secret Weapon"
+    },
+    {
+      "blocked_combat_rows": 13,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 28,
+      "examples": [
+        "run-group:0fcf5d9688a4c657cc87:floor-4:combat-0",
+        "run-group:0fcf5d9688a4c657cc87:floor-5:combat-0",
+        "run-group:0fcf5d9688a4c657cc87:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Apotheosis"
+    },
+    {
+      "blocked_combat_rows": 11,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 26,
+      "examples": [
+        "run-group:2ab4de78551223c9e3f1:floor-4:combat-0",
+        "run-group:2ab4de78551223c9e3f1:floor-5:combat-0",
+        "run-group:2f68963a6982c2c806a7:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Pain"
+    },
+    {
+      "blocked_combat_rows": 50,
+      "blocked_source_groups": 5,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 22,
+      "examples": [
+        "run-group:1471c7fe3e6c265b23b2:floor-10:combat-0",
+        "run-group:1471c7fe3e6c265b23b2:floor-11:combat-0",
+        "run-group:1471c7fe3e6c265b23b2:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Lizard Tail"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 22,
+      "examples": [
+        "run-group:2ad9a29adc946c652f52:floor-3:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-5:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 27,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 20,
+      "examples": [
+        "run-group:016044a031542a7a95ad:floor-5:combat-0",
+        "run-group:016044a031542a7a95ad:floor-7:combat-0",
+        "run-group:016044a031542a7a95ad:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:HandOfGreed"
+    },
+    {
+      "blocked_combat_rows": 12,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 19,
+      "examples": [
+        "run-group:90231be7e61c0b398ecc:floor-1:combat-0",
+        "run-group:90231be7e61c0b398ecc:floor-2:combat-0",
+        "run-group:90231be7e61c0b398ecc:floor-3:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Violence"
+    },
+    {
+      "blocked_combat_rows": 12,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 19,
+      "examples": [
+        "run-group:285d8bea7c6acdbf11b0:floor-21:combat-0",
+        "run-group:285d8bea7c6acdbf11b0:floor-23:combat-0",
+        "run-group:285d8bea7c6acdbf11b0:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Writhe"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 18,
+      "examples": [
+        "run-group:3a1fe3727cb20398c152:floor-8:combat-0",
+        "run-group:3a1fe3727cb20398c152:floor-10:combat-0",
+        "run-group:3a1fe3727cb20398c152:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:SmokeBomb"
+    },
+    {
+      "blocked_combat_rows": 14,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 17,
+      "examples": [
+        "run-group:332ecf8345e8659d4b2f:floor-31:combat-0",
+        "run-group:332ecf8345e8659d4b2f:floor-33:combat-0",
+        "run-group:5a118e8b89a99483b130:floor-1:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Discovery"
+    },
+    {
+      "blocked_combat_rows": 43,
+      "blocked_source_groups": 5,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 16,
+      "examples": [
+        "run-group:5ba42d6055d2ced8f960:floor-6:combat-0",
+        "run-group:5ba42d6055d2ced8f960:floor-8:combat-0",
+        "run-group:5ba42d6055d2ced8f960:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Dark Shackles"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 15,
+      "examples": [
+        "run-group:349c55a39e526dbe8a7b:floor-31:combat-0",
+        "run-group:349c55a39e526dbe8a7b:floor-33:combat-0",
+        "run-group:a75a8cb44b6d07d2d160:floor-1:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Shame"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 14,
+      "examples": [
+        "run-group:03420f7d707f7af9dc35:floor-6:combat-0",
+        "run-group:03420f7d707f7af9dc35:floor-8:combat-0",
+        "run-group:03420f7d707f7af9dc35:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Swift Strike"
+    },
+    {
+      "blocked_combat_rows": 20,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 12,
+      "examples": [
+        "run-group:03420f7d707f7af9dc35:floor-14:combat-0",
+        "run-group:03420f7d707f7af9dc35:floor-16:combat-0",
+        "run-group:03420f7d707f7af9dc35:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Medical Kit"
+    },
+    {
+      "blocked_combat_rows": 13,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 11,
+      "examples": [
+        "run-group:9aa1910fcbcdd4d38816:floor-1:combat-0",
+        "run-group:9aa1910fcbcdd4d38816:floor-3:combat-0",
+        "run-group:9aa1910fcbcdd4d38816:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bandage Up"
+    },
+    {
+      "blocked_combat_rows": 9,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 10,
+      "examples": [
+        "run-group:4fd2323defbd9bf11443:floor-1:combat-0",
+        "run-group:4fd2323defbd9bf11443:floor-4:combat-0",
+        "run-group:4fd2323defbd9bf11443:floor-5:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Mayhem"
+    },
+    {
+      "blocked_combat_rows": 128,
+      "blocked_source_groups": 14,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 9,
+      "examples": [
+        "run-group:32d1ec29c2ee30b98050:floor-29:combat-0",
+        "run-group:32d1ec29c2ee30b98050:floor-30:combat-0",
+        "run-group:32d1ec29c2ee30b98050:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Blue Candle"
+    },
+    {
+      "blocked_combat_rows": 8,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 8,
+      "examples": [
+        "run-group:bc808a84b4989749af9b:floor-1:combat-0",
+        "run-group:bc808a84b4989749af9b:floor-3:combat-0",
+        "run-group:bc808a84b4989749af9b:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Panacea"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 7,
+      "examples": [
+        "run-group:16b38517e4242938ae88:floor-1:combat-0",
+        "run-group:16b38517e4242938ae88:floor-3:combat-0",
+        "run-group:16b38517e4242938ae88:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Madness"
+    },
+    {
+      "blocked_combat_rows": 46,
+      "blocked_source_groups": 10,
+      "category": "SOURCE_REQUIRED",
+      "estimated_downstream_rows_released": 3,
+      "examples": [
+        "run-group:53c16194b16286bd892d:floor-22:combat-0",
+        "run-group:53c16194b16286bd892d:floor-25:combat-0",
+        "run-group:53c16194b16286bd892d:floor-28:combat-0"
+      ],
+      "implementation_risk": "high",
+      "priority": "high",
+      "reason_code": "PERSISTENT_CARD_VALUE_MISSING:RitualDagger"
+    },
+    {
+      "blocked_combat_rows": 15,
+      "blocked_source_groups": 6,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:791d67b4daf01a7e67cf:floor-33:combat-0",
+        "run-group:7fed54b57ab672194647:floor-25:combat-0",
+        "run-group:7fed54b57ab672194647:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "CAMPFIRE_ACTION_PENDING"
+    },
+    {
+      "blocked_combat_rows": 37,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:03869ca33f76f9685375:floor-22:combat-0",
+        "run-group:03869ca33f76f9685375:floor-23:combat-0",
+        "run-group:03869ca33f76f9685375:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_DELTA_CONTRADICTION"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:570d806d8b5cacd96a56:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_INSTANCE_AMBIGUOUS:Decay"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:658739f7ab9d60659b6e:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_INSTANCE_AMBIGUOUS:Doubt"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:659a84776e1266e86c5d:floor-22:combat-0",
+        "run-group:659a84776e1266e86c5d:floor-23:combat-0",
+        "run-group:659a84776e1266e86c5d:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_INSTANCE_AMBIGUOUS:Juggernaut"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:43d60a9dabf569cb9740:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_INSTANCE_AMBIGUOUS:Parasite"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:f931ab7c9ab54689a052:floor-21:combat-0",
+        "run-group:f931ab7c9ab54689a052:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_CARD_INSTANCE_AMBIGUOUS:Rampage"
+    },
+    {
+      "blocked_combat_rows": 12,
+      "blocked_source_groups": 2,
+      "category": "SOURCE_REQUIRED",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:59e6ade594f5ff999e8e:floor-20:combat-0",
+        "run-group:59e6ade594f5ff999e8e:floor-21:combat-0",
+        "run-group:59e6ade594f5ff999e8e:floor-23:combat-0"
+      ],
+      "implementation_risk": "high",
+      "priority": "high",
+      "reason_code": "EVENT_ID_OR_CHOICE_MISSING"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:4fd2323defbd9bf11443:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "EVENT_LOG_MISSING"
+    },
+    {
+      "blocked_combat_rows": 10,
+      "blocked_source_groups": 4,
+      "category": "SOURCE_REQUIRED",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:25ae8d6866aa7b966c09:floor-31:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-33:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-30:combat-0"
+      ],
+      "implementation_risk": "high",
+      "priority": "high",
+      "reason_code": "EVENT_TIMING_AMBIGUOUS_NONIDENTICAL"
+    },
+    {
+      "blocked_combat_rows": 34,
+      "blocked_source_groups": 6,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:274691e9f61e82281a1f:floor-31:combat-0",
+        "run-group:274691e9f61e82281a1f:floor-33:combat-0",
+        "run-group:5281122ea7160badfc05:floor-29:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "POTION_ACCOUNTING_OVERFLOW"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:eed21c6334d7d9c16f13:floor-23:combat-0",
+        "run-group:eed21c6334d7d9c16f13:floor-25:combat-0",
+        "run-group:eed21c6334d7d9c16f13:floor-28:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Gambling Chip"
+    },
+    {
+      "blocked_combat_rows": 10,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a066308a795dedf381b5:floor-18:combat-0",
+        "run-group:a066308a795dedf381b5:floor-20:combat-0",
+        "run-group:a066308a795dedf381b5:floor-21:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:SacredBark"
+    },
+    {
+      "blocked_combat_rows": 11,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:0b6b50af8aca36367e6f:floor-11:combat-0",
+        "run-group:0b6b50af8aca36367e6f:floor-12:combat-0",
+        "run-group:0b6b50af8aca36367e6f:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "RELIC_ID_UNRESOLVED:Strange Spoon"
+    },
+    {
+      "blocked_combat_rows": 23,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:4c6b349f1f374a42ec12:floor-33:combat-0",
+        "run-group:afbd752735961454a0d5:floor-28:combat-0",
+        "run-group:afbd752735961454a0d5:floor-29:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "SHOP_CARD_SELECTION_MISSING"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:363c6cf60ff7b9e4b76b:floor-20:combat-0",
+        "run-group:363c6cf60ff7b9e4b76b:floor-23:combat-0",
+        "run-group:363c6cf60ff7b9e4b76b:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "SHOP_POTION_CAPACITY_UNRESOLVED"
+    },
+    {
+      "blocked_combat_rows": 29,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6b0f44da8001dd663719:floor-33:combat-0",
+        "run-group:7c812ca46500fb5f6a41:floor-12:combat-0",
+        "run-group:7c812ca46500fb5f6a41:floor-13:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "SHOP_RANDOM_UPGRADE_TARGET_MISSING"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6c219a536f2fd8bc7d30:floor-21:combat-0",
+        "run-group:6c219a536f2fd8bc7d30:floor-23:combat-0",
+        "run-group:6c219a536f2fd8bc7d30:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Apotheosis,Bite"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6c219a536f2fd8bc7d30:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Apotheosis,Bite,Deep Breath,Master of Strategy"
+    },
+    {
+      "blocked_combat_rows": 16,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:140ccbe924ab77acbebd:floor-22:combat-0",
+        "run-group:140ccbe924ab77acbebd:floor-24:combat-0",
+        "run-group:140ccbe924ab77acbebd:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bite"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:b2369c6719096d2afc57:floor-24:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bite,Decay,Ghostly"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:b2369c6719096d2afc57:floor-29:combat-0",
+        "run-group:b2369c6719096d2afc57:floor-31:combat-0",
+        "run-group:b2369c6719096d2afc57:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bite,Ghostly"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:35d5da0652c915c845d5:floor-22:combat-0",
+        "run-group:35d5da0652c915c845d5:floor-24:combat-0",
+        "run-group:35d5da0652c915c845d5:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bite,Pain,PanicButton"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:3f59e5d32006abf5ab88:floor-20:combat-0",
+        "run-group:3f59e5d32006abf5ab88:floor-24:combat-0",
+        "run-group:3f59e5d32006abf5ab88:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Bite,Trip"
+    },
+    {
+      "blocked_combat_rows": 12,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:323ccc7cca158869a2ee:floor-21:combat-0",
+        "run-group:323ccc7cca158869a2ee:floor-22:combat-0",
+        "run-group:323ccc7cca158869a2ee:floor-24:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Decay"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:3a4d5f7cd5778f7c3b36:floor-23:combat-0",
+        "run-group:3a4d5f7cd5778f7c3b36:floor-24:combat-0",
+        "run-group:3a4d5f7cd5778f7c3b36:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Decay,Doubt,Ghostly"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63fd5a205e4d8b9434f5:floor-27:combat-0",
+        "run-group:63fd5a205e4d8b9434f5:floor-29:combat-0",
+        "run-group:63fd5a205e4d8b9434f5:floor-30:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Decay,Shame"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:f44fc7a8f3f0d2e83b73:floor-5:combat-0",
+        "run-group:f44fc7a8f3f0d2e83b73:floor-7:combat-0",
+        "run-group:f44fc7a8f3f0d2e83b73:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Discovery,Parasite"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:9a4e818296cadde2c405:floor-14:combat-0",
+        "run-group:9a4e818296cadde2c405:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Doubt,HandOfGreed"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:da554fe39e95811ffbdb:floor-31:combat-0",
+        "run-group:da554fe39e95811ffbdb:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Dramatic Entrance,Ghostly"
+    },
+    {
+      "blocked_combat_rows": 15,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a39dfae5334ba6097320:floor-5:combat-0",
+        "run-group:a39dfae5334ba6097320:floor-6:combat-0",
+        "run-group:a39dfae5334ba6097320:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Flash of Steel"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:90231be7e61c0b398ecc:floor-22:combat-0",
+        "run-group:90231be7e61c0b398ecc:floor-24:combat-0",
+        "run-group:90231be7e61c0b398ecc:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Flash of Steel,Violence"
+    },
+    {
+      "blocked_combat_rows": 15,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:274691e9f61e82281a1f:floor-21:combat-0",
+        "run-group:274691e9f61e82281a1f:floor-23:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Ghostly"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:080240f5747d395efc6f:floor-20:combat-0",
+        "run-group:080240f5747d395efc6f:floor-21:combat-0",
+        "run-group:080240f5747d395efc6f:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Ghostly,PanicButton"
+    },
+    {
+      "blocked_combat_rows": 9,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:30289ccf78fa2a81a8e3:floor-20:combat-0",
+        "run-group:30289ccf78fa2a81a8e3:floor-21:combat-0",
+        "run-group:30289ccf78fa2a81a8e3:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:J.A.X.,PanicButton"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:2bc39fa137f49bd29ced:floor-22:combat-0",
+        "run-group:2bc39fa137f49bd29ced:floor-23:combat-0",
+        "run-group:2bc39fa137f49bd29ced:floor-28:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Master of Strategy"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:2f68963a6982c2c806a7:floor-21:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Pain,Parasite"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a75a8cb44b6d07d2d160:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Pain,Shame"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:f0e194bbfab4422cd282:floor-23:combat-0",
+        "run-group:f0e194bbfab4422cd282:floor-25:combat-0",
+        "run-group:f0e194bbfab4422cd282:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_CARD:Secret Technique"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a54366757119e0fb09ac:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,BlessingOfTheForge"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:35d5da0652c915c845d5:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,BloodPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6d8e7bcd740481cd0a56:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,ColorlessPotion"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:bebeecd213a33f1fe8e4:floor-16:combat-0",
+        "run-group:bebeecd213a33f1fe8e4:floor-18:combat-0",
+        "run-group:d3f297926f31c2a351d5:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,DistilledChaos"
+    },
+    {
+      "blocked_combat_rows": 15,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:48ee6344d274a5f75a07:floor-12:combat-0",
+        "run-group:48ee6344d274a5f75a07:floor-14:combat-0",
+        "run-group:48ee6344d274a5f75a07:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:1ec24dd4ecb402f82c36:floor-10:combat-0",
+        "run-group:1ec24dd4ecb402f82c36:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:349c55a39e526dbe8a7b:floor-10:combat-0",
+        "run-group:e88a6dca46d18b6c8657:floor-13:combat-0",
+        "run-group:e88a6dca46d18b6c8657:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:35d5da0652c915c845d5:floor-12:combat-0",
+        "run-group:35d5da0652c915c845d5:floor-14:combat-0",
+        "run-group:6d8e7bcd740481cd0a56:floor-19:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 10,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6d8e7bcd740481cd0a56:floor-22:combat-0",
+        "run-group:6d8e7bcd740481cd0a56:floor-23:combat-0",
+        "run-group:e88a6dca46d18b6c8657:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-27:combat-0",
+        "run-group:b9056fc50a3ea89b1392:floor-14:combat-0",
+        "run-group:b9056fc50a3ea89b1392:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:6b0f44da8001dd663719:floor-12:combat-0",
+        "run-group:6b0f44da8001dd663719:floor-13:combat-0",
+        "run-group:6b0f44da8001dd663719:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a54366757119e0fb09ac:floor-30:combat-0",
+        "run-group:a54366757119e0fb09ac:floor-31:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,SmokeBomb"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a54366757119e0fb09ac:floor-14:combat-0",
+        "run-group:a54366757119e0fb09ac:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:AttackPotion,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:25ae8d6866aa7b966c09:floor-18:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-20:combat-0",
+        "run-group:25ae8d6866aa7b966c09:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,BloodPotion"
+    },
+    {
+      "blocked_combat_rows": 6,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:8db27ce2ad907224365f:floor-21:combat-0",
+        "run-group:8db27ce2ad907224365f:floor-22:combat-0",
+        "run-group:8db27ce2ad907224365f:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,ColorlessPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:2ad9a29adc946c652f52:floor-12:combat-0",
+        "run-group:e6accfdebe74c83edfc9:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:57dbdc67bcff3478908e:floor-22:combat-0",
+        "run-group:57dbdc67bcff3478908e:floor-24:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:f2672b82929351d73ae6:floor-18:combat-0",
+        "run-group:f2672b82929351d73ae6:floor-20:combat-0",
+        "run-group:f2672b82929351d73ae6:floor-21:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:3a1fe3727cb20398c152:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,SmokeBomb"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:25e2d8e7d27e8b874d1e:floor-4:combat-0",
+        "run-group:25e2d8e7d27e8b874d1e:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:72e766c3ad2370c4d929:floor-14:combat-0",
+        "run-group:72e766c3ad2370c4d929:floor-16:combat-0",
+        "run-group:b2369c6719096d2afc57:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BlessingOfTheForge,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:2bc39fa137f49bd29ced:floor-5:combat-0",
+        "run-group:2bc39fa137f49bd29ced:floor-6:combat-0",
+        "run-group:2bc39fa137f49bd29ced:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,ColorlessPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-5:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:59e3e0bbe251993a438e:floor-12:combat-0",
+        "run-group:eccf864a7be944653ec4:floor-22:combat-0",
+        "run-group:eccf864a7be944653ec4:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 10,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:332ecf8345e8659d4b2f:floor-18:combat-0",
+        "run-group:332ecf8345e8659d4b2f:floor-19:combat-0",
+        "run-group:332ecf8345e8659d4b2f:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:5bade670577f01ea1632:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-29:combat-0",
+        "run-group:c141c78420544b641568:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:bf54bf22df13ddda78bc:floor-12:combat-0",
+        "run-group:bf54bf22df13ddda78bc:floor-14:combat-0",
+        "run-group:bf54bf22df13ddda78bc:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:b3735c3670dd4d5e5d93:floor-18:combat-0",
+        "run-group:b3735c3670dd4d5e5d93:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:BloodPotion,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:bb9729c2b5a44461e261:floor-20:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,CultistPotion"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:32d1ec29c2ee30b98050:floor-14:combat-0",
+        "run-group:32d1ec29c2ee30b98050:floor-16:combat-0",
+        "run-group:32d1ec29c2ee30b98050:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:4a50927b4670b528f773:floor-29:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:57dbdc67bcff3478908e:floor-16:combat-0",
+        "run-group:57dbdc67bcff3478908e:floor-18:combat-0",
+        "run-group:57dbdc67bcff3478908e:floor-20:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:a066308a795dedf381b5:floor-13:combat-0",
+        "run-group:a066308a795dedf381b5:floor-14:combat-0",
+        "run-group:a066308a795dedf381b5:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:79cc161b4b335483b55e:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ColorlessPotion,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 18,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:58037a37ca7acdbb1388:floor-8:combat-0",
+        "run-group:58037a37ca7acdbb1388:floor-10:combat-0",
+        "run-group:58037a37ca7acdbb1388:floor-13:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:CultistPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:58037a37ca7acdbb1388:floor-16:combat-0",
+        "run-group:58037a37ca7acdbb1388:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:CultistPotion,DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:eccf864a7be944653ec4:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:CultistPotion,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:2ad9a29adc946c652f52:floor-14:combat-0",
+        "run-group:2ad9a29adc946c652f52:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,DuplicationPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:c85cec4102609d94c531:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:349c55a39e526dbe8a7b:floor-16:combat-0",
+        "run-group:349c55a39e526dbe8a7b:floor-18:combat-0",
+        "run-group:349c55a39e526dbe8a7b:floor-19:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 13,
+      "blocked_source_groups": 3,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:33c70f66905a836d5918:floor-16:combat-0",
+        "run-group:33c70f66905a836d5918:floor-18:combat-0",
+        "run-group:c141c78420544b641568:floor-11:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:93875aa00e713b9f1072:floor-21:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:88d7120f540a2eaa5da6:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DistilledChaos,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:4a50927b4670b528f773:floor-31:combat-0",
+        "run-group:4a50927b4670b528f773:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DuplicationPotion,EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 5,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:df4e3889ce44dca3031d:floor-18:combat-0",
+        "run-group:df4e3889ce44dca3031d:floor-20:combat-0",
+        "run-group:df4e3889ce44dca3031d:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DuplicationPotion,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 7,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:025f28159bea0c8655d5:floor-14:combat-0",
+        "run-group:025f28159bea0c8655d5:floor-16:combat-0",
+        "run-group:3a4d5f7cd5778f7c3b36:floor-4:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DuplicationPotion,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 9,
+      "blocked_source_groups": 4,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:1e700e323f866cc26cd0:floor-13:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-16:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-18:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:DuplicationPotion,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:dcbee8daed7563720dae:floor-8:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,EntropicBrew"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:57dbdc67bcff3478908e:floor-14:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,FairyPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:79cc161b4b335483b55e:floor-24:combat-0",
+        "run-group:79cc161b4b335483b55e:floor-25:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:04bee3c6f71d06011a06:floor-5:combat-0",
+        "run-group:04bee3c6f71d06011a06:floor-6:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:c5e6088df0d91ef6cd14:floor-20:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:dcbee8daed7563720dae:floor-7:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:ElixirPotion,SmokeBomb"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:349c55a39e526dbe8a7b:floor-29:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:EntropicBrew,Fire Potion"
+    },
+    {
+      "blocked_combat_rows": 8,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:4a50927b4670b528f773:floor-13:combat-0",
+        "run-group:4a50927b4670b528f773:floor-14:combat-0",
+        "run-group:4a50927b4670b528f773:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:EntropicBrew,LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:90fa8af9e9f978aff937:floor-3:combat-0",
+        "run-group:b3735c3670dd4d5e5d93:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:EntropicBrew,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:b3735c3670dd4d5e5d93:floor-25:combat-0",
+        "run-group:b3735c3670dd4d5e5d93:floor-27:combat-0",
+        "run-group:b3735c3670dd4d5e5d93:floor-28:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:EntropicBrew,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:884bbe22ef7bae5bdcba:floor-20:combat-0",
+        "run-group:884bbe22ef7bae5bdcba:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:FairyPotion,LiquidMemories"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:eccf864a7be944653ec4:floor-31:combat-0",
+        "run-group:eccf864a7be944653ec4:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion,GamblersBrew"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:99171439576ecb8a16ea:floor-19:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:93875aa00e713b9f1072:floor-22:combat-0",
+        "run-group:93875aa00e713b9f1072:floor-24:combat-0",
+        "run-group:93875aa00e713b9f1072:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 11,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:51eec4e1ba47369fe5e2:floor-13:combat-0",
+        "run-group:51eec4e1ba47369fe5e2:floor-14:combat-0",
+        "run-group:51eec4e1ba47369fe5e2:floor-16:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:Fire Potion,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 4,
+      "blocked_source_groups": 2,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:79cc161b4b335483b55e:floor-16:combat-0",
+        "run-group:8976b8dffb6ca02677d8:floor-11:combat-0",
+        "run-group:8976b8dffb6ca02677d8:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:GamblersBrew,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:97618dcbc0858eef3629:floor-18:combat-0",
+        "run-group:97618dcbc0858eef3629:floor-22:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:LiquidMemories,PowerPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:97618dcbc0858eef3629:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:LiquidMemories,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:97618dcbc0858eef3629:floor-10:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:LiquidMemories,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 9,
+      "blocked_source_groups": 5,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:025f28159bea0c8655d5:floor-12:combat-0",
+        "run-group:701bf3e021652881d620:floor-6:combat-0",
+        "run-group:79cc161b4b335483b55e:floor-12:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:PowerPotion,SkillPotion"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-24:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:PowerPotion,SmokeBomb"
+    },
+    {
+      "blocked_combat_rows": 3,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:63413f18719e98f2800a:floor-30:combat-0",
+        "run-group:63413f18719e98f2800a:floor-31:combat-0",
+        "run-group:63413f18719e98f2800a:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:PowerPotion,SneckoOil"
+    },
+    {
+      "blocked_combat_rows": 1,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:99171439576ecb8a16ea:floor-23:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "UNSUPPORTED_OR_CHOICE_POTION:PowerPotion,SteroidPotion"
+    },
+    {
+      "blocked_combat_rows": 8,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:1e700e323f866cc26cd0:floor-24:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-25:combat-0",
+        "run-group:1e700e323f866cc26cd0:floor-27:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "移除不存在的牌:Immolate"
+    },
+    {
+      "blocked_combat_rows": 2,
+      "blocked_source_groups": 1,
+      "category": "DERIVABLE",
+      "estimated_downstream_rows_released": 0,
+      "examples": [
+        "run-group:57dbdc67bcff3478908e:floor-31:combat-0",
+        "run-group:57dbdc67bcff3478908e:floor-33:combat-0"
+      ],
+      "implementation_risk": "medium",
+      "priority": "medium",
+      "reason_code": "移除不存在的牌:Normality"
+    }
+  ],
+  "non_source_required_blocked_rows": 1869,
+  "notes": [
+    "The source-certified level is deliberately independent of reconstruction and backend admission.",
+    "Downstream estimates are same-source-group rows at or after the first blocker; overlapping mechanisms are not additive.",
+    "The ledger preserves all detected blockers, while this table selects the first dependency in the state chain."
+  ],
+  "raw_act1_act2_combat_rows": 2591,
+  "reconstructed_occurrences": 622,
+  "reconstructed_source_groups": 140,
+  "schema": "act12-reconstruction-blocker-inventory-v1",
+  "scope": "combat records with floor 1..34; first blocker is the earliest source/prefix node observed by the current reconstruction chain",
+  "true_source_required_blocked_rows": 100
+}
