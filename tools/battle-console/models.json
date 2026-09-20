@@ -1,0 +1,55 @@
+{
+  "schema": "battle-console-model-registry-v1",
+  "default": "selected",
+  "models": [
+    {
+      "id": "final",
+      "label": "M0 · final (update 256)",
+      "checkpoint": "runs/a-v2-ppo-v1/final.pt",
+      "sha256": "b557de9aaa3a558cd646b8d7ad487a3b8282d54df6919dc9e082a9efe791626e",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "initial",
+      "label": "M0 · initialization (update 0)",
+      "checkpoint": "runs/a-v2-ppo-v1/initial.pt",
+      "sha256": "4c65b794433c52d2eea0a6365fccefd8f53909b088d3e0135e9ca1937fb83259",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "selected",
+      "label": "M0 · best dev (update 256)",
+      "checkpoint": "runs/a-v2-ppo-v1/selected.pt",
+      "sha256": "29094e554ed33354fcfbd5613d0475c3426fe1b0425302eac59c2ad25a84d5d2",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "update-0064",
+      "label": "M0 · update 64",
+      "checkpoint": "runs/a-v2-ppo-v1/update-0064.pt",
+      "sha256": "cd2f48ccb4764ae6bec51a1bf3ff31828f170830710d5a7fe40583fda64c2958",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "update-0128",
+      "label": "M0 · update 128",
+      "checkpoint": "runs/a-v2-ppo-v1/update-0128.pt",
+      "sha256": "fd6d546f9e52cc3969214ff29068b7ab838d80fca3c6971a103eed148e9a157d",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "update-0192",
+      "label": "M0 · update 192",
+      "checkpoint": "runs/a-v2-ppo-v1/update-0192.pt",
+      "sha256": "8a9d5ea978439ef640666eab1bbba6bdd7a4143cf6b25aa7b7152f4fba7269ae",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    },
+    {
+      "id": "update-0256",
+      "label": "M0 · update 256",
+      "checkpoint": "runs/a-v2-ppo-v1/update-0256.pt",
+      "sha256": "29094e554ed33354fcfbd5613d0475c3426fe1b0425302eac59c2ad25a84d5d2",
+      "architecture": "a-path-shared2-actor2-critic2-pma-pointer-relic-v5"
+    }
+  ]
+}

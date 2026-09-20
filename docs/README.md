@@ -22,6 +22,8 @@ The files above can contain historical sections. Read their dated amendments and
 
 ## Next work
 
+[Battle console](../tools/battle-console/README.md): frozen-model dev combat, checkpoint selection, manual intervention and desktop launch instructions.
+
 [Pending plans](plans/README.md) retain relic mechanisms and faithful Act 1/2 combat as the next development priority. They are not obsolete archive material. The existing pool stays fixed during this cleanup.
 
 ## Evidence and historical experiments
