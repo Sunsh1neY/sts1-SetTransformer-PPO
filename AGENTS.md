@@ -2,7 +2,9 @@
 
 ## Current purpose and authority
 
-This is a learning-oriented STS1 Ironclad combat research project. The local folder name `sts2` is historical. The current question is whether the existing Set Transformer + PPO policy improves over its own untrained initialization on the fixed admitted combat distribution. A clear, mentor-readable research snapshot is the immediate delivery goal; proving Set superiority over MLP is not required.
+This is a learning-oriented STS1 Ironclad combat research project. The local folder name `sts2` is historical. The completed M0 pilot demonstrated improvement over its own untrained initialization on the fixed admitted combat distribution. The current research question is whether controlled actor/critic readout ablations can improve on frozen M0. Keep the evidence mentor-readable and bounded; proving Set superiority over MLP is not a prerequisite.
+
+I16 updates that research stage: the completed M0 A-v2 pilot establishes bounded within-policy learning improvement. The current direction is dev-driven diagnosis and reviewed actor/critic architecture ablations with M0 frozen. This is not Set-versus-MLP or broad generalization evidence and does not authorize implementing or training proposed M1/M2/M3 designs without a separately approved configuration and budget.
 
 Authority: [spec-v6.md](spec-v6.md), with its dated amendments registered in [docs/decisions.md](docs/decisions.md), then [mechanics](docs/mechanics.md) for resolution order, then [learning objectives](docs/learning-path-v2.md). Do not treat early status tables as current implementation status. Record changes to governing decisions before updating the specification. I6 records the 2026-09-16 framing, language, and cleanup decision; it does not reset the schedule, budgets, or Gates.
 

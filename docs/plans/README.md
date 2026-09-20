@@ -1,5 +1,9 @@
 # Pending work
 
+## Current priority — architecture ablations (2026-09-20)
+
+Decision I16 advances the project after the [M0 learning milestone](../m0-learning-result.md): freeze M0, continue dev failure diagnosis, and review M1 critic pooling, M2 actor readout, then M3 interaction experiments. See the [current roadmap](../../README.md#next-phase-controlled-architecture-ablations). Designs, budgets and evaluation protocols require approval before implementation/training. Broad backend/corpus expansion is not the immediate priority. The dated sections below preserve earlier prerequisite plans and their original evidence; their status labels must not be read as the current top-level project stage.
+
 Status: current roadmap, updated 2026-09-19. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
 
 ## 1. Clear starting point — completed

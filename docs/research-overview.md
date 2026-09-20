@@ -1,36 +1,35 @@
 # Research overview
 
-Status: current framing, agreed on 2026-09-16. This is an overview, not a replacement for [spec-v6](../spec-v6.md).
+Status: updated 2026-09-20 under decision I16. This overview does not replace [spec-v6](../spec-v6.md) or its [dated amendments](decisions.md).
 
-## Question and learning objective
+## Completed milestone
 
-Can an entity-centric Set Transformer policy trained with PPO improve its expected combat return over its own untrained initialization on a fixed, admitted STS1 combat distribution?
+The frozen M0 Set Transformer + PPO policy improved over its own untrained initialization on the fixed admitted A-v2 combat distribution in a one-initialization pilot. Holdout component-macro mean reward increased from -0.45185 to 1.48973 and win rate from 11.56% to 85.33%, with zero external truncations in 374 episodes per policy. See [the result record](m0-learning-result.md) for definitions, source artifacts and limitations.
 
-The owner's primary objective is to understand representation, attention, policy decisions, gradients, and experimental evidence. A mentor-readable research snapshot supports that objective. The first stage should have a narrow, achievable question; it does not require an architecture-superiority claim.
+This is learning evidence for the current policy, not just engineering closure. It does not establish Set superiority over MLP, training-seed robustness, unrestricted generalization or native-game equivalence. Seven holdout components and one training initialization constrain interpretation.
 
-## Method
+## Current research question
 
-A locked headless C++ backend provides combat observations and legal actions. Python adapters expose approved public information. Cards, enemies, player state and supported relics are encoded as entities. The current A-path encoder uses four SAB layers (64 dimensions, four heads, FF128) and single-seed PMA.
+Can controlled changes to actor decision readout and critic pooling improve learning and performance relative to frozen M0, while preserving public observations, action semantics, reward and the admitted distribution?
 
-The actor selects a source/special action and then its conditional legal target. The complete action is decoded into one environment step. PPO uses the joint action probability and exact joint entropy. The critic estimates return; terminal and externally truncated trajectories have different bootstrap rules. See the [source-backed integration chain](a-path-main-integration-report.md) and [entity contract](unified-entity-interface.md), whose historical sections must be read with their version labels.
+Proposed directions are critic multi-seed pooling (M1), explicit actor context conditioning followed separately by non-degenerate multi-query readout (M2a/M2b), and their combination (M3). The exact designs and experimental budgets still require review. Width/depth scaling is deferred; no implementation or training is authorized merely by listing these plans.
 
-## What can be said now
+## Method and baseline
 
-- A-path integration and short engineering closure are recorded in the integration report. This establishes implementation evidence, not broad learning or generalization.
-- Earlier frozen MLP/Set experiments report within-policy improvement and inconclusive between-architecture differences. They used a different task/architecture contract from the current A path.
-- The archived A-path run and its status/report files exist locally. Their original fingerprints and outcomes must be audited before presenting a recomputed result or resuming a checkpoint on any backend.
-- There is no new training result from this repository cleanup.
+A locked C++ backend supplies public combat observations and legal actions. Python adapters encode cards, enemies, player state, potions and supported relic state. M0 uses two shared SAB blocks and two actor/critic-specific blocks per branch, with width 64, four heads and FF128. The actor scores contextualized source and target entities; its separate single-seed PMA scores END_TURN. The critic has its own single-seed PMA and value head.
 
-## How the question will be evaluated
+A complete action uses a source distribution followed by a conditional legal target distribution; PPO uses joint probability and exact joint entropy. The current reward is battle_reward_v2, balancing victory, initial-max-HP-normalized net HP and potion use. True termination and external truncation retain different bootstrap rules. The [frozen protocol](../projects/battle-initial-states/experiment-protocol-v1.md) is the experiment authority; the legacy 390-configuration pool is not replaced by A-v2.
 
-For a later authorized evaluation, compare initial and trained policies on the same predefined cases using the same action-sampling semantics and task contract. Report all available initializations, mean combat return, win rate, conditional exit HP, and unresolved episodes. Distinguish case variation from training-initialization uncertainty; new random seeds alone do not prove unseen-deck generalization. Recover usable historical evidence before deciding whether new training is necessary.
+## Diagnostic evidence and next steps
 
-The A-path reward is now `battle_reward_v2`: `2 * I(victory) + (HP_end - HP_start) / max_HP_start - 0.05 * potion_uses`, paid once at true termination (I8). It balances victory, net HP and potion conservation; it does not strictly prioritize win rate. Legacy paths and historical results retain `battle_reward_v1`. See the [v2 implementation report](reward-potion-v2-report.md).
+The [dev replay investigation](../projects/battle-initial-states/m0-dev-replay-v1.md) localized persistent Boss and low-HP failures. It found single-seed alternative winning trajectories and distinguished low-probability sampled mistakes from high-probability source/ordering candidates. These witnesses do not prove a pooling/query bottleneck or expected action advantage.
 
-## Next boundary
+The [interactive console](../tools/battle-console/README.md) supports frozen checkpoint selection, model execution and manual intervention on fixed dev scenes. It does not train from corrections.
 
-Preserve the existing registered pool for this stage. Relic mechanisms and faithful Act 1/2 combat are the next development priority, with preparation retained in [pending plans](plans/README.md). Before expansion, turn that aspiration into explicit scene, state, mechanism, recovery, and admission criteria. Full-run navigation and Decision Transformer remain later work.
+Use dev to refine hypotheses, then freeze ablation contracts and approved budgets. Match unchanged-module initialization where appropriate, report parameter/runtime differences, and distinguish one-run findings from repeated-training evidence. The existing holdout has already been used and must not become an unacknowledged architecture-tuning set. A future evaluation protocol needs approval before further selection.
 
-## Limits of this snapshot
+The owner's learning objective remains understanding representations, attention, policy decisions, gradients and evidence. Full-run navigation, Decision Transformer and broad dataset/backend expansion are not prerequisites for this phase.
 
-No clean-machine reproduction, fresh full regression, checkpoint recovery, statistical recomputation, or new mechanism validation has been performed merely by rewriting these documents. The frozen MLP/Set study is limited in scope, has unequal parameter counts and deck overlap, and does not establish superiority or equivalence. Current coverage lists are not proof of all card/relic/enemy combinations.
+## Reproducibility boundary
+
+This documentation update recomputed selected aggregate metrics from existing episode files; it did not execute new training or holdout episodes. Local weights, run artifacts and backend binaries are ignored by Git. A clean-clone reproduction package and cross-initialization robustness remain unverified. Earlier MLP/Set results retain their original scope and do not supply an architecture-superiority conclusion for M0.
