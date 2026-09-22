@@ -1,6 +1,6 @@
 # Documentation map
 
-Latest consolidation: [initial-state corpora, experiment code and active-run preservation](worktree-consolidation-20260919.md).
+Latest status: [I20 — approved independent Critic experiments](decisions.md#i20--independent-critic-experiments-with-staged-concurrent-launches-2026-09-22), following the [completed M2a dev comparison](m0-m2a-completed-comparison.md). Earlier consolidation: [initial-state corpora, experiment code and active-run preservation](worktree-consolidation-20260919.md).
 Use the [battle initial-state project](../projects/battle-initial-states/README.md) for I14/I15 and the A-v2 experiment; earlier pool and architecture descriptions retain their original scope.
 
 Start with the [research overview](research-overview.md). This map separates authority, current implementation references, pending work and historical evidence. A file's existence or recent date is not evidence of validation.
@@ -9,7 +9,7 @@ Start with the [research overview](research-overview.md). This map separates aut
 
 | Read | Purpose |
 |---|---|
-| [spec-v6](../spec-v6.md) + [decisions](decisions.md) | Active specification and dated amendments; I5 selects A-path, I6 records the current framing and cleanup |
+| [spec-v6](../spec-v6.md) + [decisions](decisions.md) | Active specification and dated amendments; I5 selects A-path; I16-I20 record the M0 milestone, M2a work and approved Critic runs |
 | [Mechanics](mechanics.md) | Resolution-order contract; source/log disagreements require investigation |
 | [A-path integration](a-path-main-integration-report.md) | Current execution chain and recorded engineering validation |
 | [Training pool](../sts/env/a-path-training-pool.json) | Exact registered training distribution; broader diagnostics are not admission |
@@ -24,7 +24,7 @@ The files above can contain historical sections. Read their dated amendments and
 
 [Battle console](../tools/battle-console/README.md): frozen-model dev combat, checkpoint selection, manual intervention and desktop launch instructions.
 
-[Pending plans](plans/README.md) retain relic mechanisms and faithful Act 1/2 combat as the next development priority. They are not obsolete archive material. The existing pool stays fixed during this cleanup.
+[Pending plans](plans/README.md) now identify the M2a comparison and I20-approved Critic runs as the current priority. Earlier relic and Act 1/2 plans remain dated history; broad corpus/backend expansion is not part of this phase.
 
 ## Evidence and historical experiments
 

@@ -1,6 +1,6 @@
 # Research overview
 
-Status: updated 2026-09-20 under decision I16. This overview does not replace [spec-v6](../spec-v6.md) or its [dated amendments](decisions.md).
+Status: updated 2026-09-23 under [I17-I20](decisions.md), preserving I16's completed M0 milestone. This overview does not replace [spec-v6](../spec-v6.md) or its dated amendments.
 
 ## Completed milestone
 
@@ -10,15 +10,15 @@ This is learning evidence for the current policy, not just engineering closure. 
 
 ## Current research question
 
-Can controlled changes to actor decision readout and critic pooling improve learning and performance relative to frozen M0, while preserving public observations, action semantics, reward and the admitted distribution?
+Can Critic pooling or capacity changes improve dev-selected performance over M2a while preserving public observations, action semantics, reward and the admitted distribution?
 
-Proposed directions are critic multi-seed pooling (M1), explicit actor context conditioning followed separately by non-degenerate multi-query readout (M2a/M2b), and their combination (M3). The exact designs and experimental budgets still require review. Width/depth scaling is deferred; no implementation or training is authorized merely by listing these plans.
+M2a reached update 256 / 262,144 transitions. Its paired dev comparison with M0 showed a small reward point-estimate increase and a slightly lower win-rate point estimate; no reliable overall M2a improvement was established. I20 approves M3a, C-W128 and C-D4 as independent Critic changes on the M2a Actor. The latest saved statuses (2026-09-23 02:38 local) were 259,072 / 262,144 transitions for M3a, 196,608 / 262,144 for C-W128 (dev phase), and 164,864 / 262,144 for C-D4. See the [M2a comparison](m0-m2a-completed-comparison.md) and [I20 protocol](critic-ablation-protocol-v1.md). M1 and M2b have no execution evidence in I17-I20. The Critic runs do not isolate standalone M1 effects or prove additive effects.
 
 ## Method and baseline
 
 A locked C++ backend supplies public combat observations and legal actions. Python adapters encode cards, enemies, player state, potions and supported relic state. M0 uses two shared SAB blocks and two actor/critic-specific blocks per branch, with width 64, four heads and FF128. The actor scores contextualized source and target entities; its separate single-seed PMA scores END_TURN. The critic has its own single-seed PMA and value head.
 
-A complete action uses a source distribution followed by a conditional legal target distribution; PPO uses joint probability and exact joint entropy. The current reward is battle_reward_v2, balancing victory, initial-max-HP-normalized net HP and potion use. True termination and external truncation retain different bootstrap rules. The [frozen protocol](../projects/battle-initial-states/experiment-protocol-v1.md) is the experiment authority; the legacy 390-configuration pool is not replaced by A-v2.
+A complete action uses a source distribution followed by a conditional legal target distribution; PPO uses joint probability and exact joint entropy. The current reward is battle_reward_v2, balancing victory, initial-max-HP-normalized net HP and potion use. True termination and external truncation retain different bootstrap rules. The [frozen M0 protocol](../projects/battle-initial-states/experiment-protocol-v1.md) retains its original scope; the legacy 390-configuration pool is not replaced by A-v2.
 
 ## Diagnostic evidence and next steps
 
@@ -26,10 +26,10 @@ The [dev replay investigation](../projects/battle-initial-states/m0-dev-replay-v
 
 The [interactive console](../tools/battle-console/README.md) supports frozen checkpoint selection, model execution and manual intervention on fixed dev scenes. It does not train from corrections.
 
-Use dev to refine hypotheses, then freeze ablation contracts and approved budgets. Match unchanged-module initialization where appropriate, report parameter/runtime differences, and distinguish one-run findings from repeated-training evidence. The existing holdout has already been used and must not become an unacknowledged architecture-tuning set. A future evaluation protocol needs approval before further selection.
+The M2a dev comparison is complete; see its [comparison report](m0-m2a-completed-comparison.md) for its paired cases and uncertainty limits. Continue only the three I20-approved Critic runs, use their frozen dev checkpoint-selection schedule, and report parameter/runtime differences. Treat these as single-initialization evidence. The existing holdout has already been used and remains deferred for this phase.
 
 The owner's learning objective remains understanding representations, attention, policy decisions, gradients and evidence. Full-run navigation, Decision Transformer and broad dataset/backend expansion are not prerequisites for this phase.
 
 ## Reproducibility boundary
 
-This documentation update recomputed selected aggregate metrics from existing episode files; it did not execute new training or holdout episodes. Local weights, run artifacts and backend binaries are ignored by Git. A clean-clone reproduction package and cross-initialization robustness remain unverified. Earlier MLP/Set results retain their original scope and do not supply an architecture-superiority conclusion for M0.
+The 2026-09-20 M0 update and 2026-09-22 M2a comparison recomputed selected aggregates from existing episode files. The 2026-09-23 status update read the latest saved Critic run status files; it did not recompute Critic metrics, train, or evaluate. Local weights, run artifacts and backend binaries are ignored by Git. A clean-clone reproduction package and cross-initialization robustness remain unverified. Earlier MLP/Set results retain their original scope and do not supply an architecture-superiority conclusion for M0.

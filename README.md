@@ -4,7 +4,9 @@ A learning-oriented research project studying **Set Transformers and PPO** in **
 
 **Current milestone:** the frozen M0 Set Transformer + PPO policy has demonstrated learning improvement over its own untrained initialization on the fixed admitted A-v2 distribution in a one-initialization pilot.
 
-**Next question:** under controlled training and evaluation conditions, can changes to the actor's decision readout or the critic's pooling improve learning and combat performance?
+**Current work (2026-09-23):** M2a reached update 256 / 262,144 transitions. Its dev-selected comparison with M0 reports a reward difference of +0.0065 and a win-rate difference of -0.049 percentage points; it establishes no reliable overall M2a improvement. I20 approved the M3a, C-W128 and C-D4 Critic experiments. Their latest saved statuses at 02:38 local were 259,072 / 262,144 transitions for M3a, 196,608 / 262,144 for C-W128 (dev phase), and 164,864 / 262,144 for C-D4. Completion and dev selection remain pending in those snapshots. See the [M2a comparison](docs/m0-m2a-completed-comparison.md), [I20](docs/decisions.md#i20--independent-critic-experiments-with-staged-concurrent-launches-2026-09-22) and [Critic protocol](docs/critic-ablation-protocol-v1.md).
+
+**Next question:** under controlled training and evaluation conditions, can Critic pooling or capacity changes improve dev-selected performance over M2a while preserving public observations, action semantics, reward and the admitted distribution?
 
 ## Learning evidence
 
@@ -37,7 +39,7 @@ Public entities -> type projections / relation fusion
                    '-- Critic SAB x2 -> single-seed PMA -> V(s)
 ```
 
-Each branch has a four-SAB path, width 64, four attention heads and FF128; M0 has 370,562 parameters. Actor and critic have separate branch blocks and pooling parameters, with a shared trunk. Source/target tokens already carry state context; the target query is already source-conditioned. The actor's existing PMA is currently used for END_TURN, not every source score.
+Each branch has a four-SAB path, width 64, four attention heads and FF128; M0 has 370,562 parameters. Actor and critic have separate branch blocks and pooling parameters, with a shared trunk. Source/target tokens already carry state context; the target query is already source-conditioned. M0's actor PMA is used for END_TURN, not every source score.
 
 The policy chooses a source or special action, then a legal conditional target. PPO uses one complete action's joint log probability, one ratio/clipping operation and exact joint entropy.
 
@@ -45,25 +47,27 @@ Current experiment route: [corpus runner](scripts/run-a-corpus-ppo.py) -> [APath
 
 ## Next phase: controlled architecture ablations
 
-**M0 remains frozen.** The designs below are proposals, not implemented models or completed experiments.
+**M0 remains frozen.** I17-I20 record M2a implementation and evaluation plus the approved Critic experiments. The three Critic runs are incomplete in the latest saved status snapshots; see the [I20 protocol](docs/critic-ablation-protocol-v1.md).
 
-| Variant | Intended change | Question |
+| Variant | Intended change | Latest status |
 |---|---|---|
-| M1 | Critic multi-seed PMA with explicitly specified aggregation | Does a different value readout help under the fixed budget? |
-| M2a | Explicit global-context conditioning of the actor query, initially one query | Does an explicit context path improve source decisions beyond contextualized tokens? |
-| M2b | Add genuinely distinct multi-query readout after M2a | Does non-degenerate multi-query fusion provide additional benefit? |
-| M3 | Combine the selected M1 and M2 designs | Are their effects complementary, redundant or interfering? |
+| M1 | Standalone multi-seed Critic PMA on M0 | No M1 execution evidence is recorded in I17-I20 |
+| M2a | Explicit source-context conditioning of the Actor query | Completed at update 256; dev comparison found no reliable overall improvement over M0 |
+| M2b | Distinct multi-query Actor readout after M2a | Proposal; no implementation or execution approval recorded |
+| M3a | Four-seed Critic PMA with the M2a Actor | Approved by I20; latest saved status 259,072 / 262,144 transitions |
+| C-W128 | Width-128 private Critic with the M2a Actor | Approved by I20; latest saved status 196,608 / 262,144, in dev phase |
+| C-D4 | Four private Critic SABs with the M2a Actor | Approved by I20; latest saved status 164,864 / 262,144 transitions |
 
-Before implementation/training, review the exact information flow, aggregation, source/target wiring, parameter counts and shared-trunk effects. A linear average of dot-product query scores can collapse to one effective query; simply adding query vectors is not sufficient. Changing the critic also affects shared representations and the actor's learning signal, even when actor topology is unchanged.
+The approved Critic runs compare each Critic change conditionally on the M2a Actor. They do not establish standalone M1 effects or additive M1/M2 effects. Critic changes also affect shared representations and the Actor's learning signal through training.
 
 Priorities:
 
-1. Continue dev-only failure diagnosis and counterfactual checks, separating sampling sensitivity from high-probability decision errors.
-2. Freeze each ablation's architecture, initialization pairing, budget, metrics and checkpoint-selection rules for owner review. Preserve public inputs, action/mask semantics, reward and sampling when comparing readouts.
-3. Run approved smoke checks and bounded, sequential experiments; report both parameter count and runtime, and distinguish pilot results from repeated-training evidence.
-4. Evaluate architecture interactions only after the component comparisons are interpretable. Defer width/depth/FFN scaling and broad corpus/backend expansion.
+1. Close the three I20-approved Critic runs under their existing budgets and record their dev checkpoint selections.
+2. Preserve the approved initialization pairing, data, reward, action/mask semantics and evaluation cases; report parameter count and runtime.
+3. Treat each run as a single-initialization result. M3a versus M2a is a conditional Critic comparison; independent or additive effects need the corresponding standalone comparisons.
+4. Keep the existing holdout deferred and broad corpus/backend expansion out of this phase.
 
-The existing holdout has already been evaluated. Use dev for development; approve the next evaluation protocol before further model selection, and do not repeatedly tune on the old holdout while describing it as untouched. This roadmap **does not authorize new training or renew a past budget**.
+The existing holdout has already been evaluated and I20 defers it for these runs. Use dev for development and do not repeatedly tune on the old holdout while describing it as untouched. This roadmap does not authorize runs beyond I20 or renew any past budget.
 
 ## Data and experimental boundaries
 

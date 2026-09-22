@@ -1,10 +1,14 @@
 # Pending work
 
-## Current priority — architecture ablations (2026-09-20)
+## Current priority — approved Critic ablations (2026-09-23)
 
-Decision I16 advances the project after the [M0 learning milestone](../m0-learning-result.md): freeze M0, continue dev failure diagnosis, and review M1 critic pooling, M2 actor readout, then M3 interaction experiments. See the [current roadmap](../../README.md#next-phase-controlled-architecture-ablations). Designs, budgets and evaluation protocols require approval before implementation/training. Broad backend/corpus expansion is not the immediate priority. The dated sections below preserve earlier prerequisite plans and their original evidence; their status labels must not be read as the current top-level project stage.
+I17-I19 authorized and completed M2a through update 256 / 262,144 transitions. Its [dev comparison with M0](../m0-m2a-completed-comparison.md) found no reliable overall improvement. I20 approves independent M3a, C-W128 and C-D4 Critic runs under the [reviewed protocol](../critic-ablation-protocol-v1.md). Their latest saved statuses (2026-09-23 02:38 local) are 259,072 / 262,144 transitions for M3a, 196,608 / 262,144 for C-W128 (dev phase), and 164,864 / 262,144 for C-D4. These are status snapshots; completion and dev selection remain pending in them. M0 remains frozen, holdout evaluation is deferred, and broad backend/corpus expansion is outside this phase. The dated sections below preserve earlier prerequisite plans and evidence; their status labels are not the current project stage.
 
-Status: current roadmap, updated 2026-09-19. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
+## Historical prerequisite roadmap — 2026-09-19
+
+The sections below preserve their original planning status and evidence; I17-I20 above define the current priority.
+
+Status: historical roadmap snapshot, updated 2026-09-19. Authority remains [spec-v6](../../spec-v6.md), with [decision I6](../decisions.md#i6-clear-research-starting-point-and-bounded-documentation-cleanup-2026-09-16). See also [decision I7](../decisions.md#i7-defer-ab-initial-state-preparation-until-mechanism-and-reward-work-is-complete-2026-09-18) for the required ordering. Plans describe intended work, not completed support or blanket execution authorization.
 
 ## 1. Clear starting point — completed
 
